@@ -10,7 +10,11 @@ public class PlayerController : MonoBehaviour
     //
     
     //GameManager는 씬의 초기 세팅, 설정 등에 관한 스크립트
-    [SerializeField] private Movement2D movement2D;
+    private Movement2D movement2D;
+    private Interact interact;
+    private Rigidbody2D rigid2D;
+    private Battle battle;
+    [SerializeField] private GameManager manager;
 
     [Header("Input Setting")]
     private float hAxis;
@@ -20,29 +24,44 @@ public class PlayerController : MonoBehaviour
     private bool pressedDashKey;
     [Space(20f)]
 
-    Rigidbody2D rigid2D;
+    [Header("Interact Setting")]
+    [SerializeField] private KeyCode InteractKey = KeyCode.E;
+    private bool pressedInteractKey;
+    
+    [Header("Atk Setting")]
+    [SerializeField] private KeyCode LeftAtkKey = KeyCode.Z;
+    private bool pressedLeftAtkKey;
+    [SerializeField] private KeyCode RightAtkKey = KeyCode.X;
+
+    private bool pressedRightAtkKey;
 
 
-
-    void Start()
+    void Awake()
     {
-        
+        movement2D = GetComponent<Movement2D>();
+        interact = GetComponent<Interact>();
+        rigid2D = GetComponent<Rigidbody2D>();
+        battle = GetComponent<Battle>();
     }
+    
 
     void Update()
     {
         InputSystem();
         Move();
-
+        Act();
     }
 
     void InputSystem()
     {
-        if(movement2D.isDashing)
+        if(movement2D.isDashing || manager.isAction || battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
             hAxis = 0;
+            pressedInteractKey = false;
+            pressedLeftAtkKey = false;
+            pressedRightAtkKey = false;
             return;
         } 
 
@@ -50,7 +69,24 @@ public class PlayerController : MonoBehaviour
         pressedJumpkey = Input.GetKeyDown(JumpKey);
         hAxis = Input.GetAxisRaw("Horizontal");
         
+        pressedInteractKey = Input.GetKeyDown(InteractKey);
+        pressedLeftAtkKey = Input.GetKeyDown(LeftAtkKey);
+        pressedRightAtkKey = Input.GetKeyDown(RightAtkKey);
 
+        if(battle.Atking)
+        {
+            
+        }
+
+    }
+
+    void Act() //상호작용, 공격 스킬 등의 입력을 전달하는 함수
+    {
+        if(pressedInteractKey && !manager.isAction) interact.InteractObj();
+
+        if(pressedLeftAtkKey && !manager.isAction ) battle.Atk(0);
+
+        if(pressedRightAtkKey && !manager.isAction ) battle.Atk(1);
     }
 
 

@@ -127,8 +127,10 @@ public class Movement2D : MonoBehaviour
         float originalGravity = rigid2D.gravityScale;
         rigid2D.gravityScale = 0f;
         rigid2D.velocity = new Vector2(-(transform.localScale.x) * dashingPower, 0f);
+        // rigid2D.velocity = new Vector2(-(transform.localScale.x) * 0f, 0f);
         
         yield return new WaitForSeconds(dashingTime);
+        // yield return new WaitForSeconds(2f);
         
         animator.SetTrigger("DashEnd");
         rigid2D.gravityScale = originalGravity;
