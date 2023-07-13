@@ -27,6 +27,9 @@ public class Battle : MonoBehaviour
     public float[] Left_AfterAtkDelay;
     public float[] Right_BeforAtkDelay;
     public float[] Right_AfterAtkDelay;
+    public float[] Left_AtkCoolTime;
+    public float[] Right_AtkCoolTime;
+    public bool[] isAtkReady;
     public Transform[] atkPos;
     public Vector2[] atkSize;
     // public Transform[] atkPos;
@@ -54,45 +57,63 @@ public class Battle : MonoBehaviour
             if(weaponType == 2) StartCoroutine(BowAtk());
             if(weaponType == 0) StartCoroutine(ShieldGuard());
         }
-        Atking = true;
+        // Atking = true;
     }
 
 
 
     public IEnumerator LeftAtk()
     {
-        // 공격 애니메이션 시작
-
-        yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
-
-        //중간에 공격 판정 넣기
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[weaponType].position, atkSize[weaponType], 0);
-        foreach(Collider2D collider in collider2Ds)
+        if(isAtkReady[weaponType])
         {
-            if(collider.tag == "Monster")
+            Atking = true;
+            isAtkReady[weaponType] = false;
+
+            // 공격 애니메이션 시작
+            // yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
+
+            // 공격 피격
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[weaponType].position, atkSize[weaponType], 0);
+            foreach(Collider2D collider in collider2Ds)
             {
-                Debug.Log("Atk Succed");
-                collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
+                if(collider.tag == "Monster")
+                {
+                    Debug.Log("Atk Succed");
+                    collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
+                }
             }
+            // 공격 중인거 종료
+            Atking = false;
+
+            yield return new WaitForSeconds(Left_AtkCoolTime[weaponType]);
+            //애니메이션 종료 및 공격 종료
+            isAtkReady[weaponType] = true;
         }
-
-        yield return new WaitForSeconds(Left_AfterAtkDelay[weaponType]);
-
-        //애니메이션 종료 및 공격 종료
-        Atking = false;
     }
+    public IEnumerator BowAtk()
+    {
+        if(isAtkReady[weaponType])
+        {
+            Atking = true;
+            isAtkReady[weaponType] = false;
+            // 공격 애니메이션 시작
+            // yield return new WaitForSeconds(Right_BeforAtkDelay[weaponType]);
 
+            //화살 소환
+            GameObject ThrowArrow = Instantiate(arrow);
+            ThrowArrow.transform.position = atkPos[weaponType].position; 
+            ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
+            Atking = false;
 
+            yield return new WaitForSeconds(Right_AtkCoolTime[weaponType]);
 
-
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(atkPos[weaponType].position, atkSize[weaponType]);    
+            isAtkReady[weaponType] = true;
+        } 
     }
-
 
     public IEnumerator ShieldGuard()
     {
+        Atking = true;
         // 차징 애니메이션 시작
 
         yield return new WaitForSeconds(Right_BeforAtkDelay[weaponType]);
@@ -102,20 +123,14 @@ public class Battle : MonoBehaviour
     }
     
 
-    public IEnumerator BowAtk()
-    {
-        // 공격 애니메이션 시작
-        
-        yield return new WaitForSeconds(Right_BeforAtkDelay[weaponType]);
-        //화살 소환
-        GameObject ThrowArrow = Instantiate(arrow);
-        ThrowArrow.transform.position = atkPos[weaponType].position; 
-        ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
-        
-
-        yield return new WaitForSeconds(Right_AfterAtkDelay[weaponType]);
-        Atking = false;
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(atkPos[weaponType].position, atkSize[weaponType]);    
     }
+
+
+   
+
 
 
     public void GetDamaged(float Damage)

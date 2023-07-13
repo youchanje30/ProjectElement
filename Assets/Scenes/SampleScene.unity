@@ -2884,7 +2884,7 @@ MonoBehaviour:
   atkSpeed: 0
   crtRate: 0
   crtDmg: 0
-  weaponType: 0
+  weaponType: 2
   Atking: 0
   isGuard: 0
   Left_BeforAtkDelay:
@@ -2903,6 +2903,15 @@ MonoBehaviour:
   - 0
   - 0
   - 0.05
+  Left_AtkCoolTime:
+  - 0.75
+  - 0.5
+  - 0
+  Right_AtkCoolTime:
+  - 1
+  - 0
+  - 1
+  isAtkReady: 010101
   atkPos:
   - {fileID: 1921058077}
   - {fileID: 1773981687}

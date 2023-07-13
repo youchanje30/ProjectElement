@@ -54,14 +54,11 @@ public class PlayerController : MonoBehaviour
 
     void InputSystem()
     {
-        if(movement2D.isDashing || manager.isAction || battle.Atking)
+        if(movement2D.isDashing || manager.isAction )//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
             hAxis = 0;
-            pressedInteractKey = false;
-            pressedLeftAtkKey = false;
-            pressedRightAtkKey = false;
             return;
         } 
 
@@ -73,9 +70,11 @@ public class PlayerController : MonoBehaviour
         pressedLeftAtkKey = Input.GetKeyDown(LeftAtkKey);
         pressedRightAtkKey = Input.GetKeyDown(RightAtkKey);
 
-        if(battle.Atking)
-        {
-            
+        if(battle.Atking || manager.isAction || movement2D.isDashing)
+        {   
+            pressedInteractKey = false;
+            pressedLeftAtkKey = false;
+            pressedRightAtkKey = false;
         }
 
     }

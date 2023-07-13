@@ -135,4 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: 0
   Damage: 2
-  Throwspeed: 5
+  Throwspeed: 10
