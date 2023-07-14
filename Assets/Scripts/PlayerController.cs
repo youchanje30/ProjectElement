@@ -54,6 +54,22 @@ public class PlayerController : MonoBehaviour
 
     void InputSystem()
     {
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.Log("W Down");
+        }
+        else if(Input.GetKey(KeyCode.W))
+        {
+            Debug.Log("W Pressing");
+        }
+        else if(Input.GetKeyUp(KeyCode.W))
+        {
+            Debug.Log("W Up");
+        }
+
+
+
+
         if(movement2D.isDashing || manager.isAction || battle.fallAtking)//|| battle.Atking)
         {
             pressedDashKey = false;

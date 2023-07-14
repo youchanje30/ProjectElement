@@ -16,6 +16,9 @@ public class Battle : MonoBehaviour
     public float crtRate;
     public float crtDmg;
     [Space(20f)]
+
+    public RuntimeAnimatorController[] AnimController;
+    public Animator animator;
     
     private Movement2D movement2D;
     private Rigidbody2D rigid2D;
@@ -57,6 +60,7 @@ public class Battle : MonoBehaviour
             isAtkReady[i] = true;
         }
         
+        animator = GetComponent<Animator>();
     }
 
 
@@ -75,6 +79,7 @@ public class Battle : MonoBehaviour
                 if(collider.tag == "Monster" || collider.tag == "Destruct")
                 {
                     Atk(collider.gameObject);
+                    
                     // collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
                 }
             }
@@ -133,6 +138,7 @@ public class Battle : MonoBehaviour
             fallAtking = true;
             rigid2D.gravityScale = 0f;
             rigid2D.velocity = Vector2.zero;
+            animator.SetTrigger("isJumpDownAtk");
             yield return new WaitForSeconds(0.2f);
             rigid2D.gravityScale = 20f;
         }
@@ -144,6 +150,7 @@ public class Battle : MonoBehaviour
         {
             Atking = true;
             isAtkReady[weaponType] = false;
+            animator.SetTrigger("isAtk");
 
             // 공격 애니메이션 시작
             // yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
