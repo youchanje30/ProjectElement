@@ -17,7 +17,9 @@ public class Battle : MonoBehaviour
     public float crtDmg;
     [Space(20f)]
     
-
+    private Movement2D movement2D;
+    private Rigidbody2D rigid2D;
+    public bool fallAtking;
 
     [Header("Weapon Setting")]
     public int weaponType;
@@ -35,19 +37,80 @@ public class Battle : MonoBehaviour
     // public Transform[] atkPos;
     public GameObject arrow;
 
+    public float originalScale;
+
+
+    public Transform fallDownAtkPos;
+    public Vector2 fallDownAtkSize;
+
+
+
     void Awake()
     {
+        movement2D = GetComponent<Movement2D>();
+        rigid2D = GetComponent<Rigidbody2D>();
+        fallAtking = false;
+        originalScale = rigid2D.gravityScale;
         // weaponType = 0;    
+        for (int i = 0; i < isAtkReady.Length; i++)
+        {
+            isAtkReady[i] = true;
+        }
+        
     }
 
 
-    public void Atk(int id)
+
+    void Update()
+    {
+        if(fallAtking && movement2D.isGround) //착지 공격 참 + 땅에 도착 참
+        {
+            fallAtking = false;
+            Atking = false;
+            rigid2D.gravityScale = originalScale;
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(fallDownAtkPos.position, fallDownAtkSize, 0);
+            foreach(Collider2D collider in collider2Ds)
+            {
+                
+                if(collider.tag == "Monster" || collider.tag == "Destruct")
+                {
+                    Atk(collider.gameObject);
+                    // collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
+                }
+            }
+            
+        }
+    }
+
+
+    public void Atk(GameObject AtkObj)
+    {
+        if(AtkObj.tag == "Monster")
+        {
+            AtkObj.GetComponent<Monster>().GetDamaged(meleeDmg);
+            // 데미지 계산 식
+        }
+
+        if(AtkObj.tag == "Destruct")
+        {
+            AtkObj.GetComponent<DestructObject>().DestroyObj();
+        }
+
+    }
+
+    public void AtkAction(int id)
     {
         // if(!atk) return;
 
         if(id == 0) //좌클릭
         {
             if(weaponType == 2) return; //활은 좌클릭이 없어요
+           
+            if(!movement2D.isGround)
+            {
+                StartCoroutine(FallDownAtk());
+                return;
+            }
             StartCoroutine(LeftAtk());
         }
         else if (id == 1)
@@ -60,7 +123,20 @@ public class Battle : MonoBehaviour
         // Atking = true;
     }
 
-
+    public IEnumerator FallDownAtk()
+    {
+        if(!Atking)
+        {
+            // 체공 시간
+            // originalScale = rigid2D.gravityScale;
+            Atking = true;
+            fallAtking = true;
+            rigid2D.gravityScale = 0f;
+            rigid2D.velocity = Vector2.zero;
+            yield return new WaitForSeconds(0.2f);
+            rigid2D.gravityScale = 20f;
+        }
+    }
 
     public IEnumerator LeftAtk()
     {
@@ -76,10 +152,10 @@ public class Battle : MonoBehaviour
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[weaponType].position, atkSize[weaponType], 0);
             foreach(Collider2D collider in collider2Ds)
             {
-                if(collider.tag == "Monster")
+                if(collider.tag == "Monster" || collider.tag == "Destruct")
                 {
-                    Debug.Log("Atk Succed");
-                    collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
+                    Atk(collider.gameObject);
+                    // collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
                 }
             }
             // 공격 중인거 종료
@@ -126,6 +202,7 @@ public class Battle : MonoBehaviour
     private void OnDrawGizmos() {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(atkPos[weaponType].position, atkSize[weaponType]);    
+        Gizmos.DrawWireCube(fallDownAtkPos.position, fallDownAtkSize);    
     }
 
 
