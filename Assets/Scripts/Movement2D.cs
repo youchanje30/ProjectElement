@@ -59,7 +59,8 @@ public class Movement2D : MonoBehaviour
         //footPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.5f);
         //isground = Physics2D.OverlapBox(footPos, new Vector2(1f, 0.1f), Layer);
         isGround = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x, 
-        gameObject.transform.position.y -0.47f), new Vector2(0.55f, 0.01f), 0f, GroundLayer);
+        // gameObject.transform.position.y -0.47f), new Vector2(0.55f, 0.01f), 0f, GroundLayer);
+        gameObject.transform.position.y -0.95f), new Vector2(0.55f, 0.01f), 0f, GroundLayer);
 
         if(isGround == true && rigid2D.velocity.y <= 0)
         {
@@ -86,7 +87,8 @@ public class Movement2D : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         //Gizmos.DrawCube(footPos, new Vector2(1f, 0.1f));
-        Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.47f), new Vector2(0.55f, 0.01f));
+        // Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.47f), new Vector2(0.55f, 0.01f));
+        Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.95f), new Vector2(0.55f, 0.01f));
     
     }
 
@@ -97,7 +99,8 @@ public class Movement2D : MonoBehaviour
 
         if(hAxis != 0)
         {
-            transform.localScale = new Vector3( -(hAxis), 1, 1);
+            // transform.localScale = new Vector3( -(hAxis), 1, 1);
+            transform.localScale = new Vector3( -(hAxis)*2, 2, 1);
             animator.SetBool("isWalk", true);
         }  
         else

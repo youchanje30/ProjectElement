@@ -92,7 +92,7 @@ public class Battle : MonoBehaviour
     {
         if(AtkObj.tag == "Monster")
         {
-            AtkObj.GetComponent<Monster>().GetDamaged(meleeDmg);
+            AtkObj.GetComponent<Snake>().GetDamaged(meleeDmg);
             // 데미지 계산 식
         }
 
@@ -139,6 +139,7 @@ public class Battle : MonoBehaviour
             rigid2D.gravityScale = 0f;
             rigid2D.velocity = Vector2.zero;
             animator.SetTrigger("isJumpDownAtk");
+            Debug.Log("1");
             yield return new WaitForSeconds(0.2f);
             rigid2D.gravityScale = 20f;
         }
@@ -219,8 +220,9 @@ public class Battle : MonoBehaviour
 
     public void GetDamaged(float Damage)
     {
-        if(isGuard) return;
+        Debug.Log("Get Damaged");
 
+        if(isGuard) return;
         StopCoroutine(ShieldGuard());
     }
 }

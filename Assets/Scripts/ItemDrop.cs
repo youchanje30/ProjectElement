@@ -16,8 +16,9 @@ public class ItemDrop : MonoBehaviour
     
     public void Drop()
     {
-        Vector2 DropDir = new Vector2(Random.Range(-30, 30 + 1), Random.Range(1, 90 + 1));
-        float Force = Random.Range(0.1f, 0.5f);
-        rigid2D.AddForce(DropDir * Force, ForceMode2D.Impulse);   
+        Vector2 DropDir = new Vector2(Random.Range(-1, 1 + 1), Random.Range(0, 1 + 1));
+        float Force = Random.Range(0.1f, 0.1f);
+        // rigid2D.AddForce(DropDir * Force, ForceMode2D.Impulse);   
+        rigid2D.velocity = DropDir * Force;
     }
 }
