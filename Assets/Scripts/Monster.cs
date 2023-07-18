@@ -2,66 +2,134 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public enum MonsterTypes
-{
-    melee,
-    range
-}
-
-public enum MonsterGrades
-{
-    common,
-    elite,
-    boss
-}
-
 public class Monster : MonoBehaviour
 {
-    public float maxHp;
-    public float curHp;
+    [Header("Image Information")]
+    public float ImgScale;
 
-    public MonsterTypes monsterType;
-    public MonsterGrades monsterGrade;
+
+
+    private Transform playerTrans;
+    public Transform atkTrans;
+    public Vector2 atkSize;
     private Animator animator;
-    private CircleCollider2D circleCollider2D;
-    // private BoxCollider2D boxCollider2D;
-    
-    [SerializeField] private Transform targetPos;
-    public float moveSpeed;
-    public bool isTargetIn = false;
     private Rigidbody2D rigid2D;
-    private int nextDir;
 
-    private void Awake()
+
+    [Header("Enemy Status")]
+    public float moveSpeed;
+    public float maxHp;
+    public float Dmg;
+    public float atkCoolTime = 3f;
+    public float AtkRange;
+    public float FollowRange; 
+
+
+
+    [Header("Current Enemy Status")]
+    public float curHp;
+    [SerializeField] private float curAtkCoolTime;
+    [SerializeField] private bool isKnockback = false;
+    
+    
+    private int nextDir;
+    
+
+    
+
+    void Awake()
     {
-        targetPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         curHp = maxHp;
-        rigid2D = GetComponent<Rigidbody2D>();
-        // circleCollider2D = GetComponent<CircleCollider2D>();
-        circleCollider2D = GetComponentInChildren<CircleCollider2D>();
+        curAtkCoolTime = atkCoolTime;
         animator = GetComponent<Animator>();
-        Invoke("RandomAct", 1);
+        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+        rigid2D = GetComponent<Rigidbody2D>();
+        RandomAct();
     }
 
     
     void Update()
     {
-        if(isTargetIn)
+        curAtkCoolTime -= Time.deltaTime;
+        SearchTarget();
+        // Debug.Log(Vector2.Distance(playerTrans.position, transform.position));
+    }
+
+    public void SearchTarget()
+    {
+        if(Vector2.Distance(playerTrans.position, transform.position) <= AtkRange)
         {
-            moveTarget();
+            animator.SetBool("isRange", true);
+            animator.SetBool("isMove", false);
+            rigid2D.velocity = Vector2.zero; // 정지
+            // rigid2D.velocity = new Vector2(rigid2D.velocity.x, rigid2D.velocity.y);
+            
+            //공격
+            if(curAtkCoolTime <= 0)
+            {
+                //공격 시도
+                animator.SetTrigger("Atk");
+                curAtkCoolTime = atkCoolTime;
+            }
+            //아니면 애니메이션은 Idle 상태로 존재한다.
+        }
+        else if(Vector2.Distance(playerTrans.position, transform.position) <= FollowRange)
+        {
+            //추적
+            animator.SetBool("isRange", false);
+            animator.SetBool("isMove", true);
+            Follow();
         }
         else
         {
-            moveRandom();
+            //랜덤 이동
+            RandomMove();
         }
     }
 
-    public void moveRandom()
+    
+    void Follow()
     {
+        Vector3 moveDir = Vector3.zero;
+
+        if(playerTrans.position.x > transform.position.x)
+        {
+            nextDir = 1;
+            // moveDir = Vector3.right;
+            // rigid2D.velocity = new Vector2(1 * moveSpeed, rigid2D.velocity.y);
+            // transform.localScale = new Vector3(-2, 2 ,1);
+        }
+        else
+        {    
+            nextDir = -1;
+            // moveDir = Vector3.left;
+            // rigid2D.velocity = new Vector2(-1 * moveSpeed, rigid2D.velocity.y);
+            // transform.localScale = new Vector3(2, 2 ,1);
+        }
+
+        Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir * 2, rigid2D.position.y - 2);
+        Debug.DrawRay(frontVec, Vector3.down, new Color(0,1,0));
+        RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 1 ,LayerMask.GetMask("Platform"));
+        
+        transform.localScale = new Vector3(nextDir * - (ImgScale), ImgScale ,1);
+        if(raycast.collider == null)
+            nextDir = 0;
+        
+        rigid2D.velocity = new Vector2(nextDir * moveSpeed, rigid2D.velocity.y);
+    }
+
+
+    void RandomMove()
+    {
+        animator.SetBool("isRange", false);
+        animator.SetBool("isMove", nextDir != 0);
+        
         rigid2D.velocity = new Vector2(nextDir * moveSpeed, rigid2D.velocity.y);
 
-        Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir, rigid2D.position.y);
+        if(nextDir != 0)    
+            transform.localScale = new Vector3(nextDir * - (ImgScale), ImgScale ,1);
+
+        Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir * 2, rigid2D.position.y - 2);
         
         Debug.DrawRay(frontVec, Vector3.down, new Color(0,1,0));
         RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 1 ,LayerMask.GetMask("Platform"));
@@ -70,98 +138,75 @@ public class Monster : MonoBehaviour
         {
             nextDir = nextDir * -1;
             CancelInvoke();
-            Invoke("RandomAct", 5);
+            Invoke("RandomAct", 2f);
         }
     }
 
-    public void moveTarget()
-    {
-        if(!isTargetIn) return;
 
-
-        Vector3 moveDir = Vector3.zero;
-        
-
-
-        if(targetPos.position.x > transform.position.x)
-        {
-            // moveDir = Vector3.right;
-            rigid2D.velocity = new Vector2(1 * moveSpeed, rigid2D.velocity.y);
-            transform.localScale = new Vector3(-1, 1 ,1);
-
-        }
-        else
-        {
-            // moveDir = Vector3.left;
-            rigid2D.velocity = new Vector2(-1 * moveSpeed, rigid2D.velocity.y);
-            transform.localScale = new Vector3(1, 1 ,1);
-        }
-
-        
-        // transform.position += moveDir * Time.deltaTime * moveSpeed;
-
-    }
-
-
-
-    void RandomAct()
+    public void RandomAct()
     {
         nextDir = Random.Range(-1, 1 + 1);
         Invoke("RandomAct", Random.Range(1f , 3f));
     }
 
-
-
-
-
-
-    void OnTriggerEnter2D(Collider2D other)
+    
+    public void WolfAtk()
     {
-        if(other.tag == "Player"){
-            targetPos = other.GetComponent<Transform>();
-            
-        Debug.Log("In Start");
-        }
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkTrans.position, atkSize,  0);
+            foreach(Collider2D collider in collider2Ds)
+            {
+                if(collider.tag == "Player")
+                {
+                    collider.GetComponent<Battle>().GetDamaged(Dmg);
+                }
+            }
     }
 
 
-    void OnTriggerStay2D(Collider2D other)
+    private void OnDrawGizmos()
     {
-        if(other.tag == "Player")
-        {
-            isTargetIn = true;
-            Debug.Log("In Stay");
-        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(atkTrans.position, atkSize);    
+        
     }
 
 
-    void OnTriggerExit2D(Collider2D other)
+    public void GetDamaged(float dmg)
     {
-        if(other.tag == "Player")
-        {
-            isTargetIn = false;
-            // targetPos = null;
-            Debug.Log("In End");
-        }
-    }
+        if(isKnockback) return;
 
+        animator.ResetTrigger("Hurt");
+        animator.SetTrigger("Hurt");
+        float x = transform.position.x - playerTrans.position.x;
+        if(x < 0)
+            x = 1;
+        else
+            x = -1;
 
-    public void GetDamaged(float Damage)
-    {
-        Debug.Log("Get Damage");
-        curHp -= Damage;
+        StartCoroutine(Knockback(x));
+
+        curHp -= dmg;
         if(curHp <= 0)
         {
-            Destroy(gameObject);
-            // Dead();
+            // Destroy(gameObject);
         }
     }
 
-    public IEnumerator MonsterAtk()
+
+    IEnumerator Knockback(float dir)
     {
+        isKnockback = true;
+        float ctime = 0;
+        while (ctime < 0.2f)
+        {
+            if(transform.rotation.y == 0)
+                transform.Translate(Vector3.left * 10f * Time.deltaTime * dir);
+            else
+                transform.Translate(Vector3.left * 10f * Time.deltaTime * -1f * dir);
 
-        yield return new WaitForSeconds(1f);
-
+            ctime += Time.deltaTime;
+            yield return null;
+        }
+        isKnockback = false;
     }
-
 }

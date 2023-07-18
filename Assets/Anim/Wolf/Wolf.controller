@@ -60,7 +60,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snake Move
+  m_Name: Wolf Move
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -75,7 +75,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9fc48947a9115f7499cae0c0bc52782c, type: 2}
+  m_Motion: {fileID: 7400000, guid: 5a6eb4ccc4a62f5429d703414bece850, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -110,7 +110,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snake Hit
+  m_Name: Wolf Hit
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -124,7 +124,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c17e12cc0a90f9346874a2fbdeedd42e, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0a1e5f9b6c5682847a26cca27b45c970, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -136,7 +136,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snake
+  m_Name: Wolf
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isMove
@@ -305,7 +305,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a4aa966e753a05c4f93e83a29ae354ca, type: 2}
+  m_Motion: {fileID: 7400000, guid: c9ce3f1e46c168145a88a37d37a1e36b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -318,7 +318,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snake Atk
+  m_Name: Wolf Atk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -332,7 +332,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 4b447267ce771494ebc4e2b511d8126b, type: 2}
+  m_Motion: {fileID: 7400000, guid: b05fdb6a8d6506642893c80e48d791ba, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -410,7 +410,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snake Idle
+  m_Name: Wolf Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -424,7 +424,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a4aa966e753a05c4f93e83a29ae354ca, type: 2}
+  m_Motion: {fileID: 7400000, guid: c9ce3f1e46c168145a88a37d37a1e36b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

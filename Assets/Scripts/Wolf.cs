@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Snake : MonoBehaviour
+public class Wolf : MonoBehaviour
 {
     public Transform playerTrans;
     public Transform atkTrans;
@@ -15,7 +15,7 @@ public class Snake : MonoBehaviour
     public float maxHp;
     public float curHp;
     public float Dmg;
-    public float atkCoolTime = 2f;
+    public float atkCoolTime = 3f;
     public float curAtkCoolTime;
     public bool isKnockback = false;
     
@@ -44,7 +44,7 @@ public class Snake : MonoBehaviour
 
     public void SearchTarget()
     {
-        if(Vector2.Distance(playerTrans.position, transform.position) <= 1.5f)
+        if(Vector2.Distance(playerTrans.position, transform.position) <= 2.5f)
         {
             animator.SetBool("isRange", true);
             animator.SetBool("isMove", false);
@@ -58,7 +58,7 @@ public class Snake : MonoBehaviour
                 curAtkCoolTime = atkCoolTime;
             }
         }
-        else if(Vector2.Distance(playerTrans.position, transform.position) <= 6f)
+        else if(Vector2.Distance(playerTrans.position, transform.position) <= 8f)
         {
             //추적
             animator.SetBool("isRange", false);
@@ -96,14 +96,14 @@ public class Snake : MonoBehaviour
             // transform.localScale = new Vector3(2, 2 ,1);
         }
 
-        Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir, rigid2D.position.y);
-
+        Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir * 2, rigid2D.position.y - 2);
+        
         Debug.DrawRay(frontVec, Vector3.down, new Color(0,1,0));
         RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 1 ,LayerMask.GetMask("Platform"));
         
 
 
-        transform.localScale = new Vector3(nextDir * -2, 2 ,1);
+        transform.localScale = new Vector3(nextDir * -4, 4 ,1);
         if(raycast.collider == null)
         {
             nextDir = 0;
@@ -120,9 +120,9 @@ public class Snake : MonoBehaviour
 
 
         if(nextDir != 0)    
-            transform.localScale = new Vector3(nextDir * -2, 2 ,1);
+            transform.localScale = new Vector3(nextDir * -4, 4 ,1);
 
-        Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir, rigid2D.position.y);
+        Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir * 2, rigid2D.position.y - 2);
         
         Debug.DrawRay(frontVec, Vector3.down, new Color(0,1,0));
         RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 1 ,LayerMask.GetMask("Platform"));
@@ -142,7 +142,7 @@ public class Snake : MonoBehaviour
     }
 
     
-    public void SnakeAtk()
+    public void WolfAtk()
     {
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkTrans.position, atkSize,  0);
             foreach(Collider2D collider in collider2Ds)
@@ -186,9 +186,9 @@ public class Snake : MonoBehaviour
         while (ctime < 0.2f)
         {
             if(transform.rotation.y == 0)
-                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime * dir);
+                transform.Translate(Vector3.left * 10f * Time.deltaTime * dir);
             else
-                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime * -1f * dir);
+                transform.Translate(Vector3.left * 10f * Time.deltaTime * -1f * dir);
 
             ctime += Time.deltaTime;
             yield return null;
