@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// public enum 
+
+
 public class Monster : MonoBehaviour
 {
     [Header("Image Information")]
@@ -108,6 +112,7 @@ public class Monster : MonoBehaviour
         }
 
         Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir * 2, rigid2D.position.y - 2);
+        
         Debug.DrawRay(frontVec, Vector3.down, new Color(0,1,0));
         RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 1 ,LayerMask.GetMask("Platform"));
         

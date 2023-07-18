@@ -67,11 +67,21 @@ public class Battle : MonoBehaviour
 
     void Update()
     {
-        if(fallAtking && movement2D.isGround) //착지 공격 참 + 땅에 도착 참
+        Vector2 underVec = new Vector2(rigid2D.transform.position.x, rigid2D.transform.position.y - 0.9f);
+
+        Debug.DrawRay(underVec, new Vector3(0, -0.2f, 0), new Color(0,1,0));
+        RaycastHit2D raycast = Physics2D.Raycast(underVec, Vector3.down, 0.2f ,LayerMask.GetMask("Platform"));
+
+        // if(fallAtking && movement2D.isGround) //착지 공격 참 + 땅에 도착 참
+        if(fallAtking && raycast.collider != null)
         {
+            animator.SetBool("isGround", true);
+            animator.SetBool("isAct", false);
             fallAtking = false;
             Atking = false;
             rigid2D.gravityScale = originalScale;
+            // rigid2D.velocity = Vector2.zero;
+            
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(fallDownAtkPos.position, fallDownAtkSize, 0);
             foreach(Collider2D collider in collider2Ds)
             {
@@ -138,11 +148,13 @@ public class Battle : MonoBehaviour
             fallAtking = true;
             rigid2D.gravityScale = 0f;
             rigid2D.velocity = Vector2.zero;
-            animator.ResetTrigger("isJumpDownAtk");
-            animator.SetTrigger("isJumpDownAtk");
-            Debug.Log("1");
+
+            animator.ResetTrigger("JumpAtk");
+            animator.SetTrigger("JumpAtk");
+            
             yield return new WaitForSeconds(0.2f);
-            rigid2D.gravityScale = 20f;
+            if(!movement2D.isGround)
+                rigid2D.gravityScale = 20f;
         }
     }
 
@@ -152,7 +164,8 @@ public class Battle : MonoBehaviour
         {
             Atking = true;
             isAtkReady[weaponType] = false;
-            animator.SetTrigger("isAtk");
+            animator.SetTrigger("Atk");
+            animator.SetBool("isAct", true);
 
             // 공격 애니메이션 시작
             // yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
@@ -169,6 +182,7 @@ public class Battle : MonoBehaviour
             }
             // 공격 중인거 종료
             Atking = false;
+            animator.SetBool("isAct", false);
 
             yield return new WaitForSeconds(Left_AtkCoolTime[weaponType]);
             //애니메이션 종료 및 공격 종료
