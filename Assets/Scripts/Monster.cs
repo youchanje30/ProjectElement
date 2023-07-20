@@ -4,16 +4,25 @@ using UnityEngine;
 
 
 // public enum 
+public enum MonsterTypes
+{
+    Snake,
+    Wolf,
+    Rabbit
 
+}
 
 public class Monster : MonoBehaviour
 {
+    [SerializeField] public MonsterTypes MonsterType;
+
+
+
     [Header("Image Information")]
     public float ImgScale;
     public float FloorRayX;
     public float FloorRayY;
-
-
+    [Space(20f)]
 
     private Transform playerTrans;
     public Transform atkTrans;
@@ -28,7 +37,15 @@ public class Monster : MonoBehaviour
     public float Dmg;
     public float atkCoolTime = 3f;
     public float AtkRange;
-    public float FollowRange; 
+    public float FollowRange;
+    [Space(20f)]
+
+
+    [Header("Rabbit Status")]
+    public float jumpX;
+    public float jumpY;
+    public float jumpForce;
+    [Space(20f)]
 
 
 
@@ -57,9 +74,36 @@ public class Monster : MonoBehaviour
     void Update()
     {
         curAtkCoolTime -= Time.deltaTime;
-        SearchTarget();
+        if(MonsterType != MonsterTypes.Rabbit)
+        {
+            SearchTarget();
+        }
+        else if(curAtkCoolTime <= 0 && MonsterType == MonsterTypes.Rabbit)
+        {
+            RabbitAtk();
+            curAtkCoolTime = atkCoolTime;
+        }
         // Debug.Log(Vector2.Distance(playerTrans.position, transform.position));
     }
+
+    public void RabbitAtk()
+    {
+
+        Vector2 JumpVec = new Vector2(jumpX , jumpY).normalized;
+
+        // rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+        rigid2D.AddForce(JumpVec * jumpForce, ForceMode2D.Impulse);
+        // bool isJump
+        /* Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkTrans.position, atkSize,  0);
+        foreach(Collider2D collider in collider2Ds)
+        {
+            if(collider.tag == "Player")
+            {
+                collider.GetComponent<Battle>().GetDamaged(Dmg);
+            }
+        } */
+    }   
+
 
     public void SearchTarget()
     {
@@ -99,14 +143,14 @@ public class Monster : MonoBehaviour
         Vector3 moveDir = Vector3.zero;
 
         // nextDir = 1;
-        if(Mathf.Abs(playerTrans.position.x - transform.position.x) < 1f)
+        /* if(Mathf.Abs(playerTrans.position.x - transform.position.x) < 1f)
         {
 
         }
         else
         {
             
-        }
+        } */
 
         if(playerTrans.position.x > transform.position.x)
         {
@@ -199,7 +243,6 @@ public class Monster : MonoBehaviour
         
     }
 
-
     public void GetDamaged(float dmg)
     {
         if(isKnockback) return;
@@ -252,6 +295,8 @@ public class Monster : MonoBehaviour
     }
 
 
+     
 
-    
+
+
 }
