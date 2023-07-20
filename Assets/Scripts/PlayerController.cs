@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,12 +10,15 @@ public class PlayerController : MonoBehaviour
     //Battle 캐릭터의 전투에 관한 스크립트
     //
     
+    public Slider playerHpBar;
+
     //GameManager는 씬의 초기 세팅, 설정 등에 관한 스크립트
     private Movement2D movement2D;
     private Interact interact;
     private Rigidbody2D rigid2D;
     private Battle battle;
     [SerializeField] private GameManager manager;
+    private Animator animator;
 
     [Header("Input Setting")]
     private float hAxis;
@@ -35,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     private bool pressedRightAtkKey;
 
+    public float chargingTime;
+
 
     void Awake()
     {
@@ -42,19 +48,33 @@ public class PlayerController : MonoBehaviour
         interact = GetComponent<Interact>();
         rigid2D = GetComponent<Rigidbody2D>();
         battle = GetComponent<Battle>();
+        animator = GetComponent<Animator>();
+        playerHpBar.maxValue = battle.maxHp;
+        chargingTime = 0;
     }
     
+
+    void Start()
+    {
+        
+    }
 
     void Update()
     {
         InputSystem();
         Move();
         Act();
+        PlayerUISystem();
+    }
+
+    void PlayerUISystem()
+    {
+        playerHpBar.value = battle.curHp;
     }
 
     void InputSystem()
     {
-        if(Input.GetKeyDown(KeyCode.W))
+        /* if(Input.GetKeyDown(KeyCode.W))
         {
             Debug.Log("W Down");
         }
@@ -65,12 +85,32 @@ public class PlayerController : MonoBehaviour
         else if(Input.GetKeyUp(KeyCode.W))
         {
             Debug.Log("W Up");
+        } */
+
+
+        if(battle.weaponType != 1)
+        {
+            if(Input.GetKeyDown(RightAtkKey))
+            {
+                pressedRightAtkKey = true;
+                animator.SetBool("isCharge", true);
+                animator.SetTrigger("Charging");
+            }
+
+            if(Input.GetKey(RightAtkKey))
+                chargingTime += Time.deltaTime;
+
+            if(Input.GetKeyUp(RightAtkKey))
+            {
+                
+                pressedRightAtkKey = false;
+                animator.SetBool("isCharge", false);
+            }
         }
 
 
 
-
-        if(movement2D.isDashing || manager.isAction || battle.fallAtking)//|| battle.Atking)
+        if(movement2D.isDashing || manager.isAction || battle.fallAtking)// || pressedRightAtkKey)//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
@@ -84,13 +124,17 @@ public class PlayerController : MonoBehaviour
         
         pressedInteractKey = Input.GetKeyDown(InteractKey);
         pressedLeftAtkKey = Input.GetKeyDown(LeftAtkKey);
-        pressedRightAtkKey = Input.GetKeyDown(RightAtkKey);
+        pressedRightAtkKey = Input.GetKey(RightAtkKey);
 
-        if(battle.Atking || manager.isAction || movement2D.isDashing || battle.fallAtking)
+        
+        
+        
+
+        if(battle.Atking || manager.isAction || movement2D.isDashing || battle.fallAtking)// || pressedRightAtkKey)
         {   
             pressedInteractKey = false;
             pressedLeftAtkKey = false;
-            pressedRightAtkKey = false;
+            // pressedRightAtkKey = false;
         }
 
         /* if(Input.GetKeyDown(InteractKey))
@@ -111,19 +155,26 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+
     void Act() //상호작용, 공격 스킬 등의 입력을 전달하는 함수
     {
         if(pressedInteractKey && !manager.isAction) interact.InteractObj();
 
         if(pressedLeftAtkKey && !manager.isAction ) battle.AtkAction(0);
 
-        if(pressedRightAtkKey && !manager.isAction ) battle.AtkAction(1);
+        if(!pressedRightAtkKey && !manager.isAction && chargingTime >= 1f)
+        {
+            battle.AtkAction(1);
+            chargingTime = 0f;
+        } 
     }
 
 
     void Move()
     {
         if(pressedDashKey && movement2D.curDashCnt > 0) StartCoroutine(movement2D.Dash());
+
         if(!movement2D.isDashing)
         {
             if(pressedJumpkey) movement2D.Jump();

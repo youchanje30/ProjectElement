@@ -10,6 +10,8 @@ public class Monster : MonoBehaviour
 {
     [Header("Image Information")]
     public float ImgScale;
+    public float FloorRayX;
+    public float FloorRayY;
 
 
 
@@ -96,6 +98,16 @@ public class Monster : MonoBehaviour
     {
         Vector3 moveDir = Vector3.zero;
 
+        // nextDir = 1;
+        if(Mathf.Abs(playerTrans.position.x - transform.position.x) < 1f)
+        {
+
+        }
+        else
+        {
+            
+        }
+
         if(playerTrans.position.x > transform.position.x)
         {
             nextDir = 1;
@@ -111,12 +123,24 @@ public class Monster : MonoBehaviour
             // transform.localScale = new Vector3(2, 2 ,1);
         }
 
-        Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir * 2, rigid2D.position.y - 2);
+
+
+        Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir * FloorRayX, rigid2D.position.y - FloorRayY);
         
         Debug.DrawRay(frontVec, Vector3.down, new Color(0,1,0));
         RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 1 ,LayerMask.GetMask("Platform"));
         
-        transform.localScale = new Vector3(nextDir * - (ImgScale), ImgScale ,1);
+        if(Mathf.Abs(playerTrans.position.x - transform.position.x) < 0.15f)
+        {
+            transform.localScale = transform.localScale;
+        }
+        else
+        {
+            transform.localScale = new Vector3(nextDir * - (ImgScale), ImgScale ,1);
+        }
+
+
+
         if(raycast.collider == null)
             nextDir = 0;
         
@@ -134,7 +158,7 @@ public class Monster : MonoBehaviour
         if(nextDir != 0)    
             transform.localScale = new Vector3(nextDir * - (ImgScale), ImgScale ,1);
 
-        Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir * 2, rigid2D.position.y - 2);
+        Vector2 frontVec = new Vector2(rigid2D.position.x + nextDir * FloorRayX, rigid2D.position.y - FloorRayY);
         
         Debug.DrawRay(frontVec, Vector3.down, new Color(0,1,0));
         RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 1 ,LayerMask.GetMask("Platform"));
@@ -193,8 +217,20 @@ public class Monster : MonoBehaviour
         curHp -= dmg;
         if(curHp <= 0)
         {
-            // Destroy(gameObject);
+            Destroy(gameObject);
         }
+    }
+
+    public void SnakeAtk()
+    {
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkTrans.position, atkSize,  0);
+            foreach(Collider2D collider in collider2Ds)
+            {
+                if(collider.tag == "Player")
+                {
+                    collider.GetComponent<Battle>().GetDamaged(Dmg);
+                }
+            }
     }
 
 
@@ -214,4 +250,8 @@ public class Monster : MonoBehaviour
         }
         isKnockback = false;
     }
+
+
+
+    
 }

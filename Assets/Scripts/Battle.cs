@@ -50,6 +50,7 @@ public class Battle : MonoBehaviour
 
     void Awake()
     {
+        curHp = maxHp;
         movement2D = GetComponent<Movement2D>();
         rigid2D = GetComponent<Rigidbody2D>();
         fallAtking = false;
@@ -119,13 +120,13 @@ public class Battle : MonoBehaviour
 
         if(id == 0) //좌클릭
         {
-            if(weaponType == 2) return; //활은 좌클릭이 없어요
-           
             if(!movement2D.isGround)
             {
                 StartCoroutine(FallDownAtk());
                 return;
             }
+
+            if(weaponType == 2) return; //활은 좌클릭이 없어요
             StartCoroutine(LeftAtk());
         }
         else if (id == 1)
@@ -236,6 +237,7 @@ public class Battle : MonoBehaviour
     public void GetDamaged(float Damage)
     {
         Debug.Log("Get Damaged");
+        curHp -= Damage;
 
         if(isGuard) return;
         StopCoroutine(ShieldGuard());
