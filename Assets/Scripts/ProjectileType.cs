@@ -28,15 +28,21 @@ public class ProjectileType : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         // Debug.Log(other.gameObject.tag);
-        if(other.gameObject.tag == "Floor")
+        if(other.tag == "Floor")
         {
             Destroy(gameObject);
         }
-        else if(other.gameObject.tag == "Monster")
+        else if(other.tag == "Monster")
         {
-            other.gameObject.GetComponent<Monster>().GetDamaged(Damage);
+            other.GetComponent<Monster>().GetDamaged(Damage);
             Destroy(gameObject);
         }
+        else if(other.tag == "Destruct")
+        {
+            other.GetComponent<DestructObject>().DestroyObj();
+            Destroy(gameObject);
+        }
+        
     }
     
 }

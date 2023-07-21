@@ -9,8 +9,11 @@ public class PlayerController : MonoBehaviour
     //Movement2D 캐릭터의 이동에 관한 스크립트
     //Battle 캐릭터의 전투에 관한 스크립트
     //
-    
+    [Header("Player UI")]
     public Slider playerHpBar;
+    [SerializeField] Image HpFill;
+    public Gradient gradient;
+    [Space(20f)]
 
     //GameManager는 씬의 초기 세팅, 설정 등에 관한 스크립트
     private Movement2D movement2D;
@@ -19,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private Battle battle;
     [SerializeField] private GameManager manager;
     private Animator animator;
+    public RuntimeAnimatorController[] AnimController;
+
 
     [Header("Input Setting")]
     private float hAxis;
@@ -49,8 +54,13 @@ public class PlayerController : MonoBehaviour
         rigid2D = GetComponent<Rigidbody2D>();
         battle = GetComponent<Battle>();
         animator = GetComponent<Animator>();
+
         playerHpBar.maxValue = battle.maxHp;
+        animator.runtimeAnimatorController = AnimController[(int)battle.WeaponType];
+        
         chargingTime = 0;
+        
+        // animator = 
     }
     
 
@@ -70,6 +80,7 @@ public class PlayerController : MonoBehaviour
     void PlayerUISystem()
     {
         playerHpBar.value = battle.curHp;
+        HpFill.color = gradient.Evaluate(playerHpBar.normalizedValue);
     }
 
     void InputSystem()
@@ -88,7 +99,7 @@ public class PlayerController : MonoBehaviour
         } */
 
 
-        if(battle.weaponType != 1)
+        if(battle.WeaponType != WeaponTypes.Sword)
         {
             if(Input.GetKeyDown(RightAtkKey))
             {
@@ -104,6 +115,10 @@ public class PlayerController : MonoBehaviour
             {
                 
                 pressedRightAtkKey = false;
+                
+                if(chargingTime < 1f)
+                    chargingTime = 0f;
+
                 animator.SetBool("isCharge", false);
             }
         }

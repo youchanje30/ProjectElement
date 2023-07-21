@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum weaponTypes { shield, sword ,bow };
+public enum WeaponTypes { Shield, Sword , Bow };
 public class Battle : MonoBehaviour
 {
     [Header("Player Status")]
@@ -17,7 +17,7 @@ public class Battle : MonoBehaviour
     public float crtDmg;
     [Space(20f)]
 
-    public RuntimeAnimatorController[] AnimController;
+    
     public Animator animator;
     
     private Movement2D movement2D;
@@ -25,7 +25,7 @@ public class Battle : MonoBehaviour
     public bool fallAtking;
 
     [Header("Weapon Setting")]
-    public int weaponType;
+    public WeaponTypes WeaponType;
     public bool Atking;
     public bool isGuard;
     public float[] Left_BeforAtkDelay;
@@ -126,15 +126,15 @@ public class Battle : MonoBehaviour
                 return;
             }
 
-            if(weaponType == 2) return; //활은 좌클릭이 없어요
+            if(WeaponType == WeaponTypes.Bow) return; //활은 좌클릭이 없어요
             StartCoroutine(LeftAtk());
         }
         else if (id == 1)
         {
-            if(weaponType == 1) return; //칼은 우클릭이 없어요
+            if(WeaponType == WeaponTypes.Sword) return; //칼은 우클릭이 없어요
             // StartCoroutine(RightAtk());
-            if(weaponType == 2) StartCoroutine(BowAtk());
-            if(weaponType == 0) StartCoroutine(ShieldGuard());
+            if(WeaponType == WeaponTypes.Bow) StartCoroutine(BowAtk());
+            if(WeaponType == WeaponTypes.Shield) StartCoroutine(ShieldGuard());
         }
         // Atking = true;
     }
@@ -161,10 +161,10 @@ public class Battle : MonoBehaviour
 
     public IEnumerator LeftAtk()
     {
-        if(isAtkReady[weaponType])
+        if(isAtkReady[(int)WeaponType])
         {
             Atking = true;
-            isAtkReady[weaponType] = false;
+            isAtkReady[(int)WeaponType] = false;
             animator.SetTrigger("Atk");
             animator.SetBool("isAct", true);
 
@@ -172,7 +172,7 @@ public class Battle : MonoBehaviour
             // yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
 
             // 공격 피격
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[weaponType].position, atkSize[weaponType], 0);
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
             foreach(Collider2D collider in collider2Ds)
             {
                 if(collider.tag == "Monster" || collider.tag == "Destruct")
@@ -185,29 +185,30 @@ public class Battle : MonoBehaviour
             Atking = false;
             animator.SetBool("isAct", false);
 
-            yield return new WaitForSeconds(Left_AtkCoolTime[weaponType]);
+            yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]);
             //애니메이션 종료 및 공격 종료
-            isAtkReady[weaponType] = true;
+            isAtkReady[(int)WeaponType] = true;
         }
     }
     public IEnumerator BowAtk()
     {
-        if(isAtkReady[weaponType])
+        if(isAtkReady[(int)WeaponType])
         {
             Atking = true;
-            isAtkReady[weaponType] = false;
+            isAtkReady[(int)WeaponType] = false;
             // 공격 애니메이션 시작
             // yield return new WaitForSeconds(Right_BeforAtkDelay[weaponType]);
 
             //화살 소환
             GameObject ThrowArrow = Instantiate(arrow);
-            ThrowArrow.transform.position = atkPos[weaponType].position; 
+            ThrowArrow.GetComponent<ProjectileType>().Damage = meleeDmg;
+            ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
             ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
             Atking = false;
 
-            yield return new WaitForSeconds(Right_AtkCoolTime[weaponType]);
+            yield return new WaitForSeconds(Right_AtkCoolTime[(int)WeaponType]);
 
-            isAtkReady[weaponType] = true;
+            isAtkReady[(int)WeaponType] = true;
         } 
     }
 
@@ -216,7 +217,7 @@ public class Battle : MonoBehaviour
         Atking = true;
         // 차징 애니메이션 시작
 
-        yield return new WaitForSeconds(Right_BeforAtkDelay[weaponType]);
+        yield return new WaitForSeconds(Right_BeforAtkDelay[(int)WeaponType]);
         
         isGuard = true;
         Atking = false;
@@ -225,7 +226,7 @@ public class Battle : MonoBehaviour
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(atkPos[weaponType].position, atkSize[weaponType]);    
+        Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);    
         Gizmos.DrawWireCube(fallDownAtkPos.position, fallDownAtkSize);    
     }
 

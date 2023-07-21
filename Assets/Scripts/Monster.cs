@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 // public enum 
@@ -12,9 +13,18 @@ public enum MonsterTypes
 
 }
 
+public enum MonsterGrades
+{
+    Common,
+    Elite,
+    Boss
+}
+
+
+
 public class Monster : MonoBehaviour
 {
-    [SerializeField] public MonsterTypes MonsterType;
+    [SerializeField] private MonsterTypes MonsterType;
 
 
 
@@ -54,20 +64,41 @@ public class Monster : MonoBehaviour
     [SerializeField] private float curAtkCoolTime;
     [SerializeField] private bool isKnockback = false;
     
-    
+    [Header("Enemy UI")]
+    [SerializeField] private Slider Hpbar;
+    public Gradient gradient;
+    [SerializeField] Image HpFill;
+
     private int nextDir;
     
+
 
     
 
     void Awake()
     {
+        #region Enemy Setting
+
         curHp = maxHp;
+        Hpbar.maxValue = maxHp;
+        Hpbar.value = curHp;
         curAtkCoolTime = atkCoolTime;
+        SetHealth();
+
+        #endregion 
+
+
+        
+
+
+        #region Component Setting
+
         animator = GetComponent<Animator>();
-        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
         rigid2D = GetComponent<Rigidbody2D>();
+        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
         RandomAct();
+
+        #endregion
     }
 
     
@@ -78,32 +109,45 @@ public class Monster : MonoBehaviour
         {
             SearchTarget();
         }
-        else if(curAtkCoolTime <= 0 && MonsterType == MonsterTypes.Rabbit)
+        else if(MonsterType == MonsterTypes.Rabbit)
         {
-            RabbitAtk();
-            curAtkCoolTime = atkCoolTime;
+            Rabbit();
         }
         // Debug.Log(Vector2.Distance(playerTrans.position, transform.position));
     }
 
-    public void RabbitAtk()
+    public void Rabbit()
     {
 
-        Vector2 JumpVec = new Vector2(jumpX , jumpY).normalized;
+    }
 
-        // rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+
+    public void RabbitAtk()
+    {
+        Vector2 JumpVec = new Vector2(jumpX , jumpY).normalized;
         rigid2D.AddForce(JumpVec * jumpForce, ForceMode2D.Impulse);
+
+
+        // this.GetComponent<BoxCollider2D>().isTrigger = true;
+        // rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+
+        
+        Vector2 frontVec = new Vector2(rigid2D.position.x, rigid2D.position.y - FloorRayY);
+
+        Debug.DrawRay(frontVec, Vector3.down, new Color(0,0,1));
+        RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 0.2f ,LayerMask.GetMask("Platform"));
+
+        
+        
         // bool isJump
-        /* Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkTrans.position, atkSize,  0);
-        foreach(Collider2D collider in collider2Ds)
-        {
-            if(collider.tag == "Player")
-            {
-                collider.GetComponent<Battle>().GetDamaged(Dmg);
-            }
-        } */
+        
     }   
 
+    void SetHealth()
+    {
+        Hpbar.value = curHp;
+        HpFill.color = gradient.Evaluate(Hpbar.normalizedValue);
+    }
 
     public void SearchTarget()
     {
@@ -258,6 +302,9 @@ public class Monster : MonoBehaviour
         StartCoroutine(Knockback(x));
 
         curHp -= dmg;
+        
+        SetHealth();
+
         if(curHp <= 0)
         {
             Destroy(gameObject);
@@ -295,8 +342,6 @@ public class Monster : MonoBehaviour
     }
 
 
-     
-
-
+    
 
 }
