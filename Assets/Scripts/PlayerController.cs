@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
     public float chargingTime;
 
+    private bool ischarging;
+
 
     void Awake()
     {
@@ -66,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        
+        // Time.timeScale = 0.2f;
     }
 
     void Update()
@@ -79,7 +81,8 @@ public class PlayerController : MonoBehaviour
 
     void PlayerUISystem()
     {
-        playerHpBar.value = battle.curHp;
+        // playerHpBar.value = battle.curHp;
+        playerHpBar.value = Mathf.Lerp(playerHpBar.value, battle.curHp, Time.deltaTime * 5f);
         HpFill.color = gradient.Evaluate(playerHpBar.normalizedValue);
     }
 
@@ -99,7 +102,7 @@ public class PlayerController : MonoBehaviour
         } */
 
 
-        if(battle.WeaponType != WeaponTypes.Sword)
+        if(battle.WeaponType != WeaponTypes.Sword || !ischarging)
         {
             if(Input.GetKeyDown(RightAtkKey))
             {

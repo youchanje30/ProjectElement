@@ -122,6 +122,8 @@ public class Battle : MonoBehaviour
         {
             if(!movement2D.isGround)
             {
+                if(WeaponType == WeaponTypes.Bow) return; // 활은 점프 공격이 없어요.
+                
                 StartCoroutine(FallDownAtk());
                 return;
             }
@@ -155,7 +157,7 @@ public class Battle : MonoBehaviour
             
             yield return new WaitForSeconds(0.2f);
             if(!movement2D.isGround)
-                rigid2D.gravityScale = 20f;
+                rigid2D.gravityScale = 10f;
         }
     }
 
