@@ -18,16 +18,15 @@ public class DestructObject : MonoBehaviour
 
     public void DestroyObj()
     {
-
         switch(DestructType){
             case DestructTypes.Chest:
                 BreakChest();
                 break;
 
-
-
         }
     }
+
+    
 
     public void BreakChest()
     {
