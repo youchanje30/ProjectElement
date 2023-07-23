@@ -7,13 +7,17 @@ using UnityEngine;
 public class Movement2D : MonoBehaviour
 {
     [Header("Base Setting")]
+    [Tooltip("플레이어가 움직이는 속도")]
     public float moveSpeed = 4f;
+    [Tooltip("점프력")]
     public float jumpForce = 15f;
     [Space(20f)]
     
     private Rigidbody2D rigid2D;
     private BoxCollider2D boxCollider2D;
     private Animator animator;
+    private GameObject currentOneWayPlatform;
+    // [SerializeField] private BoxCollider2D
 
     [SerializeField] private LayerMask GroundLayer;
     public bool isGround;
@@ -22,6 +26,7 @@ public class Movement2D : MonoBehaviour
 
 
     [Header("Jump Setting")]
+    [Tooltip("최대 점프 횟수")]
     [SerializeField] private int maxJumpCnt = 2;
     [SerializeField] private int curJumpCnt;
     [Space(20f)]
@@ -30,8 +35,10 @@ public class Movement2D : MonoBehaviour
 
     [Header("Dash Setting")]
     public bool isDashing;
+    [Tooltip("대쉬 힘(높을 수록 멀리 감)")]
     [SerializeField] private float dashingPower = 10f;
     private float dashingTime = 0.2f;
+    [Tooltip("최대 대쉬 횟수")]
     [SerializeField] private int maxDashCnt = 2;
     public int curDashCnt;
     
@@ -83,6 +90,14 @@ public class Movement2D : MonoBehaviour
             // animator.SetBool("isJump", false);
             // animator.SetBool("isAct", false);
             // Debug.Log("Reset Cnt");
+        }
+
+        if(isGround == true && rigid2D.velocity.y <= 0 && Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if(currentOneWayPlatform != null)
+            {
+                StartCoroutine(DisableCollision());
+            }
         }
 
         if( !isDashing && rigid2D.velocity.y > 0)
@@ -163,4 +178,30 @@ public class Movement2D : MonoBehaviour
         curDashCnt --;
     }
 
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("OneWayPlatForm"))
+        {
+            currentOneWayPlatform = other.gameObject;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+           if(other.gameObject.CompareTag("OneWayPlatForm"))
+        {
+            currentOneWayPlatform = null;
+        }
+    }
+
+    private IEnumerator DisableCollision()
+    {
+        CompositeCollider2D platformCollider = currentOneWayPlatform.GetComponent<CompositeCollider2D>();
+
+        Physics2D.IgnoreCollision(boxCollider2D, platformCollider);
+        yield return new WaitForSeconds(0.25f);
+        Physics2D.IgnoreCollision(boxCollider2D, platformCollider, false);
+        
+    }
 }

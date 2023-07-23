@@ -9,6 +9,7 @@ TagManager:
   - Monster
   - Destruct
   - Coin
+  - OneWayPlatForm
   layers:
   - Default
   - TransparentFX

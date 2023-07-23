@@ -7,13 +7,21 @@ public enum WeaponTypes { Shield, Sword , Bow };
 public class Battle : MonoBehaviour
 {
     [Header("Player Status")]
+    [Tooltip("최대 체력")]
     public float maxHp = 10f;
+    [Tooltip("현재 체력")]
     public float curHp;
+    [Tooltip("방어력")]
     public float def;
+    [Tooltip("물리 데미지")]
     public float meleeDmg;
+    [Tooltip("스킬 데미지")]
     public float skillDmg;
+    [Tooltip("공격 속도")]
     public float atkSpeed;
+    [Tooltip("크리티컬 확률")]
     public float crtRate;
+    [Tooltip("크리티컬 데미지")]
     public float crtDmg;
     [Space(20f)]
 
@@ -25,6 +33,7 @@ public class Battle : MonoBehaviour
     public bool fallAtking;
 
     [Header("Weapon Setting")]
+    [Tooltip("무기 타입")]
     public WeaponTypes WeaponType;
     public bool Atking;
     public bool isGuard;
