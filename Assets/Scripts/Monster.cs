@@ -51,11 +51,6 @@ public class Monster : MonoBehaviour
     [Space(20f)]
 
 
-    [Header("Rabbit Status")]
-    public float jumpX;
-    public float jumpY;
-    public float jumpForce;
-    [Space(20f)]
 
 
 
@@ -109,10 +104,6 @@ public class Monster : MonoBehaviour
         {
             SearchTarget();
         }
-        else if(MonsterType == MonsterTypes.Rabbit)
-        {
-            Rabbit();
-        }
         // Debug.Log(Vector2.Distance(playerTrans.position, transform.position));
     }
 
@@ -122,26 +113,7 @@ public class Monster : MonoBehaviour
     }
 
 
-    public void RabbitAtk()
-    {
-        Vector2 JumpVec = new Vector2(jumpX , jumpY).normalized;
-        rigid2D.AddForce(JumpVec * jumpForce, ForceMode2D.Impulse);
-
-
-        // this.GetComponent<BoxCollider2D>().isTrigger = true;
-        // rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
-
-        
-        Vector2 frontVec = new Vector2(rigid2D.position.x, rigid2D.position.y - FloorRayY);
-
-        Debug.DrawRay(frontVec, Vector3.down, new Color(0,0,1));
-        RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 0.2f ,LayerMask.GetMask("Platform"));
-
-        
-        
-        // bool isJump
-        
-    }   
+    
 
     void SetHealth()
     {

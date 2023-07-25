@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    // public CameraController 
     public Transform Target;
     public Vector3 Offset;
     public Transform cameraHandler;

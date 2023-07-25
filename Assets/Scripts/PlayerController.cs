@@ -88,35 +88,26 @@ public class PlayerController : MonoBehaviour
 
     void InputSystem()
     {
-        /* if(Input.GetKeyDown(KeyCode.W))
+        if(battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey))
         {
-            Debug.Log("W Down");
+            pressedRightAtkKey = true;
+            animator.SetBool("isCharge", true);
+            animator.SetTrigger("Charging");
+            ischarging = true;
         }
-        else if(Input.GetKey(KeyCode.W))
-        {
-            Debug.Log("W Pressing");
-        }
-        else if(Input.GetKeyUp(KeyCode.W))
-        {
-            Debug.Log("W Up");
-        } */
 
 
-        if(battle.WeaponType != WeaponTypes.Sword || !ischarging)
+        if(battle.WeaponType != WeaponTypes.Sword && ischarging)
         {
-            if(Input.GetKeyDown(RightAtkKey))
-            {
-                pressedRightAtkKey = true;
-                animator.SetBool("isCharge", true);
-                animator.SetTrigger("Charging");
-            }
-
             if(Input.GetKey(RightAtkKey))
+            {
+
                 chargingTime += Time.deltaTime;
+            }
 
             if(Input.GetKeyUp(RightAtkKey))
             {
-                
+                ischarging = false;
                 pressedRightAtkKey = false;
                 
                 if(chargingTime < 1f)
@@ -125,10 +116,10 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isCharge", false);
             }
         }
+        
 
 
-
-        if(movement2D.isDashing || manager.isAction || battle.fallAtking)// || pressedRightAtkKey)//|| battle.Atking)
+        if(movement2D.isDashing || manager.isAction || battle.fallAtking || ischarging)// || pressedRightAtkKey)//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
@@ -148,7 +139,7 @@ public class PlayerController : MonoBehaviour
         
         
 
-        if(battle.Atking || manager.isAction || movement2D.isDashing || battle.fallAtking)// || pressedRightAtkKey)
+        if(battle.Atking)// || pressedRightAtkKey)
         {   
             pressedInteractKey = false;
             pressedLeftAtkKey = false;
