@@ -20,6 +20,7 @@ public class Rabbit : MonoBehaviour
     public bool isGround;
     public int MinCoolTime;
     public int MaxCoolTime;
+    public Vector2 GroundSize;
     [Space(20f)]
 
     private Animator animator;
@@ -28,10 +29,18 @@ public class Rabbit : MonoBehaviour
     [SerializeField] private LayerMask GroundLayer;
 
     
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(new Vector2(transform.position.x, transform.position.y - FloorRayY), GroundSize);
+    }
+
     void Awake()
     {
         monster = GetComponent<Monster>();
         rigid2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        
         RabbitAtk();
     }
 
@@ -40,20 +49,26 @@ public class Rabbit : MonoBehaviour
     {
         Vector2 frontVec = new Vector2(rigid2D.position.x, rigid2D.position.y - FloorRayY);
 
-        Debug.DrawRay(frontVec, Vector3.down * 0.3f, new Color(0,0,1));
-        RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 0.3f , GroundLayer);
+        // Debug.DrawRay(frontVec, Vector3.down * 0.3f, new Color(0,0,1));
+        // RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 0.3f , GroundLayer);
 
-        if(raycast.collider != null)
+        Collider2D Ground = Physics2D.OverlapBox(frontVec, GroundSize, 0f, GroundLayer);
+
+        if(Ground != null)
         {
             isGround = true;
         }
         else
         {
             isGround = false;
+            animator.SetBool("isGround", false);
         }
 
-        if(rigid2D.velocity.y < 0 && raycast.collider != null)
+        if(rigid2D.velocity.y < 0 && Ground != null)
+        {
+            animator.SetBool("isGround", true);
             canAtk = false;
+        }
         
     }
 
@@ -65,7 +80,9 @@ public class Rabbit : MonoBehaviour
             return;
         }
 
-
+        
+        animator.SetBool("isGround", false);
+        animator.SetTrigger("Atk");
         Vector2 JumpVec = new Vector2(jumpX , jumpY).normalized;
         
         int vec = Random.Range(1, 2 + 1);

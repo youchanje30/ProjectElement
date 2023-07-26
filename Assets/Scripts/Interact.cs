@@ -18,7 +18,7 @@ public class Interact : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "NPC" || other.gameObject.tag == "Portal") // || other.gameObject.tag == "NPC" )
+        if(other.tag == "NPC" || other.tag == "Portal") // || other.gameObject.tag == "NPC" )
         {
             if(scanObj != null)
                 scanObj.gameObject.GetComponent<ObjectController>().InteractView(false);
@@ -28,11 +28,11 @@ public class Interact : MonoBehaviour
             scanObj = other.gameObject;
             scanObj.gameObject.GetComponent<ObjectController>().InteractView(true);
         }
-        else if(other.gameObject.tag == "Coin")
+        else if(other.tag == "Coin")
         {
             //골드 획득 시스템
             inven.GetGold();
-            Destroy(other.gameObject);
+            Destroy(other.transform.parent.gameObject);
         }
     }
 

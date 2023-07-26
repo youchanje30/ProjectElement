@@ -82,13 +82,13 @@ public class Movement2D : MonoBehaviour
             transform.position = new Vector2(transform.position.x ,transform.position.y + (raycast.transform.position.y - boxCollider2D.bounds.min.y));
         } */
 
-        if(isGround == true && rigid2D.velocity.y <= 0)
+        if(isGround == true && rigid2D.velocity.y < 0)
         {
             curJumpCnt = maxJumpCnt;
             curDashCnt = maxJumpCnt;
             animator.SetBool("isGround", true);
             // animator.SetBool("isJump", false);
-            // animator.SetBool("isAct", false);
+            animator.SetBool("isAct", false);
             // Debug.Log("Reset Cnt");
         }
 

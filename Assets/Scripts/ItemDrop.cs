@@ -21,4 +21,5 @@ public class ItemDrop : MonoBehaviour
         rigid2D.AddForce(DropDir * Force, ForceMode2D.Impulse);   
         rigid2D.velocity = DropDir * Force;
     }
+
 }

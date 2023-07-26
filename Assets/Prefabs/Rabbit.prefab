@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 2232208908369613157}
   - component: {fileID: 8595163572400170535}
   - component: {fileID: 5728051710411736012}
+  - component: {fileID: -1296864316632812431}
   m_Layer: 8
   m_Name: Rabbit
   m_TagString: Monster
@@ -381,6 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MonsterType: 2
+  stageManager: {fileID: 0}
   ImgScale: 2
   FloorRayX: 3
   FloorRayY: 3
@@ -441,7 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImgScale: 2
   FloorRayX: 3
-  FloorRayY: 0.8
+  FloorRayY: 1
   jumpX: 2
   jumpY: 5
   jumpForce: 15
@@ -449,9 +451,31 @@ MonoBehaviour:
   isGround: 0
   MinCoolTime: 2
   MaxCoolTime: 5
+  GroundSize: {x: 1.6, y: 0.1}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!95 &-1296864316632812431
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2403636429483658913}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef723f71a59bc11429a626e918103f14, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2666207859222478222
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject SystemPanel;
     [SerializeField] private TalkManager talkManager;
     
+    [Header("Setting Panel")]
+    [SerializeField] private GameObject SettingPanel;
+
 
     public string[] Scene;
 
@@ -52,12 +55,24 @@ public class GameManager : MonoBehaviour
         {
             case 1: //Resume Btn
                 SystemPanel.SetActive(false);
+                SettingPanel.SetActive(false);
                 Time.timeScale = 1f;
                 break;
 
-            case 2: //Exit Btn
+            case 2: //Reset Btn
+
+                break;
+
+            case 3: // Setting Btn
+                SystemPanel.SetActive(false);
+                SettingPanel.SetActive(true);
+
+                break;
+
+            case 4: //Exit Btn
                 Application.Quit();
                 break;
+
         }
     }
 
@@ -134,7 +149,7 @@ public class GameManager : MonoBehaviour
                 // Debug.Log("Talk Start");
                 break;
             
-            case 2:
+            case 2: //
                 //정령 선택 등의 선택기능
                 // Active(ObjData.ID);
                 isAction = false;

@@ -25,6 +25,7 @@ public enum MonsterGrades
 public class Monster : MonoBehaviour
 {
     [SerializeField] private MonsterTypes MonsterType;
+    [SerializeField] private StageManager stageManager;
 
 
 
@@ -39,6 +40,7 @@ public class Monster : MonoBehaviour
     public Vector2 atkSize;
     private Animator animator;
     private Rigidbody2D rigid2D;
+
 
 
     [Header("Enemy Status")]
@@ -58,6 +60,8 @@ public class Monster : MonoBehaviour
     public float curHp;
     [SerializeField] private float curAtkCoolTime;
     [SerializeField] private bool isKnockback = false;
+    [Space(20f)]
+
     
     [Header("Enemy UI")]
     [SerializeField] private Slider Hpbar;
@@ -88,6 +92,8 @@ public class Monster : MonoBehaviour
 
         #region Component Setting
 
+        
+        stageManager = StageManager.FindAnyObjectByType<StageManager>();
         animator = GetComponent<Animator>();
         rigid2D = GetComponent<Rigidbody2D>();
         playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
@@ -103,6 +109,10 @@ public class Monster : MonoBehaviour
         if(MonsterType != MonsterTypes.Rabbit)
         {
             SearchTarget();
+        }
+        else
+        {
+            // Rabbit();
         }
         // Debug.Log(Vector2.Distance(playerTrans.position, transform.position));
     }
@@ -280,6 +290,7 @@ public class Monster : MonoBehaviour
         if(curHp <= 0)
         {
             Destroy(gameObject);
+            stageManager.DeadMonster();
         }
     }
 
