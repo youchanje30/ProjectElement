@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-
+    public static GameManager instance;
 
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;
@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour
         // AudioManager.instance.PlaySfx(AudioManager.Sfx.)
     }
 
+    void Awake()
+    {
+        instance = this;    
+    }
 
     void Update()
     {

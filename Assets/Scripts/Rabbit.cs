@@ -89,6 +89,11 @@ public class Rabbit : MonoBehaviour
         if(vec == 1)
         {
             JumpVec = new Vector2(-(jumpX) , jumpY).normalized;
+            transform.localScale = new Vector3(ImgScale, ImgScale ,1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-ImgScale, ImgScale ,1);
         }
 
         rigid2D.AddForce(JumpVec * jumpForce, ForceMode2D.Impulse);

@@ -314,9 +314,15 @@ public class Monster : MonoBehaviour
         while (ctime < 0.2f)
         {
             if(transform.rotation.y == 0)
+            {
                 transform.Translate(Vector3.left * 10f * Time.deltaTime * dir);
+                // transform.localScale = new Vector3(-ImgScale, ImgScale ,1);
+            }
             else
-                transform.Translate(Vector3.left * 10f * Time.deltaTime * -1f * dir);
+            {
+                transform.Translate(Vector3.left * 10f * Time.deltaTime * -1f* dir);
+                // transform.localScale = new Vector3(ImgScale, ImgScale ,1);
+            }
 
             ctime += Time.deltaTime;
             yield return null;

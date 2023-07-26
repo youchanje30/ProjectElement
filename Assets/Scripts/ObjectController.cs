@@ -9,7 +9,7 @@ public class ObjectController : MonoBehaviour
     public string objectTag;
     public GameObject interactView;
 
-    [SerializeField] private GameManager manager;
+    
 
     void Awake()
     {
@@ -21,7 +21,7 @@ public class ObjectController : MonoBehaviour
         switch(objectTag)
         {
             case "NPC":
-                manager.Action(gameObject);
+                GameManager.instance.Action(gameObject);
                 // Debug.Log("Action");
                 break;
 
@@ -36,10 +36,11 @@ public class ObjectController : MonoBehaviour
     public void Portal(int ID)
     {
         //Chapter Stage 이동은 ID 10
+        //
         switch (ID)
         {
             case 10:
-                manager.RandomStageRoad();
+                GameManager.instance.RandomStageRoad();
                 break;
 
 

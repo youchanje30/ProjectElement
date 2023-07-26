@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    // public CameraController 
+    public static CameraController instance;
     public Transform Target;
     public Vector3 Offset;
     public Transform cameraHandler;
 
 
     public float smoothness = 3f;
+
+    void Awake()
+    {
+        instance = this;
+    }
     
     void Update()
     {

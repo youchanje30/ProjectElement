@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
     void InputSystem()
     {
-        if(battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey))
+        if(battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !movement2D.isDashing)
         {
             pressedRightAtkKey = true;
             animator.SetBool("isCharge", true);

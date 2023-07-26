@@ -100,14 +100,14 @@ public class Movement2D : MonoBehaviour
             }
         }
 
-        if( !isDashing && rigid2D.velocity.y > 0)
+        /* if( !isDashing && rigid2D.velocity.y > 0)
         {
             // rigid2D.gravityScale = 
         }
         else if(!isDashing)
         {
             // rigid2D.gravityScale = 
-        }
+        } */
         
         animator.SetBool("isGround", isGround);
 

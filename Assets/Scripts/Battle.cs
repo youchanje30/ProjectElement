@@ -37,10 +37,6 @@ public class Battle : MonoBehaviour
     public WeaponTypes WeaponType;
     public bool Atking;
     public bool isGuard;
-    public float[] Left_BeforAtkDelay;
-    public float[] Left_AfterAtkDelay;
-    public float[] Right_BeforAtkDelay;
-    public float[] Right_AfterAtkDelay;
     public float[] Left_AtkCoolTime;
     public float[] Right_AtkCoolTime;
     public bool[] isAtkReady;
@@ -51,6 +47,14 @@ public class Battle : MonoBehaviour
 
     public float originalScale;
 
+
+    [Header("Shield Setting")]
+    [SerializeField] private float ShieldDashingTime;
+    [SerializeField] private float DashingPower;
+    [SerializeField] private Vector2 ShieldDashAtkSize;
+    [SerializeField] private Transform ShieldDashPos;
+    // public bool 
+    [Space(20f)]
 
     public Transform fallDownAtkPos;
     public Vector2 fallDownAtkSize;
@@ -226,19 +230,40 @@ public class Battle : MonoBehaviour
     public IEnumerator ShieldGuard()
     {
         Atking = true;
-        // 차징 애니메이션 시작
-
-        yield return new WaitForSeconds(Right_BeforAtkDelay[(int)WeaponType]);
-        
         isGuard = true;
+        movement2D.isDashing = true;
+        float originalGravity = rigid2D.gravityScale;
+
+        rigid2D.gravityScale = 0f;
+        rigid2D.velocity = new Vector2(-(transform.localScale.x) * DashingPower, 0f);
+
+        yield return new WaitForSeconds(ShieldDashingTime * 0.5f);
+
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(ShieldDashPos.position, ShieldDashAtkSize, 0);
+        foreach(Collider2D collider in collider2Ds)
+        {
+            if(collider.tag == "Monster" || collider.tag == "Destruct")
+            {
+                Atk(collider.gameObject);
+                // collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
+            }
+        }
+
+        yield return new WaitForSeconds(ShieldDashingTime * 0.5f);
+
+        rigid2D.gravityScale = originalGravity;
+        movement2D.isDashing = false;
         Atking = false;
+        isGuard = false;
     }
     
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmos()
+    {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);    
         Gizmos.DrawWireCube(fallDownAtkPos.position, fallDownAtkSize);    
+        Gizmos.DrawWireCube(ShieldDashPos.position, ShieldDashAtkSize);    
     }
 
 
@@ -248,10 +273,13 @@ public class Battle : MonoBehaviour
 
     public void GetDamaged(float Damage)
     {
-        Debug.Log("Get Damaged");
+        if(isGuard) return;
+
+        // Debug.Log("Get Damaged");
+
         curHp -= Damage;
 
-        if(isGuard) return;
-        StopCoroutine(ShieldGuard());
+        
+        // StopCoroutine(ShieldGuard());
     }
 }
