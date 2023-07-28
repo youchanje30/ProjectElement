@@ -3,8 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Elements
+{
+    None, Fire, South, Water, Wind
+}
+
+public enum WeaponTypes { Shield, Sword , Bow };
+
 public class PlayerController : MonoBehaviour
 {
+    
+
+    
     //PlayerController에서 플레이어의 입력을 받음
     //Movement2D 캐릭터의 이동에 관한 스크립트
     //Battle 캐릭터의 전투에 관한 스크립트
@@ -24,6 +34,20 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     public RuntimeAnimatorController[] AnimController;
 
+
+
+    [Header("Player Info")]
+    public Elements PlayerElementType;
+    public WeaponTypes PlayerWeaponType;
+
+    [System.Serializable]
+    public class ElementAnims
+    {
+        public RuntimeAnimatorController[] ElementAnim;
+    }
+    public ElementAnims[] Anims;
+    // None, Fire, South, Water, Wind 
+    // Shield, Sword, Bow
 
     [Header("Input Setting")]
     private float hAxis;
@@ -58,18 +82,14 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         playerHpBar.maxValue = battle.maxHp;
-        animator.runtimeAnimatorController = AnimController[(int)battle.WeaponType];
-        
+        // animator.runtimeAnimatorController = AnimController[(int)battle.WeaponType];
+        animator.runtimeAnimatorController = Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType];
+        battle.WeaponType = PlayerWeaponType;
         chargingTime = 0;
         
         // animator = 
     }
     
-
-    void Start()
-    {
-        // Time.timeScale = 0.2f;
-    }
 
     void Update()
     {
