@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -8,12 +9,21 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [Header("Game Setting")]
+    public bool CanCameraShake;
+
+
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;
     [SerializeField] private TalkManager talkManager;
     
     [Header("Setting Panel")]
     [SerializeField] private GameObject SettingPanel;
+
+
+
+    [Header("Graphic Setting")]
+    [SerializeField] private TMP_Text CameraShakeTxt;
 
 
     public string[] Scene;
@@ -33,15 +43,17 @@ public class GameManager : MonoBehaviour
     
     public ObjectController ObjData;
 
-    void Start()
-    {
-        // AudioManager.instance.PlaySfx(AudioManager.Sfx.)
-    }
-
     void Awake()
     {
-        instance = this;    
+        instance = this;
     }
+
+    void Start()
+    {  
+        SetResolution();
+    }
+
+
 
     void Update()
     {
@@ -50,6 +62,52 @@ public class GameManager : MonoBehaviour
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;
         }
+    }
+
+
+
+    public void init()
+    {
+        CameraShakeTxt.text = CanCameraShake ? "켜짐" : "꺼짐";
+    }
+
+
+
+
+
+    public void GameSettingBtn(int BtnNum)
+    {
+        switch (BtnNum)
+        {
+            case 1: 
+                
+                break;
+
+            case 2: 
+
+                break;
+            // 해상도 다운 업
+
+
+            case 3: 
+
+                break;
+            // 화면 비율 (전체 화면 변경)
+
+            case 4: //카메라 흔들림
+                CanCameraShake = !CanCameraShake;
+                CameraShakeTxt.text = CanCameraShake ? "켜짐" : "꺼짐";
+                SaveSettingData();
+                break;
+            //카메라 흔들림
+
+        }
+    }
+
+
+    public void SaveSettingData()
+    {
+
     }
 
 
@@ -170,4 +228,46 @@ public class GameManager : MonoBehaviour
     }
     
 
+
+
+
+
+
+
+
+
+    [SerializeField] bool is16v9;
+    [SerializeField] bool hasHz;
+    [SerializeField] Toggle fullscreenToggle;
+    [SerializeField] TMP_Dropdown resolutionDropdown;
+
+    List<Resolution> resolutions;
+    private int resolutionNum;
+    
+    public void SetResolution()
+    {
+        resolutions = new List<Resolution>(Screen.resolutions);
+        resolutions.Reverse(); // 높은 것 부터 표시
+
+        resolutionDropdown.options.Clear();
+
+        int optionNum = 0;
+        foreach(Resolution item in resolutions)
+        {
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
+            option.text = item.width + " x " + item.height + "  " + item.refreshRateRatio + "hz";
+            resolutionDropdown.options.Add(option);
+            if(item.width == Screen.width && item.height == Screen.height)
+                resolutionDropdown.value = optionNum;
+            optionNum++;
+        }
+    }
+
+    public void DropboxOptionChanged(int x)
+    {
+        resolutionNum = x;
+        Screen.SetResolution(resolutions[resolutionNum].width, 
+        resolutions[resolutionNum].height, 
+        FullScreenMode.FullScreenWindow);
+    }
 }

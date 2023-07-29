@@ -121,6 +121,8 @@ public class Battle : MonoBehaviour
 
     public void Atk(GameObject AtkObj)
     {
+        CameraController.instance.StartCoroutine(CameraController.instance.Shake());
+        
         if(AtkObj.tag == "Monster")
         {
             AtkObj.GetComponent<Monster>().GetDamaged(meleeDmg);

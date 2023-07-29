@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+
     public static CameraController instance;
     public Transform Target;
     public Vector3 Offset;
@@ -33,25 +34,29 @@ public class CameraController : MonoBehaviour
 
 
 
-    public IEnumerator Shake(float duration = 1f , float magnitude = 1f)
+    public IEnumerator Shake(float duration = 0.1f , float magnitude = 0.2f)
     {
-        Vector3 originalPos = transform.position;
-
-        float elasped = 0f;
-
-        while(elasped < duration)
+        if(GameManager.instance.CanCameraShake)
         {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
-            
-            transform.localPosition = new Vector3(x, y, originalPos.z);
+            Vector3 originalPos = transform.position;
+        
 
-            elasped += Time.deltaTime;
+            float elasped = 0f;
 
-            yield return null;
+            while(elasped < duration)
+            {
+                float x = Random.Range(-1f, 1f) * magnitude;
+                float y = Random.Range(-1f, 1f) * magnitude;
+                
+                transform.localPosition = new Vector3(x, y, originalPos.z);
 
+                elasped += Time.deltaTime;
+
+                yield return null;
+
+            }
+            // transform.position = originalPos;
+            transform.localPosition = new Vector3(0,0,0);
         }
-        transform.position = originalPos;
-
     }
 }

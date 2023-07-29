@@ -60,6 +60,7 @@ public class Monster : MonoBehaviour
     public float curHp;
     [SerializeField] private float curAtkCoolTime;
     [SerializeField] private bool isKnockback = false;
+    [SerializeField] private bool isDead = false;
     [Space(20f)]
 
     
@@ -105,16 +106,19 @@ public class Monster : MonoBehaviour
     
     void Update()
     {
-        curAtkCoolTime -= Time.deltaTime;
-        if(MonsterType != MonsterTypes.Rabbit)
+        if(!isDead)
         {
-            SearchTarget();
+            curAtkCoolTime -= Time.deltaTime;
+            if(MonsterType != MonsterTypes.Rabbit)
+            {
+                SearchTarget();
+            }
+            else
+            {
+                // Rabbit();
+            }
+            // Debug.Log(Vector2.Distance(playerTrans.position, transform.position));
         }
-        else
-        {
-            // Rabbit();
-        }
-        // Debug.Log(Vector2.Distance(playerTrans.position, transform.position));
     }
 
     public void Rabbit()
@@ -271,11 +275,24 @@ public class Monster : MonoBehaviour
 
     public void GetDamaged(float dmg)
     {
-        if(isKnockback) return;
+        if(isKnockback || isDead) return;
+        
+        curHp -= dmg;
+        SetHealth();
+
+        if(curHp <= 0)
+        {
+            Hpbar.gameObject.SetActive(false);
+            isDead = true;
+            animator.SetTrigger("Dead");
+            return;
+        }
+
 
         animator.ResetTrigger("Hurt");
         animator.SetTrigger("Hurt");
         float x = transform.position.x - playerTrans.position.x;
+
         if(x < 0)
             x = 1;
         else
@@ -283,15 +300,10 @@ public class Monster : MonoBehaviour
 
         StartCoroutine(Knockback(x));
 
-        curHp -= dmg;
         
-        SetHealth();
 
-        if(curHp <= 0)
-        {
-            Destroy(gameObject);
-            stageManager.DeadMonster();
-        }
+        
+        
     }
 
     public void SnakeAtk()
@@ -330,7 +342,11 @@ public class Monster : MonoBehaviour
         isKnockback = false;
     }
 
-
+    public void Dead()
+    {
+        Destroy(gameObject);
+        stageManager.DeadMonster();
+    }
     
 
 }
