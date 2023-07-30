@@ -10,6 +10,7 @@ TagManager:
   - Destruct
   - Coin
   - OneWayPlatForm
+  - GameManager
   layers:
   - Default
   - TransparentFX

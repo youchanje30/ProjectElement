@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+
         movement2D = GetComponent<Movement2D>();
         interact = GetComponent<Interact>();
         rigid2D = GetComponent<Rigidbody2D>();
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
         playerHpBar.maxValue = battle.maxHp;
         // animator.runtimeAnimatorController = AnimController[(int)battle.WeaponType];
-        animator.runtimeAnimatorController = Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType];
+        ChangeEquipment();
         battle.WeaponType = PlayerWeaponType;
         chargingTime = 0;
         
@@ -91,12 +92,15 @@ public class PlayerController : MonoBehaviour
     }
     
 
+
+
     void Update()
     {
         InputSystem();
         Move();
         Act();
         PlayerUISystem();
+        // ChangeEquipment();
     }
 
     void PlayerUISystem()
@@ -184,7 +188,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
+    public void ChangeEquipment()
+    {
+        // if(animator.runtimeAnimatorController == Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType]) return;
+        animator.runtimeAnimatorController = Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType];
+        battle.WeaponType = PlayerWeaponType;
+        // SaveManager.instance.Save();
+    }
 
     void Act() //상호작용, 공격 스킬 등의 입력을 전달하는 함수
     {

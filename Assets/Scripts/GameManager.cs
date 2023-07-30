@@ -8,6 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    [SerializeField] private PlayerController player;
 
     [Header("Game Setting")]
     public bool CanCameraShake;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Graphic Setting")]
     [SerializeField] private TMP_Text CameraShakeTxt;
+    [SerializeField] private TMP_Text FullScreenTxt;
 
 
     public string[] Scene;
@@ -46,11 +48,15 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        
     }
 
     void Start()
     {  
         SetResolution();
+        SaveManager.instance.Load();
+        SaveManager.instance.AutoSave();
     }
 
 
@@ -69,12 +75,9 @@ public class GameManager : MonoBehaviour
     public void init()
     {
         CameraShakeTxt.text = CanCameraShake ? "켜짐" : "꺼짐";
+        FullScreenTxt.text = fullScreen == 0 ? "전체 화면" : "창모드";
     }
-
-
-
-
-
+    
     public void GameSettingBtn(int BtnNum)
     {
         switch (BtnNum)
@@ -90,7 +93,10 @@ public class GameManager : MonoBehaviour
 
 
             case 3: 
-
+                fullScreen ++;
+                fullScreen %= 2;
+                FullScreenTxt.text = fullScreen == 0 ? "전체 화면" : "창모드";
+                SaveSettingData();
                 break;
             // 화면 비율 (전체 화면 변경)
 
@@ -107,7 +113,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveSettingData()
     {
-
+        
     }
 
 
@@ -118,6 +124,7 @@ public class GameManager : MonoBehaviour
             case 1: //Resume Btn
                 SystemPanel.SetActive(false);
                 SettingPanel.SetActive(false);
+                GraphicSetting();
                 Time.timeScale = 1f;
                 break;
 
@@ -140,10 +147,15 @@ public class GameManager : MonoBehaviour
 
     public void RandomStageRoad()
     {
+        SaveManager.instance.Save();
         SceneManager.LoadScene(Scene[Random.Range(0, Scene.Length)]);
     }
 
-
+    public void MainstageRoad()
+    {
+        SaveManager.instance.Save();
+        SceneManager.LoadScene("Maintown");
+    }
 
 
 
@@ -213,7 +225,7 @@ public class GameManager : MonoBehaviour
             
             case 2: //
                 //정령 선택 등의 선택기능
-                // Active(ObjData.ID);
+                Active(ObjData.objectID);
                 isAction = false;
                 // 플레이어 상태 변경 해야함
                 TalkPanel.SetActive(false);
@@ -228,18 +240,36 @@ public class GameManager : MonoBehaviour
     }
     
 
+    public void Active(int objectID)
+    {
+        switch (objectID)
+        {
+            case 1000:
+                player.PlayerElementType = Elements.Fire;
+                player.ChangeEquipment();
+                break;
+
+            case 2000:
+                player.PlayerElementType = Elements.South;
+                player.ChangeEquipment();
+                break;
+    
+            case 3000:
+                player.PlayerElementType = Elements.Wind;
+                player.ChangeEquipment();
+                break;
+                
+            case 4000:
+                player.PlayerElementType = Elements.Water;
+                player.ChangeEquipment();
+                break;
+        }
+    }
 
 
 
-
-
-
-
-
-    [SerializeField] bool is16v9;
-    [SerializeField] bool hasHz;
-    [SerializeField] Toggle fullscreenToggle;
-    [SerializeField] TMP_Dropdown resolutionDropdown;
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
+    [SerializeField] private int fullScreen = 0 ; //0 전체화면 , 1 창모드
 
     List<Resolution> resolutions;
     private int resolutionNum;
@@ -265,9 +295,14 @@ public class GameManager : MonoBehaviour
 
     public void DropboxOptionChanged(int x)
     {
-        resolutionNum = x;
+        resolutionNum = x; 
+    }
+
+    public void GraphicSetting()
+    {
         Screen.SetResolution(resolutions[resolutionNum].width, 
         resolutions[resolutionNum].height, 
-        FullScreenMode.FullScreenWindow);
+        fullScreen == 0 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
     }
+
 }

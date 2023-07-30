@@ -43,6 +43,9 @@ public class ObjectController : MonoBehaviour
                 GameManager.instance.RandomStageRoad();
                 break;
 
+            case 20:
+                GameManager.instance.MainstageRoad();
+                break;
 
         }
 
