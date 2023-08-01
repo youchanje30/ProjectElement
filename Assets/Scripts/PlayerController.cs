@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player Info")]
     public Elements PlayerElementType;
     public WeaponTypes PlayerWeaponType;
+    public Inventory inventory;
 
     [System.Serializable]
     public class ElementAnims
@@ -75,16 +76,19 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-
+        #region Component Access
         movement2D = GetComponent<Movement2D>();
         interact = GetComponent<Interact>();
         rigid2D = GetComponent<Rigidbody2D>();
         battle = GetComponent<Battle>();
         animator = GetComponent<Animator>();
+        inventory = GetComponent<Inventory>();
+        #endregion Component Access
 
         playerHpBar.maxValue = battle.maxHp;
+
         // animator.runtimeAnimatorController = AnimController[(int)battle.WeaponType];
-        ChangeEquipment();
+        SetEquipment();
         battle.WeaponType = PlayerWeaponType;
         chargingTime = 0;
         
@@ -97,8 +101,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         InputSystem();
-        Move();
         Act();
+        Move();
         PlayerUISystem();
         // ChangeEquipment();
     }
@@ -143,7 +147,7 @@ public class PlayerController : MonoBehaviour
         
 
 
-        if(movement2D.isDashing || manager.isAction || battle.fallAtking || ischarging)// || pressedRightAtkKey)//|| battle.Atking)
+        if(movement2D.isDashing || manager.isAction || battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
@@ -188,12 +192,29 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void ChangeEquipment()
+    public void SetEquipment()
     {
+        battle.ResetStat();
         // if(animator.runtimeAnimatorController == Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType]) return;
         animator.runtimeAnimatorController = Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType];
         battle.WeaponType = PlayerWeaponType;
         // SaveManager.instance.Save();
+
+        for (int i = 0; i < inventory.HavingItem.Length; i++)
+        {
+            if(inventory.HavingItem[i] != null)
+            {
+                battle.maxHp += inventory.HavingItem[i].HpIncrease;
+                battle.def += inventory.HavingItem[i].DefIncrease;
+                battle.meleeDmg += inventory.HavingItem[i].MeleeDmgIncrease;
+                battle.meleePerDmg += inventory.HavingItem[i].MeleeDmgPerIncrease;
+                battle.skillDmg += inventory.HavingItem[i].SkillDmgIncrease;
+                battle.skillPerDmg += inventory.HavingItem[i].SkillDmgPerIncrease;
+                battle.atkSpeed += inventory.HavingItem[i].AtkSpeedIncrease;
+                battle.crtRate += inventory.HavingItem[i].CrtRateIncrease;
+                battle.crtDmg += inventory.HavingItem[i].CrtDmgIncrease;
+            }
+        }
     }
 
     void Act() //상호작용, 공격 스킬 등의 입력을 전달하는 함수
@@ -212,6 +233,12 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        if(battle.Atking)
+        {
+            // movement2D.MoveX(hAxis);
+            return;
+        } 
+
         if(pressedDashKey && movement2D.curDashCnt > 0) StartCoroutine(movement2D.Dash());
 
         if(!movement2D.isDashing)

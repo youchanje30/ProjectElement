@@ -33,6 +33,7 @@ public class Monster : MonoBehaviour
     public float ImgScale;
     public float FloorRayX;
     public float FloorRayY;
+    [SerializeField] private SpriteRenderer sprite;
     [Space(20f)]
 
     private Transform playerTrans;
@@ -93,7 +94,7 @@ public class Monster : MonoBehaviour
 
         #region Component Setting
 
-        
+        sprite = GetComponent<SpriteRenderer>();
         stageManager = StageManager.FindAnyObjectByType<StageManager>();
         animator = GetComponent<Animator>();
         rigid2D = GetComponent<Rigidbody2D>();
@@ -321,6 +322,7 @@ public class Monster : MonoBehaviour
 
     IEnumerator Knockback(float dir)
     {
+        sprite.color = new Color(0, 0, 0);
         isKnockback = true;
         float ctime = 0;
         while (ctime < 0.2f)
@@ -340,6 +342,7 @@ public class Monster : MonoBehaviour
             yield return null;
         }
         isKnockback = false;
+        sprite.color = new Color(1, 1, 1);
     }
 
     public void Dead()

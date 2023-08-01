@@ -345,6 +345,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   PlayerElementType: 0
   PlayerWeaponType: 0
+  inventory: {fileID: 0}
   Anims:
   - ElementAnim:
     - {fileID: 9100000, guid: a24d43c3af587fe4ab03f9382018a43b, type: 2}
@@ -390,9 +391,10 @@ MonoBehaviour:
   isGround: 0
   maxJumpCnt: 2
   curJumpCnt: 0
+  DashCoolTime: 1
   isDashing: 0
   dashingPower: 10
-  maxDashCnt: 2
+  maxDashCnt: 1
   curDashCnt: 0
 --- !u!95 &9054463393116159097
 Animator:
@@ -445,10 +447,12 @@ MonoBehaviour:
   curHp: 0
   def: 0
   meleeDmg: 3
+  meleePerDmg: 0
   skillDmg: 0
-  atkSpeed: 0
-  crtRate: 0
-  crtDmg: 0
+  skillPerDmg: 0
+  atkSpeed: 100
+  crtRate: 10
+  crtDmg: 150
   animator: {fileID: 0}
   fallAtking: 0
   WeaponType: 1
@@ -477,6 +481,8 @@ MonoBehaviour:
   ComboTime: 0.6
   ComboAtkSize: {x: 2, y: 1}
   ComboAtkPos: {fileID: 2363684142775938275}
+  ShieldAtkDashTime: 0.1
+  AtkDashingPower: 10
   ShieldDashingTime: 0.2
   DashingPower: 10
   ShieldDashAtkSize: {x: 4, y: 2}
@@ -496,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gold: 0
+  HavingItem: []
 --- !u!1 &7219966532605892540
 GameObject:
   m_ObjectHideFlags: 0

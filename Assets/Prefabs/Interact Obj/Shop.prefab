@@ -202,8 +202,8 @@ GameObject:
   - component: {fileID: 6809983370859040107}
   - component: {fileID: 121968793491193359}
   m_Layer: 0
-  m_Name: Main Portal
-  m_TagString: Portal
+  m_Name: Shop
+  m_TagString: Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,7 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857d6c4cbf94279469c7d0af9897bddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 20
+  ObjType: 2
+  objectID: 40
   objectTag: 
   interactView: {fileID: 3804493237631498710}
 --- !u!70 &6809983370859040107

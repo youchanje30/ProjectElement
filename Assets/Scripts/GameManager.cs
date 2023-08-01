@@ -45,6 +45,12 @@ public class GameManager : MonoBehaviour
     
     public ObjectController ObjData;
 
+
+    [Header("Timer Setting")]
+    public float TimerVal;
+    [SerializeField] private TMP_Text TimeTxt;
+
+
     void Awake()
     {
         instance = this;
@@ -53,7 +59,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Start()
-    {  
+    {
         SetResolution();
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
@@ -68,9 +74,17 @@ public class GameManager : MonoBehaviour
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;
         }
+
+        
+        TimeSetting();
     }
 
-
+    public void TimeSetting()
+    {
+        // TimerVal += Time.deltaTime;
+        // string Txt = string.Format("{0:D2}:{1:D2}:{2:D3}", TimerVal % 3600, TimerVal % 60 , TimerVal % 1);
+        // TimeTxt.text = "Time: " + (int)TimerVal / 1; // Txt; // 
+    } 
 
     public void init()
     {
@@ -246,22 +260,22 @@ public class GameManager : MonoBehaviour
         {
             case 1000:
                 player.PlayerElementType = Elements.Fire;
-                player.ChangeEquipment();
+                player.SetEquipment();
                 break;
 
             case 2000:
                 player.PlayerElementType = Elements.South;
-                player.ChangeEquipment();
+                player.SetEquipment();
                 break;
     
             case 3000:
                 player.PlayerElementType = Elements.Wind;
-                player.ChangeEquipment();
+                player.SetEquipment();
                 break;
                 
             case 4000:
                 player.PlayerElementType = Elements.Water;
-                player.ChangeEquipment();
+                player.SetEquipment();
                 break;
         }
     }

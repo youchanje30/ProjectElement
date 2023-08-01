@@ -17,6 +17,7 @@ public class Movement2D : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private Animator animator;
     private GameObject currentOneWayPlatform;
+    private Battle battle;
     // [SerializeField] private BoxCollider2D
 
     [SerializeField] private LayerMask GroundLayer;
@@ -34,12 +35,13 @@ public class Movement2D : MonoBehaviour
 
 
     [Header("Dash Setting")]
+    [SerializeField] private float DashCoolTime;
     public bool isDashing;
     [Tooltip("대쉬 힘(높을 수록 멀리 감)")]
     [SerializeField] private float dashingPower = 10f;
     private float dashingTime = 0.2f;
     [Tooltip("최대 대쉬 횟수")]
-    [SerializeField] private int maxDashCnt = 2;
+    [SerializeField] private int maxDashCnt;
     public int curDashCnt;
     
 
@@ -53,6 +55,7 @@ public class Movement2D : MonoBehaviour
         curDashCnt = maxDashCnt;
         curJumpCnt = maxJumpCnt;
 
+        battle = GetComponent<Battle>();
         rigid2D = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
@@ -85,7 +88,7 @@ public class Movement2D : MonoBehaviour
         if(isGround == true && rigid2D.velocity.y < 0)
         {
             curJumpCnt = maxJumpCnt;
-            curDashCnt = maxJumpCnt;
+            // curDashCnt = maxDashCnt;
             animator.SetBool("isGround", true);
             // animator.SetBool("isJump", false);
             animator.SetBool("isAct", false);
@@ -131,7 +134,7 @@ public class Movement2D : MonoBehaviour
         if(hAxis != 0)
         {
             // transform.localScale = new Vector3( -(hAxis), 1, 1);
-            transform.localScale = new Vector3( -(hAxis)*2, 2, 1);
+            transform.localScale = new Vector3( -(hAxis) * 2, 2, 1);
             animator.SetBool("isMove", true);
         }  
         else
@@ -154,8 +157,10 @@ public class Movement2D : MonoBehaviour
             // rigid2D.AddForce(forceDir * jumpForce, ForceMode2D.Impulse);
             // 하강할 때 점프가 제대로 되지 않고, 힘을 주는 방식이라 조금 부정확한듯
             curJumpCnt --;
+
         }
     }
+
 
 
     public IEnumerator Dash()
@@ -166,6 +171,7 @@ public class Movement2D : MonoBehaviour
         float originalGravity = rigid2D.gravityScale;
         rigid2D.gravityScale = 0f;
         rigid2D.velocity = new Vector2(-(transform.localScale.x) * dashingPower, 0f);
+        battle.isGuard = true;
         // rigid2D.velocity = new Vector2(-(transform.localScale.x) * 0f, 0f);
         
         yield return new WaitForSeconds(dashingTime);
@@ -176,8 +182,15 @@ public class Movement2D : MonoBehaviour
         rigid2D.gravityScale = originalGravity;
         isDashing = false;
         curDashCnt --;
+        battle.isGuard = false;
+        StartCoroutine(DashCoolDown(DashCoolTime));
     }
 
+    public IEnumerator DashCoolDown(float dashCoolTime)
+    {
+        yield return new WaitForSeconds(dashCoolTime);
+        curDashCnt = maxDashCnt;
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {

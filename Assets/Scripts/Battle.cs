@@ -13,15 +13,19 @@ public class Battle : MonoBehaviour
     [Tooltip("방어력")]
     public float def;
     [Tooltip("물리 데미지")]
-    public float meleeDmg;
+    public float meleeDmg; 
+    [Tooltip("물리 데미지%")]
+    public float meleePerDmg; 
     [Tooltip("스킬 데미지")]
-    public float skillDmg;
+    public float skillDmg; 
+    [Tooltip("스킬 데미지%")]
+    public float skillPerDmg; 
     [Tooltip("공격 속도")]
-    public float atkSpeed;
+    public float atkSpeed; // 100%
     [Tooltip("크리티컬 확률")]
-    public float crtRate;
+    public float crtRate; // 기본 크리 10%
     [Tooltip("크리티컬 데미지")]
-    public float crtDmg;
+    public float crtDmg; // 기본 값 150%
     [Space(20f)]
 
     
@@ -56,6 +60,9 @@ public class Battle : MonoBehaviour
 
 
     [Header("Shield Setting")]
+    [SerializeField] private float ShieldAtkDashTime;
+    [SerializeField] private float AtkDashingPower;
+    [Space(5f)]
     [SerializeField] private float ShieldDashingTime;
     [SerializeField] private float DashingPower;
     [SerializeField] private Vector2 ShieldDashAtkSize;
@@ -73,6 +80,7 @@ public class Battle : MonoBehaviour
         curHp = maxHp;
         movement2D = GetComponent<Movement2D>();
         rigid2D = GetComponent<Rigidbody2D>();
+        
         fallAtking = false;
         originalScale = rigid2D.gravityScale;
         // weaponType = 0;    
@@ -88,6 +96,8 @@ public class Battle : MonoBehaviour
 
     void Update()
     {
+        // Debug.Log(CanComboAtk);
+
         Vector2 underVec = new Vector2(rigid2D.transform.position.x, rigid2D.transform.position.y - 0.9f);
 
         Debug.DrawRay(underVec, new Vector3(0, -0.2f, 0), new Color(0,1,0));
@@ -136,6 +146,19 @@ public class Battle : MonoBehaviour
 
     }
 
+    public void ResetStat()
+    {
+        maxHp = 10;
+        def = 0;
+        meleeDmg = 3;
+        meleePerDmg = 0;
+        skillDmg = 0;
+        skillPerDmg = 0;
+        atkSpeed = 100;
+        crtRate = 10;
+        crtDmg = 150;
+    }
+
     public void AtkAction(int id)
     {
         // if(!atk) return;
@@ -156,10 +179,11 @@ public class Battle : MonoBehaviour
             if(WeaponType == WeaponTypes.Bow)
             {
                 StartCoroutine(BowAtk());
-                Debug.Log("Start Atk Bow"); 
+                // Debug.Log("Start Atk Bow"); 
                 return; //활은 좌클릭이 없어요
             }
             StartCoroutine(LeftAtk());
+            if(WeaponType == WeaponTypes.Shield) StartCoroutine(DashGuard());
         }
         else if (id == 1)
         {
@@ -171,7 +195,15 @@ public class Battle : MonoBehaviour
         // Atking = true;
     }
 
-
+    public IEnumerator DashGuard()
+    {
+        float originalGravity = rigid2D.gravityScale;
+        rigid2D.gravityScale = 0f;
+        rigid2D.velocity = new Vector2(-(transform.localScale.x) * AtkDashingPower, 0f);
+        yield return new WaitForSeconds(ShieldAtkDashTime);
+        // rigid2D.gravityScale = originalGravity;
+        rigid2D.gravityScale = 4f;
+    }
 
     public IEnumerator FallDownAtk()
     {
@@ -222,7 +254,6 @@ public class Battle : MonoBehaviour
             else
             {
                 animator.SetTrigger("Atk");
-                // 공격 피격
                 Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
                 foreach(Collider2D collider in collider2Ds)
                 {
@@ -238,25 +269,75 @@ public class Battle : MonoBehaviour
                     StartCoroutine(ComboAtk());
                     CanComboAtk = true;
                 }
-                    
             }
-
-            
             // 공격 중인거 종료
-            Atking = false;
-            animator.SetBool("isAct", false);
 
             yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]);
+
             //애니메이션 종료 및 공격 종료
+
             isAtkReady[(int)WeaponType] = true;
         }
     }
+
+    public void AtkDetection()
+    {
+
+        if(WeaponType == WeaponTypes.Sword && CanComboAtk)
+        {
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(ComboAtkPos.position, ComboAtkSize, 0);
+            foreach(Collider2D collider in collider2Ds)
+            {
+                if(collider.tag == "Monster" || collider.tag == "Destruct")
+                {
+                    Atk(collider.gameObject);
+                }
+            }
+            CanComboAtk = false;
+        }
+        else
+        {
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
+            foreach(Collider2D collider in collider2Ds)
+            {
+                if(collider.tag == "Monster" || collider.tag == "Destruct")
+                {
+                    Atk(collider.gameObject);
+                    // collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
+                }
+            }
+
+            if(WeaponType == WeaponTypes.Sword)
+            {
+                StartCoroutine(ComboAtk());
+                CanComboAtk = true;
+            }
+        }
+
+    }
+
+
+    public void AtkEnd()
+    {
+        Atking = false;
+        animator.SetBool("isAct", false);
+
+        if(WeaponType == WeaponTypes.Bow)
+        {
+            GameObject ThrowArrow = Instantiate(arrow);
+            ThrowArrow.GetComponent<ProjectileType>().Damage = meleeDmg;
+            ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
+            ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
+        }
+    }
+
 
     public IEnumerator ComboAtk()
     {
         yield return new WaitForSeconds(ComboTime);
         CanComboAtk = false;
     }
+
 
     public IEnumerator BowAtk()
     {
@@ -269,11 +350,8 @@ public class Battle : MonoBehaviour
             // yield return new WaitForSeconds(Right_BeforAtkDelay[weaponType]);
 
             //화살 소환
-            GameObject ThrowArrow = Instantiate(arrow);
-            ThrowArrow.GetComponent<ProjectileType>().Damage = meleeDmg;
-            ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
-            ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
-            Atking = false;
+            
+            // Atking = false;
 
             yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]);
 
@@ -366,4 +444,8 @@ public class Battle : MonoBehaviour
         
         // StopCoroutine(ShieldGuard());
     }
+
+
+
+    
 }

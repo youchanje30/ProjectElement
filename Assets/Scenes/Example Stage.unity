@@ -4215,6 +4215,8 @@ MonoBehaviour:
   isAction: 0
   isSelected: 0
   ObjData: {fileID: 0}
+  TimerVal: 0
+  TimeTxt: {fileID: 0}
   resolutionDropdown: {fileID: 2117973850}
   fullScreen: 0
 --- !u!4 &737378946
@@ -10061,6 +10063,22 @@ PrefabInstance:
     - target: {fileID: 1119876839234840092, guid: 33d28c2432a4f144892b002d6a3f4171, type: 3}
       propertyPath: m_Name
       value: Snake (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671946680318275279, guid: 33d28c2432a4f144892b002d6a3f4171, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671946680318275279, guid: 33d28c2432a4f144892b002d6a3f4171, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671946680318275279, guid: 33d28c2432a4f144892b002d6a3f4171, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671946680318275279, guid: 33d28c2432a4f144892b002d6a3f4171, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4055171041212575332, guid: 33d28c2432a4f144892b002d6a3f4171, type: 3}
       propertyPath: m_RootOrder

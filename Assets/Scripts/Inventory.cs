@@ -6,23 +6,40 @@ public class Inventory : MonoBehaviour
 {
     [Header("Money Setting")]
     public int Gold = 0;
+    public ItemData[] HavingItem;
 
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void GetGold()
     {
         Gold++;
     }
+
+
+    public void GetItem(ItemData item)
+    {
+        for (int i = 0; i < HavingItem.Length; i++)
+        {
+            if(HavingItem[i] == null)
+            {
+                HavingItem[i] = item;
+                break;
+            }
+        }
+    }
+
+    public bool isItemFull()
+    {
+        for (int i = 0; i < HavingItem.Length; i++)
+        {
+            if(HavingItem[i] != null)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    
 }

@@ -91,7 +91,7 @@ public class SaveManager : MonoBehaviour
         
             player.PlayerWeaponType = playerWeapon;
             player.PlayerElementType = playerElement;
-            player.ChangeEquipment();
+            player.SetEquipment();
         }
         else
         {

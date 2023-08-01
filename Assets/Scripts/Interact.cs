@@ -36,6 +36,7 @@ public class Interact : MonoBehaviour
         }
     }
 
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if(scanObj == null && (other.gameObject.tag == "NPC" || other.gameObject.tag == "Portal"))
@@ -44,6 +45,7 @@ public class Interact : MonoBehaviour
             scanObj.gameObject.GetComponent<ObjectController>().InteractView(true);
         }
     }
+
 
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -54,12 +56,12 @@ public class Interact : MonoBehaviour
         }
     }
 
+
     public void InteractObj()
     {
         if(scanObj != null)
         {
             scanObj.gameObject.GetComponent<ObjectController>().Interaction();
-            Debug.Log("interaction");
         }
     }
 
