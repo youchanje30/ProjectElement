@@ -6,12 +6,16 @@ using UnityEngine;
 public class Battle : MonoBehaviour
 {
     [Header("Player Status")]
-    [Tooltip("최대 체력")]
-    public float maxHp = 10f;
     [Tooltip("현재 체력")]
     public float curHp;
+    [Tooltip("최대 체력")]
+    public float maxHp = 10f;
+    [Tooltip("최대% 체력")]
+    public float maxPerHp; // 100%
     [Tooltip("방어력")]
     public float def;
+    [Tooltip("방어력%")]
+    public float defPer; // 100%
     [Tooltip("물리 데미지")]
     public float meleeDmg; 
     [Tooltip("물리 데미지%")]
@@ -149,7 +153,9 @@ public class Battle : MonoBehaviour
     public void ResetStat()
     {
         maxHp = 10;
+        maxPerHp = 100;
         def = 0;
+        defPer = 100;
         meleeDmg = 3;
         meleePerDmg = 0;
         skillDmg = 0;
@@ -272,7 +278,7 @@ public class Battle : MonoBehaviour
             }
             // 공격 중인거 종료
 
-            yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]);
+            yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]/(atkSpeed * 0.01f));
 
             //애니메이션 종료 및 공격 종료
 
@@ -334,7 +340,7 @@ public class Battle : MonoBehaviour
 
     public IEnumerator ComboAtk()
     {
-        yield return new WaitForSeconds(ComboTime);
+        yield return new WaitForSeconds(ComboTime/(atkSpeed * 0.01f));
         CanComboAtk = false;
     }
 
@@ -353,7 +359,7 @@ public class Battle : MonoBehaviour
             
             // Atking = false;
 
-            yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]);
+            yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]/(atkSpeed * 0.01f));
 
             isAtkReady[(int)WeaponType] = true;
         } 

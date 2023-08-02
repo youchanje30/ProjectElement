@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07386380ef70a414d80403d8ad0c2bf8, type: 3}
-  m_Name: Common_10
+  m_Name: Rare_5
   m_EditorClassIdentifier: 
-  itemName: "\uACE0\uC7A5\uB09C \uC2A4\uD0DC\uD504"
-  itemInfo: "\uC2A4\uD0AC \uB370\uBBF8\uC9C0\uAC00 10% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  itemRare: 0
-  itemID: 10
+  itemName: "\uBE5B\uBC14\uB79C \uC6D4\uC11D"
+  itemInfo: "\uCE58\uBA85\uD0C0 \uD655\uB960\uC774 15% \uC0C1\uC2B9\uD569\uB2C8\uB2E4"
+  itemRare: 1
+  itemID: 2004
   hpIncrease: 0
+  hpPerIncrease: 0
   defIncrease: 0
+  defPerIncrease: 0
   meleeDmgIncrease: 0
-  meleeDmgPerIncrease: 10
+  meleeDmgPerIncrease: 0
   skillDmgIncrease: 0
   skillDmgPerIncrease: 0
   atkSpeedIncrease: 0
-  crtRateIncrease: 0
+  crtRateIncrease: 15
   crtDmgIncrease: 0

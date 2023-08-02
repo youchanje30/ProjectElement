@@ -204,17 +204,32 @@ public class PlayerController : MonoBehaviour
         {
             if(inventory.HavingItem[i] != null)
             {
+                //체력 증가
                 battle.maxHp += inventory.HavingItem[i].HpIncrease;
+                battle.maxPerHp += inventory.HavingItem[i].HpPerIncrease;
+                
+                //방어력 증가
                 battle.def += inventory.HavingItem[i].DefIncrease;
+                battle.defPer += inventory.HavingItem[i].DefPerIncrease;
+
+                //물리 데미지 증가
                 battle.meleeDmg += inventory.HavingItem[i].MeleeDmgIncrease;
                 battle.meleePerDmg += inventory.HavingItem[i].MeleeDmgPerIncrease;
+
+                //스킬 데미지 증가
                 battle.skillDmg += inventory.HavingItem[i].SkillDmgIncrease;
                 battle.skillPerDmg += inventory.HavingItem[i].SkillDmgPerIncrease;
+
+                //공격 속도, 크리 확률, 크리 데미지 증가
                 battle.atkSpeed += inventory.HavingItem[i].AtkSpeedIncrease;
                 battle.crtRate += inventory.HavingItem[i].CrtRateIncrease;
                 battle.crtDmg += inventory.HavingItem[i].CrtDmgIncrease;
             }
         }
+
+        animator.SetFloat("AtkSpeed", battle.atkSpeed * 0.01f);
+        
+
     }
 
     void Act() //상호작용, 공격 스킬 등의 입력을 전달하는 함수

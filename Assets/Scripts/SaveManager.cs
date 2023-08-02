@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using System.Xml;
 using System.IO;
+using System.Text;
+using System.Security.Cryptography;
 
 public class SaveManager : MonoBehaviour
 {
@@ -13,6 +16,7 @@ public class SaveManager : MonoBehaviour
     [Header("Get Data Objs")]
     [SerializeField] private PlayerController player;
     [SerializeField] private GameManager manager;
+    
     [Space(20f)]
 
     [Header("Save Datas")]
@@ -52,16 +56,50 @@ public class SaveManager : MonoBehaviour
         XmlElement root = xmlDocument.CreateElement("Save");
         root.SetAttribute("FileName", "ElementGame_Data");
 
+        // 무기 종류 저장
         XmlElement playerWeaponData = xmlDocument.CreateElement("PlayerWeaponType");
         playerWeaponData.InnerText = playerWeapon.ToString();
         root.AppendChild(playerWeaponData);
 
+        // 무기 타입 저장
         XmlElement playerElementData = xmlDocument.CreateElement("PlayerElementType");
         playerElementData.InnerText = playerElement.ToString();
         root.AppendChild(playerElementData);
 
+
+        // 아이템 데이터 저장
+        XmlElement playerItemData, Datas;
+
+        for (int i = 0; i < player.inventory.HavingItem.Length; i++)
+        {
+            playerItemData = xmlDocument.CreateElement("ItemData");
+            Datas = xmlDocument.CreateElement("Datas");
+            
+            if(player.inventory.HavingItem[i] != null)
+            {
+                playerItemData.InnerText = player.inventory.HavingItem[i].ItemID.ToString();
+            }
+            else
+            {
+                playerItemData.InnerText = "0";
+            }
+
+            Datas.AppendChild(playerItemData);
+
+            root.AppendChild(Datas);
+        }
+
         xmlDocument.AppendChild(root);
 
+
+        /* StringWriter stringWriter = new StringWriter();
+        XmlTextWriter xmlTextWriter = new XmlTextWriter(stringWriter);
+
+        xmlDocument.WriteTo(xmlTextWriter);
+        string encryptString = Encrypt(stringWriter.ToString());
+        SaveFile(encryptString); */
+        
+        // string encryptString = encryData(stringWriter.ToString());
         xmlDocument.Save(Application.dataPath + "/DataXML.xml");
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
@@ -75,7 +113,14 @@ public class SaveManager : MonoBehaviour
     {
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
+            /* string encryptData = LoadFile(GetPath());
+            string decryptData = Decrypt(encryptData); */
+
             XmlDocument xmlDocument = new XmlDocument();
+            // xmlDocument.WriteTo(decryptData);
+
+            
+            
             xmlDocument.Load(Application.dataPath + "/DataXML.xml");
 
             XmlNodeList playerWeaponData = xmlDocument.GetElementsByTagName("PlayerWeaponType");
@@ -88,7 +133,19 @@ public class SaveManager : MonoBehaviour
             playerElement = PlayerElementData;
             
 
-        
+
+            XmlNodeList Datas = xmlDocument.GetElementsByTagName("Datas");
+
+            if(Datas.Count != 0)
+            {
+                for (int i = 0; i < Datas.Count; i++)
+                {
+                    XmlNodeList playerItemData = xmlDocument.GetElementsByTagName("ItemData");
+                    int ID = int.Parse(playerItemData[i].InnerText);
+                    player.inventory.HavingItem[i] = ItemManager.instance.AddItem(ID);
+                }
+            }
+
             player.PlayerWeaponType = playerWeapon;
             player.PlayerElementType = playerElement;
             player.SetEquipment();
@@ -101,6 +158,82 @@ public class SaveManager : MonoBehaviour
 
     }
 
+    static string GetPath()
+    {
+        return Path.Combine(Application.dataPath + "/DataXML.xml");
+    }
+
+
+
+
+    static void SaveFile(string Data)
+    {
+        using (FileStream fs = new FileStream(GetPath(), FileMode.Create, FileAccess.Write))
+        {
+            //파일로 저장할 수 있게 바이트화
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(Data);
+ 
+            //bytes의 내용물을 0 ~ max 길이까지 fs에 복사
+            fs.Write(bytes, 0, bytes.Length);
+        }
+    }
+
+
+    static string LoadFile(string path)
+    {
+        using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+        {
+            //파일을 바이트화 했을 때 담을 변수를 제작
+            byte[] bytes = new byte[(int)fs.Length];
+ 
+            //파일스트림으로 부터 바이트 추출
+            fs.Read(bytes, 0, (int)fs.Length);
+ 
+            //추출한 바이트를 json string으로 인코딩
+            string jsonString = System.Text.Encoding.UTF8.GetString(bytes);
+            return jsonString;
+        }
+    }
+
+    private static readonly string privateKey = "6gh45hrgts9za2mnlpv63nd32sdzx6dryt7645dfg34wdfx4rtyughc7tu";
+
+
+    private static string Encrypt(string data)
+    {
+ 
+        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(data);
+        RijndaelManaged rm = CreateRijndaelManaged();
+        ICryptoTransform ct = rm.CreateEncryptor();
+        byte[] results = ct.TransformFinalBlock(bytes, 0, bytes.Length);
+        return System.Convert.ToBase64String(results, 0, results.Length);
+ 
+    }
+
+    private static string Decrypt(string data)
+    {
+ 
+        byte[] bytes = System.Convert.FromBase64String(data);
+        RijndaelManaged rm = CreateRijndaelManaged();
+        ICryptoTransform ct = rm.CreateDecryptor();
+        byte[] resultArray = ct.TransformFinalBlock(bytes, 0, bytes.Length);
+        return System.Text.Encoding.UTF8.GetString(resultArray);
+    }
+
+
+
+    private static RijndaelManaged CreateRijndaelManaged()
+    {
+        byte[] keyArray = System.Text.Encoding.UTF8.GetBytes(privateKey);
+        RijndaelManaged result = new RijndaelManaged();
+ 
+        byte[] newKeysArray = new byte[16];
+        System.Array.Copy(keyArray, 0, newKeysArray, 0, 16);
+ 
+        result.Key = newKeysArray;
+        result.Mode = CipherMode.ECB;
+        result.Padding = PaddingMode.PKCS7;
+        return result;
+    }
 
     public void AutoSave()
     {

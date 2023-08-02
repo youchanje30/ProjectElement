@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07386380ef70a414d80403d8ad0c2bf8, type: 3}
+  m_Name: Epic_8
+  m_EditorClassIdentifier: 
+  itemName: "\uD0C4\uC18C \uC12C\uC720 \uAC11\uC637"
+  itemInfo: "\uBC29\uC5B4\uB825\uC774 50% \uC0C1\uC2B9\uD569\uB2C8\uB2E4"
+  itemRare: 2
+  itemID: 3007
+  hpIncrease: 0
+  hpPerIncrease: 0
+  defIncrease: 0
+  defPerIncrease: 50
+  meleeDmgIncrease: 0
+  meleeDmgPerIncrease: 0
+  skillDmgIncrease: 0
+  skillDmgPerIncrease: 0
+  atkSpeedIncrease: 0
+  crtRateIncrease: 0
+  crtDmgIncrease: 0

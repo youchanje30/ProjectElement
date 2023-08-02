@@ -17,11 +17,13 @@ MonoBehaviour:
   itemInfo: "\uBC14\uB78C\uC758 \uC7A5\uD654 \u2013 \uC774\uB3D9\uC18D\uB3C4\uAC00
     5% \uC99D\uAC00\uD55C\uB2E4"
   itemRare: 0
-  itemID: 4
+  itemID: 1003
   hpIncrease: 0
+  hpPerIncrease: 0
   defIncrease: 0
+  defPerIncrease: 0
   meleeDmgIncrease: 0
-  meleeDmgPerIncrease: 10
+  meleeDmgPerIncrease: 0
   skillDmgIncrease: 0
   skillDmgPerIncrease: 0
   atkSpeedIncrease: 0

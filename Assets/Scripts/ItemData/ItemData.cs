@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemRares
+{
+    Common,
+    Rare,
+    Epic
+}
+
 [CreateAssetMenu(fileName = "Item Data", menuName = "Scriptable Object/Item Data", order = int.MaxValue)]
 public class ItemData : ScriptableObject
 {
 
-    public enum ItemRares
-    {
-        common,
-        rare,
-        epic
-    }
+    
 
 
     [Header("Item Info")]
@@ -30,9 +32,15 @@ public class ItemData : ScriptableObject
     [Tooltip("체력 증가량")]
     [SerializeField] private int hpIncrease;
     public int HpIncrease { get { return hpIncrease; } }
+    [Tooltip("체력% 증가량")]
+    [SerializeField] private int hpPerIncrease;
+    public int HpPerIncrease { get { return hpPerIncrease; } }
     [Tooltip("방어력 증가량")]
     [SerializeField] private int defIncrease;
     public int DefIncrease {get { return defIncrease; } }
+    [Tooltip("방어력% 증가량")]
+    [SerializeField] private int defPerIncrease;
+    public int DefPerIncrease {get { return defPerIncrease; } }
     [Tooltip("물리 데미지 증가량")]
     [SerializeField] private int meleeDmgIncrease;
     public int MeleeDmgIncrease {get { return meleeDmgIncrease; } }

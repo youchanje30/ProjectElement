@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07386380ef70a414d80403d8ad0c2bf8, type: 3}
-  m_Name: Common_12
+  m_Name: Epic_4
   m_EditorClassIdentifier: 
-  itemName: "\uACE0\uC7A5\uB09C \uC2A4\uD0DC\uD504"
-  itemInfo: "\uC2A4\uD0AC \uB370\uBBF8\uC9C0\uAC00 10% \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  itemRare: 0
-  itemID: 0
+  itemName: "\uC120\uD48D\uC758 \uC7A5\uD654"
+  itemInfo: "\uC774\uB3D9\uC18D\uB3C4\uAC00 30% \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  itemRare: 2
+  itemID: 3003
   hpIncrease: 0
+  hpPerIncrease: 0
   defIncrease: 0
+  defPerIncrease: 0
   meleeDmgIncrease: 0
-  meleeDmgPerIncrease: 10
+  meleeDmgPerIncrease: 0
   skillDmgIncrease: 0
   skillDmgPerIncrease: 0
   atkSpeedIncrease: 0

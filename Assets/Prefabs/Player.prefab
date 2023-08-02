@@ -117,7 +117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6241855816781211188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: -0.2, z: 0}
+  m_LocalPosition: {x: -0.28, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -349,7 +349,7 @@ MonoBehaviour:
   Anims:
   - ElementAnim:
     - {fileID: 9100000, guid: a24d43c3af587fe4ab03f9382018a43b, type: 2}
-    - {fileID: 9100000, guid: 7c0c01dc53ede834a8f9cfa8a1b4dbc2, type: 2}
+    - {fileID: 9100000, guid: cb47c9d2b5ee5024b91da402a04a507d, type: 2}
     - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   - ElementAnim:
     - {fileID: 9100000, guid: d90025fa5a7fe9f4b98d31de7453e09e, type: 2}
@@ -443,9 +443,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fb4c3cde3b7d24e9b9ed3bb695ca03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
   curHp: 0
+  maxHp: 10
+  maxPerHp: 0
   def: 0
+  defPer: 0
   meleeDmg: 3
   meleePerDmg: 0
   skillDmg: 0
@@ -473,12 +475,12 @@ MonoBehaviour:
   - {fileID: 4315468924003554650}
   atkSize:
   - {x: 0.5, y: 1}
-  - {x: 1.3, y: 1.3}
+  - {x: 1.7, y: 1.7}
   - {x: 0, y: 0}
   arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
   originalScale: 0
   CanComboAtk: 0
-  ComboTime: 0.6
+  ComboTime: 0.8
   ComboAtkSize: {x: 2, y: 1}
   ComboAtkPos: {fileID: 2363684142775938275}
   ShieldAtkDashTime: 0.1
@@ -502,7 +504,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gold: 0
-  HavingItem: []
+  HavingItem:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &7219966532605892540
 GameObject:
   m_ObjectHideFlags: 0

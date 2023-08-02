@@ -15,9 +15,11 @@ MonoBehaviour:
   itemName: "\uCC9C \uAC11\uC637 \u2013 \uBC29\uC5B4\uB825\uC774 30% \uC0C1\uC2B9\uD569\uB2C8\uB2E4"
   itemInfo: "\uCC9C \uAC11\uC637 \u2013 \uBC29\uC5B4\uB825\uC774 30% \uC0C1\uC2B9\uD569\uB2C8\uB2E4"
   itemRare: 0
-  itemID: 8
+  itemID: 1007
   hpIncrease: 0
+  hpPerIncrease: 0
   defIncrease: 0
+  defPerIncrease: 30
   meleeDmgIncrease: 0
   meleeDmgPerIncrease: 10
   skillDmgIncrease: 0
