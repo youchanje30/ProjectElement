@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum ItemRares
 {
@@ -25,6 +26,7 @@ public class ItemData : ScriptableObject
     public ItemRares ItemRare { get { return itemRare; } }
     [SerializeField] private int itemID;
     public int ItemID { get { return itemID; } }
+    public Image itemImg;
     [Space(20f)]
 
 

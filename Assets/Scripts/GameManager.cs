@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text TimeTxt;
 
 
+    [Header("Shop Setting")]
+    public GameObject ShopUI;
+    public bool isShop = false;
+
+
     void Awake()
     {
         instance = this;
@@ -69,7 +74,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0)
+        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop)
         {
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;
@@ -123,6 +128,10 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
+
+    
+
 
 
     public void SaveSettingData()
@@ -224,6 +233,10 @@ public class GameManager : MonoBehaviour
             // Debug.Log("ViewTalk Work");
         }
     }
+
+
+
+
 
     public void TalkBtn(int BtnNum)
     {

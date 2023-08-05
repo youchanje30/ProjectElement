@@ -12,6 +12,7 @@ TagManager:
   - OneWayPlatForm
   - GameManager
   - Shop
+  - ShopScroll
   layers:
   - Default
   - TransparentFX

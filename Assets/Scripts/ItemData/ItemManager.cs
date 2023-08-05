@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ItemManager : MonoBehaviour
 {
     public static ItemManager instance;
@@ -16,6 +17,8 @@ public class ItemManager : MonoBehaviour
     public List<ItemData> EpicItemDatas = new List<ItemData>();
     
 
+    
+    [SerializeField] private int[] ItemGetPercent;
 
 
 
@@ -24,6 +27,11 @@ public class ItemManager : MonoBehaviour
     {
         instance = this;
         SortingItems();
+
+        for (int i = 0; i < 10; i++)
+        {
+            Debug.Log(GetShopItem());
+        }
     }
 
     
@@ -95,11 +103,46 @@ public class ItemManager : MonoBehaviour
         }
 
 
-        Debug.Log(AddingItem);
+        // Debug.Log(AddingItem);
         return AddingItem;
     }
 
 
-    // public 
+
+
+    public ItemData GetShopItem()
+    {
+        ItemData ReturnItemData = null;
+        int RandomValue = Random.Range(1, 100 + 1);
+        int getItemIndex = -1;
+        for (int i = 0, j = 0; i < ItemGetPercent.Length; i++)
+        {
+            j += ItemGetPercent[i];
+            
+            if(RandomValue <= j)
+            {
+                // 위 아이템이 뜸
+                getItemIndex = i;
+                break;
+            }
+        }
+        
+        switch (getItemIndex)
+        {
+            case 0:
+                ReturnItemData = CommonItemDatas[Random.Range(0, CommonItemDatas.Count)];
+                break;
+            
+            case 1:
+                ReturnItemData = RareItemDatas[Random.Range(0, RareItemDatas.Count)];
+                break;
+            case 2:
+                ReturnItemData = EpicItemDatas[Random.Range(0, EpicItemDatas.Count)];
+                break;
+        }
+
+
+        return ReturnItemData;
+    }
 
 }

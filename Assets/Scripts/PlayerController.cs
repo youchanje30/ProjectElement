@@ -116,7 +116,14 @@ public class PlayerController : MonoBehaviour
 
     void InputSystem()
     {
-        if(battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !movement2D.isDashing)
+        if(manager.isShop && Input.GetKeyDown(KeyCode.Escape))
+        {
+            manager.isShop = false;
+            manager.ShopUI.SetActive(false);
+        }
+
+
+        if(battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing)
         {
             pressedRightAtkKey = true;
             animator.SetBool("isCharge", true);
@@ -147,7 +154,7 @@ public class PlayerController : MonoBehaviour
         
 
 
-        if(movement2D.isDashing || manager.isAction || battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
+        if(movement2D.isDashing || manager.isAction || manager.isShop || battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
