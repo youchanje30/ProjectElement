@@ -305,11 +305,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748d4156aeb51514eb1947191b3f3ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   Item: {fileID: 0}
   itemImage: {fileID: 3900998309186285970}
   itemName: {fileID: 418037733059604635}
   itemInfo: {fileID: 6010812398443116389}
-  itemCost: {fileID: 0}
+  itemCost: 0
+  itemCostTxt: {fileID: 0}
   itemRare: {fileID: 7611536637834499917}
   itemID: 0
 --- !u!1 &3964359311541742052
@@ -432,7 +434,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8349073200258506702}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3927933472830896664}
+        m_TargetAssemblyTypeName: ShopItem, Assembly-CSharp
+        m_MethodName: Buy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5361143495342569980
 GameObject:
   m_ObjectHideFlags: 0

@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if(battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing)
+        if(battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
         {
             pressedRightAtkKey = true;
             animator.SetBool("isCharge", true);

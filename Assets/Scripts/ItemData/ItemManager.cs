@@ -27,14 +27,9 @@ public class ItemManager : MonoBehaviour
     {
         instance = this;
         SortingItems();
-
-        for (int i = 0; i < 10; i++)
-        {
-            Debug.Log(GetShopItem());
-        }
     }
 
-    
+    [Tooltip("아이템 정렬하는 시스템")]
     public void SortingItems()
     {
         foreach(ItemData item in ItemDatas)
@@ -58,7 +53,7 @@ public class ItemManager : MonoBehaviour
 
 
     // 일반 등급은 1000부터, 고급은 2000, 영웅은 3000
-
+    [Tooltip("ID 값에 해당하는 아이템을 반환해주는 함수")]
     public ItemData AddItem(int ID)
     {
         if(ID == 0) return null;
@@ -109,7 +104,8 @@ public class ItemManager : MonoBehaviour
 
 
 
-
+    
+    [Tooltip("랜덤하게 아이템 데이터를 반환하는 함수")]
     public ItemData GetShopItem()
     {
         ItemData ReturnItemData = null;

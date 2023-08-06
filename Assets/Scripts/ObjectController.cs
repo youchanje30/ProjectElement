@@ -20,7 +20,7 @@ public class ObjectController : MonoBehaviour
 
     [SerializeField] private GameObject ShopItem;
     [SerializeField] private ScrollRect scrollRect;
-    [SerializeField] private float Space = 20f;
+    [SerializeField] private float Space;
     public List<RectTransform> shopObjects = new List<RectTransform>();
 
     
@@ -56,9 +56,14 @@ public class ObjectController : MonoBehaviour
     {
         GameObject NewShopItem = Instantiate(ShopItem, scrollRect.content);
         NewShopItem.GetComponent<ShopItem>().Setting(ItemManager.instance.GetShopItem());
+        NewShopItem.GetComponent<ShopItem>().objectController = this ;
         var newUi = NewShopItem.GetComponent<RectTransform>();
         shopObjects.Add(newUi);
+        SetPosShop();
+    }
 
+    public void SetPosShop()
+    {
         float y = 0f;
         for (int i = 0; i < shopObjects.Count; i++)
         {
@@ -67,6 +72,8 @@ public class ObjectController : MonoBehaviour
         }
 
         scrollRect.content.sizeDelta = new Vector2(scrollRect.content.sizeDelta.x, y);
+
+        // shopObjects.Remove()
     }
 
 

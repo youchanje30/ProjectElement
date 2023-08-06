@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < HavingItem.Length; i++)
         {
-            if(HavingItem[i] != null)
+            if(HavingItem[i] == null)
             {
                 return false;
             }
@@ -41,5 +41,8 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    
+    public int PlayerGold()
+    {
+        return Gold;
+    }
 }
