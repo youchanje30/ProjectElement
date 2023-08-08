@@ -25,6 +25,9 @@ public class StageManager : MonoBehaviour
 
     void Clear()
     {
+        GameManager.instance.clearStage++;
+        SaveManager.instance.Save();
+        
         GameObject spawnPortal = Instantiate(Portal);
         spawnPortal.transform.position = PortalSpawnPos.position;
     }

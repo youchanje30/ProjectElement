@@ -9,20 +9,18 @@ using System.Security.Cryptography;
 
 public class SaveManager : MonoBehaviour
 {
-
     public static SaveManager instance;
     
 
     [Header("Get Data Objs")]
     [SerializeField] private PlayerController player;
     [SerializeField] private GameManager manager;
-    
     [Space(20f)]
+
 
     [Header("Save Datas")]
     public WeaponTypes playerWeapon;
     public Elements playerElement;
-
     // [Space(20f)]
 
 
@@ -66,9 +64,25 @@ public class SaveManager : MonoBehaviour
         playerElementData.InnerText = playerElement.ToString();
         root.AppendChild(playerElementData);
 
+        // 골드 저장
+        XmlElement playerGold = xmlDocument.CreateElement("PlayerGold");
+        playerGold.InnerText = player.GetComponent<Inventory>().Gold.ToString();
+        root.AppendChild(playerGold);
+
+        // 클리어한 스테이지 수 저장
+        XmlElement clearStageNum = xmlDocument.CreateElement("ClearStageNum");
+        clearStageNum.InnerText = manager.clearStage.ToString();
+        root.AppendChild(clearStageNum);
+
+
+        /* string a = KeyCode.A.ToString();
+        KeyCode B = (KeyCode)System.Enum.Parse(typeof(KeyCode), a); */
+
+
 
         // 아이템 데이터 저장
         XmlElement playerItemData, Datas;
+
 
         for (int i = 0; i < player.inventory.HavingItem.Length; i++)
         {
@@ -123,19 +137,28 @@ public class SaveManager : MonoBehaviour
             
             xmlDocument.Load(Application.dataPath + "/DataXML.xml");
 
+            // 무기 타입
             XmlNodeList playerWeaponData = xmlDocument.GetElementsByTagName("PlayerWeaponType");
             WeaponTypes PlayerWeaponData = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData[0].InnerText);
             playerWeapon = PlayerWeaponData;
 
-
+            // 속성 타입
             XmlNodeList playerElementData = xmlDocument.GetElementsByTagName("PlayerElementType");
             Elements PlayerElementData = (Elements)System.Enum.Parse(typeof(Elements), playerElementData[0].InnerText);
             playerElement = PlayerElementData;
             
+            // 클리어 스테이지 개수
+            XmlNodeList clearStageNum = xmlDocument.GetElementsByTagName("ClearStageNum");
+            manager.clearStage = int.Parse(clearStageNum[0].InnerText);
+
+            // 골드
+            XmlNodeList gold = xmlDocument.GetElementsByTagName("PlayerGold");
+            player.GetComponent<Inventory>().Gold = int.Parse(gold[0].InnerText);
+
+            
 
 
             XmlNodeList Datas = xmlDocument.GetElementsByTagName("Datas");
-
             if(Datas.Count != 0)
             {
                 for (int i = 0; i < Datas.Count; i++)

@@ -81,6 +81,9 @@ public class Battle : MonoBehaviour
 
     void Awake()
     {
+            
+        
+
         curHp = maxHp;
         movement2D = GetComponent<Movement2D>();
         rigid2D = GetComponent<Rigidbody2D>();
@@ -102,13 +105,20 @@ public class Battle : MonoBehaviour
     {
         // Debug.Log(CanComboAtk);
 
-        Vector2 underVec = new Vector2(rigid2D.transform.position.x, rigid2D.transform.position.y - 0.9f);
-
+        Vector2 underVec = new Vector2(rigid2D.transform.position.x - 0.5f, rigid2D.transform.position.y - 0.9f);
         Debug.DrawRay(underVec, new Vector3(0, -0.2f, 0), new Color(0,1,0));
-        RaycastHit2D raycast = Physics2D.Raycast(underVec, Vector3.down, 0.2f ,LayerMask.GetMask("Platform"));
+        RaycastHit2D MiddleRaycast = Physics2D.Raycast(underVec, Vector3.down, 0.2f ,LayerMask.GetMask("Platform"));
+
+        Vector2 leftUnderVec = new Vector2(rigid2D.transform.position.x, rigid2D.transform.position.y - 0.9f);
+        Debug.DrawRay(leftUnderVec, new Vector3(0, -0.2f, 0), new Color(0,1,0));
+        RaycastHit2D LeftRaycast = Physics2D.Raycast(leftUnderVec, Vector3.down, 0.2f ,LayerMask.GetMask("Platform"));
+
+        Vector2 rightUnderVec = new Vector2(rigid2D.transform.position.x + 0.5f, rigid2D.transform.position.y - 0.9f);
+        Debug.DrawRay(rightUnderVec, new Vector3(0, -0.2f, 0), new Color(0,1,0));
+        RaycastHit2D RightRaycast = Physics2D.Raycast(rightUnderVec, Vector3.down, 0.2f ,LayerMask.GetMask("Platform"));
 
         // if(fallAtking && movement2D.isGround) //착지 공격 참 + 땅에 도착 참
-        if(fallAtking && raycast.collider != null)
+        if(fallAtking && (MiddleRaycast.collider != null || LeftRaycast.collider != null || RightRaycast.collider != null))
         {
             animator.SetBool("isGround", true);
             animator.SetBool("isAct", false);
@@ -139,7 +149,13 @@ public class Battle : MonoBehaviour
         
         if(AtkObj.tag == "Monster")
         {
-            AtkObj.GetComponent<Monster>().GetDamaged(meleeDmg);
+            bool isCrt = Random.Range(1, 100 + 1) <= crtRate;
+            float NormalDmg = meleeDmg * meleePerDmg * 0.01f;
+            float FinalDmg = isCrt ? NormalDmg * crtDmg * 0.01f : NormalDmg;
+
+            AtkObj.GetComponent<Monster>().GetDamaged(FinalDmg);
+            Debug.Log(FinalDmg);
+            // AtkObj.GetComponent<Monster>().GetDamaged(meleeDmg);
             // 데미지 계산 식
         }
 
@@ -157,9 +173,9 @@ public class Battle : MonoBehaviour
         def = 0;
         defPer = 100;
         meleeDmg = 3;
-        meleePerDmg = 0;
+        meleePerDmg = 100;
         skillDmg = 0;
-        skillPerDmg = 0;
+        skillPerDmg = 100;
         atkSpeed = 100;
         crtRate = 10;
         crtDmg = 150;
@@ -205,11 +221,26 @@ public class Battle : MonoBehaviour
     {
         float originalGravity = rigid2D.gravityScale;
         rigid2D.gravityScale = 0f;
+        rigid2D.velocity = Vector2.zero;
         rigid2D.velocity = new Vector2(-(transform.localScale.x) * AtkDashingPower, 0f);
         yield return new WaitForSeconds(ShieldAtkDashTime);
         // rigid2D.gravityScale = originalGravity;
         rigid2D.gravityScale = 4f;
     }
+
+
+    public void HealHp(int IncreaseHp)
+    {
+        if(curHp + IncreaseHp <= maxHp)
+        {
+            curHp += IncreaseHp;
+        }
+        else
+        {
+            curHp = maxHp;
+        }
+    }
+
 
     public IEnumerator FallDownAtk()
     {
@@ -235,6 +266,7 @@ public class Battle : MonoBehaviour
     {
         if(isAtkReady[(int)WeaponType])
         {
+            rigid2D.velocity = Vector2.zero;
             Atking = true;
             isAtkReady[(int)WeaponType] = false;
             animator.SetBool("isAct", true);
@@ -349,6 +381,7 @@ public class Battle : MonoBehaviour
     {
         if(isAtkReady[(int)WeaponType])
         {
+            rigid2D.velocity = Vector2.zero;
             animator.SetTrigger("Atk");
             Atking = true;
             isAtkReady[(int)WeaponType] = false;

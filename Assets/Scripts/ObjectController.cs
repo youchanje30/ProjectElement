@@ -10,15 +10,17 @@ public class ObjectController : MonoBehaviour
     {
         NPC,
         Portal,
-        Shop
+        Shop,
+        Weapon
     }
-
+    [SerializeField] private WeaponTypes WeaponType;
     [SerializeField] private InteractObjects ObjType;
     public int objectID;
     public string objectTag;
     public GameObject interactView;
 
     [SerializeField] private GameObject ShopItem;
+    [SerializeField] private GameObject HpHealItem;
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private float Space;
     public List<RectTransform> shopObjects = new List<RectTransform>();
@@ -41,6 +43,10 @@ public class ObjectController : MonoBehaviour
 
             case InteractObjects.Shop:
                 // scrollRect = GameObject.FindGameObjectWithTag("ShopScroll").GetComponent<ScrollRect>();
+                for (int i = 0; i < 2; i++)
+                {
+                    Invoke("SpawnConsumableItem", 0.1f);
+                }
                 for (int i = 0; i < 5; i++)
                 {
                     Invoke("SpawnShopItem", 0.1f);
@@ -56,6 +62,16 @@ public class ObjectController : MonoBehaviour
     {
         GameObject NewShopItem = Instantiate(ShopItem, scrollRect.content);
         NewShopItem.GetComponent<ShopItem>().Setting(ItemManager.instance.GetShopItem());
+        NewShopItem.GetComponent<ShopItem>().objectController = this ;
+        var newUi = NewShopItem.GetComponent<RectTransform>();
+        shopObjects.Add(newUi);
+        SetPosShop();
+    }
+
+
+    public void SpawnConsumableItem()
+    {
+        GameObject NewShopItem = Instantiate(HpHealItem, scrollRect.content);
         NewShopItem.GetComponent<ShopItem>().objectController = this ;
         var newUi = NewShopItem.GetComponent<RectTransform>();
         shopObjects.Add(newUi);
@@ -79,7 +95,7 @@ public class ObjectController : MonoBehaviour
 
     public void Interaction()
     {
-        switch(objectTag)
+        /* switch(objectTag)
         {
             case "NPC":
                 GameManager.instance.Action(gameObject);
@@ -92,7 +108,7 @@ public class ObjectController : MonoBehaviour
             case "Shop":
                 
                 break;
-        }
+        } */
 
 
         switch(ObjType)
@@ -107,6 +123,13 @@ public class ObjectController : MonoBehaviour
 
             case InteractObjects.Shop:
                 OpenShop();
+                break;
+
+            case InteractObjects.Weapon:
+                PlayerController player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+                player.PlayerWeaponType = WeaponType;
+                SaveManager.instance.Save();
+                player.ChangeAnim();
                 break;
         }
     }

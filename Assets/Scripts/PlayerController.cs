@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     //PlayerController에서 플레이어의 입력을 받음
     //Movement2D 캐릭터의 이동에 관한 스크립트
     //Battle 캐릭터의 전투에 관한 스크립트
-    //
     [Header("Player UI")]
     public Slider playerHpBar;
     [SerializeField] Image HpFill;
@@ -193,17 +192,19 @@ public class PlayerController : MonoBehaviour
         {
             
         } */
+    }
 
 
-
-
+    public void ChangeAnim()
+    {
+        animator.runtimeAnimatorController = Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType];
     }
 
     public void SetEquipment()
     {
+        ChangeAnim();
         battle.ResetStat();
         // if(animator.runtimeAnimatorController == Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType]) return;
-        animator.runtimeAnimatorController = Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType];
         battle.WeaponType = PlayerWeaponType;
         // SaveManager.instance.Save();
 

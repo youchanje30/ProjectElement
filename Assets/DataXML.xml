@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Save FileName="ElementGame_Data">
+  <PlayerWeaponType>Sword</PlayerWeaponType>
+  <PlayerElementType>None</PlayerElementType>
+  <PlayerGold>29</PlayerGold>
+  <ClearStageNum>0</ClearStageNum>
+  <Datas>
+    <ItemData>0</ItemData>
+  </Datas>
+  <Datas>
+    <ItemData>0</ItemData>
+  </Datas>
+  <Datas>
+    <ItemData>0</ItemData>
+  </Datas>
+  <Datas>
+    <ItemData>0</ItemData>
+  </Datas>
+  <Datas>
+    <ItemData>0</ItemData>
+  </Datas>
+  <Datas>
+    <ItemData>0</ItemData>
+  </Datas>
+</Save>

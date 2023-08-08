@@ -10,6 +10,16 @@ public class ShopItem : MonoBehaviour
     public ObjectController objectController;
 
 
+    public enum ShopType
+    {
+        Item,
+        Consumable
+    }
+
+
+    [SerializeField] private ShopType Type;
+    [SerializeField] private int ConsumableItemID;
+    private PlayerController player;
     public ItemData Item;
 
     public Image itemImage;
@@ -25,27 +35,41 @@ public class ShopItem : MonoBehaviour
     
 
 
-    // Start is called before the first frame update
-    void Start()
+    
+    void Awake()
     {
-        
+        if(Type == ShopType.Consumable)
+        {
+            player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        }
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+
     }
 
     public void Buy()
     {
         if(inventory.Gold < itemCost) return;
-        if(inventory.isItemFull()) return;
-
-        inventory.Gold -= itemCost;
 
         
-        inventory.GetItem(ItemManager.instance.AddItem(itemID));
+
+
+        if(Type == ShopType.Item)
+        {
+            if(inventory.isItemFull()) return;
+            inventory.GetItem(ItemManager.instance.AddItem(itemID));
+        }
+
+        if(Type == ShopType.Consumable)
+        {
+            UseConsumable(ConsumableItemID);
+        }
+
+        inventory.Gold -= itemCost;
 
         // ItemManager.instance.AddItem(itemID);
         // this.gameObject.SetActive(false);
@@ -55,9 +79,24 @@ public class ShopItem : MonoBehaviour
         SaveManager.instance.Save();
     }
 
+
+    public void UseConsumable(int ConsumableID)
+    {
+        switch (ConsumableID)
+        {
+            //체력 회복
+            case 10:
+                player.GetComponent<Battle>().HealHp(10);
+                break;
+
+        }
+    }
+
+
+
     public void Setting(ItemData item)
     {
-        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        // inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         Item = item;
 
         itemImage = Item.itemImg;

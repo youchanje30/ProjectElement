@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
     public void GetGold()
     {
         Gold++;
+        SaveManager.instance.Save();
     }
 
 

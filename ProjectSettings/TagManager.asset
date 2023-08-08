@@ -13,6 +13,7 @@ TagManager:
   - GameManager
   - Shop
   - ShopScroll
+  - Weapon
   layers:
   - Default
   - TransparentFX

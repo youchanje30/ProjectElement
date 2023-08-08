@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [Header("Game Setting")]
     public bool CanCameraShake;
 
+    [Header("Game Info")]
+    public int clearStage;
 
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;

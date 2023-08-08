@@ -288,10 +288,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857d6c4cbf94279469c7d0af9897bddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponType: 0
   ObjType: 2
   objectID: 40
   objectTag: 
   interactView: {fileID: 3804493237631498710}
+  ShopItem: {fileID: 2272788325850309193, guid: a799a66cc4a3746478e6d4eeeb2b3cc0, type: 3}
+  HpHealItem: {fileID: 2272788325850309193, guid: 11a0aac61e0af664893549ef4f4d716a, type: 3}
+  scrollRect: {fileID: 0}
+  Space: 0
+  shopObjects: []
 --- !u!70 &6809983370859040107
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

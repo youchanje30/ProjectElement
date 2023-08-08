@@ -347,8 +347,8 @@ public class Monster : MonoBehaviour
 
     public void Dead()
     {
-        Destroy(gameObject);
         stageManager.DeadMonster();
+        Destroy(gameObject);
     }
     
 
