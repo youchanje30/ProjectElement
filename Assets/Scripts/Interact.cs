@@ -18,6 +18,7 @@ public class Interact : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Tag를 변경하는게 좋아보인다.
         if(other.tag == "NPC" || other.tag == "Portal" || other.tag == "Shop" || other.tag == "Weapon") // || other.gameObject.tag == "NPC" )
         {
             if(scanObj != null)
@@ -32,6 +33,12 @@ public class Interact : MonoBehaviour
         {
             //골드 획득 시스템
             inven.GetGold();
+            Destroy(other.transform.parent.gameObject);
+        }
+        else if(other.tag == "SpiritSoul")
+        {
+            //정수 획득 시스템
+            inven.GetSpiritSoul();
             Destroy(other.transform.parent.gameObject);
         }
     }

@@ -173,3 +173,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DestructType: 0
   coin: {fileID: 8720883770288789512, guid: 73e273a69cedda445950d414bec44684, type: 3}
+  spiritSoul: {fileID: 0}
+  DropCoinRate: 0

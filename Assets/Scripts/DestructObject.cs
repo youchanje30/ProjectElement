@@ -15,10 +15,14 @@ public class DestructObject : MonoBehaviour
     public DestructTypes DestructType;
 
     public GameObject coin;
+    public GameObject spiritSoul;
+
+    
 
     public void DestroyObj()
     {
-        switch(DestructType){
+        switch(DestructType)
+        {
             case DestructTypes.Chest:
                 BreakChest();
                 break;
@@ -26,11 +30,15 @@ public class DestructObject : MonoBehaviour
         }
     }
 
-    
+    public void DeadMonster()
+    {
+
+    }
 
     public void BreakChest()
     {
-        for (int i = 0; i < Random.Range(3,7 + 1); i++)
+        coin = ItemDropManager.instance.Coin;
+        for (int i = 0; i < ItemDropManager.instance.CoinDrop(); i++)
         {
             SpawnCoin();
         }
@@ -42,7 +50,6 @@ public class DestructObject : MonoBehaviour
     {
         GameObject spawn = Instantiate(coin);
         spawn.transform.position = transform.position;
-        
     }
 
 

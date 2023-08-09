@@ -2,7 +2,8 @@
 <Save FileName="ElementGame_Data">
   <PlayerWeaponType>Sword</PlayerWeaponType>
   <PlayerElementType>None</PlayerElementType>
-  <PlayerGold>29</PlayerGold>
+  <PlayerGold>0</PlayerGold>
+  <PlayerSpiritSoul>0</PlayerSpiritSoul>
   <ClearStageNum>0</ClearStageNum>
   <Datas>
     <ItemData>0</ItemData>

@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     private Battle battle;
     [SerializeField] private GameManager manager;
     private Animator animator;
-    public RuntimeAnimatorController[] AnimController;
 
 
 
@@ -40,8 +39,8 @@ public class PlayerController : MonoBehaviour
     public WeaponTypes PlayerWeaponType;
     public Inventory inventory;
 
-    [System.Serializable]
-    public class ElementAnims
+    
+    [System.Serializable] public class ElementAnims
     {
         public RuntimeAnimatorController[] ElementAnim;
     }

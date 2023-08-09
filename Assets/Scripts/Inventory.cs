@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
 {
     [Header("Money Setting")]
     public int Gold = 0;
+    public int SpiritSoul = 0;
     public ItemData[] HavingItem;
 
 
@@ -13,6 +14,12 @@ public class Inventory : MonoBehaviour
     public void GetGold()
     {
         Gold++;
+        SaveManager.instance.Save();
+    }
+
+    public void GetSpiritSoul()
+    {
+        SpiritSoul++;
         SaveManager.instance.Save();
     }
 

@@ -348,8 +348,29 @@ public class Monster : MonoBehaviour
     public void Dead()
     {
         stageManager.DeadMonster();
+        Reward();
         Destroy(gameObject);
     }
     
 
+
+
+    public void Reward()
+    {
+        GameObject Coin = ItemDropManager.instance.Coin;
+        GameObject SpiritSoul = ItemDropManager.instance.SpiritSoul;
+
+        for (int i = 0; i < ItemDropManager.instance.CoinDrop(); i++)
+        {
+            GameObject spawnCoin = Instantiate(Coin);
+            spawnCoin.transform.position = transform.position;
+        }
+
+        for (int i = 0; i < ItemDropManager.instance.SpiritSoulDrop(); i++)
+        {
+            Debug.Log(1);
+            GameObject spawnSpiritSoul = Instantiate(SpiritSoul);
+            spawnSpiritSoul.transform.position = transform.position;
+        }
+    }
 }

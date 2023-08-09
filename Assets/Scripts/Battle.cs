@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Battle : MonoBehaviour
@@ -154,7 +155,6 @@ public class Battle : MonoBehaviour
             float FinalDmg = isCrt ? NormalDmg * crtDmg * 0.01f : NormalDmg;
 
             AtkObj.GetComponent<Monster>().GetDamaged(FinalDmg);
-            Debug.Log(FinalDmg);
             // AtkObj.GetComponent<Monster>().GetDamaged(meleeDmg);
             // 데미지 계산 식
         }
@@ -480,7 +480,11 @@ public class Battle : MonoBehaviour
 
         curHp -= Damage;
 
-        
+        if(curHp <= 0)
+        {
+            SaveManager.instance.ResetData();
+            SceneManager.LoadScene("Maintown");
+        }    
         // StopCoroutine(ShieldGuard());
     }
 

@@ -84,11 +84,14 @@ public class ShopItem : MonoBehaviour
     {
         switch (ConsumableID)
         {
-            //체력 회복
+            // 체력 회복
             case 10:
                 player.GetComponent<Battle>().HealHp(10);
                 break;
-
+            // 정령 영혼
+            case 20:
+                player.GetComponent<Inventory>().SpiritSoul++;
+                break;
         }
     }
 

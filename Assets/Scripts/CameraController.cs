@@ -16,6 +16,8 @@ public class CameraController : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        if(Target == null) Target = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
     
     void Update()

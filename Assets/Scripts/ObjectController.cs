@@ -21,6 +21,7 @@ public class ObjectController : MonoBehaviour
 
     [SerializeField] private GameObject ShopItem;
     [SerializeField] private GameObject HpHealItem;
+    [SerializeField] private GameObject SpiritSoulItem;
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private float Space;
     public List<RectTransform> shopObjects = new List<RectTransform>();
@@ -45,7 +46,9 @@ public class ObjectController : MonoBehaviour
                 // scrollRect = GameObject.FindGameObjectWithTag("ShopScroll").GetComponent<ScrollRect>();
                 for (int i = 0; i < 2; i++)
                 {
-                    Invoke("SpawnConsumableItem", 0.1f);
+                    // Invoke("SpawnConsumableItem", 0.1f);
+                    SpawnConsumableItem(HpHealItem);
+                    SpawnConsumableItem(SpiritSoulItem);
                 }
                 for (int i = 0; i < 5; i++)
                 {
@@ -69,9 +72,9 @@ public class ObjectController : MonoBehaviour
     }
 
 
-    public void SpawnConsumableItem()
+    public void SpawnConsumableItem(GameObject obj)
     {
-        GameObject NewShopItem = Instantiate(HpHealItem, scrollRect.content);
+        GameObject NewShopItem = Instantiate(obj, scrollRect.content);
         NewShopItem.GetComponent<ShopItem>().objectController = this ;
         var newUi = NewShopItem.GetComponent<RectTransform>();
         shopObjects.Add(newUi);

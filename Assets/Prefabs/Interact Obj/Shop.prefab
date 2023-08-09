@@ -295,6 +295,7 @@ MonoBehaviour:
   interactView: {fileID: 3804493237631498710}
   ShopItem: {fileID: 2272788325850309193, guid: a799a66cc4a3746478e6d4eeeb2b3cc0, type: 3}
   HpHealItem: {fileID: 2272788325850309193, guid: 11a0aac61e0af664893549ef4f4d716a, type: 3}
+  SpiritSoulItem: {fileID: 2272788325850309193, guid: 0530bc6e010c5ab40ab91e79f509adc2, type: 3}
   scrollRect: {fileID: 0}
   Space: 0
   shopObjects: []

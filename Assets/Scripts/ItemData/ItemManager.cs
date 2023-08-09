@@ -8,7 +8,6 @@ public class ItemManager : MonoBehaviour
     public static ItemManager instance;
 
     [SerializeField] private List<ItemData> ItemDatas;
-    [SerializeField] private GameObject ItemPrefab;
 
     
 

@@ -68,6 +68,11 @@ public class SaveManager : MonoBehaviour
         XmlElement playerGold = xmlDocument.CreateElement("PlayerGold");
         playerGold.InnerText = player.GetComponent<Inventory>().Gold.ToString();
         root.AppendChild(playerGold);
+        
+        // 정수 저장
+        XmlElement playerSpiritSoul = xmlDocument.CreateElement("PlayerSpiritSoul");
+        playerSpiritSoul.InnerText = player.GetComponent<Inventory>().SpiritSoul.ToString();
+        root.AppendChild(playerSpiritSoul);
 
         // 클리어한 스테이지 수 저장
         XmlElement clearStageNum = xmlDocument.CreateElement("ClearStageNum");
@@ -155,6 +160,9 @@ public class SaveManager : MonoBehaviour
             XmlNodeList gold = xmlDocument.GetElementsByTagName("PlayerGold");
             player.GetComponent<Inventory>().Gold = int.Parse(gold[0].InnerText);
 
+            // 정령
+            XmlNodeList spiritSoul = xmlDocument.GetElementsByTagName("PlayerSpiritSoul");
+            player.GetComponent<Inventory>().SpiritSoul = int.Parse(spiritSoul[0].InnerText);
             
 
 
@@ -180,6 +188,71 @@ public class SaveManager : MonoBehaviour
 
 
     }
+
+    
+    public void ResetData()
+    {
+        XmlDocument xmlDocument = new XmlDocument();
+        xmlDocument.AppendChild(xmlDocument.CreateXmlDeclaration("1.0", "utf-8", "yes"));
+
+        
+        XmlElement root = xmlDocument.CreateElement("Save");
+        root.SetAttribute("FileName", "ElementGame_Data");
+
+        // 무기 종류 저장
+        XmlElement playerWeaponData = xmlDocument.CreateElement("PlayerWeaponType");
+        playerWeaponData.InnerText = "Sword";
+        root.AppendChild(playerWeaponData);
+
+        // 무기 타입 저장
+        XmlElement playerElementData = xmlDocument.CreateElement("PlayerElementType");
+        playerElementData.InnerText = "None";
+        root.AppendChild(playerElementData);
+
+        // 골드 저장
+        XmlElement playerGold = xmlDocument.CreateElement("PlayerGold");
+        playerGold.InnerText = 0.ToString();
+        root.AppendChild(playerGold);
+        
+        // 정수 저장
+        XmlElement playerSpiritSoul = xmlDocument.CreateElement("PlayerSpiritSoul");
+        playerSpiritSoul.InnerText = 0.ToString();
+        root.AppendChild(playerSpiritSoul);
+
+        // 클리어한 스테이지 수 저장
+        XmlElement clearStageNum = xmlDocument.CreateElement("ClearStageNum");
+        clearStageNum.InnerText = 0.ToString();
+        root.AppendChild(clearStageNum);
+
+        // 아이템 데이터 저장
+        XmlElement playerItemData, Datas;
+
+
+        for (int i = 0; i < player.inventory.HavingItem.Length; i++)
+        {
+            playerItemData = xmlDocument.CreateElement("ItemData");
+            Datas = xmlDocument.CreateElement("Datas");
+            
+            playerItemData.InnerText = "0";
+            
+
+            Datas.AppendChild(playerItemData);
+
+            root.AppendChild(Datas);
+        }
+
+        xmlDocument.AppendChild(root);
+
+        xmlDocument.Save(Application.dataPath + "/DataXML.xml");
+        if(File.Exists(Application.dataPath + "/DataXML.xml"))
+        {
+            Debug.Log("Saved");
+            // 저장 성공
+        }
+
+    }
+
+
 
     static string GetPath()
     {
