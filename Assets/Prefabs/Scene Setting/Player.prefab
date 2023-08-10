@@ -339,10 +339,6 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   manager: {fileID: 0}
-  AnimController:
-  - {fileID: 9100000, guid: a24d43c3af587fe4ab03f9382018a43b, type: 2}
-  - {fileID: 9100000, guid: 7c0c01dc53ede834a8f9cfa8a1b4dbc2, type: 2}
-  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   PlayerElementType: 0
   PlayerWeaponType: 0
   inventory: {fileID: 8509772043893616530}
@@ -383,8 +379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2991cf47f0f4d745bdc02d8f7aa3fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
-  jumpForce: 12
+  moveSpeed: 8
+  jumpForce: 17
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -504,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gold: 0
+  SpiritSoul: 0
   HavingItem:
   - {fileID: 0}
   - {fileID: 0}

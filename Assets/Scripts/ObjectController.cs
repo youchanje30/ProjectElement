@@ -11,8 +11,10 @@ public class ObjectController : MonoBehaviour
         NPC,
         Portal,
         Shop,
-        Weapon
+        Weapon,
+        SpiritAwake // 정령 각성 오브젝트
     }
+
     [SerializeField] private WeaponTypes WeaponType;
     [SerializeField] private InteractObjects ObjType;
     public int objectID;
@@ -54,6 +56,10 @@ public class ObjectController : MonoBehaviour
                 {
                     Invoke("SpawnShopItem", 0.1f);
                 }
+                break;
+            
+            case InteractObjects.SpiritAwake:
+
                 break;
         }
 
@@ -127,6 +133,10 @@ public class ObjectController : MonoBehaviour
             case InteractObjects.Shop:
                 OpenShop();
                 break;
+                
+            case InteractObjects.SpiritAwake:
+                OpenSpiritAwake();
+                break;
 
             case InteractObjects.Weapon:
                 PlayerController player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
@@ -137,6 +147,11 @@ public class ObjectController : MonoBehaviour
         }
     }
 
+    public void OpenSpiritAwake()
+    {
+        GameManager.instance.SpiritAwakeUI.SetActive(true);
+        GameManager.instance.isSpiritAwake = true;
+    }
 
 
     public void OpenShop()

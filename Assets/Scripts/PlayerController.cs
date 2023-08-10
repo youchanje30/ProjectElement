@@ -120,6 +120,12 @@ public class PlayerController : MonoBehaviour
             manager.ShopUI.SetActive(false);
         }
 
+        if(manager.isSpiritAwake && Input.GetKeyDown(KeyCode.Escape))
+        {
+            manager.isSpiritAwake = false;
+            manager.SpiritAwakeUI.SetActive(false);
+        }
+
 
         if(battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
         {

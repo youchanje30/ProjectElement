@@ -15,6 +15,7 @@ TagManager:
   - ShopScroll
   - Weapon
   - SpiritSoul
+  - SpiritAwake
   layers:
   - Default
   - TransparentFX

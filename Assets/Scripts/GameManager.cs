@@ -57,6 +57,10 @@ public class GameManager : MonoBehaviour
     public GameObject ShopUI;
     public bool isShop = false;
 
+    [Header("SpiritAwake Setting")]
+    public GameObject SpiritAwakeUI;
+    public bool isSpiritAwake = false;
+
 
     void Awake()
     {
@@ -76,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop)
+        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSpiritAwake)
         {
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;

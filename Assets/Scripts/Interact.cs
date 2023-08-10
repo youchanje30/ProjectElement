@@ -19,7 +19,7 @@ public class Interact : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Tag를 변경하는게 좋아보인다.
-        if(other.tag == "NPC" || other.tag == "Portal" || other.tag == "Shop" || other.tag == "Weapon") // || other.gameObject.tag == "NPC" )
+        if(other.tag == "NPC" || other.tag == "Portal" || other.tag == "Shop" || other.tag == "Weapon" || other.tag == "SpiritAwake") // || other.gameObject.tag == "NPC" )
         {
             if(scanObj != null)
                 scanObj.gameObject.GetComponent<ObjectController>().InteractView(false);
@@ -46,7 +46,7 @@ public class Interact : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(scanObj == null && (other.gameObject.tag == "NPC" || other.gameObject.tag == "Portal" || other.tag == "Shop" || other.tag == "Weapon"))
+        if(scanObj == null && (other.gameObject.tag == "NPC" || other.gameObject.tag == "Portal" || other.tag == "Shop" || other.tag == "Weapon" || other.tag == "SpiritAwake"))
         {
             scanObj = other.gameObject;
             scanObj.gameObject.GetComponent<ObjectController>().InteractView(true);
