@@ -236,8 +236,8 @@ Transform:
   m_GameObject: {fileID: 2403636429483658913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 255523784500806099}
   - {fileID: 8842539590737723209}
@@ -383,11 +383,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MonsterType: 2
   stageManager: {fileID: 0}
-  ImgScale: 2
+  ImgScale: 3
   FloorRayX: 3
   FloorRayY: 3
+  sprite: {fileID: 0}
   atkTrans: {fileID: 255523784500806099}
-  atkSize: {x: 1.6, y: 1.4}
+  atkSize: {x: 2.35, y: 1.6}
   moveSpeed: 0
   maxHp: 20
   Dmg: 2
@@ -397,6 +398,7 @@ MonoBehaviour:
   curHp: 0
   curAtkCoolTime: 0
   isKnockback: 0
+  isDead: 0
   Hpbar: {fileID: 2500072885461357208}
   gradient:
     serializedVersion: 2
@@ -441,12 +443,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d065033932ac8f44b9b9f659ff159ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImgScale: 2
-  FloorRayX: 3
-  FloorRayY: 1
+  ImgScale: 3
+  FloorRayX: 4
+  FloorRayY: 1.5
   jumpX: 2
   jumpY: 5
-  jumpForce: 15
+  jumpForce: 18
   canAtk: 0
   isGround: 0
   MinCoolTime: 2

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1119876839234840092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6717191158431195033}
@@ -196,23 +196,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MonsterType: 0
-  ImgScale: 3
-  FloorRayX: 1.5
-  FloorRayY: 1.5
+  stageManager: {fileID: 0}
+  ImgScale: 6
+  FloorRayX: 3
+  FloorRayY: 3
+  sprite: {fileID: 0}
   atkTrans: {fileID: 6717191158431195033}
-  atkSize: {x: 1.5, y: 2}
-  moveSpeed: 3
+  atkSize: {x: 2.62, y: 2.56}
+  moveSpeed: 4
   maxHp: 10
   Dmg: 1
   atkCoolTime: 3
   AtkRange: 2
   FollowRange: 8
-  jumpX: 0
-  jumpY: 0
-  jumpForce: 0
   curHp: 0
   curAtkCoolTime: 0
   isKnockback: 0
+  isDead: 0
   Hpbar: {fileID: 3082504043854259011}
   gradient:
     serializedVersion: 2
@@ -524,7 +524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5655747209539652080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.38, y: -0.2, z: 0}
+  m_LocalPosition: {x: -0.282, y: -0.243, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 4680606851316545861}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1984558700831331089
 GameObject:
@@ -159,6 +159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  Offset: {x: 0, y: 0, z: -10}
+  Offset: {x: 0, y: 3, z: -10}
   cameraHandler: {fileID: 2381640013870362304}
   smoothness: 10
