@@ -3764,6 +3764,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpiritAwake
       objectReference: {fileID: 0}
+    - target: {fileID: 4393658632008423531, guid: 1e97403358780ba438187173d3260e46, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9033673069059822518, guid: 1e97403358780ba438187173d3260e46, type: 3}
       propertyPath: m_RootOrder
       value: 26

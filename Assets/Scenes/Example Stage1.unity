@@ -4233,6 +4233,8 @@ MonoBehaviour:
   TimeTxt: {fileID: 1488470463}
   ShopUI: {fileID: 0}
   isShop: 0
+  SpiritAwakeUI: {fileID: 0}
+  isSpiritAwake: 0
   resolutionDropdown: {fileID: 2117973850}
   fullScreen: 0
 --- !u!4 &737378946
@@ -11544,7 +11546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1488470462
 RectTransform:
   m_ObjectHideFlags: 0

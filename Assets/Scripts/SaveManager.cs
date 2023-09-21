@@ -111,15 +111,15 @@ public class SaveManager : MonoBehaviour
         xmlDocument.AppendChild(root);
 
 
-        /* StringWriter stringWriter = new StringWriter();
+       /*  StringWriter stringWriter = new StringWriter();
         XmlTextWriter xmlTextWriter = new XmlTextWriter(stringWriter);
 
         xmlDocument.WriteTo(xmlTextWriter);
         string encryptString = Encrypt(stringWriter.ToString());
         SaveFile(encryptString); */
-        
-        // string encryptString = encryData(stringWriter.ToString());
-        xmlDocument.Save(Application.dataPath + "/DataXML.xml");
+        SaveFile(EncryptGameData(xmlDocument));
+
+        // xmlDocument.Save(Application.dataPath + "/DataXML.xml");
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
             Debug.Log("Saved");
@@ -132,15 +132,16 @@ public class SaveManager : MonoBehaviour
     {
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
-            /* string encryptData = LoadFile(GetPath());
-            string decryptData = Decrypt(encryptData); */
+            // string encryptData = LoadFile(GetPath());
+            // string decryptData = Decrypt(encryptData);
 
             XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(DecryptGameData());
             // xmlDocument.WriteTo(decryptData);
 
             
             
-            xmlDocument.Load(Application.dataPath + "/DataXML.xml");
+            // xmlDocument.Load(Application.dataPath + "/DataXML.xml");
 
             // 무기 타입
             XmlNodeList playerWeaponData = xmlDocument.GetElementsByTagName("PlayerWeaponType");
@@ -187,6 +188,26 @@ public class SaveManager : MonoBehaviour
         }
 
 
+    }
+
+
+    string EncryptGameData(XmlDocument xmlDocument)
+    {
+        StringWriter stringWriter = new StringWriter();
+        XmlTextWriter xmlTextWriter = new XmlTextWriter(stringWriter);
+        xmlDocument.WriteTo(xmlTextWriter);
+        string encryptString = Encrypt(stringWriter.ToString());
+
+        return encryptString;
+    }
+
+    string DecryptGameData()
+    {
+        
+        string encryptData = LoadFile(GetPath());
+        string decryptData = Decrypt(encryptData);
+
+        return decryptData;
     }
 
     
