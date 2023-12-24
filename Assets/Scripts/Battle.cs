@@ -6,35 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Battle : MonoBehaviour
 {
-    [Header("Player Status")]
-    [Tooltip("현재 체력")]
-    public float curHp;
-    [Tooltip("최대 체력")]
-    public float maxHp = 10f;
-    [Tooltip("최대% 체력")]
-    public float maxPerHp; // 100%
-    [Tooltip("방어력")]
-    public float def;
-    [Tooltip("방어력%")]
-    public float defPer; // 100%
-    [Tooltip("물리 데미지")]
-    public float meleeDmg; 
-    [Tooltip("물리 데미지%")]
-    public float meleePerDmg; 
-    [Tooltip("스킬 데미지")]
-    public float skillDmg; 
-    [Tooltip("스킬 데미지%")]
-    public float skillPerDmg; 
-    [Tooltip("공격 속도")]
-    public float atkSpeed; // 100%
-    [Tooltip("크리티컬 확률")]
-    public float crtRate; // 기본 크리 10%
-    [Tooltip("크리티컬 데미지")]
-    public float crtDmg; // 기본 값 150%
-    [Space(20f)]
-
-    
     public Animator animator;
+    private PlayerStatus status;
     
     private Movement2D movement2D;
     private Rigidbody2D rigid2D;
@@ -54,7 +27,7 @@ public class Battle : MonoBehaviour
     public GameObject arrow;
 
     public float originalScale;
-
+    public float atkDamage { get { return status.AtkDamage();} }
 
     [Header("Sword Setting")]
     [SerializeField] private bool CanComboAtk = false;
@@ -82,10 +55,7 @@ public class Battle : MonoBehaviour
 
     void Awake()
     {
-            
-        
-
-        curHp = maxHp;
+        status = GetComponent<PlayerStatus>();
         movement2D = GetComponent<Movement2D>();
         rigid2D = GetComponent<Rigidbody2D>();
         
@@ -150,13 +120,12 @@ public class Battle : MonoBehaviour
         
         if(AtkObj.tag == "Monster")
         {
-            bool isCrt = Random.Range(1, 100 + 1) <= crtRate;
-            float NormalDmg = meleeDmg * meleePerDmg * 0.01f;
-            float FinalDmg = isCrt ? NormalDmg * crtDmg * 0.01f : NormalDmg;
+            // bool isCrt = Random.Range(1, 100 + 1) <= crtRate;
+            // float NormalDmg = damage * damagePer * 0.01f;
+            // float FinalDmg = isCrt ? NormalDmg * crtDmg * 0.01f : NormalDmg;
 
-            AtkObj.GetComponent<Monster>().GetDamaged(FinalDmg);
+            AtkObj.GetComponent<Monster>().GetDamaged(atkDamage);
             // AtkObj.GetComponent<Monster>().GetDamaged(meleeDmg);
-            // 데미지 계산 식
         }
 
         if(AtkObj.tag == "Destruct")
@@ -166,21 +135,12 @@ public class Battle : MonoBehaviour
 
     }
 
-    public void ResetStat()
-    {
-        maxHp = 10;
-        maxPerHp = 100;
-        def = 0;
-        defPer = 100;
-        meleeDmg = 3;
-        meleePerDmg = 100;
-        skillDmg = 0;
-        skillPerDmg = 100;
-        atkSpeed = 100;
-        crtRate = 10;
-        crtDmg = 150;
-    }
+   
 
+
+
+
+    
     public void AtkAction(int id)
     {
         // if(!atk) return;
@@ -190,9 +150,6 @@ public class Battle : MonoBehaviour
             if(!movement2D.isGround)
             {
                 if(WeaponType == WeaponTypes.Bow) return; //활은 점프 공격이 없어요
-                
-                    
-                
                 
                 StartCoroutine(FallDownAtk());
                 return;
@@ -228,16 +185,16 @@ public class Battle : MonoBehaviour
         rigid2D.gravityScale = 4f;
     }
 
-
-    public void HealHp(int IncreaseHp)
+    // 체력 회복
+    public void HealHp(float increaseHp)
     {
-        if(curHp + IncreaseHp <= maxHp)
+        if(status.curHp + increaseHp <= status.maxHp)
         {
-            curHp += IncreaseHp;
+            status.curHp += increaseHp;
         }
         else
         {
-            curHp = maxHp;
+            status.curHp = status.maxHp;
         }
     }
 
@@ -310,7 +267,7 @@ public class Battle : MonoBehaviour
             }
             // 공격 중인거 종료
 
-            yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]/(atkSpeed * 0.01f));
+            yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]/(status.atkSpeed * 0.01f));
 
             //애니메이션 종료 및 공격 종료
 
@@ -363,7 +320,7 @@ public class Battle : MonoBehaviour
         if(WeaponType == WeaponTypes.Bow)
         {
             GameObject ThrowArrow = Instantiate(arrow);
-            ThrowArrow.GetComponent<ProjectileType>().Damage = meleeDmg;
+            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
             ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
             ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
         }
@@ -372,7 +329,7 @@ public class Battle : MonoBehaviour
 
     public IEnumerator ComboAtk()
     {
-        yield return new WaitForSeconds(ComboTime/(atkSpeed * 0.01f));
+        yield return new WaitForSeconds(ComboTime/(status.atkSpeed * 0.01f));
         CanComboAtk = false;
     }
 
@@ -392,7 +349,7 @@ public class Battle : MonoBehaviour
             
             // Atking = false;
 
-            yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]/(atkSpeed * 0.01f));
+            yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]/(status.atkSpeed * 0.01f));
 
             isAtkReady[(int)WeaponType] = true;
         } 
@@ -410,8 +367,8 @@ public class Battle : MonoBehaviour
         ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
         ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
         Atking = false;
-    }
- */
+    }*/
+ 
     public void ChargingBowAtk()
     {
         Atking = true;
@@ -420,7 +377,7 @@ public class Battle : MonoBehaviour
 
         //화살 소환
         GameObject ThrowArrow = Instantiate(arrow);
-        ThrowArrow.GetComponent<ProjectileType>().Damage = meleeDmg;
+        ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
         ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
         ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
         Atking = false;
@@ -471,24 +428,21 @@ public class Battle : MonoBehaviour
    
 
 
-
+    // 데미지 받을 때 처리하는 함수
     public void GetDamaged(float Damage)
     {
         if(isGuard) return;
 
-        // Debug.Log("Get Damaged");
+        bool isMiss = Random.Range(1, 100 + 1) <= status.missRate;
 
-        curHp -= Damage;
+        if(!isMiss)
+            status.curHp -= Damage * (100 - status.defPer) * 0.01f;
 
-        if(curHp <= 0)
+        if(status.curHp <= 0)
         {
             SaveManager.instance.ResetData();
             SceneManager.LoadScene("Maintown");
         }    
         // StopCoroutine(ShieldGuard());
     }
-
-
-
-    
 }
