@@ -14,9 +14,6 @@ public enum ItemRares
 public class ItemData : ScriptableObject
 {
 
-    
-
-
     [Header("Item Info")]
     [SerializeField] private string itemName;
     public string ItemName { get { return itemName; } }
@@ -30,44 +27,61 @@ public class ItemData : ScriptableObject
     [SerializeField] private int itemID;
     public int ItemID { get { return itemID; } }
     public Image itemImg;
-    [Space(20f)]
+    [Space(40f)]
+
+
+
+
+
 
 
     [Header("Battle Stat Increase Data")]
     [Tooltip("체력 증가량")]
-    [SerializeField] private int hpIncrease;
-    public int HpIncrease { get { return hpIncrease; } }
+    [SerializeField] private float hp;
+    public float Hp { get { return hp; } }
     [Tooltip("체력% 증가량")]
-    [SerializeField] private int hpPerIncrease;
-    public int HpPerIncrease { get { return hpPerIncrease; } }
-    [Tooltip("방어력 증가량")]
-    [SerializeField] private int defIncrease;
-    public int DefIncrease {get { return defIncrease; } }
-    [Tooltip("방어력% 증가량")]
-    [SerializeField] private int defPerIncrease;
-    public int DefPerIncrease {get { return defPerIncrease; } }
-    [Tooltip("물리 데미지 증가량")]
-    [SerializeField] private int meleeDmgIncrease;
-    public int MeleeDmgIncrease {get { return meleeDmgIncrease; } }
-    [Tooltip("물리 데미지% 증가량")]
-    [SerializeField] private int meleeDmgPerIncrease;
-    public int MeleeDmgPerIncrease {get { return meleeDmgPerIncrease; } }
-    [Tooltip("스킬 데미지 증가량")]
-    [SerializeField] private int skillDmgIncrease;
-    public int SkillDmgIncrease{get { return skillDmgIncrease; } }
-    [Tooltip("스킬 데미지% 증가량")]
-    [SerializeField] private int skillDmgPerIncrease;
-    public int SkillDmgPerIncrease{get { return skillDmgPerIncrease; } }
+    [SerializeField] private float hpPer;
+    public float HpPer { get { return hpPer; } }
+    
+    [Tooltip("데미지 증가량")]
+    [SerializeField] private float damage;
+    public float Damage { get { return damage; } }
+    [Tooltip("데미지% 증가량")]
+    [SerializeField] private float damagePer;
+    public float DamagePer { get { return damagePer; } }
+    
     [Tooltip("공격 속도% 증가량")]
-    [SerializeField] private int atkSpeedIncrease;
-    public int AtkSpeedIncrease { get { return atkSpeedIncrease; } }
+    [SerializeField] private float atkSpeed;
+    public float AtkSpeed { get { return atkSpeed; } }
+
     [Tooltip("크리티컬 확률% 증가량")]
-    [SerializeField] private int crtRateIncrease;
-    public int CrtRateIncrease { get { return crtRateIncrease; } }
+    [SerializeField] private float crtRate;
+    public float CrtRate { get { return crtRate; } }
     [Tooltip("크리티컬 데미지% 증가량")]
-    [SerializeField] private int crtDmgIncrease;
-    public int CrtDmgIncrease { get { return crtDmgIncrease; } }
+    [SerializeField] private float crtDamage;
+    public float CrtDamage { get { return crtDamage; } }
+
+    [Tooltip("회피확률 증가량")]
+    [SerializeField] private float missRate;
+    public float MissRate { get { return missRate; } }
+
+    [Tooltip("피해 감소 증가량")]
+    [SerializeField] private float defPer;
+    public float DefPer { get { return defPer; } }
 
 
+    [Tooltip("이동 속도 증가량")]
+    [SerializeField] private float playerSpeed;
+    public float PlayerSpeed { get { return playerSpeed; } }
 
+    [Tooltip("쿨타임 감소 증가량")]
+    [SerializeField] private float coolDownReductionPer;
+    public float CoolDownReductionPer { get { return coolDownReductionPer; } }
+    
+    [Tooltip("점프력 증가량")]
+    [SerializeField] private float jumpForce;
+    public float JumpForce { get { return jumpForce; } }
+    [Tooltip("점프력% 증가량")]
+    [SerializeField] private float jumpForcePer;
+    public float JumpForcePer { get { return jumpForcePer; } }
 }

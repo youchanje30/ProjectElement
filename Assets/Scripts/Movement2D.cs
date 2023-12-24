@@ -6,17 +6,32 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Movement2D : MonoBehaviour
 {
-    [Header("Base Setting")]
+    // [Header("Base Setting")]
     [Tooltip("플레이어가 움직이는 속도")]
-    public float moveSpeed = 4f;
+    // public float moveSpeed = 8f;
+    public float moveSpeed
+    {
+        get
+        {
+            return playerStatus.playerSpeed;
+        }
+    }
     [Tooltip("점프력")]
-    public float jumpForce = 15f;
-    [Space(20f)]
+    // public float jumpForce = 15f;
+    public float jumpForce
+    {
+        get 
+        {
+            return playerStatus.jumpForce;
+        }
+    }
+    // [Space(20f)]
     
     private Rigidbody2D rigid2D;
     private BoxCollider2D boxCollider2D;
     private Animator animator;
     private GameObject currentOneWayPlatform;
+    private PlayerStatus playerStatus;
     private Battle battle;
     // [SerializeField] private BoxCollider2D
 
@@ -59,6 +74,7 @@ public class Movement2D : MonoBehaviour
         rigid2D = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        playerStatus = GetComponent<PlayerStatus>();
     }
 
 

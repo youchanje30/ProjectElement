@@ -264,7 +264,8 @@ public class SaveManager : MonoBehaviour
 
         xmlDocument.AppendChild(root);
 
-        xmlDocument.Save(Application.dataPath + "/DataXML.xml");
+        // xmlDocument.Save(Application.dataPath + "/DataXML.xml");
+        SaveFile(EncryptGameData(xmlDocument));
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
             Debug.Log("Saved");

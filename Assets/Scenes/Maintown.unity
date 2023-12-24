@@ -1119,8 +1119,56 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: jumpForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: WeaponType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: playerSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: jumpForcePer
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: atkPos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: atkSize.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: atkPos.Array.data[3]
+      value: 
+      objectReference: {fileID: 1774961202}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: isAtkReady.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: isAtkReady.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: Left_AtkCoolTime.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: Right_AtkCoolTime.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: Left_AtkCoolTime.Array.data[3]
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: Right_AtkCoolTime.Array.data[3]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7141198254234339824, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: m_Name
@@ -2719,6 +2767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18fe1efb388e8194e8a0acc085ada51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1774961202 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4315468924003554650, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+  m_PrefabInstance: {fileID: 1073802172}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1848661014 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7655545796451485566, guid: f86a4699dc56b8447bef7f0c5ad0e925, type: 3}

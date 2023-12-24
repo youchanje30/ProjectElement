@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Type
 {
-    Arrow
+    Arrow, Magic
 }
 
 public class ProjectileType : MonoBehaviour
@@ -12,12 +12,28 @@ public class ProjectileType : MonoBehaviour
     public Type Projectile;
     private CapsuleCollider2D Collider2D;
     public float Damage;
-    public float Throwspeed;
+    public float moveSpeed;
+    public Transform target;
 
     
     void Update()
     {
-        transform.position += new Vector3(-(transform.localScale.x),0,0) * Time.deltaTime * Throwspeed;
+        Move();
+        transform.position += new Vector3(-(transform.localScale.x),0,0) * Time.deltaTime * moveSpeed;
+    }
+
+    void Move()
+    {
+        switch (Projectile)
+        {
+            case Type.Arrow:
+                
+                break;
+            
+            case Type.Magic:
+                transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * moveSpeed);
+                break;
+        }
     }
 
     private void Awake()

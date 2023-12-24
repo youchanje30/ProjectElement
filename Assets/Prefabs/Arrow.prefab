@@ -135,4 +135,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: 0
   Damage: 2
-  Throwspeed: 10
+  moveSpeed: 5
+  target: {fileID: 0}

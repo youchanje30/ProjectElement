@@ -8,7 +8,7 @@ public enum Elements
     None, Fire, South, Water, Wind
 }
 
-public enum WeaponTypes { Shield, Sword , Bow };
+public enum WeaponTypes { Shield, Sword , Bow, }; // Wand };
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     //GameManager는 씬의 초기 세팅, 설정 등에 관한 스크립트
     private Movement2D movement2D;
+    private PlayerStatus status;
     private Interact interact;
     private Rigidbody2D rigid2D;
     private Battle battle;
@@ -81,18 +82,23 @@ public class PlayerController : MonoBehaviour
         battle = GetComponent<Battle>();
         animator = GetComponent<Animator>();
         inventory = GetComponent<Inventory>();
+        status = GetComponent<PlayerStatus>();
         #endregion Component Access
 
-        playerHpBar.maxValue = battle.maxHp;
+        playerHpBar.maxValue = status.maxHp;
 
         // animator.runtimeAnimatorController = AnimController[(int)battle.WeaponType];
-        SetEquipment();
-        battle.WeaponType = PlayerWeaponType;
         chargingTime = 0;
         
         // animator = 
     }
     
+    void Start()
+    {
+        
+        SetEquipment();
+        battle.WeaponType = PlayerWeaponType;
+    }
 
 
 
@@ -108,7 +114,7 @@ public class PlayerController : MonoBehaviour
     void PlayerUISystem()
     {
         // playerHpBar.value = battle.curHp;
-        playerHpBar.value = Mathf.Lerp(playerHpBar.value, battle.curHp, Time.deltaTime * 5f);
+        playerHpBar.value = Mathf.Lerp(playerHpBar.value, status.curHp, Time.deltaTime * 5f);
         HpFill.color = gradient.Evaluate(playerHpBar.normalizedValue);
     }
 
@@ -208,41 +214,38 @@ public class PlayerController : MonoBehaviour
     public void SetEquipment()
     {
         ChangeAnim();
-        battle.ResetStat();
+        status.SetEquipment();
+        // battle.ResetStat();
         // if(animator.runtimeAnimatorController == Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType]) return;
         battle.WeaponType = PlayerWeaponType;
         // SaveManager.instance.Save();
 
+        /*
         for (int i = 0; i < inventory.HavingItem.Length; i++)
         {
             if(inventory.HavingItem[i] != null)
             {
                 //체력 증가
-                battle.maxHp += inventory.HavingItem[i].HpIncrease;
-                battle.maxPerHp += inventory.HavingItem[i].HpPerIncrease;
+                playerStatus.maxHp += inventory.HavingItem[i].HpIncrease;
+                // playerStatus.hpPer += inventory.HavingItem[i].HpPerIncrease;
                 
                 //방어력 증가
-                battle.def += inventory.HavingItem[i].DefIncrease;
-                battle.defPer += inventory.HavingItem[i].DefPerIncrease;
+                // battle.def += inventory.HavingItem[i].DefIncrease;
+                // battle.defPer += inventory.HavingItem[i].DefPerIncrease;
 
                 //물리 데미지 증가
-                battle.meleeDmg += inventory.HavingItem[i].MeleeDmgIncrease;
-                battle.meleePerDmg += inventory.HavingItem[i].MeleeDmgPerIncrease;
-
-                //스킬 데미지 증가
-                battle.skillDmg += inventory.HavingItem[i].SkillDmgIncrease;
-                battle.skillPerDmg += inventory.HavingItem[i].SkillDmgPerIncrease;
+                // battle.meleeDmg += inventory.HavingItem[i].MeleeDmgIncrease;
+                // battle.meleePerDmg += inventory.HavingItem[i].MeleeDmgPerIncrease;
 
                 //공격 속도, 크리 확률, 크리 데미지 증가
-                battle.atkSpeed += inventory.HavingItem[i].AtkSpeedIncrease;
-                battle.crtRate += inventory.HavingItem[i].CrtRateIncrease;
-                battle.crtDmg += inventory.HavingItem[i].CrtDmgIncrease;
+                playerStatus.atkSpeed += inventory.HavingItem[i].AtkSpeedIncrease;
+                playerStatus.crtRate += inventory.HavingItem[i].CrtRateIncrease;
+                playerStatus.crtDamage += inventory.HavingItem[i].CrtDmgIncrease;
             }
         }
+        */
 
-        animator.SetFloat("AtkSpeed", battle.atkSpeed * 0.01f);
-        
-
+        animator.SetFloat("AtkSpeed", status.atkSpeed * 0.01f);
     }
 
     void Act() //상호작용, 공격 스킬 등의 입력을 전달하는 함수
