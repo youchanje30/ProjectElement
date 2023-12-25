@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour
     public GameObject SpiritAwakeUI;
     public bool isSpiritAwake = false;
 
+    [Header("SwapSlot Setting")]
+    public GameObject[] HavingElemental;
+
 
     void Awake()
     {
@@ -273,22 +276,25 @@ public class GameManager : MonoBehaviour
     }
     
 
-    public void Active(int objectID)
+    public void Active(int objectID) //정령 2번 선택지
     {
         switch (objectID)
         {
             case 1000:
                 player.PlayerElementType = Elements.Fire;
+                player.PlayerWeaponType = WeaponTypes.Sword;
                 player.SetEquipment();
                 break;
 
             case 2000:
                 player.PlayerElementType = Elements.South;
+                player.PlayerWeaponType = WeaponTypes.Shield;
                 player.SetEquipment();
                 break;
     
             case 3000:
                 player.PlayerElementType = Elements.Wind;
+                player.PlayerWeaponType = WeaponTypes.Bow;
                 player.SetEquipment();
                 break;
                 

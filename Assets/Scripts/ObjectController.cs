@@ -141,6 +141,7 @@ public class ObjectController : MonoBehaviour
             case InteractObjects.Weapon:
                 PlayerController player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
                 player.PlayerWeaponType = WeaponType;
+                player.SetEquipment();
                 SaveManager.instance.Save();
                 player.ChangeAnim();
                 break;
