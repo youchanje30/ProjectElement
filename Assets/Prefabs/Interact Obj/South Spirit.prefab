@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 4737147878803251620}
   - component: {fileID: 3631957191998174894}
   m_Layer: 0
-  m_Name: Earth Spirit
+  m_Name: South Spirit
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
