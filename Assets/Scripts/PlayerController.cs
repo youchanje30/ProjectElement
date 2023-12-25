@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,11 @@ public enum Elements
 
 public enum WeaponTypes { Shield, Sword , Bow , Wand };
 
+
 public class PlayerController : MonoBehaviour
 {
-    
 
-    
+
     //PlayerController에서 플레이어의 입력을 받음
     //Movement2D 캐릭터의 이동에 관한 스크립트
     //Battle 캐릭터의 전투에 관한 스크립트
@@ -40,8 +41,9 @@ public class PlayerController : MonoBehaviour
     public WeaponTypes PlayerWeaponType;
     public Inventory inventory;
 
-    
-    [System.Serializable] public class ElementAnims
+
+    [System.Serializable]
+    public class ElementAnims
     {
         public RuntimeAnimatorController[] ElementAnim;
     }
@@ -60,13 +62,21 @@ public class PlayerController : MonoBehaviour
     [Header("Interact Setting")]
     [SerializeField] private KeyCode InteractKey = KeyCode.E;
     private bool pressedInteractKey;
-    
+
     [Header("Atk Setting")]
     [SerializeField] private KeyCode LeftAtkKey = KeyCode.Z;
     private bool pressedLeftAtkKey;
     [SerializeField] private KeyCode RightAtkKey = KeyCode.X;
-
     private bool pressedRightAtkKey;
+
+    [Header("Swap Setting")]
+    [SerializeField] private KeyCode FirstSlot = KeyCode.A;
+    private bool pressedFirstSlot;
+    [SerializeField] private KeyCode SecondSlot = KeyCode.S;
+    private bool pressedSecondSlot;
+    [SerializeField] private KeyCode ThirdSlot = KeyCode.D;
+    private bool pressedThirdSlot;
+
 
     public float chargingTime;
 
@@ -89,15 +99,15 @@ public class PlayerController : MonoBehaviour
 
         // animator.runtimeAnimatorController = AnimController[(int)battle.WeaponType];
         chargingTime = 0;
-        
+
         // animator = 
     }
-    
+
     void Start()
     {
-        
         SetEquipment();
         battle.WeaponType = PlayerWeaponType;
+
     }
 
 
@@ -108,6 +118,7 @@ public class PlayerController : MonoBehaviour
         Act();
         Move();
         PlayerUISystem();
+        Swap();
         // ChangeEquipment();
     }
 
@@ -120,20 +131,20 @@ public class PlayerController : MonoBehaviour
 
     void InputSystem()
     {
-        if(manager.isShop && Input.GetKeyDown(KeyCode.Escape))
+        if (manager.isShop && Input.GetKeyDown(KeyCode.Escape))
         {
             manager.isShop = false;
             manager.ShopUI.SetActive(false);
         }
 
-        if(manager.isSpiritAwake && Input.GetKeyDown(KeyCode.Escape))
+        if (manager.isSpiritAwake && Input.GetKeyDown(KeyCode.Escape))
         {
             manager.isSpiritAwake = false;
             manager.SpiritAwakeUI.SetActive(false);
         }
 
 
-        if(battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
+        if (battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
         {
             pressedRightAtkKey = true;
             animator.SetBool("isCharge", true);
@@ -142,50 +153,51 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if(battle.WeaponType != WeaponTypes.Sword && ischarging)
+        if (battle.WeaponType != WeaponTypes.Sword && ischarging)
         {
-            if(Input.GetKey(RightAtkKey))
+            if (Input.GetKey(RightAtkKey))
             {
 
                 chargingTime += Time.deltaTime;
             }
 
-            if(Input.GetKeyUp(RightAtkKey))
+            if (Input.GetKeyUp(RightAtkKey))
             {
                 ischarging = false;
                 pressedRightAtkKey = false;
-                
-                if(chargingTime < 1f)
+
+                if (chargingTime < 1f)
                     chargingTime = 0f;
 
                 animator.SetBool("isCharge", false);
             }
         }
-        
 
 
-        if(movement2D.isDashing || manager.isAction || manager.isShop || battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
+
+        if (movement2D.isDashing || manager.isAction || manager.isShop || battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
             hAxis = 0;
             return;
-        } 
+        }
 
         pressedDashKey = Input.GetKeyDown(DashKey);
         pressedJumpkey = Input.GetKeyDown(JumpKey);
         hAxis = Input.GetAxisRaw("Horizontal");
-        
+
         pressedInteractKey = Input.GetKeyDown(InteractKey);
         pressedLeftAtkKey = Input.GetKeyDown(LeftAtkKey);
         pressedRightAtkKey = Input.GetKey(RightAtkKey);
 
-        
-        
-        
+        pressedFirstSlot = Input.GetKeyDown(FirstSlot);
+        pressedSecondSlot = Input.GetKeyDown(SecondSlot);
+        pressedThirdSlot = Input.GetKeyDown(ThirdSlot);
 
-        if(battle.Atking)// || pressedRightAtkKey)
-        {   
+
+        if (battle.Atking)// || pressedRightAtkKey)
+        {
             pressedInteractKey = false;
             pressedLeftAtkKey = false;
             // pressedRightAtkKey = false;
@@ -204,7 +216,6 @@ public class PlayerController : MonoBehaviour
             
         } */
     }
-
 
     public void ChangeAnim()
     {
@@ -250,32 +261,57 @@ public class PlayerController : MonoBehaviour
 
     void Act() //상호작용, 공격 스킬 등의 입력을 전달하는 함수
     {
-        if(pressedInteractKey && !manager.isAction) interact.InteractObj();
+        if (pressedInteractKey && !manager.isAction) interact.InteractObj();
 
-        if(pressedLeftAtkKey && !manager.isAction ) battle.AtkAction(0);
+        if (pressedLeftAtkKey && !manager.isAction) battle.AtkAction(0);
 
-        if(!pressedRightAtkKey && !manager.isAction && chargingTime >= 1f)
+        if (!pressedRightAtkKey && !manager.isAction && chargingTime >= 1f)
         {
             battle.AtkAction(1);
             chargingTime = 0f;
-        } 
+        }
     }
-
 
     void Move()
     {
-        if(battle.Atking)
+        if (battle.Atking)
         {
             // movement2D.MoveX(hAxis);
             return;
-        } 
-
-        if(pressedDashKey && movement2D.curDashCnt > 0) StartCoroutine(movement2D.Dash());
-
-        if(!movement2D.isDashing)
-        {
-            if(pressedJumpkey) movement2D.Jump();
-            movement2D.MoveX(hAxis); 
         }
+
+        if (pressedDashKey && movement2D.curDashCnt > 0) StartCoroutine(movement2D.Dash());
+
+        if (!movement2D.isDashing)
+        {
+            if (pressedJumpkey) movement2D.Jump();
+            movement2D.MoveX(hAxis);
+        }
+    }
+    void Swap()
+    {
+        if (pressedFirstSlot)
+        {
+            PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[0];
+            PlayerElementType = (Elements)inventory.HavingElemental[0];
+            battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
+            SetEquipment();
+        }
+        if (pressedSecondSlot)
+        {
+            PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[1];
+            PlayerElementType = (Elements)inventory.HavingElemental[1];
+            battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
+            SetEquipment();
+        }
+        
+        if (pressedThirdSlot)
+        { 
+            PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[2];
+            PlayerElementType = (Elements)inventory.HavingElemental[2];
+            battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
+            SetEquipment();
+        }
+        
     }
 }
