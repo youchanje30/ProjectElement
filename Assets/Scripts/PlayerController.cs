@@ -8,7 +8,7 @@ public enum Elements
     None, Fire, South, Water, Wind
 }
 
-public enum WeaponTypes { Shield, Sword , Bow }; //Wand };
+public enum WeaponTypes { Shield, Sword , Bow , Wand };
 
 public class PlayerController : MonoBehaviour
 {

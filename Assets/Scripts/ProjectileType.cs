@@ -15,11 +15,11 @@ public class ProjectileType : MonoBehaviour
     public float moveSpeed;
     public Transform target;
 
-    
+
     void Update()
     {
         Move();
-        transform.position += new Vector3(-(transform.localScale.x),0,0) * Time.deltaTime * moveSpeed;
+        
     }
 
     void Move()
@@ -27,11 +27,16 @@ public class ProjectileType : MonoBehaviour
         switch (Projectile)
         {
             case Type.Arrow:
-                
+                transform.position += new Vector3(-(transform.localScale.x),0,0) * Time.deltaTime * moveSpeed;
                 break;
             
             case Type.Magic:
-                transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * moveSpeed);
+                if(target != null)
+                    transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * moveSpeed);
+                else
+                    transform.position += new Vector3(-(transform.localScale.x),0,0) * Time.deltaTime * moveSpeed;
+
+                
                 break;
         }
     }
@@ -39,6 +44,7 @@ public class ProjectileType : MonoBehaviour
     private void Awake()
     {
         Collider2D = GetComponent<CapsuleCollider2D>();
+        Invoke("Remove", 5f);
     }
 
 
@@ -61,4 +67,8 @@ public class ProjectileType : MonoBehaviour
         
     }
     
+    void Remove()
+    {
+        Destroy(gameObject);
+    }
 }

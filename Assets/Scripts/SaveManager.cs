@@ -122,7 +122,7 @@ public class SaveManager : MonoBehaviour
         // xmlDocument.Save(Application.dataPath + "/DataXML.xml");
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
-            Debug.Log("Saved");
+            // Debug.Log("Saved");
             // 저장 성공
         }
 
@@ -184,7 +184,7 @@ public class SaveManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("no file");
+            // Debug.Log("no file");
         }
 
 
@@ -268,7 +268,7 @@ public class SaveManager : MonoBehaviour
         SaveFile(EncryptGameData(xmlDocument));
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
-            Debug.Log("Saved");
+            // Debug.Log("Saved");
             // 저장 성공
         }
 
