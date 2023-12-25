@@ -230,9 +230,11 @@ public class Battle : MonoBehaviour
 
             // 공격 애니메이션 시작
             // yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
-
-            //칼의 경우 콤보 여부에 따른 어택 변경
-            if(WeaponType == WeaponTypes.Sword && CanComboAtk)
+            if(WeaponType == WeaponTypes.Wand) 
+            {
+                animator.SetTrigger("Atk");
+            }
+            else if(WeaponType == WeaponTypes.Sword && CanComboAtk) //칼의 경우 콤보 여부에 따른 어택 변경
             {
                 animator.SetTrigger("ComboAtk");
                 //콤보 공격
@@ -315,9 +317,6 @@ public class Battle : MonoBehaviour
 
     public void AtkEnd()
     {
-        Atking = false;
-        animator.SetBool("isAct", false);
-
         if(WeaponType == WeaponTypes.Bow)
         {
             GameObject ThrowArrow = Instantiate(arrow);
@@ -325,6 +324,50 @@ public class Battle : MonoBehaviour
             ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
             ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
         }
+
+        if(WeaponType == WeaponTypes.Wand)
+        {
+            GameObject Magic = Instantiate(arrow);
+            Magic.GetComponent<ProjectileType>().Projectile = Type.Magic;
+            Magic.GetComponent<ProjectileType>().Damage =  atkDamage;
+            // Magic.transform.position = atkPos[(int)WeaponType].position;
+            Magic.transform.position = transform.position;
+
+            Transform target = null;
+            float targetDistance = 100;
+            // Debug.Log("targetDistance = " + targetDistance);
+            // Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType].x);
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
+            bool isMonster = false;
+            foreach(Collider2D collider in collider2Ds)
+            {
+                if(collider.tag != "Monster" && collider.tag != "Destruct")
+                    continue;
+
+                if(collider.CompareTag("Destruct") && isMonster)
+                    continue;
+                
+
+                if(collider.CompareTag("Monster") && !isMonster)
+                {
+                        isMonster = true;
+                        target = collider.transform;
+                }
+                
+                if(target != null)
+                    targetDistance = Vector2.Distance(transform.position , target.transform.position);
+
+                float colliderDistance = Vector2.Distance(transform.position , collider.transform.position);
+                Debug.Log("colliderDistance = " + colliderDistance);
+                if(colliderDistance < targetDistance)
+                    target = collider.transform;
+            }
+            Magic.GetComponent<ProjectileType>().target = target;
+        }
+
+        
+        Atking = false;
+        animator.SetBool("isAct", false);
     }
 
 
@@ -418,10 +461,18 @@ public class Battle : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);    
+        
+            
+        Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);
         Gizmos.DrawWireCube(fallDownAtkPos.position, fallDownAtkSize);    
-        Gizmos.DrawWireCube(ShieldDashPos.position, ShieldDashAtkSize);    
-        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(ShieldDashPos.position, ShieldDashAtkSize);
+
+        Gizmos.color = Color.red;  
+        if(WeaponType == WeaponTypes.Wand)
+        {
+            // Gizmos.DrawWireSphere(transform.position, atkSize[(int)WeaponType].x);
+            Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);
+        }  
         Gizmos.DrawWireCube(ComboAtkPos.position, ComboAtkSize);    
     }
 

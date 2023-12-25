@@ -158,7 +158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7141198254234339824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -54.32, y: 0.82, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -349,21 +349,26 @@ MonoBehaviour:
     - {fileID: 9100000, guid: a24d43c3af587fe4ab03f9382018a43b, type: 2}
     - {fileID: 9100000, guid: cb47c9d2b5ee5024b91da402a04a507d, type: 2}
     - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   - ElementAnim:
     - {fileID: 9100000, guid: d90025fa5a7fe9f4b98d31de7453e09e, type: 2}
     - {fileID: 9100000, guid: 22c8eab9f3c250e4184385fbe1999e95, type: 2}
+    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
     - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   - ElementAnim:
     - {fileID: 9100000, guid: 866fc2936f2da394c84ecbe12e81145f, type: 2}
     - {fileID: 9100000, guid: 589568399a1039644aefa7d9c49067d6, type: 2}
     - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   - ElementAnim:
     - {fileID: 9100000, guid: 3f776af9b9a25bb4fae1766a030b6395, type: 2}
     - {fileID: 9100000, guid: 18a39aeb070eb0142ad1f11d06050654, type: 2}
     - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   - ElementAnim:
     - {fileID: 9100000, guid: 19b3b9702cd62ad409ffd5e934922b88, type: 2}
     - {fileID: 9100000, guid: c524691f887c9b847b140d3da9c9d5aa, type: 2}
+    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
     - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   InteractKey: 101
   LeftAtkKey: 122
@@ -464,6 +469,7 @@ MonoBehaviour:
   - {x: 0.5, y: 1}
   - {x: 1.7, y: 1.7}
   - {x: 0, y: 0}
+  - {x: 12, y: 4}
   arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
   originalScale: 0
   CanComboAtk: 0
@@ -624,7 +630,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9017783859884044896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
