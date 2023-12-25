@@ -143,7 +143,8 @@ public class ObjectController : MonoBehaviour
                 player.PlayerWeaponType = WeaponType;
                 player.SetEquipment();
                 SaveManager.instance.Save();
-                player.ChangeAnim();
+                // player.ChangeAnim();
+                player.SetEquipment();
                 break;
         }
     }

@@ -272,6 +272,7 @@ public class Battle : MonoBehaviour
             //애니메이션 종료 및 공격 종료
 
             isAtkReady[(int)WeaponType] = true;
+            
         }
     }
 
