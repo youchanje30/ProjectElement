@@ -8,8 +8,8 @@ public class Inventory : MonoBehaviour
     public int Gold = 0;
     public int SpiritSoul = 0;
     public ItemData[] HavingItem;
-    public int[] HavingElemental = { 5 };
-    public int[] HavingWeapon = { 5 };
+    public int[] HavingElemental;
+    public int[] HavingWeapon;
     public bool[] HasWeapon;
 
 

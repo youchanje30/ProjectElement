@@ -373,6 +373,9 @@ MonoBehaviour:
   InteractKey: 101
   LeftAtkKey: 122
   RightAtkKey: 120
+  FirstSlot: 97
+  SecondSlot: 115
+  ThirdSlot: 100
   chargingTime: 0
 --- !u!114 &7876326807568582025
 MonoBehaviour:
@@ -505,6 +508,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  HavingElemental: 000000000000000000000000
+  HavingWeapon: 000000000000000000000000
+  HasWeapon: 000000
 --- !u!114 &4664804212794489908
 MonoBehaviour:
   m_ObjectHideFlags: 0

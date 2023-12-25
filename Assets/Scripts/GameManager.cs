@@ -338,7 +338,7 @@ public class GameManager : MonoBehaviour
                     if (inventory.HasWeapon[i] == false)
                     {
                         player.PlayerElementType = Elements.Water;
-                        player.PlayerWeaponType = WeaponTypes.Bow;
+                        player.PlayerWeaponType = WeaponTypes.Wand;
                         inventory.HavingWeapon[i] = (int)player.PlayerWeaponType;
                         inventory.HavingElemental[i] = (int)player.PlayerElementType;
                         inventory.HasWeapon[i] = true;

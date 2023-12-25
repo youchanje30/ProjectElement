@@ -144,7 +144,7 @@ public class ObjectController : MonoBehaviour
                 player.SetEquipment();
                 SaveManager.instance.Save();
                 // player.ChangeAnim();
-                player.SetEquipment();
+                // player.SetEquipment();
                 break;
         }
     }
