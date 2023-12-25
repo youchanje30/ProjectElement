@@ -8,6 +8,9 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    Inventory inventory;
+
+
     [SerializeField] private PlayerController player;
 
     [Header("Game Setting")]
@@ -61,15 +64,13 @@ public class GameManager : MonoBehaviour
     public GameObject SpiritAwakeUI;
     public bool isSpiritAwake = false;
 
-    [Header("SwapSlot Setting")]
-    public GameObject[] HavingElemental;
 
 
     void Awake()
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        
+        inventory = player.GetComponent<Inventory>();
     }
 
     void Start()
@@ -281,26 +282,71 @@ public class GameManager : MonoBehaviour
         switch (objectID)
         {
             case 1000:
-                player.PlayerElementType = Elements.Fire;
-                player.PlayerWeaponType = WeaponTypes.Sword;
-                player.SetEquipment();
+                
+                for(int i = 0; i < inventory.HasWeapon.Length; i++) 
+                {   
+                    if (inventory.HasWeapon[i] == false) 
+                    {
+                        player.PlayerElementType = Elements.Fire;
+                        player.PlayerWeaponType = WeaponTypes.Sword;
+                        inventory.HavingWeapon[i] = (int)player.PlayerWeaponType;
+                        inventory.HavingElemental[i] = (int)player.PlayerElementType;
+                        inventory.HasWeapon[i] = true;
+                        player.SetEquipment();
+                        break;
+                    }                 
+                }             
                 break;
 
-            case 2000:
-                player.PlayerElementType = Elements.South;
-                player.PlayerWeaponType = WeaponTypes.Shield;
-                player.SetEquipment();
+            case 2000:                           
+                for (int i = 0; i < inventory.HasWeapon.Length; i++)
+                {
+                    if (inventory.HasWeapon[i] == false)
+                    {
+                        player.PlayerElementType = Elements.South;
+                        player.PlayerWeaponType = WeaponTypes.Shield;
+                        inventory.HavingWeapon[i] = (int)player.PlayerWeaponType;
+                        inventory.HavingElemental[i] = (int)player.PlayerElementType;
+                        inventory.HasWeapon[i] = true;
+                        player.SetEquipment();
+                        break;
+                    }
+                }                
                 break;
     
             case 3000:
-                player.PlayerElementType = Elements.Wind;
-                player.PlayerWeaponType = WeaponTypes.Bow;
-                player.SetEquipment();
+               
+                for (int i = 0; i < inventory.HasWeapon.Length; i++)
+                {
+                    if (inventory.HasWeapon[i] == false)
+                    {
+                        player.PlayerElementType = Elements.Wind;
+                        player.PlayerWeaponType = WeaponTypes.Bow;
+                        inventory.HavingWeapon[i] = (int)player.PlayerWeaponType;
+                        inventory.HavingElemental[i] = (int)player.PlayerElementType;
+                        inventory.HasWeapon[i] = true;
+                        player.SetEquipment();
+                        break;
+                    }
+                }              
                 break;
                 
             case 4000:
-                player.PlayerElementType = Elements.Water;
-                player.SetEquipment();
+                
+                for (int i = 0; i < inventory.HasWeapon.Length; i++)
+                {
+                    if (inventory.HasWeapon[i] == false)
+                    {
+                        player.PlayerElementType = Elements.Water;
+                        player.PlayerWeaponType = WeaponTypes.Bow;
+                        inventory.HavingWeapon[i] = (int)player.PlayerWeaponType;
+                        inventory.HavingElemental[i] = (int)player.PlayerElementType;
+                        inventory.HasWeapon[i] = true;
+                        player.SetEquipment();
+                        break;
+                    }
+                }
+               
                 break;
         }
     }
