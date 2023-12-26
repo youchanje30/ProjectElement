@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1035430245274727551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5525140155271563417}
+  m_Layer: 0
+  m_Name: None Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5525140155271563417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035430245274727551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2183464480881181263}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1275704578323403850
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +193,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5525140155271563417}
   - {fileID: 4135913021082344152}
   - {fileID: 7154946036308757365}
   - {fileID: 4315468924003554650}
@@ -344,6 +376,7 @@ MonoBehaviour:
   PlayerWeaponType: 0
   inventory: {fileID: 8509772043893616530}
   anim:
+  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   - {fileID: 9100000, guid: 22c8eab9f3c250e4184385fbe1999e95, type: 2}
   - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   - {fileID: 9100000, guid: 866fc2936f2da394c84ecbe12e81145f, type: 2}
@@ -440,13 +473,15 @@ MonoBehaviour:
   - 0
   - 1
   - 1
-  isAtkReady: 01010101
+  isAtkReady: 0101010101
   atkPos:
+  - {fileID: 5525140155271563417}
   - {fileID: 4135913021082344152}
   - {fileID: 7154946036308757365}
   - {fileID: 4315468924003554650}
   - {fileID: 6317585707649509668}
   atkSize:
+  - {x: 0, y: 0}
   - {x: 0.5, y: 1}
   - {x: 1.7, y: 1.7}
   - {x: 0, y: 0}

@@ -5,7 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public enum WeaponTypes { /*None*/ Sword , Wand , Shield , Bow };
+<<<<<<< HEAD
+=======
+public enum WeaponTypes {None, Sword , Wand , Shield , Bow };
+>>>>>>> main
 
 
 public class PlayerController : MonoBehaviour
