@@ -51,6 +51,9 @@ public class Battle : MonoBehaviour
     public Transform fallDownAtkPos;
     public Vector2 fallDownAtkSize;
 
+    [Header("Swap Setting")]
+    [SerializeField] public bool isSwap;
+
 
 
     void Awake()
@@ -66,7 +69,7 @@ public class Battle : MonoBehaviour
         {
             isAtkReady[i] = true;
         }
-        
+        isSwap = true;
         animator = GetComponent<Animator>();
     }
 
@@ -225,7 +228,10 @@ public class Battle : MonoBehaviour
         {
             rigid2D.velocity = Vector2.zero;
             Atking = true;
-            isAtkReady[(int)WeaponType] = false;
+            isAtkReady[(int)WeaponType] = false;        
+            isSwap = false;
+            
+          
             animator.SetBool("isAct", true);
 
             // 공격 애니메이션 시작
@@ -274,7 +280,8 @@ public class Battle : MonoBehaviour
             //애니메이션 종료 및 공격 종료
 
             isAtkReady[(int)WeaponType] = true;
-            
+            isSwap = true;
+
         }
     }
 

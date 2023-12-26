@@ -77,7 +77,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode SecondSlot = KeyCode.S;
     private bool pressedSecondSlot;
     [SerializeField] private KeyCode ThirdSlot = KeyCode.D;
-    private bool pressedThirdSlot;
+    private bool pressedThirdSlot; 
+    public bool[] CheckSlot;
+    [Tooltip("무기 중복체크")]
+    public bool checkSlot = false;
 
 
     public float chargingTime;
@@ -374,14 +377,14 @@ public class PlayerController : MonoBehaviour
     
     void Swap()
     {
-        if (pressedFirstSlot)
+        if (pressedFirstSlot && battle.isSwap == true)
         {
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[0];
             PlayerElementType = (Elements)inventory.HavingElemental[0];
             battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
         }
-        if (pressedSecondSlot)
+        if (pressedSecondSlot && battle.isSwap == true)
         {
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             PlayerElementType = (Elements)inventory.HavingElemental[1];
@@ -389,7 +392,7 @@ public class PlayerController : MonoBehaviour
             SetEquipment();
         }
         
-        if (pressedThirdSlot)
+        if (pressedThirdSlot && battle.isSwap == true)
         { 
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[2];
             PlayerElementType = (Elements)inventory.HavingElemental[2];
@@ -397,5 +400,47 @@ public class PlayerController : MonoBehaviour
             SetEquipment();
         }
         
+    }
+
+    public void GetElement(int W,int E)
+    {
+        for (int j = 0; j < inventory.HasWeapon.Length; j++)
+        {
+            if (inventory.HavingWeapon[j] == W && inventory.HavingElemental[j] == E)
+            {
+                checkSlot = true;
+                break;
+            }
+            else
+            {
+                checkSlot = false;
+            }
+        }
+        for (int i = 0; i < inventory.HasWeapon.Length; i++)
+        {
+            if (checkSlot == true)
+            {
+                manager.TalkPanel.SetActive(false);
+                Debug.Log("존재하는 정령입니다.");
+                break;
+            }
+            else if (inventory.HasWeapon[2] == true && Time.timeScale != 0)
+            {
+                manager.TalkPanel.SetActive(false);
+                manager.SlotSwapUI.SetActive(true);
+                manager.isSlotSwap = true;
+                break;
+            }
+            else if (inventory.HasWeapon[i] == false)
+            {
+                PlayerElementType = (Elements)E;
+                PlayerWeaponType = (WeaponTypes)W;
+                inventory.HavingWeapon[i] = (int)PlayerWeaponType;
+                inventory.HavingElemental[i] = (int)PlayerElementType;
+                inventory.HasWeapon[i] = true;
+                SetEquipment();
+                break;
+            }
+        }
     }
 }
