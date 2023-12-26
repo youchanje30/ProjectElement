@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public enum WeaponTypes { Sword , Wand , Shield , Bow };
+public enum WeaponTypes { None, Sword , Wand , Shield , Bow };
 
 
 public class PlayerController : MonoBehaviour
