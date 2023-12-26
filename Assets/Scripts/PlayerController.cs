@@ -4,12 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Elements
-{
-    None, Fire, South, Water, Wind
-}
 
-public enum WeaponTypes { Shield, Sword , Bow , Wand };
+public enum WeaponTypes { Sword , Wand , Shield , Bow };
 
 
 public class PlayerController : MonoBehaviour
@@ -37,17 +33,18 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Player Info")]
-    public Elements PlayerElementType;
     public WeaponTypes PlayerWeaponType;
     public Inventory inventory;
 
 
-    [System.Serializable]
-    public class ElementAnims
-    {
-        public RuntimeAnimatorController[] ElementAnim;
-    }
-    public ElementAnims[] Anims;
+    // [System.Serializable]
+    // public class ElementAnims
+    // {
+    //     public RuntimeAnimatorController[] ElementAnim;
+    // }
+    // public ElementAnims[] Anims;
+    
+    public RuntimeAnimatorController[] anim;
     // None, Fire, South, Water, Wind 
     // Shield, Sword, Bow
 
@@ -129,7 +126,6 @@ public class PlayerController : MonoBehaviour
 
     void PlayerUISystem()
     {
-        // playerHpBar.value = battle.curHp;
         playerHpBar.value = Mathf.Lerp(playerHpBar.value, status.curHp, Time.deltaTime * 5f);
         HpFill.color = gradient.Evaluate(playerHpBar.normalizedValue);
     }
@@ -229,14 +225,13 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeAnim()
     {
-        animator.runtimeAnimatorController = Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType];
+        animator.runtimeAnimatorController = anim[(int)PlayerWeaponType];
     }
 
     public void SetEquipment()
     {
         ChangeAnim();
         status.SetEquipment();
-        // battle.ResetStat();
         // if(animator.runtimeAnimatorController == Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType]) return;
         battle.WeaponType = PlayerWeaponType;
         // SaveManager.instance.Save();
@@ -315,10 +310,6 @@ public class PlayerController : MonoBehaviour
         if (battle.fallAtking || manager.isAction || manager.isShop || movement2D.isDashing || battle.Atking)
             return;
         
-
-
-        
-        
         // 행동 불가능한 상황
         if (pressedAtkKey)
         {  
@@ -380,14 +371,14 @@ public class PlayerController : MonoBehaviour
         if (pressedFirstSlot && battle.isSwap == true)
         {
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[0];
-            PlayerElementType = (Elements)inventory.HavingElemental[0];
+            // PlayerElementType = (Elements)inventory.HavingElemental[0];
             battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
         }
         if (pressedSecondSlot && battle.isSwap == true)
         {
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[1];
-            PlayerElementType = (Elements)inventory.HavingElemental[1];
+            // PlayerElementType = (Elements)inventory.HavingElemental[1];
             battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
         }
@@ -395,18 +386,18 @@ public class PlayerController : MonoBehaviour
         if (pressedThirdSlot && battle.isSwap == true)
         { 
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[2];
-            PlayerElementType = (Elements)inventory.HavingElemental[2];
+            // PlayerElementType = (Elements)inventory.HavingElemental[2];
             battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
         }
         
     }
 
-    public void GetElement(int W,int E)
+    public void GetElement(int W)
     {
         for (int j = 0; j < inventory.HasWeapon.Length; j++)
         {
-            if (inventory.HavingWeapon[j] == W && inventory.HavingElemental[j] == E)
+            if (inventory.HavingWeapon[j] == W)
             {
                 checkSlot = true;
                 break;
@@ -433,10 +424,10 @@ public class PlayerController : MonoBehaviour
             }
             else if (inventory.HasWeapon[i] == false)
             {
-                PlayerElementType = (Elements)E;
+                // PlayerElementType = (Elements)E;
                 PlayerWeaponType = (WeaponTypes)W;
                 inventory.HavingWeapon[i] = (int)PlayerWeaponType;
-                inventory.HavingElemental[i] = (int)PlayerElementType;
+                // inventory.HavingElemental[i] = (int)PlayerElementType;
                 inventory.HasWeapon[i] = true;
                 SetEquipment();
                 break;

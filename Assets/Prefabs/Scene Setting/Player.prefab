@@ -341,41 +341,19 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   manager: {fileID: 0}
-  PlayerElementType: 0
   PlayerWeaponType: 0
   inventory: {fileID: 8509772043893616530}
-  Anims:
-  - ElementAnim:
-    - {fileID: 9100000, guid: a24d43c3af587fe4ab03f9382018a43b, type: 2}
-    - {fileID: 9100000, guid: cb47c9d2b5ee5024b91da402a04a507d, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - ElementAnim:
-    - {fileID: 9100000, guid: d90025fa5a7fe9f4b98d31de7453e09e, type: 2}
-    - {fileID: 9100000, guid: 22c8eab9f3c250e4184385fbe1999e95, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - ElementAnim:
-    - {fileID: 9100000, guid: 866fc2936f2da394c84ecbe12e81145f, type: 2}
-    - {fileID: 9100000, guid: 589568399a1039644aefa7d9c49067d6, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - ElementAnim:
-    - {fileID: 9100000, guid: 3f776af9b9a25bb4fae1766a030b6395, type: 2}
-    - {fileID: 9100000, guid: 18a39aeb070eb0142ad1f11d06050654, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - ElementAnim:
-    - {fileID: 9100000, guid: 19b3b9702cd62ad409ffd5e934922b88, type: 2}
-    - {fileID: 9100000, guid: c524691f887c9b847b140d3da9c9d5aa, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  anim:
+  - {fileID: 9100000, guid: 22c8eab9f3c250e4184385fbe1999e95, type: 2}
+  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  - {fileID: 9100000, guid: 866fc2936f2da394c84ecbe12e81145f, type: 2}
+  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   InteractKey: 101
-  LeftAtkKey: 122
-  RightAtkKey: 120
   FirstSlot: 97
   SecondSlot: 115
   ThirdSlot: 100
+  CheckSlot: 
+  checkSlot: 0
   chargingTime: 0
 --- !u!114 &7876326807568582025
 MonoBehaviour:

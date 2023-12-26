@@ -20,7 +20,7 @@ public class SaveManager : MonoBehaviour
 
     [Header("Save Datas")]
     public WeaponTypes playerWeapon;
-    public Elements playerElement;
+    // public Elements playerElement;
     // [Space(20f)]
 
 
@@ -43,7 +43,7 @@ public class SaveManager : MonoBehaviour
     public void Save()
     {
         playerWeapon = player.PlayerWeaponType;
-        playerElement = player.PlayerElementType;
+        // playerElement = player.PlayerElementType;
 
 
         
@@ -60,9 +60,9 @@ public class SaveManager : MonoBehaviour
         root.AppendChild(playerWeaponData);
 
         // 무기 타입 저장
-        XmlElement playerElementData = xmlDocument.CreateElement("PlayerElementType");
-        playerElementData.InnerText = playerElement.ToString();
-        root.AppendChild(playerElementData);
+        // XmlElement playerElementData = xmlDocument.CreateElement("PlayerElementType");
+        // playerElementData.InnerText = playerElement.ToString();
+        // root.AppendChild(playerElementData);
 
         // 골드 저장
         XmlElement playerGold = xmlDocument.CreateElement("PlayerGold");
@@ -148,10 +148,10 @@ public class SaveManager : MonoBehaviour
             WeaponTypes PlayerWeaponData = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData[0].InnerText);
             playerWeapon = PlayerWeaponData;
 
-            // 속성 타입
-            XmlNodeList playerElementData = xmlDocument.GetElementsByTagName("PlayerElementType");
-            Elements PlayerElementData = (Elements)System.Enum.Parse(typeof(Elements), playerElementData[0].InnerText);
-            playerElement = PlayerElementData;
+            // 속성 타입 -> 12.26필요 없어짐
+            // XmlNodeList playerElementData = xmlDocument.GetElementsByTagName("PlayerElementType");
+            // Elements PlayerElementData = (Elements)System.Enum.Parse(typeof(Elements), playerElementData[0].InnerText);
+            // playerElement = PlayerElementData;
             
             // 클리어 스테이지 개수
             XmlNodeList clearStageNum = xmlDocument.GetElementsByTagName("ClearStageNum");
@@ -179,7 +179,7 @@ public class SaveManager : MonoBehaviour
             }
 
             player.PlayerWeaponType = playerWeapon;
-            player.PlayerElementType = playerElement;
+            // player.PlayerElementType = playerElement;
             player.SetEquipment();
         }
         else

@@ -282,20 +282,24 @@ public class GameManager : MonoBehaviour
         switch (objectID)
         {
             case 1000:
-                player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
+                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
+                player.GetElement((int)WeaponTypes.Sword);          
             break;
 
             case 2000:
-                player.GetElement((int)WeaponTypes.Shield, (int)Elements.South);
+                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
+                player.GetElement((int)WeaponTypes.Shield);
 
             break;
     
             case 3000:
-                player.GetElement((int)WeaponTypes.Bow, (int)Elements.Wind);
+                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
+                player.GetElement((int)WeaponTypes.Bow);
                 break;
                 
             case 4000:
-                player.GetElement((int)WeaponTypes.Wand, (int)Elements.Water);
+                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
+                player.GetElement((int)WeaponTypes.Wand);
                 break;
         }
     }
