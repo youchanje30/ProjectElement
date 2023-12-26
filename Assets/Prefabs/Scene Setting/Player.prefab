@@ -464,13 +464,15 @@ MonoBehaviour:
   Atking: 0
   isGuard: 0
   Left_AtkCoolTime:
-  - 0.75
+  - 0.4
   - 0.5
   - 0.4
+  - 0.75
   - 0.4
   Right_AtkCoolTime:
   - 1
   - 0
+  - 1
   - 1
   - 1
   isAtkReady: 0101010101
