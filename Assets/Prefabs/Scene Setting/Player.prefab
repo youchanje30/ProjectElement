@@ -487,6 +487,7 @@ MonoBehaviour:
   ShieldDashPos: {fileID: 4472214303243002330}
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
+  isSwap: 0
 --- !u!114 &8509772043893616530
 MonoBehaviour:
   m_ObjectHideFlags: 0

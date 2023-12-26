@@ -72,8 +72,6 @@ public class GameManager : MonoBehaviour
     [Tooltip("무기 중복체크")]
     public bool checkSlot = false;
 
-
-
     void Awake()
     {
         instance = this;

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   CanCameraShake: 0
+  clearStage: 0
   SystemPanel: {fileID: 0}
   talkManager: {fileID: 0}
   SettingPanel: {fileID: 0}
@@ -69,5 +70,11 @@ MonoBehaviour:
   TimeTxt: {fileID: 0}
   ShopUI: {fileID: 0}
   isShop: 0
+  SpiritAwakeUI: {fileID: 0}
+  isSpiritAwake: 0
+  SlotSwapUI: {fileID: 0}
+  isSlotSwap: 0
+  CheckSlot: 000000
+  checkSlot: 0
   resolutionDropdown: {fileID: 0}
   fullScreen: 0

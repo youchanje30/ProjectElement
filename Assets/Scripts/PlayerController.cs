@@ -290,14 +290,14 @@ public class PlayerController : MonoBehaviour
     }
     void Swap()
     {
-        if (pressedFirstSlot)
+        if (pressedFirstSlot && battle.isSwap == true)
         {
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[0];
             PlayerElementType = (Elements)inventory.HavingElemental[0];
             battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
         }
-        if (pressedSecondSlot)
+        if (pressedSecondSlot && battle.isSwap == true)
         {
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             PlayerElementType = (Elements)inventory.HavingElemental[1];
@@ -305,7 +305,7 @@ public class PlayerController : MonoBehaviour
             SetEquipment();
         }
         
-        if (pressedThirdSlot)
+        if (pressedThirdSlot && battle.isSwap == true)
         { 
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[2];
             PlayerElementType = (Elements)inventory.HavingElemental[2];
