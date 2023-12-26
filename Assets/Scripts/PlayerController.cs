@@ -383,6 +383,8 @@ public class PlayerController : MonoBehaviour
             PlayerElementType = (Elements)inventory.HavingElemental[0];
             battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
+            battle.isSwap = false;
+            battle.StartCoroutine(battle.ReturnSwap());
         }
         if (pressedSecondSlot && battle.isSwap == true)
         {
@@ -390,6 +392,8 @@ public class PlayerController : MonoBehaviour
             PlayerElementType = (Elements)inventory.HavingElemental[1];
             battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
+            battle.isSwap = false;
+            battle.StartCoroutine(battle.ReturnSwap());
         }
         
         if (pressedThirdSlot && battle.isSwap == true)
@@ -398,6 +402,8 @@ public class PlayerController : MonoBehaviour
             PlayerElementType = (Elements)inventory.HavingElemental[2];
             battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
+            battle.isSwap = false;
+            battle.StartCoroutine(battle.ReturnSwap());
         }
         
     }
