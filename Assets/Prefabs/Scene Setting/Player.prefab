@@ -476,16 +476,16 @@ MonoBehaviour:
   isAtkReady: 0101010101
   atkPos:
   - {fileID: 5525140155271563417}
-  - {fileID: 4135913021082344152}
   - {fileID: 7154946036308757365}
-  - {fileID: 4315468924003554650}
   - {fileID: 6317585707649509668}
+  - {fileID: 4135913021082344152}
+  - {fileID: 4315468924003554650}
   atkSize:
   - {x: 0, y: 0}
   - {x: 0.5, y: 1}
-  - {x: 1.7, y: 1.7}
-  - {x: 0, y: 0}
   - {x: 12, y: 4}
+  - {x: 0, y: 0}
+  - {x: 1.7, y: 1.7}
   arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
   originalScale: 0
   CanComboAtk: 0
