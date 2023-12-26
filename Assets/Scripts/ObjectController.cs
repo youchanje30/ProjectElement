@@ -15,7 +15,7 @@ public class ObjectController : MonoBehaviour
         SpiritAwake // 정령 각성 오브젝트
     }
 
-    [SerializeField] private WeaponTypes WeaponType;
+    public WeaponTypes WeaponType;
     [SerializeField] private InteractObjects ObjType;
     public int objectID;
     public string objectTag;
@@ -155,7 +155,7 @@ public class ObjectController : MonoBehaviour
         GameManager.instance.isSpiritAwake = true;
     }
 
-
+    
     public void OpenShop()
     {
         GameManager.instance.ShopUI.SetActive(true);

@@ -29,8 +29,7 @@ public class PlayerController : MonoBehaviour
     private Battle battle;
     [SerializeField] private GameManager manager;
     private Animator animator;
-
-
+    
 
     [Header("Player Info")]
     public WeaponTypes PlayerWeaponType;
@@ -84,7 +83,6 @@ public class PlayerController : MonoBehaviour
 
     private bool ischarging;
 
-
     void Awake()
     {
         #region Component Access
@@ -94,7 +92,7 @@ public class PlayerController : MonoBehaviour
         battle = GetComponent<Battle>();
         animator = GetComponent<Animator>();
         inventory = GetComponent<Inventory>();
-        status = GetComponent<PlayerStatus>();
+        status = GetComponent<PlayerStatus>();       
         #endregion Component Access
 
 
@@ -144,6 +142,15 @@ public class PlayerController : MonoBehaviour
             manager.SpiritAwakeUI.SetActive(false);
         }
 
+        if(manager.isSlotSwap && Input.GetKeyDown(KeyCode.E))
+        {
+            manager.SlotSwapUI.SetActive(false);        
+            manager.TalkPanel.SetActive(false);   
+            manager.isAction = false;
+            manager.isSelected = false;
+            inventory.HavingWeapon[manager.slot] = (int)manager.ObjData.WeaponType;
+            manager.isSlotSwap = false;
+        }
 
         // if (battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
         // {
@@ -307,7 +314,7 @@ public class PlayerController : MonoBehaviour
         }
         */
         
-        if (battle.fallAtking || manager.isAction || manager.isShop || movement2D.isDashing || battle.Atking)
+        if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking)
             return;
         
         // 행동 불가능한 상황
@@ -421,11 +428,9 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("존재하는 정령입니다.");
                 break;
             }
-            else if (inventory.HasWeapon[2] == true && Time.timeScale != 0)
-            {
-                manager.TalkPanel.SetActive(false);
-                manager.SlotSwapUI.SetActive(true);
-                manager.isSlotSwap = true;
+            else if (inventory.HasWeapon[2] == true)
+            {    
+                manager.OpenSwap();            
                 break;
             }
             else if (inventory.HasWeapon[i] == false)

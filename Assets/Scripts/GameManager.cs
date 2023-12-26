@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     Inventory inventory;
-
+    public UIController uiController;
 
     [SerializeField] private PlayerController player;
 
@@ -68,12 +68,17 @@ public class GameManager : MonoBehaviour
     [Header("SlotSwap Setting")]
     public GameObject SlotSwapUI;
     public bool isSlotSwap = false;
+    public Image[] Slot;
+    public Sprite[] Ele;
+    public int slot;
+ 
 
     void Awake()
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = player.GetComponent<Inventory>();
+        uiController = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
     }
 
     void Start()
@@ -87,16 +92,38 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSpiritAwake)
+        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake)
         {
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;
-        }
-
-        
-        TimeSetting();
+        }   
+        TimeSetting();       
     }
 
+    public void ElementImg()
+    {
+        for(int i = 0 ; i<inventory.HasWeapon.Length ; i++)
+        {
+            if (inventory.HavingWeapon[i] == (int)WeaponTypes.Sword)
+            {
+                Slot[i].sprite = Ele[1];
+            }
+            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Wand)
+            {
+                Slot[i].sprite = Ele[2];
+            }
+            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Shield)
+            {
+                Slot[i].sprite = Ele[3];
+            }
+            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
+            {
+                Slot[i].sprite = Ele[4];
+            }
+        }
+        Slot[3].sprite = Ele[(int)ObjData.WeaponType];
+        
+    }
     public void TimeSetting()
     {
         // TimerVal += Time.deltaTime;
@@ -330,7 +357,12 @@ public class GameManager : MonoBehaviour
             optionNum++;
         }
     }
-
+    public void OpenSwap()
+    {       
+        ElementImg();
+        SlotSwapUI.SetActive(true);       
+        isSlotSwap = true;      
+    }
     public void DropboxOptionChanged(int x)
     {
         resolutionNum = x; 

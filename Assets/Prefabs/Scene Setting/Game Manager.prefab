@@ -72,9 +72,14 @@ MonoBehaviour:
   isShop: 0
   SpiritAwakeUI: {fileID: 0}
   isSpiritAwake: 0
-  SlotSwapUI: {fileID: 0}
+  SlotSwapUI: {fileID: 5563688529607638122, guid: ef889f9416b06a24eb1e91afbe8e98de, type: 3}
   isSlotSwap: 0
-  CheckSlot: 000000
-  checkSlot: 0
+  Slot: []
+  Ele:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   resolutionDropdown: {fileID: 0}
   fullScreen: 0
