@@ -527,6 +527,10 @@ MonoBehaviour:
   - {fileID: 0}
   HavingWeapon: 000000000000000000000000
   HasWeapon: 000000
+  Elements:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &4664804212794489908
 MonoBehaviour:
   m_ObjectHideFlags: 0

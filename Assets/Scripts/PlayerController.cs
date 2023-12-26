@@ -144,12 +144,21 @@ public class PlayerController : MonoBehaviour
 
         if(manager.isSlotSwap && Input.GetKeyDown(KeyCode.E))
         {
-            manager.SlotSwapUI.SetActive(false);        
-            manager.TalkPanel.SetActive(false);   
+            manager.SlotSwapUI.SetActive(false);                   
             manager.isAction = false;
             manager.isSelected = false;
+            for(int i = 0; i < inventory.HasWeapon.Length; i++) 
+            {
+                if (inventory.HavingWeapon[i] == inventory.HavingWeapon[manager.slot])
+                {
+                    inventory.Elements[i].SetActive(true);
+                }
+            }
+            manager.ObjData.gameObject.SetActive(false);
             inventory.HavingWeapon[manager.slot] = (int)manager.ObjData.WeaponType;
+            inventory.Elements[manager.slot] = manager.ObjData.gameObject;
             manager.isSlotSwap = false;
+            manager.TalkPanel.SetActive(false);
         }
 
         // if (battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
@@ -429,7 +438,8 @@ public class PlayerController : MonoBehaviour
                 break;
             }
             else if (inventory.HasWeapon[2] == true)
-            {    
+            {
+               
                 manager.OpenSwap();            
                 break;
             }
@@ -438,8 +448,10 @@ public class PlayerController : MonoBehaviour
                 // PlayerElementType = (Elements)E;
                 PlayerWeaponType = (WeaponTypes)W;
                 inventory.HavingWeapon[i] = (int)PlayerWeaponType;
+                inventory.Elements[i] = manager.ObjData.gameObject;
                 // inventory.HavingElemental[i] = (int)PlayerElementType;
-                inventory.HasWeapon[i] = true;
+                inventory.HasWeapon[i] = true;               
+                manager.ObjData.gameObject.SetActive(false);
                 SetEquipment();
                 break;
             }

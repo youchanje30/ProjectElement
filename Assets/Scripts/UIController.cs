@@ -17,7 +17,7 @@ public class UIController : MonoBehaviour
         sellectSlot();
     }
     public void sellectSlot()
-    {   
+    {     
         if (Input.GetKeyDown(KeyCode.RightArrow) && rectTransform.anchoredPosition.x < 562)
         {
             rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x + 562, -277);
@@ -39,6 +39,5 @@ public class UIController : MonoBehaviour
         {
             gameManager.slot = 2;
         }
-        
     }
 }

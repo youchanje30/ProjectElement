@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     public ItemData[] HavingItem;
     public int[] HavingWeapon;
     public bool[] HasWeapon;
-
+    public GameObject[] Elements;
 
     public void GetGold()
     {
