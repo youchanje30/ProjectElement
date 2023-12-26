@@ -53,6 +53,7 @@ public class Battle : MonoBehaviour
 
     [Header("Swap Setting")]
     [SerializeField] public bool isSwap;
+    [SerializeField] private float swapTime;
 
 
 
@@ -114,6 +115,8 @@ public class Battle : MonoBehaviour
             }
             
         }
+       
+        
     }
 
 
@@ -138,12 +141,32 @@ public class Battle : MonoBehaviour
 
     }
 
-   
+    public IEnumerator ReturnSwap()
+    {
+        if(isSwap == false)
+        {
+            yield return new WaitForSeconds(swapTime);
+            isSwap = true;
+        }
+       
+    }
+    public IEnumerator ReturnAttack()
+    {
+        for(int i = 0;i<isAtkReady.Length;i++)
+        {
+            if (!isAtkReady[i])
+            {
+
+                yield return new WaitForSeconds(Left_AtkCoolTime[i] / (status.atkSpeed * 0.01f));
+                isAtkReady[i] = true;
+            }
+        }     
+    }
 
 
 
 
-    
+
     public void AtkAction(int id)
     {
         // if(!atk) return;
@@ -228,8 +251,7 @@ public class Battle : MonoBehaviour
         {
             rigid2D.velocity = Vector2.zero;
             Atking = true;
-            isAtkReady[(int)WeaponType] = false;        
-            isSwap = false;
+            isAtkReady[(int)WeaponType] = false;               
             
           
             animator.SetBool("isAct", true);
@@ -273,14 +295,12 @@ public class Battle : MonoBehaviour
                     CanComboAtk = true;
                 }
             }
-            // 공격 중인거 종료
+            // 공격 중인거 종료 
+            StartCoroutine(ReturnAttack());
+            yield return null;
+           
 
-            yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]/(status.atkSpeed * 0.01f));
 
-            //애니메이션 종료 및 공격 종료
-
-            isAtkReady[(int)WeaponType] = true;
-            isSwap = true;
 
         }
     }
