@@ -953,6 +953,34 @@ PrefabInstance:
       propertyPath: playerHpBar
       value: 
       objectReference: {fileID: 25129533}
+    - target: {fileID: 3396441494395906210, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: anim.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396441494395906210, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: anim.Array.data[0]
+      value: 
+      objectReference: {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+    - target: {fileID: 3396441494395906210, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: anim.Array.data[1]
+      value: 
+      objectReference: {fileID: 9100000, guid: 22c8eab9f3c250e4184385fbe1999e95, type: 2}
+    - target: {fileID: 3396441494395906210, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: anim.Array.data[2]
+      value: 
+      objectReference: {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+    - target: {fileID: 3396441494395906210, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: anim.Array.data[3]
+      value: 
+      objectReference: {fileID: 9100000, guid: 866fc2936f2da394c84ecbe12e81145f, type: 2}
+    - target: {fileID: 3396441494395906210, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: anim.Array.data[4]
+      value: 
+      objectReference: {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: swapTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7141198254234339824, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: m_Name
       value: Player

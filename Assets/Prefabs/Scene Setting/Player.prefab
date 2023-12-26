@@ -466,6 +466,7 @@ MonoBehaviour:
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
   isSwap: 0
+  swapTime: 0
 --- !u!114 &8509772043893616530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,7 +488,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  HavingElemental: 000000000000000000000000
   HavingWeapon: 000000000000000000000000
   HasWeapon: 000000
 --- !u!114 &4664804212794489908

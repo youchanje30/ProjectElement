@@ -251,6 +251,7 @@ public class Battle : MonoBehaviour
         {
             rigid2D.velocity = Vector2.zero;
             Atking = true;
+            //isSwap = false; 스왑 1안 추가 나중에 주석 풀면 됨
             isAtkReady[(int)WeaponType] = false;               
             
           
@@ -296,9 +297,13 @@ public class Battle : MonoBehaviour
                 }
             }
             // 공격 중인거 종료 
+            
+            /*yield return new WaitForSeconds((Left_AtkCoolTime[(int)WeaponType] / (status.atkSpeed * 0.01f)));
+            isSwap = true; 나중에 주석 풀면 됨*/
             StartCoroutine(ReturnAttack());
+
             yield return null;
-           
+
 
 
 
