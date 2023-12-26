@@ -57,17 +57,19 @@ public class PlayerController : MonoBehaviour
     private bool pressedJumpkey;
     private KeyCode DashKey = KeyCode.LeftShift;
     private bool pressedDashKey;
+    private KeyCode atkKey = KeyCode.Z;
+    private bool pressedAtkKey;
     [Space(20f)]
 
     [Header("Interact Setting")]
     [SerializeField] private KeyCode InteractKey = KeyCode.E;
     private bool pressedInteractKey;
 
-    [Header("Atk Setting")]
-    [SerializeField] private KeyCode LeftAtkKey = KeyCode.Z;
-    private bool pressedLeftAtkKey;
-    [SerializeField] private KeyCode RightAtkKey = KeyCode.X;
-    private bool pressedRightAtkKey;
+    // [Header("Atk Setting")]
+    // [SerializeField] private KeyCode LeftAtkKey = KeyCode.Z;
+    // private bool pressedLeftAtkKey;
+    // [SerializeField] private KeyCode RightAtkKey = KeyCode.X;
+    // private bool pressedRightAtkKey;
 
     [Header("Swap Setting")]
     [SerializeField] private KeyCode FirstSlot = KeyCode.A;
@@ -95,7 +97,6 @@ public class PlayerController : MonoBehaviour
         status = GetComponent<PlayerStatus>();
         #endregion Component Access
 
-        playerHpBar.maxValue = status.maxHp;
 
         // animator.runtimeAnimatorController = AnimController[(int)battle.WeaponType];
         chargingTime = 0;
@@ -108,6 +109,7 @@ public class PlayerController : MonoBehaviour
         SetEquipment();
         battle.WeaponType = PlayerWeaponType;
 
+        playerHpBar.maxValue = status.maxHp;
     }
 
 
@@ -144,34 +146,34 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
-        {
-            pressedRightAtkKey = true;
-            animator.SetBool("isCharge", true);
-            animator.SetTrigger("Charging");
-            ischarging = true;
-        }
+        // if (battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
+        // {
+        //     // pressedRightAtkKey = true;
+        //     animator.SetBool("isCharge", true);
+        //     animator.SetTrigger("Charging");
+        //     ischarging = true;
+        // }
 
 
-        if (battle.WeaponType != WeaponTypes.Sword && ischarging)
-        {
-            if (Input.GetKey(RightAtkKey))
-            {
+        // if (battle.WeaponType != WeaponTypes.Sword && ischarging)
+        // {
+        //     if (Input.GetKey(RightAtkKey))
+        //     {
 
-                chargingTime += Time.deltaTime;
-            }
+        //         chargingTime += Time.deltaTime;
+        //     }
 
-            if (Input.GetKeyUp(RightAtkKey))
-            {
-                ischarging = false;
-                pressedRightAtkKey = false;
+        //     if (Input.GetKeyUp(RightAtkKey))
+        //     {
+        //         ischarging = false;
+        //         pressedRightAtkKey = false;
 
-                if (chargingTime < 1f)
-                    chargingTime = 0f;
+        //         if (chargingTime < 1f)
+        //             chargingTime = 0f;
 
-                animator.SetBool("isCharge", false);
-            }
-        }
+        //         animator.SetBool("isCharge", false);
+        //     }
+        // }
 
 
 
@@ -188,8 +190,11 @@ public class PlayerController : MonoBehaviour
         hAxis = Input.GetAxisRaw("Horizontal");
 
         pressedInteractKey = Input.GetKeyDown(InteractKey);
-        pressedLeftAtkKey = Input.GetKeyDown(LeftAtkKey);
-        pressedRightAtkKey = Input.GetKey(RightAtkKey);
+
+        // pressedLeftAtkKey = Input.GetKeyDown(LeftAtkKey);
+        // pressedRightAtkKey = Input.GetKey(RightAtkKey);
+
+        pressedAtkKey = Input.GetKey(atkKey);
 
         pressedFirstSlot = Input.GetKeyDown(FirstSlot);
         pressedSecondSlot = Input.GetKeyDown(SecondSlot);
@@ -199,7 +204,7 @@ public class PlayerController : MonoBehaviour
         if (battle.Atking)// || pressedRightAtkKey)
         {
             pressedInteractKey = false;
-            pressedLeftAtkKey = false;
+            // pressedLeftAtkKey = false;
             // pressedRightAtkKey = false;
         }
 
@@ -215,6 +220,8 @@ public class PlayerController : MonoBehaviour
         {
             
         } */
+
+        
     }
 
     public void ChangeAnim()
@@ -263,11 +270,87 @@ public class PlayerController : MonoBehaviour
     {
         if (pressedInteractKey && !manager.isAction) interact.InteractObj();
 
+        /*
         if (pressedLeftAtkKey && !manager.isAction) battle.AtkAction(0);
 
         if (!pressedRightAtkKey && !manager.isAction && chargingTime >= 1f)
         {
             battle.AtkAction(1);
+            chargingTime = 0f;
+        }
+        */
+
+
+        // if (pressedAtkKey && !manager.isAction)
+        // {
+        // 
+        // }
+
+        /*
+        if (battle.WeaponType != WeaponTypes.Sword && ischarging)
+        {
+                
+            if (Input.GetKey(RightAtkKey))
+            {
+
+                chargingTime += Time.deltaTime;
+            }
+
+            if (Input.GetKeyUp(RightAtkKey))
+            {
+                ischarging = false;
+                pressedRightAtkKey = false;
+
+                if (chargingTime < 1f)
+                    chargingTime = 0f;
+
+                animator.SetBool("isCharge", false);
+            }
+        }
+        */
+        
+        if (battle.fallAtking || manager.isAction || manager.isShop || movement2D.isDashing || battle.Atking)
+            return;
+        
+
+
+        
+        
+        // 행동 불가능한 상황
+        if (pressedAtkKey)
+        {  
+            
+            if(battle.WeaponType == WeaponTypes.Sword || !movement2D.isGround)
+            {
+                battle.AtkAction(0);
+                return;
+            }
+            else
+            {
+                chargingTime += Time.deltaTime;
+
+                if(!ischarging)
+                {
+                    animator.SetBool("isCharge", true);
+                    animator.SetTrigger("Charging");
+                    ischarging = true;
+                }
+            }
+                
+        }
+        
+        bool AtkFin = Input.GetKeyUp(atkKey);
+
+        if(ischarging && (AtkFin || chargingTime >= 1f))
+        {
+            ischarging = false;
+            animator.SetBool("isCharge", false);
+
+            if(chargingTime < 1f)
+                battle.AtkAction(0);
+            else
+                battle.AtkAction(1);
+
             chargingTime = 0f;
         }
     }
@@ -288,6 +371,7 @@ public class PlayerController : MonoBehaviour
             movement2D.MoveX(hAxis);
         }
     }
+    
     void Swap()
     {
         if (pressedFirstSlot)
