@@ -3664,6 +3664,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 435736109}
     - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
+      propertyPath: checkSlot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
+      propertyPath: isSlotSwap
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
       propertyPath: SystemPanel
       value: 
       objectReference: {fileID: 1504351479}
@@ -3687,6 +3695,10 @@ PrefabInstance:
       propertyPath: resolutionDropdown
       value: 
       objectReference: {fileID: 2117973850}
+    - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
+      propertyPath: CheckSlot.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
       propertyPath: talkBtn.Array.data[0]
       value: 

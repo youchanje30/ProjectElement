@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Xml.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -63,6 +64,13 @@ public class GameManager : MonoBehaviour
     [Header("SpiritAwake Setting")]
     public GameObject SpiritAwakeUI;
     public bool isSpiritAwake = false;
+
+    [Header("SlotSwap Setting")]
+    public GameObject SlotSwapUI;
+    public bool isSlotSwap = false;
+    public bool[] CheckSlot;
+    [Tooltip("무기 중복체크")]
+    public bool checkSlot = false;
 
 
 
@@ -138,10 +146,6 @@ public class GameManager : MonoBehaviour
 
         }
     }
-
-
-    
-
 
 
     public void SaveSettingData()
@@ -276,32 +280,86 @@ public class GameManager : MonoBehaviour
         }
     }
     
-
+      
+   
     public void Active(int objectID) //정령 2번 선택지
     {
         switch (objectID)
         {
             case 1000:
-                
-                for(int i = 0; i < inventory.HasWeapon.Length; i++) 
-                {   
-                    if (inventory.HasWeapon[i] == false) 
+                for (int j = 0; j < inventory.HasWeapon.Length; j++)
+                {
+                    if (inventory.HavingWeapon[j] == (int)WeaponTypes.Sword && inventory.HavingElemental[j] == (int)Elements.Fire)
                     {
+                        checkSlot = true;                        
+                        break;
+                    }
+                    else
+                    {
+                        checkSlot =false;
+                    }
+                }
+                for (int i = 0; i < inventory.HasWeapon.Length; i++ )
+                {
+                    if(checkSlot == true)
+                    {
+                        TalkPanel.SetActive(false);
+                        Debug.Log("존재하는 정령입니다.");                      
+                        break;
+                    }
+                    else if(inventory.HasWeapon[2] == true && Time.timeScale != 0 )
+                    {//이벤토리가 꽉 찾을 경우 정령 교체UI 오픈 (레퍼런스 데드셀)
+                        TalkPanel.SetActive(false);
+                        SlotSwapUI.SetActive(true);
+                        isSlotSwap = true;
+                        break;
+                    }
+                    else if (inventory.HasWeapon[i] == false && i < 3 && isSlotSwap == false)
+                    {                     
+                        
                         player.PlayerElementType = Elements.Fire;
                         player.PlayerWeaponType = WeaponTypes.Sword;
                         inventory.HavingWeapon[i] = (int)player.PlayerWeaponType;
                         inventory.HavingElemental[i] = (int)player.PlayerElementType;
                         inventory.HasWeapon[i] = true;
+                        isSlotSwap = false;
                         player.SetEquipment();
                         break;
-                    }                 
+                    }
+                    
+                  
                 }             
                 break;
 
-            case 2000:                           
+            case 2000:
+                for (int j = 0; j < inventory.HasWeapon.Length; j++)
+                {
+                    if (inventory.HavingWeapon[j] == (int)WeaponTypes.Shield && inventory.HavingElemental[j] == (int)Elements.South)
+                    {
+                        checkSlot = true;
+                        break;
+                    }
+                    else
+                    {
+                        checkSlot = false;
+                    }
+                }
                 for (int i = 0; i < inventory.HasWeapon.Length; i++)
                 {
-                    if (inventory.HasWeapon[i] == false)
+                    if (checkSlot == true)
+                    {
+                        TalkPanel.SetActive(false);
+                        Debug.Log("존재하는 정령입니다.");
+                        break;
+                    }
+                    else if (inventory.HasWeapon[2] == true && Time.timeScale != 0)
+                    {
+                        TalkPanel.SetActive(false);
+                        SlotSwapUI.SetActive(true);
+                        isSlotSwap = true;
+                        break;
+                    }
+                    else if (inventory.HasWeapon[i] == false)
                     {
                         player.PlayerElementType = Elements.South;
                         player.PlayerWeaponType = WeaponTypes.Shield;
@@ -315,10 +373,35 @@ public class GameManager : MonoBehaviour
                 break;
     
             case 3000:
-               
+                for (int j = 0; j < inventory.HasWeapon.Length; j++)
+                {
+                    if (inventory.HavingWeapon[j] == (int)WeaponTypes.Bow && inventory.HavingElemental[j] == (int)Elements.Wind)
+                    {
+                        checkSlot = true;
+                        break;
+                    }
+                    else
+                    {
+                        checkSlot = false;
+                    }
+                }
                 for (int i = 0; i < inventory.HasWeapon.Length; i++)
                 {
-                    if (inventory.HasWeapon[i] == false)
+
+                    if (checkSlot == true)
+                    {
+                        TalkPanel.SetActive(false);
+                        Debug.Log("존재하는 정령입니다.");
+                        break;
+                    }
+                    else if (inventory.HasWeapon[2] == true && Time.timeScale != 0)
+                    {
+                        TalkPanel.SetActive(false);
+                        SlotSwapUI.SetActive(true);
+                        isSlotSwap = true;
+                        break;
+                    }
+                    else if (inventory.HasWeapon[i] == false)
                     {
                         player.PlayerElementType = Elements.Wind;
                         player.PlayerWeaponType = WeaponTypes.Bow;
@@ -332,10 +415,28 @@ public class GameManager : MonoBehaviour
                 break;
                 
             case 4000:
-                
+                for (int j = 0; j < inventory.HasWeapon.Length; j++)
+                {
+                    if (inventory.HavingWeapon[j] == (int)WeaponTypes.Wand&& inventory.HavingElemental[j] == (int)Elements.Water)
+                    {
+                        checkSlot = true;
+                        break;
+                    }
+                    else
+                    {
+                        checkSlot = false;
+                    }
+                }
                 for (int i = 0; i < inventory.HasWeapon.Length; i++)
                 {
-                    if (inventory.HasWeapon[i] == false)
+                    if (inventory.HasWeapon[2] == true && Time.timeScale != 0)
+                    {
+                        TalkPanel.SetActive(false);
+                        SlotSwapUI.SetActive(true);
+                        isSlotSwap = true;
+                        break;
+                    }
+                    else if (inventory.HasWeapon[i] == false)
                     {
                         player.PlayerElementType = Elements.Water;
                         player.PlayerWeaponType = WeaponTypes.Wand;
