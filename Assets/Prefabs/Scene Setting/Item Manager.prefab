@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5224808586512354588}
   m_Layer: 0
   m_Name: Item Manager
-  m_TagString: Untagged
+  m_TagString: ItemManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,8 +69,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 30d17c33f98648040ac2aab5b83ce31d, type: 2}
   - {fileID: 11400000, guid: 712676094a045cf44804cca1582f251e, type: 2}
   - {fileID: 11400000, guid: c6749db307a63ee4996494f92fa161b6, type: 2}
-  ItemPrefab: {fileID: 0}
   CommonItemDatas: []
   RareItemDatas: []
   EpicItemDatas: []
+  itemDatas: []
   ItemGetPercent: 500000000f00000005000000

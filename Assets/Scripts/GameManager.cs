@@ -9,7 +9,8 @@ using System.Xml.Linq;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    Inventory inventory;
+    public ItemManager Item;
+    public Inventory inventory;
     public SwapUI swapUI;
     public InventoryUI inventoryUI;
 
@@ -56,7 +57,6 @@ public class GameManager : MonoBehaviour
     public float TimerVal;
     [SerializeField] private TMP_Text TimeTxt;
 
-
     [Header("Shop Setting")]
     public GameObject ShopUI;
     public bool isShop = false;
@@ -69,12 +69,16 @@ public class GameManager : MonoBehaviour
     public GameObject SlotSwapUI;
     public bool isSlotSwap = false;
     public Image[] Slot;
-    public Sprite[] Ele;
     public int slot;
+
+    [Header("Inventory Setting")]
+    public Image[] EleCards;
+    public Image[] InvenItem;
 
     [Header("Elemental")]
     public GameObject[] Elements;
- 
+    public Sprite[] Ele;
+
 
     void Awake()
     {
@@ -83,6 +87,7 @@ public class GameManager : MonoBehaviour
         inventory = player.GetComponent<Inventory>();
         swapUI = GameObject.FindGameObjectWithTag("UI").GetComponent<SwapUI>();
         inventoryUI = GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryUI>();
+        Item = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ItemManager>();
     }
 
     void Start()
