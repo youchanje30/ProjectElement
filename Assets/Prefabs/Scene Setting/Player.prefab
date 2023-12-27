@@ -385,8 +385,7 @@ MonoBehaviour:
   FirstSlot: 97
   SecondSlot: 115
   ThirdSlot: 100
-  CheckSlot: 
-  checkSlot: 0
+  CheckSlot: 000000
   chargingTime: 0
 --- !u!114 &7876326807568582025
 MonoBehaviour:

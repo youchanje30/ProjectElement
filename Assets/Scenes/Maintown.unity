@@ -972,6 +972,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 737378945}
     - target: {fileID: 3396441494395906210, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: checkSlot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396441494395906210, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: playerHpBar
       value: 
       objectReference: {fileID: 25129533}
@@ -3858,6 +3862,10 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 737378945}
+    - target: {fileID: 4395598997333024294, guid: ae6c4c22ce76f7d49b88d35e2be33ed7, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5601787218663128091, guid: ae6c4c22ce76f7d49b88d35e2be33ed7, type: 3}
       propertyPath: m_Name
       value: Save Manager

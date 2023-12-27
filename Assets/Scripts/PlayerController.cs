@@ -73,8 +73,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode SecondSlot = KeyCode.S;
     private bool pressedSecondSlot;
     [SerializeField] private KeyCode ThirdSlot = KeyCode.D;
-    private bool pressedThirdSlot; 
-    public bool[] CheckSlot;
+    private bool pressedThirdSlot;    
     [Tooltip("무기 중복체크")]
     public bool checkSlot = false;
 
@@ -159,6 +158,7 @@ public class PlayerController : MonoBehaviour
             inventory.Elements[manager.slot] = manager.ObjData.gameObject;
             manager.isSlotSwap = false;
             manager.TalkPanel.SetActive(false);
+   
         }
 
         // if (battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
