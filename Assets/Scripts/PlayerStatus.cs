@@ -121,6 +121,7 @@ public class PlayerStatus : MonoBehaviour
 
         playerSpeed = basicPlayerSpeed + increasePlayerSpeed;
         jumpForce = (basicJumpForce + increaseJumpForce) * (basicJumpForcePer + increaseJumpForcePer) * 0.01f;
+
     }
     
 

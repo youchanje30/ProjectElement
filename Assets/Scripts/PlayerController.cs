@@ -37,13 +37,6 @@ public class PlayerController : MonoBehaviour
     public Inventory inventory;
 
 
-    // [System.Serializable]
-    // public class ElementAnims
-    // {
-    //     public RuntimeAnimatorController[] ElementAnim;
-    // }
-    // public ElementAnims[] Anims;
-    
     public RuntimeAnimatorController[] anim;
     // None, Fire, South, Water, Wind 
     // Shield, Sword, Bow
@@ -62,12 +55,6 @@ public class PlayerController : MonoBehaviour
     [Header("Interact Setting")]
     [SerializeField] private KeyCode InteractKey = KeyCode.E;
     private bool pressedInteractKey;
-
-    // [Header("Atk Setting")]
-    // [SerializeField] private KeyCode LeftAtkKey = KeyCode.Z;
-    // private bool pressedLeftAtkKey;
-    // [SerializeField] private KeyCode RightAtkKey = KeyCode.X;
-    // private bool pressedRightAtkKey;
 
     [Header("Swap Setting")]
     [SerializeField] private KeyCode FirstSlot = KeyCode.A;
@@ -96,11 +83,7 @@ public class PlayerController : MonoBehaviour
         status = GetComponent<PlayerStatus>();       
         #endregion Component Access
 
-
-        // animator.runtimeAnimatorController = AnimController[(int)battle.WeaponType];
         chargingTime = 0;
-
-        // animator = 
     }
 
     void Start()
@@ -120,7 +103,6 @@ public class PlayerController : MonoBehaviour
         Move();
         PlayerUISystem();
         Swap();
-        // ChangeEquipment();
     }
 
     void PlayerUISystem()
@@ -142,6 +124,7 @@ public class PlayerController : MonoBehaviour
             manager.isSpiritAwake = false;
             manager.SpiritAwakeUI.SetActive(false);
         }
+
         if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.Escape))
         {
             manager.SlotSwapUI.SetActive(false);
@@ -157,38 +140,7 @@ public class PlayerController : MonoBehaviour
             manager.isSelected = false;
 
             EleUISwap();
-
         }
-
-        // if (battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
-        // {
-        //     // pressedRightAtkKey = true;
-        //     animator.SetBool("isCharge", true);
-        //     animator.SetTrigger("Charging");
-        //     ischarging = true;
-        // }
-
-
-        // if (battle.WeaponType != WeaponTypes.Sword && ischarging)
-        // {
-        //     if (Input.GetKey(RightAtkKey))
-        //     {
-
-        //         chargingTime += Time.deltaTime;
-        //     }
-
-        //     if (Input.GetKeyUp(RightAtkKey))
-        //     {
-        //         ischarging = false;
-        //         pressedRightAtkKey = false;
-
-        //         if (chargingTime < 1f)
-        //             chargingTime = 0f;
-
-        //         animator.SetBool("isCharge", false);
-        //     }
-        // }
-
 
 
         if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
@@ -205,9 +157,6 @@ public class PlayerController : MonoBehaviour
 
         pressedInteractKey = Input.GetKeyDown(InteractKey);
 
-        // pressedLeftAtkKey = Input.GetKeyDown(LeftAtkKey);
-        // pressedRightAtkKey = Input.GetKey(RightAtkKey);
-
         pressedAtkKey = Input.GetKey(atkKey);
 
         pressedFirstSlot = Input.GetKeyDown(FirstSlot);
@@ -215,25 +164,10 @@ public class PlayerController : MonoBehaviour
         pressedThirdSlot = Input.GetKeyDown(ThirdSlot);
 
 
-        if (battle.Atking)// || pressedRightAtkKey)
+        if (battle.Atking)
         {
             pressedInteractKey = false;
-            // pressedLeftAtkKey = false;
-            // pressedRightAtkKey = false;
         }
-
-        /* if(Input.GetKeyDown(InteractKey))
-        {
-
-        }
-        else if(Input.GetKey(InteractKey))
-        {
-
-        }
-        else if(Input.GetKeyUp(InteractKey))
-        {
-            
-        } */
 
         
     }
@@ -261,35 +195,8 @@ public class PlayerController : MonoBehaviour
     public void SetEquipment()
     {
         ChangeAnim();
-        status.SetEquipment();
-        // if(animator.runtimeAnimatorController == Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType]) return;
+        status.SetStatue();
         battle.WeaponType = PlayerWeaponType;
-        // SaveManager.instance.Save();
-
-        /*
-        for (int i = 0; i < inventory.HavingItem.Length; i++)
-        {
-            if(inventory.HavingItem[i] != null)
-            {
-                //체력 증가
-                playerStatus.maxHp += inventory.HavingItem[i].HpIncrease;
-                // playerStatus.hpPer += inventory.HavingItem[i].HpPerIncrease;
-                
-                //방어력 증가
-                // battle.def += inventory.HavingItem[i].DefIncrease;
-                // battle.defPer += inventory.HavingItem[i].DefPerIncrease;
-
-                //물리 데미지 증가
-                // battle.meleeDmg += inventory.HavingItem[i].MeleeDmgIncrease;
-                // battle.meleePerDmg += inventory.HavingItem[i].MeleeDmgPerIncrease;
-
-                //공격 속도, 크리 확률, 크리 데미지 증가
-                playerStatus.atkSpeed += inventory.HavingItem[i].AtkSpeedIncrease;
-                playerStatus.crtRate += inventory.HavingItem[i].CrtRateIncrease;
-                playerStatus.crtDamage += inventory.HavingItem[i].CrtDmgIncrease;
-            }
-        }
-        */
 
         animator.SetFloat("AtkSpeed", status.atkSpeed * 0.01f);
     }
@@ -298,54 +205,20 @@ public class PlayerController : MonoBehaviour
     {
         if (pressedInteractKey && !manager.isAction) interact.InteractObj();
 
-        /*
-        if (pressedLeftAtkKey && !manager.isAction) battle.AtkAction(0);
-
-        if (!pressedRightAtkKey && !manager.isAction && chargingTime >= 1f)
-        {
-            battle.AtkAction(1);
-            chargingTime = 0f;
-        }
-        */
-
-
-        // if (pressedAtkKey && !manager.isAction)
-        // {
-        // 
-        // }
-
-        /*
-        if (battle.WeaponType != WeaponTypes.Sword && ischarging)
-        {
-                
-            if (Input.GetKey(RightAtkKey))
-            {
-
-                chargingTime += Time.deltaTime;
-            }
-
-            if (Input.GetKeyUp(RightAtkKey))
-            {
-                ischarging = false;
-                pressedRightAtkKey = false;
-
-                if (chargingTime < 1f)
-                    chargingTime = 0f;
-
-                animator.SetBool("isCharge", false);
-            }
-        }
-        */
         
         if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking)
+        {
+            if(isRepeatAtk)
+                isRepeatAtk = false;
             return;
+        }
+            
         
 
         // 행동 불가능한 상황
         if (pressedAtkKey && !isRepeatAtk)
         {  
             if(battle.WeaponType == WeaponTypes.Sword || battle.WeaponType == WeaponTypes.Wand || !movement2D.isGround)
-
             {
                 isRepeatAtk = true;
                 battle.AtkAction(0);
@@ -393,7 +266,6 @@ public class PlayerController : MonoBehaviour
     {
         if (battle.Atking)
         {
-            // movement2D.MoveX(hAxis);
             return;
         }
 
