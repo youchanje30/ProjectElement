@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
     private KeyCode atkKey = KeyCode.Z;
     private bool pressedAtkKey;
     private bool isRepeatAtk = false;
+    [SerializeField] private KeyCode ioInventory = KeyCode.Tab;
+    private bool pressedInvenKey;
     [Space(20f)]
 
     [Header("Interact Setting")]
@@ -81,9 +83,7 @@ public class PlayerController : MonoBehaviour
 
 
     public float chargingTime;
-
     private bool ischarging;
-
     void Awake()
     {
         #region Component Access
@@ -99,12 +99,12 @@ public class PlayerController : MonoBehaviour
 
         // animator.runtimeAnimatorController = AnimController[(int)battle.WeaponType];
         chargingTime = 0;
-
         // animator = 
     }
 
     void Start()
     {
+
         SetEquipment();
         battle.WeaponType = PlayerWeaponType;
 
@@ -115,11 +115,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         InputSystem();
         Act();
         Move();
         PlayerUISystem();
         Swap();
+
         // ChangeEquipment();
     }
 
@@ -149,7 +151,6 @@ public class PlayerController : MonoBehaviour
             manager.isSelected = false;
             manager.isSlotSwap = false;
         }
-
         if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.E)) // 수정 해야함
         {
             manager.SlotSwapUI.SetActive(false);
@@ -157,8 +158,12 @@ public class PlayerController : MonoBehaviour
             manager.isSelected = false;
 
             EleUISwap();
-
         }
+
+
+     
+ 
+        
 
         // if (battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
         // {
@@ -191,14 +196,13 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
+        if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.inventoryUI.isInven|| battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
             hAxis = 0;
             return;
         }
-
         pressedDashKey = Input.GetKeyDown(DashKey);
         pressedJumpkey = Input.GetKeyDown(JumpKey);
         hAxis = Input.GetAxisRaw("Horizontal");
@@ -213,7 +217,7 @@ public class PlayerController : MonoBehaviour
         pressedFirstSlot = Input.GetKeyDown(FirstSlot);
         pressedSecondSlot = Input.GetKeyDown(SecondSlot);
         pressedThirdSlot = Input.GetKeyDown(ThirdSlot);
-
+        pressedInvenKey = Input.GetKeyDown(ioInventory);
 
         if (battle.Atking)// || pressedRightAtkKey)
         {
@@ -337,7 +341,7 @@ public class PlayerController : MonoBehaviour
         }
         */
         
-        if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking)
+        if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking || manager.inventoryUI.isInven)
             return;
         
 

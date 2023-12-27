@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     Inventory inventory;
-    public UIController uiController;
+    public SwapUI swapUI;
+    public InventoryUI inventoryUI;
 
     [SerializeField] private PlayerController player;
 
@@ -80,7 +81,8 @@ public class GameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = player.GetComponent<Inventory>();
-        uiController = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
+        swapUI = GameObject.FindGameObjectWithTag("UI").GetComponent<SwapUI>();
+        inventoryUI = GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryUI>();
     }
 
     void Start()
@@ -94,7 +96,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake)
+        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake && !inventoryUI.isInven)
         {
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;
@@ -364,6 +366,7 @@ public class GameManager : MonoBehaviour
         SlotSwapUI.SetActive(true);       
         isSlotSwap = true;      
     }
+
     public void DropboxOptionChanged(int x)
     {
         resolutionNum = x; 
