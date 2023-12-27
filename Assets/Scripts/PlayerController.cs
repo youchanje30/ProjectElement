@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     private bool pressedDashKey;
     private KeyCode atkKey = KeyCode.Z;
     private bool pressedAtkKey;
+    private bool isRepeatAtk = false;
     [Space(20f)]
 
     [Header("Interact Setting")]
@@ -326,12 +327,13 @@ public class PlayerController : MonoBehaviour
         if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking)
             return;
         
+
         // 행동 불가능한 상황
-        if (pressedAtkKey)
+        if (pressedAtkKey && !isRepeatAtk)
         {  
-            
             if(battle.WeaponType == WeaponTypes.Sword || !movement2D.isGround)
             {
+                isRepeatAtk = true;
                 battle.AtkAction(0);
                 return;
             }
@@ -362,7 +364,15 @@ public class PlayerController : MonoBehaviour
                 battle.AtkAction(1);
 
             chargingTime = 0f;
+            
+            isRepeatAtk = true;
         }
+        
+        if(AtkFin)
+        {
+            isRepeatAtk = false;
+        }
+
     }
 
     void Move()
