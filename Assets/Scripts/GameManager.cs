@@ -182,7 +182,9 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
+    public void SetSlotElemental()
+    {       
+    }
 
     public void SystemBtn(int BtnNum)
     {
