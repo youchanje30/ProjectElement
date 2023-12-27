@@ -70,6 +70,20 @@ public class SaveManager : MonoBehaviour
         playerWeaponData2.InnerText = player.inventory.HavingWeapon[2].ToString();
 
         root.AppendChild(playerWeaponData2);
+        
+        
+        // 플레이어 스테이터스 저장
+        XmlElement playerStrength = xmlDocument.CreateElement("PlayerStrength");
+        playerStrength.InnerText = player.GetComponent<Inventory>().Gold.ToString();
+        root.AppendChild(playerStrength);
+        
+        XmlElement playerDexterity = xmlDocument.CreateElement("PlayerDexterity");
+        playerDexterity.InnerText = player.GetComponent<Inventory>().Gold.ToString();
+        root.AppendChild(playerDexterity);
+        
+        XmlElement playerLuck = xmlDocument.CreateElement("PlayerLuck");
+        playerLuck.InnerText = player.GetComponent<Inventory>().Gold.ToString();
+        root.AppendChild(playerLuck);
 
 
         // 무기 타입 저장
@@ -191,7 +205,16 @@ public class SaveManager : MonoBehaviour
             // 정령
             XmlNodeList spiritSoul = xmlDocument.GetElementsByTagName("PlayerSpiritSoul");
             player.GetComponent<Inventory>().SpiritSoul = int.Parse(spiritSoul[0].InnerText);
-            
+
+            // 플레이어 스테이터스
+            XmlNodeList playerStrength = xmlDocument.GetElementsByTagName("PlayerStrength");
+            player.GetComponent<PlayerStatus>().strength = int.Parse(playerStrength[0].InnerText);
+            XmlNodeList playerDexterity = xmlDocument.GetElementsByTagName("PlayerDexterity");
+            player.GetComponent<PlayerStatus>().dexterity = int.Parse(playerDexterity[0].InnerText);
+            XmlNodeList playerLuck = xmlDocument.GetElementsByTagName("PlayerLuck");
+            player.GetComponent<PlayerStatus>().luck = int.Parse(playerLuck[0].InnerText);
+
+            // 아이템
             XmlNodeList Datas = xmlDocument.GetElementsByTagName("Datas");
             if(Datas.Count != 0)
             {
@@ -261,6 +284,19 @@ public class SaveManager : MonoBehaviour
         XmlElement playerGold = xmlDocument.CreateElement("PlayerGold");
         playerGold.InnerText = 0.ToString();
         root.AppendChild(playerGold);
+
+        
+        // 플레이어 스테이터스 저장
+        XmlElement playerStrength = xmlDocument.CreateElement("PlayerStrength");
+        playerStrength.InnerText = 0.ToString();
+        root.AppendChild(playerStrength);
+        XmlElement playerDexterity = xmlDocument.CreateElement("PlayerDexterity");
+        playerDexterity.InnerText = 0.ToString();
+        root.AppendChild(playerDexterity);
+        XmlElement playerLuck = xmlDocument.CreateElement("PlayerLuck");
+        playerLuck.InnerText = 0.ToString();
+        root.AppendChild(playerLuck);
+        
         
         // 정수 저장
         XmlElement playerSpiritSoul = xmlDocument.CreateElement("PlayerSpiritSoul");

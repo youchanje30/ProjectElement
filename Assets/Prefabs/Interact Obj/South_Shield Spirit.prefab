@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 4737147878803251620}
   - component: {fileID: 3631957191998174894}
   m_Layer: 0
-  m_Name: South Spirit
+  m_Name: South_Shield Spirit
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -458,10 +458,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857d6c4cbf94279469c7d0af9897bddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponType: 3
   ObjType: 0
   objectID: 2000
   objectTag: 
   interactView: {fileID: 2248028681732574015}
+  ShopItem: {fileID: 0}
+  HpHealItem: {fileID: 0}
+  SpiritSoulItem: {fileID: 0}
+  scrollRect: {fileID: 0}
+  Space: 0
+  shopObjects: []
 --- !u!50 &3631957191998174894
 Rigidbody2D:
   serializedVersion: 4
