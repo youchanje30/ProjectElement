@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -141,25 +142,22 @@ public class PlayerController : MonoBehaviour
             manager.isSpiritAwake = false;
             manager.SpiritAwakeUI.SetActive(false);
         }
-
-        if(manager.isSlotSwap && Input.GetKeyDown(KeyCode.E))
+        if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.Escape))
         {
-            manager.SlotSwapUI.SetActive(false);                   
+            manager.SlotSwapUI.SetActive(false);
             manager.isAction = false;
             manager.isSelected = false;
-            for(int i = 0; i < inventory.HasWeapon.Length; i++) 
-            {
-                if (inventory.HavingWeapon[i] == inventory.HavingWeapon[manager.slot])
-                {
-                    inventory.Elements[i].SetActive(true);
-                }
-            }
-            manager.ObjData.gameObject.SetActive(false);
-            inventory.HavingWeapon[manager.slot] = (int)manager.ObjData.WeaponType;
-            inventory.Elements[manager.slot] = manager.ObjData.gameObject;
             manager.isSlotSwap = false;
-            manager.TalkPanel.SetActive(false);
-   
+        }
+
+        if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.E)) // 수정 해야함
+        {
+            manager.SlotSwapUI.SetActive(false);
+            manager.isAction = false;
+            manager.isSelected = false;
+
+            EleUISwap();
+
         }
 
         // if (battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
@@ -239,7 +237,22 @@ public class PlayerController : MonoBehaviour
 
         
     }
+    public void EleUISwap()
+    {
+        for (int i = 0; i < inventory.HasWeapon.Length; i++)
+        {
+            if (inventory.HavingWeapon[i] == inventory.HavingWeapon[manager.slot])
+            {
+                manager.Elements[i].SetActive(true);
+            }
+        }
+        interact.ScanObj.gameObject.gameObject.SetActive(false);
+        inventory.HavingWeapon[manager.slot] = (int)manager.ObjData.WeaponType;
+        manager.Elements[manager.slot] = interact.ScanObj.gameObject;
 
+        manager.isSlotSwap = false;
+        manager.TalkPanel.SetActive(false);
+    }
     public void ChangeAnim()
     {
         animator.runtimeAnimatorController = anim[(int)PlayerWeaponType];
@@ -397,8 +410,6 @@ public class PlayerController : MonoBehaviour
         if (pressedFirstSlot && battle.isSwap == true)
         {
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[0];
-            // PlayerElementType = (Elements)inventory.HavingElemental[0];
-            battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
             battle.isSwap = false;
             battle.StartCoroutine(battle.ReturnSwap());
@@ -406,8 +417,6 @@ public class PlayerController : MonoBehaviour
         if (pressedSecondSlot && battle.isSwap == true)
         {
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[1];
-            // PlayerElementType = (Elements)inventory.HavingElemental[1];
-            battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
             battle.isSwap = false;
             battle.StartCoroutine(battle.ReturnSwap());
@@ -416,8 +425,6 @@ public class PlayerController : MonoBehaviour
         if (pressedThirdSlot && battle.isSwap == true)
         { 
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[2];
-            // PlayerElementType = (Elements)inventory.HavingElemental[2];
-            battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
             battle.isSwap = false;
             battle.StartCoroutine(battle.ReturnSwap());
@@ -441,27 +448,26 @@ public class PlayerController : MonoBehaviour
         }
         for (int i = 0; i < inventory.HasWeapon.Length; i++)
         {
-            if (checkSlot == true)
-            {
-                manager.TalkPanel.SetActive(false);
-                Debug.Log("존재하는 정령입니다.");
-                break;
-            }
-            else if (inventory.HasWeapon[2] == true)
+            //if (checkSlot == true)
+            //{
+            //    manager.TalkPanel.SetActive(false);
+            //    Debug.Log("존재하는 정령입니다.");
+            //    break;
+            //}
+            //else 
+            if (inventory.HasWeapon[2] == true)
             {
                
                 manager.OpenSwap();            
                 break;
             }
             else if (inventory.HasWeapon[i] == false)
-            {
-                // PlayerElementType = (Elements)E;
+            {               
                 PlayerWeaponType = (WeaponTypes)W;
                 inventory.HavingWeapon[i] = (int)PlayerWeaponType;
-                inventory.Elements[i] = manager.ObjData.gameObject;
-                // inventory.HavingElemental[i] = (int)PlayerElementType;
-                inventory.HasWeapon[i] = true;               
-                manager.ObjData.gameObject.SetActive(false);
+                inventory.HasWeapon[i] = true;
+                manager.Elements[i] = interact.ScanObj.gameObject;
+                interact.ScanObj.gameObject.SetActive(false);
                 SetEquipment();
                 break;
             }

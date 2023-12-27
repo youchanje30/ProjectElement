@@ -15,7 +15,6 @@ public class SaveManager : MonoBehaviour
     [Header("Get Data Objs")]
     [SerializeField] private PlayerController player;
     [SerializeField] private GameManager manager;
-    [SerializeField] private Inventory inventory;
     [Space(20f)]
 
 
@@ -37,10 +36,7 @@ public class SaveManager : MonoBehaviour
         {
             manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         }
-        if (inventory == null)
-        {
-            inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-        }
+
     }
 
 
@@ -61,18 +57,17 @@ public class SaveManager : MonoBehaviour
 
         // 무기 종류 저장
         XmlElement playerWeaponData = xmlDocument.CreateElement("PlayerWeaponType");
-        playerWeaponData.InnerText = inventory.HavingWeapon[0].ToString();
+        playerWeaponData.InnerText = player.inventory.HavingWeapon[0].ToString();
 
         root.AppendChild(playerWeaponData);
 
-
-        XmlElement playerWeaponData1 = xmlDocument.CreateElement("PlayerWeaponType");
-        playerWeaponData1.InnerText = inventory.HavingWeapon[1].ToString();
+        XmlElement playerWeaponData1 = xmlDocument.CreateElement("PlayerWeaponType1");
+        playerWeaponData1.InnerText = player.inventory.HavingWeapon[1].ToString();
 
         root.AppendChild(playerWeaponData1);
 
-        XmlElement playerWeaponData2 = xmlDocument.CreateElement("PlayerWeaponType");
-        playerWeaponData2.InnerText = inventory.HavingWeapon[2].ToString();
+        XmlElement playerWeaponData2 = xmlDocument.CreateElement("PlayerWeaponType2");
+        playerWeaponData2.InnerText = player.inventory.HavingWeapon[2].ToString();
 
         root.AppendChild(playerWeaponData2);
 
@@ -167,18 +162,18 @@ public class SaveManager : MonoBehaviour
             //playerWeapon = PlayerWeaponData;
             XmlNodeList playerWeaponData = xmlDocument.GetElementsByTagName("PlayerWeaponType");
             WeaponTypes PlayerWeaponData = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData[0].InnerText);
-            inventory.HavingWeapon[0] = (int)PlayerWeaponData;
-            if (PlayerWeaponData != 0)  { inventory.HasWeapon[0] = true; } 
-            
-            XmlNodeList playerWeaponData1 = xmlDocument.GetElementsByTagName("PlayerWeaponType");
-            WeaponTypes PlayerWeaponData1 = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData1[0].InnerText);
-            inventory.HavingWeapon[1] = (int)PlayerWeaponData1;
-            if (PlayerWeaponData1 != 0) { inventory.HasWeapon[1] = true; }
+            player.inventory.HavingWeapon[0] = (int)PlayerWeaponData;
+            if (PlayerWeaponData != 0)  { player.inventory.HasWeapon[0] = true; }
 
-            XmlNodeList playerWeaponData2 = xmlDocument.GetElementsByTagName("PlayerWeaponType");
+            XmlNodeList playerWeaponData1 = xmlDocument.GetElementsByTagName("PlayerWeaponType1");
+            WeaponTypes PlayerWeaponData1 = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData1[0].InnerText);
+            player.inventory.HavingWeapon[1] = (int)PlayerWeaponData1;
+            if (PlayerWeaponData1 != 0) { player.inventory.HasWeapon[1] = true; }
+
+            XmlNodeList playerWeaponData2 = xmlDocument.GetElementsByTagName("PlayerWeaponType2");
             WeaponTypes PlayerWeaponData2 = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData2[0].InnerText);
-            inventory.HavingWeapon[2] = (int)PlayerWeaponData2;
-            if (PlayerWeaponData2 != 0) { inventory.HasWeapon[2] = true; }
+            player.inventory.HavingWeapon[2] = (int)PlayerWeaponData2;
+            if (PlayerWeaponData2 != 0) { player.inventory.HasWeapon[2] = true; }
 
             // 속성 타입 -> 12.26필요 없어짐
             // XmlNodeList playerElementData = xmlDocument.GetElementsByTagName("PlayerElementType");
