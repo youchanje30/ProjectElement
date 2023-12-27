@@ -1,15 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Elements
-{
-    None, Fire, South, Water, Wind
-}
 
-public enum WeaponTypes { Shield, Sword , Bow , Wand };
+public enum WeaponTypes { None, Sword , Wand , Shield , Bow };
 
 
 public class PlayerController : MonoBehaviour
@@ -33,21 +30,21 @@ public class PlayerController : MonoBehaviour
     private Battle battle;
     [SerializeField] private GameManager manager;
     private Animator animator;
-
-
+    
 
     [Header("Player Info")]
-    public Elements PlayerElementType;
     public WeaponTypes PlayerWeaponType;
     public Inventory inventory;
 
 
-    [System.Serializable]
-    public class ElementAnims
-    {
-        public RuntimeAnimatorController[] ElementAnim;
-    }
-    public ElementAnims[] Anims;
+    // [System.Serializable]
+    // public class ElementAnims
+    // {
+    //     public RuntimeAnimatorController[] ElementAnim;
+    // }
+    // public ElementAnims[] Anims;
+    
+    public RuntimeAnimatorController[] anim;
     // None, Fire, South, Water, Wind 
     // Shield, Sword, Bow
 
@@ -59,6 +56,7 @@ public class PlayerController : MonoBehaviour
     private bool pressedDashKey;
     private KeyCode atkKey = KeyCode.Z;
     private bool pressedAtkKey;
+    private bool isRepeatAtk = false;
     [Space(20f)]
 
     [Header("Interact Setting")]
@@ -77,13 +75,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode SecondSlot = KeyCode.S;
     private bool pressedSecondSlot;
     [SerializeField] private KeyCode ThirdSlot = KeyCode.D;
-    private bool pressedThirdSlot;
+    private bool pressedThirdSlot;    
+    [Tooltip("무기 중복체크")]
+    public bool checkSlot = false;
 
 
     public float chargingTime;
 
     private bool ischarging;
-
 
     void Awake()
     {
@@ -94,7 +93,7 @@ public class PlayerController : MonoBehaviour
         battle = GetComponent<Battle>();
         animator = GetComponent<Animator>();
         inventory = GetComponent<Inventory>();
-        status = GetComponent<PlayerStatus>();
+        status = GetComponent<PlayerStatus>();       
         #endregion Component Access
 
 
@@ -126,7 +125,6 @@ public class PlayerController : MonoBehaviour
 
     void PlayerUISystem()
     {
-        // playerHpBar.value = battle.curHp;
         playerHpBar.value = Mathf.Lerp(playerHpBar.value, status.curHp, Time.deltaTime * 5f);
         HpFill.color = gradient.Evaluate(playerHpBar.normalizedValue);
     }
@@ -144,7 +142,23 @@ public class PlayerController : MonoBehaviour
             manager.isSpiritAwake = false;
             manager.SpiritAwakeUI.SetActive(false);
         }
+        if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.Escape))
+        {
+            manager.SlotSwapUI.SetActive(false);
+            manager.isAction = false;
+            manager.isSelected = false;
+            manager.isSlotSwap = false;
+        }
 
+        if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.E)) // 수정 해야함
+        {
+            manager.SlotSwapUI.SetActive(false);
+            manager.isAction = false;
+            manager.isSelected = false;
+
+            EleUISwap();
+
+        }
 
         // if (battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
         // {
@@ -177,7 +191,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (movement2D.isDashing || manager.isAction || manager.isShop || battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
+        if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
@@ -223,17 +237,31 @@ public class PlayerController : MonoBehaviour
 
         
     }
+    public void EleUISwap()
+    {
+        for (int i = 0; i < inventory.HasWeapon.Length; i++)
+        {
+            if (inventory.HavingWeapon[i] == inventory.HavingWeapon[manager.slot])
+            {
+                manager.Elements[i].SetActive(true);
+            }
+        }
+        interact.ScanObj.gameObject.gameObject.SetActive(false);
+        inventory.HavingWeapon[manager.slot] = (int)manager.ObjData.WeaponType;
+        manager.Elements[manager.slot] = interact.ScanObj.gameObject;
 
+        manager.isSlotSwap = false;
+        manager.TalkPanel.SetActive(false);
+    }
     public void ChangeAnim()
     {
-        animator.runtimeAnimatorController = Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType];
+        animator.runtimeAnimatorController = anim[(int)PlayerWeaponType];
     }
 
     public void SetEquipment()
     {
         ChangeAnim();
         status.SetEquipment();
-        // battle.ResetStat();
         // if(animator.runtimeAnimatorController == Anims[(int)PlayerElementType].ElementAnim[(int)PlayerWeaponType]) return;
         battle.WeaponType = PlayerWeaponType;
         // SaveManager.instance.Save();
@@ -309,18 +337,17 @@ public class PlayerController : MonoBehaviour
         }
         */
         
-        if (battle.fallAtking || manager.isAction || manager.isShop || movement2D.isDashing || battle.Atking)
+        if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking)
             return;
         
 
-
-        
-        
         // 행동 불가능한 상황
-        if (pressedAtkKey)
+        if (pressedAtkKey && !isRepeatAtk)
         {  
             if(battle.WeaponType == WeaponTypes.Sword || battle.WeaponType == WeaponTypes.Wand || !movement2D.isGround)
+
             {
+                isRepeatAtk = true;
                 battle.AtkAction(0);
                 return;
             }
@@ -351,7 +378,15 @@ public class PlayerController : MonoBehaviour
                 battle.AtkAction(1);
 
             chargingTime = 0f;
+            
+            isRepeatAtk = true;
         }
+        
+        if(AtkFin)
+        {
+            isRepeatAtk = false;
+        }
+
     }
 
     void Move()
@@ -373,28 +408,70 @@ public class PlayerController : MonoBehaviour
     
     void Swap()
     {
-        if (pressedFirstSlot)
+        if (pressedFirstSlot && battle.isSwap == true)
         {
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[0];
-            PlayerElementType = (Elements)inventory.HavingElemental[0];
-            battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
+            battle.isSwap = false;
+            battle.StartCoroutine(battle.ReturnSwap());
         }
-        if (pressedSecondSlot)
+        if (pressedSecondSlot && battle.isSwap == true)
         {
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[1];
-            PlayerElementType = (Elements)inventory.HavingElemental[1];
-            battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
+            battle.isSwap = false;
+            battle.StartCoroutine(battle.ReturnSwap());
         }
         
-        if (pressedThirdSlot)
+        if (pressedThirdSlot && battle.isSwap == true)
         { 
             PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[2];
-            PlayerElementType = (Elements)inventory.HavingElemental[2];
-            battle.WeaponType = (WeaponTypes)inventory.HavingWeapon[1];
             SetEquipment();
+            battle.isSwap = false;
+            battle.StartCoroutine(battle.ReturnSwap());
         }
         
+    }
+
+    public void GetElement(int W)
+    {
+        for (int j = 0; j < inventory.HasWeapon.Length; j++)
+        {
+            if (inventory.HavingWeapon[j] == W)
+            {
+                checkSlot = true;
+                break;
+            }
+            else
+            {
+                checkSlot = false;
+            }
+        }
+        for (int i = 0; i < inventory.HasWeapon.Length; i++)
+        {
+            //if (checkSlot == true)
+            //{
+            //    manager.TalkPanel.SetActive(false);
+            //    Debug.Log("존재하는 정령입니다.");
+            //    break;
+            //}
+            //else 
+            if (inventory.HasWeapon[2] == true)
+            {
+               
+                manager.OpenSwap();            
+                break;
+            }
+            else if (inventory.HasWeapon[i] == false)
+            {               
+                PlayerWeaponType = (WeaponTypes)W;
+                inventory.HavingWeapon[i] = (int)PlayerWeaponType;
+                inventory.HasWeapon[i] = true;
+                manager.Elements[i] = interact.ScanObj.gameObject;
+                interact.ScanObj.gameObject.SetActive(false);
+                SetEquipment();
+                break;
+            }
+        }
     }
 }

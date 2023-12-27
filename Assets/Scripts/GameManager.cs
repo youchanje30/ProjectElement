@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Xml.Linq;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     Inventory inventory;
-
+    public UIController uiController;
 
     [SerializeField] private PlayerController player;
 
@@ -21,8 +22,7 @@ public class GameManager : MonoBehaviour
 
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;
-    [SerializeField] private TalkManager talkManager;
-    
+    [SerializeField] private TalkManager talkManager;   
     [Header("Setting Panel")]
     [SerializeField] private GameObject SettingPanel;
 
@@ -64,13 +64,23 @@ public class GameManager : MonoBehaviour
     public GameObject SpiritAwakeUI;
     public bool isSpiritAwake = false;
 
+    [Header("SlotSwap Setting")]
+    public GameObject SlotSwapUI;
+    public bool isSlotSwap = false;
+    public Image[] Slot;
+    public Sprite[] Ele;
+    public int slot;
 
+    [Header("Elemental")]
+    public GameObject[] Elements;
+ 
 
     void Awake()
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = player.GetComponent<Inventory>();
+        uiController = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
     }
 
     void Start()
@@ -84,16 +94,38 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSpiritAwake)
+        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake)
         {
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;
-        }
-
-        
-        TimeSetting();
+        }   
+        TimeSetting();       
     }
 
+    public void ElementImg()
+    {
+        for(int i = 0 ; i<inventory.HasWeapon.Length ; i++)
+        {
+            if (inventory.HavingWeapon[i] == (int)WeaponTypes.Sword)
+            {
+                Slot[i].sprite = Ele[1];
+            }
+            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Wand)
+            {
+                Slot[i].sprite = Ele[2];
+            }
+            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Shield)
+            {
+                Slot[i].sprite = Ele[3];
+            }
+            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
+            {
+                Slot[i].sprite = Ele[4];
+            }
+        }
+        Slot[3].sprite = Ele[(int)ObjData.WeaponType];
+        
+    }
     public void TimeSetting()
     {
         // TimerVal += Time.deltaTime;
@@ -120,7 +152,6 @@ public class GameManager : MonoBehaviour
                 break;
             // 해상도 다운 업
 
-
             case 3: 
                 fullScreen ++;
                 fullScreen %= 2;
@@ -138,10 +169,6 @@ public class GameManager : MonoBehaviour
 
         }
     }
-
-
-    
-
 
 
     public void SaveSettingData()
@@ -276,77 +303,31 @@ public class GameManager : MonoBehaviour
         }
     }
     
-
+      
+   
     public void Active(int objectID) //정령 2번 선택지
     {
         switch (objectID)
         {
             case 1000:
-                
-                for(int i = 0; i < inventory.HasWeapon.Length; i++) 
-                {   
-                    if (inventory.HasWeapon[i] == false) 
-                    {
-                        player.PlayerElementType = Elements.Fire;
-                        player.PlayerWeaponType = WeaponTypes.Sword;
-                        inventory.HavingWeapon[i] = (int)player.PlayerWeaponType;
-                        inventory.HavingElemental[i] = (int)player.PlayerElementType;
-                        inventory.HasWeapon[i] = true;
-                        player.SetEquipment();
-                        break;
-                    }                 
-                }             
-                break;
+                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
+                player.GetElement((int)WeaponTypes.Sword);          
+            break;
 
-            case 2000:                           
-                for (int i = 0; i < inventory.HasWeapon.Length; i++)
-                {
-                    if (inventory.HasWeapon[i] == false)
-                    {
-                        player.PlayerElementType = Elements.South;
-                        player.PlayerWeaponType = WeaponTypes.Shield;
-                        inventory.HavingWeapon[i] = (int)player.PlayerWeaponType;
-                        inventory.HavingElemental[i] = (int)player.PlayerElementType;
-                        inventory.HasWeapon[i] = true;
-                        player.SetEquipment();
-                        break;
-                    }
-                }                
-                break;
+            case 2000:
+                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
+                player.GetElement((int)WeaponTypes.Shield);
+
+            break;
     
             case 3000:
-               
-                for (int i = 0; i < inventory.HasWeapon.Length; i++)
-                {
-                    if (inventory.HasWeapon[i] == false)
-                    {
-                        player.PlayerElementType = Elements.Wind;
-                        player.PlayerWeaponType = WeaponTypes.Bow;
-                        inventory.HavingWeapon[i] = (int)player.PlayerWeaponType;
-                        inventory.HavingElemental[i] = (int)player.PlayerElementType;
-                        inventory.HasWeapon[i] = true;
-                        player.SetEquipment();
-                        break;
-                    }
-                }              
+                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
+                player.GetElement((int)WeaponTypes.Bow);
                 break;
                 
             case 4000:
-                
-                for (int i = 0; i < inventory.HasWeapon.Length; i++)
-                {
-                    if (inventory.HasWeapon[i] == false)
-                    {
-                        player.PlayerElementType = Elements.Water;
-                        player.PlayerWeaponType = WeaponTypes.Bow;
-                        inventory.HavingWeapon[i] = (int)player.PlayerWeaponType;
-                        inventory.HavingElemental[i] = (int)player.PlayerElementType;
-                        inventory.HasWeapon[i] = true;
-                        player.SetEquipment();
-                        break;
-                    }
-                }
-               
+                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
+                player.GetElement((int)WeaponTypes.Wand);
                 break;
         }
     }
@@ -377,7 +358,12 @@ public class GameManager : MonoBehaviour
             optionNum++;
         }
     }
-
+    public void OpenSwap()
+    {       
+        ElementImg();
+        SlotSwapUI.SetActive(true);       
+        isSlotSwap = true;      
+    }
     public void DropboxOptionChanged(int x)
     {
         resolutionNum = x; 

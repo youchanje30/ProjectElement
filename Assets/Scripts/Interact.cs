@@ -6,7 +6,7 @@ public class Interact : MonoBehaviour
 {
     [SerializeField] private GameObject scanObj;
     private Inventory inven;
-
+    public GameObject ScanObj;
     public bool isActionning;
 
 
@@ -22,12 +22,17 @@ public class Interact : MonoBehaviour
         if(other.tag == "NPC" || other.tag == "Portal" || other.tag == "Shop" || other.tag == "Weapon" || other.tag == "SpiritAwake") // || other.gameObject.tag == "NPC" )
         {
             if(scanObj != null)
+            {
                 scanObj.gameObject.GetComponent<ObjectController>().InteractView(false);
+                ScanObj = scanObj;
+            }
+                
 
             
 
             scanObj = other.gameObject;
             scanObj.gameObject.GetComponent<ObjectController>().InteractView(true);
+            ScanObj = scanObj;
         }
         else if(other.tag == "Coin")
         {
@@ -50,6 +55,7 @@ public class Interact : MonoBehaviour
         {
             scanObj = other.gameObject;
             scanObj.gameObject.GetComponent<ObjectController>().InteractView(true);
+            ScanObj = scanObj;
         }
     }
 

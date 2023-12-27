@@ -16,6 +16,7 @@ TagManager:
   - Weapon
   - SpiritSoul
   - SpiritAwake
+  - UI
   layers:
   - Default
   - TransparentFX

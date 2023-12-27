@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1035430245274727551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5525140155271563417}
+  m_Layer: 0
+  m_Name: None Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5525140155271563417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035430245274727551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2183464480881181263}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1275704578323403850
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +193,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5525140155271563417}
   - {fileID: 4135913021082344152}
   - {fileID: 7154946036308757365}
   - {fileID: 4315468924003554650}
@@ -341,38 +373,19 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   manager: {fileID: 0}
-  PlayerElementType: 0
   PlayerWeaponType: 0
   inventory: {fileID: 8509772043893616530}
-  Anims:
-  - ElementAnim:
-    - {fileID: 9100000, guid: a24d43c3af587fe4ab03f9382018a43b, type: 2}
-    - {fileID: 9100000, guid: cb47c9d2b5ee5024b91da402a04a507d, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - ElementAnim:
-    - {fileID: 9100000, guid: d90025fa5a7fe9f4b98d31de7453e09e, type: 2}
-    - {fileID: 9100000, guid: 22c8eab9f3c250e4184385fbe1999e95, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - ElementAnim:
-    - {fileID: 9100000, guid: 866fc2936f2da394c84ecbe12e81145f, type: 2}
-    - {fileID: 9100000, guid: 589568399a1039644aefa7d9c49067d6, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - ElementAnim:
-    - {fileID: 9100000, guid: 3f776af9b9a25bb4fae1766a030b6395, type: 2}
-    - {fileID: 9100000, guid: 18a39aeb070eb0142ad1f11d06050654, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - ElementAnim:
-    - {fileID: 9100000, guid: 19b3b9702cd62ad409ffd5e934922b88, type: 2}
-    - {fileID: 9100000, guid: c524691f887c9b847b140d3da9c9d5aa, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-    - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  anim:
+  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  - {fileID: 9100000, guid: 22c8eab9f3c250e4184385fbe1999e95, type: 2}
+  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  - {fileID: 9100000, guid: 866fc2936f2da394c84ecbe12e81145f, type: 2}
+  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   InteractKey: 101
-  LeftAtkKey: 122
-  RightAtkKey: 120
+  FirstSlot: 97
+  SecondSlot: 115
+  ThirdSlot: 100
+  checkSlot: 0
   chargingTime: 0
 --- !u!114 &7876326807568582025
 MonoBehaviour:
@@ -450,26 +463,30 @@ MonoBehaviour:
   Atking: 0
   isGuard: 0
   Left_AtkCoolTime:
-  - 0.75
+  - 0.4
   - 0.5
   - 0.4
+  - 0.75
   - 0.4
   Right_AtkCoolTime:
   - 1
   - 0
   - 1
   - 1
-  isAtkReady: 01010101
+  - 1
+  isAtkReady: 0101010101
   atkPos:
-  - {fileID: 4135913021082344152}
+  - {fileID: 5525140155271563417}
   - {fileID: 7154946036308757365}
-  - {fileID: 4315468924003554650}
   - {fileID: 6317585707649509668}
+  - {fileID: 4135913021082344152}
+  - {fileID: 4315468924003554650}
   atkSize:
-  - {x: 0.5, y: 1}
-  - {x: 1.7, y: 1.7}
   - {x: 0, y: 0}
+  - {x: 0.5, y: 1}
   - {x: 12, y: 4}
+  - {x: 0, y: 0}
+  - {x: 1.7, y: 1.7}
   arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
   originalScale: 0
   CanComboAtk: 0
@@ -484,6 +501,8 @@ MonoBehaviour:
   ShieldDashPos: {fileID: 4472214303243002330}
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
+  isSwap: 0
+  swapTime: 0
 --- !u!114 &8509772043893616530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +521,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  HavingWeapon: 000000000000000000000000
+  HasWeapon: 000000
+  Elements:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
