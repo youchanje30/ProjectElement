@@ -4037,6 +4037,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
+      propertyPath: Scene.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
       propertyPath: Ele.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -4076,6 +4080,14 @@ PrefabInstance:
       propertyPath: resolutionDropdown
       value: 
       objectReference: {fileID: 2117973850}
+    - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
+      propertyPath: Elements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
+      propertyPath: Scene.Array.data[2]
+      value: Example Stage1
+      objectReference: {fileID: 0}
     - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
       propertyPath: CheckSlot.Array.size
       value: 3

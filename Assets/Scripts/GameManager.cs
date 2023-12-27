@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour
 
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;
-    [SerializeField] private TalkManager talkManager;
-    
+    [SerializeField] private TalkManager talkManager;   
     [Header("Setting Panel")]
     [SerializeField] private GameObject SettingPanel;
 
@@ -71,6 +70,9 @@ public class GameManager : MonoBehaviour
     public Image[] Slot;
     public Sprite[] Ele;
     public int slot;
+
+    [Header("Elemental")]
+    public GameObject[] Elements;
  
 
     void Awake()
@@ -149,7 +151,6 @@ public class GameManager : MonoBehaviour
 
                 break;
             // 해상도 다운 업
-
 
             case 3: 
                 fullScreen ++;
