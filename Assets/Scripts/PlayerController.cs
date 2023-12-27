@@ -319,8 +319,7 @@ public class PlayerController : MonoBehaviour
         // 행동 불가능한 상황
         if (pressedAtkKey)
         {  
-            
-            if(battle.WeaponType == WeaponTypes.Sword || !movement2D.isGround)
+            if(battle.WeaponType == WeaponTypes.Sword || battle.WeaponType == WeaponTypes.Wand || !movement2D.isGround)
             {
                 battle.AtkAction(0);
                 return;

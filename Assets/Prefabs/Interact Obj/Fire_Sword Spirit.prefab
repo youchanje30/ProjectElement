@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 2103521287152027813}
   - component: {fileID: 3192289032289349095}
   m_Layer: 0
-  m_Name: Fire Spirit
+  m_Name: Fire_Sword Spirit
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,10 +373,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857d6c4cbf94279469c7d0af9897bddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponType: 1
   ObjType: 0
   objectID: 1000
   objectTag: 
   interactView: {fileID: 7419534267299685427}
+  ShopItem: {fileID: 0}
+  HpHealItem: {fileID: 0}
+  SpiritSoulItem: {fileID: 0}
+  scrollRect: {fileID: 0}
+  Space: 0
+  shopObjects: []
 --- !u!50 &3192289032289349095
 Rigidbody2D:
   serializedVersion: 4
