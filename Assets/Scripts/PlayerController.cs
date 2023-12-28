@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
         SetEquipment();
         battle.WeaponType = PlayerWeaponType;
-
+        manager.InvenUI.SetActive(manager.isInven);
         playerHpBar.maxValue = status.maxHp;
     }
 
@@ -161,9 +161,9 @@ public class PlayerController : MonoBehaviour
         }
 
 
-     
- 
-        
+
+
+
 
         // if (battle.WeaponType != WeaponTypes.Sword && !ischarging && Input.GetKeyDown(RightAtkKey) && !battle.fallAtking && !manager.isAction && !manager.isShop && !movement2D.isDashing && !battle.Atking)
         // {
@@ -193,10 +193,17 @@ public class PlayerController : MonoBehaviour
         //         animator.SetBool("isCharge", false);
         //     }
         // }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+
+            //manager.inventoryUI.ElementImg();
+            //manager.inventoryUI.SetItem();
+            manager.isInven = !manager.isInven;
+            manager.InvenUI.SetActive(manager.isInven);
+        }
 
 
-
-        if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.inventoryUI.isInven|| battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
+        if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.isInven|| battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
@@ -341,7 +348,7 @@ public class PlayerController : MonoBehaviour
         }
         */
         
-        if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking || manager.inventoryUI.isInven)
+        if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking || manager.isInven)
             return;
         
 

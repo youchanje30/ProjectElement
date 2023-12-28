@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public ItemManager Item;
     public Inventory inventory;
     public SwapUI swapUI;
-    public InventoryUI inventoryUI;
+    //public InventoryUI inventoryUI;
 
     [SerializeField] private PlayerController player;
 
@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
     public int slot;
 
     [Header("Inventory Setting")]
+    public GameObject InvenUI;
+    public bool isInven = false;
     public Image[] EleCards;
     public Image[] InvenItem;
 
@@ -86,7 +88,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = player.GetComponent<Inventory>();
         swapUI = GameObject.FindGameObjectWithTag("UI").GetComponent<SwapUI>();
-        inventoryUI = GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryUI>();
+        //inventoryUI = GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryUI>();
         Item = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ItemManager>();
     }
 
@@ -101,7 +103,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake && !inventoryUI.isInven)
+        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake)
         {
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;

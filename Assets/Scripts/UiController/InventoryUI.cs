@@ -2,21 +2,22 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler, IEndDragHandler, IPointerEnterHandler
+public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public RectTransform rectTransform;
+    public RectTransform[] rectTransform;
     public GameManager gameManager;
 
     [Header("Inventory Setting")]
-    public GameObject InvenUI;
+    
     public GameObject[] ItemInfo;
-    public RectTransform[] ElementInfopos;
-    public GameObject[] ElementInfo;
-    public RectTransform Card;
+    public RectTransform Infopos;
+    public GameObject Info;
+    public RectTransform[] Card;
 
 
     Canvas canvas;
@@ -24,54 +25,48 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     public RectTransform targetRectTr;
     public Camera uiCamera;
     public Vector2 screenPoint;
-
-    public bool isInven = false;
     public float Speed;
     void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        rectTransform = this.GetComponent<RectTransform>();
+        for (int i = 0; i < rectTransform.Length; i++) { rectTransform[i] = GetComponent<RectTransform>(); }
     }
     void Start()
     {
-        for (int i = 0; i < ElementInfo.Length; i++) { ElementInfo[i].SetActive(false); }
+         Info.SetActive(false); 
         for (int i = 0; i < ItemInfo.Length; i++) { ItemInfo[i].SetActive(false); }
         targetRectTr = GameObject.FindGameObjectWithTag("UI").GetComponent<RectTransform>();
-        uiCamera = Camera.main;
-        InvenUI.SetActive(isInven);
-      
+        uiCamera = Camera.main;           
     }
 
     // Update is called once per frame
     void Update()
     {
-        OpenInformation();
+
+        //MoveInformation();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(targetRectTr, Input.mousePosition, uiCamera, out screenPoint);
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            ElementImg();
-            SetItem();
-            isInven = !isInven;
-            InvenUI.SetActive(isInven);
-        }
+       
         MoveElementsCard();
     }
     public void MoveElementsCard()
     {
         if(Input.GetKeyDown(KeyCode.E))
         {
-            if (rectTransform.anchoredPosition.x == 768 && rectTransform.anchoredPosition.y == 13)
+            for (int i = 0; i < rectTransform.Length; i++) 
             {
-                rectTransform.anchoredPosition = new Vector3(381, 13, 0);
-            }
-            else if (rectTransform.anchoredPosition.x == 381 && rectTransform.anchoredPosition.y == 13)
-            {
-                rectTransform.anchoredPosition = new Vector3(574, -31, 2);
-                rectTransform.SetAsLastSibling();
-            }
-            else if (rectTransform.anchoredPosition.x == 574 && rectTransform.anchoredPosition.y == -31)
-            {
-                rectTransform.anchoredPosition = new Vector3(768, 13, 0);
+                if (rectTransform[i].anchoredPosition.x == 673 && rectTransform[i].anchoredPosition.y == 278)
+                {
+                    rectTransform[i].anchoredPosition = new Vector3(286, 278, 0);
+                }
+                else if (rectTransform[i].anchoredPosition.x == 286 && rectTransform[i].anchoredPosition.y == 278)
+                {
+                    rectTransform[i].anchoredPosition = new Vector3(479, 234, 2);
+                    rectTransform[i].SetAsLastSibling();
+                }
+                else if (rectTransform[i].anchoredPosition.x == 479 && rectTransform[i].anchoredPosition.y == 234)
+                {
+                    rectTransform[i].anchoredPosition = new Vector3(673, 278, 0);
+                } 
             }
         }
     }
@@ -131,8 +126,13 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     public void OnDrag(PointerEventData eventData)
     {
         Debug.Log("OnDrag");
-
-       Card.anchoredPosition = screenPoint;
+        for(int i = 0; i< Card.Length; i++)
+        {
+            if (rectTransform[i] == Card[i])
+            { Card[i].anchoredPosition = screenPoint; }
+           
+        }
+        
 
     }
     public void OnEndDrag(PointerEventData eventData)
@@ -144,10 +144,19 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
 
     }
     public void OnPointerEnter(PointerEventData eventData)
+    {   
+        Info.SetActive(true);
+            
+    }
+    public void OnPointerExit(PointerEventData eventData)
     {
-        ElementInfo[0].SetActive(true);
-        ElementInfopos[0].anchoredPosition = screenPoint;
+        Info.SetActive(false);
     }
 
-
+    public void MoveInformation()
+    {
+        Infopos.SetAsLastSibling();
+        Infopos.anchoredPosition = new Vector3(screenPoint.x - 136, screenPoint.y + 196);
+        
+    }
 }
