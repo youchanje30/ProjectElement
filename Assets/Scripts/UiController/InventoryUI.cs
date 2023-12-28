@@ -7,10 +7,13 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler
 {
     public RectTransform rectTransform;
     private GameManager gameManager;
+    private Transform Canvas;
+    private Transform previousParent;
+    private CanvasGroup canvasGroup;
 
     [Header("Inventory Setting")]
     
@@ -18,7 +21,7 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     public RectTransform Infopos;
     public GameObject Info;
     public RectTransform Card;
-
+    Transform _startParent;
 
     Canvas canvas;
 
@@ -29,7 +32,9 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-         rectTransform = GetComponent<RectTransform>(); 
+        rectTransform = GetComponent<RectTransform>();
+        Canvas = FindObjectOfType<Canvas>().transform;
+        canvasGroup = GetComponent<CanvasGroup>();
     }
     void Start()
     {
@@ -42,6 +47,7 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     // Update is called once per frame
     void Update()
     {
+        MoveCard();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(targetRectTr, Input.mousePosition, uiCamera, out screenPoint);
         Infopos.SetAsLastSibling();
         Infopos.anchoredPosition = new Vector3(screenPoint.x - 136, screenPoint.y + 196);
@@ -72,20 +78,26 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
         }
     }
     public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("point down");
+    {      
         OnDrag(eventData);
     }
     public void OnDrag(PointerEventData eventData)
-    {
-        Debug.Log("OnDrag");
-     
-         Card.anchoredPosition = screenPoint; 
-
+    {    
+        Infopos.SetAsLastSibling();
+        Card.anchoredPosition = screenPoint;
+        rectTransform.position = eventData.position;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("EndDrag");
+        if(transform.parent == canvas)
+        {
+            transform.SetParent(previousParent);
+            rectTransform.position = previousParent.GetComponent<RectTransform>().position;
+        }
+
+        canvasGroup.alpha = 1.0f;
+        canvasGroup.blocksRaycasts = true;
+
     }
     public void OnPointerUp(PointerEventData eventData)
     {
@@ -94,13 +106,24 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     public void OnPointerEnter(PointerEventData eventData)
     {   
         Info.SetActive(true);
-            
+        
+
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         Info.SetActive(false);
     }
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        Info.SetActive(false);
+        previousParent = transform.parent;
 
+        transform.SetParent(Canvas);
+        transform.SetAsLastSibling();
+
+        canvasGroup.alpha = 0.6f;
+        canvasGroup.blocksRaycasts = false;
+    }
     public void MoveInformation()
     {
         
