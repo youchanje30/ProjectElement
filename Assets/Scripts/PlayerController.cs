@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
             EleUISwap();
         }
-
+      
 
 
 
@@ -195,11 +195,7 @@ public class PlayerController : MonoBehaviour
         // }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-
-            //manager.inventoryUI.ElementImg();
-            //manager.inventoryUI.SetItem();
-            manager.isInven = !manager.isInven;
-            manager.InvenUI.SetActive(manager.isInven);
+            manager.OpenInventory();
         }
 
 
@@ -268,6 +264,8 @@ public class PlayerController : MonoBehaviour
     {
         animator.runtimeAnimatorController = anim[(int)PlayerWeaponType];
     }
+  
+        
 
     public void SetEquipment()
     {
@@ -444,6 +442,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
+
     public void GetElement(int W)
     {
         for (int j = 0; j < inventory.HasWeapon.Length; j++)
@@ -460,29 +459,30 @@ public class PlayerController : MonoBehaviour
         }
         for (int i = 0; i < inventory.HasWeapon.Length; i++)
         {
-            //if (checkSlot == true)
-            //{
-            //    manager.TalkPanel.SetActive(false);
-            //    Debug.Log("존재하는 정령입니다.");
-            //    break;
-            //}
-            //else 
-            if (inventory.HasWeapon[2] == true)
+            if (checkSlot == true)
             {
-               
-                manager.OpenSwap();            
+                manager.TalkPanel.SetActive(false);
+                Debug.Log("존재하는 정령입니다.");
+                break;
+            }
+            else if (inventory.HasWeapon[2] == true)
+            {
+                manager.OpenSwap();
                 break;
             }
             else if (inventory.HasWeapon[i] == false)
-            {               
+            {
                 PlayerWeaponType = (WeaponTypes)W;
                 inventory.HavingWeapon[i] = (int)PlayerWeaponType;
+                manager.Elements[i] = manager.ObjData.gameObject;
+                // inventory.HavingElemental[i] = (int)PlayerElementType;
                 inventory.HasWeapon[i] = true;
-                manager.Elements[i] = interact.ScanObj.gameObject;
-                interact.ScanObj.gameObject.SetActive(false);
+                manager.ObjData.gameObject.SetActive(false);
                 SetEquipment();
                 break;
             }
         }
+
     }
+    
 }

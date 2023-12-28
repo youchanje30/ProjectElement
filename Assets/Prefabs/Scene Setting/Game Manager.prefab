@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item: {fileID: 0}
   inventory: {fileID: 0}
-  swapUI: {fileID: 0}
   inventoryUI: {fileID: 0}
+  swapUI: {fileID: 0}
   player: {fileID: 0}
   CanCameraShake: 0
   clearStage: 0
@@ -84,6 +84,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   slot: 0
+  InvenUI: {fileID: 0}
+  isInven: 0
   EleCards:
   - {fileID: 0}
   - {fileID: 0}

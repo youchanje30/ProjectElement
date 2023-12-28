@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public ItemManager Item;
     public Inventory inventory;
+    public InventoryUI inventoryUI;
     public SwapUI swapUI;
     //public InventoryUI inventoryUI;
 
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = player.GetComponent<Inventory>();
         swapUI = GameObject.FindGameObjectWithTag("UI").GetComponent<SwapUI>();
-        //inventoryUI = GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryUI>();
+        inventoryUI = GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryUI>();
         Item = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ItemManager>();
     }
 
@@ -113,27 +114,48 @@ public class GameManager : MonoBehaviour
 
     public void ElementImg()
     {
-        for(int i = 0 ; i<inventory.HasWeapon.Length ; i++)
+        for (int i = 0; i < inventory.HasWeapon.Length; i++)
         {
             if (inventory.HavingWeapon[i] == (int)WeaponTypes.Sword)
             {
-                Slot[i].sprite = Ele[1];
+                Slot[i].sprite = Ele[0];
             }
             else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Wand)
             {
-                Slot[i].sprite = Ele[2];
+                Slot[i].sprite = Ele[1];
             }
             else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Shield)
             {
-                Slot[i].sprite = Ele[3];
+                Slot[i].sprite = Ele[2];
             }
             else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
             {
-                Slot[i].sprite = Ele[4];
+                Slot[i].sprite = Ele[3];
             }
         }
-        Slot[3].sprite = Ele[(int)ObjData.WeaponType];
-        
+        Slot[3].sprite = Ele[(int)ObjData.WeaponType - 1];
+    }
+    public void CardImg()
+    {
+        for (int i = 0; i < EleCards.Length; i++)
+        {
+            if (inventory.HavingWeapon[i] == (int)WeaponTypes.Sword)
+            {
+                EleCards[i].sprite = Ele[0];
+            }
+            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Wand)
+            {
+                EleCards[i].sprite = Ele[1];
+            }
+            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Shield)
+            {
+                EleCards[i].sprite = Ele[2];
+            }
+            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
+            {
+                 EleCards[i].sprite = Ele[3];
+            }
+        }
     }
     public void TimeSetting()
     {
@@ -375,12 +397,18 @@ public class GameManager : MonoBehaviour
         SlotSwapUI.SetActive(true);       
         isSlotSwap = true;      
     }
-
+    public void OpenInventory()
+    {
+        CardImg();
+        isInven = !isInven;
+        InvenUI.SetActive(isInven);
+    }
     public void DropboxOptionChanged(int x)
     {
         resolutionNum = x; 
     }
 
+   
     public void GraphicSetting()
     {
         Screen.SetResolution(resolutions[resolutionNum].width, 

@@ -9,15 +9,15 @@ using UnityEngine.EventSystems;
 
 public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public RectTransform[] rectTransform;
-    public GameManager gameManager;
+    public RectTransform rectTransform;
+    private GameManager gameManager;
 
     [Header("Inventory Setting")]
     
     public GameObject[] ItemInfo;
     public RectTransform Infopos;
     public GameObject Info;
-    public RectTransform[] Card;
+    public RectTransform Card;
 
 
     Canvas canvas;
@@ -29,11 +29,11 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        for (int i = 0; i < rectTransform.Length; i++) { rectTransform[i] = GetComponent<RectTransform>(); }
+         rectTransform = GetComponent<RectTransform>(); 
     }
     void Start()
     {
-         Info.SetActive(false); 
+        Info.SetActive(false); 
         for (int i = 0; i < ItemInfo.Length; i++) { ItemInfo[i].SetActive(false); }
         targetRectTr = GameObject.FindGameObjectWithTag("UI").GetComponent<RectTransform>();
         uiCamera = Camera.main;           
@@ -42,57 +42,10 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     // Update is called once per frame
     void Update()
     {
-
-        //MoveInformation();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(targetRectTr, Input.mousePosition, uiCamera, out screenPoint);
-       
-        MoveElementsCard();
-    }
-    public void MoveElementsCard()
-    {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            for (int i = 0; i < rectTransform.Length; i++) 
-            {
-                if (rectTransform[i].anchoredPosition.x == 673 && rectTransform[i].anchoredPosition.y == 278)
-                {
-                    rectTransform[i].anchoredPosition = new Vector3(286, 278, 0);
-                }
-                else if (rectTransform[i].anchoredPosition.x == 286 && rectTransform[i].anchoredPosition.y == 278)
-                {
-                    rectTransform[i].anchoredPosition = new Vector3(479, 234, 2);
-                    rectTransform[i].SetAsLastSibling();
-                }
-                else if (rectTransform[i].anchoredPosition.x == 479 && rectTransform[i].anchoredPosition.y == 234)
-                {
-                    rectTransform[i].anchoredPosition = new Vector3(673, 278, 0);
-                } 
-            }
-        }
-    }
-    public void ElementImg()
-    {
-        for (int i = 0; i < gameManager.inventory.HasWeapon.Length; i++)
-        {
-            if (gameManager.inventory.HavingWeapon[i] == (int)WeaponTypes.Sword)
-            {
-                gameManager.EleCards[i].sprite = gameManager.Ele[1];
-            }
-            else if (gameManager.inventory.HavingWeapon[i] == (int)WeaponTypes.Wand)
-            {
-                gameManager.EleCards[i].sprite = gameManager.Ele[2];
-            }
-            else if (gameManager.inventory.HavingWeapon[i] == (int)WeaponTypes.Shield)
-            {
-                gameManager.EleCards[i].sprite = gameManager.Ele[3];
-            }
-            else if (gameManager.inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
-            {
-                gameManager.EleCards[i].sprite = gameManager.Ele[4];
-            }
-        }
-
-    }
+        Infopos.SetAsLastSibling();
+        Infopos.anchoredPosition = new Vector3(screenPoint.x - 136, screenPoint.y + 196);
+    }  
     public void SetItem()
     {
         for(int i = 0; i<gameManager.inventory.HavingItem.Length; i++)
@@ -126,13 +79,8 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     public void OnDrag(PointerEventData eventData)
     {
         Debug.Log("OnDrag");
-        for(int i = 0; i< Card.Length; i++)
-        {
-            if (rectTransform[i] == Card[i])
-            { Card[i].anchoredPosition = screenPoint; }
-           
-        }
-        
+     
+         Card.anchoredPosition = screenPoint; 
 
     }
     public void OnEndDrag(PointerEventData eventData)
@@ -155,8 +103,26 @@ public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
 
     public void MoveInformation()
     {
-        Infopos.SetAsLastSibling();
-        Infopos.anchoredPosition = new Vector3(screenPoint.x - 136, screenPoint.y + 196);
         
+        
+    }
+    public void MoveCard()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (Card.anchoredPosition.x == 673 && Card.anchoredPosition.y == 278)
+            {
+                Card.anchoredPosition = new Vector3(286, 278, 0);
+            }
+            else if (Card.anchoredPosition.x == 286 && Card.anchoredPosition.y == 278)
+            {
+                Card.anchoredPosition = new Vector3(479, 234, 0);
+                Card.SetAsLastSibling();
+            }
+            else if (Card.anchoredPosition.x == 479 && Card.anchoredPosition.y == 234)
+            {
+                Card.anchoredPosition = new Vector3(673, 278, 0);
+            }
+        }
     }
 }
