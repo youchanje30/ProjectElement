@@ -6,14 +6,25 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryUI : MonoBehaviour
+public class InventoryUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler, IEndDragHandler, IPointerEnterHandler
 {
     public RectTransform rectTransform;
-    private GameManager gameManager;
+    public GameManager gameManager;
+
     [Header("Inventory Setting")]
     public GameObject InvenUI;
-    public GameObject[] ElementInfo;
     public GameObject[] ItemInfo;
+    public RectTransform[] ElementInfopos;
+    public GameObject[] ElementInfo;
+    public RectTransform Card;
+
+
+    Canvas canvas;
+
+    public RectTransform targetRectTr;
+    public Camera uiCamera;
+    public Vector2 screenPoint;
+
     public bool isInven = false;
     public float Speed;
     void Awake()
@@ -25,6 +36,8 @@ public class InventoryUI : MonoBehaviour
     {
         for (int i = 0; i < ElementInfo.Length; i++) { ElementInfo[i].SetActive(false); }
         for (int i = 0; i < ItemInfo.Length; i++) { ItemInfo[i].SetActive(false); }
+        targetRectTr = GameObject.FindGameObjectWithTag("UI").GetComponent<RectTransform>();
+        uiCamera = Camera.main;
         InvenUI.SetActive(isInven);
       
     }
@@ -32,6 +45,8 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OpenInformation();
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(targetRectTr, Input.mousePosition, uiCamera, out screenPoint);
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             ElementImg();
@@ -79,8 +94,9 @@ public class InventoryUI : MonoBehaviour
             else if (gameManager.inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
             {
                 gameManager.EleCards[i].sprite = gameManager.Ele[4];
-            }          
+            }
         }
+
     }
     public void SetItem()
     {
@@ -100,40 +116,38 @@ public class InventoryUI : MonoBehaviour
         }
         
     }
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if( collision.tag == "ElementalCard" && EventSystem.current.IsPointerOverGameObject()) 
-    //    {
-    //        for( int i = 0; i < gameManager.inventory.HasWeapon.Length; i++)
-    //        {   if (gameManager.inventory.HavingWeapon[i] == (int)WeaponTypes.Sword)
-    //            { 
-    //                ElementInfo[0].SetActive(true);
-    //                ElementInfo[0].transform.position = Input.mousePosition;
-    //            } 
-    //            else if (gameManager.inventory.HavingWeapon[i] == (int)WeaponTypes.Wand)
-    //            {
-    //                ElementInfo[1].SetActive(true);
-    //            }
-    //            else if (gameManager.inventory.HavingWeapon[i] == (int)WeaponTypes.Shield)
-    //            {
-    //                ElementInfo[2].SetActive(true);
-    //            }
-    //            else if (gameManager.inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
-    //            {
-    //                ElementInfo[3].SetActive(true);
-    //            }
-    //            else
-    //            {
-    //                ElementInfo[i].SetActive(false);
-    //            }
-    //        }
-           
-    //    }
-    //    else if( collision.tag == "ItemSlot")
-    //    {
-    //        ItemInfo[].SetActive(false);
-    //    }
-    //}
-    
+    public void OpenInformation()
+    {
+        if (EventSystem.current.IsPointerOverGameObject() == true)
+        {
+            //    Debug.Log("On Mouse");         
+        }
+    }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("point down");
+        OnDrag(eventData);
+    }
+    public void OnDrag(PointerEventData eventData)
+    {
+        Debug.Log("OnDrag");
+
+       Card.anchoredPosition = screenPoint;
+
+    }
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        Debug.Log("EndDrag");
+    }
+    public void OnPointerUp(PointerEventData eventData)
+    {
+
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ElementInfo[0].SetActive(true);
+        ElementInfopos[0].anchoredPosition = screenPoint;
+    }
+
 
 }

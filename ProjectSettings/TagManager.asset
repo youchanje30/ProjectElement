@@ -18,6 +18,9 @@ TagManager:
   - SpiritAwake
   - UI
   - Image
+  - ItemManager
+  - ElementalCard
+  - ItemSlot
   layers:
   - Default
   - TransparentFX
