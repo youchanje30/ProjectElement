@@ -74,15 +74,15 @@ public class SaveManager : MonoBehaviour
         
         // 플레이어 스테이터스 저장
         XmlElement playerStrength = xmlDocument.CreateElement("PlayerStrength");
-        playerStrength.InnerText = player.GetComponent<PlayerStatus>().strength.ToString();
+        playerStrength.InnerText = player.GetComponent<Inventory>().Gold.ToString();
         root.AppendChild(playerStrength);
         
         XmlElement playerDexterity = xmlDocument.CreateElement("PlayerDexterity");
-        playerDexterity.InnerText = player.GetComponent<PlayerStatus>().dexterity.ToString();
+        playerDexterity.InnerText = player.GetComponent<Inventory>().Gold.ToString();
         root.AppendChild(playerDexterity);
         
         XmlElement playerLuck = xmlDocument.CreateElement("PlayerLuck");
-        playerLuck.InnerText = player.GetComponent<PlayerStatus>().luck.ToString();
+        playerLuck.InnerText = player.GetComponent<Inventory>().Gold.ToString();
         root.AppendChild(playerLuck);
 
 
@@ -144,10 +144,9 @@ public class SaveManager : MonoBehaviour
         xmlDocument.WriteTo(xmlTextWriter);
         string encryptString = Encrypt(stringWriter.ToString());
         SaveFile(encryptString); */
-        
+        SaveFile(EncryptGameData(xmlDocument));
 
         // xmlDocument.Save(Application.dataPath + "/DataXML.xml");
-        SaveFile(EncryptGameData(xmlDocument));
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
             // Debug.Log("Saved");
@@ -189,6 +188,11 @@ public class SaveManager : MonoBehaviour
             WeaponTypes PlayerWeaponData2 = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData2[0].InnerText);
             player.inventory.HavingWeapon[2] = (int)PlayerWeaponData2;
             if (PlayerWeaponData2 != 0) { player.inventory.HasWeapon[2] = true; }
+
+            // 속성 타입 -> 12.26필요 없어짐
+            // XmlNodeList playerElementData = xmlDocument.GetElementsByTagName("PlayerElementType");
+            // Elements PlayerElementData = (Elements)System.Enum.Parse(typeof(Elements), playerElementData[0].InnerText);
+            // playerElement = PlayerElementData;
 
             // 클리어 스테이지 개수
             XmlNodeList clearStageNum = xmlDocument.GetElementsByTagName("ClearStageNum");
