@@ -19,8 +19,6 @@ TagManager:
   - UI
   - Image
   - ItemManager
-  - ElementalCard
-  - ItemSlot
   layers:
   - Default
   - TransparentFX

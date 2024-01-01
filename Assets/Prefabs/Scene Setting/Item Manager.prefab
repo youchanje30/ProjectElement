@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7887261881258609789}
   - component: {fileID: 5224808586512354588}
+  - component: {fileID: 9178677019412888928}
   m_Layer: 0
   m_Name: Item Manager
   m_TagString: ItemManager
@@ -30,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5224808586512354588
 MonoBehaviour:
@@ -74,3 +75,22 @@ MonoBehaviour:
   EpicItemDatas: []
   itemDatas: []
   ItemGetPercent: 500000000f00000005000000
+--- !u!114 &9178677019412888928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749575565827444977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3044045b0e6d94684181f34cc15faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ElementalDatas:
+  - {fileID: 11400000, guid: afddc40a8a499a54e9793a7a0b776a18, type: 2}
+  - {fileID: 11400000, guid: 0b9cd7c8342a83d40b95d2bb4d3c72df, type: 2}
+  - {fileID: 11400000, guid: 5936af7eb845be24f93578a9e8155403, type: 2}
+  - {fileID: 11400000, guid: 7e4157186af2433488f780173e4b69b4, type: 2}
+  - {fileID: 11400000, guid: 678cc7fc6a2c7ba41875e1a282f5b9db, type: 2}
+  elementalDatas: []

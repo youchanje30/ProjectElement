@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
         SetEquipment();
         battle.WeaponType = PlayerWeaponType;
-        manager.InvenUI.SetActive(manager.isInven);
+        //manager.InvenUI.SetActive(manager.isInven);
         playerHpBar.maxValue = status.maxHp;
     }
 
@@ -248,13 +248,13 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < inventory.HasWeapon.Length; i++)
         {
-            if (inventory.HavingWeapon[i] == inventory.HavingWeapon[manager.slot])
+            if (inventory.HavingElement[i] == inventory.HavingElement[manager.slot])
             {
                 manager.Elements[i].SetActive(true);
             }
         }
         interact.ScanObj.gameObject.gameObject.SetActive(false);
-        inventory.HavingWeapon[manager.slot] = (int)manager.ObjData.WeaponType;
+        inventory.HavingElement[manager.slot] = ElementalManager.instance.AddElement((int)manager.ObjData.WeaponType);
         manager.Elements[manager.slot] = interact.ScanObj.gameObject;
 
         manager.isSlotSwap = false;
@@ -419,14 +419,14 @@ public class PlayerController : MonoBehaviour
     {
         if (pressedFirstSlot && battle.isSwap == true)
         {
-            PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[0];
+            PlayerWeaponType = inventory.HavingElement[0].WeaponTypes;
             SetEquipment();
             battle.isSwap = false;
             battle.StartCoroutine(battle.ReturnSwap());
         }
         if (pressedSecondSlot && battle.isSwap == true)
         {
-            PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[1];
+            PlayerWeaponType = inventory.HavingElement[1].WeaponTypes;
             SetEquipment();
             battle.isSwap = false;
             battle.StartCoroutine(battle.ReturnSwap());
@@ -434,7 +434,7 @@ public class PlayerController : MonoBehaviour
         
         if (pressedThirdSlot && battle.isSwap == true)
         { 
-            PlayerWeaponType = (WeaponTypes)inventory.HavingWeapon[2];
+            PlayerWeaponType = inventory.HavingElement[2].WeaponTypes;
             SetEquipment();
             battle.isSwap = false;
             battle.StartCoroutine(battle.ReturnSwap());
@@ -445,9 +445,10 @@ public class PlayerController : MonoBehaviour
 
     public void GetElement(int W)
     {
+        
         for (int j = 0; j < inventory.HasWeapon.Length; j++)
         {
-            if (inventory.HavingWeapon[j] == W)
+            if (inventory.HavingElement[j].ElementalID == W * 1000)
             {
                 checkSlot = true;
                 break;
@@ -465,18 +466,18 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("존재하는 정령입니다.");
                 break;
             }
-            else if (inventory.HasWeapon[2] == true)
+            else if (inventory.HavingElement[2].ElementalID != 0)
             {
                 manager.OpenSwap();
                 break;
             }
-            else if (inventory.HasWeapon[i] == false)
+            else if (inventory.HavingElement[i].ElementalID == 0)
             {
                 PlayerWeaponType = (WeaponTypes)W;
-                inventory.HavingWeapon[i] = (int)PlayerWeaponType;
+                //inventory.HavingWeapon[i] = (int)PlayerWeaponType;
+                inventory.GetEle(ElementalManager.instance.AddElement(W * 1000));
                 manager.Elements[i] = manager.ObjData.gameObject;
                 // inventory.HavingElemental[i] = (int)PlayerElementType;
-                inventory.HasWeapon[i] = true;
                 manager.ObjData.gameObject.SetActive(false);
                 SetEquipment();
                 break;

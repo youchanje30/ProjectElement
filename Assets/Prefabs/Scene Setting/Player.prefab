@@ -381,6 +381,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   - {fileID: 9100000, guid: 866fc2936f2da394c84ecbe12e81145f, type: 2}
   - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  ioInventory: 9
   InteractKey: 101
   FirstSlot: 97
   SecondSlot: 115
@@ -444,6 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scanObj: {fileID: 0}
+  ScanObj: {fileID: 0}
   isActionning: 0
 --- !u!114 &6729994133735113749
 MonoBehaviour:
@@ -524,12 +526,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  HavingElement:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   HavingWeapon: 000000000000000000000000
   HasWeapon: 000000
-  Elements:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &4664804212794489908
 MonoBehaviour:
   m_ObjectHideFlags: 0
