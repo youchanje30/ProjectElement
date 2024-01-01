@@ -14,9 +14,9 @@ public class ItemManager : MonoBehaviour
     public List<ItemData> CommonItemDatas = new List<ItemData>();
     public List<ItemData> RareItemDatas = new List<ItemData>();
     public List<ItemData> EpicItemDatas = new List<ItemData>();
-    public List<ItemData> itemDatas = new List<ItemData>();
+    
 
-
+    
     [SerializeField] private int[] ItemGetPercent;
 
 
@@ -47,9 +47,7 @@ public class ItemManager : MonoBehaviour
                     EpicItemDatas.Add(item);
                     break;                
             }
-            itemDatas.Add(item);
         }
-
     }
 
 

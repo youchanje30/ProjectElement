@@ -44,10 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea6c107015a0344c99edc02fd99ab36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  inventory: {fileID: 0}
-  inventoryUI: {fileID: 0}
-  swapUI: {fileID: 0}
+  uiController: {fileID: 0}
   player: {fileID: 0}
   CanCameraShake: 0
   clearStage: 0
@@ -78,32 +75,15 @@ MonoBehaviour:
   isSpiritAwake: 0
   SlotSwapUI: {fileID: 5563688529607638122, guid: ef889f9416b06a24eb1e91afbe8e98de, type: 3}
   isSlotSwap: 0
-  Slot:
+  Slot: []
+  Ele:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   slot: 0
-  InvenUI: {fileID: 0}
-  isInven: 0
-  EleCards:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  InvenItem:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   Elements:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Ele:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -17,8 +17,6 @@ TagManager:
   - SpiritSoul
   - SpiritAwake
   - UI
-  - Image
-  - ItemManager
   layers:
   - Default
   - TransparentFX

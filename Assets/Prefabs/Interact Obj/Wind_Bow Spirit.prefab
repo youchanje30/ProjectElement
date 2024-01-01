@@ -272,7 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponType: 4
   ObjType: 0
-  objectID: 4000
+  objectID: 3000
   objectTag: 
   interactView: {fileID: 6642789147361158853}
   ShopItem: {fileID: 0}

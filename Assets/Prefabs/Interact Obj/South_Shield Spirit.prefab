@@ -357,7 +357,7 @@ Transform:
   m_Children:
   - {fileID: 5393857381888264292}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8987628939808914289
 SpriteRenderer:
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponType: 3
   ObjType: 0
-  objectID: 3000
+  objectID: 2000
   objectTag: 
   interactView: {fileID: 2248028681732574015}
   ShopItem: {fileID: 0}

@@ -56,33 +56,33 @@ public class SaveManager : MonoBehaviour
         root.SetAttribute("FileName", "ElementGame_Data");
 
         // 무기 종류 저장
-        //XmlElement playerWeaponData = xmlDocument.CreateElement("PlayerWeaponType");
-        //playerWeaponData.InnerText = player.inventory.HavingWeapon[0].ToString();
+        XmlElement playerWeaponData = xmlDocument.CreateElement("PlayerWeaponType");
+        playerWeaponData.InnerText = player.inventory.HavingWeapon[0].ToString();
 
-        //root.AppendChild(playerWeaponData);
+        root.AppendChild(playerWeaponData);
 
-        //XmlElement playerWeaponData1 = xmlDocument.CreateElement("PlayerWeaponType1");
-        //playerWeaponData1.InnerText = player.inventory.HavingWeapon[1].ToString();
+        XmlElement playerWeaponData1 = xmlDocument.CreateElement("PlayerWeaponType1");
+        playerWeaponData1.InnerText = player.inventory.HavingWeapon[1].ToString();
 
-        //root.AppendChild(playerWeaponData1);
+        root.AppendChild(playerWeaponData1);
 
-        //XmlElement playerWeaponData2 = xmlDocument.CreateElement("PlayerWeaponType2");
-        //playerWeaponData2.InnerText = player.inventory.HavingWeapon[2].ToString();
+        XmlElement playerWeaponData2 = xmlDocument.CreateElement("PlayerWeaponType2");
+        playerWeaponData2.InnerText = player.inventory.HavingWeapon[2].ToString();
 
-        //root.AppendChild(playerWeaponData2);
+        root.AppendChild(playerWeaponData2);
         
         
         // 플레이어 스테이터스 저장
         XmlElement playerStrength = xmlDocument.CreateElement("PlayerStrength");
-        playerStrength.InnerText = player.GetComponent<Inventory>().Gold.ToString();
+        playerStrength.InnerText = player.GetComponent<PlayerStatus>().strength.ToString();
         root.AppendChild(playerStrength);
         
         XmlElement playerDexterity = xmlDocument.CreateElement("PlayerDexterity");
-        playerDexterity.InnerText = player.GetComponent<Inventory>().Gold.ToString();
+        playerDexterity.InnerText = player.GetComponent<PlayerStatus>().dexterity.ToString();
         root.AppendChild(playerDexterity);
         
         XmlElement playerLuck = xmlDocument.CreateElement("PlayerLuck");
-        playerLuck.InnerText = player.GetComponent<Inventory>().Gold.ToString();
+        playerLuck.InnerText = player.GetComponent<PlayerStatus>().luck.ToString();
         root.AppendChild(playerLuck);
 
 
@@ -90,29 +90,6 @@ public class SaveManager : MonoBehaviour
         // XmlElement playerElementData = xmlDocument.CreateElement("PlayerElementType");
         // playerElementData.InnerText = playerElement.ToString();
         // root.AppendChild(playerElementData);
-        //////////////////
-        XmlElement playerElementalData, ElementDatas;
-
-        for (int i = 0; i < player.inventory.HavingElement.Length; i++)
-        {
-            playerElementalData = xmlDocument.CreateElement("ElementalData");
-            ElementDatas = xmlDocument.CreateElement("ElementDatas");
-
-            if (player.inventory.HavingElement[i] != null)
-            {
-                playerElementalData.InnerText = player.inventory.HavingElement[i].ElementalID.ToString();
-            }
-            else
-            {
-                playerElementalData.InnerText = "0";
-            }
-
-            ElementDatas.AppendChild(playerElementalData);
-
-            root.AppendChild(ElementDatas);
-        }
-
-        xmlDocument.AppendChild(root);
 
         // 골드 저장
         XmlElement playerGold = xmlDocument.CreateElement("PlayerGold");
@@ -160,16 +137,17 @@ public class SaveManager : MonoBehaviour
 
         xmlDocument.AppendChild(root);
 
-        
+
        /*  StringWriter stringWriter = new StringWriter();
         XmlTextWriter xmlTextWriter = new XmlTextWriter(stringWriter);
 
         xmlDocument.WriteTo(xmlTextWriter);
         string encryptString = Encrypt(stringWriter.ToString());
         SaveFile(encryptString); */
-        SaveFile(EncryptGameData(xmlDocument));
+        
 
         // xmlDocument.Save(Application.dataPath + "/DataXML.xml");
+        SaveFile(EncryptGameData(xmlDocument));
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
             // Debug.Log("Saved");
@@ -194,39 +172,23 @@ public class SaveManager : MonoBehaviour
             // xmlDocument.Load(Application.dataPath + "/DataXML.xml");
 
             // 무기 타입
-            /*//XmlNodeList playerWeaponData = xmlDocument.GetElementsByTagName("PlayerWeaponType");
-            //WeaponTypes PlayerWeaponData = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData[0].InnerText);
-            //playerWeapon = PlayerWeaponData;
             //XmlNodeList playerWeaponData = xmlDocument.GetElementsByTagName("PlayerWeaponType");
             //WeaponTypes PlayerWeaponData = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData[0].InnerText);
-            //player.inventory.HavingWeapon[0] = (int)PlayerWeaponData;
-            //if (PlayerWeaponData != 0)  { player.inventory.HasWeapon[0] = true; }
+            //playerWeapon = PlayerWeaponData;
+            XmlNodeList playerWeaponData = xmlDocument.GetElementsByTagName("PlayerWeaponType");
+            WeaponTypes PlayerWeaponData = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData[0].InnerText);
+            player.inventory.HavingWeapon[0] = (int)PlayerWeaponData;
+            if (PlayerWeaponData != 0)  { player.inventory.HasWeapon[0] = true; }
 
-            //XmlNodeList playerWeaponData1 = xmlDocument.GetElementsByTagName("PlayerWeaponType1");
-            //WeaponTypes PlayerWeaponData1 = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData1[0].InnerText);
-            //player.inventory.HavingWeapon[1] = (int)PlayerWeaponData1;
-            //if (PlayerWeaponData1 != 0) { player.inventory.HasWeapon[1] = true; }
+            XmlNodeList playerWeaponData1 = xmlDocument.GetElementsByTagName("PlayerWeaponType1");
+            WeaponTypes PlayerWeaponData1 = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData1[0].InnerText);
+            player.inventory.HavingWeapon[1] = (int)PlayerWeaponData1;
+            if (PlayerWeaponData1 != 0) { player.inventory.HasWeapon[1] = true; }
 
-            //XmlNodeList playerWeaponData2 = xmlDocument.GetElementsByTagName("PlayerWeaponType2");
-            //WeaponTypes PlayerWeaponData2 = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData2[0].InnerText);
-            //player.inventory.HavingWeapon[2] = (int)PlayerWeaponData2;
-            //if (PlayerWeaponData2 != 0) { player.inventory.HasWeapon[2] = true; }
-            //*/
-            XmlNodeList ElementDatas = xmlDocument.GetElementsByTagName("ElementDatas");
-            if (ElementDatas.Count != 0)
-            {
-                for (int i = 0; i < ElementDatas.Count; i++)
-                {
-                    XmlNodeList playerElementalData = xmlDocument.GetElementsByTagName("ElementalData");
-                    int ID = int.Parse(playerElementalData[i].InnerText);
-                    player.inventory.HavingElement[i] = ElementalManager.instance.AddElement(ID);
-                }
-            }
-
-            // 속성 타입 -> 12.26필요 없어짐
-            // XmlNodeList playerElementData = xmlDocument.GetElementsByTagName("PlayerElementType");
-            // Elements PlayerElementData = (Elements)System.Enum.Parse(typeof(Elements), playerElementData[0].InnerText);
-            // playerElement = PlayerElementData;
+            XmlNodeList playerWeaponData2 = xmlDocument.GetElementsByTagName("PlayerWeaponType2");
+            WeaponTypes PlayerWeaponData2 = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData2[0].InnerText);
+            player.inventory.HavingWeapon[2] = (int)PlayerWeaponData2;
+            if (PlayerWeaponData2 != 0) { player.inventory.HasWeapon[2] = true; }
 
             // 클리어 스테이지 개수
             XmlNodeList clearStageNum = xmlDocument.GetElementsByTagName("ClearStageNum");
@@ -259,7 +221,10 @@ public class SaveManager : MonoBehaviour
                     player.inventory.HavingItem[i] = ItemManager.instance.AddItem(ID);
                 }
             }
-            
+
+            player.inventory.HavingWeapon[0] = (int)PlayerWeaponData;
+            player.inventory.HavingWeapon[1] = (int)PlayerWeaponData1;
+            player.inventory.HavingWeapon[2] = (int)PlayerWeaponData2;
             // player.PlayerElementType = playerElement;
             player.SetEquipment();
         }
@@ -302,27 +267,14 @@ public class SaveManager : MonoBehaviour
         root.SetAttribute("FileName", "ElementGame_Data");
 
         // 무기 종류 저장
-        
-        XmlElement playerElementalData, ElementDatas;
-        for (int i = 0; i < player.inventory.HavingItem.Length; i++)
-        {
-            playerElementalData = xmlDocument.CreateElement("ElementalData");
-            ElementDatas = xmlDocument.CreateElement("ElementDatas");
-
-            playerElementalData.InnerText = "0";
-
-
-            ElementDatas.AppendChild(playerElementalData);
-
-            root.AppendChild(ElementDatas);
-        }
-
-        xmlDocument.AppendChild(root);
+        XmlElement playerWeaponData = xmlDocument.CreateElement("PlayerWeaponType");
+        playerWeaponData.InnerText = "None";
+        root.AppendChild(playerWeaponData);
 
         // 무기 타입 저장
-        /*XmlElement playerElementData = xmlDocument.CreateElement("PlayerElementType");
+        XmlElement playerElementData = xmlDocument.CreateElement("PlayerElementType");
         playerElementData.InnerText = "None";
-        root.AppendChild(playerElementData);*/
+        root.AppendChild(playerElementData);
 
         // 골드 저장
         XmlElement playerGold = xmlDocument.CreateElement("PlayerGold");
