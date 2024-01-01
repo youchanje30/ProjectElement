@@ -9,8 +9,11 @@ using System.Xml.Linq;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    Inventory inventory;
-    public UIController uiController;
+    public ItemManager Item;
+    public ElementalManager Elemental;
+    public Inventory inventory;
+    private InventoryUI inventoryUI;
+    private SwapUI swapUI;
 
     [SerializeField] private PlayerController player;
 
@@ -72,9 +75,10 @@ public class GameManager : MonoBehaviour
     [Header("SlotSwap Setting")]
     public GameObject SlotSwapUI;
     public bool isSlotSwap = false;
-    public Image[] Slot;
-    public Sprite[] Ele;
     public int slot;
+
+    [Header("Inventory Setting")]
+    public bool isInven = false;
 
     [Header("Elemental")]
     public GameObject[] Elements;
@@ -86,8 +90,12 @@ public class GameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = player.GetComponent<Inventory>();
-        uiController = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
+        Item = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ItemManager>();
+        Elemental = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ElementalManager>();
+        inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
+        swapUI = GameObject.Find("Canvas").GetComponent<SwapUI>();
     }
+
 
     void Start()
     {
@@ -116,30 +124,7 @@ public class GameManager : MonoBehaviour
         TimeSetting();       
     }
 
-    public void ElementImg()
-    {
-        for(int i = 0 ; i<inventory.HasWeapon.Length ; i++)
-        {
-            if (inventory.HavingWeapon[i] == (int)WeaponTypes.Sword)
-            {
-                Slot[i].sprite = Ele[1];
-            }
-            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Wand)
-            {
-                Slot[i].sprite = Ele[2];
-            }
-            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Shield)
-            {
-                Slot[i].sprite = Ele[3];
-            }
-            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
-            {
-                Slot[i].sprite = Ele[4];
-            }
-        }
-        Slot[3].sprite = Ele[(int)ObjData.WeaponType];
-        
-    }
+  
     public void TimeSetting()
     {
         // TimerVal += Time.deltaTime;
@@ -330,18 +315,18 @@ public class GameManager : MonoBehaviour
 
             case 2000:
                 // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Shield);
+                player.GetElement((int)WeaponTypes.Wand);
 
             break;
     
             case 3000:
                 // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Bow);
+                player.GetElement((int)WeaponTypes.Shield);
                 break;
                 
             case 4000:
                 // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Wand);
+                player.GetElement((int)WeaponTypes.Bow);
                 break;
         }
     }
@@ -400,12 +385,19 @@ public class GameManager : MonoBehaviour
         }
     }
     public void OpenSwap()
-    {       
-        ElementImg();
-        SlotSwapUI.SetActive(true);       
-        isSlotSwap = true;      
+    {
+        swapUI.ElementImg();
+        SlotSwapUI.SetActive(true);
+        isSlotSwap = true;
     }
-    public void DropboxOptionChanged(int x)
+public void OpenInventory()
+{
+    inventoryUI.SetCard();
+    inventoryUI.SetItem();
+    isInven = !isInven;
+    inventoryUI.InvenUI.SetActive(isInven);
+}
+public void DropboxOptionChanged(int x)
     {
         resolutionNum = x; 
     }
