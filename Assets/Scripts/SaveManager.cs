@@ -74,15 +74,15 @@ public class SaveManager : MonoBehaviour
         
         // 플레이어 스테이터스 저장
         XmlElement playerStrength = xmlDocument.CreateElement("PlayerStrength");
-        playerStrength.InnerText = player.GetComponent<Inventory>().Gold.ToString();
+        playerStrength.InnerText = player.GetComponent<PlayerStatus>().strength.ToString();
         root.AppendChild(playerStrength);
         
         XmlElement playerDexterity = xmlDocument.CreateElement("PlayerDexterity");
-        playerDexterity.InnerText = player.GetComponent<Inventory>().Gold.ToString();
+        playerDexterity.InnerText = player.GetComponent<PlayerStatus>().dexterity.ToString();
         root.AppendChild(playerDexterity);
         
         XmlElement playerLuck = xmlDocument.CreateElement("PlayerLuck");
-        playerLuck.InnerText = player.GetComponent<Inventory>().Gold.ToString();
+        playerLuck.InnerText = player.GetComponent<PlayerStatus>().luck.ToString();
         root.AppendChild(playerLuck);
 
 
@@ -167,9 +167,10 @@ public class SaveManager : MonoBehaviour
         xmlDocument.WriteTo(xmlTextWriter);
         string encryptString = Encrypt(stringWriter.ToString());
         SaveFile(encryptString); */
-        SaveFile(EncryptGameData(xmlDocument));
+        
 
         // xmlDocument.Save(Application.dataPath + "/DataXML.xml");
+        SaveFile(EncryptGameData(xmlDocument));
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
             // Debug.Log("Saved");
@@ -222,11 +223,6 @@ public class SaveManager : MonoBehaviour
                     player.inventory.HavingElement[i] = ElementalManager.instance.AddElement(ID);
                 }
             }
-
-            // 속성 타입 -> 12.26필요 없어짐
-            // XmlNodeList playerElementData = xmlDocument.GetElementsByTagName("PlayerElementType");
-            // Elements PlayerElementData = (Elements)System.Enum.Parse(typeof(Elements), playerElementData[0].InnerText);
-            // playerElement = PlayerElementData;
 
             // 클리어 스테이지 개수
             XmlNodeList clearStageNum = xmlDocument.GetElementsByTagName("ClearStageNum");
