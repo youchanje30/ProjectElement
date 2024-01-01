@@ -8,9 +8,14 @@ public class Inventory : MonoBehaviour
     public int Gold = 0;
     public int SpiritSoul = 0;
     public ItemData[] HavingItem;
-    public int[] HavingWeapon;
+    public ElementalData[] HavingElement;
+    //public int[] HavingWeapon;
     public bool[] HasWeapon;
 
+    public void Update()
+    {
+        CheckWeapon();
+    }
     public void GetGold()
     {
         Gold++;
@@ -35,6 +40,18 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    public void GetEle(ElementalData ele)
+    {
+       
+        for (int i = 0; i < HavingElement.Length; i++)
+        {
+            if (HavingElement[i].ElementalID == 0)
+            {
+                HavingElement[i] = ele;
+                break;
+            }
+        }
+    }
 
     public bool isItemFull()
     {
@@ -52,5 +69,20 @@ public class Inventory : MonoBehaviour
     public int PlayerGold()
     {
         return Gold;
+    }
+
+    public void CheckWeapon()
+    {
+        for(int i = 0;i < HasWeapon.Length;i++)
+        {
+            if (HavingElement[i] == null)
+            {
+                HasWeapon[i] = false;
+            }
+            else
+            {
+                HasWeapon[i] = true;
+            }
+        }
     }
 }
