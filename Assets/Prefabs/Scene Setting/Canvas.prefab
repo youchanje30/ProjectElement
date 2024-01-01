@@ -4589,7 +4589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -4608,10 +4607,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
-=======
-  rectTransform: {fileID: 7645589450510490032}
-  Slot: []
->>>>>>> Stashed changes
 --- !u!1 &3456872055292268281
 GameObject:
   m_ObjectHideFlags: 0
@@ -4624,11 +4619,6 @@ GameObject:
   - component: {fileID: 7344153617842623712}
   - component: {fileID: 5022319796380205816}
   - component: {fileID: 6937643903643609844}
-<<<<<<< Updated upstream
-=======
-  - component: {fileID: 6674366351365857506}
-  - component: {fileID: 980703691098208779}
->>>>>>> Stashed changes
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4728,63 +4718,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-<<<<<<< Updated upstream
-=======
---- !u!114 &6674366351365857506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3456872055292268281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf26cde51bb9064a9e8b20254d13665, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rectTransform: {fileID: 3013837761190446911}
-  Slot:
-  - {fileID: 4508953304253661127}
-  - {fileID: 3490433575471188888}
-  - {fileID: 1163549130097149965}
-  - {fileID: 9084876249371659259}
---- !u!114 &980703691098208779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3456872055292268281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 036a548d580f3564d954e0438353029c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rectTransform: {fileID: 0}
-  ItemInfo: []
-  Infopos: []
-  Info: []
-  Card:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  EleCards:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  InvenItem:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  InvenUI: {fileID: 0}
-  targetRectTr: {fileID: 0}
-  uiCamera: {fileID: 0}
-  screenPoint: {x: 0, y: 0}
-  Speed: 0
->>>>>>> Stashed changes
 --- !u!1 &3524538990219818167
 GameObject:
   m_ObjectHideFlags: 0
@@ -14091,23 +14024,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
-<<<<<<< Updated upstream
-=======
---- !u!114 &2908658692283545043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7964032789454675969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf26cde51bb9064a9e8b20254d13665, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rectTransform: {fileID: 3013837761190446911}
-  Slot: []
->>>>>>> Stashed changes
 --- !u!1 &8002096318124681746
 GameObject:
   m_ObjectHideFlags: 0
