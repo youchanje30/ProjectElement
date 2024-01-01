@@ -66,11 +66,6 @@ public class GameManager : MonoBehaviour
     public GameObject SpiritAwakeUI;
     public bool isSpiritAwake = false;
 
-    [Header("Status Updrage Setting")]
-    public GameObject statusUpdrageUI;
-    public bool isStatusUpgrade = false;
-    public int statusUpgradeTimes = 0;
-
     [Header("SlotSwap Setting")]
     public GameObject SlotSwapUI;
     public bool isSlotSwap = false;
@@ -87,7 +82,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        // Time.timeScale = 0.3f;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
@@ -102,14 +96,6 @@ public class GameManager : MonoBehaviour
         SetResolution();
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
-
-        if(SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            isAction = true;
-            isStatusUpgrade = true;
-            statusUpgradeTimes = 3;
-            statusUpdrageUI.SetActive(true);
-        }
     }
 
 
@@ -410,33 +396,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    public void UpgradeStatus(int id)
-    {
-        switch (id)
-        {
-            case 0:
-                player.GetComponent<PlayerStatus>().strength++;
-                break;
-            case 1:
-                player.GetComponent<PlayerStatus>().dexterity++;
-                break;
-            case 2:
-                player.GetComponent<PlayerStatus>().luck++;
-                break;
-        }
-
-        statusUpgradeTimes --;
-        Debug.Log("Upgrade Status");
-
-        if(statusUpgradeTimes <= 0)
-        {
-            player.SetEquipment();
-            isStatusUpgrade = false;
-            isAction = false;
-            statusUpdrageUI.SetActive(false);
-        }
-    }
 
 
     [SerializeField] private TMP_Dropdown resolutionDropdown;
