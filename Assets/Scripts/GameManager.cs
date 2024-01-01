@@ -9,8 +9,11 @@ using System.Xml.Linq;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    Inventory inventory;
-    public UIController uiController;
+    public ItemManager Item;
+    public ElementalManager Elemental;
+    public Inventory inventory;
+    private InventoryUI inventoryUI;
+    private SwapUI swapUI;
 
     [SerializeField] private PlayerController player;
 
@@ -55,7 +58,6 @@ public class GameManager : MonoBehaviour
     public float TimerVal;
     [SerializeField] private TMP_Text TimeTxt;
 
-
     [Header("Shop Setting")]
     public GameObject ShopUI;
     public bool isShop = false;
@@ -64,44 +66,36 @@ public class GameManager : MonoBehaviour
     public GameObject SpiritAwakeUI;
     public bool isSpiritAwake = false;
 
-    [Header("Status Updrage Setting")]
-    public GameObject statusUpdrageUI;
-    public bool isStatusUpgrade = false;
-    public int statusUpgradeTimes = 0;
-
     [Header("SlotSwap Setting")]
     public GameObject SlotSwapUI;
     public bool isSlotSwap = false;
-    public Image[] Slot;
-    public Sprite[] Ele;
+
     public int slot;
+
+    [Header("Inventory Setting")]
+    
+    public bool isInven = false;
 
     [Header("Elemental")]
     public GameObject[] Elements;
- 
+
 
     void Awake()
     {
-        // Time.timeScale = 0.3f;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        inventory = player.GetComponent<Inventory>();
-        uiController = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
-    }
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        Item = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ItemManager>();
+        Elemental = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ElementalManager>();
+        inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
+        swapUI = GameObject.Find("Canvas").GetComponent<SwapUI>();
+    }   
 
     void Start()
     {
         SetResolution();
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
-
-        if(SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            isAction = true;
-            isStatusUpgrade = true;
-            statusUpgradeTimes = 3;
-            statusUpdrageUI.SetActive(true);
-        }
     }
 
 
@@ -116,30 +110,85 @@ public class GameManager : MonoBehaviour
         TimeSetting();       
     }
 
-    public void ElementImg()
-    {
-        for(int i = 0 ; i<inventory.HasWeapon.Length ; i++)
-        {
-            if (inventory.HavingWeapon[i] == (int)WeaponTypes.Sword)
-            {
-                Slot[i].sprite = Ele[1];
-            }
-            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Wand)
-            {
-                Slot[i].sprite = Ele[2];
-            }
-            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Shield)
-            {
-                Slot[i].sprite = Ele[3];
-            }
-            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
-            {
-                Slot[i].sprite = Ele[4];
-            }
-        }
-        Slot[3].sprite = Ele[(int)ObjData.WeaponType];
-        
-    }
+    //public void ElementImg()
+    //{
+    //    /*for (int i = 0; i < inventory.HasWeapon.Length; i++)
+    //    //{
+    //    //    if (inventory.HavingWeapon[i] == (int)WeaponTypes.Sword)
+    //    //    {
+    //    //        Slot[i].sprite = Ele[0];
+    //    //    }
+    //    //    else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Wand)
+    //    //    {
+    //    //        Slot[i].sprite = Ele[1];
+    //    //    }
+    //    //    else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Shield)
+    //    //    {
+    //    //        Slot[i].sprite = Ele[2];
+    //    //    }
+    //    //    else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
+    //    //    {
+    //    //        Slot[i].sprite = Ele[3];
+    //    //    }
+    //    //}
+    //    //Slot[3].sprite = Ele[(int)ObjData.WeaponType - 1];
+    //    //public void CardImg()
+    //    //{
+    //    //    for (int i = 0; i < EleCards.Length; i++)
+    //    //    {
+    //    //        if (inventory.HavingWeapon[i] == (int)WeaponTypes.Sword)
+    //    //        {
+    //    //            EleCards[i].sprite = Ele[0];
+    //    //        }
+    //    //        else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Wand)
+    //    //        {
+    //    //            EleCards[i].sprite = Ele[1];
+    //    //        }
+    //    //        else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Shield)
+    //    //        {
+    //    //            EleCards[i].sprite = Ele[2];
+    //    //        }
+    //    //        else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
+    //    //        {
+    //    //             EleCards[i].sprite = Ele[3];
+    //    //        }
+    //    //    }
+    //    //}*/
+
+    //    for (int i = 0; i < inventory.HasWeapon.Length; i++)
+    //    {
+    //        if (inventory.HavingElement[i].ElementalID != 0)
+    //        {
+    //            if (inventory.HavingElement[i].WeaponTypes == WeaponTypes.Sword)
+    //            {
+    //                Slot[i].sprite = Elemental.elementalDatas[1].elementalImg;
+    //                EleCards[i].sprite = Elemental.elementalDatas[1].elementalImg;
+    //            }
+    //            else if (inventory.HavingElement[i].WeaponTypes == WeaponTypes.Wand)
+    //            {
+    //                Slot[i].sprite = Elemental.elementalDatas[2].elementalImg;
+    //                EleCards[i].sprite = Elemental.elementalDatas[2].elementalImg;
+    //            }
+    //            else if (inventory.HavingElement[i].WeaponTypes == WeaponTypes.Shield)
+    //            {
+    //                Slot[i].sprite = Elemental.elementalDatas[3].elementalImg;
+    //                EleCards[i].sprite = Elemental.elementalDatas[3].elementalImg;
+    //            }
+    //            else if (inventory.HavingElement[i].WeaponTypes == WeaponTypes.Bow)
+    //            {
+    //                Slot[i].sprite = Elemental.elementalDatas[4].elementalImg;
+    //                EleCards[i].sprite = Elemental.elementalDatas[4].elementalImg;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            Slot[i].sprite = Elemental.elementalDatas[0].elementalImg;
+    //            EleCards[i].sprite = Elemental.elementalDatas[0].elementalImg;
+    //        }
+
+    //    }
+    //}
+
     public void TimeSetting()
     {
         // TimerVal += Time.deltaTime;
@@ -189,7 +238,9 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
+    public void SetSlotElemental()
+    {       
+    }
 
     public void SystemBtn(int BtnNum)
     {
@@ -325,54 +376,26 @@ public class GameManager : MonoBehaviour
         {
             case 1000:
                 // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Sword);          
+                player.GetElement((int)WeaponTypes.Sword );          
             break;
 
             case 2000:
-                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Shield);
-
+                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);
+                player.GetElement((int)WeaponTypes.Wand );              
             break;
     
             case 3000:
-                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Bow);
-                break;
+                // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);                         
+                player.GetElement((int)WeaponTypes.Shield );
+            break;
                 
             case 4000:
                 // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Wand);
-                break;
+                player.GetElement((int)WeaponTypes.Bow );
+             break;
         }
     }
 
-
-    public void UpgradeStatus(int id)
-    {
-        switch (id)
-        {
-            case 0:
-                player.GetComponent<PlayerStatus>().strength++;
-                break;
-            case 1:
-                player.GetComponent<PlayerStatus>().dexterity++;
-                break;
-            case 2:
-                player.GetComponent<PlayerStatus>().luck++;
-                break;
-        }
-
-        statusUpgradeTimes --;
-        Debug.Log("Upgrade Status");
-
-        if(statusUpgradeTimes <= 0)
-        {
-            player.SetEquipment();
-            isStatusUpgrade = false;
-            isAction = false;
-            statusUpdrageUI.SetActive(false);
-        }
-    }
 
 
     [SerializeField] private TMP_Dropdown resolutionDropdown;
@@ -401,15 +424,23 @@ public class GameManager : MonoBehaviour
     }
     public void OpenSwap()
     {       
-        ElementImg();
+        swapUI.ElementImg();
         SlotSwapUI.SetActive(true);       
         isSlotSwap = true;      
+    }
+    public void OpenInventory()
+    {
+        inventoryUI.SetCard();
+        inventoryUI.SetItem();
+        isInven = !isInven;
+        inventoryUI.InvenUI.SetActive(isInven);
     }
     public void DropboxOptionChanged(int x)
     {
         resolutionNum = x; 
     }
 
+   
     public void GraphicSetting()
     {
         Screen.SetResolution(resolutions[resolutionNum].width, 
