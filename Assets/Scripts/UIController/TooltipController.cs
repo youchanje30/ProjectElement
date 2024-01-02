@@ -16,11 +16,20 @@ public class TooltipController : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnPointerEnter(PointerEventData eventData)
     {
        for (int i = 0; i < inventoryUI.Card.Length; i++)
-        {
-            if ( inventoryUI.Card[i].gameObject == eventData.pointerCurrentRaycast.gameObject) 
+       {
+            if (inventoryUI.inventory.HavingElement[i].WeaponTypes != 0 && inventoryUI.Card[i].gameObject == eventData.pointerCurrentRaycast.gameObject || inventoryUI.EleCards[i].gameObject == eventData.pointerCurrentRaycast.gameObject) 
             {
                 inventoryUI.Info.SetActive(true);
                 tooltip.SetupTooltip(inventoryUI.inventory.HavingElement[i].ElementalName, inventoryUI.inventory.HavingElement[i].ElementalInfo);
+                break;
+            }
+       }
+       for (int i = 0;i < inventoryUI.InvenItem.Length; i++)
+        {
+            if (inventoryUI.inventory.HavingItem[i].ItemID != 0   && inventoryUI.Itempos[i].gameObject == eventData.pointerCurrentRaycast.gameObject || inventoryUI.InvenItem[i].gameObject == eventData.pointerCurrentRaycast.gameObject)
+            {
+                inventoryUI.ItemInfo.SetActive(true);
+                tooltip.SetupTooltip(inventoryUI.inventory.HavingItem[i].ItemName, inventoryUI.inventory.HavingItem[i].ItemInfo);
                 break;
             }
         }
@@ -29,5 +38,6 @@ public class TooltipController : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnPointerExit(PointerEventData eventData)
     {
         inventoryUI.Info.SetActive(false);
+        inventoryUI.ItemInfo.SetActive(false);
     }
 }

@@ -21,6 +21,7 @@ public class SwapUI : MonoBehaviour
     public void Update()
     {
         sellectSlot();
+
     }
     public void ElementImg()
     {   
@@ -29,6 +30,7 @@ public class SwapUI : MonoBehaviour
             Slot[i].sprite = inventory.HavingElement[i].elementalImg;
         }
         Slot[3].sprite = gameManager.Elemental.elementalDatas[(int)gameManager.ObjData.WeaponType].elementalImg;
+        
     }
     public void sellectSlot()
     {     if (SlotSwapUI.activeSelf == true)
@@ -54,6 +56,13 @@ public class SwapUI : MonoBehaviour
             {
                 slot = 2;
             }
+            //if (Input.GetKeyDown(KeyCode.E))
+            //{
+            //    manager.isAction = false;
+            //    manager.isSelected = false;
+            //    manager.CloseSwap();
+            //    gameManager.EleSwap();
+            //}
         }
     }
 }

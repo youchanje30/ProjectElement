@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 
 public class Tooltip : MonoBehaviour
 {
-    public TextMeshProUGUI Elementalname;
-    public TextMeshProUGUI ElementalInfo;
+    public TextMeshProUGUI Objname;
+    public TextMeshProUGUI Info;
     void Update()
     {
         
@@ -15,7 +15,7 @@ public class Tooltip : MonoBehaviour
     
     public void SetupTooltip(string elename, string eleInfo)
     {
-        Elementalname.text = elename;
-        ElementalInfo.text = eleInfo;
+        Objname.text = elename;
+        Info.text = eleInfo;
     }
 }

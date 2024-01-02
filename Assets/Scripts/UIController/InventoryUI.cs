@@ -15,12 +15,14 @@ public class InventoryUI : MonoBehaviour
     private Transform Canvas;
 
     [Header("Inventory Setting")]
-
+   
+    public RectTransform ItemInfopos;
     public GameObject ItemInfo;
     public RectTransform Infopos;
     public GameObject Info;
     public RectTransform[] Card;
     public Image[] EleCards;
+    public RectTransform[] Itempos;
     public Image[] InvenItem;
     public GameObject InvenUI;
 
@@ -50,12 +52,18 @@ public class InventoryUI : MonoBehaviour
         RectTransformUtility.ScreenPointToLocalPointInRectangle(targetRectTr, Input.mousePosition, uiCamera, out screenPoint);
         Infopos.SetAsLastSibling();
         Infopos.anchoredPosition = new Vector3(screenPoint.x - 136, screenPoint.y -196);
+        ItemInfopos.SetAsLastSibling();
+        ItemInfopos.anchoredPosition = new Vector3(screenPoint.x - 130, screenPoint.y + 196);
     }
     public void SetCard()
     {
         for (int i = 0; i < EleCards.Length; i++)
         {
             EleCards[i].sprite = inventory.HavingElement[i].elementalImg;
+        }
+        for (int i = 0; i < InvenItem.Length; i++)
+        {
+            //InvenItem[i].sprite = inventory.HavingItem[i].itemImg;
         }
     }
     public void SetItem()
