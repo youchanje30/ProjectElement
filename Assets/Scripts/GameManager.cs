@@ -64,6 +64,9 @@ public class GameManager : MonoBehaviour
     [Header("Shop Setting")]
     public GameObject ShopUI;
     public bool isShop = false;
+    public bool viewBuy = true;
+    public GameObject buyPanel;
+    public GameObject sellPanel;
 
     [Header("SpiritAwake Setting")]
     public GameObject SpiritAwakeUI;
@@ -275,7 +278,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public void ChangeViewShop()
+    {
+        viewBuy = !viewBuy;
+        buyPanel.SetActive(viewBuy);
+        sellPanel.SetActive(!viewBuy);
+    }
 
 
 

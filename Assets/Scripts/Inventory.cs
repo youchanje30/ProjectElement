@@ -27,7 +27,17 @@ public class Inventory : MonoBehaviour
         SaveManager.instance.Save();
     }
 
+    public void RemoveItem(ItemData item)
+    {
+        for (int i = 0; i < HavingItem.Length; i++)
+        {
+            if (!HavingItem[i]) continue;
 
+            if (HavingItem[i].ItemID != item.ItemID) continue;
+
+            HavingItem[i] = null;
+        }
+    }
     public void GetItem(ItemData item)
     {
         for (int i = 0; i < HavingItem.Length; i++)
