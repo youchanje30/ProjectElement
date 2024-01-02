@@ -64,6 +64,7 @@ public class ObjectController : MonoBehaviour
                 {
                     Invoke("SpawnShopItem", 0.1f);
                 }
+                Invoke("SpawnSellItem", 0.1f);
                 break;
             
             case InteractObjects.SpiritAwake:
@@ -139,6 +140,22 @@ public class ObjectController : MonoBehaviour
 
             Debug.Log(NewShopItem);
         }
+    }
+
+    public void AddShop(int itemID)
+    {
+        Inventory inven = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+
+        GameObject NewShopItem = Instantiate(ShopItem, sellScrollRect.content);
+        NewShopItem.GetComponent<ShopItem>().Setting(ItemManager.instance.AddItem(itemID));
+        NewShopItem.GetComponent<ShopItem>().objectController = this;
+        NewShopItem.GetComponent<ShopItem>().buyBool = false;
+
+        var newUi = NewShopItem.GetComponent<RectTransform>();
+        sellShopObjects.Add(newUi);
+        SetPosShop();
+
+        Debug.Log(NewShopItem);
     }
 
     public void Interaction()
@@ -227,6 +244,7 @@ public class ObjectController : MonoBehaviour
     {
         interactView.SetActive(isOn);   
     }
+    
     public void ActiveSpirit()
     {
         for(int i = 0; i< manager.inventory.HavingElement.Length; i++)

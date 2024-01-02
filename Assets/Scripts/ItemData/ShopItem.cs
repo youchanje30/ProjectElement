@@ -53,6 +53,13 @@ public class ShopItem : MonoBehaviour
 
     }
 
+    public void Btn()
+    {
+        if (buyBool) Buy();
+        else Sell();
+    }
+
+
     public void Buy()
     {
         if(inventory.Gold < buyCost) return;
@@ -79,11 +86,13 @@ public class ShopItem : MonoBehaviour
         objectController.SetPosShop();
         Destroy(gameObject);
         SaveManager.instance.Save();
+
+        objectController.AddShop(itemID);
     }
 
     public void Sell()
     {
-        inventory.Gold -= sellCost;
+        inventory.Gold += sellCost;
         inventory.RemoveItem(ItemManager.instance.AddItem(itemID));
         objectController.sellShopObjects.Remove(gameObject.GetComponent<RectTransform>());
         objectController.SetPosShop();
@@ -116,8 +125,17 @@ public class ShopItem : MonoBehaviour
         itemImage = Item.itemImg;
         itemID = Item.ItemID;
 
+        buyCost = Item.ItemCost;
+        sellCost = Item.SellCost;
+
+        if(buyBool)
+            itemCostTxt.text = buyCost.ToString();
+        else
+            itemCostTxt.text = sellCost.ToString();
+
+
         itemName.text = Item.ItemName;
-        // itemCost.text = Item.item
+        // itemCost.text = Item.ItemCost;
         itemInfo.text = Item.ItemInfo;
         itemRare.text = Item.ItemRare.ToString();
     }
