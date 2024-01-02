@@ -17,7 +17,7 @@ public class TooltipController : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
        for (int i = 0; i < inventoryUI.Card.Length; i++)
         {
-            if (inventoryUI.elementalData != null && inventoryUI.Card[i].gameObject == eventData.pointerCurrentRaycast.gameObject) 
+            if ( inventoryUI.Card[i].gameObject == eventData.pointerCurrentRaycast.gameObject) 
             {
                 inventoryUI.Info.SetActive(true);
                 tooltip.SetupTooltip(inventoryUI.inventory.HavingElement[i].ElementalName, inventoryUI.inventory.HavingElement[i].ElementalInfo);
