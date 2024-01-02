@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea6c107015a0344c99edc02fd99ab36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiController: {fileID: 0}
+  Item: {fileID: 0}
+  Elemental: {fileID: 0}
+  inventory: {fileID: 0}
+  swapUI: {fileID: 0}
   player: {fileID: 0}
   CanCameraShake: 0
   clearStage: 0
@@ -71,18 +74,16 @@ MonoBehaviour:
   TimeTxt: {fileID: 0}
   ShopUI: {fileID: 0}
   isShop: 0
+  viewBuy: 1
+  buyPanel: {fileID: 0}
+  sellPanel: {fileID: 0}
   SpiritAwakeUI: {fileID: 0}
   isSpiritAwake: 0
-  SlotSwapUI: {fileID: 5563688529607638122, guid: ef889f9416b06a24eb1e91afbe8e98de, type: 3}
+  statusUpdrageUI: {fileID: 0}
+  isStatusUpgrade: 0
+  statusUpgradeTimes: 0
   isSlotSwap: 0
-  Slot: []
-  Ele:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  slot: 0
+  isInven: 0
   Elements:
   - {fileID: 0}
   - {fileID: 0}
