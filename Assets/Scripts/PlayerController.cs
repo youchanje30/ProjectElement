@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -136,14 +137,14 @@ public class PlayerController : MonoBehaviour
             manager.isSelected = false;
             manager.isSlotSwap = false;
         }
-
-        if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.E)) 
+        if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.E)) // 수정 해야함
         {
-            //manager.isAction = false;
-            //manager.isSelected = false;
-            //manager.CloseSwap();
-            manager.EleSwap();         
+            manager.isAction = false;
+            manager.isSelected = false;
+
+            EleUISwap();
         }
+        
 
         if (Input.GetKeyDown(ioInventory))
         {
@@ -178,6 +179,15 @@ public class PlayerController : MonoBehaviour
         }
 
         
+    }
+    public void EleUISwap()
+    {
+        manager.Elements[manager.swapUI.slot].SetActive(true);
+        inventory.HavingElement[manager.swapUI.slot] = ElementalManager.instance.AddElement((int)manager.ObjData.WeaponType * 1000);
+        SetEquipment();
+        manager.swapUI.SlotSwapUI.SetActive(false);
+        manager.TalkPanel.SetActive(false);
+        manager.isSlotSwap = false;
     }
     public void ChangeAnim()
     {
@@ -323,7 +333,7 @@ public class PlayerController : MonoBehaviour
             else if (inventory.HavingElement[2].ElementalID != 0)
             {
                 manager.TalkPanel.SetActive(false);
-                manager.OpenSwap();         
+                manager.OpenSwap();               
                 break;
             }
             else if (inventory.HavingElement[i].ElementalID == 0)
@@ -334,5 +344,6 @@ public class PlayerController : MonoBehaviour
                 break;
             }
         }
+        
     }
 }

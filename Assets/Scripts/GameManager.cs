@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public ElementalManager Elemental;
     public Inventory inventory;
     private InventoryUI inventoryUI;
-    private SwapUI swapUI;
+    public  SwapUI swapUI;
 
     [SerializeField] private PlayerController player;
 
@@ -64,6 +64,9 @@ public class GameManager : MonoBehaviour
     [Header("Shop Setting")]
     public GameObject ShopUI;
     public bool isShop = false;
+    public bool viewBuy = true;
+    public GameObject buyPanel;
+    public GameObject sellPanel;
 
     [Header("SpiritAwake Setting")]
     public GameObject SpiritAwakeUI;
@@ -121,7 +124,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake && isInven)
+        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake && !isInven)
         {
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;
@@ -275,7 +278,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public void ChangeViewShop()
+    {
+        viewBuy = !viewBuy;
+        buyPanel.SetActive(viewBuy);
+        sellPanel.SetActive(!viewBuy);
+    }
 
 
 
@@ -296,7 +304,8 @@ public class GameManager : MonoBehaviour
                 Active(ObjData.objectID);
                 isAction = false;
                 TalkPanel.SetActive(false);
-                // 플레이어 상태 변경 해야함          
+                
+                // 플레이어 상태 변경 해야함              
                 break;
 
             case 3:
@@ -305,6 +314,8 @@ public class GameManager : MonoBehaviour
                 TalkPanel.SetActive(false);
                 break;
         }
+        isSelected = false;
+
     }
     
       
@@ -320,7 +331,7 @@ public class GameManager : MonoBehaviour
 
             case 2000:
                 // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Wand);;
+                player.GetElement((int)WeaponTypes.Wand);
 
                 break;
     
@@ -413,17 +424,18 @@ public class GameManager : MonoBehaviour
         resolutions[resolutionNum].height, 
         fullScreen == 0 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
     }
-    public void EleSwap()
-    {
-        Elements[swapUI.slot].SetActive(true);
-        inventory.HavingElement[swapUI.slot] = ElementalManager.instance.AddElement((int)ObjData.WeaponType * 1000);
-        player.SetEquipment();
-        swapUI.SlotSwapUI.SetActive(false);
-        TalkPanel.SetActive(false);
-        isAction = false;
+    //public void EleSwap()
+    //{
+    //    Elements[swapUI.slot].SetActive(true);
+    //    inventory.HavingElement[swapUI.slot] = ElementalManager.instance.AddElement((int)ObjData.WeaponType * 1000);
+    //    player.SetEquipment();
+    //    swapUI.SlotSwapUI.SetActive(false);
+    //    TalkPanel.SetActive(false);
+    //    isAction = false;
+    //    isSelected = false;
+    //    isSlotSwap = false;
 
-        isSlotSwap = false;
-        
-    }
+
+    //}
   
 }
