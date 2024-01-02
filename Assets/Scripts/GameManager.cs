@@ -59,6 +59,9 @@ public class GameManager : MonoBehaviour
     [Header("Shop Setting")]
     public GameObject ShopUI;
     public bool isShop = false;
+    public bool viewBuy = true;
+    public GameObject buyPanel;
+    public GameObject sellPanel;
 
     [Header("SpiritAwake Setting")]
     public GameObject SpiritAwakeUI;
@@ -374,6 +377,13 @@ public class GameManager : MonoBehaviour
         Screen.SetResolution(resolutions[resolutionNum].width, 
         resolutions[resolutionNum].height, 
         fullScreen == 0 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
+    }
+
+    public void ChangeViewShop()
+    {
+        viewBuy = !viewBuy;
+        buyPanel.SetActive(viewBuy);
+        sellPanel.SetActive(!viewBuy);
     }
 
 }

@@ -22,11 +22,14 @@ public class ItemData : ScriptableObject
     [SerializeField] private ItemRares itemRare;
     public ItemRares ItemRare { get { return itemRare; } }
     
-    [SerializeField] private string itemCost;
-    public string ItemCost { get { return itemCost; } }
+    [SerializeField] private int itemCost;
+    public int ItemCost { get { return itemCost; } }
     [SerializeField] private int itemID;
     public int ItemID { get { return itemID; } }
     public Image itemImg;
+
+    [SerializeField] private int sellCost;
+    public int SellCost { get { return sellCost; } }
     [Space(40f)]
 
 

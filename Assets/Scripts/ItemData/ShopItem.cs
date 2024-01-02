@@ -22,18 +22,20 @@ public class ShopItem : MonoBehaviour
     private PlayerController player;
     public ItemData Item;
 
-    public Image itemImage;
+    [SerializeField] private Image itemImage;
 
-    public TMP_Text itemName;
-    public TMP_Text itemInfo;
-    public int itemCost;
-    public TMP_Text itemCostTxt;
+    [SerializeField] private TMP_Text itemName;
+    [SerializeField] private TMP_Text itemInfo;
+    private int buyCost;
+    private int sellCost;
+    [SerializeField] private TMP_Text itemCostTxt;
+    [SerializeField] TMP_Text btnText;
     
-    public TMP_Text itemRare;
+    [SerializeField] private TMP_Text itemRare;
 
-    public int itemID;
+    private int itemID;
     
-
+    public bool buyBool;
 
     
     void Awake()
@@ -51,9 +53,16 @@ public class ShopItem : MonoBehaviour
 
     }
 
+
+    public void Btn()
+    {
+        if(buyBool) Buy();
+        else Sell();
+    }
+
     public void Buy()
     {
-        if(inventory.Gold < itemCost) return;
+        if(inventory.Gold < buyCost) return;
 
         
 
@@ -69,16 +78,25 @@ public class ShopItem : MonoBehaviour
             UseConsumable(ConsumableItemID);
         }
 
-        inventory.Gold -= itemCost;
+        inventory.Gold -= buyCost;
 
         // ItemManager.instance.AddItem(itemID);
         // this.gameObject.SetActive(false);
-        objectController.shopObjects.Remove(gameObject.GetComponent<RectTransform>());
+        objectController.buyShopObjects.Remove(gameObject.GetComponent<RectTransform>());
         objectController.SetPosShop();
         Destroy(gameObject);
         SaveManager.instance.Save();
     }
 
+    public void Sell()
+    {
+        inventory.Gold -= sellCost;
+        inventory.RemoveItem(ItemManager.instance.AddItem(itemID));
+        objectController.sellShopObjects.Remove(gameObject.GetComponent<RectTransform>());
+        objectController.SetPosShop();
+        Destroy(gameObject);
+        SaveManager.instance.Save();
+    }
 
     public void UseConsumable(int ConsumableID)
     {
@@ -106,7 +124,15 @@ public class ShopItem : MonoBehaviour
         itemID = Item.ItemID;
 
         itemName.text = Item.ItemName;
-        // itemCost.text = Item.item
+        buyCost = Item.ItemCost;
+        sellCost = Item.SellCost;
+
+        if(buyBool)
+            itemCostTxt.text = buyCost.ToString();
+        else
+            itemCostTxt.text = sellCost.ToString();
+
+
         itemInfo.text = Item.ItemInfo;
         itemRare.text = Item.ItemRare.ToString();
     }

@@ -24,9 +24,11 @@ public class ObjectController : MonoBehaviour
     [SerializeField] private GameObject ShopItem;
     [SerializeField] private GameObject HpHealItem;
     [SerializeField] private GameObject SpiritSoulItem;
-    [SerializeField] private ScrollRect scrollRect;
+    [SerializeField] private ScrollRect buyScrollRect;
+    [SerializeField] private ScrollRect sellScrollRect;
     [SerializeField] private float Space;
-    public List<RectTransform> shopObjects = new List<RectTransform>();
+    public List<RectTransform> buyShopObjects = new List<RectTransform>();
+    public List<RectTransform> sellShopObjects = new List<RectTransform>();
 
     
 
@@ -56,6 +58,7 @@ public class ObjectController : MonoBehaviour
                 {
                     Invoke("SpawnShopItem", 0.1f);
                 }
+                Invoke("SpawnSellItem", 0.1f);
                 break;
             
             case InteractObjects.SpiritAwake:
@@ -69,36 +72,67 @@ public class ObjectController : MonoBehaviour
 
     public void SpawnShopItem()
     {
-        GameObject NewShopItem = Instantiate(ShopItem, scrollRect.content);
+        GameObject NewShopItem = Instantiate(ShopItem, buyScrollRect.content);
         NewShopItem.GetComponent<ShopItem>().Setting(ItemManager.instance.GetShopItem());
-        NewShopItem.GetComponent<ShopItem>().objectController = this ;
+        NewShopItem.GetComponent<ShopItem>().objectController = this;
+        NewShopItem.GetComponent<ShopItem>().buyBool = true;
         var newUi = NewShopItem.GetComponent<RectTransform>();
-        shopObjects.Add(newUi);
+        buyShopObjects.Add(newUi);
         SetPosShop();
     }
 
 
     public void SpawnConsumableItem(GameObject obj)
     {
-        GameObject NewShopItem = Instantiate(obj, scrollRect.content);
-        NewShopItem.GetComponent<ShopItem>().objectController = this ;
+        GameObject NewShopItem = Instantiate(obj, buyScrollRect.content);
+        NewShopItem.GetComponent<ShopItem>().objectController = this;
+        NewShopItem.GetComponent<ShopItem>().buyBool = true;
         var newUi = NewShopItem.GetComponent<RectTransform>();
-        shopObjects.Add(newUi);
+        buyShopObjects.Add(newUi);
         SetPosShop();
+    }
+
+    public void SpawnSellItem()
+    {
+        Inventory inven = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+
+        for (int i = 0; i < 6; i++)
+        {
+            if(inven.HavingItem[i] == null) continue;
+
+            GameObject NewShopItem = Instantiate(ShopItem, sellScrollRect.content);
+            NewShopItem.GetComponent<ShopItem>().Setting(inven.HavingItem[i]);
+            NewShopItem.GetComponent<ShopItem>().objectController = this;
+            NewShopItem.GetComponent<ShopItem>().buyBool = false;
+            
+            var newUi = NewShopItem.GetComponent<RectTransform>();
+            sellShopObjects.Add(newUi);
+            SetPosShop();
+
+            Debug.Log(NewShopItem);
+        }
     }
 
     public void SetPosShop()
     {
         float y = 0f;
-        for (int i = 0; i < shopObjects.Count; i++)
+        for (int i = 0; i < buyShopObjects.Count; i++)
         {
-            shopObjects[i].anchoredPosition = new Vector2(0f, -y);
-            y += shopObjects[i].sizeDelta.y + Space;
+            buyShopObjects[i].anchoredPosition = new Vector2(0f, -y);
+            y += buyShopObjects[i].sizeDelta.y + Space;
         }
 
-        scrollRect.content.sizeDelta = new Vector2(scrollRect.content.sizeDelta.x, y);
+        buyScrollRect.content.sizeDelta = new Vector2(buyScrollRect.content.sizeDelta.x, y);
 
-        // shopObjects.Remove()
+
+        y = 0f;
+        for (int i = 0; i < sellShopObjects.Count; i++)
+        {
+            sellShopObjects[i].anchoredPosition = new Vector2(0f, -y);
+            y += sellShopObjects[i].sizeDelta.y + Space;
+        }
+
+        sellScrollRect.content.sizeDelta = new Vector2(sellScrollRect.content.sizeDelta.x, y);
     }
 
 
@@ -160,6 +194,10 @@ public class ObjectController : MonoBehaviour
     {
         GameManager.instance.ShopUI.SetActive(true);
         GameManager.instance.isShop = true;
+
+        GameManager.instance.buyPanel.SetActive(GameManager.instance.viewBuy);
+        GameManager.instance.sellPanel.SetActive(!GameManager.instance.viewBuy);
+        Debug.Log("OpenShop");
     }
 
     public void Portal(int ID)

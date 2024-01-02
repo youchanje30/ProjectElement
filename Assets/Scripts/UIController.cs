@@ -9,13 +9,16 @@ public class UIController : MonoBehaviour
     private GameManager gameManager;
     void Awake()
     {
-        rectTransform = this.GetComponent<RectTransform>();     
+        rectTransform = this.GetComponent<RectTransform>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
+
     public void Update()
     {
         sellectSlot();
     }
+
+    // 정령 관련
     public void sellectSlot()
     {     
         if (Input.GetKeyDown(KeyCode.RightArrow) && rectTransform.anchoredPosition.x < 562)

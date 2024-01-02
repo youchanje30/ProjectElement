@@ -21,6 +21,7 @@ public class ItemManager : MonoBehaviour
 
 
 
+    // 리소스 파일에서 직접 들고오도록 수정할 예정
 
     void Awake()
     {

@@ -36,6 +36,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void RemoveItem(ItemData item)
+    {
+        for (int i = 0; i < HavingItem.Length; i++)
+        {
+            if(!HavingItem[i]) continue;
+
+            if(HavingItem[i].ItemID != item.ItemID) continue;
+
+            HavingItem[i] = null;
+        }
+    }
+
     public bool isItemFull()
     {
         for (int i = 0; i < HavingItem.Length; i++)
