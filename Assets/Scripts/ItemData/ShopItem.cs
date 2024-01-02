@@ -86,11 +86,14 @@ public class ShopItem : MonoBehaviour
         objectController.SetPosShop();
         Destroy(gameObject);
         SaveManager.instance.Save();
+
+        // 추가 함수 필요
+        objectController.AddShop(itemID);
     }
 
     public void Sell()
     {
-        inventory.Gold -= sellCost;
+        inventory.Gold += sellCost;
         inventory.RemoveItem(ItemManager.instance.AddItem(itemID));
         objectController.sellShopObjects.Remove(gameObject.GetComponent<RectTransform>());
         objectController.SetPosShop();
