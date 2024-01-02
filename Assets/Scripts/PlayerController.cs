@@ -205,7 +205,12 @@ public class PlayerController : MonoBehaviour
 
     void Act() //상호작용, 공격 스킬 등의 입력을 전달하는 함수
     {
-        if (pressedInteractKey && !manager.isAction) interact.InteractObj();
+        if (pressedInteractKey && !manager.isAction)
+        { 
+            interact.InteractObj();
+            pressedInteractKey = false;
+            return;
+        }
 
         
         if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking || manager.isInven)
