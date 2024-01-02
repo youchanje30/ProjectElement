@@ -25,6 +25,7 @@ public class InventoryUI : MonoBehaviour
     public RectTransform[] Itempos;
     public Image[] InvenItem;
     public GameObject InvenUI;
+    public TextMeshProUGUI Stat;
 
     Canvas canvas;
 
@@ -70,7 +71,7 @@ public class InventoryUI : MonoBehaviour
     {
 
     }
-   
+ 
     public void OpenInventory()
     {
         SetCard();
