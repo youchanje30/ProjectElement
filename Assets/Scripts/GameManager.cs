@@ -5,12 +5,17 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Xml.Linq;
+using Unity.VisualScripting;
+using static ObjectController;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    Inventory inventory;
-    public UIController uiController;
+    public ItemManager Item;
+    public ElementalManager Elemental;
+    public Inventory inventory;
+    private InventoryUI inventoryUI;
+    private SwapUI swapUI;
 
     [SerializeField] private PlayerController player;
 
@@ -70,11 +75,10 @@ public class GameManager : MonoBehaviour
     public int statusUpgradeTimes = 0;
 
     [Header("SlotSwap Setting")]
-    public GameObject SlotSwapUI;
     public bool isSlotSwap = false;
-    public Image[] Slot;
-    public Sprite[] Ele;
-    public int slot;
+
+    [Header("Inventory Setting")]
+    public bool isInven = false;
 
     [Header("Elemental")]
     public GameObject[] Elements;
@@ -86,12 +90,21 @@ public class GameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = player.GetComponent<Inventory>();
-        uiController = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
+        Item = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ItemManager>();
+        Elemental = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ElementalManager>();
+        inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
+        swapUI = GameObject.Find("Canvas").GetComponent<SwapUI>();
     }
+
 
     void Start()
     {
         SetResolution();
+        for (int i = 0; i < Elements.Length; i++)
+        {
+            player.inventory.HavingElement[i] = Elemental.AddElement(0);
+        }
+
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
 
@@ -108,38 +121,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake)
+        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake && isInven)
         {
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;
         }   
-        TimeSetting();       
+        TimeSetting();
     }
 
-    public void ElementImg()
-    {
-        for(int i = 0 ; i<inventory.HasWeapon.Length ; i++)
-        {
-            if (inventory.HavingWeapon[i] == (int)WeaponTypes.Sword)
-            {
-                Slot[i].sprite = Ele[1];
-            }
-            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Wand)
-            {
-                Slot[i].sprite = Ele[2];
-            }
-            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Shield)
-            {
-                Slot[i].sprite = Ele[3];
-            }
-            else if (inventory.HavingWeapon[i] == (int)WeaponTypes.Bow)
-            {
-                Slot[i].sprite = Ele[4];
-            }
-        }
-        Slot[3].sprite = Ele[(int)ObjData.WeaponType];
-        
-    }
+  
     public void TimeSetting()
     {
         // TimerVal += Time.deltaTime;
@@ -305,8 +295,8 @@ public class GameManager : MonoBehaviour
                 //정령 선택 등의 선택기능
                 Active(ObjData.objectID);
                 isAction = false;
-                // 플레이어 상태 변경 해야함
                 TalkPanel.SetActive(false);
+                // 플레이어 상태 변경 해야함          
                 break;
 
             case 3:
@@ -325,23 +315,23 @@ public class GameManager : MonoBehaviour
         {
             case 1000:
                 // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Sword);          
-            break;
+                player.GetElement((int)WeaponTypes.Sword);
+                break;
 
             case 2000:
                 // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Shield);
+                player.GetElement((int)WeaponTypes.Wand);;
 
-            break;
+                break;
     
             case 3000:
                 // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Bow);
+                player.GetElement((int)WeaponTypes.Shield);
                 break;
                 
             case 4000:
                 // player.GetElement((int)WeaponTypes.Sword,(int)Elements.Fire);          
-                player.GetElement((int)WeaponTypes.Wand);
+                player.GetElement((int)WeaponTypes.Bow);
                 break;
         }
     }
@@ -400,10 +390,17 @@ public class GameManager : MonoBehaviour
         }
     }
     public void OpenSwap()
-    {       
-        ElementImg();
-        SlotSwapUI.SetActive(true);       
-        isSlotSwap = true;      
+    {
+        swapUI.ElementImg();    
+        isSlotSwap = true;
+        swapUI.SlotSwapUI.SetActive(isSlotSwap);
+    }
+    public void OpenInventory()
+    {
+        inventoryUI.SetCard();
+        inventoryUI.SetItem();
+        isInven = !isInven;
+        inventoryUI.InvenUI.SetActive(isInven);
     }
     public void DropboxOptionChanged(int x)
     {
@@ -416,5 +413,17 @@ public class GameManager : MonoBehaviour
         resolutions[resolutionNum].height, 
         fullScreen == 0 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
     }
+    public void EleSwap()
+    {
+        Elements[swapUI.slot].SetActive(true);
+        inventory.HavingElement[swapUI.slot] = ElementalManager.instance.AddElement((int)ObjData.WeaponType * 1000);
+        player.SetEquipment();
+        swapUI.SlotSwapUI.SetActive(false);
+        TalkPanel.SetActive(false);
+        isAction = false;
 
+        isSlotSwap = false;
+        
+    }
+  
 }

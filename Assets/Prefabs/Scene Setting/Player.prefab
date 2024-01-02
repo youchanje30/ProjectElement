@@ -444,6 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scanObj: {fileID: 0}
+  ScanObj: {fileID: 0}
   isActionning: 0
 --- !u!114 &6729994133735113749
 MonoBehaviour:
@@ -524,12 +525,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  HavingWeapon: 000000000000000000000000
+  HavingElement:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   HasWeapon: 000000
-  Elements:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &4664804212794489908
 MonoBehaviour:
   m_ObjectHideFlags: 0

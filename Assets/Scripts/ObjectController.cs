@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class ObjectController : MonoBehaviour
 
     public WeaponTypes WeaponType;
     [SerializeField] private InteractObjects ObjType;
+    [SerializeField] private GameManager manager;
     public int objectID;
     public string objectTag;
     public GameObject interactView;
@@ -28,10 +30,14 @@ public class ObjectController : MonoBehaviour
     [SerializeField] private float Space;
     public List<RectTransform> shopObjects = new List<RectTransform>();
 
-    
+    private void Update()
+    {
+        ActiveSpirit();
+    }
 
     void Awake()
     {
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         objectTag = gameObject.tag;
 
         switch(ObjType)
@@ -147,6 +153,7 @@ public class ObjectController : MonoBehaviour
                 // player.SetEquipment();
                 break;
         }
+    
     }
 
     public void OpenSpiritAwake()
@@ -179,13 +186,20 @@ public class ObjectController : MonoBehaviour
         }
     }
 
-
-
-
     public void InteractView(bool isOn)
     {
-        interactView.SetActive(isOn);
+        interactView.SetActive(isOn);   
     }
-
+    public void ActiveSpirit()
+    {
+        for(int i = 0; i< manager.inventory.HavingElement.Length; i++)
+        {
+            if (manager.inventory.HavingElement[i].ElementalID == this.objectID && manager.inventory.HavingElement[i].WeaponTypes == this.WeaponType)
+            {
+                manager.Elements[i] = this.gameObject;
+                manager.Elements[i].SetActive(false);
+            }
+        }      
+    }
 
 }
