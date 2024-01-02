@@ -22,7 +22,6 @@ public class InventoryUI : MonoBehaviour
     public RectTransform[] Card;
     public Image[] EleCards;
     public Image[] InvenItem;
-    public ElementalData[] elementalData;
     public GameObject InvenUI;
 
     Canvas canvas;
