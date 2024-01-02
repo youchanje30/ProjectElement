@@ -1,28 +1,28 @@
+using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryUI : MonoBehaviour//, IDragHandler, IPointerDownHandler, IPointerUpHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler
+public class InventoryUI : MonoBehaviour
 {
     public RectTransform rectTransform;
-    private GameManager gameManager;
-    private Inventory inventory;
+    public GameManager gameManager;
+    public  Inventory inventory;
 
     private Transform Canvas;
-    private Transform previousParent;
-    private CanvasGroup canvasGroup;
-
 
     [Header("Inventory Setting")]
 
-    public GameObject[] ItemInfo;
-    public RectTransform[] Infopos;
-    public GameObject[] Info;
+    public GameObject ItemInfo;
+    public RectTransform Infopos;
+    public GameObject Info;
     public RectTransform[] Card;
-    Transform _startParent;
     public Image[] EleCards;
     public Image[] InvenItem;
+    public ElementalData[] elementalData;
     public GameObject InvenUI;
 
     Canvas canvas;
@@ -37,24 +37,25 @@ public class InventoryUI : MonoBehaviour//, IDragHandler, IPointerDownHandler, I
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         rectTransform = GetComponent<RectTransform>();
         Canvas = FindObjectOfType<Canvas>().transform;
-        canvasGroup = GetComponent<CanvasGroup>();
+    
     }
     void Start()
     {
-        for (int i = 0; i < ItemInfo.Length; i++) { ItemInfo[i].SetActive(false); }
-        for (int i = 0; i < ItemInfo.Length; i++) { Info[i].SetActive(false); }
+        ItemInfo.SetActive(false); 
+        Info.SetActive(false);
         targetRectTr = Canvas.GetComponent<RectTransform>();
         uiCamera = Camera.main;
     }
     void Update()
-    {
+    { 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(targetRectTr, Input.mousePosition, uiCamera, out screenPoint);
+        Infopos.SetAsLastSibling();
+        Infopos.anchoredPosition = new Vector3(screenPoint.x - 136, screenPoint.y -196);
     }
     public void SetCard()
     {
         for (int i = 0; i < EleCards.Length; i++)
         {
-
             EleCards[i].sprite = inventory.HavingElement[i].elementalImg;
         }
     }
@@ -62,10 +63,12 @@ public class InventoryUI : MonoBehaviour//, IDragHandler, IPointerDownHandler, I
     {
 
     }
+   
     public void OpenInventory()
     {
         SetCard();
         gameManager.isInven = !gameManager.isInven;
         InvenUI.SetActive(gameManager.isInven);
     }
+   
 }

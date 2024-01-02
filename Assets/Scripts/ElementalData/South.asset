@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementalName: South
   weaponType: 3
-  elementalID: 0
-  elementalImg: {fileID: 0}
+  elementalID: 3000
+  elementalImg: {fileID: 21300000, guid: ed199b982f1c14944950dff866e56210, type: 3}

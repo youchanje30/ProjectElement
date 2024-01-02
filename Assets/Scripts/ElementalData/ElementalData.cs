@@ -12,5 +12,7 @@ public class ElementalData : ScriptableObject
     public WeaponTypes WeaponTypes { get { return weaponType; } }
     [SerializeField] private int elementalID;
     public int ElementalID { get { return elementalID; } }
+    [SerializeField] private string elementalInfo;
+    public string ElementalInfo { get { return elementalInfo; } }
     public Sprite elementalImg;
 }

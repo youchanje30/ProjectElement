@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementalName: Water
   weaponType: 2
-  elementalID: 0
-  elementalImg: {fileID: 0}
+  elementalID: 2000
+  elementalImg: {fileID: 21300000, guid: 5e104ee1efce92f46ae4f4c103690ee7, type: 3}
