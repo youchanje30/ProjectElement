@@ -10,26 +10,27 @@ public class InventoryUI : MonoBehaviour
 {
     public RectTransform rectTransform;
     public GameManager gameManager;
-    public  Inventory inventory;
-
+    public Inventory inventory;
     private Transform Canvas;
 
     [Header("Inventory Setting")]
-   
-    public RectTransform ItemInfopos;
+    //public RectTransform ItemInfopos;
     public GameObject ItemInfo;
-    public RectTransform Infopos;
+    //public RectTransform Infopos;
     public GameObject Info;
     public RectTransform[] Card;
-    public Image[] EleCards;
+    public GameObject[] EleCards;
     public RectTransform[] Itempos;
     public Image[] InvenItem;
     public GameObject InvenUI;
     public TextMeshProUGUI Stat;
-   public Animator animator;
+    public Animator animator;
+    public ElementalData[] elementalData;
+    public GameObject[] Slot;
 
-    Canvas canvas;
 
+
+    [Space(20f)]
     public RectTransform targetRectTr;
     public Camera uiCamera;
     public Vector2 screenPoint;
@@ -38,34 +39,34 @@ public class InventoryUI : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        //elementalData = gameManager.GetComponent<ElementalData>();
         rectTransform = GetComponent<RectTransform>();
         Canvas = FindObjectOfType<Canvas>().transform;
         animator = GetComponent<Animator>();
     }
     void Start()
     {
-        ItemInfo.SetActive(false); 
+   
+        ItemInfo.SetActive(false);
         Info.SetActive(false);
         targetRectTr = Canvas.GetComponent<RectTransform>();
         uiCamera = Camera.main;
     }
     void Update()
-    { 
+    {
         RectTransformUtility.ScreenPointToLocalPointInRectangle(targetRectTr, Input.mousePosition, uiCamera, out screenPoint);
-        Infopos.SetAsLastSibling();
-        Infopos.anchoredPosition = new Vector3(screenPoint.x - 135, screenPoint.y -196);
-        ItemInfopos.SetAsLastSibling();
-        ItemInfopos.anchoredPosition = new Vector3(screenPoint.x - 130, screenPoint.y + 196);
-        if(gameManager.isInven)
-        {
-            animator.SetTrigger("OpenInven");
-        }
+        Info.GetComponent<RectTransform>().SetAsLastSibling();
+        Info.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 135, screenPoint.y - 196);
+        ItemInfo.GetComponent<RectTransform>().SetAsLastSibling();
+        ItemInfo.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 130, screenPoint.y + 196);
+    
     }
     public void SetCard()
     {
         for (int i = 0; i < EleCards.Length; i++)
         {
-            EleCards[i].sprite = inventory.HavingElement[i].elementalImg;
+            EleCards[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalImg;
+            Slot[i].GetComponent<Text>().text = inventory.HavingElement[i].ElementalID.ToString();
         }
         for (int i = 0; i < InvenItem.Length; i++)
         {
@@ -76,12 +77,13 @@ public class InventoryUI : MonoBehaviour
     {
 
     }
- 
+
     public void OpenInventory()
     {
         SetCard();
         gameManager.isInven = !gameManager.isInven;
         InvenUI.SetActive(gameManager.isInven);
+        animator.SetTrigger("OpenInven");
     }
-   
+
 }

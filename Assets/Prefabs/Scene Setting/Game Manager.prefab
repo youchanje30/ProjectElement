@@ -85,8 +85,9 @@ MonoBehaviour:
   isSlotSwap: 0
   isInven: 0
   Elements:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6880224518496478786, guid: d47b28d2e4e348f4cb728b455fb46234, type: 3}
+  - {fileID: 3145361511849222769, guid: 40520e4d60b618f48a93404240d63939, type: 3}
+  - {fileID: 8745171362644809875, guid: b0381da6f08534043958dac819ee8c33, type: 3}
+  - {fileID: 4945274884259904211, guid: 4a8970fb49880b04ea2818ade8e266c5, type: 3}
   resolutionDropdown: {fileID: 0}
   fullScreen: 0
