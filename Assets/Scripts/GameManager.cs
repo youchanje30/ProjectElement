@@ -302,7 +302,8 @@ public class GameManager : MonoBehaviour
             
             case 2: //
                 //정령 선택 등의 선택기능
-                Active(ObjData.objectID);
+                isSelected = true;
+                Active(ObjData.objectID);                
                 isAction = false;
                 TalkPanel.SetActive(false);
                 
@@ -315,7 +316,6 @@ public class GameManager : MonoBehaviour
                 TalkPanel.SetActive(false);
                 break;
         }
-        isSelected = false;
 
     }
     

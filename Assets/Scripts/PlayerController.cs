@@ -137,12 +137,13 @@ public class PlayerController : MonoBehaviour
             manager.isSlotSwap = false;
             manager.swapUI.SlotSwapUI.SetActive(false);
         }
-        if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.Z)) // 수정 해야함
+        if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.E)) // 수정 해야함
         {
             manager.isSlotSwap = false;
             manager.swapUI.SlotSwapUI.SetActive(false);
-            EleUISwap();
-            
+            Invoke("EleUISwap", 0.1f);
+
+
         }
         
 
@@ -184,6 +185,8 @@ public class PlayerController : MonoBehaviour
     {
         manager.Elements[manager.swapUI.slot].SetActive(true);
         inventory.HavingElement[manager.swapUI.slot] = ElementalManager.instance.AddElement((int)manager.ObjData.WeaponType * 1000);
+        manager.isAction = false;
+        manager.isSelected = false;
     }
     public void ChangeAnim()
     {
@@ -333,16 +336,17 @@ public class PlayerController : MonoBehaviour
             }
             else if (inventory.HavingElement[2].ElementalID != 0)
             {
-                manager.isAction = false;
-                manager.isSelected = false;
+                
                 manager.OpenSwap();
+                
                 break;
             }
             else if (inventory.HavingElement[i].ElementalID == 0)
             {               
                 PlayerWeaponType = (WeaponTypes)W;
                 inventory.GetEle(ElementalManager.instance.AddElement(W * 1000));
-                SetEquipment();
+                SetEquipment(); 
+                manager.isSelected = false;
                 break;
             }
         }
