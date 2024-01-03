@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
         }   
         TimeSetting();
-        SetStat();
+        LogStat();
     }
 
   
@@ -436,7 +436,7 @@ public class GameManager : MonoBehaviour
     //    isSelected = false;
     //    isSlotSwap = false;
     //}
-    public void SetStat()
+    public void LogStat()
     {
         inventoryUI.Stat.text = "힘: " + player.GetComponent<PlayerStatus>().strength + "\n" + "민첩: " + player.GetComponent<PlayerStatus>().dexterity + "\n" + "운: " + player.GetComponent<PlayerStatus>().luck ;
     }

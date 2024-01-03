@@ -20,7 +20,7 @@ public class SwapUI : MonoBehaviour
 
     public void Update()
     {
-        sellectSlot();
+        if (gameManager.isSlotSwap) { sellectSlot(); }
 
     }
     public void ElementImg()
@@ -56,13 +56,6 @@ public class SwapUI : MonoBehaviour
             {
                 slot = 2;
             }
-            //if (Input.GetKeyDown(KeyCode.E))
-            //{
-            //    manager.isAction = false;
-            //    manager.isSelected = false;
-            //    manager.CloseSwap();
-            //    gameManager.EleSwap();
-            //}
         }
     }
 }
