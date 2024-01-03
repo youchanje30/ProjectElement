@@ -2842,6 +2842,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 737378945}
+    - target: {fileID: 1403104735312561302, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403104735312561302, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403104735312561302, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403104735312561302, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403104735312561302, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524867380078095860, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -37.181213
+      objectReference: {fileID: 0}
     - target: {fileID: 1814180225341464079, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
       propertyPath: m_TagString
       value: Card
@@ -2905,6 +2929,10 @@ PrefabInstance:
     - target: {fileID: 3960580175086680097, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
       propertyPath: m_TagString
       value: Card
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087167836414744443, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 167.9813
       objectReference: {fileID: 0}
     - target: {fileID: 4168823880644478302, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2970,6 +2998,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1728160720}
+    - target: {fileID: 8981984764549381202, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981984764549381202, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981984764549381202, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981984764549381202, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981984764549381202, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9117460294576722406, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
       propertyPath: m_isRightToLeft
       value: 0

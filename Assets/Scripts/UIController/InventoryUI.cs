@@ -26,6 +26,7 @@ public class InventoryUI : MonoBehaviour
     public Image[] InvenItem;
     public GameObject InvenUI;
     public TextMeshProUGUI Stat;
+   public Animator animator;
 
     Canvas canvas;
 
@@ -39,7 +40,7 @@ public class InventoryUI : MonoBehaviour
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         rectTransform = GetComponent<RectTransform>();
         Canvas = FindObjectOfType<Canvas>().transform;
-    
+        animator = GetComponent<Animator>();
     }
     void Start()
     {
@@ -52,9 +53,13 @@ public class InventoryUI : MonoBehaviour
     { 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(targetRectTr, Input.mousePosition, uiCamera, out screenPoint);
         Infopos.SetAsLastSibling();
-        Infopos.anchoredPosition = new Vector3(screenPoint.x - 136, screenPoint.y -196);
+        Infopos.anchoredPosition = new Vector3(screenPoint.x - 135, screenPoint.y -196);
         ItemInfopos.SetAsLastSibling();
         ItemInfopos.anchoredPosition = new Vector3(screenPoint.x - 130, screenPoint.y + 196);
+        if(gameManager.isInven)
+        {
+            animator.SetTrigger("OpenInven");
+        }
     }
     public void SetCard()
     {
