@@ -45,4 +45,6 @@ public class DropSlot : MonoBehaviour,IDropHandler
            
         }       
     }
+
+  
 }

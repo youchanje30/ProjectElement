@@ -5,10 +5,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerEnterHandler, IDropHandler
 {
     [SerializeField] private Canvas canvas;
     private CanvasGroup canvasGroup;
+
+    public int Index { get; private set; }
+    
+
     Transform CanvasPos;
     Transform ParentPos;
     public InventoryUI inventoryUI;
@@ -29,6 +33,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
     }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         ParentPos = transform.parent;
@@ -36,12 +41,14 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         transform.SetParent(CanvasPos);
         transform.SetAsLastSibling();
         canvasGroup.alpha = .7f;
-        canvasGroup.blocksRaycasts = false;        
+        canvasGroup.blocksRaycasts = false;      
     }
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        
         //inventoryUI.Info.SetActive(false);
+     
     }
     public void OnEndDrag(PointerEventData eventData)
     {
@@ -52,10 +59,16 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         }
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
-        if(ParentPos.GetComponent<RectTransform>().anchoredPosition.x == 399 && ParentPos.GetComponent<RectTransform>().anchoredPosition.y == -260)
-        {
-            
-        }
     }
-   
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+
+        rectTransform.SetParent(eventData.pointerDrag.transform.parent);
+            rectTransform.position = eventData.pointerDrag.transform.parent.GetComponent<RectTransform>().anchoredPosition;
+    }
+
 }
