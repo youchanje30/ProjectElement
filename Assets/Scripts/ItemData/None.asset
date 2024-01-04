@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07386380ef70a414d80403d8ad0c2bf8, type: 3}
-  m_Name: Common_7
+  m_Name: None
   m_EditorClassIdentifier: 
-  itemName: "\uC2DC\uB4E0 \uB098\uBB47\uAC00\uC9C0 \u2013 \uCD5C\uB300 \uCCB4\uB825\uC774
-    25% \uC0C1\uC2B9\uD569\uB2C8\uB2E4"
-  itemInfo: "\uC2DC\uB4E0 \uB098\uBB47\uAC00\uC9C0 \u2013 \uCD5C\uB300 \uCCB4\uB825\uC774
-    25% \uC0C1\uC2B9\uD569\uB2C8\uB2E4"
-  itemRare: 1
+  itemName: None
+  itemInfo: 
+  itemRare: 0
   itemCost: 0
   sellCost: 0
-  itemID: 1006
+  itemID: 0
   itemImg: {fileID: 0}
   hp: 0
   hpPer: 0

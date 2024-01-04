@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public enum ItemRares
 {
+    None,
     Common,
     Rare,
     Epic

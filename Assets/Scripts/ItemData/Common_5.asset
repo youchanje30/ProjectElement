@@ -16,16 +16,21 @@ MonoBehaviour:
     \uD655\uB960\uC774 5% \uC0C1\uC2B9\uD569\uB2C8\uB2E4"
   itemInfo: "\uB2EC\uBE5B\uC744 \uBA38\uAE08\uC740 \uB3CC \u2013 \uCE58\uBA85\uD0C0
     \uD655\uB960\uC774 5% \uC0C1\uC2B9\uD569\uB2C8\uB2E4"
-  itemRare: 0
+  itemRare: 1
+  itemCost: 0
+  sellCost: 0
   itemID: 1004
-  hpIncrease: 0
-  hpPerIncrease: 0
-  defIncrease: 0
-  defPerIncrease: 0
-  meleeDmgIncrease: 0
-  meleeDmgPerIncrease: 0
-  skillDmgIncrease: 0
-  skillDmgPerIncrease: 0
-  atkSpeedIncrease: 0
-  crtRateIncrease: 5
-  crtDmgIncrease: 0
+  itemImg: {fileID: 0}
+  hp: 0
+  hpPer: 0
+  damage: 0
+  damagePer: 0
+  atkSpeed: 0
+  crtRate: 0
+  crtDamage: 0
+  missRate: 0
+  defPer: 0
+  playerSpeed: 0
+  coolDownReductionPer: 0
+  jumpForce: 0
+  jumpForcePer: 0

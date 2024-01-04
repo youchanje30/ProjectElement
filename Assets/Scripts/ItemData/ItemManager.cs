@@ -10,7 +10,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private List<ItemData> ItemDatas;
 
     
-
+    public List<ItemData> None = new List<ItemData>();
     public List<ItemData> CommonItemDatas = new List<ItemData>();
     public List<ItemData> RareItemDatas = new List<ItemData>();
     public List<ItemData> EpicItemDatas = new List<ItemData>();
@@ -35,6 +35,9 @@ public class ItemManager : MonoBehaviour
         {
             switch (item.ItemRare)
             {
+                case ItemRares.None:
+                    None.Add(item);
+                    break;
                 case ItemRares.Common:
                     CommonItemDatas.Add(item);
                     break;
@@ -55,12 +58,22 @@ public class ItemManager : MonoBehaviour
     [Tooltip("ID 값에 해당하는 아이템을 반환해주는 함수")]
     public ItemData AddItem(int ID)
     {
-        if(ID == 0) return null;
+        //if(ID == 0) return null;
 
         ItemData AddingItem = null;
 
         switch ((int)(ID/1000))
         {
+            case 0:
+                foreach (ItemData item in None)
+                {
+                    if (item.ItemID == ID)
+                    {
+                        AddingItem = item;
+                        break;
+                    }
+                }
+                break;
             case 1:
                 foreach (ItemData item in CommonItemDatas)
                 {
