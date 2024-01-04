@@ -274,7 +274,7 @@ public class Monster : MonoBehaviour
         
     }
 
-    public void GetDamaged(float dmg)
+    public void GetDamaged(float dmg, bool canKncokBack = true)
     {
         if(isKnockback || isDead) return;
         
@@ -289,22 +289,19 @@ public class Monster : MonoBehaviour
             return;
         }
 
-
         animator.ResetTrigger("Hurt");
         animator.SetTrigger("Hurt");
+
+        if(!canKncokBack) return;
+
         float x = transform.position.x - playerTrans.position.x;
 
         if(x < 0)
             x = 1;
         else
             x = -1;
-
+        
         StartCoroutine(Knockback(x));
-
-        
-
-        
-        
     }
 
     public void SnakeAtk()
@@ -372,5 +369,18 @@ public class Monster : MonoBehaviour
             GameObject spawnSpiritSoul = Instantiate(SpiritSoul);
             spawnSpiritSoul.transform.position = transform.position;
         }
+    }
+
+
+    IEnumerator Burns(int remainTime)
+    {
+        while (remainTime > 0 )
+        {
+            yield return new WaitForSeconds(1f);
+            remainTime --;
+            GetDamaged(0f);
+
+            Debug.Log(remainTime);
+        } 
     }
 }

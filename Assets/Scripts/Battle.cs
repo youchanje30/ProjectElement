@@ -25,6 +25,7 @@ public class Battle : MonoBehaviour
     public Vector2[] atkSize;
     // public Transform[] atkPos;
     public GameObject arrow;
+    public int[] passiveRate;
 
     public float originalScale;
     public float atkDamage { get { return status.AtkDamage();} }
@@ -132,6 +133,10 @@ public class Battle : MonoBehaviour
 
             AtkObj.GetComponent<Monster>().GetDamaged(atkDamage);
             // AtkObj.GetComponent<Monster>().GetDamaged(meleeDmg);
+            if(WeaponType == WeaponTypes.Wand)
+                PlayerPasstive(AtkObj);
+            else
+                PlayerPasstive();
         }
 
         if(AtkObj.tag == "Destruct")
@@ -489,6 +494,19 @@ public class Battle : MonoBehaviour
         isGuard = false;
     }
     
+    public bool PlayerPasstive(GameObject monster = null)
+    {
+        if(passiveRate[(int)WeaponType] > Random.Range(1, 100 + 1)) return false;
+
+        if(monster != null && WeaponType == WeaponTypes.Wand)
+        {
+            if(monster.GetComponent<PassiveSystem>().canSlow)
+                return false;
+        }
+
+
+        return true;
+    }
 
     private void OnDrawGizmos()
     {
@@ -529,4 +547,9 @@ public class Battle : MonoBehaviour
         }    
         // StopCoroutine(ShieldGuard());
     }
+
+
+
+
+    
 }

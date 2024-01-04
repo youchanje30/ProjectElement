@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
 
-        if(SceneManager.GetActiveScene().buildIndex == 0)
+        if(SceneManager.GetActiveScene().name == "Je_Maintown" || SceneManager.GetActiveScene().name == "Maintown")
         {
             isAction = true;
             isStatusUpgrade = true;

@@ -381,6 +381,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   - {fileID: 9100000, guid: 866fc2936f2da394c84ecbe12e81145f, type: 2}
   - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  ioInventory: 9
   InteractKey: 101
   FirstSlot: 97
   SecondSlot: 115
@@ -489,6 +490,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 1.7, y: 1.7}
   arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
+  passiveRate: 
   originalScale: 0
   CanComboAtk: 0
   ComboTime: 0.8

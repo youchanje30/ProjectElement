@@ -41,3 +41,4 @@ public class TooltipController : MonoBehaviour, IPointerEnterHandler, IPointerEx
         inventoryUI.ItemInfo.SetActive(false);
     }
 }
+ 
