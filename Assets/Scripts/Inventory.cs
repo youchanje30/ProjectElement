@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < HavingItem.Length; i++)
         {
-            if (!HavingItem[i]) continue;
+            if (HavingItem[i].ItemID == 0) continue;
 
             if (HavingItem[i].ItemID != item.ItemID) continue;
 
@@ -42,7 +42,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < HavingItem.Length; i++)
         {
-            if(HavingItem[i] == null)
+            if(HavingItem[i].ItemID == 0 )
             {
                 HavingItem[i] = item;
                 break;
@@ -65,7 +65,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < HavingItem.Length; i++)
         {
-            if(HavingItem[i] == null)
+            if(HavingItem[i].ItemID ==  0)
             {
                 return false;
             }
