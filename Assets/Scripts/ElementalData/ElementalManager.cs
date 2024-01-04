@@ -23,7 +23,6 @@ public class ElementalManager : MonoBehaviour
         {
             elementalDatas.Add(Element);
         }
-
     }
     public ElementalData AddElement(int ID)
     {

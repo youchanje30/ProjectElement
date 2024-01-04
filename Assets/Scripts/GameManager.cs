@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SetResolution();
-        for (int i = 0; i < Elements.Length; i++)
+        for (int i = 0; i < player.inventory.HasWeapon.Length; i++)
         {
             player.inventory.HavingElement[i] = Elemental.AddElement(0);
         }
