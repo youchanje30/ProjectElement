@@ -25,7 +25,7 @@ public class TooltipCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
         for (int i = 0; i < inventoryUI.InvenItem.Length; i++)
         {
-            if (inventoryUI.inventory.HavingItem[i].ItemID != 0 && inventoryUI.Itempos[i].gameObject == eventData.pointerCurrentRaycast.gameObject || inventoryUI.InvenItem[i].gameObject == eventData.pointerCurrentRaycast.gameObject)
+            if (inventoryUI.inventory.HavingItem[i] != null && inventoryUI.Itempos[i].gameObject == eventData.pointerCurrentRaycast.gameObject || inventoryUI.InvenItem[i].gameObject == eventData.pointerCurrentRaycast.gameObject)
             {
                 inventoryUI.ItemInfo.SetActive(true);
                 tooltip.SetupTooltip(inventoryUI.inventory.HavingItem[i].ItemName, inventoryUI.inventory.HavingItem[i].ItemInfo);
