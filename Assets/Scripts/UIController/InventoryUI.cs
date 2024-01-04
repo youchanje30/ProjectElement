@@ -28,9 +28,13 @@ public class InventoryUI : MonoBehaviour
     public ElementalData[] elementalData;
     public GameObject[] Slot;
 
-
-
+    [Header("Inventory Swap")]
+    public int SetSlot;
+    public string SetEleID;
+    public Image SetEleImage;
+    public GameObject SetElement;
     [Space(20f)]
+
     public RectTransform targetRectTr;
     public Camera uiCamera;
     public Vector2 screenPoint;
@@ -77,7 +81,6 @@ public class InventoryUI : MonoBehaviour
     {
 
     }
-
     public void OpenInventory()
     {
         SetCard();
@@ -85,5 +88,8 @@ public class InventoryUI : MonoBehaviour
         InvenUI.SetActive(gameManager.isInven);
         animator.SetTrigger("OpenInven");
     }
-
+    public void Swap()
+    {
+        EleCards[SetSlot].GetComponent<Image>().sprite = SetEleImage.sprite;
+    }   
 }

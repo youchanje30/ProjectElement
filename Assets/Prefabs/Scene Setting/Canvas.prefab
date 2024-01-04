@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &703310371789023372
 RectTransform:
   m_ObjectHideFlags: 0
@@ -745,6 +745,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 7344153617842623712}
+  SetSlot: 0
+  SetEleID: 
+  SetEleImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  inventoryUI: {fileID: 0}
   rectTransform: {fileID: 9116142515396652383}
 --- !u!225 &5163926213035941811
 CanvasGroup:
@@ -3996,6 +4002,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 7344153617842623712}
+  SetSlot: 0
+  SetEleID: 
+  SetEleImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  inventoryUI: {fileID: 0}
   rectTransform: {fileID: 91731094541802593}
 --- !u!225 &7282205352829832112
 CanvasGroup:
@@ -6751,7 +6763,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
-  slot: 0
 --- !u!114 &8711659427064906109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7860,6 +7871,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 7344153617842623712}
+  SetSlot: 0
+  SetEleID: 
+  SetEleImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  inventoryUI: {fileID: 0}
   rectTransform: {fileID: 1718594919847401984}
 --- !u!225 &4972060874085604714
 CanvasGroup:
@@ -9307,7 +9324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
-  slot: 0
 --- !u!114 &1916490519668841995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12029,7 +12045,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
-  slot: 0
 --- !u!114 &3390733932331535007
 MonoBehaviour:
   m_ObjectHideFlags: 0
