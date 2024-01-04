@@ -14,21 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: "\uC911\uAE09 \uC815\uB839\uC11C"
   itemInfo: "\uCE58\uBA85\uD0C0 \uB370\uBBF8\uC9C0\uAC00 30% \uC0C1\uC2B9\uD569\uB2C8\uB2E4"
-  itemRare: 2
-  itemCost: 0
-  sellCost: 0
+  itemRare: 1
   itemID: 2005
-  itemImg: {fileID: 0}
-  hp: 0
-  hpPer: 0
-  damage: 0
-  damagePer: 0
-  atkSpeed: 0
-  crtRate: 0
-  crtDamage: 0
-  missRate: 0
-  defPer: 0
-  playerSpeed: 0
-  coolDownReductionPer: 0
-  jumpForce: 0
-  jumpForcePer: 0
+  hpIncrease: 0
+  hpPerIncrease: 0
+  defIncrease: 0
+  defPerIncrease: 0
+  meleeDmgIncrease: 0
+  meleeDmgPerIncrease: 0
+  skillDmgIncrease: 0
+  skillDmgPerIncrease: 0
+  atkSpeedIncrease: 0
+  crtRateIncrease: 0
+  crtDmgIncrease: 30

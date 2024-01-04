@@ -102,8 +102,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        SetResolution();    
-        SetNoneItem();
+        SetResolution();
+        for (int i = 0; i < player.inventory.HasWeapon.Length; i++)
+        {
+            player.inventory.HavingElement[i] = Elemental.AddElement(0);
+        }
+
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
 
@@ -115,6 +119,7 @@ public class GameManager : MonoBehaviour
             statusUpdrageUI.SetActive(true);
         }
     }
+
 
 
     void Update()
@@ -436,15 +441,4 @@ public class GameManager : MonoBehaviour
         inventoryUI.Stat.text = "힘: " + player.GetComponent<PlayerStatus>().strength + "\n" + "민첩: " + player.GetComponent<PlayerStatus>().dexterity + "\n" + "운: " + player.GetComponent<PlayerStatus>().luck ;
     }
 
-    public void SetNoneItem()
-    {
-        for (int i = 0; i < player.inventory.HasWeapon.Length; i++)
-        {
-            player.inventory.HavingElement[i] = Elemental.AddElement(0);
-        }
-        for (int i = 0; i < inventory.HavingItem.Length; i++)
-        {
-            player.inventory.HavingItem[i] = Item.AddItem(0);
-        }
-    }
 }

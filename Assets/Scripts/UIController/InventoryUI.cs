@@ -1,5 +1,9 @@
+using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
@@ -58,7 +62,7 @@ public class InventoryUI : MonoBehaviour
         Info.GetComponent<RectTransform>().SetAsLastSibling();
         Info.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 135, screenPoint.y - 196);
         ItemInfo.GetComponent<RectTransform>().SetAsLastSibling();
-        ItemInfo.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 210, screenPoint.y + 160);
+        ItemInfo.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 130, screenPoint.y + 196);
     
     }
     public void SetCard()
@@ -70,7 +74,7 @@ public class InventoryUI : MonoBehaviour
         }
         for (int i = 0; i < InvenItem.Length; i++)
         {
-            InvenItem[i] = inventory.HavingItem[i].itemImg;
+            //InvenItem[i].sprite = inventory.HavingItem[i].itemImg;
         }
     }
     public void SetItem()

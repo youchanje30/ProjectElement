@@ -42,11 +42,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < HavingItem.Length; i++)
         {
-<<<<<<< Updated upstream
             if(HavingItem[i].ItemID == 0 )
-=======
-            if(HavingItem[i].ItemID == 0)
->>>>>>> Stashed changes
             {
                 HavingItem[i] = item;
                 break;
