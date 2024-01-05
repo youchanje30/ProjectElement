@@ -14,9 +14,7 @@ public class InventoryUI : MonoBehaviour
     private Transform Canvas;
 
     [Header("Inventory Setting")]
-    //public RectTransform ItemInfopos;
     public GameObject ItemInfo;
-    //public RectTransform Infopos;
     public GameObject Info;
     public RectTransform[] Card;
     public GameObject[] EleCards;
@@ -25,14 +23,11 @@ public class InventoryUI : MonoBehaviour
     public GameObject InvenUI;
     public TextMeshProUGUI Stat;
     public Animator animator;
-    public ElementalData[] elementalData;
     public GameObject[] Slot;
 
     [Header("Inventory Swap")]
-    public int SetSlot;
-    public string SetEleID;
-    public Image SetEleImage;
-    public GameObject SetElement;
+    public Transform[] SpinSlot;
+    public float speed = 6;
     [Space(20f)]
 
     public RectTransform targetRectTr;
@@ -71,9 +66,10 @@ public class InventoryUI : MonoBehaviour
         {
             EleCards[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalImg;
             Slot[i].GetComponent<Text>().text = inventory.HavingElement[i].ElementalID.ToString();
-        }
+            Slot[i].GetComponent<DragAndDrop>().Setslot = i;
+}
         for (int i = 0; i < InvenItem.Length; i++)
-        {
+        {           
             //InvenItem[i].sprite = inventory.HavingItem[i].itemImg;
         }
     }
@@ -88,8 +84,6 @@ public class InventoryUI : MonoBehaviour
         InvenUI.SetActive(gameManager.isInven);
         animator.SetTrigger("OpenInven");
     }
-    public void Swap()
-    {
-        EleCards[SetSlot].GetComponent<Image>().sprite = SetEleImage.sprite;
-    }   
+
+   
 }
