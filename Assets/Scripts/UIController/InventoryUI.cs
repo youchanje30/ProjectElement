@@ -28,6 +28,10 @@ public class InventoryUI : MonoBehaviour
     [Header("Inventory Swap")]
     public Transform[] SpinSlot;
     public float speed = 6;
+    //public Sprite[] frame;
+    public Transform[] trans;
+    //public float XScaleSpeed;
+    //public float YScaleSpeed;
     [Space(20f)]
 
     public RectTransform targetRectTr;
@@ -66,7 +70,7 @@ public class InventoryUI : MonoBehaviour
         {
             EleCards[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalImg;
             Slot[i].GetComponent<Text>().text = inventory.HavingElement[i].ElementalID.ToString();
-            Slot[i].GetComponent<DragAndDrop>().Setslot = i;
+            Slot[i].GetComponent<CardController>().Setslot = i;
 }
         for (int i = 0; i < InvenItem.Length; i++)
         {           

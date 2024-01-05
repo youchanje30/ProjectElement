@@ -133,10 +133,10 @@ public class Battle : MonoBehaviour
 
             AtkObj.GetComponent<Monster>().GetDamaged(atkDamage);
             // AtkObj.GetComponent<Monster>().GetDamaged(meleeDmg);
-            if(WeaponType == WeaponTypes.Wand)
-                PlayerPasstive(AtkObj);
-            else
-                PlayerPasstive();
+            //if(WeaponType == WeaponTypes.Wand)
+            //    PlayerPasstive(AtkObj);
+            //else
+            //    PlayerPasstive();
         }
 
         if(AtkObj.tag == "Destruct")
@@ -157,7 +157,7 @@ public class Battle : MonoBehaviour
     }
     public IEnumerator ReturnAttack()
     {
-        for(int i = 0;i<isAtkReady.Length;i++)
+        for (int i = 0; i < isAtkReady.Length; i++)
         {
             if (!isAtkReady[i])
             {
@@ -165,7 +165,7 @@ public class Battle : MonoBehaviour
                 yield return new WaitForSeconds(Left_AtkCoolTime[i] / (status.atkSpeed * 0.01f));
                 isAtkReady[i] = true;
             }
-        }     
+        }
     }
 
 
@@ -302,7 +302,7 @@ public class Battle : MonoBehaviour
                 }
             }
             // 공격 중인거 종료 
-            
+
             /*yield return new WaitForSeconds((Left_AtkCoolTime[(int)WeaponType] / (status.atkSpeed * 0.01f)));
             isSwap = true; 나중에 주석 풀면 됨*/
             StartCoroutine(ReturnAttack());

@@ -128,8 +128,13 @@ public class GameManager : MonoBehaviour
         {
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;
-        }   
-        TimeSetting();
+        }
+        if (isStatusUpgrade)
+        {
+            isInven = false;
+            inventoryUI.InvenUI.SetActive(false);
+        }
+            TimeSetting();
         LogStat();
     }
 
