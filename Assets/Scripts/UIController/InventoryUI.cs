@@ -28,10 +28,9 @@ public class InventoryUI : MonoBehaviour
     [Header("Inventory Swap")]
     public Transform[] SpinSlot;
     public float speed = 6;
-    //public Sprite[] frame;
+    public Sprite[] frame;
     public Transform[] trans;
-    //public float XScaleSpeed;
-    //public float YScaleSpeed;
+
     [Space(20f)]
 
     public RectTransform targetRectTr;
@@ -52,16 +51,15 @@ public class InventoryUI : MonoBehaviour
    
         ItemInfo.SetActive(false);
         Info.SetActive(false);
-        targetRectTr = Canvas.GetComponent<RectTransform>();
         uiCamera = Camera.main;
     }
     void Update()
     {
         RectTransformUtility.ScreenPointToLocalPointInRectangle(targetRectTr, Input.mousePosition, uiCamera, out screenPoint);
         Info.GetComponent<RectTransform>().SetAsLastSibling();
-        Info.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 135, screenPoint.y - 196);
+        Info.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 130, screenPoint.y - 196);
         ItemInfo.GetComponent<RectTransform>().SetAsLastSibling();
-        ItemInfo.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 130, screenPoint.y + 196);
+        ItemInfo.GetComponent<RectTransform>().anchoredPosition = new Vector3(Input.mousePosition.x - 230, Input.mousePosition.y + 150) / Canvas.GetComponent<Canvas>().scaleFactor;
     
     }
     public void SetCard()

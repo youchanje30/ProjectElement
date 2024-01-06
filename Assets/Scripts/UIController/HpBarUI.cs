@@ -7,6 +7,7 @@ public class HpBarUI : MonoBehaviour
 {
     InventoryUI InventoryUI;
     [SerializeField]private GameObject[] ElementalImage;
+   
     void Start()
     {
         InventoryUI = GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryUI>();
@@ -15,9 +16,27 @@ public class HpBarUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetImage();
+    }
+
+    public void SetImage()
+    {
         for (int i = 0; i < ElementalImage.Length; i++)
         {
-                ElementalImage[i].GetComponent<Image>().sprite = InventoryUI.inventory.HavingElement[i].elementalImg;          
+            if (InventoryUI.inventory.HavingElement[i].ElementalID != 0)
+            {
+                ElementalImage[i].GetComponent<Image>().sprite = InventoryUI.inventory.HavingElement[i].elementalImg;
+                Color color = ElementalImage[i].GetComponent<Image>().color;
+                color.a = 1f;
+                ElementalImage[i].GetComponent<Image>().color = color;
+            }
+            else
+            {
+                Color color = ElementalImage[i].GetComponent<Image>().color;
+                color.a = 0f;
+                ElementalImage[i].GetComponent<Image>().color = color;
+            }
+           
         }
     }
 }

@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using DG.Tweening;
+using DG.Tweening.Core.Easing;
 
 public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
@@ -19,10 +21,11 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     Transform ParentPos;
     public InventoryUI inventoryUI;
     public RectTransform rectTransform;
-    public bool ismove  = false;
+    public bool ismove;
    
     void Start()
     {
+        ismove = false;
         inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
@@ -32,7 +35,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         if (ismove == true)
           MoveElementsCard();
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && gameManager.isInven)
         {
             ismove = true;
         }
@@ -61,7 +64,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         if (transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite != null)
         {
             rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-
+            gameManager.isInven = false;
             inventoryUI.Info.SetActive(false);
         }
     }
@@ -69,8 +72,9 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     {
         if (transform.parent == CanvasPos)
         {
-            transform.SetParent(ParentPos);
+            transform.SetParent(ParentPos, true);
             rectTransform.position = ParentPos.GetComponent<RectTransform>().position;
+            gameManager.isInven = true;
         }
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
@@ -96,14 +100,18 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     }
     public void MoveElementsCard()
     {
-
+        
         if (transform.parent == inventoryUI.SpinSlot[0])
         {
             transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[1].position, Time.deltaTime * inventoryUI.speed);
+            transform.DOScale(inventoryUI.trans[0].localScale, 0.15f);
+            transform.GetChild(1).GetComponent<UnityEngine.UI.Image>().DOColor(Color.yellow, 0.15f);
             if (transform.position == inventoryUI.SpinSlot[1].position)
-            {              
+            {
+                transform.GetChild(1).GetComponent<UnityEngine.UI.Image>().DOColor(Color.white, 0.15f);
+                transform.GetChild(1).GetComponent<UnityEngine.UI.Image>().sprite = inventoryUI.frame[0];
                 transform.localScale = inventoryUI.trans[0].localScale;
-                //transform.GetChild(1).GetComponent<UnityEngine.UI.Image>().sprite = inventoryUI.frame[0];
+              
                 transform.SetParent(inventoryUI.SpinSlot[1]);
                            
                 rectTransform.anchoredPosition = Vector2.zero;
@@ -113,30 +121,32 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         else if (transform.parent == inventoryUI.SpinSlot[1])
         {
             transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[2].position, Time.deltaTime * inventoryUI.speed);
+            transform.DOScale(inventoryUI.trans[1].localScale, 0.15f);
+            
             if (transform.position == inventoryUI.SpinSlot[2].position)
             {
+                transform.GetChild(1).GetComponent<UnityEngine.UI.Image>().sprite = inventoryUI.frame[1];
                 transform.localScale = inventoryUI.trans[1].localScale;
-                //transform.GetChild(1).GetComponent<UnityEngine.UI.Image>().sprite = inventoryUI.frame[1];          
-                transform.SetParent(inventoryUI.SpinSlot[2]);
-                
+                transform.SetParent(inventoryUI.SpinSlot[2]);             
                 rectTransform.anchoredPosition = Vector2.zero;
                 ismove = false;
-            }         
+            }
         }
         else if (transform.parent == inventoryUI.SpinSlot[2])
         {
-            transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[0].position, Time.deltaTime * inventoryUI.speed *2);
+            transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[0].position, Time.deltaTime * inventoryUI.speed * 2);
 
             if (transform.position == inventoryUI.SpinSlot[0].position)
             {
-                
                 transform.SetParent(inventoryUI.SpinSlot[0]);
-                
-                    
                 rectTransform.anchoredPosition = Vector2.zero;
                 ismove = false;
-            }        
-        }        
+            }
+        }
+
+
+
+
     }
 }
 
