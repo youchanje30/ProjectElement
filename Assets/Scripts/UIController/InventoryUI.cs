@@ -44,7 +44,6 @@ public class InventoryUI : MonoBehaviour
         //elementalData = gameManager.GetComponent<ElementalData>();
         rectTransform = GetComponent<RectTransform>();
         Canvas = GameObject.FindGameObjectWithTag("UI").GetComponent<Transform>();
-        animator = GetComponent<Animator>();
     }
     void Start()
     {
