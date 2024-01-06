@@ -81,11 +81,14 @@ public class InventoryUI : MonoBehaviour
     }
     public void OpenInventory()
     {
+        animator.SetTrigger("OpenInven");
         SetCard();
+        SetItem();
         gameManager.isInven = !gameManager.isInven;
         InvenUI.SetActive(gameManager.isInven);
-        animator.SetTrigger("OpenInven");
     }
+
+
 
    
 }

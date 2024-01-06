@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public ItemManager Item;
     public ElementalManager Elemental;
     public Inventory inventory;
-    private InventoryUI inventoryUI;
+    public InventoryUI inventoryUI;
     public  SwapUI swapUI;
 
     [SerializeField] private PlayerController player;
@@ -129,12 +129,19 @@ public class GameManager : MonoBehaviour
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;
         }
+        //if(Input.GetKeyDown(KeyCode.Escape) && SystemPanel.activeSelf == true)
+        //{
+        //    SystemPanel.SetActive(false);
+        //    SettingPanel.SetActive(false);
+        //    GraphicSetting();
+        //    Time.timeScale = 1f;
+        //}
         if (isStatusUpgrade)
         {
             isInven = false;
             inventoryUI.InvenUI.SetActive(false);
         }
-            TimeSetting();
+        TimeSetting();
         LogStat();
     }
 
@@ -412,13 +419,13 @@ public class GameManager : MonoBehaviour
         isSlotSwap = true;
         swapUI.SlotSwapUI.SetActive(isSlotSwap);
     }
-    public void OpenInventory()
-    {
-        inventoryUI.SetCard();
-        inventoryUI.SetItem();
-        isInven = !isInven;
-        inventoryUI.InvenUI.SetActive(isInven);
-    }
+    //public void OpenInventory()
+    //{
+    //    inventoryUI.SetCard();
+    //    inventoryUI.SetItem();
+    //    isInven = !isInven;
+    //    inventoryUI.InvenUI.SetActive(isInven);
+    //}
     public void DropboxOptionChanged(int x)
     {
         resolutionNum = x; 
