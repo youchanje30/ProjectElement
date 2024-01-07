@@ -163,12 +163,14 @@ public class GameManager : MonoBehaviour
     {
         switch (BtnNum)
         {
-            case 1: 
-                
+            case 1:
+                resolutionDropdown.value++;
+                SaveSettingData();
                 break;
 
-            case 2: 
-
+            case 2:
+                resolutionDropdown.value--;
+                SaveSettingData();
                 break;
             // 해상도 다운 업
 
@@ -221,7 +223,10 @@ public class GameManager : MonoBehaviour
             case 4: //Exit Btn
                 Application.Quit();
                 break;
-
+            case 5:
+                SettingPanel.SetActive(false);
+                SystemPanel.SetActive(true);
+                break;
         }
     }
 
@@ -406,13 +411,14 @@ public class GameManager : MonoBehaviour
         foreach(Resolution item in resolutions)
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
-            option.text = item.width + " x " + item.height + "  " + item.refreshRateRatio + "hz";
+            option.text = item.width + " x " + item.height + "  " /*+ item.refreshRateRatio + "hz"*/;
             resolutionDropdown.options.Add(option);
             if(item.width == Screen.width && item.height == Screen.height)
                 resolutionDropdown.value = optionNum;
             optionNum++;
         }
     }
+
     public void OpenSwap()
     {
         swapUI.ElementImg();    
