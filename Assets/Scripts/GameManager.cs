@@ -27,11 +27,13 @@ public class GameManager : MonoBehaviour
 
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;
-    [SerializeField] private TalkManager talkManager;   
+    [SerializeField] private TalkManager talkManager;
+    
     [Header("Setting Panel")]
     [SerializeField] private GameObject SettingPanel;
-
-
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
+    //public int resolutionIndex;
+    //public Resolution[] resolution;
 
     [Header("Graphic Setting")]
     [SerializeField] private TMP_Text CameraShakeTxt;
@@ -86,7 +88,16 @@ public class GameManager : MonoBehaviour
     [Header("Elemental")]
     public GameObject[] Elements;
  
+    //void Setre()
+    //{
+    //    resolutionDropdown.onValueChanged.AddListener(delegate { OnResolutionChange(); });
+    //    resolution = Screen.resolutions;
+    //}
 
+    //public void OnResolutionChange()
+    //{
+
+    //}
     void Awake()
     {
         // Time.timeScale = 0.3f;
@@ -223,7 +234,14 @@ public class GameManager : MonoBehaviour
             case 4: //Exit Btn
                 Application.Quit();
                 break;
-            case 5:
+
+            case 5: //Setting Resume Btn
+                SettingPanel.SetActive(false);
+                SystemPanel.SetActive(true);
+                GraphicSetting();
+                break;
+
+            case 6: //Setting Exit Btn
                 SettingPanel.SetActive(false);
                 SystemPanel.SetActive(true);
                 break;
@@ -394,7 +412,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    [SerializeField] private TMP_Dropdown resolutionDropdown;
+ 
     [SerializeField] private int fullScreen = 0 ; //0 전체화면 , 1 창모드
 
     List<Resolution> resolutions;
@@ -402,21 +420,51 @@ public class GameManager : MonoBehaviour
     
     public void SetResolution()
     {
+
         resolutions = new List<Resolution>(Screen.resolutions);
+        //for(int i = 0; i < resolutions.Count; i++)
+        //{
+        //    if (Screen.resolutions[i].refreshRateRatio.value < 60 && Screen.resolutions[i].refreshRateRatio.value > 50 )
+        //    {
+        //        resolutions.Add(Screen.resolutions[i]);
+        //    }
+        //}
         resolutions.Reverse(); // 높은 것 부터 표시
 
         resolutionDropdown.options.Clear();
 
         int optionNum = 0;
-        foreach(Resolution item in resolutions)
+        foreach (Resolution item in resolutions)
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
             option.text = item.width + " x " + item.height + "  " /*+ item.refreshRateRatio + "hz"*/;
-            resolutionDropdown.options.Add(option);
-            if(item.width == Screen.width && item.height == Screen.height)
+            if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
+                resolutionDropdown.options.Add(option);
+            if (item.width == Screen.width && item.height == Screen.height)
                 resolutionDropdown.value = optionNum;
             optionNum++;
         }
+        //resolutions = Screen.resolutions;
+
+        //resolutionDropdown.ClearOptions();
+
+        //List<string> options = new List<string>();
+
+        //int currentResolutionIndex = 0;
+        //for (int i = 0; i < resolutions.Length; i++)
+        //{
+        //    string option = resolutions[i].width + " x " + resolutions[i].height;
+        //    options.Add(option);
+
+        //    if (resolutions[i].width == Screen.currentResolution.width &&
+        //        resolutions[i].height == Screen.currentResolution.height)
+        //    {
+        //        currentResolutionIndex = i;
+        //    }
+        //}
+        //resolutionDropdown.AddOptions(options);
+        //resolutionDropdown.value = currentResolutionIndex;
+        //resolutionDropdown.RefreshShownValue();
     }
 
     public void OpenSwap()
