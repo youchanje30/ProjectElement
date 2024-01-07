@@ -32,8 +32,7 @@ public class GameManager : MonoBehaviour
     [Header("Setting Panel")]
     [SerializeField] private GameObject SettingPanel;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
-    //public int resolutionIndex;
-    //public Resolution[] resolution;
+
 
     [Header("Graphic Setting")]
     [SerializeField] private TMP_Text CameraShakeTxt;
@@ -88,16 +87,6 @@ public class GameManager : MonoBehaviour
     [Header("Elemental")]
     public GameObject[] Elements;
  
-    //void Setre()
-    //{
-    //    resolutionDropdown.onValueChanged.AddListener(delegate { OnResolutionChange(); });
-    //    resolution = Screen.resolutions;
-    //}
-
-    //public void OnResolutionChange()
-    //{
-
-    //}
     void Awake()
     {
         // Time.timeScale = 0.3f;
@@ -422,13 +411,6 @@ public class GameManager : MonoBehaviour
     {
 
         resolutions = new List<Resolution>(Screen.resolutions);
-        //for(int i = 0; i < resolutions.Count; i++)
-        //{
-        //    if (Screen.resolutions[i].refreshRateRatio.value < 60 && Screen.resolutions[i].refreshRateRatio.value > 50 )
-        //    {
-        //        resolutions.Add(Screen.resolutions[i]);
-        //    }
-        //}
         resolutions.Reverse(); // 높은 것 부터 표시
 
         resolutionDropdown.options.Clear();
@@ -444,27 +426,7 @@ public class GameManager : MonoBehaviour
                 resolutionDropdown.value = optionNum;
             optionNum++;
         }
-        //resolutions = Screen.resolutions;
 
-        //resolutionDropdown.ClearOptions();
-
-        //List<string> options = new List<string>();
-
-        //int currentResolutionIndex = 0;
-        //for (int i = 0; i < resolutions.Length; i++)
-        //{
-        //    string option = resolutions[i].width + " x " + resolutions[i].height;
-        //    options.Add(option);
-
-        //    if (resolutions[i].width == Screen.currentResolution.width &&
-        //        resolutions[i].height == Screen.currentResolution.height)
-        //    {
-        //        currentResolutionIndex = i;
-        //    }
-        //}
-        //resolutionDropdown.AddOptions(options);
-        //resolutionDropdown.value = currentResolutionIndex;
-        //resolutionDropdown.RefreshShownValue();
     }
 
     public void OpenSwap()
