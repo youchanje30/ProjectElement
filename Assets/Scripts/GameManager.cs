@@ -7,6 +7,7 @@ using TMPro;
 using System.Xml.Linq;
 using Unity.VisualScripting;
 using static ObjectController;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,12 +16,14 @@ public class GameManager : MonoBehaviour
     public ElementalManager Elemental;
     public Inventory inventory;
     public InventoryUI inventoryUI;
-    public  SwapUI swapUI;
+    public SwapUI swapUI;
+    public AudioManager audioManager;
 
     [SerializeField] private PlayerController player;
 
     [Header("Game Setting")]
     public bool CanCameraShake;
+    public int CameraShakeOnOff;
 
     [Header("Game Info")]
     public int clearStage;
@@ -28,7 +31,8 @@ public class GameManager : MonoBehaviour
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;
     [SerializeField] private TalkManager talkManager;
-    
+    [SerializeField] private bool isSystem;
+
     [Header("Setting Panel")]
     [SerializeField] private GameObject SettingPanel;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
@@ -41,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     public string[] Scene;
 
-    private bool timeStop;
+    //private bool timeStop;
 
     public int Chapter; //챕터 정보
 
@@ -53,14 +57,14 @@ public class GameManager : MonoBehaviour
 
     public bool isAction;
     public bool isSelected;
-    
+
     public ObjectController ObjData;
 
 
     [Header("Timer Setting")]
+    [SerializeField] private TimerUI timeUI;
     public float TimerVal;
-    [SerializeField] private TMP_Text TimeTxt;
-
+    public bool isTimer = false;
 
     [Header("Shop Setting")]
     public GameObject ShopUI;
@@ -86,10 +90,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Elemental")]
     public GameObject[] Elements;
- 
+
+
     void Awake()
     {
-        // Time.timeScale = 0.3f;
+        CameraShakeOnOff = 1;
+        TimerVal = 0;
+        //Time.timeScale = 0.3f;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = player.GetComponent<Inventory>();
@@ -97,12 +104,16 @@ public class GameManager : MonoBehaviour
         Elemental = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ElementalManager>();
         inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
         swapUI = GameObject.Find("Canvas").GetComponent<SwapUI>();
+        timeUI = GameObject.Find("Canvas").GetComponent<TimerUI>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
 
 
     void Start()
     {
+        if(PlayerPrefs.HasKey("FullScreenData")) { SetSettingData();}
         SetResolution();
+
         for (int i = 0; i < player.inventory.HasWeapon.Length; i++)
         {
             player.inventory.HavingElement[i] = Elemental.AddElement(0);
@@ -111,7 +122,7 @@ public class GameManager : MonoBehaviour
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
 
-        if(SceneManager.GetActiveScene().name == "Je_Maintown" || SceneManager.GetActiveScene().name == "Maintown")
+        if (SceneManager.GetActiveScene().name == "Je_Maintown" || SceneManager.GetActiveScene().name == "Maintown")
         {
             isAction = true;
             isStatusUpgrade = true;
@@ -124,80 +135,114 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake && !isInven)
+        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake && !isInven && !isSystem)
         {
-            SystemPanel.SetActive(true);
-            Time.timeScale = 0f;
+            Invoke("OpenSystem", 0.01f);
         }
-        //if(Input.GetKeyDown(KeyCode.Escape) && SystemPanel.activeSelf == true)
-        //{
-        //    SystemPanel.SetActive(false);
-        //    SettingPanel.SetActive(false);
-        //    GraphicSetting();
-        //    Time.timeScale = 1f;
-        //}
+        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0f && isSystem)
+        {
+            isSystem = !isSystem;
+            SystemPanel.SetActive(isSystem);
+            SettingPanel.SetActive(false);
+            GraphicSetting();
+            SetSettingData();
+            Time.timeScale = 1f;
+        }
         if (isStatusUpgrade)
         {
             isInven = false;
             inventoryUI.InvenUI.SetActive(false);
         }
-        TimeSetting();
+        TimerSetting();
         LogStat();
     }
 
-  
-    public void TimeSetting()
+    public void OpenSystem()
     {
+        isSystem = !isSystem;
+        SystemPanel.SetActive(isSystem);
+        Time.timeScale = 0f;
+    }
+    public void TimerSetting()
+    {
+        TimerVal += Time.deltaTime;
+        timeUI.TimeTxt.text = ((int)TimerVal / 3600).ToString("D2") + ":" + ((int)TimerVal / 60 % 60).ToString("D2") + ":" + ((int)TimerVal % 60).ToString("D2");
+        //(TimerVal / 3600).ToString("D2") + ":" + (TimerVal / 60 % 60).ToString("D2") + ":" + (TimerVal % 60).ToString("D2");
         // TimerVal += Time.deltaTime;
         // string Txt = string.Format("{0:D2}:{1:D2}:{2:D3}", TimerVal % 3600, TimerVal % 60 , TimerVal % 1);
         // TimeTxt.text = "Time: " + (int)TimerVal / 1; // Txt; // 
-    } 
-
-    public void init()
-    {
-        CameraShakeTxt.text = CanCameraShake ? "켜짐" : "꺼짐";
-        FullScreenTxt.text = fullScreen == 0 ? "전체 화면" : "창모드";
     }
-    
+    public void OptionSetting()
+    {
+        FullScreenTxt.text = PlayerPrefs.GetInt("FullScreenData") == 0 ? "전체 화면" : "창모드";
+        CameraShakeTxt.text = PlayerPrefs.GetInt("CameraShakeData") == 0 ? "켜짐" : "꺼짐";
+        timeUI.TimerOnOff.text = PlayerPrefs.GetInt("TimerData") == 0 ? "켜짐" : "꺼짐";
+        audioManager.ChangeBGMVol();
+        audioManager.ChangeSFXVol();
+    }
+
+
+    //public void init()
+    //{
+    //    CameraShakeTxt.text = CanCameraShake ? "켜짐" : "꺼짐";
+    //    FullScreenTxt.text = fullScreen == 0 ? "전체 화면" : "창모드";
+    //}
+
     public void GameSettingBtn(int BtnNum)
     {
         switch (BtnNum)
         {
             case 1:
                 resolutionDropdown.value++;
-                SaveSettingData();
+
                 break;
 
             case 2:
                 resolutionDropdown.value--;
-                SaveSettingData();
+
                 break;
             // 해상도 다운 업
 
-            case 3: 
-                fullScreen ++;
+            case 3:
+                fullScreen++;
                 fullScreen %= 2;
                 FullScreenTxt.text = fullScreen == 0 ? "전체 화면" : "창모드";
-                SaveSettingData();
+
                 break;
             // 화면 비율 (전체 화면 변경)
 
             case 4: //카메라 흔들림
-                CanCameraShake = !CanCameraShake;
-                CameraShakeTxt.text = CanCameraShake ? "켜짐" : "꺼짐";
-                SaveSettingData();
+                CameraShakeOnOff++;
+                CameraShakeOnOff %= 2;
+                CameraShakeTxt.text = CameraShakeOnOff == 0 ? "켜짐" : "꺼짐"; 
+                //if (CameraShakeOnOff == 0) { CanCameraShake = true; }
+                //else { CanCameraShake = false; }
                 break;
             //카메라 흔들림
-
+            case 5:
+                break;
         }
     }
 
 
     public void SaveSettingData()
     {
-        
+        PlayerPrefs.SetInt("ResolutionData", resolutionDropdown.value);
+        PlayerPrefs.SetInt("FullScreenData", fullScreen);
+        PlayerPrefs.SetInt("CameraShakeData", CameraShakeOnOff);
+        PlayerPrefs.SetInt("TimerData", timeUI.OnOff);
+        PlayerPrefs.SetFloat("BGMData", audioManager.BGMVolumeSlider.value);
+        PlayerPrefs.SetFloat("SFXData", audioManager.SFXVolumeSlider.value);
     }
-
+    public void SetSettingData()
+    {
+        resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionData");
+        fullScreen = PlayerPrefs.GetInt("FullScreenData");
+        CanCameraShake = PlayerPrefs.GetInt("CameraShakeData") == 0 ? true : false;
+        isTimer = PlayerPrefs.GetInt("TimerData") == 0 ? true : false;
+        audioManager.BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMData");
+        audioManager.SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXData");
+    }
 
     public void SystemBtn(int BtnNum)
     {
@@ -207,20 +252,25 @@ public class GameManager : MonoBehaviour
                 SystemPanel.SetActive(false);
                 SettingPanel.SetActive(false);
                 GraphicSetting();
+                isSystem = !isSystem;
                 Time.timeScale = 1f;
                 break;
 
             case 2: //Reset Btn
-
+                SaveManager.instance.ResetData();
+                SceneManager.LoadScene("Maintown");
+                Time.timeScale = 1f;
                 break;
 
             case 3: // Setting Btn
                 SystemPanel.SetActive(false);
                 SettingPanel.SetActive(true);
-
+                OptionSetting();
                 break;
 
             case 4: //Exit Btn
+                PlayerPrefs.Save();
+                SaveManager.instance.Save();
                 Application.Quit();
                 break;
 
@@ -228,11 +278,15 @@ public class GameManager : MonoBehaviour
                 SettingPanel.SetActive(false);
                 SystemPanel.SetActive(true);
                 GraphicSetting();
+                SaveSettingData();
+                OptionSetting();
+                SetSettingData();
                 break;
 
             case 6: //Setting Exit Btn
                 SettingPanel.SetActive(false);
                 SystemPanel.SetActive(true);
+                SetSettingData();
                 break;
         }
     }

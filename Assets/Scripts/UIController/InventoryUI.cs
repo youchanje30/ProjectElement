@@ -57,7 +57,7 @@ public class InventoryUI : MonoBehaviour
         Info.GetComponent<RectTransform>().SetAsLastSibling();
         Info.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 130, screenPoint.y - 196);
         ItemInfo.GetComponent<RectTransform>().SetAsLastSibling();
-        ItemInfo.GetComponent<RectTransform>().anchoredPosition = new Vector3(Input.mousePosition.x - 230, Input.mousePosition.y + 150) / Canvas.GetComponent<Canvas>().scaleFactor;
+        ItemInfo.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 230, screenPoint.y + 150) ;
     
     }
     public void SetCard()

@@ -6,6 +6,7 @@ using System.Xml;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
+using UnityEditor;
 
 public class SaveManager : MonoBehaviour
 {
@@ -20,8 +21,6 @@ public class SaveManager : MonoBehaviour
 
     [Header("Save Datas")]
     public WeaponTypes playerWeapon;
-    // public Elements playerElement;
-    // [Space(20f)]
 
 
     void Awake()
@@ -93,10 +92,10 @@ public class SaveManager : MonoBehaviour
         root.AppendChild(playerLuck);
 
 
-        // 무기 타입 저장
-        // XmlElement playerElementData = xmlDocument.CreateElement("PlayerElementType");
-        // playerElementData.InnerText = playerElement.ToString();
-        // root.AppendChild(playerElementData);
+        //시간 저장
+        XmlElement time = xmlDocument.CreateElement("Timer");
+        time.InnerText = manager.TimerVal.ToString();
+        root.AppendChild(time);
 
         // 골드 저장
         XmlElement playerGold = xmlDocument.CreateElement("PlayerGold");
@@ -179,9 +178,6 @@ public class SaveManager : MonoBehaviour
             // xmlDocument.Load(Application.dataPath + "/DataXML.xml");
 
             // 무기 타입
-            //XmlNodeList playerWeaponData = xmlDocument.GetElementsByTagName("PlayerWeaponType");
-            //WeaponTypes PlayerWeaponData = (WeaponTypes)System.Enum.Parse(typeof(WeaponTypes), playerWeaponData[0].InnerText);
-            //playerWeapon = PlayerWeaponData;
             XmlNodeList ElementDatas = xmlDocument.GetElementsByTagName("ElementDatas");
             if (ElementDatas.Count != 0)
             {
@@ -196,6 +192,10 @@ public class SaveManager : MonoBehaviour
             // 클리어 스테이지 개수
             XmlNodeList clearStageNum = xmlDocument.GetElementsByTagName("ClearStageNum");
             manager.clearStage = int.Parse(clearStageNum[0].InnerText);
+
+            //시간
+            XmlNodeList timer = xmlDocument.GetElementsByTagName("Timer");
+            manager.TimerVal = float.Parse(timer[0].InnerText);
 
             // 골드
             XmlNodeList gold = xmlDocument.GetElementsByTagName("PlayerGold");
@@ -284,10 +284,10 @@ public class SaveManager : MonoBehaviour
 
         xmlDocument.AppendChild(root);
 
-        // 무기 타입 저장
-        /*XmlElement playerElementData = xmlDocument.CreateElement("PlayerElementType");
-        playerElementData.InnerText = "None";
-        root.AppendChild(playerElementData);*/
+        // 시간
+        XmlElement time = xmlDocument.CreateElement("Timer");
+        time.InnerText = "0";
+        root.AppendChild(time);
 
         // 골드 저장
         XmlElement playerGold = xmlDocument.CreateElement("PlayerGold");
@@ -430,4 +430,5 @@ public class SaveManager : MonoBehaviour
         Save();
         Invoke("AutoSave", 30f);
     }
+
 }
