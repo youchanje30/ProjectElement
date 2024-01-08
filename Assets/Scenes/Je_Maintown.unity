@@ -750,7 +750,7 @@ PrefabInstance:
     - target: {fileID: 3396441494395906210, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: anim.Array.data[1]
       value: 
-      objectReference: {fileID: 9100000, guid: 22c8eab9f3c250e4184385fbe1999e95, type: 2}
+      objectReference: {fileID: 9100000, guid: 730c7076a67906747bdf8a6f721f0a79, type: 2}
     - target: {fileID: 3396441494395906210, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: anim.Array.data[2]
       value: 
@@ -763,6 +763,10 @@ PrefabInstance:
       propertyPath: anim.Array.data[4]
       value: 
       objectReference: {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+    - target: {fileID: 4664804212794489908, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: basicCoolDownReductionPer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: swapTime
       value: 1
@@ -774,61 +778,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7141198254234339824, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 855978082}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
---- !u!1 &855978080 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7141198254234339824, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
-  m_PrefabInstance: {fileID: 855978079}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &855978081 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
-  m_PrefabInstance: {fileID: 855978079}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855978080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29fb4c3cde3b7d24e9b9ed3bb695ca03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &855978082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855978080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3721c2a40e1c34dbc7a7224857f173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerBattle: {fileID: 855978081}
-  passiveRate:
-  - 100
-  - 50
-  - 0
-  - 100
-  - 100
-  isGetBarrier: 0
-  duration:
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  tick:
-  - 1
-  - 1
-  - 2
-  - 1
-  - 1
-  burnDamage: 10
-  slowPer: 30
 --- !u!1001 &886697635
 PrefabInstance:
   m_ObjectHideFlags: 0

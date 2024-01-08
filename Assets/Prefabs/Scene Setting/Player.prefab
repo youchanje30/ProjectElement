@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 6729994133735113749}
   - component: {fileID: 8509772043893616530}
   - component: {fileID: 4664804212794489908}
+  - component: {fileID: 5498070469653306031}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -490,7 +491,6 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 1.7, y: 1.7}
   arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
-  passiveRate: 
   originalScale: 0
   CanComboAtk: 0
   ComboTime: 0.8
@@ -562,6 +562,7 @@ MonoBehaviour:
   basicCoolDownReductionPer: 0
   curHp: 0
   maxHp: 0
+  barrier: 0
   damage: 0
   atkSpeed: 0
   crtRate: 0
@@ -571,6 +572,44 @@ MonoBehaviour:
   defPer: 0
   playerSpeed: 0
   jumpForce: 0
+--- !u!114 &5498070469653306031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7141198254234339824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3721c2a40e1c34dbc7a7224857f173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battle: {fileID: 6729994133735113749}
+  status: {fileID: 4664804212794489908}
+  passiveRate:
+  - 100
+  - 50
+  - 0
+  - 100
+  - 100
+  isGetBarrier: 0
+  duration:
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  tick:
+  - 1
+  - 1
+  - 2
+  - 1
+  - 1
+  burnDamage: 10
+  slowPer: 30
+  shieldPer: 20
+  bowPer: 20
+  unAtkedTime: 0
 --- !u!1 &7219966532605892540
 GameObject:
   m_ObjectHideFlags: 0

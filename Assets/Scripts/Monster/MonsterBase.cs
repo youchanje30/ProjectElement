@@ -17,7 +17,6 @@ public class MonsterBase : MonoBehaviour
     [SerializeField] protected Transform target;
     #endregion
 
-
     #region 몬스터 정보 선언
     // 몬스터 최대 정보는 MonsterData에 존재함
 
@@ -48,9 +47,6 @@ public class MonsterBase : MonoBehaviour
     [SerializeField] protected Vector2[] atkSize= new Vector2[1];
     #endregion
 
-
-
-
     /*
 
     행동 불가능한 상태 : isDead , isAtking , isKnockback
@@ -66,7 +62,6 @@ public class MonsterBase : MonoBehaviour
     텔레포트 위치가 땅을 벗어나지 않는가..
 
     */
-
 
     /*
         수정해야하는 점
@@ -236,6 +231,7 @@ public class MonsterBase : MonoBehaviour
         animator.SetBool("isRange", false);
 
         transform.position += new Vector3(nextDir, 0, 0) * moveSpeed * Time.deltaTime;
+        // rigid.velocity = new Vector2(nextDir, 0) * moveSpeed;
     }
 
     protected virtual void RandomDir()

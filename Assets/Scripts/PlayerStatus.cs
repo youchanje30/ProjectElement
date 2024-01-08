@@ -66,6 +66,7 @@ public class PlayerStatus : MonoBehaviour
     [Header("최종 플레이어 스탯")]
     public float curHp;                 // 현재 체력
     public float maxHp;                 // 최대 체력
+    public float barrier;               // 방어막
     public float damage;                // 데미지
     public float atkSpeed;              // 공격 속도
     public float crtRate;               // 크리티컬 확률
@@ -82,12 +83,19 @@ public class PlayerStatus : MonoBehaviour
 
     #region 참조 스크립트
     private Inventory inventory;
+    private Battle battle;
+    private PassiveSystem passive;
     #endregion
 
 
     void Awake()
     {
-        inventory = GetComponent<Inventory>();
+        if(!inventory)
+            inventory = GetComponent<Inventory>();
+        if(!battle)
+            battle = GetComponent<Battle>();
+        if(!passive)
+            passive = GetComponent<PassiveSystem>();
     }
 
     void Start()
@@ -121,6 +129,11 @@ public class PlayerStatus : MonoBehaviour
 
         playerSpeed = basicPlayerSpeed + increasePlayerSpeed;
         jumpForce = (basicJumpForce + increaseJumpForce) * (basicJumpForcePer + increaseJumpForcePer) * 0.01f;
+
+        if(battle.WeaponType == WeaponTypes.Bow)
+        {
+            crtRate += coolDownReductionPer * passive.bowPer * 0.01f;
+        }
 
     }
     

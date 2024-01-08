@@ -6,7 +6,8 @@ public enum BuffTypes { Burn = 0, Slow, Barrier }
 
 public class PassiveSystem : MonoBehaviour
 {    
-    [SerializeField] private Battle playerBattle;
+    [SerializeField] private Battle battle;
+    [SerializeField] private PlayerStatus status;
 
     public float[] passiveRate;
 
@@ -14,24 +15,40 @@ public class PassiveSystem : MonoBehaviour
     public bool isGetBarrier;
     // 활은 상시로 켜져있음
 
+
     [Header("시간 관련")]
     public float[] duration;
     public float[] tick;
     
-    // public float curSlowTick;
-    // [SerializeField] float maxSlowTick;
-
     [Header("수치 관련")]
     public float burnDamage;
     public float slowPer;
+    public float shieldPer;
+    public float bowPer;
+    public float unAtkedTime;
 
     void Awake()
     {
-        if(!playerBattle)
-            playerBattle = GetComponent<Battle>();
+        if(!battle)
+            battle = GetComponent<Battle>();
+        if(!status)
+            status = GetComponent<PlayerStatus>();
     }
 
-
+    void Update()
+    {
+        if(battle.WeaponType == WeaponTypes.Shield && !isGetBarrier)
+        {
+            unAtkedTime += Time.deltaTime;
+            if(unAtkedTime >= duration[(int)WeaponTypes.Shield])
+            {
+                isGetBarrier = true;
+                ActivePassive(WeaponTypes.Shield);
+            }
+        }
+            
+                
+    }
 
     public void ActivePassive(WeaponTypes type , MonsterDebuffBase monster = null)
     {
@@ -43,7 +60,7 @@ public class PassiveSystem : MonoBehaviour
 
 
             case WeaponTypes.Shield:
-                // 쉴드 얻는거 만들어야함
+                status.barrier = status.maxHp * shieldPer * 0.01f;
                 break;
 
 
@@ -58,31 +75,9 @@ public class PassiveSystem : MonoBehaviour
         }
     }
 
-
-    // 현재는 burn 밖에 없음
-    // public void EnemyPassive(BuffTypes buffType, float damage = 0f)
-    // {
-    //     switch (buffType)
-    //     {
-    //         case BuffTypes.Burn:
-    //             curBurnTime = maxBurnTime;
-    //             isBurn = true;
-    //             StopCoroutine("Burn");
-    //             burnDamage = damage;
-    //             StartCoroutine(Burn());
-    //             break;
-
-    //         case BuffTypes.Slow:
-
-    //             break;
-
-    //         case BuffTypes.Barrier:
-
-    //             break;
-
-
-    //         default:
-    //             break;
-    //     }
-    // }
+    public void Atked()
+    {
+        unAtkedTime = 0f;
+        isGetBarrier = false;
+    }
 }

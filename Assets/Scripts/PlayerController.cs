@@ -200,9 +200,9 @@ public class PlayerController : MonoBehaviour
 
     public void SetEquipment()
     {
+        battle.WeaponType = PlayerWeaponType;
         ChangeAnim();
         status.SetStatue();
-        battle.WeaponType = PlayerWeaponType;
 
         animator.SetFloat("AtkSpeed", status.atkSpeed * 0.01f);
     }

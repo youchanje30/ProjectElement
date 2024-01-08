@@ -118,7 +118,6 @@ public class Battle : MonoBehaviour
             
         }
        
-        
     }
 
 
@@ -550,7 +549,26 @@ public class Battle : MonoBehaviour
         bool isMiss = Random.Range(1, 100 + 1) <= status.missRate;
 
         if(!isMiss)
-            status.curHp -= Damage * (100 - status.defPer) * 0.01f;
+        {
+            float getDmg = Damage * (100 - status.defPer) * 0.01f;
+            if(status.barrier > getDmg)
+            {
+                status.barrier -= getDmg;
+                getDmg = 0f;
+            }
+            else
+            {
+                getDmg -= status.barrier;
+                status.barrier = 0f;
+            }
+            
+            status.curHp -= getDmg;
+        }
+            
+
+        passive.Atked();
+
+        
 
         if(status.curHp <= 0)
         {
