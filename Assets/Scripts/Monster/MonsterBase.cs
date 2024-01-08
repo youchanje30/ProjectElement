@@ -236,8 +236,6 @@ public class MonsterBase : MonoBehaviour
         animator.SetBool("isRange", false);
 
         transform.position += new Vector3(nextDir, 0, 0) * moveSpeed * Time.deltaTime;
-        if(nextDir != 0)
-            transform.localScale = new Vector3(nextDir * monsterData.imageScale, monsterData.imageScale , 1);
     }
 
     protected virtual void RandomDir()
@@ -351,6 +349,7 @@ public class MonsterBase : MonoBehaviour
     #region 몬스터 사망
     protected virtual void Dead()
     {
+        Reward();
         Destroy(gameObject);
     }
 
