@@ -9,11 +9,12 @@ public class TimerUI : MonoBehaviour
     private GameManager gameManager;
     public GameObject timerUI;
     public TMP_Text TimeTxt;
-    [SerializeField] TMP_Text TimerOnOff;
-    [SerializeField] private int OnOff = 1;
+    public TMP_Text TimerOnOff;
+    public int OnOff;
 
     void Awake()
-    {       
+    {
+        OnOff = 1;
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
     void Update()
@@ -25,16 +26,7 @@ public class TimerUI : MonoBehaviour
         OnOff++;
         OnOff %= 2;
         TimerOnOff.text = OnOff == 0 ? "ÄÑÁü" : "²¨Áü";
-        
-        if(OnOff == 0)
-        {
-            gameManager.isTimer = true;
-        }
-        else
-        {
-            gameManager.isTimer = false;
-        }
-        gameManager.SaveSettingData();
+        //gameManager.SaveSettingData();
     }
   
 }

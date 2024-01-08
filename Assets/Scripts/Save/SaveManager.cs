@@ -6,6 +6,7 @@ using System.Xml;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
+using UnityEditor;
 
 public class SaveManager : MonoBehaviour
 {
@@ -429,4 +430,5 @@ public class SaveManager : MonoBehaviour
         Save();
         Invoke("AutoSave", 30f);
     }
+
 }
