@@ -34,6 +34,7 @@ public class TimerUI : MonoBehaviour
         {
             gameManager.isTimer = false;
         }
+        gameManager.SaveSettingData();
     }
   
 }

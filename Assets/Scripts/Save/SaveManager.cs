@@ -20,8 +20,6 @@ public class SaveManager : MonoBehaviour
 
     [Header("Save Datas")]
     public WeaponTypes playerWeapon;
-    // public Elements playerElement;
-    // [Space(20f)]
 
 
     void Awake()
