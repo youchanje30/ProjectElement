@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;
     [SerializeField] private TalkManager talkManager;
+    [SerializeField] private bool isSystem;
     
     [Header("Setting Panel")]
     [SerializeField] private GameObject SettingPanel;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     public string[] Scene;
 
-    private bool timeStop;
+    //private bool timeStop;
 
     public int Chapter; //챕터 정보
 
@@ -58,8 +59,9 @@ public class GameManager : MonoBehaviour
 
 
     [Header("Timer Setting")]
+    [SerializeField] private TimerUI timeUI;
     public float TimerVal;
-    [SerializeField] private TMP_Text TimeTxt;
+    public bool isTimer = false;
 
 
     [Header("Shop Setting")]
@@ -89,7 +91,8 @@ public class GameManager : MonoBehaviour
  
     void Awake()
     {
-        // Time.timeScale = 0.3f;
+        TimerVal = 0;
+        //Time.timeScale = 0.3f;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = player.GetComponent<Inventory>();
@@ -97,6 +100,7 @@ public class GameManager : MonoBehaviour
         Elemental = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ElementalManager>();
         inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
         swapUI = GameObject.Find("Canvas").GetComponent<SwapUI>();
+        timeUI = GameObject.Find("Canvas").GetComponent<TimerUI>();
     }
 
 
@@ -124,18 +128,18 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake && !isInven)
+        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake && !isInven && !isSystem)
         {
-            SystemPanel.SetActive(true);
-            Time.timeScale = 0f;
+            Invoke("OpenSystem", 0.01f);
         }
-        //if(Input.GetKeyDown(KeyCode.Escape) && SystemPanel.activeSelf == true)
-        //{
-        //    SystemPanel.SetActive(false);
-        //    SettingPanel.SetActive(false);
-        //    GraphicSetting();
-        //    Time.timeScale = 1f;
-        //}
+        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0f && isSystem )
+        {
+            isSystem = !isSystem;
+            SystemPanel.SetActive(isSystem);
+            SettingPanel.SetActive(false);          
+            GraphicSetting();
+            Time.timeScale = 1f;
+        }
         if (isStatusUpgrade)
         {
             isInven = false;
@@ -145,13 +149,22 @@ public class GameManager : MonoBehaviour
         LogStat();
     }
 
-  
+    public void OpenSystem()
+    {
+        isSystem = !isSystem;
+        SystemPanel.SetActive(isSystem);
+        Time.timeScale = 0f;
+    }
     public void TimeSetting()
     {
-        // TimerVal += Time.deltaTime;
-        // string Txt = string.Format("{0:D2}:{1:D2}:{2:D3}", TimerVal % 3600, TimerVal % 60 , TimerVal % 1);
-        // TimeTxt.text = "Time: " + (int)TimerVal / 1; // Txt; // 
-    } 
+            TimerVal += Time.deltaTime;
+            timeUI.TimeTxt.text = ((int)TimerVal / 3600).ToString("D2") +":" + ((int)TimerVal / 60 % 60).ToString("D2") + ":" + ((int)TimerVal%60).ToString("D2");
+            //(TimerVal / 3600).ToString("D2") + ":" + (TimerVal / 60 % 60).ToString("D2") + ":" + (TimerVal % 60).ToString("D2");
+            // TimerVal += Time.deltaTime;
+            // string Txt = string.Format("{0:D2}:{1:D2}:{2:D3}", TimerVal % 3600, TimerVal % 60 , TimerVal % 1);
+            // TimeTxt.text = "Time: " + (int)TimerVal / 1; // Txt; // 
+    }
+            
 
     public void init()
     {
@@ -207,6 +220,7 @@ public class GameManager : MonoBehaviour
                 SystemPanel.SetActive(false);
                 SettingPanel.SetActive(false);
                 GraphicSetting();
+                isSystem = !isSystem;
                 Time.timeScale = 1f;
                 break;
 
@@ -217,7 +231,6 @@ public class GameManager : MonoBehaviour
             case 3: // Setting Btn
                 SystemPanel.SetActive(false);
                 SettingPanel.SetActive(true);
-
                 break;
 
             case 4: //Exit Btn

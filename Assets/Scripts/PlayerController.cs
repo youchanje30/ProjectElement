@@ -146,8 +146,7 @@ public class PlayerController : MonoBehaviour
         {
             manager.isSlotSwap = false;
             manager.swapUI.SlotSwapUI.SetActive(false);
-            Invoke("EleUISwap", 0.1f);
-
+            Invoke("EleUISwap", 0.01f);
 
         }
         

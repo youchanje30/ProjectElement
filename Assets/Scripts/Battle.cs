@@ -554,6 +554,7 @@ public class Battle : MonoBehaviour
 
         if(status.curHp <= 0)
         {
+            
             SaveManager.instance.ResetData();
             SceneManager.LoadScene("Maintown");
         }    
