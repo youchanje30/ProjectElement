@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public ItemManager Item;
     public ElementalManager Elemental;
     public Inventory inventory;
-    private InventoryUI inventoryUI;
+    public InventoryUI inventoryUI;
     public  SwapUI swapUI;
 
     [SerializeField] private PlayerController player;
@@ -27,10 +27,11 @@ public class GameManager : MonoBehaviour
 
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;
-    [SerializeField] private TalkManager talkManager;   
+    [SerializeField] private TalkManager talkManager;
+    
     [Header("Setting Panel")]
     [SerializeField] private GameObject SettingPanel;
-
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
 
 
     [Header("Graphic Setting")]
@@ -86,7 +87,6 @@ public class GameManager : MonoBehaviour
     [Header("Elemental")]
     public GameObject[] Elements;
  
-
     void Awake()
     {
         // Time.timeScale = 0.3f;
@@ -128,7 +128,19 @@ public class GameManager : MonoBehaviour
         {
             SystemPanel.SetActive(true);
             Time.timeScale = 0f;
-        }   
+        }
+        //if(Input.GetKeyDown(KeyCode.Escape) && SystemPanel.activeSelf == true)
+        //{
+        //    SystemPanel.SetActive(false);
+        //    SettingPanel.SetActive(false);
+        //    GraphicSetting();
+        //    Time.timeScale = 1f;
+        //}
+        if (isStatusUpgrade)
+        {
+            isInven = false;
+            inventoryUI.InvenUI.SetActive(false);
+        }
         TimeSetting();
         LogStat();
     }
@@ -151,12 +163,14 @@ public class GameManager : MonoBehaviour
     {
         switch (BtnNum)
         {
-            case 1: 
-                
+            case 1:
+                resolutionDropdown.value++;
+                SaveSettingData();
                 break;
 
-            case 2: 
-
+            case 2:
+                resolutionDropdown.value--;
+                SaveSettingData();
                 break;
             // 해상도 다운 업
 
@@ -210,6 +224,16 @@ public class GameManager : MonoBehaviour
                 Application.Quit();
                 break;
 
+            case 5: //Setting Resume Btn
+                SettingPanel.SetActive(false);
+                SystemPanel.SetActive(true);
+                GraphicSetting();
+                break;
+
+            case 6: //Setting Exit Btn
+                SettingPanel.SetActive(false);
+                SystemPanel.SetActive(true);
+                break;
         }
     }
 
@@ -377,7 +401,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    [SerializeField] private TMP_Dropdown resolutionDropdown;
+ 
     [SerializeField] private int fullScreen = 0 ; //0 전체화면 , 1 창모드
 
     List<Resolution> resolutions;
@@ -385,35 +409,39 @@ public class GameManager : MonoBehaviour
     
     public void SetResolution()
     {
+
         resolutions = new List<Resolution>(Screen.resolutions);
         resolutions.Reverse(); // 높은 것 부터 표시
 
         resolutionDropdown.options.Clear();
 
         int optionNum = 0;
-        foreach(Resolution item in resolutions)
+        foreach (Resolution item in resolutions)
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
-            option.text = item.width + " x " + item.height + "  " + item.refreshRateRatio + "hz";
-            resolutionDropdown.options.Add(option);
-            if(item.width == Screen.width && item.height == Screen.height)
+            option.text = item.width + " x " + item.height + "  " /*+ item.refreshRateRatio + "hz"*/;
+            if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
+                resolutionDropdown.options.Add(option);
+            if (item.width == Screen.width && item.height == Screen.height)
                 resolutionDropdown.value = optionNum;
             optionNum++;
         }
+
     }
+
     public void OpenSwap()
     {
         swapUI.ElementImg();    
         isSlotSwap = true;
         swapUI.SlotSwapUI.SetActive(isSlotSwap);
     }
-    public void OpenInventory()
-    {
-        inventoryUI.SetCard();
-        inventoryUI.SetItem();
-        isInven = !isInven;
-        inventoryUI.InvenUI.SetActive(isInven);
-    }
+    //public void OpenInventory()
+    //{
+    //    inventoryUI.SetCard();
+    //    inventoryUI.SetItem();
+    //    isInven = !isInven;
+    //    inventoryUI.InvenUI.SetActive(isInven);
+    //}
     public void DropboxOptionChanged(int x)
     {
         resolutionNum = x; 

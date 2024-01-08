@@ -137,6 +137,11 @@ public class PlayerController : MonoBehaviour
             manager.isSlotSwap = false;
             manager.swapUI.SlotSwapUI.SetActive(false);
         }
+        if(manager.isInven && Input.GetKeyDown(KeyCode.Escape))
+        {
+            manager.isInven = false;
+            manager.inventoryUI.InvenUI.SetActive(false);
+        }
         if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.E)) // 수정 해야함
         {
             manager.isSlotSwap = false;
@@ -147,9 +152,9 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(ioInventory))
+        if (Input.GetKeyDown(ioInventory) && Time.timeScale != 0)
         {
-            manager.OpenInventory();
+            manager.inventoryUI.OpenInventory();
         }
 
         

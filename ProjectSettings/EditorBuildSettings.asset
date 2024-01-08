@@ -7,14 +7,14 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Maintown.unity
-    guid: 225dddf9451ba5e4da771b092e5596e4
-  - enabled: 1
+    guid: 699a40ea8a2f5294bb93635affa6bb5f
+  - enabled: 0
     path: Assets/Scenes/Example Stage1.unity
     guid: 4823589f257f19f42a367924e5f76d6b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Example Stage.unity
     guid: 491b94f3ee6d00345af2a426f1013d54
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
