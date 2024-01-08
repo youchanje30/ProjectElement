@@ -1,0 +1,367 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum DetectTypes { none, box, capsule }
+public enum AtkTypes { multi, box }
+
+public class MonsterBase : MonoBehaviour
+{
+    #region 필요 컴포넌트
+    [Header("필요 컴포넌트")]
+    public MonsterData monsterData;
+    [SerializeField] protected Rigidbody2D rigid;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected DetectPlayer trackDetect;
+    [SerializeField] protected DetectPlayer tryAtkDetect;
+    [SerializeField] protected Transform target;
+    #endregion
+
+
+    #region 몬스터 정보 선언
+    // 몬스터 최대 정보는 MonsterData에 존재함
+
+    [Header("몬스터 현재 정보")]
+    public float moveSpeed;
+    public float curHp;
+    public float damage;
+    protected float atkCoolTime;
+    protected float curAtkCoolTime;
+    protected float knockbackTime;
+
+
+    [Header("몬스터 상태 정보")]
+    protected bool isDead;      // 죽는 상태
+    protected bool isKnockback; // 넉백 상태
+    protected bool isAtking;    // 공격 상태
+    protected bool isTracking;  // 추적 상태
+    protected bool isMove;      // 이동 상태
+    #endregion
+
+
+    #region 필요 정보들
+    protected float nextDir;
+    protected bool canMove;
+    protected bool canTrack; // 추적 이동 canMove와 구분해서 사용예정
+    protected bool canAtk;
+    [SerializeField] protected Vector3[] atkPos = new Vector3[1];
+    [SerializeField] protected Vector2[] atkSize= new Vector2[1];
+    #endregion
+
+
+
+
+    /*
+
+    행동 불가능한 상태 : isDead , isAtking , isKnockback
+    위 상태는 행동을 끝내기 전까지 아무것도 할 수 없음
+
+    1. 이동 - 지속적으로 이동, 정지를 하며 플레이어를 찾아다님
+    2. 추적 - 추적 범위 내에 플레이어가 들어오면 추적을 시작. 해당 플레이어 위치로 이동 시도
+    3. 공격 - 공격 범위 내에 플레이어가 들어오면 공격을 시작. 공격이 끝난 후 행동 가능
+    
+    공격 시도 범위 / 피격 범위
+   
+    플레이어가 땅에 있는가..
+    텔레포트 위치가 땅을 벗어나지 않는가..
+
+    */
+
+
+    /*
+        수정해야하는 점
+        
+        넉백으로 인해 플랫폼을 벗어나는 현상
+
+    */
+
+    #region 초기화
+    protected virtual void Init()
+    {
+        if(!rigid)
+            rigid = GetComponent<Rigidbody2D>();
+
+        if(!animator)
+            animator = GetComponent<Animator>();
+
+        if(!trackDetect)
+            trackDetect = GetComponentsInChildren<DetectPlayer>()[0];
+
+        if(!tryAtkDetect)
+            tryAtkDetect = GetComponentsInChildren<DetectPlayer>()[1];
+
+        if(!target)
+            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            
+
+        // 몬스터 정보 초기화
+        moveSpeed = monsterData.maxMoveSpeed;
+        curHp = monsterData.maxHp;
+        damage = monsterData.maxDamage;
+        atkCoolTime = monsterData.maxAtkCoolTime;
+        curAtkCoolTime = atkCoolTime;
+        knockbackTime = monsterData.maxKnockbackTime;
+    }
+
+    // 위치 초기화도 필요함 몬스터는 Trigger가 켜져있기 때문에..
+    #endregion
+    
+    protected virtual void Awake()
+    {
+        Init();
+        RandomDir();
+        isMove = true;
+    }
+
+    protected virtual void Update()
+    {
+        CheckState();
+        SetState();
+
+        if(isMove)
+            Move();
+            
+        if(isTracking)
+            Tracking();
+
+        TimeProcess();
+    }
+
+
+    #region 몬스터 상태 관리
+    protected virtual void CheckState()
+    {
+        if(isDead || isAtking || isKnockback)
+        {
+            canMove = false;
+            canAtk = false;
+            return;
+        }
+
+        canAtk = false;
+        canTrack = false;
+        canMove = false;
+
+        if(tryAtkDetect.isEnter)
+        {
+            if(curAtkCoolTime <= 0)
+                canAtk = true;
+            canMove = false;
+        }
+        else if(trackDetect.isEnter)
+        {
+            canTrack = true;
+        }
+        else
+            canMove = true;
+    }
+
+    // 몬스터 상태 설정
+    protected virtual void SetState()
+    {
+        // isAtking = false;
+        isTracking = false;
+        isMove = false;
+
+        if(isDead || isAtking || isKnockback)
+        {
+            canMove = false;
+            canAtk = false;
+            return;
+        }
+
+        if(canAtk)
+        {
+            isAtking = true;
+            Atk();
+            AtkDetect();
+            AtkEnd();
+            return;
+        } 
+
+        if(canTrack)
+        {
+            isTracking = true;
+            return;
+        }
+
+        if(canMove)
+        {
+            isMove = true;
+            return;
+        }
+    }
+
+    // 시간 감소하는 코드.. 패시브 같은 것도 여기서 구현을 할까
+    protected virtual void TimeProcess()
+    {
+        curAtkCoolTime -= Time.deltaTime;
+
+    }
+
+    // 땅 위에 있는지 체크
+    protected virtual bool IsOnGround() // 위치값을 받아서 확인할 수 있으면 좋을 것 같음
+    {
+        Vector2 frontVec = new Vector2(transform.position.x + nextDir * monsterData.floorRayX, transform.position.y - monsterData.floorRayY);
+
+        Debug.DrawRay(frontVec, Vector3.down, new Color(0,1,0));
+        RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 1 , LayerMask.GetMask("Platform"));
+        
+        return raycast.collider != null;
+    }
+    #endregion
+
+
+    #region 몬스터 이동
+    // 추적 이동
+    protected virtual void Tracking()
+    {
+        animator.SetBool("isRange", true);
+        animator.SetBool("isMove", false);
+        // float moveDir = target.position.x - transform.position.x;
+
+        int x = target.position.x > transform.position.x ? -1 : 1;
+        transform.position += new Vector3(x, 0, 0) * moveSpeed * Time.deltaTime;
+        transform.localScale = new Vector3(x * monsterData.imageScale, monsterData.imageScale , 1);
+        // animator.SetBool("isMove", nextDir != 0);
+    }
+
+    // 일반 이동
+    protected virtual void Move()
+    {
+        if(!IsOnGround())
+            nextDir *= -1;
+
+        animator.SetBool("isMove", nextDir != 0);
+        animator.SetBool("isRange", false);
+
+        transform.position += new Vector3(nextDir, 0, 0) * moveSpeed * Time.deltaTime;
+        if(nextDir != 0)
+            transform.localScale = new Vector3(nextDir * monsterData.imageScale, monsterData.imageScale , 1);
+    }
+
+    protected virtual void RandomDir()
+    {
+        nextDir = Random.Range(-1, 1 + 1);
+        Invoke("RandomDir", Random.Range(2f, 5f));
+    }
+    #endregion 
+
+
+    #region 몬스터 공격
+    protected virtual void Atk()
+    {
+        isAtking = true;
+        canAtk = false;
+        animator.SetTrigger("Atk");
+    }
+
+    protected virtual void AtkDetect()
+    {
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(transform.position + atkPos[0], atkSize[0], 0, LayerMask.GetMask("Player"));
+        foreach(Collider2D collider in collider2Ds)
+        {
+            Debug.Log(collider.tag);
+            if(!collider.CompareTag("Player")) continue;
+                
+            collider.GetComponent<Battle>().GetDamaged(damage);
+        }
+    }
+
+    protected virtual void AtkEnd()
+    {   
+        curAtkCoolTime = atkCoolTime;
+        isAtking = false;
+    }
+
+    protected virtual void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position + atkPos[0], atkSize[0]);
+    }
+    #endregion
+
+
+    #region 몬스터 데미지 받음
+    public virtual void GetDamaged(float getDamage, bool canKncokBack = true)
+    {
+        if(isKnockback || isDead) return;
+
+        curHp -= getDamage;
+
+        // 체력바 추가 해야 함
+
+        if(curHp <= 0)
+        {
+            isDead = true;
+            animator.SetTrigger("Dead");
+        }
+
+        // animator.ResetTrigger("Hurt");
+        animator.SetTrigger("Hurt");
+
+        if(!canKncokBack) return;
+
+        
+        float x = transform.position.x - target.position.x;
+
+        if(x < 0)
+            x = 1;
+        else
+            x = -1;
+
+        isKnockback = true;
+        StartCoroutine(Knockback(x));
+    }
+
+    IEnumerator Knockback(float dir)
+    {
+        //sprite.color = new Color(0, 0, 0); 깜빡이는 효과 Dotween 으로 할 예정
+
+
+        // 날라갈 때 땅 체크해서 넉백으로 땅으로 떨어지지 못하게 하는 것이 좋아보임 아니면 물리로 움직..?
+        float ctime = 0;
+        while (ctime < knockbackTime)
+        {
+            if(transform.rotation.y == 0)
+            {
+                transform.Translate(Vector3.left * 10f * Time.deltaTime * dir);
+                // rigid.velocity = new Vector2(-1, 0);
+                // rigid.AddForce(new Vector2(1, 0) * force, ForceMode2D.Impulse);
+                // transform.localScale = new Vector3(-ImgScale, ImgScale ,1);
+            }
+            else
+            {
+                // rigid.velocity = new Vector2(1, 0);
+                // rigid.AddForce(new Vector2(1, 0) * force, ForceMode2D.Impulse);
+                transform.Translate(Vector3.left * 10f * Time.deltaTime * -1f * dir);
+                // transform.localScale = new Vector3(ImgScale, ImgScale ,1);
+            }
+
+            ctime += Time.deltaTime;
+            yield return null;
+        }
+        isKnockback = false;
+
+        //sprite.color = new Color(1, 1, 1);
+    }
+    #endregion
+
+
+    #region 몬스터 사망
+    protected virtual void Dead()
+    {
+        Destroy(gameObject);
+    }
+
+    protected virtual void Reward()
+    {
+        GameObject Coin = ItemDropManager.instance.Coin;
+        for (int i = 0; i < ItemDropManager.instance.CoinDrop(); i++)
+        {
+            GameObject spawnCoin = Instantiate(Coin);
+            spawnCoin.transform.position = transform.position;
+        }
+    }
+    #endregion
+}

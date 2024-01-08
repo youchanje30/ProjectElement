@@ -45,12 +45,13 @@ public class Monster : MonoBehaviour
 
 
     [Header("Enemy Status")]
-    public float moveSpeed;
-    public float maxHp;
-    public float Dmg;
-    public float atkCoolTime = 3f;
-    public float AtkRange;
-    public float FollowRange;
+    public MonsterData monsterData;
+    protected float moveSpeed;
+    protected float maxHp;
+    protected float Dmg;
+    protected float atkCoolTime = 3f;
+    protected float AtkRange;
+    protected float FollowRange;
     [Space(20f)]
 
 
@@ -104,6 +105,10 @@ public class Monster : MonoBehaviour
         #endregion
     }
 
+    void Init()
+    {
+
+    }
     
     void Update()
     {

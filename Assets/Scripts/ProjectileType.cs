@@ -16,6 +16,11 @@ public class ProjectileType : MonoBehaviour
     public Transform target;
 
 
+    public float duration;
+    public float tick;
+    public float per;
+
+
     void Update()
     {
         Move();
@@ -56,7 +61,11 @@ public class ProjectileType : MonoBehaviour
         }
         else if(other.tag == "Monster")
         {
-            other.GetComponent<Monster>().GetDamaged(Damage);
+            // other.GetComponent<Monster>().GetDamaged(Damage);
+            other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
+            if(Projectile == Type.Magic)
+                other.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(0f, duration, tick, BuffTypes.Slow, per);
+
             Destroy(gameObject);
         }
         else if(other.tag == "Destruct")

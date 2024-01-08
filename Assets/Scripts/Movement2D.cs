@@ -150,7 +150,8 @@ public class Movement2D : MonoBehaviour
         if(hAxis != 0)
         {
             // transform.localScale = new Vector3( -(hAxis), 1, 1);
-            transform.localScale = new Vector3( -(hAxis) * 2, 2, 1);
+            // transform.localScale = new Vector3( -(hAxis) * 2, 2, 1);
+            transform.localScale = new Vector3(hAxis * 2, 2, 1);
             animator.SetBool("isMove", true);
         }  
         else
@@ -186,7 +187,7 @@ public class Movement2D : MonoBehaviour
         isDashing = true; 
         float originalGravity = rigid2D.gravityScale;
         rigid2D.gravityScale = 0f;
-        rigid2D.velocity = new Vector2(-(transform.localScale.x) * dashingPower, 0f);
+        rigid2D.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         battle.isGuard = true;
         // rigid2D.velocity = new Vector2(-(transform.localScale.x) * 0f, 0f);
         

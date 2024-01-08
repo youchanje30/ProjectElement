@@ -11,6 +11,7 @@ public class Battle : MonoBehaviour
     
     private Movement2D movement2D;
     private Rigidbody2D rigid2D;
+    private PassiveSystem passive;
     public bool fallAtking;
 
     [Header("Weapon Setting")]
@@ -25,7 +26,6 @@ public class Battle : MonoBehaviour
     public Vector2[] atkSize;
     // public Transform[] atkPos;
     public GameObject arrow;
-    public int[] passiveRate;
 
     public float originalScale;
     public float atkDamage { get { return status.AtkDamage();} }
@@ -60,6 +60,7 @@ public class Battle : MonoBehaviour
 
     void Awake()
     {
+        passive = GetComponent<PassiveSystem>();
         status = GetComponent<PlayerStatus>();
         movement2D = GetComponent<Movement2D>();
         rigid2D = GetComponent<Rigidbody2D>();
@@ -131,12 +132,15 @@ public class Battle : MonoBehaviour
             // float NormalDmg = damage * damagePer * 0.01f;
             // float FinalDmg = isCrt ? NormalDmg * crtDmg * 0.01f : NormalDmg;
 
-            AtkObj.GetComponent<Monster>().GetDamaged(atkDamage);
+            // AtkObj.GetComponent<Monster>().GetDamaged(atkDamage);
+            Debug.Log(atkDamage);
+            AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(atkDamage);
             // AtkObj.GetComponent<Monster>().GetDamaged(meleeDmg);
-            if(WeaponType == WeaponTypes.Wand)
-                PlayerPasstive(AtkObj);
-            else
-                PlayerPasstive();
+            // if(WeaponType == WeaponTypes.Wand)
+            //     PlayerPasstive(AtkObj);
+            // else
+            //     PlayerPasstive();
+            PlayerPasstive(AtkObj);
         }
 
         if(AtkObj.tag == "Destruct")
@@ -365,10 +369,15 @@ public class Battle : MonoBehaviour
         if(WeaponType == WeaponTypes.Wand)
         {
             GameObject Magic = Instantiate(arrow);
-            Magic.GetComponent<ProjectileType>().Projectile = Type.Magic;
-            Magic.GetComponent<ProjectileType>().Damage =  atkDamage;
+            ProjectileType magic = Magic.GetComponent<ProjectileType>();
+            magic.Projectile = Type.Magic;
+            magic.Damage =  atkDamage;
             // Magic.transform.position = atkPos[(int)WeaponType].position;
             Magic.transform.position = transform.position;
+
+            magic.duration = passive.duration[(int)WeaponType];
+            magic.tick = passive.tick[(int)WeaponType];
+            magic.per = passive.slowPer;
 
             Transform target = null;
             float targetDistance = 100;
@@ -399,7 +408,7 @@ public class Battle : MonoBehaviour
                 if(colliderDistance < targetDistance)
                     target = collider.transform;
             }
-            Magic.GetComponent<ProjectileType>().target = target;
+            magic.target = target;
         }
 
         
@@ -494,18 +503,21 @@ public class Battle : MonoBehaviour
         isGuard = false;
     }
     
-    public bool PlayerPasstive(GameObject monster = null)
+    public void PlayerPasstive(GameObject monster = null)
     {
-        if(passiveRate[(int)WeaponType] > Random.Range(1, 100 + 1)) return false;
+        if(passive.passiveRate[(int)WeaponType] > Random.Range(1, 100 + 1)) return;
 
-        if(monster != null && WeaponType == WeaponTypes.Wand)
+        // if(monster != null && WeaponType == WeaponTypes.Wand)
+        // {
+        //     if(monster.GetComponent<PassiveSystem>().canSlow)
+        //         return false;
+        // }
+
+    
+        if(monster != null)
         {
-            if(monster.GetComponent<PassiveSystem>().canSlow)
-                return false;
+            passive.ActivePassive(WeaponType , monster.GetComponentInParent<MonsterDebuffBase>());            
         }
-
-
-        return true;
     }
 
     private void OnDrawGizmos()
