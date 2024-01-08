@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
     [Header("#BGM")]
     public AudioClip bgmClip;
     AudioSource bgmPlayer;
-    [SerializeField] private Slider BGMVolumeSlider;
+    public Slider BGMVolumeSlider;
     [Space(20f)]
 
 
@@ -21,8 +21,7 @@ public class AudioManager : MonoBehaviour
     public int channels;
     AudioSource[] sfxPlayers;
     int channelIndex;
-    [SerializeField] private Slider SFXVolumeSlider;
-
+    public Slider SFXVolumeSlider;
 
 
     public enum Sfx {};
@@ -36,7 +35,6 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-
     }
 
     void Init()

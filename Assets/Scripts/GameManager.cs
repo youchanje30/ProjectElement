@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Inventory inventory;
     public InventoryUI inventoryUI;
     public SwapUI swapUI;
+    public AudioManager audioManager;
 
     [SerializeField] private PlayerController player;
 
@@ -104,7 +105,7 @@ public class GameManager : MonoBehaviour
         inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
         swapUI = GameObject.Find("Canvas").GetComponent<SwapUI>();
         timeUI = GameObject.Find("Canvas").GetComponent<TimerUI>();
-        
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
 
 
@@ -176,6 +177,8 @@ public class GameManager : MonoBehaviour
         FullScreenTxt.text = PlayerPrefs.GetInt("FullScreenData") == 0 ? "전체 화면" : "창모드";
         CameraShakeTxt.text = PlayerPrefs.GetInt("CameraShakeData") == 0 ? "켜짐" : "꺼짐";
         timeUI.TimerOnOff.text = PlayerPrefs.GetInt("TimerData") == 0 ? "켜짐" : "꺼짐";
+        audioManager.ChangeBGMVol();
+        audioManager.ChangeSFXVol();
     }
 
 
@@ -228,7 +231,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("FullScreenData", fullScreen);
         PlayerPrefs.SetInt("CameraShakeData", CameraShakeOnOff);
         PlayerPrefs.SetInt("TimerData", timeUI.OnOff);
-
+        PlayerPrefs.SetFloat("BGMData", audioManager.BGMVolumeSlider.value);
+        PlayerPrefs.SetFloat("SFXData", audioManager.SFXVolumeSlider.value);
     }
     public void SetSettingData()
     {
@@ -236,6 +240,8 @@ public class GameManager : MonoBehaviour
         fullScreen = PlayerPrefs.GetInt("FullScreenData");
         CanCameraShake = PlayerPrefs.GetInt("CameraShakeData") == 0 ? true : false;
         isTimer = PlayerPrefs.GetInt("TimerData") == 0 ? true : false;
+        audioManager.BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMData");
+        audioManager.SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXData");
     }
 
     public void SystemBtn(int BtnNum)
