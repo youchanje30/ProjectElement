@@ -213,7 +213,7 @@ public class Battle : MonoBehaviour
         float originalGravity = rigid2D.gravityScale;
         rigid2D.gravityScale = 0f;
         rigid2D.velocity = Vector2.zero;
-        rigid2D.velocity = new Vector2(-(transform.localScale.x) * AtkDashingPower, 0f);
+        rigid2D.velocity = new Vector2(transform.localScale.x * AtkDashingPower, 0f);
         yield return new WaitForSeconds(ShieldAtkDashTime);
         // rigid2D.gravityScale = originalGravity;
         rigid2D.gravityScale = 4f;
@@ -480,7 +480,7 @@ public class Battle : MonoBehaviour
         float originalGravity = rigid2D.gravityScale;
 
         rigid2D.gravityScale = 0f;
-        rigid2D.velocity = new Vector2(-(transform.localScale.x) * DashingPower, 0f);
+        rigid2D.velocity = new Vector2(transform.localScale.x * DashingPower, 0f);
 
         yield return new WaitForSeconds(ShieldDashingTime * 0.5f);
 
