@@ -219,11 +219,20 @@ public class GameManager : MonoBehaviour
                 //else { CanCameraShake = false; }
                 break;
             //카메라 흔들림
-            case 5:
+            case 5: // 데이터 초기화
+                Delete();
+                SceneManager.LoadScene("Maintown");
+                Time.timeScale = 1f;
                 break;
         }
     }
-
+    public void Delete()
+    {
+        if (File.Exists(Application.dataPath + "/DataXML.xml"))
+        {
+            File.Delete(Application.dataPath + "/DataXML.xml");
+        }
+    }
 
     public void SaveSettingData()
     {

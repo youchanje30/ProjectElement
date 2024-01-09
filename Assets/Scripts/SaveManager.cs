@@ -340,8 +340,8 @@ public class SaveManager : MonoBehaviour
         SaveFile(EncryptGameData(xmlDocument));
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
-            // Debug.Log("Saved");
-            // 저장 성공
+            //Debug.Log("Saved");
+            //저장 성공
         }
 
     }
@@ -431,4 +431,5 @@ public class SaveManager : MonoBehaviour
         Invoke("AutoSave", 30f);
     }
 
+   
 }
