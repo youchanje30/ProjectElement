@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     [Header("Setting Panel")]
     [SerializeField] private GameObject SettingPanel;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
-
+    [SerializeField] private GameObject DataResetCheck;
 
     [Header("Graphic Setting")]
     [SerializeField] private TMP_Text CameraShakeTxt;
@@ -220,9 +220,7 @@ public class GameManager : MonoBehaviour
                 break;
             //카메라 흔들림
             case 5: // 데이터 초기화
-                Delete();
-                SceneManager.LoadScene("Maintown");
-                Time.timeScale = 1f;
+               DataResetCheck.SetActive(true);
                 break;
         }
     }
@@ -373,7 +371,21 @@ public class GameManager : MonoBehaviour
         sellPanel.SetActive(!viewBuy);
     }
 
+    public void DataReset(int BtnNum)
+    {
+        switch (BtnNum)
+        {
+            case 0:
+                Delete();
+                SceneManager.LoadScene("Maintown");
+                Time.timeScale = 1f;
+                break;
+            case 1:
+                DataResetCheck.SetActive(false);
+                 break;
 
+        }
+    }
 
     public void TalkBtn(int BtnNum)
     {
