@@ -230,7 +230,10 @@ public class MonsterBase : MonoBehaviour
         animator.SetBool("isMove", nextDir != 0);
         animator.SetBool("isRange", false);
 
+        // transform.position += new Vector3(nextDir, 0, 0) * moveSpeed * Time.deltaTime;
         transform.position += new Vector3(nextDir, 0, 0) * moveSpeed * Time.deltaTime;
+        if(nextDir != 0)
+            transform.localScale = new Vector3(nextDir * monsterData.imageScale, monsterData.imageScale , 1);
         // rigid.velocity = new Vector2(nextDir, 0) * moveSpeed;
     }
 
