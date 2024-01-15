@@ -140,6 +140,7 @@ public class Battle : MonoBehaviour
             // else
             //     PlayerPasstive();
             PlayerPasstive(AtkObj);
+            
         }
 
         if(AtkObj.tag == "Destruct")
@@ -515,7 +516,8 @@ public class Battle : MonoBehaviour
     
         if(monster != null)
         {
-            passive.ActivePassive(WeaponType , monster.GetComponentInParent<MonsterDebuffBase>());            
+            passive.ActivePassive(WeaponType , monster.GetComponentInParent<MonsterDebuffBase>());
+            //passive.ActiveSynergy(WeaponType, monster.GetComponentInParent<MonsterSynergy>());
         }
     }
 
