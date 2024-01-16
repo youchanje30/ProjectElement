@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &803743740353002826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3200210186239389953}
+  m_Layer: 0
+  m_Name: SouthSkillPos (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3200210186239389953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803743740353002826}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.02, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5968144621071190073}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1035430245274727551
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +155,70 @@ Transform:
   m_Father: {fileID: 2183464480881181263}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4510290615936235939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5968144621071190073}
+  m_Layer: 0
+  m_Name: SouthSKill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5968144621071190073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4510290615936235939}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2987700167441146525}
+  - {fileID: 3200210186239389953}
+  m_Father: {fileID: 2183464480881181263}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5050139407081948622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2987700167441146525}
+  m_Layer: 0
+  m_Name: SouthSkillPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2987700167441146525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5050139407081948622}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.938, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5968144621071190073}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6241855816781211188
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,6 +270,7 @@ GameObject:
   - component: {fileID: 8509772043893616530}
   - component: {fileID: 4664804212794489908}
   - component: {fileID: 5498070469653306031}
+  - component: {fileID: 4171092834519731156}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -202,6 +298,7 @@ Transform:
   - {fileID: 7402086602399045594}
   - {fileID: 4472214303243002330}
   - {fileID: 2363684142775938275}
+  - {fileID: 5968144621071190073}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -378,10 +475,10 @@ MonoBehaviour:
   inventory: {fileID: 8509772043893616530}
   anim:
   - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - {fileID: 9100000, guid: d5fcc18cb19939843b44f768078987eb, type: 2}
-  - {fileID: 9100000, guid: b622ced3de7f13541935dcd9d1be885a, type: 2}
-  - {fileID: 9100000, guid: 6c22786c3c8be884cb0957e7a46afb3b, type: 2}
-  - {fileID: 9100000, guid: c36ed572a00539e4cba40334d6a15f33, type: 2}
+  - {fileID: 9100000, guid: 730c7076a67906747bdf8a6f721f0a79, type: 2}
+  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  - {fileID: 9100000, guid: eaad5e105a5c72a4ba5820547a91f8cb, type: 2}
+  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
   ioInventory: 9
   InteractKey: 101
   FirstSlot: 97
@@ -422,7 +519,7 @@ Animator:
   m_GameObject: {fileID: 7141198254234339824}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  m_Controller: {fileID: 9100000, guid: 78fca4626f55da04493aab274a483789, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -505,7 +602,7 @@ MonoBehaviour:
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
   isSwap: 0
-  swapTime: 0
+  swapTime: 0.2
 --- !u!114 &8509772043893616530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,6 +707,49 @@ MonoBehaviour:
   shieldPer: 20
   bowPer: 20
   unAtkedTime: 0
+--- !u!114 &4171092834519731156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7141198254234339824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7f67be57d53ff4697e3484c79c6f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillCoolTime:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  SkillReady: 0000000000
+  SkillDamage: 0
+  DamageIncreaseRate:
+  - 0
+  - 0
+  - 0
+  - 10
+  - 10
+  FireFloor: {fileID: 3096906974402678174, guid: db7de1076855ad84ba51dd45a7123812, type: 3}
+  isSouth: 0
+  JumpForce: 30
+  FallForce: 10
+  RisingTime: 1
+  RandingRange:
+  - {x: 4, y: 1, z: 0}
+  - {x: 2, y: 2, z: 0}
+  RandingPos:
+  - {fileID: 2987700167441146525}
+  - {fileID: 3200210186239389953}
+  Arrow: {fileID: 3054785954419580376, guid: 88320b9d25572f34fac3f5c97b155539, type: 3}
+  Pos: {fileID: 4315468924003554650}
+  isCharging: 0
+  ChargeTime: 2
+  InvicibleTime: 1
+  Delay: 1
 --- !u!1 &7219966532605892540
 GameObject:
   m_ObjectHideFlags: 0

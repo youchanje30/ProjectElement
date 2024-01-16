@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 using static System.Collections.Specialized.BitVector32;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private Interact interact;
     private Rigidbody2D rigid2D;
     private Battle battle;
+    private ActiveSkill skill;
     [SerializeField] private GameManager manager;
     private Animator animator;
     
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour
     private bool pressedDashKey;
     private KeyCode atkKey = KeyCode.Z;
     private bool pressedAtkKey;
+    private KeyCode SkillKey = KeyCode.X;
+    private bool pressedSkillKey;
     private bool isRepeatAtk = false;
     [SerializeField] private KeyCode ioInventory = KeyCode.Tab;
     [Space(20f)]
@@ -89,6 +93,7 @@ public class PlayerController : MonoBehaviour
         status = GetComponent<PlayerStatus>();
 
 
+        skill = GetComponent<ActiveSkill>();
         #endregion Component Access
 
         chargingTime = 0;
@@ -164,7 +169,7 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.isInven|| battle.fallAtking || ischarging || battle.Atking)// || pressedRightAtkKey)//|| battle.Atking)
+        if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.isInven|| battle.fallAtking || ischarging || battle.Atking|| skill.isCharging)//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
@@ -179,7 +184,7 @@ public class PlayerController : MonoBehaviour
         pressedInteractKey = Input.GetKeyDown(InteractKey);
 
         pressedAtkKey = Input.GetKey(atkKey);
-
+        pressedSkillKey = Input.GetKeyDown(SkillKey);
         pressedFirstSlot = Input.GetKeyDown(FirstSlot);
         pressedSecondSlot = Input.GetKeyDown(SecondSlot);
         pressedThirdSlot = Input.GetKeyDown(ThirdSlot);
@@ -277,6 +282,10 @@ public class PlayerController : MonoBehaviour
             isRepeatAtk = false;
         }
 
+        if (pressedSkillKey && skill.SkillReady[(int)battle.WeaponType] )
+        {
+            skill.TriggerSkill(battle.WeaponType);
+        }
     }
 
     void Move()
