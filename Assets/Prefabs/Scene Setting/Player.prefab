@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 8509772043893616530}
   - component: {fileID: 4664804212794489908}
   - component: {fileID: 5498070469653306031}
+  - component: {fileID: 4171092834519731156}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -203,7 +204,7 @@ Transform:
   - {fileID: 4472214303243002330}
   - {fileID: 2363684142775938275}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4316813253061002341
 SpriteRenderer:
@@ -422,7 +423,7 @@ Animator:
   m_GameObject: {fileID: 7141198254234339824}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  m_Controller: {fileID: 9100000, guid: 78fca4626f55da04493aab274a483789, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -505,7 +506,7 @@ MonoBehaviour:
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
   isSwap: 0
-  swapTime: 0
+  swapTime: 0.2
 --- !u!114 &8509772043893616530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,6 +611,29 @@ MonoBehaviour:
   shieldPer: 20
   bowPer: 20
   unAtkedTime: 0
+--- !u!114 &4171092834519731156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7141198254234339824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7f67be57d53ff4697e3484c79c6f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battle: {fileID: 0}
+  SkillCoolTime:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  SkillReady: 0000000000
+  FireFloor: {fileID: 3096906974402678174, guid: db7de1076855ad84ba51dd45a7123812, type: 3}
+  Arrow: {fileID: 3054785954419580376, guid: 88320b9d25572f34fac3f5c97b155539, type: 3}
+  Pos: {fileID: 4315468924003554650}
 --- !u!1 &7219966532605892540
 GameObject:
   m_ObjectHideFlags: 0
