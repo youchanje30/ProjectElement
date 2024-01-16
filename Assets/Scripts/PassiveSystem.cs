@@ -74,10 +74,7 @@ public class PassiveSystem : MonoBehaviour
                 break;
         }
     }
-    //public void ActiveSynergy(WeaponTypes type , MonsterSynergy monster = null)
-    //{
-    //    monster.GetSynergy(type);
-    //}
+
     public void Atked()
     {
         unAtkedTime = 0f;

@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 1662406608036965016}
   - component: {fileID: 5362310459208682260}
   - component: {fileID: 9205500934608500069}
-  - component: {fileID: -2269852138631262038}
+  - component: {fileID: 4456792449349229608}
   m_Layer: 8
   m_Name: Monster Base
   m_TagString: Monster
@@ -333,7 +333,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   atkSize:
   - {x: 0, y: 0}
---- !u!114 &-2269852138631262038
+--- !u!114 &4456792449349229608
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,15 +342,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 5234046894563744887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23df3151e4e88b746bf0b4d5def97c3c, type: 3}
+  m_Script: {fileID: 11500000, guid: f1146f38670976a43965908e7e6d7765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 0}
-  Synergy: 
-  SynergyIndex: 0
-  HaveSynergy: 0
-  SynergyHoldingTime: 0
-  SynergyClearTime: 0
+  monster: {fileID: 9205500934608500069}
+  functionName:
+  - Burn
+  - Slow
+  isActive: 0000
+  duration:
+  - 0
+  - 0
+  tick:
+  - 0
+  - 0
+  damage:
+  - 0
+  - 0
 --- !u!1 &5445465395617005366
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Type
 {
-    Arrow, Magic, WindSkill
+    Arrow, Magic
 }
 
 public class ProjectileType : MonoBehaviour
@@ -19,8 +19,7 @@ public class ProjectileType : MonoBehaviour
     public float duration;
     public float tick;
     public float per;
-    [Tooltip("바람스킬 데미지 감소율 %")]
-    public float DeclineRate;
+
 
     void Update()
     {
@@ -40,11 +39,9 @@ public class ProjectileType : MonoBehaviour
                 if(target != null)
                     transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * moveSpeed);
                 else
-                    transform.position += new Vector3(-(transform.localScale.x),0,0) * Time.deltaTime * moveSpeed;          
-                break;
+                    transform.position += new Vector3(-(transform.localScale.x),0,0) * Time.deltaTime * moveSpeed;
 
-            case Type.WindSkill:
-                transform.position += new Vector3(-(transform.localScale.x), 0, 0) * Time.deltaTime * moveSpeed;
+                
                 break;
         }
     }
@@ -60,33 +57,21 @@ public class ProjectileType : MonoBehaviour
         // Debug.Log(other.gameObject.tag);
         if(other.tag == "Floor")
         {
-            if (Projectile != Type.WindSkill)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
-        else if(other.tag == "Monster" )
+        else if(other.tag == "Monster")
         {
             // other.GetComponent<Monster>().GetDamaged(Damage);
             other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
             if(Projectile == Type.Magic)
                 other.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(0f, duration, tick, BuffTypes.Slow, per);
-            if (Projectile != Type.WindSkill)
-            {
-                Destroy(gameObject);
-            }
-            if (Projectile == Type.WindSkill)
-            {
-                Damage *=  1 - (DeclineRate/ 100);
-            }
+
+            Destroy(gameObject);
         }
         else if(other.tag == "Destruct")
         {
             other.GetComponent<DestructObject>().DestroyObj();
-            if (Projectile != Type.WindSkill)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
         
     }
