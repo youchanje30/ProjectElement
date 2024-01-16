@@ -275,6 +275,7 @@ public class SaveManager : MonoBehaviour
             ElementDatas = xmlDocument.CreateElement("ElementDatas");
 
             playerElementalData.InnerText = "0";
+            ElementDatas.InnerText = "0";
 
 
             ElementDatas.AppendChild(playerElementalData);

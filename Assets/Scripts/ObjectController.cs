@@ -39,10 +39,19 @@ public class ObjectController : MonoBehaviour
 
     void Awake()
     {
-        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        if(!manager)
+            manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        
+
         objectTag = gameObject.tag;
 
-        switch(ObjType)
+
+    }
+
+    void Start()
+    {
+       switch(ObjType)
         {
             case InteractObjects.NPC:
                 // GameManager.instance.Action(gameObject);
@@ -53,26 +62,27 @@ public class ObjectController : MonoBehaviour
                 break;
 
             case InteractObjects.Shop:
-                // scrollRect = GameObject.FindGameObjectWithTag("ShopScroll").GetComponent<ScrollRect>();
+                if(!buyScrollRect)
+                    buyScrollRect = UIController.instance.buyScrollRect;
+                if(!sellScrollRect)
+                    sellScrollRect = UIController.instance.sellScrollRect;
+                
                 for (int i = 0; i < 2; i++)
                 {
-                    // Invoke("SpawnConsumableItem", 0.1f);
                     SpawnConsumableItem(HpHealItem);
                     SpawnConsumableItem(SpiritSoulItem);
                 }
                 for (int i = 0; i < 5; i++)
                 {
-                    Invoke("SpawnShopItem", 0.1f);
+                    SpawnShopItem();
                 }
-                Invoke("SpawnSellItem", 0.1f);
+                SpawnSellItem();
                 break;
             
             case InteractObjects.SpiritAwake:
 
                 break;
         }
-
-
     }
 
 

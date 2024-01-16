@@ -106,11 +106,31 @@ public class GameManager : MonoBehaviour
         swapUI = GameObject.Find("Canvas").GetComponent<SwapUI>();
         timeUI = GameObject.Find("Canvas").GetComponent<TimerUI>();
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+        talkManager  = GameObject.Find("Talk Manager").GetComponent<TalkManager>();
     }
 
 
     void Start()
     {
+        statusUpdrageUI = UIController.instance.statusUpdrageUI;
+
+        ShopUI = UIController.instance.shopUI;
+        buyPanel = UIController.instance.buyPanel;
+        sellPanel = UIController.instance.sellPanel;
+
+        talkBtn = UIController.instance.talkBtn;
+        TalkPanel = UIController.instance.TalkPanel;
+        talkTxt = UIController.instance.talkTxt;
+
+        
+        SystemPanel = UIController.instance.SystemPanel;
+        SettingPanel = UIController.instance.SettingPanel;
+        resolutionDropdown = UIController.instance.resolutionDropdown;
+        DataResetCheck = UIController.instance.DataResetCheck;
+        CameraShakeTxt = UIController.instance.CameraShakeTxt;
+        FullScreenTxt = UIController.instance.FullScreenTxt;
+
+
         if(PlayerPrefs.HasKey("FullScreenData")) { SetSettingData();}
         SetResolution();
 
@@ -122,7 +142,7 @@ public class GameManager : MonoBehaviour
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
 
-        if (SceneManager.GetActiveScene().name == "Je_Maintown" || SceneManager.GetActiveScene().name == "Maintown")
+        if (SceneManager.GetActiveScene().name == "Je_Maintown" || SceneManager.GetActiveScene().name == "Maintown" || SceneManager.GetActiveScene().name == "Prototype")
         {
             isAction = true;
             isStatusUpgrade = true;
@@ -163,6 +183,7 @@ public class GameManager : MonoBehaviour
         SystemPanel.SetActive(isSystem);
         Time.timeScale = 0f;
     }
+
     public void TimerSetting()
     {
         TimerVal += Time.deltaTime;
@@ -172,6 +193,7 @@ public class GameManager : MonoBehaviour
         // string Txt = string.Format("{0:D2}:{1:D2}:{2:D3}", TimerVal % 3600, TimerVal % 60 , TimerVal % 1);
         // TimeTxt.text = "Time: " + (int)TimerVal / 1; // Txt; // 
     }
+    
     public void OptionSetting()
     {
         FullScreenTxt.text = PlayerPrefs.GetInt("FullScreenData") == 0 ? "전체 화면" : "창모드";

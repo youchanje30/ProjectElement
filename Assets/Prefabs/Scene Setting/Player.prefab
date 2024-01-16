@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601801965640609899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0.5, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -246,7 +246,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: df9d937562920134cb924f63911319b8, type: 3}
+  m_Sprite: {fileID: 1327912540, guid: 15aec53142449764992ee921e7a572a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -320,7 +320,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -378,10 +378,10 @@ MonoBehaviour:
   inventory: {fileID: 8509772043893616530}
   anim:
   - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - {fileID: 9100000, guid: 22c8eab9f3c250e4184385fbe1999e95, type: 2}
-  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - {fileID: 9100000, guid: 866fc2936f2da394c84ecbe12e81145f, type: 2}
-  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  - {fileID: 9100000, guid: d5fcc18cb19939843b44f768078987eb, type: 2}
+  - {fileID: 9100000, guid: b622ced3de7f13541935dcd9d1be885a, type: 2}
+  - {fileID: 9100000, guid: 6c22786c3c8be884cb0957e7a46afb3b, type: 2}
+  - {fileID: 9100000, guid: c36ed572a00539e4cba40334d6a15f33, type: 2}
   ioInventory: 9
   InteractKey: 101
   FirstSlot: 97
@@ -528,9 +528,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   HavingElement:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 9e78c71fab5d52546a96bef8d62d1612, type: 2}
+  - {fileID: 11400000, guid: 9e78c71fab5d52546a96bef8d62d1612, type: 2}
+  - {fileID: 11400000, guid: 9e78c71fab5d52546a96bef8d62d1612, type: 2}
   HasWeapon: 000000
 --- !u!114 &4664804212794489908
 MonoBehaviour:
@@ -634,7 +634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7219966532605892540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -665,7 +665,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8111717507875193638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 0, z: 0}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -696,7 +696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9017783859884044896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

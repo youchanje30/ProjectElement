@@ -1092,8 +1092,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: GameSettingBtn
         m_Mode: 3
         m_Arguments:
@@ -2999,8 +2999,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: GameSettingBtn
         m_Mode: 3
         m_Arguments:
@@ -3132,8 +3132,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: GameSettingBtn
         m_Mode: 3
         m_Arguments:
@@ -3683,8 +3683,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: DropboxOptionChanged
         m_Mode: 0
         m_Arguments:
@@ -5300,8 +5300,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ChangeViewShop
         m_Mode: 1
         m_Arguments:
@@ -6695,6 +6695,7 @@ GameObject:
   - component: {fileID: 8363869136743665780}
   - component: {fileID: 5124102738846138791}
   - component: {fileID: 4027868003466895919}
+  - component: {fileID: 8921915156531338632}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: UI
@@ -6925,6 +6926,40 @@ MonoBehaviour:
   manager: {fileID: 0}
   WealthUI: {fileID: 6555618806498147956}
   Gold: {fileID: 8761573637104464998}
+--- !u!114 &8921915156531338632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3456872055292268281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4426008d0f2dfe847a926cb328f67790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmSlider: {fileID: 3061412371473407565}
+  sfxSlider: {fileID: 3502469941656228689}
+  playerHpBar: {fileID: 1484740503104060884}
+  HpFill: {fileID: 1578356429731635292}
+  buyScrollRect: {fileID: 898558724819553004}
+  sellScrollRect: {fileID: 3744329675812331044}
+  statusUpdrageUI: {fileID: 7456236426894410561}
+  shopUI: {fileID: 3842312355124803618}
+  buyPanel: {fileID: 2423233579132550119}
+  sellPanel: {fileID: 8188896901488171466}
+  talkBtn:
+  - {fileID: 7655545796451485566}
+  - {fileID: 9221132108109599845}
+  - {fileID: 5582524015976324633}
+  TalkPanel: {fileID: 4122826650919948309}
+  talkTxt: {fileID: 1884722247051791393}
+  SystemPanel: {fileID: 4257599226222144668}
+  SettingPanel: {fileID: 4364263323084247577}
+  resolutionDropdown: {fileID: 9185679111181888392}
+  DataResetCheck: {fileID: 2488830349464483782}
+  CameraShakeTxt: {fileID: 8517483269190840891}
+  FullScreenTxt: {fileID: 8997870049493970507}
 --- !u!1 &3524538990219818167
 GameObject:
   m_ObjectHideFlags: 0
@@ -7274,8 +7309,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: SystemBtn
         m_Mode: 3
         m_Arguments:
@@ -7892,9 +7927,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SystemBtn
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: GameSettingBtn
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8450,8 +8485,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: GameSettingBtn
         m_Mode: 3
         m_Arguments:
@@ -8718,8 +8753,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: UpgradeStatus
         m_Mode: 3
         m_Arguments:
@@ -9736,8 +9771,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: UpgradeStatus
         m_Mode: 3
         m_Arguments:
@@ -10856,8 +10891,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: GameSettingBtn
         m_Mode: 3
         m_Arguments:
@@ -11340,8 +11375,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: TalkBtn
         m_Mode: 3
         m_Arguments:
@@ -12623,8 +12658,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ToggleBGM
         m_Mode: 1
         m_Arguments:
@@ -13027,9 +13062,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SystemBtn
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: GameSettingBtn
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13160,8 +13195,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: GameSettingBtn
         m_Mode: 3
         m_Arguments:
@@ -13643,8 +13678,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: UpgradeStatus
         m_Mode: 3
         m_Arguments:
@@ -14279,8 +14314,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: SystemBtn
         m_Mode: 3
         m_Arguments:
@@ -14855,8 +14890,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ChangeSFXVol
         m_Mode: 1
         m_Arguments:
@@ -15666,8 +15701,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: GameSettingBtn
         m_Mode: 3
         m_Arguments:
@@ -16843,8 +16878,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: SystemBtn
         m_Mode: 3
         m_Arguments:
@@ -17190,8 +17225,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: TalkBtn
         m_Mode: 3
         m_Arguments:
@@ -17400,8 +17435,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: SystemBtn
         m_Mode: 3
         m_Arguments:
@@ -18777,8 +18812,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ChangeBGMVol
         m_Mode: 1
         m_Arguments:
@@ -19435,8 +19470,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ToggleSFX
         m_Mode: 1
         m_Arguments:
@@ -20956,8 +20991,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: TalkBtn
         m_Mode: 3
         m_Arguments:

@@ -79,13 +79,16 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         #region Component Access
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         movement2D = GetComponent<Movement2D>();
         interact = GetComponent<Interact>();
         rigid2D = GetComponent<Rigidbody2D>();
         battle = GetComponent<Battle>();
         animator = GetComponent<Animator>();
         inventory = GetComponent<Inventory>();
-        status = GetComponent<PlayerStatus>();       
+        status = GetComponent<PlayerStatus>();
+
+
         #endregion Component Access
 
         chargingTime = 0;
@@ -96,6 +99,10 @@ public class PlayerController : MonoBehaviour
         SetEquipment();
         battle.WeaponType = PlayerWeaponType;
 
+        if(!playerHpBar)
+            playerHpBar = UIController.instance.playerHpBar;
+        if(!HpFill)
+            HpFill = UIController.instance.HpFill;
         playerHpBar.maxValue = status.maxHp;
     }
 

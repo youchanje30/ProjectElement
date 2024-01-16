@@ -9,14 +9,14 @@ public class AudioManager : MonoBehaviour
 
    
     
-    [Header("#BGM")]
+    [Header("BGM 설정")]
     public AudioClip bgmClip;
     AudioSource bgmPlayer;
     public Slider BGMVolumeSlider;
     [Space(20f)]
 
 
-    [Header("#SFX")]
+    [Header("SFX 설정")]
     public AudioClip[] sfxClips;
     public int channels;
     AudioSource[] sfxPlayers;
@@ -30,6 +30,17 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        
+    }
+
+    void Start()
+    {
+        if(!BGMVolumeSlider)
+            BGMVolumeSlider = UIController.instance.bgmSlider;
+
+        if(!SFXVolumeSlider)
+            SFXVolumeSlider = UIController.instance.sfxSlider;
+
         Init();
     }
 
