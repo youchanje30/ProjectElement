@@ -14,8 +14,12 @@ public class ActiveSkill : MonoBehaviour
     public GameObject Arrow;
     public Transform Pos;
     public bool isCharging = false;
+    [Tooltip("차징 시간")]
     public float ChargeTime;
+    [Tooltip("발사 시 무적 시간")]
     public float InvicibleTime;
+    [Tooltip("발사 후 반동")]
+    public float Delay;
     void Awake()
     {
         battle = GetComponent<Battle>();
@@ -69,15 +73,14 @@ public class ActiveSkill : MonoBehaviour
         GameObject MagicArrow = Instantiate(Arrow);
         MagicArrow.transform.position = Pos.position;
         MagicArrow.transform.localScale = new Vector3(transform.localScale.x, MagicArrow.transform.localScale.y, MagicArrow.transform.localScale.z);
-        isCharging = false;
+        StartCoroutine(ReturnAttack());
         yield return new WaitForSeconds(InvicibleTime);
         battle.isGuard = false;
-        StartCoroutine(ReturnAttack());
-        
-        //차징시간, 화살데미지 
     }
     public IEnumerator ReturnAttack()
     {
+        yield return new WaitForSeconds(Delay);
+        isCharging = false;
         for (int i = 0; i < SkillReady.Length; i++)
         {
             if (!SkillReady[i])

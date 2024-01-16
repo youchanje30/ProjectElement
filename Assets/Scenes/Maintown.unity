@@ -729,6 +729,18 @@ PrefabInstance:
       propertyPath: playerHpBar
       value: 
       objectReference: {fileID: 25129533}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: Delay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: ChargeTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: InvicibleTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7141198254234339824, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: m_Name
       value: Player
