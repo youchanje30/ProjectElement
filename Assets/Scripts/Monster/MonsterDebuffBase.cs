@@ -8,11 +8,24 @@ public class MonsterDebuffBase : MonoBehaviour
     
 
     #region 지속되는 종류 (중복 방지) 초기화 형식
-    [SerializeField] private string[] functionName;
-    [SerializeField] private bool[] isActive;
-    [SerializeField] private float[] duration;
-    [SerializeField] private float[] tick; // 슬로우의 경우 이게 reSlowTime
-    [SerializeField] private float[] damage;
+
+    [System.Serializable]
+    struct Debuff
+    {
+        public string functionName;
+        public bool isActive;
+        public float duration;
+        public float tick; // 슬로우의 경우 이게 reSlowTime
+        public float damage;
+    }
+
+    [SerializeField] Debuff[] debuffs;
+
+    // [SerializeField] private string[] functionName;
+    // [SerializeField] private bool[] isActive;
+    // [SerializeField] private float[] duration;
+    // [SerializeField] private float[] tick; // 슬로우의 경우 이게 reSlowTime
+    // [SerializeField] private float[] damage;
     // 예외로 필요한 데이터들
     private bool canSlow = true;
 
@@ -49,7 +62,7 @@ public class MonsterDebuffBase : MonoBehaviour
 
     public IEnumerator Burn(float duration, float tick, float damage)
     {
-        isActive[0] = true;
+        debuffs[0].isActive = true;
         while (duration > 0)
         {
             monster.GetDamaged(damage, false);
@@ -57,19 +70,19 @@ public class MonsterDebuffBase : MonoBehaviour
             duration -= tick;
         }
 
-        isActive[0] = false;
-        this.damage[0] = 0f;
+        debuffs[0].isActive = false;
+        debuffs[0].damage = 0f;
     }
 
     public IEnumerator Slow(float duration, float reSlowTime, float per)
     {
-        isActive[1] = true;
+        debuffs[1].isActive = true;
         canSlow = false;
         monster.moveSpeed = monster.monsterData.maxMoveSpeed * (100 - per) * 0.01f;
         yield return new WaitForSeconds(duration);
 
         monster.moveSpeed = monster.monsterData.maxMoveSpeed;
-        isActive[1] = false;
+        debuffs[1].isActive = false;
         yield return new WaitForSeconds(reSlowTime);
 
         canSlow = true;
@@ -82,32 +95,32 @@ public class MonsterDebuffBase : MonoBehaviour
             return;
         }
 
-        if(isActive[(int)type])
+        if(debuffs[(int)type].isActive)
         {
-            StopCoroutine(functionName[(int)type]);   
+            StopCoroutine(debuffs[(int)type].functionName);   
         }
 
         
-        if(damage > this.damage[(int)type])
-            this.damage[(int)type] = damage;
+        if(damage > debuffs[(int)type].damage)
+            debuffs[(int)type].damage = damage;
 
-        this.duration[(int)type] = duration;
-        this.tick[(int)type] = tick;
+        debuffs[(int)type].duration = duration;
+        debuffs[(int)type].tick = tick;
         
         switch (type)
         {
             case BuffTypes.Burn:
-                if(damage > this.damage[0])
-                    this.damage[0] = damage;
+                if(damage > debuffs[0].damage)
+                    debuffs[0].damage = damage;
 
-                StartCoroutine(Burn(this.duration[0], this.tick[0], this.damage[0]));
+                StartCoroutine(Burn(debuffs[0].duration, debuffs[0].tick, debuffs[0].damage));
                 break;
 
             // case BuffTypes.Barrier:
             //     break;
 
             case BuffTypes.Slow:
-                StartCoroutine(Slow(this.duration[1], this.tick[1], etc));
+                StartCoroutine(Slow(debuffs[1].duration, debuffs[1].tick, etc));
                 break;
 
 

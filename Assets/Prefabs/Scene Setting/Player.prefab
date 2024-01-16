@@ -475,10 +475,10 @@ MonoBehaviour:
   inventory: {fileID: 8509772043893616530}
   anim:
   - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - {fileID: 9100000, guid: 730c7076a67906747bdf8a6f721f0a79, type: 2}
-  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
-  - {fileID: 9100000, guid: eaad5e105a5c72a4ba5820547a91f8cb, type: 2}
-  - {fileID: 9100000, guid: 17466de42e90b2a42812a29eb65e3349, type: 2}
+  - {fileID: 9100000, guid: d5fcc18cb19939843b44f768078987eb, type: 2}
+  - {fileID: 9100000, guid: b622ced3de7f13541935dcd9d1be885a, type: 2}
+  - {fileID: 9100000, guid: 6c22786c3c8be884cb0957e7a46afb3b, type: 2}
+  - {fileID: 9100000, guid: c36ed572a00539e4cba40334d6a15f33, type: 2}
   ioInventory: 9
   InteractKey: 101
   FirstSlot: 97

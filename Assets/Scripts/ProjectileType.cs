@@ -19,7 +19,7 @@ public class ProjectileType : MonoBehaviour
     public float duration;
     public float tick;
     public float per;
-    [Tooltip("¹Ù¶÷½ºÅ³ µ¥¹ÌÁö °¨¼ÒÀ² %")]
+    [Tooltip("ï¿½Ù¶ï¿½ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ %")]
     public float DeclineRate;
 
     void Update()
@@ -33,18 +33,18 @@ public class ProjectileType : MonoBehaviour
         switch (Projectile)
         {
             case Type.Arrow:
-                transform.position += new Vector3(-(transform.localScale.x),0,0) * Time.deltaTime * moveSpeed;
+                transform.position += new Vector3(transform.localScale.x,0,0) * Time.deltaTime * moveSpeed;
                 break;
             
             case Type.Magic:
                 if(target != null)
                     transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * moveSpeed);
                 else
-                    transform.position += new Vector3(-(transform.localScale.x),0,0) * Time.deltaTime * moveSpeed;          
+                    transform.position += new Vector3(transform.localScale.x,0,0) * Time.deltaTime * moveSpeed;          
                 break;
 
             case Type.WindSkill:
-                transform.position += new Vector3(-(transform.localScale.x), 0, 0) * Time.deltaTime * moveSpeed;
+                transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;
                 break;
         }
     }
