@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         CameraShakeOnOff = 1;
-        TimerVal = 0;
+        TimerVal = 1;
         //Time.timeScale = 0.3f;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
