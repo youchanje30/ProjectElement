@@ -311,10 +311,6 @@ public class Battle : MonoBehaviour
             StartCoroutine(ReturnAttack());
 
             yield return null;
-
-
-
-
         }
     }
 
@@ -351,7 +347,6 @@ public class Battle : MonoBehaviour
                 CanComboAtk = true;
             }
         }
-
     }
 
 

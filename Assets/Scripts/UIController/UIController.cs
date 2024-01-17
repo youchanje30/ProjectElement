@@ -122,4 +122,9 @@ public class UIController : MonoBehaviour
     {
         GameManager.instance.UpgradeStatus(id);
     }
+
+    public void DataReset(int BtnNum)
+    {
+        GameManager.instance.DataReset(BtnNum);
+    }
 }  
