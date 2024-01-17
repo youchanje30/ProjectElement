@@ -25,7 +25,6 @@ public class ProjectileType : MonoBehaviour
     void Update()
     {
         Move();
-        
     }
 
     void Move()
@@ -73,7 +72,7 @@ public class ProjectileType : MonoBehaviour
             other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
             if(Projectile == Type.Magic)
                 other.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(0f, duration, tick, BuffTypes.Slow, per);
-            if (Projectile != Type.WindSkill)
+            if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill)
             {
                 Destroy(gameObject);
             }
@@ -90,7 +89,22 @@ public class ProjectileType : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        
+        if(Projectile == Type.WaterSkill)
+        {
+            if (other.tag == "TileMap" || other.tag == "OneWayPlatForm")
+            {
+                transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
+                if (other.tag == "Monster")
+                {
+                    other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
+                }
+                Invoke("Remove", 1f);
+
+            }
+
+        }
+               
     }
     
     void Remove()

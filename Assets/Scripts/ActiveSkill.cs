@@ -22,6 +22,7 @@ public class ActiveSkill : MonoBehaviour
     [Header("¹°")]
     public GameObject WaterBall;
     public bool isWater = false;
+    public float WaterDamageIncreaseRate;
     public float FloatingForce;
     public float FloatingTime;
     public float WaterChargeTime;
@@ -131,21 +132,10 @@ public class ActiveSkill : MonoBehaviour
         rigid2D.velocity = new Vector2(0, 0);
         yield return new WaitForSeconds(WaterChargeTime);
     
-        //GameObject Ball = Instantiate(WaterBall);
-        //GameObject Ball1 = Instantiate(WaterBall);
-        //GameObject Ball2 = Instantiate(WaterBall);
-        //Ball.GetComponent<Rigidbody2D>().gravityScale = BallGravity;
-        //Ball.transform.position = transform.position;
-        //Ball.GetComponent<Rigidbody2D>().velocity = new Vector2(-2, 1) * BallSpeed;
-        //Ball1.GetComponent<Rigidbody2D>().gravityScale = BallGravity;
-        //Ball1.transform.position = transform.position;
-        //Ball1.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 1) * BallSpeed;
-        //Ball2.GetComponent<Rigidbody2D>().gravityScale = BallGravity;
-        //Ball2.transform.position = transform.position;
-        //Ball2.GetComponent<Rigidbody2D>().velocity = new Vector2(2, 1) * BallSpeed;
         for (int i = 0; i < 3; i++)
         {
             GameObject Ball = Instantiate(WaterBall);
+            Ball.GetComponent<ProjectileType>().Damage = DefaultDamage *= 1 + (WaterDamageIncreaseRate / 100);
             Ball.GetComponent<Rigidbody2D>().gravityScale = BallGravity;
             Ball.transform.position = transform.position;
             Ball.GetComponent<Rigidbody2D>().velocity = BallPos[i] * BallSpeed;
