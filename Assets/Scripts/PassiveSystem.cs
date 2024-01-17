@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BuffTypes { Burn = 0, Slow, Barrier }
+public enum BuffTypes { Burn = 0, Slow, Barrier/*, Stun*/ }
 
 public class PassiveSystem : MonoBehaviour
 {    

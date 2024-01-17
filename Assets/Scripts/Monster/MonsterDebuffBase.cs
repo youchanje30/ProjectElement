@@ -73,7 +73,14 @@ public class MonsterDebuffBase : MonoBehaviour
         debuffs[0].isActive = false;
         debuffs[0].damage = 0f;
     }
-
+    //public IEnumerator Stun(float duration)
+    //{
+    //    debuffs[3].isActive = true;
+    //    monster.isStun = true;
+    //    yield return new WaitForSeconds(duration);
+    //    debuffs[3].isActive = false;
+    //    monster.isStun = false;
+    //}
     public IEnumerator Slow(float duration, float reSlowTime, float per)
     {
         debuffs[1].isActive = true;
@@ -123,6 +130,9 @@ public class MonsterDebuffBase : MonoBehaviour
                 StartCoroutine(Slow(debuffs[1].duration, debuffs[1].tick, etc));
                 break;
 
+            //case BuffTypes.Stun:
+            //    StartCoroutine(Stun(debuffs[3].duration));
+            //    break;
 
             default:
                 Debug.Log("Continue Buff Default Value");

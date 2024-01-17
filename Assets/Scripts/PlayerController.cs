@@ -228,7 +228,7 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking || manager.isInven)
+        if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking || manager.isInven || skill.isSouth || skill.isWater)
         {
             if(isRepeatAtk)
                 isRepeatAtk = false;

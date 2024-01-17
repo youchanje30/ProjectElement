@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Type
 {
-    Arrow, Magic, WindSkill
+    Arrow, Magic, WindSkill, WaterSkill
 }
 
 public class ProjectileType : MonoBehaviour
@@ -19,7 +19,7 @@ public class ProjectileType : MonoBehaviour
     public float duration;
     public float tick;
     public float per;
-    [Tooltip("�ٶ���ų ������ ������ %")]
+    [Tooltip("관통 후 데미지 감소율 %")]
     public float DeclineRate;
 
     void Update()
@@ -45,6 +45,8 @@ public class ProjectileType : MonoBehaviour
 
             case Type.WindSkill:
                 transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;
+                break;
+            case Type.WaterSkill:
                 break;
         }
     }
