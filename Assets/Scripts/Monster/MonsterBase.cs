@@ -35,6 +35,7 @@ public class MonsterBase : MonoBehaviour
     protected bool isAtking;    // 공격 상태
     protected bool isTracking;  // 추적 상태
     protected bool isMove;      // 이동 상태
+    public bool isStun;
     #endregion
 
 
@@ -126,7 +127,7 @@ public class MonsterBase : MonoBehaviour
     #region 몬스터 상태 관리
     protected virtual void CheckState()
     {
-        if(isDead || isAtking || isKnockback)
+        if(isDead || isAtking || isKnockback || isStun)
         {
             canMove = false;
             canAtk = false;
@@ -158,7 +159,7 @@ public class MonsterBase : MonoBehaviour
         isTracking = false;
         isMove = false;
 
-        if(isDead || isAtking || isKnockback)
+        if(isDead || isAtking || isKnockback || isStun)
         {
             canMove = false;
             canAtk = false;

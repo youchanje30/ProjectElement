@@ -20,6 +20,7 @@ TagManager:
   - Image
   - ItemManager
   - Card
+  - TileMap
   layers:
   - Default
   - TransparentFX

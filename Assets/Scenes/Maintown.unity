@@ -729,6 +729,14 @@ PrefabInstance:
       propertyPath: playerHpBar
       value: 
       objectReference: {fileID: 25129533}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: BallSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: BallGravity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7141198254234339824, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: m_Name
       value: Player
@@ -913,7 +921,7 @@ GameObject:
   - component: {fileID: 1153975006}
   m_Layer: 6
   m_Name: Plat TileMap
-  m_TagString: Untagged
+  m_TagString: TileMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2813,14 +2821,6 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1728160720}
-    - target: {fileID: 3714393654872338939, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714393654872338939, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4168823880644478302, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2853,10 +2853,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6555618806498147956, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7314311519170019911, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2877,18 +2873,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 737378945}
-    - target: {fileID: 9185679111181888392, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9185679111181888392, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9185679111181888392, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UIController, Assembly-CSharp
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

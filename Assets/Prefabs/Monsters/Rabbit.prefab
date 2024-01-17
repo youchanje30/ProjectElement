@@ -145,6 +145,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6487998633272902770, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: debuffs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8195864001011028703, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Controller
       value: 

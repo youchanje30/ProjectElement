@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Type
 {
-    Arrow, Magic, WindSkill
+    Arrow, Magic, WindSkill, WaterSkill
 }
 
 public class ProjectileType : MonoBehaviour
@@ -19,13 +19,12 @@ public class ProjectileType : MonoBehaviour
     public float duration;
     public float tick;
     public float per;
-    [Tooltip("�ٶ���ų ������ ������ %")]
+    [Tooltip("관통 후 데미지 감소율 %")]
     public float DeclineRate;
 
     void Update()
     {
         Move();
-        
     }
 
     void Move()
@@ -45,6 +44,8 @@ public class ProjectileType : MonoBehaviour
 
             case Type.WindSkill:
                 transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;
+                break;
+            case Type.WaterSkill:
                 break;
         }
     }
@@ -71,7 +72,7 @@ public class ProjectileType : MonoBehaviour
             other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
             if(Projectile == Type.Magic)
                 other.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(0f, duration, tick, BuffTypes.Slow, per);
-            if (Projectile != Type.WindSkill)
+            if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill)
             {
                 Destroy(gameObject);
             }
@@ -88,7 +89,22 @@ public class ProjectileType : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        
+        if(Projectile == Type.WaterSkill)
+        {
+            if (other.tag == "TileMap" || other.tag == "OneWayPlatForm")
+            {
+                transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
+                if (other.tag == "Monster")
+                {
+                    other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
+                }
+                Invoke("Remove", 1f);
+
+            }
+
+        }
+               
     }
     
     void Remove()
