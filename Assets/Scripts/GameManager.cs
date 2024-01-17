@@ -109,7 +109,6 @@ public class GameManager : MonoBehaviour
         talkManager  = GameObject.Find("Talk Manager").GetComponent<TalkManager>();
     }
 
-
     void Start()
     {
         statusUpdrageUI = UIController.instance.statusUpdrageUI;

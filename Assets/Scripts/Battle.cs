@@ -192,6 +192,7 @@ public class Battle : MonoBehaviour
 
             if(WeaponType == WeaponTypes.Bow)
             {
+                ChargingBowAtk(false);
                 StartCoroutine(BowAtk());
                 // Debug.Log("Start Atk Bow"); 
                 return; //활은 좌클릭이 없어요
@@ -261,11 +262,9 @@ public class Battle : MonoBehaviour
             rigid2D.velocity = Vector2.zero;
             Atking = true;
             //isSwap = false; 스왑 1안 추가 나중에 주석 풀면 됨
-            isAtkReady[(int)WeaponType] = false;               
-            
+            isAtkReady[(int)WeaponType] = false;
           
             animator.SetBool("isAct", true);
-
             // 공격 애니메이션 시작
             // yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
             if(WeaponType == WeaponTypes.Wand) 
@@ -429,7 +428,7 @@ public class Battle : MonoBehaviour
         if(isAtkReady[(int)WeaponType])
         {
             rigid2D.velocity = Vector2.zero;
-            animator.SetTrigger("Atk");
+            // animator.SetTrigger("Atk");
             Atking = true;
             isAtkReady[(int)WeaponType] = false;
             // 공격 애니메이션 시작
@@ -442,6 +441,7 @@ public class Battle : MonoBehaviour
             yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]/(status.atkSpeed * 0.01f));
 
             isAtkReady[(int)WeaponType] = true;
+            Atking = false;
         } 
     }
 
@@ -459,8 +459,10 @@ public class Battle : MonoBehaviour
         Atking = false;
     }*/
  
-    public void ChargingBowAtk()
+    public void ChargingBowAtk(bool isCharged = false)
     {
+        if(!isAtkReady[(int)WeaponType]) return;
+
         Atking = true;
         // 공격 애니메이션 시작
         // yield return new WaitForSeconds(Right_BeforAtkDelay[weaponType]);

@@ -52,6 +52,9 @@ public class PlayerController : MonoBehaviour
     private KeyCode DashKey = KeyCode.LeftShift;
     private bool pressedDashKey;
     private KeyCode atkKey = KeyCode.Z;
+    [SerializeField] float turnToChargeTime = 0.1f;
+    // private bool isAtkKey;
+
     private bool pressedAtkKey;
     private KeyCode SkillKey = KeyCode.X;
     private bool pressedSkillKey;
@@ -79,6 +82,7 @@ public class PlayerController : MonoBehaviour
     public float chargingTime;
 
     private bool ischarging;
+    private bool isBegincharging;
 
     void Awake()
     {
@@ -252,18 +256,24 @@ public class PlayerController : MonoBehaviour
 
                 if(!ischarging)
                 {
-                    animator.SetBool("isCharge", true);
-                    animator.SetTrigger("Charging");
                     ischarging = true;
                 }
+
+                if(!isBegincharging && chargingTime >= turnToChargeTime)
+                {
+                    isBegincharging = true;
+                    animator.SetBool("isCharge", true);
+                    animator.SetTrigger("Charging");
+                }
             }
-                
         }
         
         bool AtkFin = Input.GetKeyUp(atkKey);
 
+        // if(ischarging && (AtkFin || chargingTime >= 1f))
         if(ischarging && (AtkFin || chargingTime >= 1f))
         {
+            isBegincharging = false;
             ischarging = false;
             animator.SetBool("isCharge", false);
 
