@@ -181,6 +181,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+  
+
         pressedDashKey = Input.GetKeyDown(DashKey);
         pressedJumpkey = Input.GetKeyDown(JumpKey);
         hAxis = Input.GetAxisRaw("Horizontal");

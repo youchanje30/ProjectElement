@@ -797,6 +797,7 @@ MonoBehaviour:
   FireFloor: {fileID: 3096906974402678174, guid: db7de1076855ad84ba51dd45a7123812, type: 3}
   WaterBall: {fileID: 3054785954419580376, guid: 02e9dce7710091749a6c01825bbde7f9, type: 3}
   isWater: 0
+  WaterDamageIncreaseRate: 0
   FloatingForce: 12
   FloatingTime: 0.5
   WaterChargeTime: 2
@@ -804,8 +805,11 @@ MonoBehaviour:
   - {x: -1.5, y: 2}
   - {x: 0, y: 2}
   - {x: 1.5, y: 2}
-  BallGravity: 1
-  BallSpeed: 10
+  BallGravity: 10
+  BallSpeed: 5
+  BombRange: {x: 10, y: 10}
+  BombChargeTime: 1
+  isbomb: 0
   isSouth: 0
   JumpDamageIncreaseRate: 20
   LandDamageIncreaseRate: 50

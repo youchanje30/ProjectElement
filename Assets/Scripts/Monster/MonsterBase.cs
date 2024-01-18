@@ -28,7 +28,6 @@ public class MonsterBase : MonoBehaviour
     protected float curAtkCoolTime;
     protected float knockbackTime;
 
-
     [Header("몬스터 상태 정보")]
     protected bool isDead;      // 죽는 상태
     protected bool isKnockback; // 넉백 상태
@@ -36,6 +35,7 @@ public class MonsterBase : MonoBehaviour
     protected bool isTracking;  // 추적 상태
     protected bool isMove;      // 이동 상태
     public bool isStun;
+    public bool isHit;
     #endregion
 
 

@@ -330,6 +330,7 @@ MonoBehaviour:
   moveSpeed: 0
   curHp: 0
   damage: 0
+  isStun: 0
   atkPos:
   - {x: 0, y: 0, z: 0}
   atkSize:
@@ -372,11 +373,6 @@ MonoBehaviour:
     tick: 0
     damage: 0
   - functionName: Slow
-    isActive: 0
-    duration: 0
-    tick: 0
-    damage: 0
-  - functionName: Stun
     isActive: 0
     duration: 0
     tick: 0

@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ActiveSkill : MonoBehaviour
@@ -14,26 +15,44 @@ public class ActiveSkill : MonoBehaviour
     public bool[] SkillReady;
     public bool isCharging = false;
     [Header("스킬 데미지 = 최종 데미지 * 데미지 증가율")]
-    [SerializeField]private float DefaultDamage;
+    public float DefaultDamage;
+    #region 불
     [Header("불")]
     public GameObject FireFloor;
+    #endregion
 
-
+    #region 물
     [Header("물")]
     public GameObject WaterBall;
     public bool isWater = false;
+    [Tooltip("1타 데미지 증가율")]
     public float WaterDamageIncreaseRate;
+    [Tooltip("2타 데미지 증가율")]
+    public float BombDamageIncreaseRate;
+    [Tooltip("공중부양")]
     public float FloatingForce;
+    [Tooltip("올라가는 시간")]
     public float FloatingTime;
+    [Tooltip("차징 시간")]
     public float WaterChargeTime;
+    [Tooltip("물폭탄 날라가는 위치")]
     public Vector2[] BallPos;
+    [Tooltip("물폭탄 중력")]
     public float BallGravity;
+    [Tooltip("물폭탄 속도")]
     public float BallSpeed;
+    [Tooltip("2타 범위")]
+    public Vector2 BombRange;
+    [Tooltip("2타 터지기 전 시간")]
+    public float BombChargeTime;
+    #endregion
 
-
+    #region 땅 
     [Header("땅")]
     public bool isSouth = false;
+    [Tooltip("점프 중 데미지 증가율")]
     public float JumpDamageIncreaseRate;
+    [Tooltip("착지 시 데미지 증가율")]
     public float LandDamageIncreaseRate;
     [Tooltip("점프")]
     public float JumpForce;
@@ -46,8 +65,11 @@ public class ActiveSkill : MonoBehaviour
     [Tooltip("착지 범위")]
     public Vector3[] LandingRange;
     public Transform[] LandingPos;
+    private int count;
+    private bool CanLanding;
+    #endregion
 
-
+    #region 바람 
     [Header("바람")]
     public GameObject Arrow;
     public Transform Pos;
@@ -61,6 +83,8 @@ public class ActiveSkill : MonoBehaviour
     public float InvicibleTime;
     [Tooltip("발사 후 반동")]
     public float Delay;
+    #endregion
+
     void Awake()
     {
         passive = GetComponent<PassiveSystem>();
@@ -77,15 +101,22 @@ public class ActiveSkill : MonoBehaviour
         DefaultDamage = battle.atkDamage;
         if (isSouth)
         {
+            movement2D.curDashCnt = -1;
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[1].position, LandingRange[1], 0);
             foreach (Collider2D collider in collider2Ds)
             {
-                if (collider.tag == "Monster" || collider.tag == "Destruct")
+                if (collider.tag == "Monster" && collider.GetComponentInParent<MonsterBase>().isHit == false)
+                {
+                    StartCoroutine(Hit(collider.gameObject, 0.5f));
+                    SkillAtk(collider.gameObject, DefaultDamage *= 1 + (JumpDamageIncreaseRate / 100));
+                }
+                if( collider.tag == "Destruct")
                 {
                     SkillAtk(collider.gameObject, DefaultDamage *= 1 + (JumpDamageIncreaseRate / 100));
-                    // collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
                 }
+                DefaultDamage = battle.atkDamage;
             }
+            count = 0;
             Invoke("RandingSet", RisingTime);
         }
     }
@@ -131,20 +162,21 @@ public class ActiveSkill : MonoBehaviour
         yield return new WaitForSeconds(FloatingTime); 
         rigid2D.velocity = new Vector2(0, 0);
         yield return new WaitForSeconds(WaterChargeTime);
-    
+        GameObject ball;
         for (int i = 0; i < 3; i++)
         {
-            GameObject Ball = Instantiate(WaterBall);
-            Ball.GetComponent<ProjectileType>().Damage = DefaultDamage *= 1 + (WaterDamageIncreaseRate / 100);
-            Ball.GetComponent<Rigidbody2D>().gravityScale = BallGravity;
-            Ball.transform.position = transform.position;
-            Ball.GetComponent<Rigidbody2D>().velocity = BallPos[i] * BallSpeed;
+            ball = Instantiate(WaterBall);
+            ball.GetComponent<ProjectileType>().Damage = DefaultDamage *= 1 + (WaterDamageIncreaseRate / 100);
+            ball.GetComponent<Rigidbody2D>().gravityScale = BallGravity;
+            ball.transform.position = transform.position;
+            ball.GetComponent<Rigidbody2D>().velocity = BallPos[i] * BallSpeed;                        
         }
         battle.isSwap = true;
         isCharging = false;
         isWater = false;
         SkillReady[(int)battle.WeaponType] = true;
         rigid2D.gravityScale = gravity;
+        StartCoroutine(ReturnAttack());  
     }
     #endregion
 
@@ -155,6 +187,7 @@ public class ActiveSkill : MonoBehaviour
         battle.isSwap = false;
         isSouth = true;
         battle.isGuard = true;
+        CanLanding = true;
         rigid2D.velocity = new Vector2(rigid2D.velocity.x, JumpForce);
         yield return new WaitForSeconds(RisingTime);
         rigid2D.velocity = new Vector2(rigid2D.velocity.x, -FallForce);
@@ -163,29 +196,47 @@ public class ActiveSkill : MonoBehaviour
     }
     public void RandingSet()
     {
-        if (movement2D.isGround)
+        if (movement2D.isGround && CanLanding)
         {
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
             foreach (Collider2D collider in collider2Ds)
-            {
-                if (collider.tag == "Monster" || collider.tag == "Destruct")
-                {              
-                    StartCoroutine(Stun(collider.gameObject));
+            {               
+                if (collider.tag == "Monster" && collider.GetComponentInParent<MonsterBase>().isHit == false)
+                {
+                    StartCoroutine(Hit(collider.gameObject, 0.5f));
+                    StartCoroutine(Stun(collider.gameObject, StunTime));
                     SkillAtk(collider.gameObject, DefaultDamage *= 1 + (LandDamageIncreaseRate / 100));
                 }
+                if (collider.tag == "Destruct")
+                {
+                    SkillAtk(collider.gameObject, DefaultDamage *= 1 + (LandDamageIncreaseRate / 100));
+                }
+                DefaultDamage = battle.atkDamage;
+               
             }
+            CanLanding = false;
             battle.isSwap = true;
             isSouth = false;
             battle.isGuard = false;
+            StartCoroutine(movement2D.DashCoolDown(0.01f));
+           
         }
     }
-    public IEnumerator Stun(GameObject monster)
+    public IEnumerator Stun(GameObject monster , float Stuntime)
     {
        // monster.GetComponentInParent<MonsterBase>().moveSpeed = 0;
         monster.GetComponentInParent<MonsterBase>().isStun = true;
-        yield return new WaitForSeconds(StunTime);
+        yield return new WaitForSeconds(Stuntime);
         // monster.GetComponentInParent<MonsterBase>().moveSpeed = monster.GetComponentInParent<MonsterBase>().monsterData.maxMoveSpeed;
         monster.GetComponentInParent<MonsterBase>().isStun = false;
+    }
+    public IEnumerator Hit(GameObject monster, float time)
+    {
+        // monster.GetComponentInParent<MonsterBase>().moveSpeed = 0;
+        monster.GetComponentInParent<MonsterBase>().isHit = true;
+        yield return new WaitForSeconds(time);
+        // monster.GetComponentInParent<MonsterBase>().moveSpeed = monster.GetComponentInParent<MonsterBase>().monsterData.maxMoveSpeed;
+        monster.GetComponentInParent<MonsterBase>().isHit = false;
     }
     #endregion
 
@@ -232,7 +283,7 @@ public class ActiveSkill : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(LandingPos[0].position, LandingRange[0]);
-        Gizmos.DrawWireCube(LandingPos[1].position, LandingRange[1]);
+        Gizmos.DrawWireCube(LandingPos[1].position, LandingRange[1]);       
     }
     public void SkillAtk(GameObject AtkObj, float Damage)
     {
@@ -250,4 +301,14 @@ public class ActiveSkill : MonoBehaviour
         }
 
     }
+    //private void OnTriggerEnter2D(Collider2D collider)
+    //{
+    //    if (isSouth)
+    //    {
+    //        if (collider.tag == "Monster" || collider.tag == "Destruct")
+    //        {
+    //            SkillAtk(collider.gameObject, DefaultDamage *= 1 + (JumpDamageIncreaseRate / 100));
+    //        }
+    //    }
+    //}
 }
