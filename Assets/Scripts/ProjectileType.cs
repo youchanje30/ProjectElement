@@ -82,6 +82,7 @@ public class ProjectileType : MonoBehaviour
             }
             if (Projectile == Type.WindSkill)
             {
+                skill.passive.ActivePassive(WeaponTypes.Wand, other.GetComponentInParent<MonsterDebuffBase>());
                 Damage *= 1 - (DeclineRate / 100);
             }
         }
@@ -97,10 +98,7 @@ public class ProjectileType : MonoBehaviour
         {
             if (other.tag == "TileMap" || other.tag == "OneWayPlatForm")
             {
-                transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
-                transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.5f);
-                transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
+                WaterY(skill.WaterY);
                 //if (other.tag == "Monster")
                 //{
                 //   // other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
@@ -131,12 +129,22 @@ public class ProjectileType : MonoBehaviour
             {
                 if (collider.tag == "Monster" || collider.tag == "Destruct")
                 {
-
+                    skill.passive.ActivePassive(WeaponTypes.Wand, collider.GetComponentInParent<MonsterDebuffBase>());
                     skill.SkillAtk(collider.gameObject, skill.DefaultDamage *= 1 + (skill.BombDamageIncreaseRate / 100));
                   
                 }
             }
         }
         Remove();
+    }
+    public void WaterY(float y)
+    {
+        if(transform.position.y <= y)
+        {
+            transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
+            transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            transform.GetComponent<Rigidbody2D>().position += new Vector2(0,0.5f);
+            transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        }
     }
 }

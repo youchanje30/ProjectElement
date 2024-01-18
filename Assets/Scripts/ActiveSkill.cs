@@ -10,7 +10,7 @@ public class ActiveSkill : MonoBehaviour
     private Battle battle;
     private Movement2D movement2D;
     private Rigidbody2D rigid2D;
-    private PassiveSystem passive;
+    public PassiveSystem passive;
     public float[] SkillCoolTime;
     public bool[] SkillReady;
     public bool isCharging = false;
@@ -41,10 +41,11 @@ public class ActiveSkill : MonoBehaviour
     public float BallGravity;
     [Tooltip("물폭탄 속도")]
     public float BallSpeed;
+    public float WaterY;
     [Tooltip("2타 범위")]
     public Vector2 BombRange;
     [Tooltip("2타 터지기 전 시간")]
-    public float BombChargeTime;
+    public float BombChargeTime; 
     #endregion
 
     #region 땅 
@@ -129,6 +130,7 @@ public class ActiveSkill : MonoBehaviour
                 FIreSkill();
                 break;
             case WeaponTypes.Wand:
+                WaterY = transform.position.y;
                 StartCoroutine(WaterSkill());
                 break;
             case WeaponTypes.Shield:
