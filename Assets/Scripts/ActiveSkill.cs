@@ -21,7 +21,7 @@ public class ActiveSkill : MonoBehaviour
     [Header("불")]
     public GameObject FireFloor;
     public int RangeCount;
-    [Tooltip("확산 증가율")]
+    [Tooltip("확산 데미지 증가율")]
     public float DiffusionDamageIncreaseRate;
     [Tooltip("바닥감지 길이")]
     public int detectlength;
@@ -51,11 +51,11 @@ public class ActiveSkill : MonoBehaviour
     public float BallGravity;
     [Tooltip("물폭탄 속도")]
     public float BallSpeed;
-    public float WaterY;
     [Tooltip("2타 범위")]
     public Vector2 BombRange;
     [Tooltip("2타 터지기 전 시간")]
-    public float BombChargeTime; 
+    public float BombChargeTime;
+    public float WaterY;
     #endregion
 
     #region 땅 
