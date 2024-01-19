@@ -104,6 +104,7 @@ public class MonsterDebuffBase : MonoBehaviour
 
         if(debuffs[(int)type].isActive)
         {
+            Debug.Log("FIre");
             StopCoroutine(debuffs[(int)type].functionName);   
         }
 
