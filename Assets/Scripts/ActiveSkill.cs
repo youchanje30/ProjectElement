@@ -28,6 +28,7 @@ public class ActiveSkill : MonoBehaviour
     [Tooltip("감지하는 레이어")]
     public LayerMask layer;
     RaycastHit2D hit;
+    RaycastHit2D hit1;
     #endregion
 
     #region 물
@@ -106,9 +107,7 @@ public class ActiveSkill : MonoBehaviour
         }
     }
     void Update()
-    {
-        
-       
+    {    
         DefaultDamage = battle.atkDamage;
         if (isSouth)
         {
@@ -131,8 +130,8 @@ public class ActiveSkill : MonoBehaviour
         }
         for (int i = 0; i < RangeCount; i++)
         {
-            Debug.DrawRay(new Vector2(transform.position.x + i, transform.position.y), transform.up * -20, Color.red);
-            Debug.DrawRay(new Vector2(transform.position.x - i, transform.position.y), Vector3.down * 20, Color.red);
+            Debug.DrawRay(new Vector2(transform.position.x + i, transform.position.y), transform.up * -detectlength, Color.red);
+            Debug.DrawRay(new Vector2(transform.position.x - i, transform.position.y), Vector3.down * detectlength, Color.red);
         }
     }
 
@@ -159,28 +158,24 @@ public class ActiveSkill : MonoBehaviour
     #region 불 정령
     public void FIreSkill()
     {
+        SkillReady[(int)battle.WeaponType] = false;
         //바닥에만 불 장판이 깔려야함 
         for (int i = 0; i < RangeCount; i++)
         {
             hit = Physics2D.Raycast(new Vector2(transform.position.x + i, transform.position.y), transform.up * -20, detectlength, layer);
-            if (hit.collider !=null)
-            {           
-                Debug.Log(hit.collider.name);
-                GameObject Fire = Instantiate(FireFloor);
-                Physics2D.OverlapBoxAll(new Vector2(Fire.transform.position.x + 0.6f + i, Fire.transform.position.y), new Vector2(0.1f, 0.1f), 0);
-                Fire.transform.position = new Vector2(transform.position.x + i,transform.position.y - hit.distance );
-            }          
-        }
-
-        for (int i = 1; i < RangeCount; i++)
-        {
-            hit = Physics2D.Raycast(new Vector2(transform.position.x - i, transform.position.y), transform.up * -20, detectlength, layer);
             if (hit.collider != null)
             {
                 GameObject Fire = Instantiate(FireFloor);
-                Fire.transform.position = new Vector2(transform.position.x - i, transform.position.y - hit.distance);
+                Fire.transform.position = new Vector2(transform.position.x + i, transform.position.y - hit.distance);
+            }
+            hit1 = Physics2D.Raycast(new Vector2(transform.position.x - i, transform.position.y), transform.up * -20, detectlength, layer);
+            if (hit1.collider != null)
+            {
+                GameObject Fire = Instantiate(FireFloor);
+                Fire.transform.position = new Vector2(transform.position.x - i, transform.position.y - hit1.distance);
             }
         }
+        StartCoroutine(ReturnAttack());
     }
     #endregion
 

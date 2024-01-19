@@ -112,9 +112,12 @@ public class ProjectileType : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (Projectile == Type.FireSkill)
-        {
-            skill.passive.ActivePassive(WeaponTypes.Sword, other.GetComponentInParent<MonsterDebuffBase>());
+        if (other.tag == "Monster") 
+        { 
+            if (Projectile == Type.FireSkill)
+            {
+                skill.passive.ActivePassive(WeaponTypes.Sword, other.GetComponentInParent<MonsterDebuffBase>());
+            }
         }
     }
 
@@ -152,13 +155,13 @@ public class ProjectileType : MonoBehaviour
             transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
         }
     }
-    private void OnDrawGizmos()
-    {
-        if(Projectile == Type.FireSkill)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(new Vector3(transform.position.x + 0.6f, transform.position.y),new Vector3(transform.position.x + 1.1f, transform.position.y));
-            Gizmos.DrawLine(new Vector3(transform.position.x - 0.6f, transform.position.y), new Vector3(transform.position.x - 1.1f, transform.position.y));
-        }
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    if(Projectile == Type.FireSkill)
+    //    {
+    //        Gizmos.color = Color.red;
+    //        Gizmos.DrawLine(new Vector3(transform.position.x + 0.6f, transform.position.y),new Vector3(transform.position.x + 1.1f, transform.position.y));
+    //        Gizmos.DrawLine(new Vector3(transform.position.x - 0.6f, transform.position.y), new Vector3(transform.position.x - 1.1f, transform.position.y));
+    //    }
+    //}
 }
