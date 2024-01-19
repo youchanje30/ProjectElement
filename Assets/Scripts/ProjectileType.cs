@@ -56,7 +56,16 @@ public class ProjectileType : MonoBehaviour
     {
         Collider2D = GetComponent<CapsuleCollider2D>();
         skill = GameObject.FindGameObjectWithTag("Player").GetComponent<ActiveSkill>();
+        if(Projectile != Type.WaterSkill && Projectile != Type.FireSkill) 
         Invoke("Remove", 5f);
+        if(Projectile == Type.FireSkill)
+        {
+            Invoke("Remove",skill.ActiveTime );
+        }
+        if(Projectile == Type.WaterSkill )
+        {
+            Invoke("Remove", skill.activeTime);
+        }
     }
 
 
@@ -135,11 +144,14 @@ public class ProjectileType : MonoBehaviour
             Debug.Log("1");
             foreach (Collider2D collider in collider2Ds)
             {
-                if (collider.tag == "Monster" || collider.tag == "Destruct")
+                if (collider.tag == "Monster")
                 {
                     skill.passive.ActivePassive(WeaponTypes.Wand, collider.GetComponentInParent<MonsterDebuffBase>());
+                    skill.SkillAtk(collider.gameObject, skill.DefaultDamage *= 1 + (skill.BombDamageIncreaseRate / 100));              
+                }
+                if (collider.tag == "Destruct")
+                {
                     skill.SkillAtk(collider.gameObject, skill.DefaultDamage *= 1 + (skill.BombDamageIncreaseRate / 100));
-                  
                 }
             }
         }

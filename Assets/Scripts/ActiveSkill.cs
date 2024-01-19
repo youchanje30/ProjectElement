@@ -27,6 +27,8 @@ public class ActiveSkill : MonoBehaviour
     public int detectlength;
     [Tooltip("감지하는 레이어")]
     public LayerMask layer;
+    [Tooltip("발동 시간")]
+    public float ActiveTime;
     RaycastHit2D hit;
     RaycastHit2D hit1;
     #endregion
@@ -56,6 +58,8 @@ public class ActiveSkill : MonoBehaviour
     [Tooltip("2타 터지기 전 시간")]
     public float BombChargeTime;
     public float WaterY;
+    [Tooltip("발동 시간")]
+    public float activeTime;
     #endregion
 
     #region 땅 

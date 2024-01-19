@@ -803,6 +803,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 64
+  ActiveTime: 3
   WaterBall: {fileID: 3054785954419580376, guid: 02e9dce7710091749a6c01825bbde7f9, type: 3}
   isWater: 0
   WaterDamageIncreaseRate: 0
@@ -816,9 +817,10 @@ MonoBehaviour:
   - {x: 1.5, y: 2}
   BallGravity: 10
   BallSpeed: 5
-  WaterY: 0
   BombRange: {x: 10, y: 10}
   BombChargeTime: 1
+  WaterY: 0
+  activeTime: 10
   isSouth: 0
   JumpDamageIncreaseRate: 20
   LandDamageIncreaseRate: 50
