@@ -104,13 +104,14 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        SetEquipment();
-        battle.WeaponType = PlayerWeaponType;
-
         if(!playerHpBar)
             playerHpBar = UIController.instance.playerHpBar;
         if(!HpFill)
             HpFill = UIController.instance.HpFill;
+            
+        SetEquipment();
+        battle.WeaponType = PlayerWeaponType;
+
         playerHpBar.maxValue = status.maxHp;
     }
 
@@ -172,7 +173,7 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.isInven|| battle.fallAtking || ischarging || battle.Atking|| skill.isCharging)//|| battle.Atking)
+        if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.isInven|| battle.fallAtking || ischarging || battle.atking|| skill.isCharging)//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
@@ -195,7 +196,7 @@ public class PlayerController : MonoBehaviour
         pressedThirdSlot = Input.GetKeyDown(ThirdSlot);
 
 
-        if (battle.Atking)
+        if (battle.atking)
         {
             pressedInteractKey = false;
         }
@@ -221,6 +222,7 @@ public class PlayerController : MonoBehaviour
         status.SetStatue();
 
         animator.SetFloat("AtkSpeed", status.atkSpeed * 0.01f);
+        playerHpBar.maxValue = status.maxHp;
     }
 
     void Act() //상호작용, 공격 스킬 등의 입력을 전달하는 함수
@@ -231,16 +233,14 @@ public class PlayerController : MonoBehaviour
             pressedInteractKey = false;
             return;
         }
-
         
-        if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.Atking || manager.isInven || skill.isSouth || skill.isWater)
+        if (battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.atking || manager.isInven || skill.isSouth || skill.isWater)
         {
             if(isRepeatAtk)
                 isRepeatAtk = false;
             return;
         }
             
-        
 
         // 행동 불가능한 상황
         if (pressedAtkKey && !isRepeatAtk)
@@ -271,7 +271,6 @@ public class PlayerController : MonoBehaviour
         
         bool AtkFin = Input.GetKeyUp(atkKey);
 
-        // if(ischarging && (AtkFin || chargingTime >= 1f))
         if(ischarging && (AtkFin || chargingTime >= 1f))
         {
             isBegincharging = false;
@@ -284,7 +283,6 @@ public class PlayerController : MonoBehaviour
                 battle.AtkAction(1);
 
             chargingTime = 0f;
-            
             isRepeatAtk = true;
         }
         
@@ -301,11 +299,8 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        if (battle.Atking)
-        {
-            return;
-        }
-
+        if (battle.atking) return;
+        
         if (pressedDashKey && movement2D.curDashCnt > 0) StartCoroutine(movement2D.Dash());
 
         if (!movement2D.isDashing)

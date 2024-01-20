@@ -227,7 +227,7 @@ public class SaveManager : MonoBehaviour
 
  
             // player.PlayerElementType = playerElement;
-            player.SetEquipment();
+            // player.SetEquipment();
         }
         else
         {

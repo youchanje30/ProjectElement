@@ -6,9 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Movement2D : MonoBehaviour
 {
-    // [Header("Base Setting")]
-    [Tooltip("플레이어가 움직이는 속도")]
-    // public float moveSpeed = 8f;
     public float moveSpeed
     {
         get
@@ -16,8 +13,6 @@ public class Movement2D : MonoBehaviour
             return playerStatus.playerSpeed;
         }
     }
-    [Tooltip("점프력")]
-    // public float jumpForce = 15f;
     public float jumpForce
     {
         get 
@@ -25,7 +20,6 @@ public class Movement2D : MonoBehaviour
             return playerStatus.jumpForce;
         }
     }
-    // [Space(20f)]
     
     private Rigidbody2D rigid2D;
     private BoxCollider2D boxCollider2D;
@@ -37,10 +31,7 @@ public class Movement2D : MonoBehaviour
 
     [SerializeField] private LayerMask GroundLayer;
     public bool isGround;
-    private Vector2 footPos;
     
-
-
     [Header("Jump Setting")]
     [Tooltip("최대 점프 횟수")]
     [SerializeField] private int maxJumpCnt = 2;

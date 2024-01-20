@@ -38,8 +38,8 @@ public class CameraController : MonoBehaviour
 
     public IEnumerator Shake(float duration = 0.1f , float magnitude = 0.2f)
     {
-        if(GameManager.instance.CanCameraShake)
-        {
+        // if(GameManager.instance.CanCameraShake)
+        // {
             Vector3 originalPos = transform.position;
         
 
@@ -59,6 +59,6 @@ public class CameraController : MonoBehaviour
             }
             // transform.position = originalPos;
             transform.localPosition = new Vector3(0,0,0);
-        }
+        // }
     }
 }

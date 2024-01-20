@@ -45,9 +45,7 @@ public class PassiveSystem : MonoBehaviour
                 isGetBarrier = true;
                 ActivePassive(WeaponTypes.Shield);
             }
-        }
-            
-                
+        }  
     }
 
     public void ActivePassive(WeaponTypes type , MonsterDebuffBase monster = null)
@@ -63,11 +61,9 @@ public class PassiveSystem : MonoBehaviour
                 status.barrier = status.maxHp * shieldPer * 0.01f;
                 break;
 
-
             case WeaponTypes.Wand:
                 monster.ContinueBuff(0f, duration[(int)BuffTypes.Slow], tick[(int)BuffTypes.Slow], BuffTypes.Slow);
-                break;
-            
+                break;            
 
             default:
                 Debug.Log("Active Passive Default Case");

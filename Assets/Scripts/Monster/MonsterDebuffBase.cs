@@ -25,8 +25,6 @@ public class MonsterDebuffBase : MonoBehaviour
 
     #endregion
 
-
-
     void Awake()
     {
         if(!monster)
@@ -39,7 +37,6 @@ public class MonsterDebuffBase : MonoBehaviour
     // public IEnumerator GetContinueDamage(float damage = 0f, float duration = 0f, float tick = 0f, BuffTypes type = BuffTypes.Burn)
     // {
     //     float currentTime = 0;
-
     //     while (currentTime < duration)
     //     {
     //         yield return new WaitForSeconds(tick);
@@ -49,19 +46,18 @@ public class MonsterDebuffBase : MonoBehaviour
     //             monster.GetDamaged(damage, false);
     //         }
     //     }
-        
-
     // }
     */
 
-    public IEnumerator Burn(float duration, float tick, float damage)
+    public IEnumerator Burn()
     {
         debuffs[0].isActive = true;
-        while (duration > 0)
+        while (debuffs[0].duration > 0)
         {
-            monster.GetDamaged(damage, false);
-            yield return new WaitForSeconds(tick);
-            duration -= tick;
+            monster.GetDamaged(debuffs[0].damage, false);
+            yield return new WaitForSeconds(debuffs[0].tick);
+            Debug.Log("Hit Burn");
+            debuffs[0].duration -= debuffs[0].tick;
         }
 
         debuffs[0].isActive = false;
@@ -95,27 +91,20 @@ public class MonsterDebuffBase : MonoBehaviour
         {
             return;
         }
-
-        if(debuffs[(int)type].isActive)
-        {
-            Debug.Log("FIre");
-            StopCoroutine(debuffs[(int)type].functionName);   
-        }
-
         
         if(damage > debuffs[(int)type].damage)
             debuffs[(int)type].damage = damage;
 
-        debuffs[(int)type].duration = duration;
+        if(duration > debuffs[(int)type].duration)
+            debuffs[(int)type].duration = duration;
+
         debuffs[(int)type].tick = tick;
         
         switch (type)
         {
             case BuffTypes.Burn:
-                if(damage > debuffs[0].damage)
-                    debuffs[0].damage = damage;
-
-                StartCoroutine(Burn(debuffs[0].duration, debuffs[0].tick, debuffs[0].damage));
+                if(!debuffs[(int)type].isActive)
+                    StartCoroutine(debuffs[(int)type].functionName);
                 break;
 
             // case BuffTypes.Barrier:

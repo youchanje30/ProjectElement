@@ -13,13 +13,17 @@ public class Battle : MonoBehaviour
     private Rigidbody2D rigid2D;
     private PassiveSystem passive;
     public bool fallAtking;
+    [Header("진동 설정")]
+    [SerializeField] float[] shakeDuration;
+    [SerializeField] float[] shakeForce;
+
 
     [Header("Weapon Setting")]
     [Tooltip("무기 타입")]
     public WeaponTypes WeaponType;
-    public bool Atking;
+    public bool atking;
     public bool isGuard;
-    public float[] Left_AtkCoolTime;
+    public float[] atkCoolTime;
     public bool[] isAtkReady;
     public Transform[] atkPos;
     public Vector2[] atkSize;
@@ -30,10 +34,7 @@ public class Battle : MonoBehaviour
     public float atkDamage { get { return status.AtkDamage();} }
 
     [Header("Sword Setting")]
-    [SerializeField] private bool CanComboAtk = false;
-    [SerializeField] private Vector2 ComboAtkSize;
-    [SerializeField] private Transform ComboAtkPos;
-
+    [SerializeField] private bool canComboAtk = false;
 
 
     [Header("Shield Setting")]
@@ -47,8 +48,8 @@ public class Battle : MonoBehaviour
     // public bool 
     [Space(20f)]
 
-    public Transform fallDownAtkPos;
-    public Vector2 fallDownAtkSize;
+    [SerializeField] Transform fallDownAtkPos;
+    [SerializeField] Vector2 fallDownAtkSize;
 
     [Header("Swap Setting")]
     [SerializeField] public bool isSwap;
@@ -98,7 +99,7 @@ public class Battle : MonoBehaviour
             animator.SetBool("isGround", true);
             animator.SetBool("isAct", false);
             fallAtking = false;
-            Atking = false;
+            atking = false;
             rigid2D.gravityScale = originalScale;
             // rigid2D.velocity = Vector2.zero;
             
@@ -118,342 +119,9 @@ public class Battle : MonoBehaviour
        
     }
 
-
-    public void Atk(GameObject AtkObj)
-    {
-        CameraController.instance.StartCoroutine(CameraController.instance.Shake());
-        
-        if(AtkObj.tag == "Monster")
-        {
-            Debug.Log(atkDamage);
-            AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(atkDamage);
-            PlayerPasstive(AtkObj);
-        }
-
-        if(AtkObj.tag == "Destruct")
-        {
-            AtkObj.GetComponent<DestructObject>().DestroyObj();
-        }
-    }
-
-
-    public IEnumerator ReturnSwap()
-    {
-        if(isSwap == false)
-        {
-            yield return new WaitForSeconds(swapTime);
-            isSwap = true;
-        }
-    }
-
-    public IEnumerator ReturnAttack()
-    {
-        for (int i = 0; i < isAtkReady.Length; i++)
-        {
-            if (!isAtkReady[i])
-            {
-                Debug.Log("ReturnAttack Start");
-                yield return new WaitForSeconds(Left_AtkCoolTime[i] / (status.atkSpeed * 0.01f));
-                isAtkReady[i] = true;
-            }
-        }
-    }
-
-    // public void ReturnAttack()
-    // {
-
-    // }
-
-    public void AtkAction(int id)
-    {
-        if(id == 0 && !movement2D.isGround)
-        {
-            StartCoroutine(FallDownAtk());
-            return;
-        }
-
-        if(!isAtkReady[(int)WeaponType]) return;
-
-        if(WeaponType == WeaponTypes.Bow)
-        {
-            ChargingBowAtk(id != 0);
-            StartCoroutine(ReturnAttack());
-            return;
-        }
-
-        if(id == 0) //좌클릭
-        {
-            Debug.Log(1);
-            StartCoroutine(LeftAtk());
-            if(WeaponType == WeaponTypes.Shield) StartCoroutine(DashGuard());
-        }
-        else
-        {    
-            if(WeaponType == WeaponTypes.Shield) StartCoroutine(ShieldGuard());
-        }
-        // Atking = true;
-    }
-
-    public IEnumerator DashGuard()
-    {
-        float originalGravity = rigid2D.gravityScale;
-        rigid2D.gravityScale = 0f;
-        rigid2D.velocity = Vector2.zero;
-        rigid2D.velocity = new Vector2(transform.localScale.x * AtkDashingPower, 0f);
-        yield return new WaitForSeconds(ShieldAtkDashTime);
-        // rigid2D.gravityScale = originalGravity;
-        rigid2D.gravityScale = 4f;
-    }
-
-    public void HealHp(float increaseHp)
-    {
-        if(status.curHp + increaseHp <= status.maxHp)
-        {
-            status.curHp += increaseHp;
-        }
-        else
-        {
-            status.curHp = status.maxHp;
-        }
-    }
-
-    public IEnumerator FallDownAtk()
-    {
-        if(!Atking)
-        {
-            // 체공 시간
-            // originalScale = rigid2D.gravityScale;
-            Atking = true;
-            fallAtking = true;
-            rigid2D.gravityScale = 0f;
-            rigid2D.velocity = Vector2.zero;
-
-            animator.ResetTrigger("JumpAtk");
-            animator.SetTrigger("JumpAtk");
-            
-            yield return new WaitForSeconds(0.2f);
-            if(!movement2D.isGround)
-                rigid2D.gravityScale = 10f;
-        }
-    }
-
-    public IEnumerator LeftAtk()
-    {
-        rigid2D.velocity = Vector2.zero;
-        Atking = true;
-        isAtkReady[(int)WeaponType] = false;
-        animator.SetBool("isAct", true);
-
-        //isSwap = false; 스왑 1안 추가 나중에 주석 풀면 됨
-        // yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
-        
-        if(WeaponType == WeaponTypes.Wand) 
-        {
-            animator.SetTrigger("Atk");
-        }
-        else if(WeaponType == WeaponTypes.Sword)
-        {
-            if(CanComboAtk)
-                animator.SetTrigger("ComboAtk");
-            else
-                animator.SetTrigger("Atk");
-            CanComboAtk = !CanComboAtk;
-        }
-        else
-        {
-            animator.SetTrigger("Atk");
-            if(WeaponType == WeaponTypes.Sword)
-            {
-                CanComboAtk = true;
-            }
-        }
-        // 공격 중인거 종료 
-
-        /*yield return new WaitForSeconds((Left_AtkCoolTime[(int)WeaponType] / (status.atkSpeed * 0.01f)));
-        isSwap = true; 나중에 주석 풀면 됨*/
-        StartCoroutine(ReturnAttack());
-
-        yield return null;
-    }
-
-    public void AtkDetection()
-    {
-
-        // if(WeaponType == WeaponTypes.Sword && CanComboAtk)
-        // {
-        //     Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(ComboAtkPos.position, ComboAtkSize, 0);
-        //     foreach(Collider2D collider in collider2Ds)
-        //     {
-        //         if(collider.tag == "Monster" || collider.tag == "Destruct")
-        //         {
-        //             Atk(collider.gameObject);
-        //         }
-        //     }
-        //     CanComboAtk = false;
-        // }
-        // else
-        // {
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
-        foreach(Collider2D collider in collider2Ds)
-        {
-            if(collider.tag == "Monster" || collider.tag == "Destruct")
-            {
-                Atk(collider.gameObject);
-            }
-        }
-
-            // if(WeaponType == WeaponTypes.Sword)
-            // {
-            //     CanComboAtk = true;
-            // }
-        // }
-    }
-
-
-    public void AtkEnd()
-    {
-        if(WeaponType == WeaponTypes.Bow)
-        {
-            GameObject ThrowArrow = Instantiate(arrow);
-            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
-            ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
-            ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
-        }
-
-        if(WeaponType == WeaponTypes.Wand)
-        {
-            GameObject Magic = Instantiate(arrow);
-            ProjectileType magic = Magic.GetComponent<ProjectileType>();
-            magic.Projectile = Type.Magic;
-            magic.Damage =  atkDamage;
-            // Magic.transform.position = atkPos[(int)WeaponType].position;
-            Magic.transform.position = transform.position;
-
-            magic.duration = passive.duration[(int)WeaponType];
-            magic.tick = passive.tick[(int)WeaponType];
-            magic.per = passive.slowPer;
-
-            Transform target = null;
-            float targetDistance = 100;
-            // Debug.Log("targetDistance = " + targetDistance);
-            // Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType].x);
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
-            bool isMonster = false;
-            foreach(Collider2D collider in collider2Ds)
-            {
-                if(collider.tag != "Monster" && collider.tag != "Destruct")
-                    continue;
-
-                if(collider.CompareTag("Destruct") && isMonster)
-                    continue;
-                
-
-                if(collider.CompareTag("Monster") && !isMonster)
-                {
-                        isMonster = true;
-                        target = collider.transform;
-                }
-                
-                if(target != null)
-                    targetDistance = Vector2.Distance(transform.position , target.transform.position);
-
-                float colliderDistance = Vector2.Distance(transform.position , collider.transform.position);
-                Debug.Log("colliderDistance = " + colliderDistance);
-                if(colliderDistance < targetDistance)
-                    target = collider.transform;
-            }
-            magic.target = target;
-        }
-
-        
-        Atking = false;
-        animator.SetBool("isAct", false);
-    }
  
-    public void ChargingBowAtk(bool isCharged = false)
-    {
-        isAtkReady[(int)WeaponType] = false;
-        Atking = true;
-        // 공격 애니메이션 시작
-
-        //화살 소환
-        GameObject ThrowArrow = Instantiate(arrow);
-        if(isCharged)
-            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
-        else
-            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage / 2;
-
-        ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
-        ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
-        Atking = false;
-    }
-
-    public IEnumerator ShieldGuard()
-    {
-        Atking = true;
-        isGuard = true;
-        movement2D.isDashing = true;
-        float originalGravity = rigid2D.gravityScale;
-
-        rigid2D.gravityScale = 0f;
-        rigid2D.velocity = new Vector2(transform.localScale.x * DashingPower, 0f);
-
-        yield return new WaitForSeconds(ShieldDashingTime * 0.5f);
-
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(ShieldDashPos.position, ShieldDashAtkSize, 0);
-        foreach(Collider2D collider in collider2Ds)
-        {
-            if(collider.tag == "Monster" || collider.tag == "Destruct")
-            {
-                Atk(collider.gameObject);
-            }
-        }
-
-        yield return new WaitForSeconds(ShieldDashingTime * 0.5f);
-
-        rigid2D.gravityScale = originalGravity;
-        movement2D.isDashing = false;
-        Atking = false;
-        isGuard = false;
-    }
-    
-    public void PlayerPasstive(GameObject monster = null)
-    {
-        if(passive.passiveRate[(int)WeaponType] > Random.Range(1, 100 + 1)) return;
-
-        // if(monster != null && WeaponType == WeaponTypes.Wand)
-        // {
-        //     if(monster.GetComponent<PassiveSystem>().canSlow)
-        //         return false;
-        // }
-
-    
-        if(monster != null)
-        {
-            passive.ActivePassive(WeaponType , monster.GetComponentInParent<MonsterDebuffBase>());
-            //passive.ActiveSynergy(WeaponType, monster.GetComponentInParent<MonsterSynergy>());
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        
-            
-        Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);
-        Gizmos.DrawWireCube(fallDownAtkPos.position, fallDownAtkSize);    
-        Gizmos.DrawWireCube(ShieldDashPos.position, ShieldDashAtkSize);
-
-        Gizmos.color = Color.red;  
-        if(WeaponType == WeaponTypes.Wand)
-        {
-            // Gizmos.DrawWireSphere(transform.position, atkSize[(int)WeaponType].x);
-            Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);
-        }  
-        // Gizmos.DrawWireCube(ComboAtkPos.position, ComboAtkSize);    
-    }
-
-    // 데미지 받을 때 처리하는 함수
+#region 기본 함수
+   
     public void GetDamaged(float Damage)
     {
         if(isGuard) return;
@@ -489,8 +157,321 @@ public class Battle : MonoBehaviour
         // StopCoroutine(ShieldGuard());
     }
 
+   public void HealHp(float increaseHp)
+    {
+        if(status.curHp + increaseHp <= status.maxHp)
+        {
+            status.curHp += increaseHp;
+        }
+        else
+        {
+            status.curHp = status.maxHp;
+        }
+    }
+
+#endregion
 
 
+
+#region 공격 관련 함수들
+    public void Atk(GameObject AtkObj)
+    {
+        CameraController.instance.StartCoroutine(CameraController.instance.Shake(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
+        
+        if(AtkObj.tag == "Monster")
+        {
+            Debug.Log(atkDamage);
+            AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(atkDamage);
+            PlayerPasstive(AtkObj);
+        }
+
+        if(AtkObj.tag == "Destruct")
+        {
+            AtkObj.GetComponent<DestructObject>().DestroyObj();
+        }
+    }
+
+    public void AtkAction(int id)
+    {
+        if(id == 0 && !movement2D.isGround)
+        {
+            StartCoroutine(FallDownAtk());
+            return;
+        }
+
+        if(!isAtkReady[(int)WeaponType]) return;
+
+        if(WeaponType == WeaponTypes.Bow)
+        {
+            ChargingBowAtk(id != 0);
+            StartCoroutine(ReturnAttack());
+            return;
+        }
+
+        if(id == 0) //좌클릭
+        {
+            StartCoroutine(Atking());
+            if(WeaponType == WeaponTypes.Shield) StartCoroutine(DashGuard());
+        }
+        else
+        {    
+            if(WeaponType == WeaponTypes.Shield) StartCoroutine(ShieldGuard());
+        }
+        // atking = true;
+    }
+
+    public IEnumerator Atking()
+    {
+        rigid2D.velocity = Vector2.zero;
+        atking = true;
+        isAtkReady[(int)WeaponType] = false;
+        animator.SetBool("isAct", true);
+
+        //isSwap = false; 스왑 1안 추가 나중에 주석 풀면 됨
+        // yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
+        
+        if(WeaponType == WeaponTypes.Wand) 
+        {
+            animator.SetTrigger("Atk");
+        }
+        else if(WeaponType == WeaponTypes.Sword)
+        {
+            if(canComboAtk)
+                animator.SetTrigger("ComboAtk");
+            else
+                animator.SetTrigger("Atk");
+            canComboAtk = !canComboAtk;
+        }
+        else
+        {
+            animator.SetTrigger("Atk");
+            if(WeaponType == WeaponTypes.Sword)
+            {
+                canComboAtk = true;
+            }
+        }
+        // 공격 중인거 종료 
+
+        /*yield return new WaitForSeconds((Left_AtkCoolTime[(int)WeaponType] / (status.atkSpeed * 0.01f)));
+        isSwap = true; 나중에 주석 풀면 됨*/
+        StartCoroutine(ReturnAttack());
+
+        yield return null;
+    }
+
+    public void AtkDetection()
+    {
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
+        foreach(Collider2D collider in collider2Ds)
+        {
+            if(collider.tag == "Monster" || collider.tag == "Destruct")
+            {
+                Atk(collider.gameObject);
+            }
+        }
+    }
+
+    public IEnumerator ReturnSwap()
+    {
+        if(isSwap == false)
+        {
+            yield return new WaitForSeconds(swapTime);
+            isSwap = true;
+        }
+    }
+
+    public IEnumerator ReturnAttack()
+    {
+        for (int i = 0; i < isAtkReady.Length; i++)
+        {
+            if (!isAtkReady[i])
+            {
+                yield return new WaitForSeconds(atkCoolTime[i] / (status.atkSpeed * 0.01f));
+                isAtkReady[i] = true;
+            }
+        }
+    }
+   
+    public void AtkEnd()
+    {
+        atking = false;
+        animator.SetBool("isAct", false);
+
+        if(WeaponType == WeaponTypes.Bow)
+        {
+            GameObject ThrowArrow = Instantiate(arrow);
+            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
+            ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
+            ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
+        }
+
+        if(WeaponType == WeaponTypes.Wand)
+        {
+            GameObject Magic = Instantiate(arrow);
+            ProjectileType magic = Magic.GetComponent<ProjectileType>();
+            magic.Projectile = Type.Magic;
+            magic.Damage =  atkDamage;
+            Magic.transform.position = transform.position;
+            Magic.transform.localScale = new Vector3(transform.localScale.x, Magic.transform.localScale.y, Magic.transform.localScale.z);
+
+            magic.duration = passive.duration[(int)WeaponType];
+            magic.tick = passive.tick[(int)WeaponType];
+            magic.per = passive.slowPer;
+
+            Transform target = null;
+            float targetDistance = 100;
+            
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
+            bool isMonster = false;
+            foreach(Collider2D collider in collider2Ds)
+            {
+                if(collider.tag != "Monster" && collider.tag != "Destruct")
+                    continue;
+
+                if(collider.CompareTag("Destruct") && isMonster)
+                    continue;
+                
+
+                if(collider.CompareTag("Monster") && !isMonster)
+                {
+                        isMonster = true;
+                        target = collider.transform;
+                }
+                
+                if(target != null)
+                    targetDistance = Vector2.Distance(transform.position , target.transform.position);
+
+                float colliderDistance = Vector2.Distance(transform.position , collider.transform.position);
+                Debug.Log("colliderDistance = " + colliderDistance);
+                if(colliderDistance < targetDistance)
+                    target = collider.transform;
+            }
+            magic.target = target;
+        }
+
+    }
+
+    public void PlayerPasstive(GameObject monster = null)
+    {
+        if(passive.passiveRate[(int)WeaponType] > Random.Range(1, 100 + 1)) return;
+
+        // if(monster != null && WeaponType == WeaponTypes.Wand)
+        // {
+        //     if(monster.GetComponent<PassiveSystem>().canSlow)
+        //         return false;
+        // }
 
     
+        if(monster != null)
+        {
+            passive.ActivePassive(WeaponType , monster.GetComponentInParent<MonsterDebuffBase>());
+            //passive.ActiveSynergy(WeaponType, monster.GetComponentInParent<MonsterSynergy>());
+        }
+    }
+
+#endregion
+
+ 
+#region 특수 공격 함수들
+    public IEnumerator FallDownAtk()
+    {
+        if(!atking)
+        {
+            // 체공 시간
+            // originalScale = rigid2D.gravityScale;
+            atking = true;
+            fallAtking = true;
+            rigid2D.gravityScale = 0f;
+            rigid2D.velocity = Vector2.zero;
+
+            animator.ResetTrigger("JumpAtk");
+            animator.SetTrigger("JumpAtk");
+            
+            yield return new WaitForSeconds(0.2f);
+            if(!movement2D.isGround)
+                rigid2D.gravityScale = 10f;
+        }
+    }
+
+    public void ChargingBowAtk(bool isCharged = false)
+    {
+        isAtkReady[(int)WeaponType] = false;
+        atking = true;
+        // 공격 애니메이션 시작
+
+        //화살 소환
+        GameObject ThrowArrow = Instantiate(arrow);
+        if(isCharged)
+            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
+        else
+            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage / 2;
+
+        ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
+        ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
+        atking = false;
+    }
+
+    public IEnumerator DashGuard()
+    {
+        float originalGravity = rigid2D.gravityScale;
+        rigid2D.gravityScale = 0f;
+        rigid2D.velocity = Vector2.zero;
+        rigid2D.velocity = new Vector2(transform.localScale.x * AtkDashingPower, 0f);
+        yield return new WaitForSeconds(ShieldAtkDashTime);
+        // rigid2D.gravityScale = originalGravity;
+        rigid2D.gravityScale = 4f;
+        if(atking)
+            AtkEnd();
+    }
+
+    public IEnumerator ShieldGuard()
+    {
+        atking = true;
+        isGuard = true;
+        movement2D.isDashing = true;
+        float originalGravity = rigid2D.gravityScale;
+
+        rigid2D.gravityScale = 0f;
+        rigid2D.velocity = new Vector2(transform.localScale.x * DashingPower, 0f);
+
+        yield return new WaitForSeconds(ShieldDashingTime * 0.5f);
+        Debug.Log("DashGuard Atk");
+
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(ShieldDashPos.position, ShieldDashAtkSize, 0);
+        foreach(Collider2D collider in collider2Ds)
+        {
+            if(collider.tag == "Monster" || collider.tag == "Destruct")
+            {
+                Atk(collider.gameObject);
+            }
+        }
+
+        yield return new WaitForSeconds(ShieldDashingTime * 0.5f);
+
+        rigid2D.gravityScale = originalGravity;
+        movement2D.isDashing = false;
+        atking = false;
+        isGuard = false;
+    }
+#endregion 
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        
+            
+        Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);
+        Gizmos.DrawWireCube(fallDownAtkPos.position, fallDownAtkSize);    
+        Gizmos.DrawWireCube(ShieldDashPos.position, ShieldDashAtkSize);
+
+        Gizmos.color = Color.red;  
+        if(WeaponType == WeaponTypes.Wand)
+        {
+            // Gizmos.DrawWireSphere(transform.position, atkSize[(int)WeaponType].x);
+            Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);
+        }  
+        // Gizmos.DrawWireCube(ComboAtkPos.position, ComboAtkSize);    
+    }
+
+
 }

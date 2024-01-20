@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerController player;
 
     [Header("Game Setting")]
-    public bool CanCameraShake;
     public int CameraShakeOnOff;
 
     [Header("Game Info")]
@@ -96,7 +95,6 @@ public class GameManager : MonoBehaviour
     {
         CameraShakeOnOff = 1;
         TimerVal = 1;
-        //Time.timeScale = 0.3f;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = player.GetComponent<Inventory>();
@@ -266,7 +264,7 @@ public class GameManager : MonoBehaviour
     {
         resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionData");
         fullScreen = PlayerPrefs.GetInt("FullScreenData");
-        CanCameraShake = PlayerPrefs.GetInt("CameraShakeData") == 0 ? true : false;
+        // CanCameraShake = PlayerPrefs.GetInt("CameraShakeData") == 0 ? true : false;
         isTimer = PlayerPrefs.GetInt("TimerData") == 0 ? true : false;
         audioManager.BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMData");
         audioManager.SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXData");

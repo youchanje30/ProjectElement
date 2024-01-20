@@ -284,37 +284,6 @@ Transform:
   m_Father: {fileID: 5968144621071190073}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6241855816781211188
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2363684142775938275}
-  m_Layer: 3
-  m_Name: Sword Combo Atk Pos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2363684142775938275
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6241855816781211188}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.28, y: -0.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2183464480881181263}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7141198254234339824
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,11 +331,10 @@ Transform:
   - {fileID: 6317585707649509668}
   - {fileID: 7402086602399045594}
   - {fileID: 4472214303243002330}
-  - {fileID: 2363684142775938275}
   - {fileID: 5968144621071190073}
   - {fileID: 5236275807440971110}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4316813253061002341
 SpriteRenderer:
@@ -626,21 +594,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   fallAtking: 0
+  shakeDuration:
+  - -1
+  - 0.1
+  - -1
+  - 0.2
+  - -1
+  shakeForce:
+  - -1
+  - 0.2
+  - -1
+  - 0.2
+  - -1
   WeaponType: 0
-  Atking: 0
+  atking: 0
   isGuard: 0
-  Left_AtkCoolTime:
+  atkCoolTime:
   - 0.4
-  - 0.5
+  - 0.4
   - 0.4
   - 0.75
   - 0.4
-  Right_AtkCoolTime:
-  - 1
-  - 0
-  - 1
-  - 1
-  - 1
   isAtkReady: 0101010101
   atkPos:
   - {fileID: 5525140155271563417}
@@ -650,16 +624,13 @@ MonoBehaviour:
   - {fileID: 4315468924003554650}
   atkSize:
   - {x: 0, y: 0}
-  - {x: 0.5, y: 1}
+  - {x: 2, y: 2.5}
   - {x: 12, y: 4}
-  - {x: 0, y: 0}
+  - {x: 4, y: 2}
   - {x: 1.7, y: 1.7}
   arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
   originalScale: 0
-  CanComboAtk: 0
-  ComboTime: 0.8
-  ComboAtkSize: {x: 2, y: 1}
-  ComboAtkPos: {fileID: 2363684142775938275}
+  canComboAtk: 0
   ShieldAtkDashTime: 0.1
   AtkDashingPower: 10
   ShieldDashingTime: 0.2
@@ -864,7 +835,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7219966532605892540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 0, z: 0}
+  m_LocalPosition: {x: 0.25, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -957,7 +928,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8111717507875193638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

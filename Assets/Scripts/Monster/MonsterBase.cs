@@ -170,8 +170,6 @@ public class MonsterBase : MonoBehaviour
         {
             isAtking = true;
             Atk();
-            AtkDetect();
-            AtkEnd();
             return;
         } 
 

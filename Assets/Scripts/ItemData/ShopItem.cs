@@ -71,6 +71,7 @@ public class ShopItem : MonoBehaviour
         {
             if(inventory.isItemFull()) return;
             inventory.GetItem(ItemManager.instance.AddItem(itemID));
+            objectController.AddShop(itemID);
         }
 
         if(Type == ShopType.Consumable)
@@ -87,7 +88,6 @@ public class ShopItem : MonoBehaviour
         Destroy(gameObject);
         SaveManager.instance.Save();
 
-        objectController.AddShop(itemID);
     }
 
     public void Sell()
