@@ -20,12 +20,6 @@ public class MonsterDebuffBase : MonoBehaviour
     }
 
     [SerializeField] Debuff[] debuffs;
-
-    // [SerializeField] private string[] functionName;
-    // [SerializeField] private bool[] isActive;
-    // [SerializeField] private float[] duration;
-    // [SerializeField] private float[] tick; // 슬로우의 경우 이게 reSlowTime
-    // [SerializeField] private float[] damage;
     // 예외로 필요한 데이터들
     private bool canSlow = true;
 

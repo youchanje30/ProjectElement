@@ -20,7 +20,6 @@ public class Battle : MonoBehaviour
     public bool Atking;
     public bool isGuard;
     public float[] Left_AtkCoolTime;
-    public float[] Right_AtkCoolTime;
     public bool[] isAtkReady;
     public Transform[] atkPos;
     public Vector2[] atkSize;
@@ -32,7 +31,6 @@ public class Battle : MonoBehaviour
 
     [Header("Sword Setting")]
     [SerializeField] private bool CanComboAtk = false;
-    [SerializeField] private float ComboTime;
     [SerializeField] private Vector2 ComboAtkSize;
     [SerializeField] private Transform ComboAtkPos;
 
@@ -127,28 +125,17 @@ public class Battle : MonoBehaviour
         
         if(AtkObj.tag == "Monster")
         {
-            // bool isCrt = Random.Range(1, 100 + 1) <= crtRate;
-            // float NormalDmg = damage * damagePer * 0.01f;
-            // float FinalDmg = isCrt ? NormalDmg * crtDmg * 0.01f : NormalDmg;
-
-            // AtkObj.GetComponent<Monster>().GetDamaged(atkDamage);
             Debug.Log(atkDamage);
             AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(atkDamage);
-            // AtkObj.GetComponent<Monster>().GetDamaged(meleeDmg);
-            // if(WeaponType == WeaponTypes.Wand)
-            //     PlayerPasstive(AtkObj);
-            // else
-            //     PlayerPasstive();
             PlayerPasstive(AtkObj);
-            
         }
 
         if(AtkObj.tag == "Destruct")
         {
             AtkObj.GetComponent<DestructObject>().DestroyObj();
         }
-
     }
+
 
     public IEnumerator ReturnSwap()
     {
@@ -157,54 +144,51 @@ public class Battle : MonoBehaviour
             yield return new WaitForSeconds(swapTime);
             isSwap = true;
         }
-       
     }
+
     public IEnumerator ReturnAttack()
     {
         for (int i = 0; i < isAtkReady.Length; i++)
         {
             if (!isAtkReady[i])
             {
-
+                Debug.Log("ReturnAttack Start");
                 yield return new WaitForSeconds(Left_AtkCoolTime[i] / (status.atkSpeed * 0.01f));
                 isAtkReady[i] = true;
             }
         }
     }
 
+    // public void ReturnAttack()
+    // {
 
-
-
+    // }
 
     public void AtkAction(int id)
     {
-        // if(!atk) return;
+        if(id == 0 && !movement2D.isGround)
+        {
+            StartCoroutine(FallDownAtk());
+            return;
+        }
+
+        if(!isAtkReady[(int)WeaponType]) return;
+
+        if(WeaponType == WeaponTypes.Bow)
+        {
+            ChargingBowAtk(id != 0);
+            StartCoroutine(ReturnAttack());
+            return;
+        }
 
         if(id == 0) //좌클릭
         {
-            if(!movement2D.isGround)
-            {
-                if(WeaponType == WeaponTypes.Bow) return; //활은 점프 공격이 없어요
-                
-                StartCoroutine(FallDownAtk());
-                return;
-            }
-
-            if(WeaponType == WeaponTypes.Bow)
-            {
-                ChargingBowAtk(false);
-                StartCoroutine(BowAtk());
-                // Debug.Log("Start Atk Bow"); 
-                return; //활은 좌클릭이 없어요
-            }
+            Debug.Log(1);
             StartCoroutine(LeftAtk());
             if(WeaponType == WeaponTypes.Shield) StartCoroutine(DashGuard());
         }
-        else if (id == 1)
-        {
-            if(WeaponType == WeaponTypes.Sword) return; //칼은 우클릭이 없어요
-            // StartCoroutine(RightAtk());
-            if(WeaponType == WeaponTypes.Bow) ChargingBowAtk(); //StartCoroutine(BowAtk());
+        else
+        {    
             if(WeaponType == WeaponTypes.Shield) StartCoroutine(ShieldGuard());
         }
         // Atking = true;
@@ -221,7 +205,6 @@ public class Battle : MonoBehaviour
         rigid2D.gravityScale = 4f;
     }
 
-    // 체력 회복
     public void HealHp(float increaseHp)
     {
         if(status.curHp + increaseHp <= status.maxHp)
@@ -233,7 +216,6 @@ public class Battle : MonoBehaviour
             status.curHp = status.maxHp;
         }
     }
-
 
     public IEnumerator FallDownAtk()
     {
@@ -257,96 +239,74 @@ public class Battle : MonoBehaviour
 
     public IEnumerator LeftAtk()
     {
-        if(isAtkReady[(int)WeaponType])
+        rigid2D.velocity = Vector2.zero;
+        Atking = true;
+        isAtkReady[(int)WeaponType] = false;
+        animator.SetBool("isAct", true);
+
+        //isSwap = false; 스왑 1안 추가 나중에 주석 풀면 됨
+        // yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
+        
+        if(WeaponType == WeaponTypes.Wand) 
         {
-            rigid2D.velocity = Vector2.zero;
-            Atking = true;
-            //isSwap = false; 스왑 1안 추가 나중에 주석 풀면 됨
-            isAtkReady[(int)WeaponType] = false;
-          
-            animator.SetBool("isAct", true);
-            // 공격 애니메이션 시작
-            // yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
-            if(WeaponType == WeaponTypes.Wand) 
-            {
-                animator.SetTrigger("Atk");
-            }
-            else if(WeaponType == WeaponTypes.Sword && CanComboAtk) //칼의 경우 콤보 여부에 따른 어택 변경
-            {
-                animator.SetTrigger("ComboAtk");
-                //콤보 공격
-                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(ComboAtkPos.position, ComboAtkSize, 0);
-                foreach(Collider2D collider in collider2Ds)
-                {
-                    if(collider.tag == "Monster" || collider.tag == "Destruct")
-                    {
-                        Atk(collider.gameObject);
-                    }
-                }
-                CanComboAtk = false;
-            }
-            else
-            {
-                animator.SetTrigger("Atk");
-                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
-                foreach(Collider2D collider in collider2Ds)
-                {
-                    if(collider.tag == "Monster" || collider.tag == "Destruct")
-                    {
-                        Atk(collider.gameObject);
-                        // collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
-                    }
-                }
-
-                if(WeaponType == WeaponTypes.Sword)
-                {
-                    StartCoroutine(ComboAtk());
-                    CanComboAtk = true;
-                }
-            }
-            // 공격 중인거 종료 
-
-            /*yield return new WaitForSeconds((Left_AtkCoolTime[(int)WeaponType] / (status.atkSpeed * 0.01f)));
-            isSwap = true; 나중에 주석 풀면 됨*/
-            StartCoroutine(ReturnAttack());
-
-            yield return null;
+            animator.SetTrigger("Atk");
         }
+        else if(WeaponType == WeaponTypes.Sword)
+        {
+            if(CanComboAtk)
+                animator.SetTrigger("ComboAtk");
+            else
+                animator.SetTrigger("Atk");
+            CanComboAtk = !CanComboAtk;
+        }
+        else
+        {
+            animator.SetTrigger("Atk");
+            if(WeaponType == WeaponTypes.Sword)
+            {
+                CanComboAtk = true;
+            }
+        }
+        // 공격 중인거 종료 
+
+        /*yield return new WaitForSeconds((Left_AtkCoolTime[(int)WeaponType] / (status.atkSpeed * 0.01f)));
+        isSwap = true; 나중에 주석 풀면 됨*/
+        StartCoroutine(ReturnAttack());
+
+        yield return null;
     }
 
     public void AtkDetection()
     {
 
-        if(WeaponType == WeaponTypes.Sword && CanComboAtk)
+        // if(WeaponType == WeaponTypes.Sword && CanComboAtk)
+        // {
+        //     Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(ComboAtkPos.position, ComboAtkSize, 0);
+        //     foreach(Collider2D collider in collider2Ds)
+        //     {
+        //         if(collider.tag == "Monster" || collider.tag == "Destruct")
+        //         {
+        //             Atk(collider.gameObject);
+        //         }
+        //     }
+        //     CanComboAtk = false;
+        // }
+        // else
+        // {
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
+        foreach(Collider2D collider in collider2Ds)
         {
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(ComboAtkPos.position, ComboAtkSize, 0);
-            foreach(Collider2D collider in collider2Ds)
+            if(collider.tag == "Monster" || collider.tag == "Destruct")
             {
-                if(collider.tag == "Monster" || collider.tag == "Destruct")
-                {
-                    Atk(collider.gameObject);
-                }
+                Atk(collider.gameObject);
             }
-            CanComboAtk = false;
         }
-        else
-        {
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
-            foreach(Collider2D collider in collider2Ds)
-            {
-                if(collider.tag == "Monster" || collider.tag == "Destruct")
-                {
-                    Atk(collider.gameObject);
-                    // collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
-                }
-            }
 
-            if(WeaponType == WeaponTypes.Sword)
-            {
-                StartCoroutine(ComboAtk());
-                CanComboAtk = true;
-            }
-        }
+            // if(WeaponType == WeaponTypes.Sword)
+            // {
+            //     CanComboAtk = true;
+            // }
+        // }
     }
 
 
@@ -409,62 +369,20 @@ public class Battle : MonoBehaviour
         Atking = false;
         animator.SetBool("isAct", false);
     }
-
-
-    public IEnumerator ComboAtk()
-    {
-        yield return new WaitForSeconds(ComboTime/(status.atkSpeed * 0.01f));
-        CanComboAtk = false;
-    }
-
-
-    public IEnumerator BowAtk()
-    {
-        if(isAtkReady[(int)WeaponType])
-        {
-            rigid2D.velocity = Vector2.zero;
-            // animator.SetTrigger("Atk");
-            Atking = true;
-            isAtkReady[(int)WeaponType] = false;
-            // 공격 애니메이션 시작
-            // yield return new WaitForSeconds(Right_BeforAtkDelay[weaponType]);
-
-            //화살 소환
-            
-            // Atking = false;
-
-            yield return new WaitForSeconds(Left_AtkCoolTime[(int)WeaponType]/(status.atkSpeed * 0.01f));
-
-            isAtkReady[(int)WeaponType] = true;
-            Atking = false;
-        } 
-    }
-
-    /* public IEnumerator ChargingBowAtk()
-    {
-        Atking = true;
-        // 공격 애니메이션 시작
-        // yield return new WaitForSeconds(Right_BeforAtkDelay[weaponType]);
-
-        //화살 소환
-        GameObject ThrowArrow = Instantiate(arrow);
-        ThrowArrow.GetComponent<ProjectileType>().Damage = meleeDmg;
-        ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
-        ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
-        Atking = false;
-    }*/
  
     public void ChargingBowAtk(bool isCharged = false)
     {
-        if(!isAtkReady[(int)WeaponType]) return;
-
+        isAtkReady[(int)WeaponType] = false;
         Atking = true;
         // 공격 애니메이션 시작
-        // yield return new WaitForSeconds(Right_BeforAtkDelay[weaponType]);
 
         //화살 소환
         GameObject ThrowArrow = Instantiate(arrow);
-        ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
+        if(isCharged)
+            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
+        else
+            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage / 2;
+
         ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
         ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
         Atking = false;
@@ -488,7 +406,6 @@ public class Battle : MonoBehaviour
             if(collider.tag == "Monster" || collider.tag == "Destruct")
             {
                 Atk(collider.gameObject);
-                // collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
             }
         }
 
@@ -533,12 +450,8 @@ public class Battle : MonoBehaviour
             // Gizmos.DrawWireSphere(transform.position, atkSize[(int)WeaponType].x);
             Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);
         }  
-        Gizmos.DrawWireCube(ComboAtkPos.position, ComboAtkSize);    
+        // Gizmos.DrawWireCube(ComboAtkPos.position, ComboAtkSize);    
     }
-
-
-   
-
 
     // 데미지 받을 때 처리하는 함수
     public void GetDamaged(float Damage)
@@ -566,8 +479,6 @@ public class Battle : MonoBehaviour
             
 
         passive.Atked();
-
-        
 
         if(status.curHp <= 0)
         {
