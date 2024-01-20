@@ -545,6 +545,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: b622ced3de7f13541935dcd9d1be885a, type: 2}
   - {fileID: 9100000, guid: 6c22786c3c8be884cb0957e7a46afb3b, type: 2}
   - {fileID: 9100000, guid: c36ed572a00539e4cba40334d6a15f33, type: 2}
+  turnToChargeTime: 0.1
   ioInventory: 9
   InteractKey: 101
   FirstSlot: 97
@@ -785,6 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7f67be57d53ff4697e3484c79c6f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  passive: {fileID: 0}
   SkillCoolTime:
   - 1
   - 1
@@ -795,9 +797,17 @@ MonoBehaviour:
   isCharging: 0
   DefaultDamage: 0
   FireFloor: {fileID: 3096906974402678174, guid: db7de1076855ad84ba51dd45a7123812, type: 3}
+  RangeCount: 4
+  DiffusionDamageIncreaseRate: 20
+  detectlength: 20
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
+  ActiveTime: 3
   WaterBall: {fileID: 3054785954419580376, guid: 02e9dce7710091749a6c01825bbde7f9, type: 3}
   isWater: 0
   WaterDamageIncreaseRate: 0
+  BombDamageIncreaseRate: 0
   FloatingForce: 12
   FloatingTime: 0.5
   WaterChargeTime: 2
@@ -809,7 +819,8 @@ MonoBehaviour:
   BallSpeed: 5
   BombRange: {x: 10, y: 10}
   BombChargeTime: 1
-  isbomb: 0
+  WaterY: 0
+  activeTime: 10
   isSouth: 0
   JumpDamageIncreaseRate: 20
   LandDamageIncreaseRate: 50
@@ -826,7 +837,6 @@ MonoBehaviour:
   Arrow: {fileID: 3054785954419580376, guid: 88320b9d25572f34fac3f5c97b155539, type: 3}
   Pos: {fileID: 4315468924003554650}
   ArrowDamageIncreaseRate: 200
-  DeclindRate: 0
   ChargeTime: 2
   InvicibleTime: 1
   Delay: 1

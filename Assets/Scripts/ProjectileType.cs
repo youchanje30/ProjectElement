@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
 
 public enum Type
 {
-    Arrow, Magic, WindSkill, WaterSkill, Bomb
+    Arrow, Magic, WindSkill, WaterSkill, Bomb, FireSkill
 }
 
 public class ProjectileType : MonoBehaviour
@@ -56,7 +56,16 @@ public class ProjectileType : MonoBehaviour
     {
         Collider2D = GetComponent<CapsuleCollider2D>();
         skill = GameObject.FindGameObjectWithTag("Player").GetComponent<ActiveSkill>();
+        if(Projectile != Type.WaterSkill && Projectile != Type.FireSkill) 
         Invoke("Remove", 5f);
+        if(Projectile == Type.FireSkill)
+        {
+            Invoke("Remove",skill.ActiveTime );
+        }
+        if(Projectile == Type.WaterSkill )
+        {
+            Invoke("Remove", skill.activeTime);
+        }
     }
 
 
@@ -65,7 +74,7 @@ public class ProjectileType : MonoBehaviour
         // Debug.Log(other.gameObject.tag);
         if (other.tag == "Floor")
         {
-            if (Projectile != Type.WindSkill)
+            if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill && Projectile != Type.FireSkill)
             {
                 Destroy(gameObject);
             }
@@ -73,18 +82,18 @@ public class ProjectileType : MonoBehaviour
         else if (other.tag == "Monster" && Projectile != Type.Bomb)
         {
             // other.GetComponent<Monster>().GetDamaged(Damage);
-            other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
+                other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);            
             if (Projectile == Type.Magic)
                 other.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(0f, duration, tick, BuffTypes.Slow, per);
-            if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill)
+            if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill && Projectile != Type.FireSkill)
             {
                 Destroy(gameObject);
             }
-            if (Projectile == Type.WindSkill)
+            if (Projectile == Type.WaterSkill)
             {
                 skill.passive.ActivePassive(WeaponTypes.Wand, other.GetComponentInParent<MonsterDebuffBase>());
-                Damage *= 1 - (DeclineRate / 100);
-            }
+                //Damage *= 1 - (DeclineRate / 100);
+            }    
         }
         else if (other.tag == "Destruct"  )
         {
@@ -109,8 +118,16 @@ public class ProjectileType : MonoBehaviour
             }
 
         }
-
-
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Monster") 
+        { 
+            if (Projectile == Type.FireSkill)
+            {
+                skill.passive.ActivePassive(WeaponTypes.Sword, other.GetComponentInParent<MonsterDebuffBase>());
+            }
+        }
     }
 
     void Remove()
@@ -127,11 +144,14 @@ public class ProjectileType : MonoBehaviour
             Debug.Log("1");
             foreach (Collider2D collider in collider2Ds)
             {
-                if (collider.tag == "Monster" || collider.tag == "Destruct")
+                if (collider.tag == "Monster")
                 {
                     skill.passive.ActivePassive(WeaponTypes.Wand, collider.GetComponentInParent<MonsterDebuffBase>());
+                    skill.SkillAtk(collider.gameObject, skill.DefaultDamage *= 1 + (skill.BombDamageIncreaseRate / 100));              
+                }
+                if (collider.tag == "Destruct")
+                {
                     skill.SkillAtk(collider.gameObject, skill.DefaultDamage *= 1 + (skill.BombDamageIncreaseRate / 100));
-                  
                 }
             }
         }
@@ -147,4 +167,13 @@ public class ProjectileType : MonoBehaviour
             transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
         }
     }
+    //private void OnDrawGizmos()
+    //{
+    //    if(Projectile == Type.FireSkill)
+    //    {
+    //        Gizmos.color = Color.red;
+    //        Gizmos.DrawLine(new Vector3(transform.position.x + 0.6f, transform.position.y),new Vector3(transform.position.x + 1.1f, transform.position.y));
+    //        Gizmos.DrawLine(new Vector3(transform.position.x - 0.6f, transform.position.y), new Vector3(transform.position.x - 1.1f, transform.position.y));
+    //    }
+    //}
 }

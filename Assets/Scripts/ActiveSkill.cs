@@ -2,7 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
 
 public class ActiveSkill : MonoBehaviour
@@ -16,9 +16,21 @@ public class ActiveSkill : MonoBehaviour
     public bool isCharging = false;
     [Header("스킬 데미지 = 최종 데미지 * 데미지 증가율")]
     public float DefaultDamage;
+
     #region 불
     [Header("불")]
     public GameObject FireFloor;
+    public int RangeCount;
+    [Tooltip("확산 데미지 증가율")]
+    public float DiffusionDamageIncreaseRate;
+    [Tooltip("바닥감지 길이")]
+    public int detectlength;
+    [Tooltip("감지하는 레이어")]
+    public LayerMask layer;
+    [Tooltip("발동 시간")]
+    public float ActiveTime;
+    RaycastHit2D hit;
+    RaycastHit2D hit1;
     #endregion
 
     #region 물
@@ -41,11 +53,13 @@ public class ActiveSkill : MonoBehaviour
     public float BallGravity;
     [Tooltip("물폭탄 속도")]
     public float BallSpeed;
-    public float WaterY;
     [Tooltip("2타 범위")]
     public Vector2 BombRange;
     [Tooltip("2타 터지기 전 시간")]
-    public float BombChargeTime; 
+    public float BombChargeTime;
+    public float WaterY;
+    [Tooltip("발동 시간")]
+    public float activeTime;
     #endregion
 
     #region 땅 
@@ -66,7 +80,6 @@ public class ActiveSkill : MonoBehaviour
     [Tooltip("착지 범위")]
     public Vector3[] LandingRange;
     public Transform[] LandingPos;
-    private int count;
     private bool CanLanding;
     #endregion
 
@@ -76,8 +89,8 @@ public class ActiveSkill : MonoBehaviour
     public Transform Pos;
     [Tooltip("스킬 데미지 증가율 %")]
     public float ArrowDamageIncreaseRate;
-    [Tooltip("관통 후 데미지 감소율 %")]
-    public float DeclindRate;
+    //[Tooltip("관통 후 데미지 감소율 %")]
+    //public float DeclindRate;
     [Tooltip("차징 시간")]
     public float ChargeTime;
     [Tooltip("발사 시 무적 시간")]
@@ -98,7 +111,7 @@ public class ActiveSkill : MonoBehaviour
         }
     }
     void Update()
-    {
+    {    
         DefaultDamage = battle.atkDamage;
         if (isSouth)
         {
@@ -117,8 +130,12 @@ public class ActiveSkill : MonoBehaviour
                 }
                 DefaultDamage = battle.atkDamage;
             }
-            count = 0;
             Invoke("RandingSet", RisingTime);
+        }
+        for (int i = 0; i < RangeCount; i++)
+        {
+            Debug.DrawRay(new Vector2(transform.position.x + i, transform.position.y), transform.up * -detectlength, Color.red);
+            Debug.DrawRay(new Vector2(transform.position.x - i, transform.position.y), Vector3.down * detectlength, Color.red);
         }
     }
 
@@ -141,12 +158,28 @@ public class ActiveSkill : MonoBehaviour
                 break;
         }
     }
+
     #region 불 정령
     public void FIreSkill()
     {
+        SkillReady[(int)battle.WeaponType] = false;
         //바닥에만 불 장판이 깔려야함 
-        Instantiate(FireFloor);
-
+        for (int i = 0; i < RangeCount; i++)
+        {
+            hit = Physics2D.Raycast(new Vector2(transform.position.x + i, transform.position.y), transform.up * -20, detectlength, layer);
+            if (hit.collider != null)
+            {
+                GameObject Fire = Instantiate(FireFloor);
+                Fire.transform.position = new Vector2(transform.position.x + i, transform.position.y - hit.distance);
+            }
+            hit1 = Physics2D.Raycast(new Vector2(transform.position.x - i, transform.position.y), transform.up * -20, detectlength, layer);
+            if (hit1.collider != null)
+            {
+                GameObject Fire = Instantiate(FireFloor);
+                Fire.transform.position = new Vector2(transform.position.x - i, transform.position.y - hit1.distance);
+            }
+        }
+        StartCoroutine(ReturnAttack());
     }
     #endregion
 
@@ -251,7 +284,7 @@ public class ActiveSkill : MonoBehaviour
         battle.isGuard = true;
         GameObject MagicArrow = Instantiate(Arrow);
         MagicArrow.GetComponent<ProjectileType>().Damage = DefaultDamage *= 1 + (ArrowDamageIncreaseRate/100);
-        MagicArrow.GetComponent<ProjectileType>().DeclineRate = DeclindRate;
+       // MagicArrow.GetComponent<ProjectileType>().DeclineRate = DeclindRate;
         MagicArrow.transform.position = Pos.position;
         MagicArrow.transform.localScale = new Vector3(transform.localScale.x, MagicArrow.transform.localScale.y, MagicArrow.transform.localScale.z);
         StartCoroutine(ReturnAttack());

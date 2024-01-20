@@ -286,7 +286,7 @@ public class GameManager : MonoBehaviour
 
             case 2: //Reset Btn
                 SaveManager.instance.ResetData();
-                SceneManager.LoadScene("Maintown");
+                SceneManager.LoadScene("Prototype 1");
                 Time.timeScale = 1f;
                 break;
 
@@ -398,7 +398,7 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 Delete();
-                SceneManager.LoadScene("Maintown");
+                SceneManager.LoadScene("Prototype 1");
                 Time.timeScale = 1f;
                 break;
             case 1:
@@ -510,7 +510,7 @@ public class GameManager : MonoBehaviour
         resolutions.Reverse(); // 높은 것 부터 표시
 
         resolutionDropdown.options.Clear();
-
+        
         int optionNum = 0;
         foreach (Resolution item in resolutions)
         {
