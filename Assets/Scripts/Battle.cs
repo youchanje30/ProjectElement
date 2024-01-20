@@ -12,6 +12,7 @@ public class Battle : MonoBehaviour
     private Movement2D movement2D;
     private Rigidbody2D rigid2D;
     private PassiveSystem passive;
+    private Synergy synergy;
     public bool fallAtking;
     [Header("진동 설정")]
     [SerializeField] float[] shakeDuration;
@@ -59,6 +60,7 @@ public class Battle : MonoBehaviour
 
     void Awake()
     {
+        synergy = GetComponent<Synergy>();
         passive = GetComponent<PassiveSystem>();
         status = GetComponent<PlayerStatus>();
         movement2D = GetComponent<Movement2D>();
@@ -183,6 +185,7 @@ public class Battle : MonoBehaviour
             Debug.Log(atkDamage);
             AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(atkDamage);
             PlayerPasstive(AtkObj);
+            PlayerSynergy(AtkObj);
         }
 
         if(AtkObj.tag == "Destruct")
@@ -368,11 +371,18 @@ public class Battle : MonoBehaviour
             //passive.ActiveSynergy(WeaponType, monster.GetComponentInParent<MonsterSynergy>());
         }
     }
+    public void PlayerSynergy(GameObject monster = null)
+    {
+        if (monster != null)
+        {
+            synergy.ActiveSynergy(WeaponType, monster.GetComponentInParent<MonsterSynergy>());
+        }
+    }
 
-#endregion
+    #endregion
 
- 
-#region 특수 공격 함수들
+
+    #region 특수 공격 함수들
     public IEnumerator FallDownAtk()
     {
         if(!atking)
