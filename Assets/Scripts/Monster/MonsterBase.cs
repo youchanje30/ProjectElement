@@ -15,6 +15,7 @@ public class MonsterBase : MonoBehaviour
     [SerializeField] protected DetectPlayer trackDetect;
     [SerializeField] protected DetectPlayer tryAtkDetect;
     [SerializeField] protected Transform target;
+    [SerializeField] private MonsterSynergy monsterSynergy;
     #endregion
 
     #region 몬스터 정보 선언
@@ -88,7 +89,9 @@ public class MonsterBase : MonoBehaviour
 
         if(!target)
             target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-            
+
+        if(!monsterSynergy)
+            monsterSynergy = GetComponentInChildren<MonsterSynergy>();
 
         // 몬스터 정보 초기화
         moveSpeed = monsterData.maxMoveSpeed;
@@ -163,6 +166,12 @@ public class MonsterBase : MonoBehaviour
         {
             canMove = false;
             canAtk = false;
+            return;
+        }
+
+        if(monsterSynergy.isBind)
+        {
+            canMove = false;
             return;
         }
 

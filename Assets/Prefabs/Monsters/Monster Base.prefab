@@ -331,6 +331,7 @@ MonoBehaviour:
   curHp: 0
   damage: 0
   isStun: 0
+  isHit: 0
   atkPos:
   - {x: 0, y: 0, z: 0}
   atkSize:
@@ -348,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 0}
-  Synergy: 
+  Synergy: 0000000000000000
   SynergyIndex: 0
   HaveSynergy: 0
   SynergyHoldingTime: 0

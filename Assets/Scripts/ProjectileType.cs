@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public enum Type
@@ -12,6 +11,7 @@ public class ProjectileType : MonoBehaviour
 {
     public Type Projectile;
     private CapsuleCollider2D Collider2D;
+    [SerializeField] Battle battle;
     ActiveSkill skill;
     public float Damage;
     public float moveSpeed;
@@ -56,8 +56,12 @@ public class ProjectileType : MonoBehaviour
     {
         Collider2D = GetComponent<CapsuleCollider2D>();
         skill = GameObject.FindGameObjectWithTag("Player").GetComponent<ActiveSkill>();
-        if(Projectile != Type.WaterSkill && Projectile != Type.FireSkill) 
-        Invoke("Remove", 5f);
+        battle = skill.GetComponent<Battle>();
+
+        if (Projectile != Type.FireSkill && Projectile != Type.WaterSkill)
+        {
+            Invoke("Remove", 5f);
+        }
         if(Projectile == Type.FireSkill)
         {
             Invoke("Remove",skill.ActiveTime );
@@ -82,9 +86,16 @@ public class ProjectileType : MonoBehaviour
         else if (other.tag == "Monster" && Projectile != Type.Bomb)
         {
             // other.GetComponent<Monster>().GetDamaged(Damage);
-                other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);            
+                other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
             if (Projectile == Type.Magic)
+            {
                 other.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(0f, duration, tick, BuffTypes.Slow, per);
+                battle.PlayerSynergy(other.gameObject);
+            }
+            if (Projectile == Type.Arrow)
+            {
+                battle.PlayerSynergy(other.gameObject);
+            }
             if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill && Projectile != Type.FireSkill)
             {
                 Destroy(gameObject);

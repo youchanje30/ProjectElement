@@ -84,9 +84,5 @@ public class InventoryUI : MonoBehaviour
         SetItem();
         gameManager.isInven = !gameManager.isInven;
         InvenUI.SetActive(gameManager.isInven);
-    }
-
-
-
-   
+    }  
 }

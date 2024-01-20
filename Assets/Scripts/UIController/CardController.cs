@@ -143,10 +143,6 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
                 ismove = false;
             }
         }
-
-
-
-
     }
 }
 

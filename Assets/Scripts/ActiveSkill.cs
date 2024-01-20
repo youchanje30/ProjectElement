@@ -299,11 +299,8 @@ public class ActiveSkill : MonoBehaviour
     #endregion
 
 
-
-
     public IEnumerator ReturnAttack()
     {
-
         isCharging = false;
         for (int i = 0; i < SkillReady.Length; i++)
         {
@@ -336,14 +333,4 @@ public class ActiveSkill : MonoBehaviour
         }
 
     }
-    //private void OnTriggerEnter2D(Collider2D collider)
-    //{
-    //    if (isSouth)
-    //    {
-    //        if (collider.tag == "Monster" || collider.tag == "Destruct")
-    //        {
-    //            SkillAtk(collider.gameObject, DefaultDamage *= 1 + (JumpDamageIncreaseRate / 100));
-    //        }
-    //    }
-    //}
 }

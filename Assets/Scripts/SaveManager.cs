@@ -295,7 +295,7 @@ public class SaveManager : MonoBehaviour
         playerGold.InnerText = 0.ToString();
         root.AppendChild(playerGold);
 
-        
+
         // 플레이어 스테이터스 저장
         XmlElement playerStrength = xmlDocument.CreateElement("PlayerStrength");
         playerStrength.InnerText = 0.ToString();
@@ -306,8 +306,8 @@ public class SaveManager : MonoBehaviour
         XmlElement playerLuck = xmlDocument.CreateElement("PlayerLuck");
         playerLuck.InnerText = 0.ToString();
         root.AppendChild(playerLuck);
-        
-        
+
+
         // 정수 저장
         XmlElement playerSpiritSoul = xmlDocument.CreateElement("PlayerSpiritSoul");
         playerSpiritSoul.InnerText = 0.ToString();
