@@ -319,27 +319,33 @@ public class PlayerController : MonoBehaviour
     
     void Swap()
     {
-        if (pressedFirstSlot && battle.isSwap == true)
+        if(!battle.isSwap) return;
+
+        if(pressedFirstSlot || pressedSecondSlot || pressedThirdSlot)
+        {
+            battle.isSwap = false;
+            battle.StartCoroutine(battle.ReturnSwap());
+        }
+
+        if (pressedFirstSlot)
         {
             PlayerWeaponType = inventory.HavingElement[0].WeaponTypes; ;
             SetEquipment();
-            battle.isSwap = false;
-            battle.StartCoroutine(battle.ReturnSwap());
+            return;
         }
-        if (pressedSecondSlot && battle.isSwap == true)
+
+        if (pressedSecondSlot)
         {
             PlayerWeaponType = inventory.HavingElement[1].WeaponTypes;
             SetEquipment();
-            battle.isSwap = false;
-            battle.StartCoroutine(battle.ReturnSwap());
+            return;
         }
         
-        if (pressedThirdSlot && battle.isSwap == true)
+        if (pressedThirdSlot)
         {
             PlayerWeaponType = inventory.HavingElement[2].WeaponTypes;
             SetEquipment();
-            battle.isSwap = false;
-            battle.StartCoroutine(battle.ReturnSwap());
+            return;
         }
         
     }

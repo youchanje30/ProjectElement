@@ -182,7 +182,7 @@ public class Battle : MonoBehaviour
     {
         CameraController.instance.StartCoroutine(CameraController.instance.Shake(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
         
-        if(AtkObj.tag == "Monster")
+        if(AtkObj.CompareTag("Monster"))
         {       
             if(AtkObj.GetComponentInParent<MonsterSynergy>().isWeathering && WeaponType == WeaponTypes.Shield)
             {
@@ -198,11 +198,14 @@ public class Battle : MonoBehaviour
             }
             PlayerPasstive(AtkObj);
             PlayerSynergy(AtkObj);
+
+            return;
         }
 
-        if(AtkObj.tag == "Destruct")
+        if(AtkObj.CompareTag("Destruct"))
         {
             AtkObj.GetComponent<DestructObject>().DestroyObj();
+            return;
         }
     }
 
