@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,6 +34,7 @@ public class Battle : MonoBehaviour
 
     public float originalScale;
     public float atkDamage { get { return status.AtkDamage();} }
+    public float WeatheringDamage;
 
     [Header("Sword Setting")]
     [SerializeField] private bool canComboAtk = false;
@@ -181,9 +183,19 @@ public class Battle : MonoBehaviour
         CameraController.instance.StartCoroutine(CameraController.instance.Shake(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
         
         if(AtkObj.tag == "Monster")
-        {
-            Debug.Log(atkDamage);
-            AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(atkDamage);
+        {       
+            if(AtkObj.GetComponentInParent<MonsterSynergy>().isWeathering && WeaponType == WeaponTypes.Shield)
+            {
+                Debug.Log(WeatheringDamage);
+                AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(WeatheringDamage);
+                status.barrier *= 1 - (synergy.BarrierDecreaseRate / 100);
+                Debug.Log("베리어: " +status.barrier);
+            }  
+            else
+            {
+                Debug.Log(atkDamage);
+                AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(atkDamage);
+            }
             PlayerPasstive(AtkObj);
             PlayerSynergy(AtkObj);
         }

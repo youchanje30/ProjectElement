@@ -50,8 +50,9 @@ public class MonsterDebuffBase : MonoBehaviour
     */
 
     public IEnumerator Burn()
-    {
+    {   
         debuffs[0].isActive = true;
+        
         while (debuffs[0].duration > 0)
         {
             monster.GetDamaged(debuffs[0].damage, false);
@@ -59,10 +60,10 @@ public class MonsterDebuffBase : MonoBehaviour
             Debug.Log("Hit Burn");
             debuffs[0].duration -= debuffs[0].tick;
         }
-
+        
         debuffs[0].isActive = false;
         debuffs[0].damage = 0f;
-    }
+    }   
     //public IEnumerator Stun(float duration)
     //{
     //    debuffs[3].isActive = true;

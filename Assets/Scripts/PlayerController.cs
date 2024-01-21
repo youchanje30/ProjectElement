@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public Slider playerHpBar;
     [SerializeField] Image HpFill;
     public Gradient gradient;
+    public Slider BarrierBar;
+    [SerializeField] Image BarrierFill;
     [Space(20f)]
 
     //GameManager는 씬의 초기 세팅, 설정 등에 관한 스크립트
@@ -108,6 +110,10 @@ public class PlayerController : MonoBehaviour
             playerHpBar = UIController.instance.playerHpBar;
         if(!HpFill)
             HpFill = UIController.instance.HpFill;
+        if(!BarrierBar)
+            BarrierBar = UIController.instance.BarrierBar;
+        if (!BarrierFill)
+            BarrierFill = UIController.instance.BarrierFill;
             
         SetEquipment();
         battle.WeaponType = PlayerWeaponType;
@@ -130,6 +136,7 @@ public class PlayerController : MonoBehaviour
     {
         playerHpBar.value = Mathf.Lerp(playerHpBar.value, status.curHp, Time.deltaTime * 5f);
         HpFill.color = gradient.Evaluate(playerHpBar.normalizedValue);
+        BarrierBar.value = Mathf.Lerp(BarrierBar.value, status.barrier, Time.deltaTime * 5f);
     }
 
     void InputSystem()

@@ -18,6 +18,8 @@ public class UIController : MonoBehaviour
     [Header("체력 관련 UI")]
     public Slider playerHpBar;
     public Image HpFill;
+    public Slider BarrierBar;
+    public Image BarrierFill;
     [Space(20f)]
 
     [Header("오브젝트 관련 UI")]

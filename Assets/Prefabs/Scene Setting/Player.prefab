@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 4664804212794489908}
   - component: {fileID: 5498070469653306031}
   - component: {fileID: 4171092834519731156}
+  - component: {fileID: 6781280166762617137}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -334,7 +335,7 @@ Transform:
   - {fileID: 5968144621071190073}
   - {fileID: 5236275807440971110}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4316813253061002341
 SpriteRenderer:
@@ -630,6 +631,7 @@ MonoBehaviour:
   - {x: 1.7, y: 1.7}
   arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
   originalScale: 0
+  WeatheringDamage: 0
   canComboAtk: 0
   ShieldAtkDashTime: 0.1
   AtkDashingPower: 10
@@ -811,6 +813,20 @@ MonoBehaviour:
   ChargeTime: 2
   InvicibleTime: 1
   Delay: 1
+--- !u!114 &6781280166762617137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7141198254234339824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e912bed2124fa847b04c936fb8d81ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battle: {fileID: 0}
+  SouthSpiritDamageIncreaseRate: 200
 --- !u!1 &7219966532605892540
 GameObject:
   m_ObjectHideFlags: 0
