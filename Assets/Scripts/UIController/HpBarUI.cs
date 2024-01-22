@@ -7,17 +7,21 @@ public class HpBarUI : MonoBehaviour
 {
     InventoryUI InventoryUI;
     [SerializeField]private GameObject[] ElementalImage;
-   
+    public Image HpFIll;
+    [SerializeField] private PlayerStatus status;
+
     void Start()
     {
         InventoryUI = GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryUI>();
+        status = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        HpFIll.fillAmount = status.curHp / status.maxHp;
         SetImage();
-    }
+    } 
 
     public void SetImage()
     {
