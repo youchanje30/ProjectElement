@@ -371,7 +371,7 @@ public class Battle : MonoBehaviour
 
     public void PlayerPasstive(GameObject monster = null)
     {
-        if(passive.passiveRate[(int)WeaponType] > Random.Range(1, 100 + 1)) return;
+        if(passive.passiveRate[(int)WeaponType] <= 0 || passive.passiveRate[(int)WeaponType] < Random.Range(1, 100 + 1)) return;
 
         // if(monster != null && WeaponType == WeaponTypes.Wand)
         // {

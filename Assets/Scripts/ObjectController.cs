@@ -70,7 +70,7 @@ public class ObjectController : MonoBehaviour
                 for (int i = 0; i < 2; i++)
                 {
                     SpawnConsumableItem(HpHealItem);
-                    SpawnConsumableItem(SpiritSoulItem);
+                    // SpawnConsumableItem(SpiritSoulItem);
                 }
                 for (int i = 0; i < 5; i++)
                 {

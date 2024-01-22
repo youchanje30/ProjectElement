@@ -810,12 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battle: {fileID: 6729994133735113749}
   status: {fileID: 4664804212794489908}
-  passiveRate:
-  - 100
-  - 50
-  - 0
-  - 100
-  - 100
+  passiveRate: 0000000032000000640000000000000000000000
   isGetBarrier: 0
   duration:
   - 5

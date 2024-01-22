@@ -115,9 +115,9 @@ public class PlayerController : MonoBehaviour
         if (!BarrierFill)
             BarrierFill = UIController.instance.BarrierFill;
             
+        PlayerWeaponType = inventory.HavingElement[0].WeaponTypes;
         SetEquipment();
-        battle.WeaponType = PlayerWeaponType;
-
+        // battle.WeaponType = PlayerWeaponType;
         playerHpBar.maxValue = status.maxHp;
     }
 
@@ -329,7 +329,7 @@ public class PlayerController : MonoBehaviour
 
         if (pressedFirstSlot)
         {
-            PlayerWeaponType = inventory.HavingElement[0].WeaponTypes; ;
+            PlayerWeaponType = inventory.HavingElement[0].WeaponTypes;
             SetEquipment();
             return;
         }

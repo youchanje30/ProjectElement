@@ -308,45 +308,32 @@ public class MonsterBase : MonoBehaviour
         if(!canKncokBack) return;
 
         
-        float x = transform.position.x - target.position.x;
+        float subX = transform.position.x - target.position.x;
+        int knockX = 1;
 
-        if(x < 0)
-            x = 1;
+        if(subX < 0)
+            knockX = 1;
         else
-            x = -1;
+            knockX = -1;
 
         isKnockback = true;
-        StartCoroutine(Knockback(x));
+        StartCoroutine(Knockback(knockX));
     }
 
-    IEnumerator Knockback(float dir)
+    IEnumerator Knockback(int dir)
     {
         //sprite.color = new Color(0, 0, 0); 깜빡이는 효과 Dotween 으로 할 예정
 
-
-        // 날라갈 때 땅 체크해서 넉백으로 땅으로 떨어지지 못하게 하는 것이 좋아보임 아니면 물리로 움직..?
         float ctime = 0;
+        transform.localScale = new Vector3(-dir * monsterData.imageScale, monsterData.imageScale , 1);
+        rigid.velocity = Vector2.left * dir * 10;
         while (ctime < knockbackTime)
         {
-            if(transform.rotation.y == 0)
-            {
-                transform.Translate(Vector3.left * 10f * Time.deltaTime * dir);
-                // rigid.velocity = new Vector2(-1, 0);
-                // rigid.AddForce(new Vector2(1, 0) * force, ForceMode2D.Impulse);
-                // transform.localScale = new Vector3(-ImgScale, ImgScale ,1);
-            }
-            else
-            {
-                // rigid.velocity = new Vector2(1, 0);
-                // rigid.AddForce(new Vector2(1, 0) * force, ForceMode2D.Impulse);
-                transform.Translate(Vector3.left * 10f * Time.deltaTime * -1f * dir);
-                // transform.localScale = new Vector3(ImgScale, ImgScale ,1);
-            }
-
             ctime += Time.deltaTime;
             yield return null;
         }
         isKnockback = false;
+        rigid.velocity = Vector2.zero;
 
         //sprite.color = new Color(1, 1, 1);
     }

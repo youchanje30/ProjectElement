@@ -103,9 +103,9 @@ public class SaveManager : MonoBehaviour
         root.AppendChild(playerGold);
         
         // 정수 저장
-        XmlElement playerSpiritSoul = xmlDocument.CreateElement("PlayerSpiritSoul");
-        playerSpiritSoul.InnerText = player.GetComponent<Inventory>().SpiritSoul.ToString();
-        root.AppendChild(playerSpiritSoul);
+        // XmlElement playerSpiritSoul = xmlDocument.CreateElement("PlayerSpiritSoul");
+        // playerSpiritSoul.InnerText = player.GetComponent<Inventory>().SpiritSoul.ToString();
+        // root.AppendChild(playerSpiritSoul);
 
         // 클리어한 스테이지 수 저장
         XmlElement clearStageNum = xmlDocument.CreateElement("ClearStageNum");
@@ -172,9 +172,6 @@ public class SaveManager : MonoBehaviour
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.LoadXml(DecryptGameData());
             // xmlDocument.WriteTo(decryptData);
-
-
-
             // xmlDocument.Load(Application.dataPath + "/DataXML.xml");
 
             // 무기 타입
@@ -202,8 +199,8 @@ public class SaveManager : MonoBehaviour
             player.GetComponent<Inventory>().Gold = int.Parse(gold[0].InnerText);
 
             // 정령
-            XmlNodeList spiritSoul = xmlDocument.GetElementsByTagName("PlayerSpiritSoul");
-            player.GetComponent<Inventory>().SpiritSoul = int.Parse(spiritSoul[0].InnerText);
+            // XmlNodeList spiritSoul = xmlDocument.GetElementsByTagName("PlayerSpiritSoul");
+            // player.GetComponent<Inventory>().SpiritSoul = int.Parse(spiritSoul[0].InnerText);
 
             // 플레이어 스테이터스
             XmlNodeList playerStrength = xmlDocument.GetElementsByTagName("PlayerStrength");
@@ -225,13 +222,10 @@ public class SaveManager : MonoBehaviour
                 }
             }
 
- 
-            // player.PlayerElementType = playerElement;
-            // player.SetEquipment();
         }
         else
         {
-            // Debug.Log("no file");
+
         }
 
 
@@ -309,9 +303,9 @@ public class SaveManager : MonoBehaviour
 
 
         // 정수 저장
-        XmlElement playerSpiritSoul = xmlDocument.CreateElement("PlayerSpiritSoul");
-        playerSpiritSoul.InnerText = 0.ToString();
-        root.AppendChild(playerSpiritSoul);
+        // XmlElement playerSpiritSoul = xmlDocument.CreateElement("PlayerSpiritSoul");
+        // playerSpiritSoul.InnerText = 0.ToString();
+        // root.AppendChild(playerSpiritSoul);
 
         // 클리어한 스테이지 수 저장
         XmlElement clearStageNum = xmlDocument.CreateElement("ClearStageNum");
@@ -337,11 +331,9 @@ public class SaveManager : MonoBehaviour
 
         xmlDocument.AppendChild(root);
 
-        // xmlDocument.Save(Application.dataPath + "/DataXML.xml");
         SaveFile(EncryptGameData(xmlDocument));
         if(File.Exists(Application.dataPath + "/DataXML.xml"))
         {
-            //Debug.Log("Saved");
             //저장 성공
         }
 
@@ -355,16 +347,12 @@ public class SaveManager : MonoBehaviour
     }
 
 
-
-
     static void SaveFile(string Data)
     {
         using (FileStream fs = new FileStream(GetPath(), FileMode.Create, FileAccess.Write))
         {
-            //파일로 저장할 수 있게 바이트화
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(Data);
  
-            //bytes의 내용물을 0 ~ max 길이까지 fs에 복사
             fs.Write(bytes, 0, bytes.Length);
         }
     }
@@ -374,13 +362,10 @@ public class SaveManager : MonoBehaviour
     {
         using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
         {
-            //파일을 바이트화 했을 때 담을 변수를 제작
             byte[] bytes = new byte[(int)fs.Length];
  
-            //파일스트림으로 부터 바이트 추출
             fs.Read(bytes, 0, (int)fs.Length);
  
-            //추출한 바이트를 json string으로 인코딩
             string jsonString = System.Text.Encoding.UTF8.GetString(bytes);
             return jsonString;
         }
@@ -410,8 +395,6 @@ public class SaveManager : MonoBehaviour
         return System.Text.Encoding.UTF8.GetString(resultArray);
     }
 
-
-
     private static RijndaelManaged CreateRijndaelManaged()
     {
         byte[] keyArray = System.Text.Encoding.UTF8.GetBytes(privateKey);
@@ -428,8 +411,9 @@ public class SaveManager : MonoBehaviour
 
     public void AutoSave()
     {
+        Debug.Log("Auto Saved");
         Save();
-        Invoke("AutoSave", 30f);
+        Invoke("AutoSave", 5f);
     }
 
    

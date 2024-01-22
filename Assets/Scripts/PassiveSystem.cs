@@ -9,7 +9,7 @@ public class PassiveSystem : MonoBehaviour
     [SerializeField] private Battle battle;
     [SerializeField] private PlayerStatus status;
 
-    public float[] passiveRate;
+    public int[] passiveRate;
 
     [Header("현재 상태")]
     public bool isGetBarrier;

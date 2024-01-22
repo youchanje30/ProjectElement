@@ -368,12 +368,12 @@ public class Monster : MonoBehaviour
             spawnCoin.transform.position = transform.position;
         }
 
-        for (int i = 0; i < ItemDropManager.instance.SpiritSoulDrop(); i++)
-        {
-            Debug.Log(1);
-            GameObject spawnSpiritSoul = Instantiate(SpiritSoul);
-            spawnSpiritSoul.transform.position = transform.position;
-        }
+        // for (int i = 0; i < ItemDropManager.instance.SpiritSoulDrop(); i++)
+        // {
+        //     Debug.Log(1);
+        //     GameObject spawnSpiritSoul = Instantiate(SpiritSoul);
+        //     spawnSpiritSoul.transform.position = transform.position;
+        // }
     }
 
 

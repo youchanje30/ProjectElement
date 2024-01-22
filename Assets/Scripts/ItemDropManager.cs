@@ -26,14 +26,14 @@ public class ItemDropManager : MonoBehaviour
     [Range (0, 100)]
     public int CoinDropRate;
     public DropBucket[] CoinBuckets;
-    [Space(30f)]
+    // [Space(30f)]
 
 
 
-    [Header("SpiritSoul Drop Setting")]
-    [Range (0, 100)]
-    public int SpiritSoulDropRate;
-    public DropBucket[] SpiritSoulBuckets;
+    // [Header("SpiritSoul Drop Setting")]
+    // [Range (0, 100)]
+    // public int SpiritSoulDropRate;
+    // public DropBucket[] SpiritSoulBuckets;
     // [Space(30f)]
 
     public int CoinDrop()
@@ -62,30 +62,30 @@ public class ItemDropManager : MonoBehaviour
     }
 
 
-    public int SpiritSoulDrop()
-    {
-        int SpiritSoul = 0;
-        bool GetSpiritSoul = Random.Range(1, 100 + 1) <= SpiritSoulDropRate;
-        if(!GetSpiritSoul) return 0;
+    // public int SpiritSoulDrop()
+    // {
+    //     int SpiritSoul = 0;
+    //     bool GetSpiritSoul = Random.Range(1, 100 + 1) <= SpiritSoulDropRate;
+    //     if(!GetSpiritSoul) return 0;
 
-        int DropWeights = 0;
-        for (int i = 0; i < SpiritSoulBuckets.Length; i++)
-        {
-            DropWeights += SpiritSoulBuckets[i].DropWeight;
-        }
+    //     int DropWeights = 0;
+    //     for (int i = 0; i < SpiritSoulBuckets.Length; i++)
+    //     {
+    //         DropWeights += SpiritSoulBuckets[i].DropWeight;
+    //     }
 
-        int GetBucket = Random.Range(1, DropWeights + 1);
-        for (int i = 0, j = 0; i < SpiritSoulBuckets.Length; i++)
-        {
-            j += SpiritSoulBuckets[i].DropWeight;
-            if(GetBucket <= j)
-            {
-                SpiritSoul = Random.Range(SpiritSoulBuckets[i].MinDropItem, SpiritSoulBuckets[i].MaxDropItem + 1);
-            }
-        }
+    //     int GetBucket = Random.Range(1, DropWeights + 1);
+    //     for (int i = 0, j = 0; i < SpiritSoulBuckets.Length; i++)
+    //     {
+    //         j += SpiritSoulBuckets[i].DropWeight;
+    //         if(GetBucket <= j)
+    //         {
+    //             SpiritSoul = Random.Range(SpiritSoulBuckets[i].MinDropItem, SpiritSoulBuckets[i].MaxDropItem + 1);
+    //         }
+    //     }
 
-        return SpiritSoul;
-    }
+    //     return SpiritSoul;
+    // }
 
     void Awake()
     {
