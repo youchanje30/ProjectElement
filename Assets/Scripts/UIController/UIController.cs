@@ -57,6 +57,8 @@ public class UIController : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+
+        GetComponent<Canvas>().worldCamera = Camera.main;
     }
 
 
