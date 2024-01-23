@@ -514,8 +514,8 @@ public class GameManager : MonoBehaviour
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
             option.text = item.width + " x " + item.height + "  " /*+ item.refreshRateRatio + "hz"*/;
-            if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
-                resolutionDropdown.options.Add(option);
+            //if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
+            resolutionDropdown.options.Add(option);
             if (item.width == Screen.width && item.height == Screen.height)
                 resolutionDropdown.value = optionNum;
             optionNum++;
