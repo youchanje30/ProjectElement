@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Elemental")]
     public GameObject[] Elements;
+    [SerializeField] Scene[] scenes;
 
 
     void Awake()
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
         timeUI = GameObject.Find("Canvas").GetComponent<TimerUI>();
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         talkManager  = GameObject.Find("Talk Manager").GetComponent<TalkManager>();
+
     }
 
     void Start()
@@ -135,6 +137,7 @@ public class GameManager : MonoBehaviour
         {
             player.inventory.HavingElement[i] = Elemental.AddElement(0);
         }
+        
 
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
@@ -326,7 +329,7 @@ public class GameManager : MonoBehaviour
     public void MainstageRoad()
     {
         SaveManager.instance.Save();
-        SceneManager.LoadScene("Maintown");
+        SceneManager.LoadScene("Main Scene");
     }
 
 

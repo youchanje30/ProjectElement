@@ -4,23 +4,43 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    // public static StageManager stageManager;
+    public static StageManager instance;
 
-    public GameObject[] Monsters;
+    // public GameObject[] Monsters;
+    public List<GameObject> monsters;
     public GameObject Portal;
     public Transform PortalSpawnPos;
-    public int remainMonster;
+    // public int remainMonster;
 
     void Awake()
     {
-        CheckStageMonster();
+        if(!instance)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+
+                    
     }
 
 
-    public void CheckStageMonster()
+    // public void CheckStageMonster()
+    // {
+    //     Monsters = GameObject.FindGameObjectsWithTag("Monster");
+    //     remainMonster = Monsters.Length;
+    // }
+
+    public void AddMonster(GameObject monster)
     {
-        Monsters = GameObject.FindGameObjectsWithTag("Monster");
-        remainMonster = Monsters.Length;
+        monsters.Add(monster);
+    }
+
+    public void DeadMonster(GameObject monster)
+    {
+        monsters.Remove(monster);
+
+        if(monsters.Count <= 0)
+            Clear();
     }
 
     void Clear()
@@ -32,12 +52,12 @@ public class StageManager : MonoBehaviour
         spawnPortal.transform.position = PortalSpawnPos.position;
     }
 
-    public void DeadMonster()
-    {
-        remainMonster--;
-        if(remainMonster <= 0)
-        {
-            Clear();
-        }
-    }
+    // public void DeadMonster()
+    // {
+    //     remainMonster--;
+    //     if(remainMonster <= 0)
+    //     {
+    //         Clear();
+    //     }
+    // }
 }

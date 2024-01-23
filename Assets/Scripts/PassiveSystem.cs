@@ -43,9 +43,10 @@ public class PassiveSystem : MonoBehaviour
             if(unAtkedTime >= duration[(int)WeaponTypes.Shield])
             {
                 isGetBarrier = true;
+                unAtkedTime = 0f;
                 ActivePassive(WeaponTypes.Shield);
             }
-        }  
+        }
     }
 
     public void ActivePassive(WeaponTypes type , MonsterDebuffBase monster = null)
@@ -70,6 +71,18 @@ public class PassiveSystem : MonoBehaviour
                 break;
         }
     }
+
+    public void Swaped()
+    {
+        if(battle.WeaponType != WeaponTypes.Shield)
+        {
+            status.barrier = 0f;
+            unAtkedTime = 0f;
+            isGetBarrier = false;
+        }
+        
+    }
+
     //public void ActiveSynergy(WeaponTypes type , MonsterSynergy monster = null)
     //{
     //    monster.GetSynergy(type);

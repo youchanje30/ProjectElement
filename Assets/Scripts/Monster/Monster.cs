@@ -349,7 +349,7 @@ public class Monster : MonoBehaviour
 
     public void Dead()
     {
-        stageManager.DeadMonster();
+        // stageManager.DeadMonster();
         Reward();
         Destroy(gameObject);
     }

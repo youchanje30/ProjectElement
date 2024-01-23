@@ -10,30 +10,44 @@ public class CameraController : MonoBehaviour
     public Vector3 Offset;
     public Transform cameraHandler;
 
-
+    public delegate void cameraDelegate(float x);
+    public cameraDelegate cameraTranslate;
+    
     public float smoothness = 3f;
+
+    private float oldPosition;    
 
     void Awake()
     {
         instance = this;
 
-        if(Target == null) Target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        if(!Target)
+            Target = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
     
     void Update()
     {
-        //Vector3 velocity = Vector3.zero;
+        // cameraHandler.position = Vector3.Lerp(cameraHandler.position, Target.position + Offset , Time.fixedDeltaTime * smoothness);
 
-        //cameraHandler.position = Vector3.SmoothDamp(cameraHandler.position, Target.position + Offset, ref velocity, Time.deltaTime * smoothness);
-        //cameraHandler.position = Vector3.Lerp(cameraHandler.position, Target.position + Offset , Time.deltaTime * smoothness);
-         
     }
 
     void FixedUpdate()
     {
+        
+        if (cameraHandler.position.x != oldPosition)
+        {
+            if (cameraTranslate != null)
+            {
+                float x = oldPosition - cameraHandler.position.x;
+                cameraTranslate(x);
+            }
+ 
+            oldPosition = cameraHandler.position.x;
+        }
         cameraHandler.position = Vector3.Lerp(cameraHandler.position, Target.position + Offset , Time.fixedDeltaTime * smoothness);
     }
 
+    
 
 
     public IEnumerator Shake(float duration = 0.1f , float magnitude = 0.2f)

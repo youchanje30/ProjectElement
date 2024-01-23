@@ -156,7 +156,7 @@ public class Battle : MonoBehaviour
         {
             
             SaveManager.instance.ResetData();
-            SceneManager.LoadScene("Maintown");
+            // SceneManager.LoadScene("Maintown");
         }    
         // StopCoroutine(ShieldGuard());
     }

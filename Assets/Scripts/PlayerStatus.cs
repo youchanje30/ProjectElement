@@ -130,6 +130,7 @@ public class PlayerStatus : MonoBehaviour
         playerSpeed = basicPlayerSpeed + increasePlayerSpeed;
         jumpForce = (basicJumpForce + increaseJumpForce) * (basicJumpForcePer + increaseJumpForcePer) * 0.01f;
 
+
         if(battle.WeaponType == WeaponTypes.Bow)
         {
             crtRate += coolDownReductionPer * passive.bowPer * 0.01f;

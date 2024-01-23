@@ -115,9 +115,10 @@ public class PlayerController : MonoBehaviour
         if (!BarrierFill)
             BarrierFill = UIController.instance.BarrierFill;
             
+        
+        SaveManager.instance.Load(); // 로드 시점에 따라 적용되는 지점이 달라서 여기서 일단 실행했어요
         PlayerWeaponType = inventory.HavingElement[0].WeaponTypes;
         SetEquipment();
-        // battle.WeaponType = PlayerWeaponType;
         playerHpBar.maxValue = status.maxHp;
     }
 
@@ -227,7 +228,7 @@ public class PlayerController : MonoBehaviour
         battle.WeaponType = PlayerWeaponType;
         ChangeAnim();
         status.SetStatue();
-
+        GetComponent<PassiveSystem>().Swaped();
         animator.SetFloat("AtkSpeed", status.atkSpeed * 0.01f);
         playerHpBar.maxValue = status.maxHp;
     }

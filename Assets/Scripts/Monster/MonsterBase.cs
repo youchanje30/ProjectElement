@@ -112,6 +112,11 @@ public class MonsterBase : MonoBehaviour
         isMove = true;
     }
 
+    protected virtual void Start()
+    {
+        StageManager.instance.AddMonster(gameObject);
+    }
+
     protected virtual void Update()
     {
         CheckState();
@@ -343,8 +348,10 @@ public class MonsterBase : MonoBehaviour
     #region 몬스터 사망
     protected virtual void Dead()
     {
+        StageManager.instance.DeadMonster(gameObject);
         Reward();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        // Destroy(gameObject);
     }
 
     protected virtual void Reward()
