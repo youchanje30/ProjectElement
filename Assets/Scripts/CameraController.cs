@@ -50,28 +50,47 @@ public class CameraController : MonoBehaviour
     
 
 
-    public IEnumerator Shake(float duration = 0.1f , float magnitude = 0.2f)
+    public IEnumerator Shake(float duration = 0.1f , float magnitude = 0.2f, int pattern = 0)
     {
         // if(GameManager.instance.CanCameraShake)
         // {
-            Vector3 originalPos = transform.position;
-        
-            float elasped = 0f;
+        Vector3 originalPos = transform.position;
 
-            while(elasped < duration)
-            {
-                float x = Random.Range(-1f, 1f) * magnitude;
-                float y = Random.Range(-1f, 1f) * magnitude;
-                
-                transform.localPosition = new Vector3(x, y, originalPos.z);
+        float elasped = 0f;
+        switch (pattern)
+        {
+            case 0:             
+                while (elasped < duration)
+                {
+                    float x = Random.Range(-1f, 1f) * magnitude;
+                    float y = Random.Range(-1f, 1f) * magnitude;
 
-                elasped += Time.deltaTime;
+                    transform.localPosition = new Vector3(x, y, originalPos.z);
 
-                yield return null;
+                    elasped += Time.deltaTime;
 
-            }
-            // transform.position = originalPos;
-            transform.localPosition = new Vector3(0,0,0);
-        // }
+                    yield return null;
+
+                }
+                // transform.position = originalPos;
+                transform.localPosition = new Vector3(0, 0, 0);
+                break;
+            case 1:
+                while (elasped < duration)
+                {
+                    // float x = Random.Range(-1f, 1f) * magnitude;
+                    // float y = Random.Range(-1f, 1f) * magnitude;
+                    float z = Random.Range(-1f, 1f) * magnitude;
+                    transform.localRotation = Quaternion.Euler(0, 0, z);
+
+                    elasped += Time.deltaTime;
+
+                    yield return null;
+
+                }
+                // transform.position = originalPos;
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+                break;
+        }
     }
 }

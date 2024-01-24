@@ -137,7 +137,7 @@ public class Battle : MonoBehaviour
         if(!isMiss)
         {
             float getDmg = Damage * (100 - status.defPer) * 0.01f;
-            CameraController.instance.StartCoroutine(CameraController.instance.Shake(DamagedDuration, DamagedForce));
+            CameraController.instance.StartCoroutine(CameraController.instance.Shake(DamagedDuration, DamagedForce, 1));
             if (status.barrier > getDmg)
             {
                 status.barrier -= getDmg;

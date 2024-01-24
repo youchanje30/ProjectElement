@@ -745,8 +745,8 @@ MonoBehaviour:
   - -1
   - 0.2
   - -1
-  DamagedDuration: 0
-  DamagedForce: 0
+  DamagedDuration: 0.1
+  DamagedForce: 1
   WeaponType: 0
   atking: 0
   isGuard: 0
@@ -896,6 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passive: {fileID: 0}
+  status: {fileID: 0}
   SkillCoolTime:
   - 1
   - 1
@@ -914,7 +915,7 @@ MonoBehaviour:
     m_Bits: 64
   ActiveTime: 3
   FireShakeTime: 0.05
-  FireShakeMagnitude: 0.05
+  FireShakeMagnitude: 1
   WaterBall: {fileID: 3054785954419580376, guid: 02e9dce7710091749a6c01825bbde7f9, type: 3}
   isWater: 0
   WaterDamageIncreaseRate: 0
@@ -951,8 +952,8 @@ MonoBehaviour:
   JumpShakeMagnitude: 0.25
   SouthShakeTime: 0.1
   SouthShakeMagnitude: 0.2
-  LandingShakeTime: 0.25
-  LandingShakeMagnitude: 0.4
+  LandingShakeTime: 0.2
+  LandingShakeMagnitude: 10
   Arrow: {fileID: 3054785954419580376, guid: 88320b9d25572f34fac3f5c97b155539, type: 3}
   Pos: {fileID: 4315468924003554650}
   ArrowDamageIncreaseRate: 200

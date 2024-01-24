@@ -177,7 +177,7 @@ public class ActiveSkill : MonoBehaviour
         switch (weapontype)
         {
             case WeaponTypes.Sword:
-                CameraController.instance.StartCoroutine(CameraController.instance.Shake(FireShakeTime, FireShakeMagnitude));
+                CameraController.instance.StartCoroutine(CameraController.instance.Shake(FireShakeTime, FireShakeMagnitude,1));
                 FIreSkill();
                 break;
             case WeaponTypes.Wand:
@@ -269,9 +269,10 @@ public class ActiveSkill : MonoBehaviour
     public void RandingSet()
     {
         if (movement2D.isGround && CanLanding)
-        {
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
-            CameraController.instance.StartCoroutine(CameraController.instance.Shake(LandingShakeTime, LandingShakeMagnitude));
+        { 
+            CameraController.instance.StartCoroutine(CameraController.instance.Shake(LandingShakeTime, LandingShakeMagnitude, 1));
+             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
+            
             foreach (Collider2D collider in collider2Ds)
             {               
                 if (collider.tag == "Monster" && collider.GetComponentInParent<MonsterBase>().isHit == false)
