@@ -21,9 +21,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private PlayerController player;
 
-    [Header("Game Setting")]
-    public int CameraShakeOnOff;
-
     [Header("Game Info")]
     public int clearStage;
 
@@ -89,12 +86,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Elemental")]
     public GameObject[] Elements;
-    [SerializeField] Scene[] scenes;
-
 
     void Awake()
     {
-        CameraShakeOnOff = 1;
         TimerVal = 1;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -235,9 +229,6 @@ public class GameManager : MonoBehaviour
             // 화면 비율 (전체 화면 변경)
 
             case 4: //카메라 흔들림
-                CameraShakeOnOff++;
-                CameraShakeOnOff %= 2;
-                CameraShakeTxt.text = CameraShakeOnOff == 0 ? "켜짐" : "꺼짐"; 
                 //if (CameraShakeOnOff == 0) { CanCameraShake = true; }
                 //else { CanCameraShake = false; }
                 break;
@@ -259,7 +250,6 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("ResolutionData", resolutionDropdown.value);
         PlayerPrefs.SetInt("FullScreenData", fullScreen);
-        PlayerPrefs.SetInt("CameraShakeData", CameraShakeOnOff);
         PlayerPrefs.SetInt("TimerData", timeUI.OnOff);
         PlayerPrefs.SetFloat("BGMData", audioManager.BGMVolumeSlider.value);
         PlayerPrefs.SetFloat("SFXData", audioManager.SFXVolumeSlider.value);

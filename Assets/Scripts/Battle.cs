@@ -184,6 +184,7 @@ public class Battle : MonoBehaviour
     public void Atk(GameObject AtkObj)
     {
         CameraController.instance.StartCoroutine(CameraController.instance.Shake(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
+        // CameraController.instance.StartCoroutine(CameraController.instance.ShakeR(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
         
         if(AtkObj.CompareTag("Monster"))
         {       

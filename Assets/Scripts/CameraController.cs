@@ -47,9 +47,8 @@ public class CameraController : MonoBehaviour
         cameraHandler.position = Vector3.Lerp(cameraHandler.position, Target.position + Offset , Time.fixedDeltaTime * smoothness);
     }
 
-    
 
-
+<<<<<<< Updated upstream
     public IEnumerator Shake(float duration = 0.1f , float magnitude = 0.2f, int pattern = 0)
     {
         // if(GameManager.instance.CanCameraShake)
@@ -92,5 +91,43 @@ public class CameraController : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
                 break;
         }
+=======
+    public IEnumerator Shake(float duration = 0.1f , float magnitude = 0.2f)
+    {   
+        float elasped = 0f;
+
+        while(elasped < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+            
+            transform.localPosition = new Vector3(x, y, 0);
+
+            elasped += Time.deltaTime;
+
+            yield return null;
+
+        }
+        transform.localPosition = new Vector3(0,0,0);
+>>>>>>> Stashed changes
     }
+
+    public IEnumerator ShakeR(float duration = 0.1f , float magnitude = 0.2f)
+    {
+        float curTime = 0f;
+        while(curTime < duration)
+        {
+            float z = Random.Range(-1f, 1f) * magnitude;
+            
+            // transform.rotation = Quaternion.Euler()
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, z));
+
+            curTime += Time.deltaTime;
+
+            yield return null;
+
+        }
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+    }
+
 }
