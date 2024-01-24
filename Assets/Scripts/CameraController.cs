@@ -56,7 +56,6 @@ public class CameraController : MonoBehaviour
         // {
             Vector3 originalPos = transform.position;
         
-
             float elasped = 0f;
 
             while(elasped < duration)
