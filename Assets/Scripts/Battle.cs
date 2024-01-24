@@ -18,7 +18,8 @@ public class Battle : MonoBehaviour
     [Header("진동 설정")]
     [SerializeField] float[] shakeDuration;
     [SerializeField] float[] shakeForce;
-
+    [SerializeField] float DamagedDuration;
+    [SerializeField] float DamagedForce;
 
     [Header("Weapon Setting")]
     [Tooltip("무기 타입")]
@@ -136,7 +137,7 @@ public class Battle : MonoBehaviour
         if(!isMiss)
         {
             float getDmg = Damage * (100 - status.defPer) * 0.01f;
-            CameraController.instance.StartCoroutine(CameraController.instance.Shake(shakeDuration[0], shakeForce[0]));
+            CameraController.instance.StartCoroutine(CameraController.instance.Shake(DamagedDuration, DamagedForce));
             if (status.barrier > getDmg)
             {
                 status.barrier -= getDmg;
