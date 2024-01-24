@@ -65,12 +65,6 @@ public class MonsterBase : MonoBehaviour
 
     */
 
-    /*
-        수정해야하는 점
-        
-        넉백으로 인해 플랫폼을 벗어나는 현상
-
-    */
 
     #region 초기화
     protected virtual void Init()
@@ -212,8 +206,8 @@ public class MonsterBase : MonoBehaviour
     {
         Vector2 frontVec = new Vector2(transform.position.x + nextDir * monsterData.floorRayX, transform.position.y - monsterData.floorRayY);
 
-        Debug.DrawRay(frontVec, Vector3.down, new Color(0,1,0));
-        RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector3.down, 1 , LayerMask.GetMask("Platform"));
+        Debug.DrawRay(frontVec, Vector2.down, new Color(0,1,0));
+        RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector2.down, 1 , LayerMask.GetMask("Platform"));
         
         return raycast.collider != null;
     }

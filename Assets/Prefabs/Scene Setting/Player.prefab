@@ -474,7 +474,6 @@ GameObject:
   - component: {fileID: 5498070469653306031}
   - component: {fileID: 4171092834519731156}
   - component: {fileID: 6781280166762617137}
-  - component: {fileID: 4072522771947614025}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -506,7 +505,7 @@ Transform:
   - {fileID: 1175219381179392127}
   - {fileID: 8358024266522001532}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4316813253061002341
 SpriteRenderer:
@@ -746,6 +745,8 @@ MonoBehaviour:
   - -1
   - 0.2
   - -1
+  DamagedDuration: 0
+  DamagedForce: 0
   WeaponType: 0
   atking: 0
   isGuard: 0
@@ -778,6 +779,7 @@ MonoBehaviour:
   DashingPower: 10
   ShieldDashAtkSize: {x: 4, y: 2}
   ShieldDashPos: {fileID: 4472214303243002330}
+  barrier: {fileID: 3277141783882987306}
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
   isSwap: 0
@@ -974,19 +976,6 @@ MonoBehaviour:
   battle: {fileID: 0}
   SouthSpiritDamageIncreaseRate: 100
   BarrierDecreaseRate: 0
---- !u!114 &4072522771947614025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7141198254234339824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65c7a37ec3e62254b8d29ec021b1c9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  barrier: {fileID: 3277141783882987306}
 --- !u!1 &7219966532605892540
 GameObject:
   m_ObjectHideFlags: 0

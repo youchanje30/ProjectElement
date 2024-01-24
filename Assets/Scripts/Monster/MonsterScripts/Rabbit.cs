@@ -92,4 +92,10 @@ public class Rabbit : MonsterBase
             other.GetComponent<Battle>().GetDamaged(damage);
         }
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        
+        rigid.velocity = Vector2.zero;
+    }
 }

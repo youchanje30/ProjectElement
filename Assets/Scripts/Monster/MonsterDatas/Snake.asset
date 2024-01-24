@@ -21,4 +21,4 @@ MonoBehaviour:
   maxKnockbackTime: 0.2
   imageScale: 1
   floorRayX: 0.5
-  floorRayY: 0.5
+  floorRayY: 0.4
