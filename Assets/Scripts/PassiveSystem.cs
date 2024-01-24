@@ -41,12 +41,12 @@ public class PassiveSystem : MonoBehaviour
         {
             unAtkedTime += Time.deltaTime;
             if(unAtkedTime >= duration[(int)WeaponTypes.Shield])
-            {
+            {              
                 isGetBarrier = true;
                 unAtkedTime = 0f;
                 ActivePassive(WeaponTypes.Shield);
             }
-        }
+        }       
     }
 
     public void ActivePassive(WeaponTypes type , MonsterDebuffBase monster = null)

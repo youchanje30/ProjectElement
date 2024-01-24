@@ -735,13 +735,13 @@ MonoBehaviour:
   animator: {fileID: 0}
   fallAtking: 0
   shakeDuration:
-  - -1
+  - 0.1
   - 0.1
   - -1
   - 0.2
   - -1
   shakeForce:
-  - -1
+  - 0.2
   - 0.2
   - -1
   - 0.2
@@ -911,6 +911,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   ActiveTime: 3
+  FireShakeTime: 0.05
+  FireShakeMagnitude: 0.05
   WaterBall: {fileID: 3054785954419580376, guid: 02e9dce7710091749a6c01825bbde7f9, type: 3}
   isWater: 0
   WaterDamageIncreaseRate: 0
@@ -923,11 +925,13 @@ MonoBehaviour:
   - {x: 0, y: 2}
   - {x: 1.5, y: 2}
   BallGravity: 10
-  BallSpeed: 5
+  BallSpeed: 8
   BombRange: {x: 10, y: 10}
   BombChargeTime: 1
   WaterY: 0
   activeTime: 10
+  BombShakeTime: 0.1
+  BombShakeMagnitude: 1
   isSouth: 0
   JumpDamageIncreaseRate: 20
   LandDamageIncreaseRate: 50
@@ -941,12 +945,20 @@ MonoBehaviour:
   LandingPos:
   - {fileID: 2987700167441146525}
   - {fileID: 3200210186239389953}
+  JumpShakeTime: 0.2
+  JumpShakeMagnitude: 0.25
+  SouthShakeTime: 0.1
+  SouthShakeMagnitude: 0.2
+  LandingShakeTime: 0.25
+  LandingShakeMagnitude: 0.4
   Arrow: {fileID: 3054785954419580376, guid: 88320b9d25572f34fac3f5c97b155539, type: 3}
   Pos: {fileID: 4315468924003554650}
   ArrowDamageIncreaseRate: 200
   ChargeTime: 2
   InvicibleTime: 1
   Delay: 1
+  WindShakeTime: 0.1
+  WindShakeMagnitude: 0.5
 --- !u!114 &6781280166762617137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,7 +972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battle: {fileID: 0}
-  SouthSpiritDamageIncreaseRate: 200
+  SouthSpiritDamageIncreaseRate: 100
   BarrierDecreaseRate: 0
 --- !u!114 &4072522771947614025
 MonoBehaviour:

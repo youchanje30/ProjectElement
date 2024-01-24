@@ -48,6 +48,7 @@ public class Battle : MonoBehaviour
     [SerializeField] private float DashingPower;
     [SerializeField] private Vector2 ShieldDashAtkSize;
     [SerializeField] private Transform ShieldDashPos;
+    public GameObject barrier;
     // public bool 
     [Space(20f)]
 
@@ -120,7 +121,7 @@ public class Battle : MonoBehaviour
             }
             
         }
-       
+        barrier.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, (status.barrier / (status.maxHp * passive.shieldPer * 0.01f)));
     }
 
  
