@@ -12,6 +12,7 @@ public class ActiveSkill : MonoBehaviour
     private Movement2D movement2D;
     private Rigidbody2D rigid2D;
     public PassiveSystem passive;
+    public PlayerStatus status;
     public float[] SkillCoolTime;
     public bool[] SkillReady;
     public bool isCharging = false;
@@ -134,6 +135,7 @@ public class ActiveSkill : MonoBehaviour
         battle = GetComponent<Battle>();
         rigid2D = GetComponent<Rigidbody2D>();
         movement2D = GetComponent<Movement2D>();
+        status = GetComponent<PlayerStatus>();
         for (int i = 0; i < SkillReady.Length; i++)
         {
             SkillReady[i] = true;
@@ -344,7 +346,7 @@ public class ActiveSkill : MonoBehaviour
         {
             if (!SkillReady[i])
             {
-                yield return new WaitForSeconds(SkillCoolTime[i]);
+                yield return new WaitForSeconds(SkillCoolTime[i] *= 1 - (status.coolDownReductionPer/100));
                 SkillReady[i] = true;
             }
         }

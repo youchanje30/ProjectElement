@@ -116,7 +116,7 @@ public class ProjectileType : MonoBehaviour
         }
         if (Projectile == Type.WaterSkill)
         {
-            if (other.gameObject.layer == 6|| other.tag == "OneWayPlatForm")
+            if (other.gameObject.layer == 6/*|| other.tag == "OneWayPlatForm"*/)
             {
                 WaterY(skill.WaterY);
                 //if (other.tag == "Monster")
@@ -173,11 +173,12 @@ public class ProjectileType : MonoBehaviour
     public void WaterY(float y)
     {
         if(transform.position.y <= y)
-        {
-            transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
+        { 
             transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            transform.GetComponent<Rigidbody2D>().position += new Vector2(0,0.4f);
+            transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
             transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
+         transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
+           
         }
     }
     //private void OnDrawGizmos()
