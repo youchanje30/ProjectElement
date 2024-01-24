@@ -18,12 +18,12 @@ public class PlayerController : MonoBehaviour
     //PlayerController에서 플레이어의 입력을 받음
     //Movement2D 캐릭터의 이동에 관한 스크립트
     //Battle 캐릭터의 전투에 관한 스크립트
-    [Header("Player UI")]
-    public Slider playerHpBar;
-    [SerializeField] Image HpFill;
-    public Gradient gradient;
-    public Slider BarrierBar;
-    [SerializeField] Image BarrierFill;
+    //[Header("Player UI")]
+    //public Slider playerHpBar;
+    //[SerializeField] Image HpFill;
+    //public Gradient gradient;
+    //public Slider BarrierBar;
+    //[SerializeField] Image BarrierFill;
     [Space(20f)]
 
     //GameManager는 씬의 초기 세팅, 설정 등에 관한 스크립트
@@ -106,20 +106,11 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        if(!playerHpBar)
-            playerHpBar = UIController.instance.playerHpBar;
-        if(!HpFill)
-            HpFill = UIController.instance.HpFill;
-        if(!BarrierBar)
-            BarrierBar = UIController.instance.BarrierBar;
-        if (!BarrierFill)
-            BarrierFill = UIController.instance.BarrierFill;
-            
         
         SaveManager.instance.Load(); // 로드 시점에 따라 적용되는 지점이 달라서 여기서 일단 실행했어요
         PlayerWeaponType = inventory.HavingElement[0].WeaponTypes;
         SetEquipment();
-        playerHpBar.maxValue = status.maxHp;
+        //playerHpBar.maxValue = status.maxHp;
     }
 
 
@@ -129,16 +120,16 @@ public class PlayerController : MonoBehaviour
         InputSystem();
         Act();
         Move();
-        PlayerUISystem();
+       // PlayerUISystem();
         Swap();
     }
 
-    void PlayerUISystem()
-    {
-        playerHpBar.value = Mathf.Lerp(playerHpBar.value, status.curHp, Time.deltaTime * 5f);
-        HpFill.color = gradient.Evaluate(playerHpBar.normalizedValue);
-        BarrierBar.value = Mathf.Lerp(BarrierBar.value, status.barrier, Time.deltaTime * 5f);
-    }
+    //void PlayerUISystem()
+    //{
+    //    playerHpBar.value = Mathf.Lerp(playerHpBar.value, status.curHp, Time.deltaTime * 5f);
+    //    HpFill.color = gradient.Evaluate(playerHpBar.normalizedValue);
+    //    BarrierBar.value = Mathf.Lerp(BarrierBar.value, status.barrier, Time.deltaTime * 5f);
+    //}
 
     void InputSystem()
     {
@@ -230,7 +221,7 @@ public class PlayerController : MonoBehaviour
         status.SetStatue();
         GetComponent<PassiveSystem>().Swaped();
         animator.SetFloat("AtkSpeed", status.atkSpeed * 0.01f);
-        playerHpBar.maxValue = status.maxHp;
+        //playerHpBar.maxValue = status.maxHp;
     }
 
     void Act() //상호작용, 공격 스킬 등의 입력을 전달하는 함수
@@ -251,7 +242,7 @@ public class PlayerController : MonoBehaviour
             
 
         // 행동 불가능한 상황
-        if (pressedAtkKey && !isRepeatAtk)
+        if (pressedAtkKey && !isRepeatAtk &&battle.WeaponType != WeaponTypes.None)
         {  
             if(battle.WeaponType == WeaponTypes.Sword || battle.WeaponType == WeaponTypes.Wand || !movement2D.isGround)
             {

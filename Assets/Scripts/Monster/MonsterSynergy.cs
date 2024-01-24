@@ -107,7 +107,10 @@ public class MonsterSynergy : MonoBehaviour
             CanSynergy = false;
             StartCoroutine(ReturnCoolTIme());
         }
-
+        if(monster.isHit == true)
+        {
+            StartCoroutine(HitFalse());
+        }
     }
 
     public void GetSynergy(WeaponTypes types)
@@ -231,6 +234,12 @@ public class MonsterSynergy : MonoBehaviour
         Debug.Log("ǳȭ" );
         yield return new WaitForSeconds(WeateringTime);
         isWeathering = false;
+    }
+
+    public IEnumerator HitFalse()
+    {
+        yield return new WaitForSeconds(0.5f);
+        monster.GetComponentInParent<MonsterBase>().isHit = false;
     }
 
     private void OnDrawGizmos()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class ActiveSkill : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class ActiveSkill : MonoBehaviour
     public bool isCharging = false;
     [Header("스킬 데미지 = 최종 데미지 * 데미지 증가율")]
     public float DefaultDamage;
+    [Space(20f)]
 
     #region 불
     [Header("불")]
@@ -29,9 +31,14 @@ public class ActiveSkill : MonoBehaviour
     public LayerMask layer;
     [Tooltip("발동 시간")]
     public float ActiveTime;
+    [Tooltip("스킬 발동 시 카메라 흔들림 시간 ")]
+    public float FireShakeTime;
+    [Tooltip("스킬 발동 시 카메라 흔들림 세기 ")]
+    public float FireShakeMagnitude;
     RaycastHit2D hit;
     RaycastHit2D hit1;
     #endregion
+    [Space(20f)]
 
     #region 물
     [Header("물")]
@@ -60,7 +67,12 @@ public class ActiveSkill : MonoBehaviour
     public float WaterY;
     [Tooltip("발동 시간")]
     public float activeTime;
+    [Tooltip("폭파 시 카메라 흔들림 시간 ")]
+    public float BombShakeTime;
+    [Tooltip("폭파 시 카메라 흔들림 세기 ")]
+    public float BombShakeMagnitude;
     #endregion
+    [Space(20f)]
 
     #region 땅 
     [Header("땅")]
@@ -80,8 +92,21 @@ public class ActiveSkill : MonoBehaviour
     [Tooltip("착지 범위")]
     public Vector3[] LandingRange;
     public Transform[] LandingPos;
+    [Tooltip("점프 시 카메라 흔들림 시간 ")]
+    public float JumpShakeTime;
+    [Tooltip("점프 시 카메라 흔들림 세기 ")]
+    public float JumpShakeMagnitude;
+    [Tooltip("점프 중 타격 시 카메라 흔들림 시간 ")]
+    public float SouthShakeTime;
+    [Tooltip("점프 중 타격 시 카메라 흔들림 세기 ")]
+    public float SouthShakeMagnitude;
+    [Tooltip("착지 시 카메라 흔들림 시간 ")]
+    public float LandingShakeTime;
+    [Tooltip("착지 시 카메라 흔들림 세기 ")]
+    public float LandingShakeMagnitude;
     private bool CanLanding;
     #endregion
+    [Space(20f)]
 
     #region 바람 
     [Header("바람")]
@@ -97,6 +122,10 @@ public class ActiveSkill : MonoBehaviour
     public float InvicibleTime;
     [Tooltip("발사 후 반동")]
     public float Delay;
+    [Tooltip("발사 시 카메라 흔들림 시간 ")]
+    public float WindShakeTime;
+    [Tooltip("발사 시 카메라 흔들림 세기 ")]
+    public float WindShakeMagnitude;
     #endregion
 
     void Awake()
@@ -111,8 +140,7 @@ public class ActiveSkill : MonoBehaviour
         }
     }
     void Update()
-    {    
-        DefaultDamage = battle.atkDamage;
+    {      
         if (isSouth)
         {
             movement2D.curDashCnt = -1;
@@ -121,7 +149,9 @@ public class ActiveSkill : MonoBehaviour
             {
                 if (collider.tag == "Monster" && collider.GetComponentInParent<MonsterBase>().isHit == false)
                 {
-                    StartCoroutine(Hit(collider.gameObject, 0.5f));
+                    collider.GetComponentInParent<MonsterBase>().isHit = true;
+                    // StartCoroutine(Hit(collider.gameObject, 0.5f));
+                    CameraController.instance.StartCoroutine(CameraController.instance.Shake(SouthShakeTime, SouthShakeMagnitude));
                     SkillAtk(collider.gameObject, DefaultDamage *= 1 + (JumpDamageIncreaseRate / 100));
                 }
                 if( collider.tag == "Destruct")
@@ -141,9 +171,11 @@ public class ActiveSkill : MonoBehaviour
 
     public void TriggerSkill(WeaponTypes weapontype)
     {
+        DefaultDamage = battle.atkDamage;
         switch (weapontype)
         {
             case WeaponTypes.Sword:
+                CameraController.instance.StartCoroutine(CameraController.instance.Shake(FireShakeTime, FireShakeMagnitude));
                 FIreSkill();
                 break;
             case WeaponTypes.Wand:
@@ -151,6 +183,7 @@ public class ActiveSkill : MonoBehaviour
                 StartCoroutine(WaterSkill());
                 break;
             case WeaponTypes.Shield:
+                CameraController.instance.StartCoroutine(CameraController.instance.Shake(JumpShakeTime, JumpShakeMagnitude));
                 StartCoroutine(SouthSkill());
                 break;
             case WeaponTypes.Bow:
@@ -171,15 +204,17 @@ public class ActiveSkill : MonoBehaviour
             {
                 GameObject Fire = Instantiate(FireFloor);
                 Fire.transform.position = new Vector2(transform.position.x + i, transform.position.y - hit.distance);
+                Fire.GetComponent<ProjectileType>().Damage = DefaultDamage *= 1 + (DiffusionDamageIncreaseRate / 100);
             }
             hit1 = Physics2D.Raycast(new Vector2(transform.position.x - i, transform.position.y), transform.up * -20, detectlength, layer);
             if (hit1.collider != null)
             {
                 GameObject Fire = Instantiate(FireFloor);
                 Fire.transform.position = new Vector2(transform.position.x - i, transform.position.y - hit1.distance);
+                Fire.GetComponent<ProjectileType>().Damage = DefaultDamage *= 1 + (DiffusionDamageIncreaseRate / 100);
             }
         }
-        StartCoroutine(ReturnAttack());
+        StartCoroutine(ReturnSkill());
     }
     #endregion
 
@@ -211,7 +246,7 @@ public class ActiveSkill : MonoBehaviour
         isWater = false;
         SkillReady[(int)battle.WeaponType] = true;
         rigid2D.gravityScale = gravity;
-        StartCoroutine(ReturnAttack());  
+        StartCoroutine(ReturnSkill());  
     }
     #endregion
 
@@ -227,18 +262,20 @@ public class ActiveSkill : MonoBehaviour
         yield return new WaitForSeconds(RisingTime);
         rigid2D.velocity = new Vector2(rigid2D.velocity.x, -FallForce);
 
-        StartCoroutine(ReturnAttack());
+        StartCoroutine(ReturnSkill());
     }
     public void RandingSet()
     {
         if (movement2D.isGround && CanLanding)
         {
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
+            CameraController.instance.StartCoroutine(CameraController.instance.Shake(LandingShakeTime, LandingShakeMagnitude));
             foreach (Collider2D collider in collider2Ds)
             {               
                 if (collider.tag == "Monster" && collider.GetComponentInParent<MonsterBase>().isHit == false)
                 {
-                    StartCoroutine(Hit(collider.gameObject, 0.5f));
+                    //StartCoroutine(Hit(collider.gameObject, 0.5f));
+                    collider.GetComponentInParent<MonsterBase>().isHit = true;
                     StartCoroutine(Stun(collider.gameObject, StunTime));
                     SkillAtk(collider.gameObject, DefaultDamage *= 1 + (LandDamageIncreaseRate / 100));
                 }
@@ -248,7 +285,7 @@ public class ActiveSkill : MonoBehaviour
                 }
                 DefaultDamage = battle.atkDamage;
                
-            }
+            }        
             CanLanding = false;
             battle.isSwap = true;
             isSouth = false;
@@ -265,14 +302,14 @@ public class ActiveSkill : MonoBehaviour
         // monster.GetComponentInParent<MonsterBase>().moveSpeed = monster.GetComponentInParent<MonsterBase>().monsterData.maxMoveSpeed;
         monster.GetComponentInParent<MonsterBase>().isStun = false;
     }
-    public IEnumerator Hit(GameObject monster, float time)
-    {
-        // monster.GetComponentInParent<MonsterBase>().moveSpeed = 0;
-        monster.GetComponentInParent<MonsterBase>().isHit = true;
-        yield return new WaitForSeconds(time);
-        // monster.GetComponentInParent<MonsterBase>().moveSpeed = monster.GetComponentInParent<MonsterBase>().monsterData.maxMoveSpeed;
-        monster.GetComponentInParent<MonsterBase>().isHit = false;
-    }
+    //public IEnumerator Hit(GameObject monster, float time)
+    //{
+    //    // monster.GetComponentInParent<MonsterBase>().moveSpeed = 0;
+    //    monster.GetComponentInParent<MonsterBase>().isHit = true;
+    //    yield return new WaitForSeconds(time);
+    //    // monster.GetComponentInParent<MonsterBase>().moveSpeed = monster.GetComponentInParent<MonsterBase>().monsterData.maxMoveSpeed;
+    //    monster.GetComponentInParent<MonsterBase>().isHit = false;
+    //}
     #endregion
 
     #region 바람 정령 
@@ -283,11 +320,12 @@ public class ActiveSkill : MonoBehaviour
         yield return new WaitForSeconds(ChargeTime);
         battle.isGuard = true;
         GameObject MagicArrow = Instantiate(Arrow);
+        CameraController.instance.StartCoroutine(CameraController.instance.Shake(WindShakeTime, WindShakeMagnitude));
         MagicArrow.GetComponent<ProjectileType>().Damage = DefaultDamage *= 1 + (ArrowDamageIncreaseRate/100);
        // MagicArrow.GetComponent<ProjectileType>().DeclineRate = DeclindRate;
         MagicArrow.transform.position = Pos.position;
         MagicArrow.transform.localScale = new Vector3(transform.localScale.x, MagicArrow.transform.localScale.y, MagicArrow.transform.localScale.z);
-        StartCoroutine(ReturnAttack());
+        StartCoroutine(ReturnSkill());
         StartCoroutine(delay());
         yield return new WaitForSeconds(InvicibleTime);
         battle.isGuard = false;
@@ -299,7 +337,7 @@ public class ActiveSkill : MonoBehaviour
     #endregion
 
 
-    public IEnumerator ReturnAttack()
+    public IEnumerator ReturnSkill()
     {
         isCharging = false;
         for (int i = 0; i < SkillReady.Length; i++)
@@ -319,7 +357,7 @@ public class ActiveSkill : MonoBehaviour
     }
     public void SkillAtk(GameObject AtkObj, float Damage)
     {
-        CameraController.instance.StartCoroutine(CameraController.instance.Shake());
+        //CameraController.instance.StartCoroutine(CameraController.instance.Shake());
 
         if (AtkObj.tag == "Monster")
         {

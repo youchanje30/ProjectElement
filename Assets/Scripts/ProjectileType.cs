@@ -116,7 +116,7 @@ public class ProjectileType : MonoBehaviour
         }
         if (Projectile == Type.WaterSkill)
         {
-            if (other.tag == "TileMap" || other.tag == "OneWayPlatForm")
+            if (other.gameObject.layer == 6|| other.tag == "OneWayPlatForm")
             {
                 WaterY(skill.WaterY);
                 //if (other.tag == "Monster")
@@ -150,6 +150,7 @@ public class ProjectileType : MonoBehaviour
     {
        
         yield return new WaitForSeconds(skill.BombChargeTime);
+        CameraController.instance.StartCoroutine(CameraController.instance.Shake(skill.BombShakeTime,skill.BombShakeMagnitude));
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(transform.position, skill.BombRange, 0);
         {
             Debug.Log("1");
@@ -157,6 +158,7 @@ public class ProjectileType : MonoBehaviour
             {
                 if (collider.tag == "Monster")
                 {
+                    
                     skill.passive.ActivePassive(WeaponTypes.Wand, collider.GetComponentInParent<MonsterDebuffBase>());
                     skill.SkillAtk(collider.gameObject, skill.DefaultDamage *= 1 + (skill.BombDamageIncreaseRate / 100));              
                 }
@@ -174,7 +176,7 @@ public class ProjectileType : MonoBehaviour
         {
             transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
             transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            transform.GetComponent<Rigidbody2D>().position += new Vector2(0,0.5f);
+            transform.GetComponent<Rigidbody2D>().position += new Vector2(0,0.4f);
             transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
         }
     }

@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour
 
 
         if(PlayerPrefs.HasKey("FullScreenData")) { SetSettingData();}
+        
         SetResolution();
 
         for (int i = 0; i < player.inventory.HasWeapon.Length; i++)
@@ -164,7 +165,7 @@ public class GameManager : MonoBehaviour
             isSystem = !isSystem;
             SystemPanel.SetActive(isSystem);
             SettingPanel.SetActive(false);
-            GraphicSetting();
+            //GraphicSetting();
             SetSettingData();
             Time.timeScale = 1f;
         }
@@ -295,6 +296,7 @@ public class GameManager : MonoBehaviour
                 SystemPanel.SetActive(false);
                 SettingPanel.SetActive(true);
                 OptionSetting();
+                SetResolution();
                 break;
 
             case 4: //Exit Btn
@@ -517,7 +519,7 @@ public class GameManager : MonoBehaviour
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
             option.text = item.width + " x " + item.height + "  " /*+ item.refreshRateRatio + "hz"*/;
-            //if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
+            if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
             resolutionDropdown.options.Add(option);
             if (item.width == Screen.width && item.height == Screen.height)
                 resolutionDropdown.value = optionNum;
@@ -532,13 +534,7 @@ public class GameManager : MonoBehaviour
         isSlotSwap = true;
         swapUI.SlotSwapUI.SetActive(isSlotSwap);
     }
-    //public void OpenInventory()
-    //{
-    //    inventoryUI.SetCard();
-    //    inventoryUI.SetItem();
-    //    isInven = !isInven;
-    //    inventoryUI.InvenUI.SetActive(isInven);
-    //}
+
     public void DropboxOptionChanged(int x)
     {
         resolutionNum = x; 
@@ -550,20 +546,10 @@ public class GameManager : MonoBehaviour
         resolutions[resolutionNum].height, 
         fullScreen == 0 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
     }
-    //public void EleSwap()
-    //{
-    //    Elements[swapUI.slot].SetActive(true);
-    //    inventory.HavingElement[swapUI.slot] = ElementalManager.instance.AddElement((int)ObjData.WeaponType * 1000);
-    //    player.SetEquipment();
-    //    swapUI.SlotSwapUI.SetActive(false);
-    //    TalkPanel.SetActive(false);
-    //    isAction = false;
-    //    isSelected = false;
-    //    isSlotSwap = false;
-    //}
+
     public void LogStat()
     {
-        inventoryUI.Stat.text = "힘: " + player.GetComponent<PlayerStatus>().strength + "\n" + "민첩: " + player.GetComponent<PlayerStatus>().dexterity + "\n" + "운: " + player.GetComponent<PlayerStatus>().luck ;
+        inventoryUI.Stat.text = "힘: " + player.GetComponent<PlayerStatus>().strength + "\n" + "민첩: " + player.GetComponent<PlayerStatus>().dexterity + "\n" + "운: " + player.GetComponent<PlayerStatus>().luck + "\n" + "\n" + "최대 체력: " + player.GetComponent<PlayerStatus>().maxHp + "\n" + "데미지: " + player.GetComponent<PlayerStatus>().damage + "\n" + "크리티컬 확률: " + player.GetComponent<PlayerStatus>().crtRate + "\n" + "공격 속도: " + player.GetComponent<PlayerStatus>().atkSpeed + "\n" + "회피 확률: " + player.GetComponent<PlayerStatus>().missRate + "\n" + "쿨타임 감소율: " + player.GetComponent<PlayerStatus>().coolDownReductionPer + "\n" + "데미지 감소율: " + player.GetComponent<PlayerStatus>().defPer + "\n" + "이동 속도: " + player.GetComponent<PlayerStatus>().playerSpeed + "\n" + "점프력: " + player.GetComponent<PlayerStatus>().jumpForce;
     }
 
 }

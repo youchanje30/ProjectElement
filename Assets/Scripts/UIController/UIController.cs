@@ -15,13 +15,6 @@ public class UIController : MonoBehaviour
     public Slider sfxSlider;
     [Space(20f)]
 
-    [Header("체력 관련 UI")]
-    public Slider playerHpBar;
-    public Image HpFill;
-    public Slider BarrierBar;
-    public Image BarrierFill;
-    [Space(20f)]
-
     [Header("오브젝트 관련 UI")]
     public ScrollRect buyScrollRect;
     public ScrollRect sellScrollRect;
@@ -50,7 +43,7 @@ public class UIController : MonoBehaviour
     public GameObject DataResetCheck;
     public TMP_Text CameraShakeTxt;
     public TMP_Text FullScreenTxt;
-    
+
     void Awake()
     {
         if(!instance)
