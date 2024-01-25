@@ -103,7 +103,7 @@ public class MonsterSynergy : MonoBehaviour
         }
         if(monster.isHit == true)
         {
-            StartCoroutine(HitFalse());
+           
         }
     }
 

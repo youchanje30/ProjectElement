@@ -136,15 +136,16 @@ public class ActiveSkill : MonoBehaviour
     void Update()
     {      
         if (isSouth)
-        {
+        {    
             Debug.Log("isSouth Atk");
             movement2D.curDashCnt = -1;
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[1].position, LandingRange[1], 0);
             foreach (Collider2D collider in collider2Ds)
             {
                 if (collider.tag == "Monster" && collider.GetComponentInParent<MonsterBase>().isHit == false)
-                {
+                {                   
                     collider.GetComponentInParent<MonsterBase>().isHit = true;
+                    StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
                     // StartCoroutine(Hit(collider.gameObject, 0.5f));
                     CameraController.instance.StartCoroutine(CameraController.instance.Shake(SouthShakeTime, SouthShakeMagnitude));
                     SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
@@ -270,6 +271,7 @@ public class ActiveSkill : MonoBehaviour
                 {
                     //StartCoroutine(Hit(collider.gameObject, 0.5f));
                     collider.GetComponentInParent<MonsterBase>().isHit = true;
+                    StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
                     StartCoroutine(Stun(collider.gameObject, StunTime));
                     SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
                 }
