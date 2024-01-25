@@ -47,51 +47,6 @@ public class CameraController : MonoBehaviour
         cameraHandler.position = Vector3.Lerp(cameraHandler.position, Target.position + Offset , Time.fixedDeltaTime * smoothness);
     }
 
-
-<<<<<<< Updated upstream
-    public IEnumerator Shake(float duration = 0.1f , float magnitude = 0.2f, int pattern = 0)
-    {
-        // if(GameManager.instance.CanCameraShake)
-        // {
-        Vector3 originalPos = transform.position;
-
-        float elasped = 0f;
-        switch (pattern)
-        {
-            case 0:             
-                while (elasped < duration)
-                {
-                    float x = Random.Range(-1f, 1f) * magnitude;
-                    float y = Random.Range(-1f, 1f) * magnitude;
-
-                    transform.localPosition = new Vector3(x, y, originalPos.z);
-
-                    elasped += Time.deltaTime;
-
-                    yield return null;
-
-                }
-                // transform.position = originalPos;
-                transform.localPosition = new Vector3(0, 0, 0);
-                break;
-            case 1:
-                while (elasped < duration)
-                {
-                    // float x = Random.Range(-1f, 1f) * magnitude;
-                    // float y = Random.Range(-1f, 1f) * magnitude;
-                    float z = Random.Range(-1f, 1f) * magnitude;
-                    transform.localRotation = Quaternion.Euler(0, 0, z);
-
-                    elasped += Time.deltaTime;
-
-                    yield return null;
-
-                }
-                // transform.position = originalPos;
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-                break;
-        }
-=======
     public IEnumerator Shake(float duration = 0.1f , float magnitude = 0.2f)
     {   
         float elasped = 0f;
@@ -109,7 +64,7 @@ public class CameraController : MonoBehaviour
 
         }
         transform.localPosition = new Vector3(0,0,0);
->>>>>>> Stashed changes
+ 
     }
 
     public IEnumerator ShakeR(float duration = 0.1f , float magnitude = 0.2f)

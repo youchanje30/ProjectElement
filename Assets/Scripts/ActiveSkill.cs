@@ -16,116 +16,116 @@ public class ActiveSkill : MonoBehaviour
     public float[] SkillCoolTime;
     public bool[] SkillReady;
     public bool isCharging = false;
-    [Header("½ºÅ³ µ¥¹ÌÁö = ÃÖÁ¾ µ¥¹ÌÁö * µ¥¹ÌÁö Áõ°¡À²")]
+    [Header("ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float DefaultDamage;
     [Space(20f)]
 
-    #region ºÒ
-    [Header("ºÒ")]
+    #region ï¿½ï¿½
+    [Header("ï¿½ï¿½")]
     public GameObject FireFloor;
     public int RangeCount;
-    [Tooltip("È®»ê µ¥¹ÌÁö Áõ°¡À²")]
+    [Tooltip("È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float DiffusionDamageIncreaseRate;
-    [Tooltip("¹Ù´Ú°¨Áö ±æÀÌ")]
+    [Tooltip("ï¿½Ù´Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     public int detectlength;
-    [Tooltip("°¨ÁöÇÏ´Â ·¹ÀÌ¾î")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½")]
     public LayerMask layer;
-    [Tooltip("¹ßµ¿ ½Ã°£")]
+    [Tooltip("ï¿½ßµï¿½ ï¿½Ã°ï¿½")]
     public float ActiveTime;
-    [Tooltip("½ºÅ³ ¹ßµ¿ ½Ã Ä«¸Þ¶ó Èçµé¸² ½Ã°£ ")]
+    [Tooltip("ï¿½ï¿½Å³ ï¿½ßµï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½Ã°ï¿½ ")]
     public float FireShakeTime;
-    [Tooltip("½ºÅ³ ¹ßµ¿ ½Ã Ä«¸Þ¶ó Èçµé¸² ¼¼±â ")]
+    [Tooltip("ï¿½ï¿½Å³ ï¿½ßµï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½ï¿½ï¿½ï¿½ ")]
     public float FireShakeMagnitude;
     RaycastHit2D hit;
     RaycastHit2D hit1;
     #endregion
     [Space(20f)]
 
-    #region ¹°
-    [Header("¹°")]
+    #region ï¿½ï¿½
+    [Header("ï¿½ï¿½")]
     public GameObject WaterBall;
     public bool isWater = false;
-    [Tooltip("1Å¸ µ¥¹ÌÁö Áõ°¡À²")]
+    [Tooltip("1Å¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float WaterDamageIncreaseRate;
-    [Tooltip("2Å¸ µ¥¹ÌÁö Áõ°¡À²")]
+    [Tooltip("2Å¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float BombDamageIncreaseRate;
-    [Tooltip("°øÁßºÎ¾ç")]
+    [Tooltip("ï¿½ï¿½ï¿½ßºÎ¾ï¿½")]
     public float FloatingForce;
-    [Tooltip("¿Ã¶ó°¡´Â ½Ã°£")]
+    [Tooltip("ï¿½Ã¶ó°¡´ï¿½ ï¿½Ã°ï¿½")]
     public float FloatingTime;
-    [Tooltip("Â÷Â¡ ½Ã°£")]
+    [Tooltip("ï¿½ï¿½Â¡ ï¿½Ã°ï¿½")]
     public float WaterChargeTime;
-    [Tooltip("¹°ÆøÅº ³¯¶ó°¡´Â À§Ä¡")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½Åº ï¿½ï¿½ï¿½ó°¡´ï¿½ ï¿½ï¿½Ä¡")]
     public Vector2[] BallPos;
-    [Tooltip("¹°ÆøÅº Áß·Â")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½Åº ï¿½ß·ï¿½")]
     public float BallGravity;
-    [Tooltip("¹°ÆøÅº ¼Óµµ")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½Åº ï¿½Óµï¿½")]
     public float BallSpeed;
-    [Tooltip("2Å¸ ¹üÀ§")]
+    [Tooltip("2Å¸ ï¿½ï¿½ï¿½ï¿½")]
     public Vector2 BombRange;
-    [Tooltip("2Å¸ ÅÍÁö±â Àü ½Ã°£")]
+    [Tooltip("2Å¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ã°ï¿½")]
     public float BombChargeTime;
     public float WaterY;
-    [Tooltip("¹ßµ¿ ½Ã°£")]
+    [Tooltip("ï¿½ßµï¿½ ï¿½Ã°ï¿½")]
     public float activeTime;
-    [Tooltip("ÆøÆÄ ½Ã Ä«¸Þ¶ó Èçµé¸² ½Ã°£ ")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½Ã°ï¿½ ")]
     public float BombShakeTime;
-    [Tooltip("ÆøÆÄ ½Ã Ä«¸Þ¶ó Èçµé¸² ¼¼±â ")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½ï¿½ï¿½ï¿½ ")]
     public float BombShakeMagnitude;
     #endregion
     [Space(20f)]
 
-    #region ¶¥ 
-    [Header("¶¥")]
+    #region ï¿½ï¿½ 
+    [Header("ï¿½ï¿½")]
     public bool isSouth = false;
-    [Tooltip("Á¡ÇÁ Áß µ¥¹ÌÁö Áõ°¡À²")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float JumpDamageIncreaseRate;
-    [Tooltip("ÂøÁö ½Ã µ¥¹ÌÁö Áõ°¡À²")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float LandDamageIncreaseRate;
-    [Tooltip("Á¡ÇÁ")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½")]
     public float JumpForce;
-    [Tooltip("³«ÇÏ")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½")]
     public float FallForce;
-    [Tooltip("½ºÅÏ ½Ã°£")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½")]
     public float StunTime;
-    [Tooltip("»ó½Â ½Ã°£")]
+    [Tooltip("ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½")]
     public float RisingTime;
-    [Tooltip("ÂøÁö ¹üÀ§")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     public Vector3[] LandingRange;
     public Transform[] LandingPos;
-    [Tooltip("Á¡ÇÁ ½Ã Ä«¸Þ¶ó Èçµé¸² ½Ã°£ ")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½Ã°ï¿½ ")]
     public float JumpShakeTime;
-    [Tooltip("Á¡ÇÁ ½Ã Ä«¸Þ¶ó Èçµé¸² ¼¼±â ")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½ï¿½ï¿½ï¿½ ")]
     public float JumpShakeMagnitude;
-    [Tooltip("Á¡ÇÁ Áß Å¸°Ý ½Ã Ä«¸Þ¶ó Èçµé¸² ½Ã°£ ")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½Ã°ï¿½ ")]
     public float SouthShakeTime;
-    [Tooltip("Á¡ÇÁ Áß Å¸°Ý ½Ã Ä«¸Þ¶ó Èçµé¸² ¼¼±â ")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½ï¿½ï¿½ï¿½ ")]
     public float SouthShakeMagnitude;
-    [Tooltip("ÂøÁö ½Ã Ä«¸Þ¶ó Èçµé¸² ½Ã°£ ")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½Ã°ï¿½ ")]
     public float LandingShakeTime;
-    [Tooltip("ÂøÁö ½Ã Ä«¸Þ¶ó Èçµé¸² ¼¼±â ")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½ï¿½ï¿½ï¿½ ")]
     public float LandingShakeMagnitude;
     private bool CanLanding;
     #endregion
     [Space(20f)]
 
-    #region ¹Ù¶÷ 
-    [Header("¹Ù¶÷")]
+    #region ï¿½Ù¶ï¿½ 
+    [Header("ï¿½Ù¶ï¿½")]
     public GameObject Arrow;
     public Transform Pos;
-    [Tooltip("½ºÅ³ µ¥¹ÌÁö Áõ°¡À² %")]
+    [Tooltip("ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ %")]
     public float ArrowDamageIncreaseRate;
-    //[Tooltip("°üÅë ÈÄ µ¥¹ÌÁö °¨¼ÒÀ² %")]
+    //[Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ %")]
     //public float DeclindRate;
-    [Tooltip("Â÷Â¡ ½Ã°£")]
+    [Tooltip("ï¿½ï¿½Â¡ ï¿½Ã°ï¿½")]
     public float ChargeTime;
-    [Tooltip("¹ß»ç ½Ã ¹«Àû ½Ã°£")]
+    [Tooltip("ï¿½ß»ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½")]
     public float InvicibleTime;
-    [Tooltip("¹ß»ç ÈÄ ¹Ýµ¿")]
+    [Tooltip("ï¿½ß»ï¿½ ï¿½ï¿½ ï¿½Ýµï¿½")]
     public float Delay;
-    [Tooltip("¹ß»ç ½Ã Ä«¸Þ¶ó Èçµé¸² ½Ã°£ ")]
+    [Tooltip("ï¿½ß»ï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½Ã°ï¿½ ")]
     public float WindShakeTime;
-    [Tooltip("¹ß»ç ½Ã Ä«¸Þ¶ó Èçµé¸² ¼¼±â ")]
+    [Tooltip("ï¿½ß»ï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² ï¿½ï¿½ï¿½ï¿½ ")]
     public float WindShakeMagnitude;
     #endregion
 
@@ -177,7 +177,7 @@ public class ActiveSkill : MonoBehaviour
         switch (weapontype)
         {
             case WeaponTypes.Sword:
-                CameraController.instance.StartCoroutine(CameraController.instance.Shake(FireShakeTime, FireShakeMagnitude,1));
+                CameraController.instance.StartCoroutine(CameraController.instance.ShakeR(FireShakeTime, FireShakeMagnitude));
                 FIreSkill();
                 break;
             case WeaponTypes.Wand:
@@ -194,11 +194,11 @@ public class ActiveSkill : MonoBehaviour
         }
     }
 
-    #region ºÒ Á¤·É
+    #region ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void FIreSkill()
     {
         SkillReady[(int)battle.WeaponType] = false;
-        //¹Ù´Ú¿¡¸¸ ºÒ ÀåÆÇÀÌ ±ò·Á¾ßÇÔ 
+        //ï¿½Ù´Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
         for (int i = 0; i < RangeCount; i++)
         {
             hit = Physics2D.Raycast(new Vector2(transform.position.x + i, transform.position.y), transform.up * -20, detectlength, layer);
@@ -220,7 +220,7 @@ public class ActiveSkill : MonoBehaviour
     }
     #endregion
 
-    #region ¹° Á¤·É
+    #region ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public IEnumerator WaterSkill()
     {
         float gravity;
@@ -252,7 +252,7 @@ public class ActiveSkill : MonoBehaviour
     }
     #endregion
 
-    #region ¶¥ Á¤·É 
+    #region ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
     public IEnumerator SouthSkill()
     {
         SkillReady[(int)battle.WeaponType] = false;
@@ -270,8 +270,8 @@ public class ActiveSkill : MonoBehaviour
     {
         if (movement2D.isGround && CanLanding)
         { 
-            CameraController.instance.StartCoroutine(CameraController.instance.Shake(LandingShakeTime, LandingShakeMagnitude, 1));
-             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
+            CameraController.instance.StartCoroutine(CameraController.instance.ShakeR(LandingShakeTime, LandingShakeMagnitude));
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
             
             foreach (Collider2D collider in collider2Ds)
             {               
@@ -315,7 +315,7 @@ public class ActiveSkill : MonoBehaviour
     //}
     #endregion
 
-    #region ¹Ù¶÷ Á¤·É 
+    #region ï¿½Ù¶ï¿½ ï¿½ï¿½ï¿½ï¿½ 
     public IEnumerator WindSkill()
     {
         isCharging = true;
