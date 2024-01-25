@@ -16,51 +16,44 @@ public class MonsterSynergy : MonoBehaviour
     [SerializeField] bool HaveSynergy = false;
     [SerializeField] bool CanSynergy = false;
     float DefaultDamage { get { return battle.atkDamage; } }
-    [Tooltip("�ó��� ȿ�� �� ��Ÿ��")]
+    [Tooltip("시너지 쿨타임")]
     [SerializeField] float SynergyCoolTime;
     float SynergyHoldingTime;
-    [Tooltip("�ó��� �����ð�")]
+    [Tooltip("시너지 보유 시간")]
     [SerializeField] float SynergyClearTime;
 
-    #region ����
-    [Header("����")]
+    #region 증발
+    [Header("증발")]
     public float EvaporationDamgeIncreseRate;
     #endregion
 
-    #region ����
-    [Header("����")]
-    [Tooltip("ȭ�� ������ ������")]
+    #region 가열
+    [Header("가열")]
     public float BurnDamgeIncreseRate;
-    [Tooltip("���� �ð�")]
     public float Heatingduration;
     #endregion
 
-    #region Ȯ��
-    [Header("Ȯ��")]
+    #region 확산
+    [Header("확산")]
     public bool isDiffusion;
-    [Tooltip("Ȯ�� ����")]
     [SerializeField] Vector3 DiffusionRange;
     #endregion
 
-    #region �ν�
-    [Header("�ν�")]
-    [Tooltip("���� ������ ������")]
+    #region 부식
+    [Header("부식")]
     public float DamgeDecreseRate;
-    [Tooltip("�ν� �ð�")]
     public float CorrosionDuration;
     #endregion
 
-    #region �ҿ뵹��
-    [Header("�ҿ뵹��")]
+    #region 소용돌이
+    [Header("소용돌이")]
     public bool isBind;
-    [Tooltip("�ҿ뵹�� �ð�")]
     public float BindTime;
     #endregion
 
-    #region ǳȭ
-    [Header("ǳȭ")]
+    #region 풍화
+    [Header("풍화")]
     public bool isWeathering;
-    [Tooltip("ǳȭ �ð�")]
     public float WeateringTime;
     #endregion
 
@@ -181,7 +174,7 @@ public class MonsterSynergy : MonoBehaviour
     {
         float evaporationDmg = DefaultDamage * ( 1 + (EvaporationDamgeIncreseRate / 100));
         monster.GetDamaged(evaporationDmg);
-        Debug.Log("���� " + evaporationDmg);
+        Debug.Log("증발 " + evaporationDmg);
     }
 
     public IEnumerator Heating()
@@ -189,7 +182,7 @@ public class MonsterSynergy : MonoBehaviour
         float burnDamage = passive.burnDamage;
         passive.burnDamage *= 1 + (BurnDamgeIncreseRate / 100);
         //monsterdebuff.ContinueBuff(passive.burnDamage, passive.duration[(int)BuffTypes.Burn], passive.tick[(int)BuffTypes.Burn], BuffTypes.Burn);
-        Debug.Log("���� " + passive.burnDamage);
+        Debug.Log("가열 " + passive.burnDamage);
         yield return new WaitForSeconds(Heatingduration);
         passive.burnDamage = burnDamage;
     }
@@ -197,7 +190,7 @@ public class MonsterSynergy : MonoBehaviour
     public IEnumerator Bind()
     {
         isBind = true;
-        Debug.Log("�ӹ�");
+        Debug.Log("소용돌이");
         yield return new WaitForSeconds(BindTime);
         isBind = false;
     }
@@ -206,14 +199,14 @@ public class MonsterSynergy : MonoBehaviour
     {
         float monsterDamage = monster.damage;
         monster.damage *= 1 - (DamgeDecreseRate / 100);
-        Debug.Log("�ν�");
+        Debug.Log("부식");
         yield return new WaitForSeconds(CorrosionDuration);
         monster.damage = monsterDamage;
     }
 
     public IEnumerator Diffusion()
     {
-        Debug.Log("Ȯ��");
+        Debug.Log("확산");
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(transform.position, DiffusionRange, 0);
         foreach (Collider2D collider in collider2Ds)
         {
@@ -232,7 +225,7 @@ public class MonsterSynergy : MonoBehaviour
     public IEnumerator Weathering()
     {
         isWeathering = true;
-        Debug.Log("ǳȭ" );
+        Debug.Log("풍화" );
         yield return new WaitForSeconds(WeateringTime);
         isWeathering = false;
     }
