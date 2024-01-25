@@ -5,9 +5,9 @@ using UnityEngine;
 public class Synergy : MonoBehaviour
 {
     [SerializeField] private Battle battle;
-    [Header("Ç³È­ µ¥¹ÌÁö Áõ°¡À²")]
+    [Header("Ç³È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float SouthSpiritDamageIncreaseRate;
-    [Header("º£¸®¾î °¨¼ÒÀ²")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float BarrierDecreaseRate;
     void Start()
     {
@@ -18,10 +18,10 @@ public class Synergy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        battle.WeatheringDamage = battle.atkDamage *( 1 +(SouthSpiritDamageIncreaseRate / 100));
+        // battle.WeatheringDamage = battle.atkDamage *( 1 +(SouthSpiritDamageIncreaseRate / 100));
     }
     public void ActiveSynergy(WeaponTypes type, MonsterSynergy monster = null)
     {
-         monster.GetSynergy(type);
+        monster.GetSynergy(type);
     }
 }

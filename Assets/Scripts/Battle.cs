@@ -35,7 +35,7 @@ public class Battle : MonoBehaviour
 
     public float originalScale;
     public float atkDamage { get { return status.AtkDamage();} }
-    public float WeatheringDamage;
+    public float WeatheringDamage { get { return atkDamage * ( 1 + (synergy.SouthSpiritDamageIncreaseRate / 100)); } }
 
     [Header("Sword Setting")]
     [SerializeField] private bool canComboAtk = false;

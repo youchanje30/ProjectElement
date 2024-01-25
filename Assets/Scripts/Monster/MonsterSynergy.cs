@@ -15,52 +15,52 @@ public class MonsterSynergy : MonoBehaviour
     [SerializeField] int SynergyIndex;
     [SerializeField] bool HaveSynergy = false;
     [SerializeField] bool CanSynergy = false;
-    float DefaultDamage;
-    [Tooltip("½Ã³ÊÁö È¿°ú ÈÄ ÄðÅ¸ÀÓ")]
+    float DefaultDamage { get { return battle.atkDamage; } }
+    [Tooltip("ï¿½Ã³ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½")]
     [SerializeField] float SynergyCoolTime;
     float SynergyHoldingTime;
-    [Tooltip("½Ã³ÊÁö º¸À¯½Ã°£")]
+    [Tooltip("ï¿½Ã³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½")]
     [SerializeField] float SynergyClearTime;
 
-    #region Áõ¹ß
-    [Header("Áõ¹ß")]
+    #region ï¿½ï¿½ï¿½ï¿½
+    [Header("ï¿½ï¿½ï¿½ï¿½")]
     public float EvaporationDamgeIncreseRate;
     #endregion
 
-    #region °¡¿­
-    [Header("°¡¿­")]
-    [Tooltip("È­»ó µ¥¹ÌÁö Áõ°¡À²")]
+    #region ï¿½ï¿½ï¿½ï¿½
+    [Header("ï¿½ï¿½ï¿½ï¿½")]
+    [Tooltip("È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float BurnDamgeIncreseRate;
-    [Tooltip("°¡¿­ ½Ã°£")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½")]
     public float Heatingduration;
     #endregion
 
-    #region È®»ê
-    [Header("È®»ê")]
+    #region È®ï¿½ï¿½
+    [Header("È®ï¿½ï¿½")]
     public bool isDiffusion;
-    [Tooltip("È®»ê ¹üÀ§")]
+    [Tooltip("È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] Vector3 DiffusionRange;
     #endregion
 
-    #region ºÎ½Ä
-    [Header("ºÎ½Ä")]
-    [Tooltip("¸ó½ºÅÍ µ¥¹ÌÁö °¨¼ÒÀ²")]
+    #region ï¿½Î½ï¿½
+    [Header("ï¿½Î½ï¿½")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float DamgeDecreseRate;
-    [Tooltip("ºÎ½Ä ½Ã°£")]
+    [Tooltip("ï¿½Î½ï¿½ ï¿½Ã°ï¿½")]
     public float CorrosionDuration;
     #endregion
 
-    #region ¼Ò¿ëµ¹ÀÌ
-    [Header("¼Ò¿ëµ¹ÀÌ")]
+    #region ï¿½Ò¿ëµ¹ï¿½ï¿½
+    [Header("ï¿½Ò¿ëµ¹ï¿½ï¿½")]
     public bool isBind;
-    [Tooltip("¼Ò¿ëµ¹ÀÌ ½Ã°£")]
+    [Tooltip("ï¿½Ò¿ëµ¹ï¿½ï¿½ ï¿½Ã°ï¿½")]
     public float BindTime;
     #endregion
 
     #region Ç³È­
     [Header("Ç³È­")]
     public bool isWeathering;
-    [Tooltip("Ç³È­ ½Ã°£")]
+    [Tooltip("Ç³È­ ï¿½Ã°ï¿½")]
     public float WeateringTime;
     #endregion
 
@@ -74,7 +74,6 @@ public class MonsterSynergy : MonoBehaviour
 
     void Update()
     {
-        DefaultDamage = battle.atkDamage;
         if (HaveSynergy)
         {
             SynergyHoldingTime += Time.deltaTime;
@@ -85,7 +84,8 @@ public class MonsterSynergy : MonoBehaviour
                 SynergyIndex = 0;
             }
         }
-        if (!HaveSynergy)
+        // if (!HaveSynergy)
+        else
         {
             for (int i = 0; i < Synergy.Length; i++)
             {
@@ -94,6 +94,7 @@ public class MonsterSynergy : MonoBehaviour
                 SynergyIndex = 0;
             }
         }
+
         if (SynergyIndex == 2)
         {
             SynergyEffect();
@@ -172,17 +173,15 @@ public class MonsterSynergy : MonoBehaviour
                 if (Synergy[j] == WeaponTypes.Shield && Synergy[i] == WeaponTypes.Bow)
                 {
                     StartCoroutine(Weathering());
-    
                 }
             }
         }
-
-
     }
     public void Evaporation()
     {
-        monster.GetDamaged(DefaultDamage *= 1 + (EvaporationDamgeIncreseRate / 100));
-        Debug.Log("Áõ¹ß " + DefaultDamage);
+        float evaporationDmg = DefaultDamage * ( 1 + (EvaporationDamgeIncreseRate / 100));
+        monster.GetDamaged(evaporationDmg);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ " + evaporationDmg);
     }
 
     public IEnumerator Heating()
@@ -190,7 +189,7 @@ public class MonsterSynergy : MonoBehaviour
         float burnDamage = passive.burnDamage;
         passive.burnDamage *= 1 + (BurnDamgeIncreseRate / 100);
         //monsterdebuff.ContinueBuff(passive.burnDamage, passive.duration[(int)BuffTypes.Burn], passive.tick[(int)BuffTypes.Burn], BuffTypes.Burn);
-        Debug.Log("°¡¿­ " + passive.burnDamage);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ " + passive.burnDamage);
         yield return new WaitForSeconds(Heatingduration);
         passive.burnDamage = burnDamage;
     }
@@ -198,7 +197,7 @@ public class MonsterSynergy : MonoBehaviour
     public IEnumerator Bind()
     {
         isBind = true;
-        Debug.Log("¼Ó¹Ú");
+        Debug.Log("ï¿½Ó¹ï¿½");
         yield return new WaitForSeconds(BindTime);
         isBind = false;
     }
@@ -207,25 +206,27 @@ public class MonsterSynergy : MonoBehaviour
     {
         float monsterDamage = monster.damage;
         monster.damage *= 1 - (DamgeDecreseRate / 100);
-        Debug.Log("ºÎ½Ä");
+        Debug.Log("ï¿½Î½ï¿½");
         yield return new WaitForSeconds(CorrosionDuration);
         monster.damage = monsterDamage;
     }
 
     public IEnumerator Diffusion()
     {
-        Debug.Log("È®»ê");
+        Debug.Log("È®ï¿½ï¿½");
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(transform.position, DiffusionRange, 0);
         foreach (Collider2D collider in collider2Ds)
         {
-            if (collider.tag == "Monster" && !isDiffusion)
+            if (collider.CompareTag("Monster") && !isDiffusion)
             {
                 collider.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(passive.burnDamage, passive.duration[(int)BuffTypes.Burn], passive.tick[(int)BuffTypes.Burn], BuffTypes.Burn);
                 isDiffusion = true;
             }
-            yield return new WaitForSeconds(SynergyCoolTime);
-            isDiffusion = false;
+            // yield return new WaitForSeconds(SynergyCoolTime);
+            // isDiffusion = false;
         }
+        yield return new WaitForSeconds(SynergyCoolTime);
+        isDiffusion = false;
     }
 
     public IEnumerator Weathering()
@@ -240,6 +241,7 @@ public class MonsterSynergy : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         monster.GetComponentInParent<MonsterBase>().isHit = false;
+        Debug.Log("isHit false");
     }
 
     private void OnDrawGizmos()

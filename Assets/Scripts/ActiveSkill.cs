@@ -145,6 +145,7 @@ public class ActiveSkill : MonoBehaviour
     {      
         if (isSouth)
         {
+            Debug.Log("isSouth Atk");
             movement2D.curDashCnt = -1;
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[1].position, LandingRange[1], 0);
             foreach (Collider2D collider in collider2Ds)

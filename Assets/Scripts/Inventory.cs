@@ -21,12 +21,6 @@ public class Inventory : MonoBehaviour
         SaveManager.instance.Save();
     }
 
-    public void GetSpiritSoul()
-    {
-        SpiritSoul++;
-        SaveManager.instance.Save();
-    }
-
     public void RemoveItem(ItemData item)
     {
         for (int i = 0; i < HavingItem.Length; i++)

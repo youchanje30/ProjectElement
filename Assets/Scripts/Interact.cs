@@ -19,7 +19,7 @@ public class Interact : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Tag를 변경하는게 좋아보인다.
-        if(other.tag == "NPC" || other.tag == "Portal" || other.tag == "Shop" || other.tag == "Weapon" || other.tag == "SpiritAwake") // || other.gameObject.tag == "NPC" )
+        if(other.CompareTag("NPC") || other.CompareTag("Portal") || other.CompareTag("Shop") || other.CompareTag("Weapon"))
         {
             if(scanObj != null)
             {
@@ -40,18 +40,12 @@ public class Interact : MonoBehaviour
             inven.GetGold();
             Destroy(other.transform.parent.gameObject);
         }
-        else if(other.tag == "SpiritSoul")
-        {
-            //정수 획득 시스템
-            inven.GetSpiritSoul();
-            Destroy(other.transform.parent.gameObject);
-        }
     }
 
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(scanObj == null && (other.gameObject.tag == "NPC" || other.gameObject.tag == "Portal" || other.tag == "Shop" || other.tag == "Weapon" || other.tag == "SpiritAwake"))
+        if(scanObj == null && (other.CompareTag("NPC") || other.CompareTag("Portal") || other.CompareTag("Shop") || other.CompareTag("Weapon")))
         {
             scanObj = other.gameObject;
             scanObj.gameObject.GetComponent<ObjectController>().InteractView(true);
