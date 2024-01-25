@@ -16,116 +16,108 @@ public class ActiveSkill : MonoBehaviour
     public float[] SkillCoolTime;
     public bool[] SkillReady;
     public bool isCharging = false;
-    [Header("��ų ������ = ���� ������ * ������ ������")]
     public float DefaultDamage;
     [Space(20f)]
 
-    #region ��
-    [Header("��")]
+    #region 불
+    [Header("불")]
     public GameObject FireFloor;
+    [Tooltip("스킬 길이")]
     public int RangeCount;
-    [Tooltip("Ȯ�� ������ ������")]
+    [Tooltip("스킬 발동 시 데미지")]
     public float DiffusionDamageIncreaseRate;
-    [Tooltip("�ٴڰ��� ����")]
+    [Tooltip("바닥 감지 길이")]
     public int detectlength;
-    [Tooltip("�����ϴ� ���̾�")]
     public LayerMask layer;
-    [Tooltip("�ߵ� �ð�")]
+    [Tooltip("발동 시간")]
     public float ActiveTime;
-    [Tooltip("��ų �ߵ� �� ī�޶� ��鸲 �ð� ")]
+    [Tooltip("스킬 발동 시 진동 시간")]
     public float FireShakeTime;
-    [Tooltip("��ų �ߵ� �� ī�޶� ��鸲 ���� ")]
+    [Tooltip("스킬 발동 시 진동 세기")]
     public float FireShakeMagnitude;
     RaycastHit2D hit;
     RaycastHit2D hit1;
     #endregion
     [Space(20f)]
 
-    #region ��
-    [Header("��")]
+    #region 물
+    [Header("물")]
     public GameObject WaterBall;
     public bool isWater = false;
-    [Tooltip("1Ÿ ������ ������")]
+    [Tooltip("1타 데미지 증가율")]
     public float WaterDamageIncreaseRate;
-    [Tooltip("2Ÿ ������ ������")]
+    [Tooltip("2타 데미지 증가율")]
     public float BombDamageIncreaseRate;
-    [Tooltip("���ߺξ�")]
+    [Tooltip("올라가는 속도")]
     public float FloatingForce;
-    [Tooltip("�ö󰡴� �ð�")]
+    [Tooltip("올라가는 시간")]
     public float FloatingTime;
-    [Tooltip("��¡ �ð�")]
+    [Tooltip("차징 시간")]
     public float WaterChargeTime;
-    [Tooltip("����ź ���󰡴� ��ġ")]
     public Vector2[] BallPos;
-    [Tooltip("����ź �߷�")]
     public float BallGravity;
-    [Tooltip("����ź �ӵ�")]
     public float BallSpeed;
-    [Tooltip("2Ÿ ����")]
     public Vector2 BombRange;
-    [Tooltip("2Ÿ ������ �� �ð�")]
+    [Tooltip("2타 차징 시간")]
     public float BombChargeTime;
     public float WaterY;
-    [Tooltip("�ߵ� �ð�")]
+    [Tooltip("폭탄 발동 시간")]
     public float activeTime;
-    [Tooltip("���� �� ī�޶� ��鸲 �ð� ")]
     public float BombShakeTime;
-    [Tooltip("���� �� ī�޶� ��鸲 ���� ")]
     public float BombShakeMagnitude;
     #endregion
     [Space(20f)]
 
-    #region �� 
-    [Header("��")]
+    #region 땅
+    [Header("땅")]
     public bool isSouth = false;
-    [Tooltip("���� �� ������ ������")]
+    [Tooltip("점프 시 데미지 증가율")]
     public float JumpDamageIncreaseRate;
-    [Tooltip("���� �� ������ ������")]
+    [Tooltip("착지 시 데미지 증가율")]
     public float LandDamageIncreaseRate;
-    [Tooltip("����")]
+    [Tooltip("점프 세기")]
     public float JumpForce;
-    [Tooltip("����")]
+    [Tooltip("낙하 세기")]
     public float FallForce;
-    [Tooltip("���� �ð�")]
+    [Tooltip("스턴 시간")]
     public float StunTime;
-    [Tooltip("��� �ð�")]
+    [Tooltip("점프 시간")]
     public float RisingTime;
-    [Tooltip("���� ����")]
     public Vector3[] LandingRange;
     public Transform[] LandingPos;
-    [Tooltip("���� �� ī�޶� ��鸲 �ð� ")]
+    [Tooltip("점프 시 진동 시간 ")]
     public float JumpShakeTime;
-    [Tooltip("���� �� ī�޶� ��鸲 ���� ")]
+    [Tooltip("점프 시 진동 강도")]
     public float JumpShakeMagnitude;
-    [Tooltip("���� �� Ÿ�� �� ī�޶� ��鸲 �ð� ")]
+    [Tooltip("타격 시 진동 시간")]
     public float SouthShakeTime;
-    [Tooltip("���� �� Ÿ�� �� ī�޶� ��鸲 ���� ")]
+    [Tooltip("타격 시 진동 강도")]
     public float SouthShakeMagnitude;
-    [Tooltip("���� �� ī�޶� ��鸲 �ð� ")]
+    [Tooltip("착지 시 진동 시간")]
     public float LandingShakeTime;
-    [Tooltip("���� �� ī�޶� ��鸲 ���� ")]
+    [Tooltip("착지 시 진동 당도 ")]
     public float LandingShakeMagnitude;
     private bool CanLanding;
     #endregion
     [Space(20f)]
 
-    #region �ٶ� 
-    [Header("�ٶ�")]
+    #region 바람
+    [Header("바람")]
     public GameObject Arrow;
     public Transform Pos;
-    [Tooltip("��ų ������ ������ %")]
+    [Tooltip("화살 데미지 증가율 %")]
     public float ArrowDamageIncreaseRate;
     //[Tooltip("���� �� ������ ������ %")]
     //public float DeclindRate;
-    [Tooltip("��¡ �ð�")]
+    [Tooltip("차징 시간")]
     public float ChargeTime;
-    [Tooltip("�߻� �� ���� �ð�")]
+    [Tooltip("무적 시간")]
     public float InvicibleTime;
-    [Tooltip("�߻� �� �ݵ�")]
+    [Tooltip("발사 후 딜레이")]
     public float Delay;
-    [Tooltip("�߻� �� ī�޶� ��鸲 �ð� ")]
+    [Tooltip("발사 시 진동 시간 ")]
     public float WindShakeTime;
-    [Tooltip("�߻� �� ī�޶� ��鸲 ���� ")]
+    [Tooltip("발사 시 진동 강도")]
     public float WindShakeMagnitude;
     #endregion
 
@@ -195,7 +187,7 @@ public class ActiveSkill : MonoBehaviour
         }
     }
 
-    #region �� ����
+    #region 불정령
     public void FIreSkill()
     {
         SkillReady[(int)battle.WeaponType] = false;
@@ -221,7 +213,7 @@ public class ActiveSkill : MonoBehaviour
     }
     #endregion
 
-    #region �� ����
+    #region 물 정령
     public IEnumerator WaterSkill()
     {
         float gravity;
@@ -253,7 +245,7 @@ public class ActiveSkill : MonoBehaviour
     }
     #endregion
 
-    #region �� ���� 
+    #region 땅 정령
     public IEnumerator SouthSkill()
     {
         SkillReady[(int)battle.WeaponType] = false;
@@ -316,7 +308,7 @@ public class ActiveSkill : MonoBehaviour
     //}
     #endregion
 
-    #region �ٶ� ���� 
+    #region 바람 정령
     public IEnumerator WindSkill()
     {
         isCharging = true;
