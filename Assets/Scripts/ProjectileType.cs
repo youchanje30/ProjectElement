@@ -76,14 +76,15 @@ public class ProjectileType : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.Log(other.gameObject.tag);
-        if (other.tag == "Floor")
-        {
-            if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill && Projectile != Type.FireSkill)
-            {
-                Destroy(gameObject);
-            }
-        }
-        else if (other.tag == "Monster" && Projectile != Type.Bomb)
+        // if (other.CompareTag("Floor"))
+        // {
+        //     if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill && Projectile != Type.FireSkill)
+        //     {
+        //         Destroy(gameObject);
+        //     }
+        // }
+        // else if (other.CompareTag("Monster") && Projectile != Type.Bomb)
+        if (other.CompareTag("Monster") && Projectile != Type.Bomb)
         {
             // other.GetComponent<Monster>().GetDamaged(Damage);
                 other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
@@ -106,7 +107,7 @@ public class ProjectileType : MonoBehaviour
                 //Damage *= 1 - (DeclineRate / 100);
             }    
         }
-        else if (other.tag == "Destruct"  )
+        else if (other.CompareTag("Destruct"))
         {
             other.GetComponent<DestructObject>().DestroyObj();
             if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill && Projectile != Type.Bomb)
@@ -132,7 +133,7 @@ public class ProjectileType : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Monster") 
+        if (other.CompareTag("Monster"))
         { 
             if (Projectile == Type.FireSkill)
             {
@@ -148,26 +149,26 @@ public class ProjectileType : MonoBehaviour
 
     public IEnumerator BombAtk()
     {
+        // Debug.Log("BombAtk 1");
        
         yield return new WaitForSeconds(skill.BombChargeTime);
         CameraController.instance.StartCoroutine(CameraController.instance.Shake(skill.BombShakeTime,skill.BombShakeMagnitude));
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(transform.position, skill.BombRange, 0);
+        
+        foreach (Collider2D collider in collider2Ds)
         {
-            Debug.Log("1");
-            foreach (Collider2D collider in collider2Ds)
+            if (collider.CompareTag("Monster"))
             {
-                if (collider.tag == "Monster")
-                {
-                    
-                    skill.passive.ActivePassive(WeaponTypes.Wand, collider.GetComponentInParent<MonsterDebuffBase>());
-                    skill.SkillAtk(collider.gameObject, skill.DefaultDamage *= 1 + (skill.BombDamageIncreaseRate / 100));              
-                }
-                if (collider.tag == "Destruct")
-                {
-                    skill.SkillAtk(collider.gameObject, skill.DefaultDamage *= 1 + (skill.BombDamageIncreaseRate / 100));
-                }
+                
+                skill.passive.ActivePassive(WeaponTypes.Wand, collider.GetComponentInParent<MonsterDebuffBase>());
+                skill.SkillAtk(collider.gameObject, skill.DefaultDamage * (1 + (skill.BombDamageIncreaseRate / 100)));              
+            }
+            if (collider.CompareTag("Destruct"))
+            {
+                skill.SkillAtk(collider.gameObject, skill.DefaultDamage * (1 + (skill.BombDamageIncreaseRate / 100)));
             }
         }
+        
         Remove();
     }
     public void WaterY(float y)

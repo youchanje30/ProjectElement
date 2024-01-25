@@ -16,7 +16,7 @@ public class ActiveSkill : MonoBehaviour
     public float[] SkillCoolTime;
     public bool[] SkillReady;
     public bool isCharging = false;
-    public float DefaultDamage;
+    public float DefaultDamage { get { return battle.atkDamage; } }
     [Space(20f)]
 
     #region 불
@@ -147,13 +147,12 @@ public class ActiveSkill : MonoBehaviour
                     collider.GetComponentInParent<MonsterBase>().isHit = true;
                     // StartCoroutine(Hit(collider.gameObject, 0.5f));
                     CameraController.instance.StartCoroutine(CameraController.instance.Shake(SouthShakeTime, SouthShakeMagnitude));
-                    SkillAtk(collider.gameObject, DefaultDamage *= 1 + (JumpDamageIncreaseRate / 100));
+                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
                 }
                 if( collider.tag == "Destruct")
                 {
-                    SkillAtk(collider.gameObject, DefaultDamage *= 1 + (JumpDamageIncreaseRate / 100));
+                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
                 }
-                DefaultDamage = battle.atkDamage;
             }
             Invoke("RandingSet", RisingTime);
         }
@@ -166,7 +165,6 @@ public class ActiveSkill : MonoBehaviour
 
     public void TriggerSkill(WeaponTypes weapontype)
     {
-        DefaultDamage = battle.atkDamage;
         switch (weapontype)
         {
             case WeaponTypes.Sword:
@@ -199,14 +197,14 @@ public class ActiveSkill : MonoBehaviour
             {
                 GameObject Fire = Instantiate(FireFloor);
                 Fire.transform.position = new Vector2(transform.position.x + i, transform.position.y - hit.distance);
-                Fire.GetComponent<ProjectileType>().Damage = DefaultDamage *= 1 + (DiffusionDamageIncreaseRate / 100);
+                Fire.GetComponent<ProjectileType>().Damage = DefaultDamage * (1 + (DiffusionDamageIncreaseRate / 100));
             }
             hit1 = Physics2D.Raycast(new Vector2(transform.position.x - i, transform.position.y), transform.up * -20, detectlength, layer);
             if (hit1.collider != null)
             {
                 GameObject Fire = Instantiate(FireFloor);
                 Fire.transform.position = new Vector2(transform.position.x - i, transform.position.y - hit1.distance);
-                Fire.GetComponent<ProjectileType>().Damage = DefaultDamage *= 1 + (DiffusionDamageIncreaseRate / 100);
+                Fire.GetComponent<ProjectileType>().Damage = DefaultDamage * (1 + (DiffusionDamageIncreaseRate / 100));
             }
         }
         StartCoroutine(ReturnSkill());
@@ -231,7 +229,7 @@ public class ActiveSkill : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             ball = Instantiate(WaterBall);
-            ball.GetComponent<ProjectileType>().Damage = DefaultDamage *= 1 + (WaterDamageIncreaseRate / 100);
+            ball.GetComponent<ProjectileType>().Damage = DefaultDamage * (1 + (WaterDamageIncreaseRate / 100));
             ball.GetComponent<Rigidbody2D>().gravityScale = BallGravity;
             ball.transform.position = transform.position;
             ball.GetComponent<Rigidbody2D>().velocity = BallPos[i] * BallSpeed;                        
@@ -273,14 +271,12 @@ public class ActiveSkill : MonoBehaviour
                     //StartCoroutine(Hit(collider.gameObject, 0.5f));
                     collider.GetComponentInParent<MonsterBase>().isHit = true;
                     StartCoroutine(Stun(collider.gameObject, StunTime));
-                    SkillAtk(collider.gameObject, DefaultDamage *= 1 + (LandDamageIncreaseRate / 100));
+                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
                 }
                 if (collider.tag == "Destruct")
                 {
-                    SkillAtk(collider.gameObject, DefaultDamage *= 1 + (LandDamageIncreaseRate / 100));
-                }
-                DefaultDamage = battle.atkDamage;
-               
+                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
+                }               
             }        
             CanLanding = false;
             battle.isSwap = true;
@@ -317,7 +313,7 @@ public class ActiveSkill : MonoBehaviour
         battle.isGuard = true;
         GameObject MagicArrow = Instantiate(Arrow);
         CameraController.instance.StartCoroutine(CameraController.instance.Shake(WindShakeTime, WindShakeMagnitude));
-        MagicArrow.GetComponent<ProjectileType>().Damage = DefaultDamage *= 1 + (ArrowDamageIncreaseRate/100);
+        MagicArrow.GetComponent<ProjectileType>().Damage = DefaultDamage * (1 + (ArrowDamageIncreaseRate/100));
        // MagicArrow.GetComponent<ProjectileType>().DeclineRate = DeclindRate;
         MagicArrow.transform.position = Pos.position;
         MagicArrow.transform.localScale = new Vector3(transform.localScale.x, MagicArrow.transform.localScale.y, MagicArrow.transform.localScale.z);
