@@ -261,7 +261,8 @@ public class ActiveSkill : MonoBehaviour
     public void RandingSet()
     {
         if (movement2D.isGround && CanLanding)
-        { 
+        {
+            rigid2D.velocity = new Vector2(0,0);
             CameraController.instance.StartCoroutine(CameraController.instance.ShakeR(LandingShakeTime, LandingShakeMagnitude));
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
             
