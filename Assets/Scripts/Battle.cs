@@ -123,10 +123,11 @@ public class Battle : MonoBehaviour
             
         }
         barrier.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, (status.barrier / (status.maxHp * passive.shieldPer * 0.01f)));
+        UIController.instance.HpFill.fillAmount = Mathf.Lerp(UIController.instance.HpFill.fillAmount, status.curHp / status.maxHp, Time.deltaTime * 5f);
     }
 
  
-#region 기본 함수
+    #region 기본 함수
    
     public void GetDamaged(float Damage)
     {
@@ -178,9 +179,7 @@ public class Battle : MonoBehaviour
 
 #endregion
 
-
-
-#region 공격 관련 함수들
+    #region 공격 관련 함수들
     public void Atk(GameObject AtkObj)
     {
         CameraController.instance.StartCoroutine(CameraController.instance.Shake(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
@@ -399,7 +398,6 @@ public class Battle : MonoBehaviour
     }
 
     #endregion
-
 
     #region 특수 공격 함수들
     public IEnumerator FallDownAtk()

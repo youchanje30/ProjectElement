@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening.Core.Easing;
 
 public class UIController : MonoBehaviour
 {
     public static UIController instance;
 
-
+    [Header("플레이어 UI")]
+    public Image HpFill;
 
     [Header("사운드 관련 UI")]
     public Slider bgmSlider;
@@ -44,6 +46,16 @@ public class UIController : MonoBehaviour
     public TMP_Text CameraShakeTxt;
     public TMP_Text FullScreenTxt;
 
+    [Header("재산 UI")]
+    public GameObject WealthUI;
+    public TMP_Text Gold;
+
+    [Header("타이머 UI")]
+    public GameObject timerUI;
+    public TMP_Text TimeTxt;
+    public TMP_Text TimerOnOff;
+    public int OnOff;
+
     void Awake()
     {
         if(!instance)
@@ -51,6 +63,7 @@ public class UIController : MonoBehaviour
         else
             Destroy(gameObject);
 
+        OnOff = 1;
         GetComponent<Canvas>().worldCamera = Camera.main;
     }
 
@@ -58,7 +71,8 @@ public class UIController : MonoBehaviour
     
     void Update()
     {
-        
+        Gold.text = GameManager.instance.inventory.Gold.ToString();
+        timerUI.SetActive(GameManager.instance.isTimer);
     }
 
     public void GameSettingBtn(int btn)
@@ -124,4 +138,34 @@ public class UIController : MonoBehaviour
     {
         GameManager.instance.DataReset(BtnNum);
     }
-}  
+    public void timerSetting()
+    {
+        OnOff++;
+        OnOff %= 2;
+        TimerOnOff.text = OnOff == 0 ? "켜짐" : "꺼짐";
+        //gameManager.SaveSettingData();
+    }
+
+    //[SerializeField] private GameObject[] ElementalImage;
+    //[SerializeField] private PlayerStatus status;
+    //public void SetImage()
+    //{
+    //    for (int i = 0; i < ElementalImage.Length; i++)
+    //    {
+    //        if (InventoryUI.inventory.HavingElement[i].ElementalID != 0)
+    //        {
+    //            ElementalImage[i].GetComponent<Image>().sprite = InventoryUI.inventory.HavingElement[i].elementalImg;
+    //            Color color = ElementalImage[i].GetComponent<Image>().color;
+    //            color.a = 1f;
+    //            ElementalImage[i].GetComponent<Image>().color = color;
+    //        }
+    //        else
+    //        {
+    //            Color color = ElementalImage[i].GetComponent<Image>().color;
+    //            color.a = 0f;
+    //            ElementalImage[i].GetComponent<Image>().color = color;
+    //        }
+
+    //    }
+    //}
+}

@@ -56,9 +56,8 @@ public class GameManager : MonoBehaviour
 
     public ObjectController ObjData;
 
-
     [Header("Timer Setting")]
-    [SerializeField] private TimerUI timeUI;
+    //[SerializeField] private TimerUI timeUI;
     public float TimerVal;
     public bool isTimer = false;
 
@@ -89,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        TimerVal = 1;
+        TimerVal = 0;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         inventory = player.GetComponent<Inventory>();
@@ -97,7 +96,7 @@ public class GameManager : MonoBehaviour
         Elemental = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ElementalManager>();
         inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
         swapUI = GameObject.Find("Canvas").GetComponent<SwapUI>();
-        timeUI = GameObject.Find("Canvas").GetComponent<TimerUI>();
+       // timeUI = GameObject.Find("Canvas").GetComponent<TimerUI>();
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         talkManager  = GameObject.Find("Talk Manager").GetComponent<TalkManager>();
 
@@ -170,6 +169,7 @@ public class GameManager : MonoBehaviour
         }
         TimerSetting();
         LogStat();
+       
     }
 
     public void OpenSystem()
@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
     public void TimerSetting()
     {
         TimerVal += Time.deltaTime;
-        timeUI.TimeTxt.text = ((int)TimerVal / 3600).ToString("D2") + ":" + ((int)TimerVal / 60 % 60).ToString("D2") + ":" + ((int)TimerVal % 60).ToString("D2");
+        UIController.instance.TimeTxt.text = ((int)TimerVal / 3600).ToString("D2") + ":" + ((int)TimerVal / 60 % 60).ToString("D2") + ":" + ((int)TimerVal % 60).ToString("D2");
         //(TimerVal / 3600).ToString("D2") + ":" + (TimerVal / 60 % 60).ToString("D2") + ":" + (TimerVal % 60).ToString("D2");
         // TimerVal += Time.deltaTime;
         // string Txt = string.Format("{0:D2}:{1:D2}:{2:D3}", TimerVal % 3600, TimerVal % 60 , TimerVal % 1);
@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviour
     public void OptionSetting()
     {
         FullScreenTxt.text = PlayerPrefs.GetInt("FullScreenData") == 0 ? "전체 화면" : "창모드";
-        timeUI.TimerOnOff.text = PlayerPrefs.GetInt("TimerData") == 0 ? "켜짐" : "꺼짐";
+        UIController.instance.TimerOnOff.text = PlayerPrefs.GetInt("TimerData") == 0 ? "켜짐" : "꺼짐";
         audioManager.ChangeBGMVol();
         audioManager.ChangeSFXVol();
     }
@@ -249,7 +249,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("ResolutionData", resolutionDropdown.value);
         PlayerPrefs.SetInt("FullScreenData", fullScreen);
-        PlayerPrefs.SetInt("TimerData", timeUI.OnOff);
+        PlayerPrefs.SetInt("TimerData", UIController.instance.OnOff);
         PlayerPrefs.SetFloat("BGMData", audioManager.BGMVolumeSlider.value);
         PlayerPrefs.SetFloat("SFXData", audioManager.SFXVolumeSlider.value);
     }

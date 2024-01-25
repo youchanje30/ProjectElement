@@ -6620,9 +6620,6 @@ GameObject:
   - component: {fileID: 6937643903643609844}
   - component: {fileID: 7059987774767875852}
   - component: {fileID: 967307799649215130}
-  - component: {fileID: 8363869136743665780}
-  - component: {fileID: 5124102738846138791}
-  - component: {fileID: 4027868003466895919}
   - component: {fileID: 8921915156531338632}
   m_Layer: 5
   m_Name: Canvas
@@ -6808,55 +6805,6 @@ MonoBehaviour:
   - {fileID: 3490433575471188888}
   - {fileID: 1163549130097149965}
   - {fileID: 9084876249371659259}
---- !u!114 &8363869136743665780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3456872055292268281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a448467158f28b4ea7aded95636d5b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElementalImage:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  HpFIll: {fileID: 3559553836463555415}
-  status: {fileID: 0}
---- !u!114 &5124102738846138791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3456872055292268281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b448613b2c018c42985440a1b42f4f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerUI: {fileID: 2918610754351587803}
-  TimeTxt: {fileID: 7011699908991105189}
-  TimerOnOff: {fileID: 6488983763961740516}
-  OnOff: 0
---- !u!114 &4027868003466895919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3456872055292268281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b713eb5c01c2d4498214c741c53162, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  WealthUI: {fileID: 6555618806498147956}
-  Gold: {fileID: 8761573637104464998}
 --- !u!114 &8921915156531338632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6869,6 +6817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4426008d0f2dfe847a926cb328f67790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HpFill: {fileID: 3559553836463555415}
   bgmSlider: {fileID: 3061412371473407565}
   sfxSlider: {fileID: 3502469941656228689}
   buyScrollRect: {fileID: 898558724819553004}
@@ -6889,6 +6838,12 @@ MonoBehaviour:
   DataResetCheck: {fileID: 2488830349464483782}
   CameraShakeTxt: {fileID: 8517483269190840891}
   FullScreenTxt: {fileID: 8997870049493970507}
+  WealthUI: {fileID: 6555618806498147956}
+  Gold: {fileID: 8761573637104464998}
+  timerUI: {fileID: 2918610754351587803}
+  TimeTxt: {fileID: 7011699908991105189}
+  TimerOnOff: {fileID: 6488983763961740516}
+  OnOff: 1
 --- !u!1 &3524538990219818167
 GameObject:
   m_ObjectHideFlags: 0
@@ -8048,8 +8003,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5124102738846138791}
-        m_TargetAssemblyTypeName: TimerUI, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: timerSetting
         m_Mode: 1
         m_Arguments:
@@ -8471,8 +8426,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5124102738846138791}
-        m_TargetAssemblyTypeName: TimerUI, Assembly-CSharp
+      - m_Target: {fileID: 8921915156531338632}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: timerSetting
         m_Mode: 1
         m_Arguments:
@@ -14951,7 +14906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: -50}
+  m_AnchoredPosition: {x: -50, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &3363573464027712059
