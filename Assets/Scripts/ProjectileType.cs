@@ -47,7 +47,7 @@ public class ProjectileType : MonoBehaviour
                 transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;
                 break;
             case Type.Bomb:
-                StartCoroutine(BombAtk());
+                // StartCoroutine(BombAtk());
                 break;
         }
     }
@@ -62,17 +62,16 @@ public class ProjectileType : MonoBehaviour
         {
             Invoke("Remove", 5f);
         }
-        if(Projectile == Type.FireSkill)
+        else if(Projectile == Type.FireSkill)
         {
             Invoke("Remove",skill.ActiveTime );
         }
-        if(Projectile == Type.WaterSkill )
+        else if(Projectile == Type.WaterSkill )
         {
             Invoke("Remove", skill.activeTime);
         }
     }
-
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.Log(other.gameObject.tag);
@@ -115,6 +114,7 @@ public class ProjectileType : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
         if (Projectile == Type.WaterSkill)
         {
             if (other.gameObject.layer == 6/*|| other.tag == "OneWayPlatForm"*/)
@@ -125,10 +125,7 @@ public class ProjectileType : MonoBehaviour
                 //   // other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
                 //}
                 //Remove();
-
-
             }
-
         }
     }
     private void OnTriggerStay2D(Collider2D other)
@@ -178,8 +175,9 @@ public class ProjectileType : MonoBehaviour
             transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
             transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
-         transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
-           
+            transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
+            
+            StartCoroutine(BombAtk());
         }
     }
     //private void OnDrawGizmos()
