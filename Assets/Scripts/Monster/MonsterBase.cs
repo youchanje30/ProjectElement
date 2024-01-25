@@ -299,6 +299,7 @@ public class MonsterBase : MonoBehaviour
         {
             isDead = true;
             animator.SetTrigger("Dead");
+            Invoke("Dead", 1f); // 안죽는 경우 대비
         }
 
         // animator.ResetTrigger("Hurt");
@@ -342,6 +343,7 @@ public class MonsterBase : MonoBehaviour
     #region 몬스터 사망
     protected virtual void Dead()
     {
+        CancelInvoke("Dead");
         StageManager.instance.DeadMonster(gameObject);
         Reward();
         gameObject.SetActive(false);

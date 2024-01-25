@@ -25,17 +25,18 @@ public class SaveManager : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
-        if(player == null)
-        {
+        if(!instance)
+            instance = this;
+        else
+            Destroy(gameObject);    
+        
+        if(!player)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        }
+        
 
-        if(manager == null)
-        {
+        if(!manager)
             manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        }
-
+        
     }
 
 
@@ -45,8 +46,6 @@ public class SaveManager : MonoBehaviour
         playerWeapon = player.PlayerWeaponType;
         // playerElement = player.PlayerElementType;
 
-
-        
         XmlDocument xmlDocument = new XmlDocument();
         xmlDocument.AppendChild(xmlDocument.CreateXmlDeclaration("1.0", "utf-8", "yes"));
 

@@ -9,17 +9,11 @@ public class ItemManager : MonoBehaviour
 
     [SerializeField] private List<ItemData> ItemDatas;
 
-    
-
     public List<ItemData> CommonItemDatas = new List<ItemData>();
     public List<ItemData> RareItemDatas = new List<ItemData>();
     public List<ItemData> EpicItemDatas = new List<ItemData>();
     
-
-    
     [SerializeField] private int[] ItemGetPercent;
-
-
 
 
     void Awake()

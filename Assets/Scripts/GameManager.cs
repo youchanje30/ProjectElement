@@ -192,7 +192,6 @@ public class GameManager : MonoBehaviour
     public void OptionSetting()
     {
         FullScreenTxt.text = PlayerPrefs.GetInt("FullScreenData") == 0 ? "전체 화면" : "창모드";
-        CameraShakeTxt.text = PlayerPrefs.GetInt("CameraShakeData") == 0 ? "켜짐" : "꺼짐";
         timeUI.TimerOnOff.text = PlayerPrefs.GetInt("TimerData") == 0 ? "켜짐" : "꺼짐";
         audioManager.ChangeBGMVol();
         audioManager.ChangeSFXVol();
@@ -258,7 +257,6 @@ public class GameManager : MonoBehaviour
     {
         resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionData");
         fullScreen = PlayerPrefs.GetInt("FullScreenData");
-        // CanCameraShake = PlayerPrefs.GetInt("CameraShakeData") == 0 ? true : false;
         isTimer = PlayerPrefs.GetInt("TimerData") == 0 ? true : false;
         audioManager.BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMData");
         audioManager.SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXData");
@@ -278,7 +276,7 @@ public class GameManager : MonoBehaviour
 
             case 2: //Reset Btn
                 SaveManager.instance.ResetData();
-                SceneManager.LoadScene("Prototype 1");
+                SceneManager.LoadScene("Main Scene");
                 Time.timeScale = 1f;
                 break;
 
@@ -315,7 +313,10 @@ public class GameManager : MonoBehaviour
     public void RandomStageRoad()
     {
         SaveManager.instance.Save();
-        SceneManager.LoadScene(Scene[Random.Range(0, Scene.Length)]);
+        if(clearStage >= 5 )
+            SceneManager.LoadScene("BossStage");
+        else
+            SceneManager.LoadScene(Scene[Random.Range(0, Scene.Length)]);
     }
 
     public void MainstageRoad()
