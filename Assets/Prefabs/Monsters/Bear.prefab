@@ -156,6 +156,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -201,7 +209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4591488043960539050, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Size.y
-      value: 2
+      value: 2.0571601
       objectReference: {fileID: 0}
     - target: {fileID: 4591488043960539050, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Offset.x
@@ -209,7 +217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4591488043960539050, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Offset.y
-      value: 0.2
+      value: 0.17141995
       objectReference: {fileID: 0}
     - target: {fileID: 4699783256451698677, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Size.x
@@ -305,14 +313,13 @@ MonoBehaviour:
   isStun: 0
   isHit: 0
   atkPos:
-  - {x: -1, y: 0, z: 0}
+  - {x: -2, y: 0.5, z: 0}
   atkSize:
-  - {x: 3, y: 2}
-  rushCol: {fileID: 0}
+  - {x: 8, y: 6}
   isRushAtk: 0
   atkChargingTime:
   - 3
-  - 3
+  - 1
   atkCheck: {fileID: 1229426727661310261}
 --- !u!114 &5373036055377236901 stripped
 MonoBehaviour:
