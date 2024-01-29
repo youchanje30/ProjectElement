@@ -5,9 +5,9 @@ using UnityEngine;
 public class Synergy : MonoBehaviour
 {
     [SerializeField] private Battle battle;
-    [Header("ǳȭ ������ ������")]
+    [Header("풍화 데미지 증가율")]
     public float SouthSpiritDamageIncreaseRate;
-    [Header("������ ������")]
+    [Header("배리어 감소율")]
     public float BarrierDecreaseRate;
     void Start()
     {

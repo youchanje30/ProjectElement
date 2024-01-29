@@ -67,22 +67,22 @@ public class CameraController : MonoBehaviour
  
     }
 
-    public IEnumerator ShakeR(float duration = 0.1f , float magnitude = 0.2f)
-    {
-        float curTime = 0f;
-        while(curTime < duration)
-        {
-            float z = Random.Range(-1f, 1f) * magnitude;
+    //public IEnumerator ShakeR(float duration = 0.1f , float magnitude = 0.2f)
+    //{
+    //    float curTime = 0f;
+    //    while(curTime < duration)
+    //    {
+    //        float z = Random.Range(-1f, 1f) * magnitude;
             
-            // transform.rotation = Quaternion.Euler()
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, z));
+    //        // transform.rotation = Quaternion.Euler()
+    //        transform.rotation = Quaternion.Euler(new Vector3(0, 0, z));
 
-            curTime += Time.deltaTime;
+    //        curTime += Time.deltaTime;
 
-            yield return null;
+    //        yield return null;
 
-        }
-        transform.rotation = Quaternion.Euler(Vector3.zero);
-    }
+    //    }
+    //    transform.rotation = Quaternion.Euler(Vector3.zero);
+    //}
 
 }
