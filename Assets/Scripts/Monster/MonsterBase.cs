@@ -41,7 +41,7 @@ public class MonsterBase : MonoBehaviour
 
 
     #region 필요 정보들
-    protected float nextDir;
+    protected int nextDir;
     protected bool canMove;
     protected bool canTrack; // 추적 이동 canMove와 구분해서 사용예정
     protected bool canAtk;
@@ -154,6 +154,14 @@ public class MonsterBase : MonoBehaviour
             canMove = true;
     }
 
+    protected virtual void ChangeLocalScale(int value)
+    {
+        if(value == 0) return;
+
+        transform.localScale = new Vector3(-value * monsterData.imageScale, monsterData.imageScale , 1);
+    }
+
+
     // 몬스터 상태 설정
     protected virtual void SetState()
     {
@@ -176,6 +184,7 @@ public class MonsterBase : MonoBehaviour
 
         if(canAtk)
         {
+            rigid.velocity = Vector2.zero;
             isAtking = true;
             Atk();
             return;
@@ -222,9 +231,11 @@ public class MonsterBase : MonoBehaviour
         animator.SetBool("isMove", false);
         // float moveDir = target.position.x - transform.position.x;
 
-        int x = target.position.x > transform.position.x ? -1 : 1;
-        transform.position += new Vector3(x, 0, 0) * moveSpeed * Time.deltaTime;
-        transform.localScale = new Vector3(x * monsterData.imageScale, monsterData.imageScale , 1);
+        int targetDir = target.position.x > transform.position.x ? 1 : -1;
+        rigid.velocity = new Vector2(targetDir * moveSpeed, rigid.velocity.y);
+        // transform.position += new Vector3(targetDir, 0, 0) * moveSpeed * Time.deltaTime;
+        ChangeLocalScale(targetDir);
+        // transform.localScale = new Vector3(-targetDir * monsterData.imageScale, monsterData.imageScale , 1);
         // animator.SetBool("isMove", nextDir != 0);
     }
 
@@ -238,10 +249,10 @@ public class MonsterBase : MonoBehaviour
         animator.SetBool("isRange", false);
 
         // transform.position += new Vector3(nextDir, 0, 0) * moveSpeed * Time.deltaTime;
-        transform.position += new Vector3(nextDir, 0, 0) * moveSpeed * Time.deltaTime;
-        if(nextDir != 0)
-            transform.localScale = new Vector3(nextDir * monsterData.imageScale, monsterData.imageScale , 1);
-        // rigid.velocity = new Vector2(nextDir, 0) * moveSpeed;
+        rigid.velocity = new Vector2(nextDir * moveSpeed, rigid.velocity.y);
+        ChangeLocalScale(nextDir);
+        // if(nextDir != 0)
+        //     transform.localScale = new Vector3(-nextDir * monsterData.imageScale, monsterData.imageScale , 1);
     }
 
     protected virtual void RandomDir()
@@ -320,12 +331,14 @@ public class MonsterBase : MonoBehaviour
         StartCoroutine(Knockback(knockX));
     }
 
-    IEnumerator Knockback(int dir)
+    protected IEnumerator Knockback(int dir)
     {
         //sprite.color = new Color(0, 0, 0); 깜빡이는 효과 Dotween 으로 할 예정
 
         float ctime = 0;
-        transform.localScale = new Vector3(-dir * monsterData.imageScale, monsterData.imageScale , 1);
+        // transform.localScale = new Vector3(-dir * monsterData.imageScale, monsterData.imageScale , 1);
+        ChangeLocalScale(-dir);
+        
         rigid.velocity = Vector2.left * dir * 10;
         while (ctime < knockbackTime)
         {

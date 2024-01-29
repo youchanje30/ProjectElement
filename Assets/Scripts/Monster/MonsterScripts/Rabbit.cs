@@ -74,11 +74,11 @@ public class Rabbit : MonsterBase
 
         if(x > 0)
         {
-            transform.localScale = new Vector3(monsterData.imageScale, monsterData.imageScale, 1);
+            transform.localScale = new Vector3(-monsterData.imageScale, monsterData.imageScale, 1);
         }
         else
         {
-            transform.localScale = new Vector3(-monsterData.imageScale, monsterData.imageScale, 1);
+            transform.localScale = new Vector3(monsterData.imageScale, monsterData.imageScale, 1);
         }
 
         rigid.AddForce(jumpVec * jumpForce, ForceMode2D.Impulse);

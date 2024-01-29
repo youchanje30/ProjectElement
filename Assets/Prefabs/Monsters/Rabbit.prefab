@@ -96,7 +96,7 @@ PrefabInstance:
     - target: {fileID: 1662406608036965016, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: ef723f71a59bc11429a626e918103f14, type: 2}
+      objectReference: {fileID: 9100000, guid: 663915717fbeb6848bbdb4a64787e47f, type: 2}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -201,10 +201,12 @@ MonoBehaviour:
   trackDetect: {fileID: 6444404108009269196}
   tryAtkDetect: {fileID: 5373036055377236901}
   target: {fileID: 0}
+  monsterSynergy: {fileID: 0}
   moveSpeed: 0
   curHp: 0
   damage: 0
   isStun: 0
+  isHit: 0
   atkPos:
   - {x: 0, y: 0, z: 0}
   atkSize:
