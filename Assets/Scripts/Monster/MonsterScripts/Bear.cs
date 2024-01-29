@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class Bear : MonsterBase
 {
-    public enum AtkTypes { HandAtk = 0, DownAtk = 1, };
+    public enum AtkTypes { HandAtk = 0, DownAtk = 1, Rush = 2, };
     
-
+    // [SerializeField] BoxCollider2D rushCol;
+    [SerializeField] bool isRushAtk = false;
 
     [SerializeField] float[] atkChargingTime;
+    [SerializeField] DetectPlayer atkCheck;
+
+
+    protected override void Update()
+    {
+        base.Update();
+        if(isRushAtk && atkCheck.isEnter)
+        {
+            isRushAtk = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Battle>().GetDamaged(damage);
+        }
+    }
 
 
     public override void GetDamaged(float getDamage, bool canKncokBack = true)
@@ -29,11 +42,21 @@ public class Bear : MonsterBase
     {
         isAtking = true;
         canAtk = false;
-                
-        if(Random.Range(1, 100 + 1) < 50)
+
+        int randomAct = Random.Range(1, 100 + 1);
+        if(randomAct < 50)
             animator.SetTrigger("HandAtk");
-        else
+        else if(randomAct < 80)
             animator.SetTrigger("DownAtk");
+        else
+            animator.SetTrigger("RushAtk");
+    }
+
+    protected override void AtkEnd()
+    {
+        base.AtkEnd();
+        // rushCol.enabled = false;
+        isRushAtk = false;
     }
 
     #region 차징
@@ -62,12 +85,26 @@ public class Bear : MonsterBase
                 rigid.velocity = Vector2.up * 10;
                 break;
 
+            case AtkTypes.Rush:
+                // rushCol.enabled = true;
+                rigid.velocity = new Vector2(-transform.localScale.x, 0).normalized * 10;
+                isRushAtk = true;
+                break;
+
             default:
                 Debug.Log("Called ChargingAct : default");
                 break;
         }
     }
 
+    // void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if(isRushAtk && other.CompareTag("Player"))
+    //     {
+    //         isRushAtk = false;
+    //         other.GetComponent<Battle>().GetDamaged(damage);
+    //     }
+    // }
 
     #endregion
 }

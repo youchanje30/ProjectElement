@@ -273,7 +273,8 @@ public class MonsterBase : MonoBehaviour
 
     protected virtual void AtkDetect()
     {
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(transform.position + atkPos[0], atkSize[0], 0, LayerMask.GetMask("Player"));
+        Vector3 detectPos = transform.position + atkPos[0] * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(detectPos, atkSize[0], 0, LayerMask.GetMask("Player"));
         foreach(Collider2D collider in collider2Ds)
         {
             Debug.Log(collider.tag);
@@ -292,7 +293,9 @@ public class MonsterBase : MonoBehaviour
     protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + atkPos[0], atkSize[0]);
+        Vector3 detectPos = transform.position + atkPos[0] * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
+        Gizmos.DrawWireCube(detectPos, atkSize[0]);
+        // Gizmos.DrawWireCube(transform.position + atkPos[0], atkSize[0]);
     }
     #endregion
 
