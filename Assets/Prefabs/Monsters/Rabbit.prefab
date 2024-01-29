@@ -145,6 +145,26 @@ PrefabInstance:
       propertyPath: monster
       value: 
       objectReference: {fileID: 8288603844889612189}
+    - target: {fileID: 4591488043960539050, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591488043960539050, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591488043960539050, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591488043960539050, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847805349945535956, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -861428389, guid: 60d709ac0f1b0944f9f233083c207739, type: 3}
     - target: {fileID: 5234046894563744887, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Name
       value: Rabbit

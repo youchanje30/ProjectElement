@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1662406608036965016, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: a653f9e6f50f9cb409c5e26923e7d471, type: 2}
+      objectReference: {fileID: 9100000, guid: caf75bb6adb1fa148ae91fb32bb451f8, type: 2}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: monster
       value: 
       objectReference: {fileID: 5457820780229101516}
+    - target: {fileID: 4847805349945535956, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -874579748, guid: 8ae1f7678a7c5ca40ab50cfaaaf41880, type: 3}
     - target: {fileID: 5234046894563744887, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Name
       value: Wolf
@@ -105,9 +109,12 @@ MonoBehaviour:
   trackDetect: {fileID: 6444404108009269196}
   tryAtkDetect: {fileID: 5373036055377236901}
   target: {fileID: 0}
+  monsterSynergy: {fileID: 0}
   moveSpeed: 0
   curHp: 0
   damage: 0
+  isStun: 0
+  isHit: 0
   atkPos:
   - {x: 0, y: 0, z: 0}
   atkSize:
