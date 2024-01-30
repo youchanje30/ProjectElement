@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5372167775835602029
 MonoBehaviour:
@@ -50,8 +50,8 @@ MonoBehaviour:
   inventoryUI: {fileID: 0}
   swapUI: {fileID: 0}
   audioManager: {fileID: 0}
+  battle: {fileID: 0}
   player: {fileID: 0}
-  CameraShakeOnOff: 0
   clearStage: 0
   SystemPanel: {fileID: 0}
   talkManager: {fileID: 0}
@@ -75,7 +75,6 @@ MonoBehaviour:
   isAction: 0
   isSelected: 0
   ObjData: {fileID: 0}
-  timeUI: {fileID: 0}
   TimerVal: 0
   isTimer: 0
   ShopUI: {fileID: 0}
@@ -94,5 +93,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  scenes: []
+  ElementImg:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   fullScreen: 0
