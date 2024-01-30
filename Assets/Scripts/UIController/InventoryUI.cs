@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -5,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryUI : MonoBehaviour
+public class  InventoryUI: MonoBehaviour
 {
     public RectTransform rectTransform;
     public GameManager gameManager;
@@ -22,6 +23,7 @@ public class InventoryUI : MonoBehaviour
     public GameObject InvenUI;
     public TextMeshProUGUI Stat;
     public Animator animator;
+    public GameObject inven;
     public GameObject[] Slot;
 
     [Header("Inventory Swap")]
@@ -77,12 +79,14 @@ public class InventoryUI : MonoBehaviour
     {
 
     }
-    public void OpenInventory()
+    public IEnumerator InventoryAnim()
     {
-        animator.SetTrigger("OpenInven");
-        SetCard();
-        SetItem();
         gameManager.isInven = !gameManager.isInven;
         InvenUI.SetActive(gameManager.isInven);
+        animator.SetTrigger("OpenInven");
+        yield return new WaitForSeconds(0.2f);
+        inven.SetActive(gameManager.isInven);
+        SetCard();
+        SetItem();
     }  
 }

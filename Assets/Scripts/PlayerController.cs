@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(ioInventory) && Time.timeScale != 0)
         {
-            manager.inventoryUI.OpenInventory();
+           StartCoroutine( manager.inventoryUI.InventoryAnim());
         }
 
         
