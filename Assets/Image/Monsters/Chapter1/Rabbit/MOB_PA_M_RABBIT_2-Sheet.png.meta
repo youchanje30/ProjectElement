@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c98b3cb6c11e95247b4abd76f8cd40ec
-      internalID: -1032874540
+      spriteID: 030a1645e637d724c9f5bc6a9014cb88
+      internalID: -861428389
       vertices: []
       indices: 
       edges: []
@@ -184,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44b24a10c887fd64188f6d6505d6d591
-      internalID: -1292979307
+      spriteID: ac95e40136b77d345a04a2a6e8feb4d3
+      internalID: 1425037670
       vertices: []
       indices: 
       edges: []
@@ -205,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec0652a70770f744ab9a13dc32c99759
-      internalID: -2012422585
+      spriteID: 8e1684cb6e12e874aa4824fada16f70d
+      internalID: -329551007
       vertices: []
       indices: 
       edges: []
@@ -226,8 +226,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e8faa32a1043cd4a84b3fb8b2f3f18d
-      internalID: -1640965154
+      spriteID: d643f4449b791fd46915033add5a9446
+      internalID: 1664045299
       vertices: []
       indices: 
       edges: []
@@ -247,8 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcb23ba8df1aaf5469f9ba496c0ebe50
-      internalID: 588475818
+      spriteID: a0bc717783a5a0d408e84645fc06a192
+      internalID: 764111237
       vertices: []
       indices: 
       edges: []
@@ -268,8 +268,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 965b97a55ec653941bd902a8c2e428d0
-      internalID: 379864417
+      spriteID: 34d202a7b13019143bc64f86e50db9e5
+      internalID: -1027452499
       vertices: []
       indices: 
       edges: []
@@ -285,12 +285,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MOB_PA_M_RABBIT_2-Sheet_0: -1032874540
-      MOB_PA_M_RABBIT_2-Sheet_1: -1292979307
-      MOB_PA_M_RABBIT_2-Sheet_2: -2012422585
-      MOB_PA_M_RABBIT_2-Sheet_3: -1640965154
-      MOB_PA_M_RABBIT_2-Sheet_4: 588475818
-      MOB_PA_M_RABBIT_2-Sheet_5: 379864417
+      MOB_PA_M_RABBIT_2-Sheet_0: -861428389
+      MOB_PA_M_RABBIT_2-Sheet_1: 1425037670
+      MOB_PA_M_RABBIT_2-Sheet_2: -329551007
+      MOB_PA_M_RABBIT_2-Sheet_3: 1664045299
+      MOB_PA_M_RABBIT_2-Sheet_4: 764111237
+      MOB_PA_M_RABBIT_2-Sheet_5: -1027452499
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

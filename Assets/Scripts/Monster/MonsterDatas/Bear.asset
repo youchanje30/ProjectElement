@@ -15,10 +15,10 @@ MonoBehaviour:
   detectType: 1
   atkType: 1
   maxMoveSpeed: 3
-  maxHp: 10000
+  maxHp: 1000
   maxDamage: 5
   maxAtkCoolTime: 3
   maxKnockbackTime: 0.2
-  imageScale: 1
-  floorRayX: 1
-  floorRayY: 0.6
+  imageScale: 2.8
+  floorRayX: 2
+  floorRayY: 1.2

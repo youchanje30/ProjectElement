@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 52f58ccba7c607348b004f1ec37c060e
+guid: 8ae1f7678a7c5ca40ab50cfaaaf41880
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -149,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MOB_PA_WOLF_M_1Sheet_0
+      name: MOB_PA_WOLF_M_1-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -157,20 +157,20 @@ TextureImporter:
         width: 145
         height: 145
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c277f2ab042be34eafd073181da11ae
-      internalID: -473838021
+      spriteID: f7cac0c8a19b6d94a8aae36df059affd
+      internalID: -874579748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MOB_PA_WOLF_M_1Sheet_1
+      name: MOB_PA_WOLF_M_1-Sheet_1
       rect:
         serializedVersion: 2
         x: 145
@@ -178,20 +178,20 @@ TextureImporter:
         width: 145
         height: 145
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b32f6e30a120cd14cba9484535598d45
-      internalID: 1292419242
+      spriteID: 0f6d37b3a863b1a498d674804b26db65
+      internalID: 768534667
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MOB_PA_WOLF_M_1Sheet_2
+      name: MOB_PA_WOLF_M_1-Sheet_2
       rect:
         serializedVersion: 2
         x: 290
@@ -199,20 +199,20 @@ TextureImporter:
         width: 145
         height: 145
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bb6379731f7ea242b77a30864624b4b
-      internalID: -1643564513
+      spriteID: 9ab778400cb54a842b569a05da09f573
+      internalID: -1931804246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MOB_PA_WOLF_M_1Sheet_3
+      name: MOB_PA_WOLF_M_1-Sheet_3
       rect:
         serializedVersion: 2
         x: 0
@@ -220,20 +220,20 @@ TextureImporter:
         width: 145
         height: 145
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7adf7631e1b37804ebc76617b45cac6d
-      internalID: -1928631080
+      spriteID: 3153a68ee6eecc34693384c8c717ce92
+      internalID: 1522630859
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MOB_PA_WOLF_M_1Sheet_4
+      name: MOB_PA_WOLF_M_1-Sheet_4
       rect:
         serializedVersion: 2
         x: 145
@@ -241,20 +241,20 @@ TextureImporter:
         width: 145
         height: 145
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05f0d3c27893d5346bf20d79360b1885
-      internalID: -1746817510
+      spriteID: 7df2d7f69edb8554e86f02ec582a3a43
+      internalID: 1251832193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MOB_PA_WOLF_M_1Sheet_5
+      name: MOB_PA_WOLF_M_1-Sheet_5
       rect:
         serializedVersion: 2
         x: 290
@@ -262,20 +262,20 @@ TextureImporter:
         width: 145
         height: 145
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 003afab166ff2f24a935a2de3fdc549a
-      internalID: -2022066729
+      spriteID: 4e84722b38d229c4d8f95661293f5588
+      internalID: -1335070340
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MOB_PA_WOLF_M_1Sheet_6
+      name: MOB_PA_WOLF_M_1-Sheet_6
       rect:
         serializedVersion: 2
         x: 0
@@ -283,14 +283,14 @@ TextureImporter:
         width: 145
         height: 145
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28e5451241520524d830b07b727b94c8
-      internalID: -516796968
+      spriteID: 794e9582f0d5edb4a9bed8c8a63bea0a
+      internalID: -399820132
       vertices: []
       indices: 
       edges: []
@@ -306,13 +306,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MOB_PA_WOLF_M_1Sheet_0: -473838021
-      MOB_PA_WOLF_M_1Sheet_1: 1292419242
-      MOB_PA_WOLF_M_1Sheet_2: -1643564513
-      MOB_PA_WOLF_M_1Sheet_3: -1928631080
-      MOB_PA_WOLF_M_1Sheet_4: -1746817510
-      MOB_PA_WOLF_M_1Sheet_5: -2022066729
-      MOB_PA_WOLF_M_1Sheet_6: -516796968
+      MOB_PA_WOLF_M_1-Sheet_0: -874579748
+      MOB_PA_WOLF_M_1-Sheet_1: 768534667
+      MOB_PA_WOLF_M_1-Sheet_2: -1931804246
+      MOB_PA_WOLF_M_1-Sheet_3: 1522630859
+      MOB_PA_WOLF_M_1-Sheet_4: 1251832193
+      MOB_PA_WOLF_M_1-Sheet_5: -1335070340
+      MOB_PA_WOLF_M_1-Sheet_6: -399820132
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

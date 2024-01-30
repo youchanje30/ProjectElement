@@ -4,6 +4,23 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// [System.Serializable]
+// struct WeaponInfo
+// {
+//     public enum WeaponType
+//     {
+//         None,
+//         Sword,
+//         Wand,
+//         Shield,
+//         Bow
+//     }
+
+//     [SerializeField] WeaponType weaponType;
+//     [SerializeField] float duration;
+//     [SerializeField] float force;
+// }
+
 
 public class Battle : MonoBehaviour
 {
@@ -20,6 +37,14 @@ public class Battle : MonoBehaviour
     [SerializeField] float[] shakeForce;
     [SerializeField] float DamagedDuration;
     [SerializeField] float DamagedForce;
+
+    
+    // [Header("진동 설정")]
+    // [ArrayElementTitle("WeaponType")]
+    // [SerializeField] WeaponInfo[] shake;
+    
+
+
 
     [Header("Weapon Setting")]
     [Tooltip("무기 타입")]

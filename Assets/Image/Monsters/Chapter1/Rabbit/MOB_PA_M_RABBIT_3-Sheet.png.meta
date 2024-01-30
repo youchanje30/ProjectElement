@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d55322467e00184c8db973aafe1698d
-      internalID: -2140375334
+      spriteID: a41fb3f11ae8e814cb6c2d539960d81f
+      internalID: -1221009946
       vertices: []
       indices: 
       edges: []
@@ -184,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 159a6c8beb895334cb42cf019a580261
-      internalID: 244577430
+      spriteID: 3c95048b3c92e424f8abf4317caed66f
+      internalID: 1822482264
       vertices: []
       indices: 
       edges: []
@@ -201,8 +201,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MOB_PA_M_RABBIT_3-Sheet_0: -2140375334
-      MOB_PA_M_RABBIT_3-Sheet_1: 244577430
+      MOB_PA_M_RABBIT_3-Sheet_0: -1221009946
+      MOB_PA_M_RABBIT_3-Sheet_1: 1822482264
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
