@@ -564,7 +564,7 @@ public class GameManager : MonoBehaviour
                 color.a = 0f;
                 ElementImg[i].GetComponent<Image>().color = color;
             }
-            if(inventory.HavingElement[i].WeaponTypes == battle.WeaponType)
+            if(inventory.HavingElement[i].WeaponTypes == battle.WeaponType && inventory.HavingElement[i].ElementalID != 0)
             {
                 ElementImg[i].transform.GetChild(0).GetComponent<Image>().sprite = UIController.instance.SelectImg.sprite;
             }

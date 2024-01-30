@@ -9,6 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 public class ActiveSkill : MonoBehaviour
 {
     private Battle battle;
+    private Animator animator;
     private Movement2D movement2D;
     private Rigidbody2D rigid2D;
     public PassiveSystem passive;
@@ -123,6 +124,7 @@ public class ActiveSkill : MonoBehaviour
 
     void Awake()
     {
+        animator =  GetComponent<Animator>();
         passive = GetComponent<PassiveSystem>();
         battle = GetComponent<Battle>();
         rigid2D = GetComponent<Rigidbody2D>();
@@ -181,6 +183,8 @@ public class ActiveSkill : MonoBehaviour
                 StartCoroutine(SouthSkill());
                 break;
             case WeaponTypes.Bow:
+                animator.SetBool("isCharge", true);
+                animator.SetTrigger("Charging");           
                 StartCoroutine(WindSkill());
                 break;
         }
@@ -313,6 +317,7 @@ public class ActiveSkill : MonoBehaviour
         isCharging = true;
         SkillReady[(int)battle.WeaponType] = false;
         yield return new WaitForSeconds(ChargeTime);
+        animator.SetBool("isCharge", false);
         battle.isGuard = true;
         GameObject MagicArrow = Instantiate(Arrow);
         CameraController.instance.StartCoroutine(CameraController.instance.Shake(WindShakeTime, WindShakeMagnitude));
