@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public InventoryUI inventoryUI;
     public SwapUI swapUI;
     public AudioManager audioManager;
+    public Battle battle;
 
     [SerializeField] private PlayerController player;
 
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Elemental")]
     public GameObject[] Elements;
+    public GameObject[] ElementImg;
 
     void Awake()
     {
@@ -96,7 +98,8 @@ public class GameManager : MonoBehaviour
         Elemental = GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ElementalManager>();
         inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
         swapUI = GameObject.Find("Canvas").GetComponent<SwapUI>();
-       // timeUI = GameObject.Find("Canvas").GetComponent<TimerUI>();
+        battle = player.GetComponent <Battle>();
+        // timeUI = GameObject.Find("Canvas").GetComponent<TimerUI>();
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         talkManager  = GameObject.Find("Talk Manager").GetComponent<TalkManager>();
 
@@ -121,9 +124,11 @@ public class GameManager : MonoBehaviour
         DataResetCheck = UIController.instance.DataResetCheck;
         CameraShakeTxt = UIController.instance.CameraShakeTxt;
         FullScreenTxt = UIController.instance.FullScreenTxt;
-
-
-        if(PlayerPrefs.HasKey("FullScreenData")) { SetSettingData();}
+        for (int i = 0; i < ElementImg.Length; i++)
+        {
+            ElementImg = UIController.instance.ElementalImage;
+        }
+        if (PlayerPrefs.HasKey("FullScreenData")) { SetSettingData();}
         
         SetResolution();
 
@@ -169,7 +174,7 @@ public class GameManager : MonoBehaviour
         }
         TimerSetting();
         LogStat();
-       
+        SetImage();
     }
 
     public void OpenSystem()
@@ -542,5 +547,31 @@ public class GameManager : MonoBehaviour
     {
         inventoryUI.Stat.text = "힘: " + player.GetComponent<PlayerStatus>().strength + "\n" + "민첩: " + player.GetComponent<PlayerStatus>().dexterity + "\n" + "운: " + player.GetComponent<PlayerStatus>().luck + "\n" + "\n" + "최대 체력: " + player.GetComponent<PlayerStatus>().maxHp + "\n" + "데미지: " + player.GetComponent<PlayerStatus>().damage + "\n" + "크리티컬 확률: " + player.GetComponent<PlayerStatus>().crtRate + "\n" + "공격 속도: " + player.GetComponent<PlayerStatus>().atkSpeed + "\n" + "회피 확률: " + player.GetComponent<PlayerStatus>().missRate + "\n" + "쿨타임 감소율: " + player.GetComponent<PlayerStatus>().coolDownReductionPer + "\n" + "데미지 감소율: " + player.GetComponent<PlayerStatus>().defPer + "\n" + "이동 속도: " + player.GetComponent<PlayerStatus>().playerSpeed + "\n" + "점프력: " + player.GetComponent<PlayerStatus>().jumpForce;
     }
-
+    public void SetImage()
+    {
+        for (int i = 0; i < ElementImg.Length; i++)
+        {
+            if (inventory.HavingElement[i].ElementalID != 0)
+            {
+                ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalImg;
+                Color color = ElementImg[i].GetComponent<Image>().color;
+                color.a = 1f;
+                ElementImg[i].GetComponent<Image>().color = color;
+            }
+            else
+            {
+                Color color = ElementImg[i].GetComponent<Image>().color;
+                color.a = 0f;
+                ElementImg[i].GetComponent<Image>().color = color;
+            }
+            if(inventory.HavingElement[i].WeaponTypes == battle.WeaponType)
+            {
+                ElementImg[i].transform.GetChild(0).GetComponent<Image>().sprite = UIController.instance.SelectImg.sprite;
+            }
+            else
+            {
+                ElementImg[i].transform.GetChild(0).GetComponent<Image>().sprite = UIController.instance.unSelectImg.sprite;
+            }
+        }
+    }
 }

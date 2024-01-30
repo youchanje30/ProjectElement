@@ -11,6 +11,10 @@ public class UIController : MonoBehaviour
 
     [Header("플레이어 UI")]
     public Image HpFill;
+    public GameObject[] ElementalImage;
+    public Image SelectImg;
+    public Image unSelectImg;
+    [Space(20f)]
 
     [Header("사운드 관련 UI")]
     public Slider bgmSlider;
@@ -146,26 +150,6 @@ public class UIController : MonoBehaviour
         //gameManager.SaveSettingData();
     }
 
-    //[SerializeField] private GameObject[] ElementalImage;
-    //[SerializeField] private PlayerStatus status;
-    //public void SetImage()
-    //{
-    //    for (int i = 0; i < ElementalImage.Length; i++)
-    //    {
-    //        if (InventoryUI.inventory.HavingElement[i].ElementalID != 0)
-    //        {
-    //            ElementalImage[i].GetComponent<Image>().sprite = InventoryUI.inventory.HavingElement[i].elementalImg;
-    //            Color color = ElementalImage[i].GetComponent<Image>().color;
-    //            color.a = 1f;
-    //            ElementalImage[i].GetComponent<Image>().color = color;
-    //        }
-    //        else
-    //        {
-    //            Color color = ElementalImage[i].GetComponent<Image>().color;
-    //            color.a = 0f;
-    //            ElementalImage[i].GetComponent<Image>().color = color;
-    //        }
 
-    //    }
-    //}
+   
 }

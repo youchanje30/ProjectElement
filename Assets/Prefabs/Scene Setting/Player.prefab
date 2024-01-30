@@ -771,7 +771,6 @@ MonoBehaviour:
   - {x: 1.7, y: 1.7}
   arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
   originalScale: 0
-  WeatheringDamage: 0
   canComboAtk: 0
   ShieldAtkDashTime: 0.1
   AtkDashingPower: 10
@@ -905,7 +904,6 @@ MonoBehaviour:
   - 1
   SkillReady: 0000000000
   isCharging: 0
-  DefaultDamage: 0
   FireFloor: {fileID: 3096906974402678174, guid: db7de1076855ad84ba51dd45a7123812, type: 3}
   RangeCount: 4
   DiffusionDamageIncreaseRate: 20
@@ -915,7 +913,7 @@ MonoBehaviour:
     m_Bits: 64
   ActiveTime: 3
   FireShakeTime: 0.05
-  FireShakeMagnitude: 1
+  FireShakeMagnitude: 0.1
   WaterBall: {fileID: 3054785954419580376, guid: 02e9dce7710091749a6c01825bbde7f9, type: 3}
   isWater: 0
   WaterDamageIncreaseRate: 0
@@ -953,7 +951,7 @@ MonoBehaviour:
   SouthShakeTime: 0.1
   SouthShakeMagnitude: 0.2
   LandingShakeTime: 0.2
-  LandingShakeMagnitude: 10
+  LandingShakeMagnitude: 2
   Arrow: {fileID: 3054785954419580376, guid: 88320b9d25572f34fac3f5c97b155539, type: 3}
   Pos: {fileID: 4315468924003554650}
   ArrowDamageIncreaseRate: 200

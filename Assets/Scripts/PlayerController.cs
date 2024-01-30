@@ -339,7 +339,6 @@ public class PlayerController : MonoBehaviour
             SetEquipment();
             return;
         }
-        
     }
 
     public void GetElement(int W)
