@@ -87,7 +87,7 @@ public class ShopItem : MonoBehaviour
         objectController.SetPosShop();
         Destroy(gameObject);
         SaveManager.instance.Save();
-
+        inventory.GetComponent<PlayerStatus>().SetStatue();
     }
 
     public void Sell()
@@ -98,6 +98,7 @@ public class ShopItem : MonoBehaviour
         objectController.SetPosShop();
         Destroy(gameObject);
         SaveManager.instance.Save();
+        inventory.GetComponent<PlayerStatus>().SetStatue();
     }
 
     public void UseConsumable(int ConsumableID)

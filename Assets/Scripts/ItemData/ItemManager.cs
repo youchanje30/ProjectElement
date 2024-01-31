@@ -39,7 +39,10 @@ public class ItemManager : MonoBehaviour
                     
                 case ItemRares.Epic:
                     EpicItemDatas.Add(item);
-                    break;                
+                    break;  
+
+                default:
+                    break;              
             }
         }
     }

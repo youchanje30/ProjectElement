@@ -312,10 +312,6 @@ MonoBehaviour:
   damage: 0
   isStun: 0
   isHit: 0
-  atkPos:
-  - {x: -2, y: 0.5, z: 0}
-  atkSize:
-  - {x: 8, y: 6}
   atkInfo:
   - atkPos: {x: -2, y: 0.5, z: 0}
     atkSize: {x: 8, y: 6}
@@ -323,8 +319,8 @@ MonoBehaviour:
     atkSize: {x: 10, y: 5}
   isRushAtk: 0
   atkChargingTime:
-  - 3
   - 1
+  - 2
   atkCheck: {fileID: 1229426727661310261}
 --- !u!114 &5373036055377236901 stripped
 MonoBehaviour:

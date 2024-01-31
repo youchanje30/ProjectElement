@@ -177,7 +177,8 @@ public class SaveManager : MonoBehaviour
             XmlNodeList ElementDatas = xmlDocument.GetElementsByTagName("ElementDatas");
             if (ElementDatas.Count != 0)
             {
-                for (int i = 0; i < ElementDatas.Count; i++)
+                // for (int i = 0; i < ElementDatas.Count; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     XmlNodeList playerElementalData = xmlDocument.GetElementsByTagName("ElementalData");
                     int ID = int.Parse(playerElementalData[i].InnerText);

@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
         {
             ElementImg = UIController.instance.ElementalImage;
         }
-        if (PlayerPrefs.HasKey("FullScreenData")) { SetSettingData();}
+        // if (PlayerPrefs.HasKey("FullScreenData")) { SetSettingData();}
         
         SetResolution();
 
@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
 
-        if (SceneManager.GetActiveScene().name == "Main Scene")
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             isAction = true;
             isStatusUpgrade = true;

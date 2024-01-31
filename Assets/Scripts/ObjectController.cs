@@ -76,7 +76,7 @@ public class ObjectController : MonoBehaviour
                 {
                     SpawnShopItem();
                 }
-                SpawnSellItem();
+                Invoke("SpawnSellItem", 0.1f);
                 break;
             
             case InteractObjects.SpiritAwake:
@@ -89,9 +89,9 @@ public class ObjectController : MonoBehaviour
     public void SpawnShopItem()
     {
         GameObject NewShopItem = Instantiate(ShopItem, buyScrollRect.content);
-        NewShopItem.GetComponent<ShopItem>().Setting(ItemManager.instance.GetShopItem());
         NewShopItem.GetComponent<ShopItem>().objectController = this ;
         NewShopItem.GetComponent<ShopItem>().buyBool = true ;
+        NewShopItem.GetComponent<ShopItem>().Setting(ItemManager.instance.GetShopItem());
         var newUi = NewShopItem.GetComponent<RectTransform>();
         buyShopObjects.Add(newUi);
         SetPosShop();
@@ -140,9 +140,9 @@ public class ObjectController : MonoBehaviour
             if(inven.HavingItem[i] == null) continue;
 
             GameObject NewShopItem = Instantiate(ShopItem, sellScrollRect.content);
-            NewShopItem.GetComponent<ShopItem>().Setting(inven.HavingItem[i]);
             NewShopItem.GetComponent<ShopItem>().objectController = this;
             NewShopItem.GetComponent<ShopItem>().buyBool = false;
+            NewShopItem.GetComponent<ShopItem>().Setting(inven.HavingItem[i]);
 
             var newUi = NewShopItem.GetComponent<RectTransform>();
             sellShopObjects.Add(newUi);
@@ -157,9 +157,9 @@ public class ObjectController : MonoBehaviour
         Inventory inven = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
 
         GameObject NewShopItem = Instantiate(ShopItem, sellScrollRect.content);
-        NewShopItem.GetComponent<ShopItem>().Setting(ItemManager.instance.AddItem(itemID));
         NewShopItem.GetComponent<ShopItem>().objectController = this;
         NewShopItem.GetComponent<ShopItem>().buyBool = false;
+        NewShopItem.GetComponent<ShopItem>().Setting(ItemManager.instance.AddItem(itemID));
 
         var newUi = NewShopItem.GetComponent<RectTransform>();
         sellShopObjects.Add(newUi);
