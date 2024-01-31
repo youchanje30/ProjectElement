@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 503b51157eea9c2489f7152e227042f3
+guid: 868b9e7cd73b83d4e8559de64e2f5439
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -137,7 +137,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -149,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_0
+      name: PC_WIND_JUMP_ATTACK_M_1-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
-        width: 48
-        height: 48
+        y: 56
+        width: 56
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07158adeeaf8d24459e8ce0469e372bc
-      internalID: 1491629281
+      spriteID: c0feba04fdd5bcf4496dfea3ec5960a4
+      internalID: -1394261351
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_1
+      name: PC_WIND_JUMP_ATTACK_M_1-Sheet_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 48
-        width: 48
-        height: 48
+        x: 56
+        y: 56
+        width: 56
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3a1bc5bce85cee40ac1aef0148fca28
-      internalID: 966526895
+      spriteID: 1edb4781d902e054a8b4846d9f7b99f4
+      internalID: -1558495989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_2
+      name: PC_WIND_JUMP_ATTACK_M_1-Sheet_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
-        width: 48
-        height: 48
+        x: 112
+        y: 56
+        width: 56
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e334a79330ae904baf2a7eb81bb3889
-      internalID: 467452572
+      spriteID: ee86ffef04b0f82408169b5c44bd78aa
+      internalID: -868043518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_3
+      name: PC_WIND_JUMP_ATTACK_M_1-Sheet_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
+        width: 56
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cbb1bb686d15a34eb881d715e95294f
-      internalID: -32313151
+      spriteID: 2077fc72d0948654b8f673f2965cfe7d
+      internalID: 1042254793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_4
+      name: PC_WIND_JUMP_ATTACK_M_1-Sheet_4
       rect:
         serializedVersion: 2
-        x: 48
+        x: 56
         y: 0
-        width: 48
-        height: 48
+        width: 56
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +247,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 104898590bab44d45bcc8100beffc8b8
-      internalID: 1675997911
+      spriteID: 2343c70b41e770b489827cfde7f37c5e
+      internalID: -1034585480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_5
+      name: PC_WIND_JUMP_ATTACK_M_1-Sheet_5
       rect:
         serializedVersion: 2
-        x: 96
+        x: 112
         y: 0
-        width: 48
-        height: 48
+        width: 56
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,8 +268,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e1f3fe29cc4a2140b23690ca80027b8
-      internalID: 705428262
+      spriteID: 7ba6f2b37b79b13479b185d31b46c91f
+      internalID: 1636719662
       vertices: []
       indices: 
       edges: []
@@ -285,12 +285,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PC_FIRE_JUMP_M_1-Sheet_0: 1491629281
-      PC_FIRE_JUMP_M_1-Sheet_1: 966526895
-      PC_FIRE_JUMP_M_1-Sheet_2: 467452572
-      PC_FIRE_JUMP_M_1-Sheet_3: -32313151
-      PC_FIRE_JUMP_M_1-Sheet_4: 1675997911
-      PC_FIRE_JUMP_M_1-Sheet_5: 705428262
+      PC_WIND_JUMP_ATTACK_M_1-Sheet_0: -1394261351
+      PC_WIND_JUMP_ATTACK_M_1-Sheet_1: -1558495989
+      PC_WIND_JUMP_ATTACK_M_1-Sheet_2: -868043518
+      PC_WIND_JUMP_ATTACK_M_1-Sheet_3: 1042254793
+      PC_WIND_JUMP_ATTACK_M_1-Sheet_4: -1034585480
+      PC_WIND_JUMP_ATTACK_M_1-Sheet_5: 1636719662
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

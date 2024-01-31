@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 503b51157eea9c2489f7152e227042f3
+guid: de53f7adc0cf41240b99d95b76f91fbc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -137,7 +137,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -149,11 +149,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_0
+      name: PC_FIRE_JUMP_ATTACK_M_seet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
+        x: 8
+        y: 64
         width: 48
         height: 48
       alignment: 0
@@ -163,18 +163,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07158adeeaf8d24459e8ce0469e372bc
-      internalID: 1491629281
+      spriteID: 7e77bf5560524c04ba82511e37f413b0
+      internalID: -679575303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_1
+      name: PC_FIRE_JUMP_ATTACK_M_seet_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 48
+        x: 64
+        y: 64
         width: 48
         height: 48
       alignment: 0
@@ -184,18 +184,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3a1bc5bce85cee40ac1aef0148fca28
-      internalID: 966526895
+      spriteID: fbb65d984cc73594b81b16f37f3ceb98
+      internalID: -56927625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_2
+      name: PC_FIRE_JUMP_ATTACK_M_seet_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
+        x: 120
+        y: 64
         width: 48
         height: 48
       alignment: 0
@@ -205,18 +205,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e334a79330ae904baf2a7eb81bb3889
-      internalID: 467452572
+      spriteID: 83944f97e3f69a5479c8a3703bffa1b1
+      internalID: 824361942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_3
+      name: PC_FIRE_JUMP_ATTACK_M_seet_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 8
+        y: 8
         width: 48
         height: 48
       alignment: 0
@@ -226,18 +226,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cbb1bb686d15a34eb881d715e95294f
-      internalID: -32313151
+      spriteID: e541d9d5c12707f4da14571252667373
+      internalID: -1627856362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_4
+      name: PC_FIRE_JUMP_ATTACK_M_seet_4
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
+        x: 64
+        y: 8
         width: 48
         height: 48
       alignment: 0
@@ -247,29 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 104898590bab44d45bcc8100beffc8b8
-      internalID: 1675997911
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PC_FIRE_JUMP_M_1-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e1f3fe29cc4a2140b23690ca80027b8
-      internalID: 705428262
+      spriteID: 1d592bbeaccb2b946b1aa4f0e569a570
+      internalID: 2000645095
       vertices: []
       indices: 
       edges: []
@@ -285,12 +264,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PC_FIRE_JUMP_M_1-Sheet_0: 1491629281
-      PC_FIRE_JUMP_M_1-Sheet_1: 966526895
-      PC_FIRE_JUMP_M_1-Sheet_2: 467452572
-      PC_FIRE_JUMP_M_1-Sheet_3: -32313151
-      PC_FIRE_JUMP_M_1-Sheet_4: 1675997911
-      PC_FIRE_JUMP_M_1-Sheet_5: 705428262
+      PC_FIRE_JUMP_ATTACK_M_seet_0: -679575303
+      PC_FIRE_JUMP_ATTACK_M_seet_1: -56927625
+      PC_FIRE_JUMP_ATTACK_M_seet_2: 824361942
+      PC_FIRE_JUMP_ATTACK_M_seet_3: -1627856362
+      PC_FIRE_JUMP_ATTACK_M_seet_4: 2000645095
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

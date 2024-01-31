@@ -15,8 +15,8 @@ MonoBehaviour:
   itemName: "\uC6D0\uC18C\uAC00 \uC313\uC778 \uB3CC"
   itemInfo: "\uD3C9\uD0C0 \uB370\uBBF8\uC9C0 20% \uC99D\uAC00\uD569\uB2C8\uB2E4"
   itemRare: 1
-  itemCost: 0
-  sellCost: 0
+  itemCost: 7
+  sellCost: 4
   itemID: 2000
   itemImg: {fileID: 0}
   hp: 0
