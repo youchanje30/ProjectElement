@@ -15,4 +15,6 @@ MonoBehaviour:
   elementalName: South
   weaponType: 3
   elementalID: 3000
-  elementalImg: {fileID: 21300000, guid: ed199b982f1c14944950dff866e56210, type: 3}
+  elementalInfo: 
+  elementalImg: {fileID: 21300000, guid: 434b71f6e0df3d74db92455f315e6e4f, type: 3}
+  elementalIcon: {fileID: 21300000, guid: d54894ed7535af742b4967ea1ae0ad7e, type: 3}

@@ -69,7 +69,15 @@ public class  InventoryUI: MonoBehaviour
             EleCards[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalImg;
             Slot[i].GetComponent<Text>().text = inventory.HavingElement[i].ElementalID.ToString();
             Slot[i].GetComponent<CardController>().Setslot = i;
-}
+            if (EleCards[i].GetComponent<Image>().sprite != null)
+            {
+                EleCards[i].SetActive(true);
+            }
+            else
+            {
+                EleCards[i].SetActive(false);
+            }
+        }
         for (int i = 0; i < InvenItem.Length; i++)
         {           
             //InvenItem[i].sprite = inventory.HavingItem[i].itemImg;
@@ -84,7 +92,7 @@ public class  InventoryUI: MonoBehaviour
         gameManager.isInven = !gameManager.isInven;
         InvenUI.SetActive(gameManager.isInven);
         animator.SetTrigger("OpenInven");
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         inven.SetActive(gameManager.isInven);
         SetCard();
         SetItem();
