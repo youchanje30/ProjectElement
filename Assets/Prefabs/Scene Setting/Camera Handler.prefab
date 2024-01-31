@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc77b75dc5d04384ebdcf003169ef8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cinemachineCam: {fileID: 0}
+  shakeTime: 0
   Target: {fileID: 0}
   Offset: {x: 0, y: 3, z: -10}
   cameraHandler: {fileID: 2381640013870362304}

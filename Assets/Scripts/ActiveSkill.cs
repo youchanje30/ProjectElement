@@ -149,7 +149,9 @@ public class ActiveSkill : MonoBehaviour
                     collider.GetComponentInParent<MonsterBase>().isHit = true;
                     StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
                     // StartCoroutine(Hit(collider.gameObject, 0.5f));
-                    CameraController.instance.StartCoroutine(CameraController.instance.Shake(SouthShakeTime, SouthShakeMagnitude));
+                    // CameraController.instance.StartCoroutine(CameraController.instance.Shake(SouthShakeTime, SouthShakeMagnitude));
+                    CameraController.instance.ShakeCamera(SouthShakeTime, SouthShakeMagnitude);
+
                     SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
                 }
                 if( collider.tag == "Destruct")
@@ -171,7 +173,8 @@ public class ActiveSkill : MonoBehaviour
         switch (weapontype)
         {
             case WeaponTypes.Sword:
-                CameraController.instance.StartCoroutine(CameraController.instance.Shake(FireShakeTime, FireShakeMagnitude));
+                // CameraController.instance.StartCoroutine(CameraController.instance.Shake(FireShakeTime, FireShakeMagnitude));
+                CameraController.instance.ShakeCamera(FireShakeTime, FireShakeMagnitude);
                 FIreSkill();
                 break;
             case WeaponTypes.Wand:
@@ -179,7 +182,8 @@ public class ActiveSkill : MonoBehaviour
                 StartCoroutine(WaterSkill());
                 break;
             case WeaponTypes.Shield:
-                CameraController.instance.StartCoroutine(CameraController.instance.Shake(JumpShakeTime, JumpShakeMagnitude));
+                // CameraController.instance.StartCoroutine(CameraController.instance.Shake(JumpShakeTime, JumpShakeMagnitude));
+                CameraController.instance.ShakeCamera(JumpShakeTime, JumpShakeMagnitude);
                 StartCoroutine(SouthSkill());
                 break;
             case WeaponTypes.Bow:
@@ -267,7 +271,9 @@ public class ActiveSkill : MonoBehaviour
         if (movement2D.isGround && CanLanding)
         {
             rigid2D.velocity = new Vector2(0,0);
-            CameraController.instance.StartCoroutine(CameraController.instance.Shake(LandingShakeTime, LandingShakeMagnitude));
+            // CameraController.instance.StartCoroutine(CameraController.instance.Shake(LandingShakeTime, LandingShakeMagnitude));
+            CameraController.instance.ShakeCamera(LandingShakeTime, LandingShakeMagnitude);
+
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
             
             foreach (Collider2D collider in collider2Ds)
@@ -320,7 +326,8 @@ public class ActiveSkill : MonoBehaviour
         animator.SetBool("isCharge", false);
         battle.isGuard = true;
         GameObject MagicArrow = Instantiate(Arrow);
-        CameraController.instance.StartCoroutine(CameraController.instance.Shake(WindShakeTime, WindShakeMagnitude));
+        // CameraController.instance.StartCoroutine(CameraController.instance.Shake(WindShakeTime, WindShakeMagnitude));
+        CameraController.instance.ShakeCamera(WindShakeTime, WindShakeMagnitude);
         MagicArrow.GetComponent<ProjectileType>().Damage = DefaultDamage * (1 + (ArrowDamageIncreaseRate/100));
        // MagicArrow.GetComponent<ProjectileType>().DeclineRate = DeclindRate;
         MagicArrow.transform.position = Pos.position;

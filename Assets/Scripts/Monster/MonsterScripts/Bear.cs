@@ -59,6 +59,8 @@ public class Bear : MonsterBase
         isRushAtk = false;
     }
 
+
+
     #region 차징
     protected IEnumerator Charging(AtkTypes atkType)
     {
@@ -97,14 +99,7 @@ public class Bear : MonsterBase
         }
     }
 
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if(isRushAtk && other.CompareTag("Player"))
-    //     {
-    //         isRushAtk = false;
-    //         other.GetComponent<Battle>().GetDamaged(damage);
-    //     }
-    // }
+
 
     #endregion
 }

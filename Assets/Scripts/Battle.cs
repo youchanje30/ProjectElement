@@ -163,7 +163,9 @@ public class Battle : MonoBehaviour
         if(!isMiss)
         {
             float getDmg = Damage * (100 - status.defPer) * 0.01f;
-            CameraController.instance.StartCoroutine(CameraController.instance.Shake(DamagedDuration, DamagedForce));
+            // CameraController.instance.StartCoroutine(CameraController.instance.Shake(DamagedDuration, DamagedForce));
+            
+            CameraController.instance.ShakeCamera(DamagedDuration, DamagedForce);
             if (status.barrier > getDmg)
             {
                 status.barrier -= getDmg;
@@ -207,7 +209,8 @@ public class Battle : MonoBehaviour
     #region 공격 관련 함수들
     public void Atk(GameObject AtkObj)
     {
-        CameraController.instance.StartCoroutine(CameraController.instance.Shake(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
+        // CameraController.instance.StartCoroutine(CameraController.instance.Shake(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
+        CameraController.instance.ShakeCamera(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]);
         // CameraController.instance.StartCoroutine(CameraController.instance.ShakeR(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
         
         if(AtkObj.CompareTag("Monster"))

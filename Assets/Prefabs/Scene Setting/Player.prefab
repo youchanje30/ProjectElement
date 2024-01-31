@@ -740,13 +740,13 @@ MonoBehaviour:
   - 0.2
   - -1
   shakeForce:
-  - 0.2
-  - 0.2
+  - 10
+  - 10
   - -1
-  - 0.2
+  - 10
   - -1
   DamagedDuration: 0.1
-  DamagedForce: 1
+  DamagedForce: 10
   WeaponType: 0
   atking: 0
   isGuard: 0
@@ -913,7 +913,7 @@ MonoBehaviour:
     m_Bits: 64
   ActiveTime: 3
   FireShakeTime: 0.05
-  FireShakeMagnitude: 0.1
+  FireShakeMagnitude: 10
   WaterBall: {fileID: 3054785954419580376, guid: 02e9dce7710091749a6c01825bbde7f9, type: 3}
   isWater: 0
   WaterDamageIncreaseRate: 0
@@ -932,7 +932,7 @@ MonoBehaviour:
   WaterY: 0
   activeTime: 10
   BombShakeTime: 0.1
-  BombShakeMagnitude: 1
+  BombShakeMagnitude: 30
   isSouth: 0
   JumpDamageIncreaseRate: 20
   LandDamageIncreaseRate: 50
@@ -951,7 +951,7 @@ MonoBehaviour:
   SouthShakeTime: 0.1
   SouthShakeMagnitude: 0.2
   LandingShakeTime: 0.2
-  LandingShakeMagnitude: 2
+  LandingShakeMagnitude: 20
   Arrow: {fileID: 3054785954419580376, guid: 88320b9d25572f34fac3f5c97b155539, type: 3}
   Pos: {fileID: 4315468924003554650}
   ArrowDamageIncreaseRate: 200
@@ -959,7 +959,7 @@ MonoBehaviour:
   InvicibleTime: 1
   Delay: 1
   WindShakeTime: 0.1
-  WindShakeMagnitude: 0.5
+  WindShakeMagnitude: 30
 --- !u!114 &6781280166762617137
 MonoBehaviour:
   m_ObjectHideFlags: 0

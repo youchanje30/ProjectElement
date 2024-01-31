@@ -149,7 +149,9 @@ public class ProjectileType : MonoBehaviour
         // Debug.Log("BombAtk 1");
        
         yield return new WaitForSeconds(skill.BombChargeTime);
-        CameraController.instance.StartCoroutine(CameraController.instance.Shake(skill.BombShakeTime,skill.BombShakeMagnitude));
+        // CameraController.instance.StartCoroutine(CameraController.instance.Shake(skill.BombShakeTime,skill.BombShakeMagnitude));
+        CameraController.instance.ShakeCamera(skill.BombShakeTime,skill.BombShakeMagnitude);
+        
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(transform.position, skill.BombRange, 0);
         
         foreach (Collider2D collider in collider2Ds)
