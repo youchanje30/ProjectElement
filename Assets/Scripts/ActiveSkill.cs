@@ -184,7 +184,7 @@ public class ActiveSkill : MonoBehaviour
                 break;
             case WeaponTypes.Bow:
                 animator.SetBool("isCharge", true);
-                animator.SetTrigger("Charging");           
+                animator.SetTrigger("Charging");      
                 StartCoroutine(WindSkill());
                 break;
         }
