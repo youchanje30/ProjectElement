@@ -318,7 +318,7 @@ public class GameManager : MonoBehaviour
     public void RandomStageRoad()
     {
         SaveManager.instance.Save();
-        if(clearStage >= 5 )
+        if(clearStage > 0 && clearStage % 5 == 0)
             SceneManager.LoadScene("BossStage");
         else
             SceneManager.LoadScene(Scene[Random.Range(0, Scene.Length)]);
@@ -500,12 +500,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int fullScreen = 0 ; //0 전체화면 , 1 창모드
 
     List<Resolution> resolutions;
+    List<Resolution> checkedResolutions;
     private int resolutionNum;
     
     public void SetResolution()
     {
 
         resolutions = new List<Resolution>(Screen.resolutions);
+        checkedResolutions = new List<Resolution>();
         resolutions.Reverse(); // 높은 것 부터 표시
 
         resolutionDropdown.options.Clear();
@@ -516,10 +518,15 @@ public class GameManager : MonoBehaviour
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
             option.text = item.width + " x " + item.height + "  " /*+ item.refreshRateRatio + "hz"*/;
             if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
-            resolutionDropdown.options.Add(option);
+            {
+                resolutionDropdown.options.Add(option);
+                checkedResolutions.Add(item);
+            }
             if (item.width == Screen.width && item.height == Screen.height)
                 resolutionDropdown.value = optionNum;
             optionNum++;
+            
+            
         }
 
     }
@@ -538,8 +545,11 @@ public class GameManager : MonoBehaviour
 
     public void GraphicSetting()
     {
-        Screen.SetResolution(resolutions[resolutionNum].width, 
-        resolutions[resolutionNum].height, 
+        // Screen.SetResolution(resolutions[resolutionNum].width, 
+        // resolutions[resolutionNum].height, 
+        // fullScreen == 0 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
+        Screen.SetResolution(checkedResolutions[resolutionNum].width, 
+        checkedResolutions[resolutionNum].height, 
         fullScreen == 0 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
     }
 

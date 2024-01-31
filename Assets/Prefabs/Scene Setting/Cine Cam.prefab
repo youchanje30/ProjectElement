@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5120380c8c1c742b06597c97579acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: -0.15
+  xFactor: -0.1
+  yFactor: 0.1
 --- !u!1 &1665483386127700766
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +133,7 @@ Transform:
   - {fileID: 342317699883370455}
   - {fileID: 2684229978792381315}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2496788897235196721
 MonoBehaviour:
@@ -394,7 +395,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5120380c8c1c742b06597c97579acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0
+  xFactor: 0
+  yFactor: 0
 --- !u!1 &3430730865136097687
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5120380c8c1c742b06597c97579acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: -0.1
+  xFactor: -0.1
+  yFactor: 0.1
 --- !u!1 &4777500172021089485
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +593,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5120380c8c1c742b06597c97579acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0.01
+  xFactor: 0.05
+  yFactor: 0.05
 --- !u!1 &5216647438933853141
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,7 +692,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5120380c8c1c742b06597c97579acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: -0.2
+  xFactor: -0.2
+  yFactor: 0.05
 --- !u!1 &6399610107352990457
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,7 +791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5120380c8c1c742b06597c97579acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: -0.1
+  xFactor: -0.1
+  yFactor: 0.02
 --- !u!1 &6873565853248841214
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2684229978792381315
 Transform:
   m_ObjectHideFlags: 0
@@ -1084,4 +1090,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5120380c8c1c742b06597c97579acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: -0.2
+  xFactor: -0.2
+  yFactor: 0.05

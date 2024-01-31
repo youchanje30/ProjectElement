@@ -14,12 +14,12 @@ public class CameraController : MonoBehaviour
     public Vector3 Offset;
     public Transform cameraHandler;
 
-    public delegate void cameraDelegate(float x);
+    public delegate void cameraDelegate(Vector2 vec);
     public cameraDelegate cameraTranslate;
     
     public float smoothness = 3f;
 
-    private float oldPosition;    
+    private Vector2 oldPosition;    
 
     void Awake()
     {
@@ -55,15 +55,15 @@ public class CameraController : MonoBehaviour
     void FixedUpdate()
     {
         
-        if (cameraHandler.position.x != oldPosition)
+        if ((Vector2)cameraHandler.position != oldPosition)
         {
             if (cameraTranslate != null)
             {
-                float x = oldPosition - cameraHandler.position.x;
-                cameraTranslate(x);
+                Vector2 vec = oldPosition - (Vector2)cameraHandler.position;
+                cameraTranslate(vec);
             }
  
-            oldPosition = cameraHandler.position.x;
+            oldPosition = (Vector2)transform.position;
         }
         // cameraHandler.position = Vector3.Lerp(cameraHandler.position, Target.position + Offset , Time.fixedDeltaTime * smoothness);
     }

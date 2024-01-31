@@ -12,20 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07386380ef70a414d80403d8ad0c2bf8, type: 3}
   m_Name: Common_4
   m_EditorClassIdentifier: 
-  itemName: "\uBC14\uB78C\uC758 \uC7A5\uD654 \u2013 \uC774\uB3D9\uC18D\uB3C4\uAC00
-    5% \uC99D\uAC00\uD55C\uB2E4"
-  itemInfo: "\uBC14\uB78C\uC758 \uC7A5\uD654 \u2013 \uC774\uB3D9\uC18D\uB3C4\uAC00
-    5% \uC99D\uAC00\uD55C\uB2E4"
+  itemName: "\uBC14\uB78C\uC758 \uC7A5\uD654"
+  itemInfo: "\uC774\uB3D9\uC18D\uB3C4\uAC00 5 \uC99D\uAC00\uD55C\uB2E4"
   itemRare: 0
+  itemCost: 5
+  sellCost: 3
   itemID: 1003
-  hpIncrease: 0
-  hpPerIncrease: 0
-  defIncrease: 0
-  defPerIncrease: 0
-  meleeDmgIncrease: 0
-  meleeDmgPerIncrease: 0
-  skillDmgIncrease: 0
-  skillDmgPerIncrease: 0
-  atkSpeedIncrease: 0
-  crtRateIncrease: 0
-  crtDmgIncrease: 0
+  itemImg: {fileID: 0}
+  hp: 0
+  hpPer: 0
+  damage: 0
+  damagePer: 0
+  atkSpeed: 0
+  crtRate: 0
+  crtDamage: 0
+  missRate: 0
+  defPer: 0
+  playerSpeed: 5
+  coolDownReductionPer: 0
+  jumpForce: 0
+  jumpForcePer: 0

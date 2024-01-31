@@ -32,11 +32,11 @@ public class BackgroundController : MonoBehaviour
         }
     }
  
-    void Move(float x)
+    void Move(Vector2 vec)
     {
         foreach (Background bg in backgrounds)
         {
-            bg.Move(x);
+            bg.Move(vec);
         }
     }
 }

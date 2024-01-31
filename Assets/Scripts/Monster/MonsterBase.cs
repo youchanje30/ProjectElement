@@ -45,8 +45,15 @@ public class MonsterBase : MonoBehaviour
     protected bool canMove;
     protected bool canTrack; // 추적 이동 canMove와 구분해서 사용예정
     protected bool canAtk;
-    [SerializeField] protected Vector3[] atkPos = new Vector3[1];
-    [SerializeField] protected Vector2[] atkSize= new Vector2[1];
+
+    [System.Serializable]
+    public struct AtkInfo
+    {
+        public Vector3 atkPos;
+        public Vector2 atkSize;
+    }
+    
+    [SerializeField] protected AtkInfo[] atkInfo;
     #endregion
 
     /*
@@ -273,8 +280,9 @@ public class MonsterBase : MonoBehaviour
 
     protected virtual void AtkDetect(int index = 0)
     {
-        Vector3 detectPos = transform.position + atkPos[index] * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(detectPos, atkSize[index], 0, LayerMask.GetMask("Player"));
+        
+        Vector3 detectPos = transform.position + atkInfo[index].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(detectPos, atkInfo[index].atkSize, 0, LayerMask.GetMask("Player"));
         foreach(Collider2D collider in collider2Ds)
         {
             Debug.Log(collider.tag);
@@ -294,8 +302,12 @@ public class MonsterBase : MonoBehaviour
     {
         Gizmos.color = Color.red;
         
-        Vector3 detectPos = transform.position + atkPos[0] * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
-        Gizmos.DrawWireCube(detectPos, atkSize[0]);
+
+        for (int i = 0; i < atkInfo.Length; i++)
+        {
+            Vector3 detectPos = transform.position + atkInfo[i].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
+            Gizmos.DrawWireCube(detectPos, atkInfo[i].atkSize);
+        }
         
     }
     #endregion
