@@ -15,4 +15,6 @@ MonoBehaviour:
   elementalName: Water
   weaponType: 2
   elementalID: 2000
-  elementalImg: {fileID: 21300000, guid: 5e104ee1efce92f46ae4f4c103690ee7, type: 3}
+  elementalInfo: 
+  elementalImg: {fileID: 21300000, guid: 567d50c721738254e8c5d0a5e05c8791, type: 3}
+  elementalIcon: {fileID: 21300000, guid: 4db63e2a4fe0d524cae6d963cac52443, type: 3}

@@ -15,4 +15,5 @@ public class ElementalData : ScriptableObject
     [SerializeField] private string elementalInfo;
     public string ElementalInfo { get { return elementalInfo; } }
     public Sprite elementalImg;
+    public Sprite elementalIcon;
 }

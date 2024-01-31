@@ -15,4 +15,6 @@ MonoBehaviour:
   elementalName: FIre
   weaponType: 1
   elementalID: 1000
-  elementalImg: {fileID: 21300000, guid: 89b6c44cdafa33d4fbe16421195bef9e, type: 3}
+  elementalInfo: 
+  elementalImg: {fileID: 21300000, guid: 23444319dfa72ee4ea79290f9c044b10, type: 3}
+  elementalIcon: {fileID: 21300000, guid: 850e2ccc2aac47349bc2345c9ec3bfb3, type: 3}

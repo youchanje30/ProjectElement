@@ -563,7 +563,7 @@ public class GameManager : MonoBehaviour
         {
             if (inventory.HavingElement[i].ElementalID != 0)
             {
-                ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalImg;
+                ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalIcon;
                 Color color = ElementImg[i].GetComponent<Image>().color;
                 color.a = 1f;
                 ElementImg[i].GetComponent<Image>().color = color;
