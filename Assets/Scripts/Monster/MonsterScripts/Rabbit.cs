@@ -23,7 +23,7 @@ public class Rabbit : MonsterBase
         CheckState();
         TimeProcess();
         
-        if(canAtk && !isAtking)
+        if(canAtk && !isAtking && !isDead)
         {
             Atk();
             curAtkCoolTime = Random.Range(minAtkCoolTime, maxAtkCoolTime);

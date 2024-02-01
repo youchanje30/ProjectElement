@@ -289,6 +289,9 @@ public class MonsterBase : MonoBehaviour
             if(!collider.CompareTag("Player")) continue;
                 
             collider.GetComponent<Battle>().GetDamaged(damage);
+            Debug.Log(atkInfo[index].atkPos);
+            Debug.Log(atkInfo[index].atkSize);
+
         }
     }
 
@@ -353,7 +356,7 @@ public class MonsterBase : MonoBehaviour
 
         float ctime = 0;
         // transform.localScale = new Vector3(-dir * monsterData.imageScale, monsterData.imageScale , 1);
-        ChangeLocalScale(-dir);
+        ChangeLocalScale(dir);
         
         rigid.velocity = Vector2.left * dir * 10;
         while (ctime < knockbackTime)
