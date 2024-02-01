@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour
     public void OptionSetting()
     {
         FullScreenTxt.text = PlayerPrefs.GetInt("FullScreenData") == 0 ? "전체 화면" : "창모드";
-        UIController.instance.TimerOnOff.text = PlayerPrefs.GetInt("TimerData") == 0 ? "켜짐" : "꺼짐";
+        //UIController.instance.TimerOnOff.text = PlayerPrefs.GetInt("TimerData") == 0 ? "켜짐" : "꺼짐";
         audioManager.ChangeBGMVol();
         audioManager.ChangeSFXVol();
     }
@@ -262,7 +262,7 @@ public class GameManager : MonoBehaviour
     {
         resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionData");
         fullScreen = PlayerPrefs.GetInt("FullScreenData");
-        isTimer = PlayerPrefs.GetInt("TimerData") == 0 ? true : false;
+        isTimer = UIController.instance.OnOff == 0 ? true : false;
         audioManager.BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMData");
         audioManager.SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXData");
     }
@@ -517,7 +517,7 @@ public class GameManager : MonoBehaviour
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
             option.text = item.width + " x " + item.height + "  " /*+ item.refreshRateRatio + "hz"*/;
-            if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
+            //if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
             {
                 resolutionDropdown.options.Add(option);
                 checkedResolutions.Add(item);

@@ -67,12 +67,14 @@ public class UIController : MonoBehaviour
         else
             Destroy(gameObject);
 
-        OnOff = 1;
         GetComponent<Canvas>().worldCamera = Camera.main;
     }
 
 
-    
+     void Start()
+    {
+        OnOff = 1;
+    }
     void Update()
     {
         Gold.text = GameManager.instance.inventory.Gold.ToString();
