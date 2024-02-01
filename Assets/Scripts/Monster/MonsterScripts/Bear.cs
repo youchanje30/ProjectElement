@@ -80,7 +80,6 @@ public class Bear : MonsterBase
         {
             case AtkTypes.HandAtk:
 
-
                 break;
 
             case AtkTypes.DownAtk:

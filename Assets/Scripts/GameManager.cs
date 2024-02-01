@@ -397,7 +397,7 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 Delete();
-                SceneManager.LoadScene("Prototype 1");
+                SceneManager.LoadScene("Main Scene");
                 Time.timeScale = 1f;
                 break;
             case 1:

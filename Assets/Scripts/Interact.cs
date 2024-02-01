@@ -34,7 +34,7 @@ public class Interact : MonoBehaviour
             scanObj.gameObject.GetComponent<ObjectController>().InteractView(true);
             ScanObj = scanObj;
         }
-        else if(other.tag == "Coin")
+        else if(other.CompareTag("Coin"))
         {
             //골드 획득 시스템
             inven.GetGold();

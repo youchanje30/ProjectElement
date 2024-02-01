@@ -5,19 +5,19 @@ using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController instance;
 
     public CinemachineVirtualCamera cinemachineCam;
-    public static CameraController instance;
     [SerializeField] float shakeTime;
     
-    public Transform Target;
-    public Vector3 Offset;
-    public Transform cameraHandler;
+    [SerializeField] Transform Target;
+    // public Vector3 Offset;
+    [SerializeField] Transform cameraHandler;
 
     public delegate void cameraDelegate(Vector2 vec);
     public cameraDelegate cameraTranslate;
     
-    public float smoothness = 3f;
+    // public float smoothness = 3f;
 
     private Vector2 oldPosition;
 

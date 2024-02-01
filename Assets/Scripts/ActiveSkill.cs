@@ -144,7 +144,7 @@ public class ActiveSkill : MonoBehaviour
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[1].position, LandingRange[1], 0);
             foreach (Collider2D collider in collider2Ds)
             {
-                if (collider.tag == "Monster" && collider.GetComponentInParent<MonsterBase>().isHit == false)
+                if (collider.CompareTag("Monster") && collider.GetComponentInParent<MonsterBase>().isHit == false)
                 {                   
                     collider.GetComponentInParent<MonsterBase>().isHit = true;
                     StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
@@ -154,7 +154,7 @@ public class ActiveSkill : MonoBehaviour
 
                     SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
                 }
-                if( collider.tag == "Destruct")
+                if( collider.CompareTag("Destruct"))
                 {
                     SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
                 }
@@ -278,7 +278,7 @@ public class ActiveSkill : MonoBehaviour
             
             foreach (Collider2D collider in collider2Ds)
             {               
-                if (collider.tag == "Monster" && collider.GetComponentInParent<MonsterBase>().isHit == false)
+                if (collider.CompareTag("Monster") && collider.GetComponentInParent<MonsterBase>().isHit == false)
                 {
                     //StartCoroutine(Hit(collider.gameObject, 0.5f));
                     collider.GetComponentInParent<MonsterBase>().isHit = true;
@@ -286,7 +286,7 @@ public class ActiveSkill : MonoBehaviour
                     StartCoroutine(Stun(collider.gameObject, StunTime));
                     SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
                 }
-                if (collider.tag == "Destruct")
+                if (collider.CompareTag("Destruct"))
                 {
                     SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
                 }               
@@ -366,13 +366,13 @@ public class ActiveSkill : MonoBehaviour
     {
         //CameraController.instance.StartCoroutine(CameraController.instance.Shake());
 
-        if (AtkObj.tag == "Monster")
+        if (AtkObj.CompareTag("Monster"))
         {
             Debug.Log(Damage);
             AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
         }
 
-        if (AtkObj.tag == "Destruct")
+        if (AtkObj.CompareTag("Destruct"))
         {
             AtkObj.GetComponent<DestructObject>().DestroyObj();
         }

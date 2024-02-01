@@ -280,7 +280,6 @@ public class MonsterBase : MonoBehaviour
 
     protected virtual void AtkDetect(int index = 0)
     {
-        
         Vector3 detectPos = transform.position + atkInfo[index].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(detectPos, atkInfo[index].atkSize, 0, LayerMask.GetMask("Player"));
         foreach(Collider2D collider in collider2Ds)
