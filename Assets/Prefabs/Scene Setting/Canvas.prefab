@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.740566, g: 1, b: 0.7655723, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4984,6 +4984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objname: {fileID: 257383079921122122}
   Info: {fileID: 2670827845072949859}
+  EleImg: {fileID: 3219486208253349391}
 --- !u!1 &2211088429840710210
 GameObject:
   m_ObjectHideFlags: 0
@@ -6798,6 +6799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objname: {fileID: 8499052458152331544}
   Info: {fileID: 4679076257188534017}
+  EleImg: {fileID: 5825922608443260271}
 --- !u!1 &3456872055292268281
 GameObject:
   m_ObjectHideFlags: 0
@@ -6941,13 +6943,6 @@ MonoBehaviour:
   - {fileID: 5825063975807564173}
   - {fileID: 4377533651501006328}
   - {fileID: 101502759305112983}
-  Itempos:
-  - {fileID: 1329476525036306090}
-  - {fileID: 508535742572202835}
-  - {fileID: 8444710381259639775}
-  - {fileID: 8573398047824552687}
-  - {fileID: 965421125173873897}
-  - {fileID: 8523906518482325260}
   InvenItem:
   - {fileID: 5678081525864023317}
   - {fileID: 4579910961758188584}
@@ -6974,9 +6969,6 @@ MonoBehaviour:
   trans:
   - {fileID: 5512123548683984808}
   - {fileID: 3979526506668325363}
-  targetRectTr: {fileID: 2819370146946430742}
-  uiCamera: {fileID: 0}
-  screenPoint: {x: 0, y: 0}
   Speed: 0
 --- !u!114 &967307799649215130
 MonoBehaviour:
@@ -18179,7 +18171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.740566, g: 1, b: 0.7655723, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

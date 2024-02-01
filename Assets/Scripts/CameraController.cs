@@ -6,7 +6,7 @@ using Cinemachine;
 public class CameraController : MonoBehaviour
 {
 
-    [SerializeField] private CinemachineVirtualCamera cinemachineCam;
+    public CinemachineVirtualCamera cinemachineCam;
     public static CameraController instance;
     [SerializeField] float shakeTime;
     
@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
     
     public float smoothness = 3f;
 
-    private Vector2 oldPosition;    
+    private Vector2 oldPosition;
 
     void Awake()
     {
@@ -33,6 +33,7 @@ public class CameraController : MonoBehaviour
         
         if(!cinemachineCam.Follow)
             cinemachineCam.Follow = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        
         // if(!basicMultiChannel)
         //     cinemachineCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
@@ -48,7 +49,6 @@ public class CameraController : MonoBehaviour
                 basicMultiChannel.m_AmplitudeGain = 0f;
             }
         }
-
 
     }
 
@@ -95,23 +95,5 @@ public class CameraController : MonoBehaviour
         basicMultiChannel.m_AmplitudeGain = intensity;
         shakeTime = time;
     }
-
-    //public IEnumerator ShakeR(float duration = 0.1f , float magnitude = 0.2f)
-    //{
-    //    float curTime = 0f;
-    //    while(curTime < duration)
-    //    {
-    //        float z = Random.Range(-1f, 1f) * magnitude;
-            
-    //        // transform.rotation = Quaternion.Euler()
-    //        transform.rotation = Quaternion.Euler(new Vector3(0, 0, z));
-
-    //        curTime += Time.deltaTime;
-
-    //        yield return null;
-
-    //    }
-    //    transform.rotation = Quaternion.Euler(Vector3.zero);
-    //}
 
 }
