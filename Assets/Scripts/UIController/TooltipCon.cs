@@ -19,16 +19,16 @@ public class TooltipCon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             if (inventoryUI.inventory.HavingElement[i].ElementalID != 0 && inventoryUI.Card[i].gameObject == eventData.pointerCurrentRaycast.gameObject || inventoryUI.inventory.HavingElement[i].ElementalID != 0 && inventoryUI.EleCards[i].gameObject == eventData.pointerCurrentRaycast.gameObject)
             {
                 inventoryUI.Info.SetActive(true);
-                tooltip.SetupTooltip(inventoryUI.inventory.HavingElement[i].ElementalName, inventoryUI.inventory.HavingElement[i].ElementalInfo);
+                tooltip.SetupTooltip(inventoryUI.inventory.HavingElement[i].ElementalName, inventoryUI.inventory.HavingElement[i].ElementalInfo, inventoryUI.inventory.HavingElement[i].elementalIcon);
                 break;
             }
         }
         for (int i = 0; i < inventoryUI.InvenItem.Length; i++)
         {
-            if (inventoryUI.inventory.HavingItem[i] != null && inventoryUI.Itempos[i].gameObject == eventData.pointerCurrentRaycast.gameObject || inventoryUI.inventory.HavingItem[i] != null && inventoryUI.InvenItem[i].gameObject == eventData.pointerCurrentRaycast.gameObject)
+            if (inventoryUI.inventory.HavingItem[i] != null && inventoryUI.InvenItem[i] == eventData.pointerCurrentRaycast.gameObject)
             {
                 inventoryUI.ItemInfo.SetActive(true);
-                tooltip.SetupTooltip(inventoryUI.inventory.HavingItem[i].ItemName, inventoryUI.inventory.HavingItem[i].ItemInfo);
+                tooltip.SetupItemTooltip(inventoryUI.inventory.HavingItem[i].ItemName, inventoryUI.inventory.HavingItem[i].ItemInfo, inventoryUI.inventory.HavingItem[i].itemImg);
                 break;
             }
         }

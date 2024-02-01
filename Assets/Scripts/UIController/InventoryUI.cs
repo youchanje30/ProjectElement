@@ -18,8 +18,7 @@ public class  InventoryUI: MonoBehaviour
     public GameObject Info;
     public RectTransform[] Card;
     public GameObject[] EleCards;
-    public RectTransform[] Itempos;
-    public Image[] InvenItem;
+    public GameObject[] InvenItem;
     public GameObject InvenUI;
     public TextMeshProUGUI Stat;
     public Animator animator;
@@ -33,10 +32,6 @@ public class  InventoryUI: MonoBehaviour
     public Transform[] trans;
 
     [Space(20f)]
-
-    public RectTransform targetRectTr;
-    public Camera uiCamera;
-    public Vector2 screenPoint;
     public float Speed;
     void Awake()
     {
@@ -47,19 +42,20 @@ public class  InventoryUI: MonoBehaviour
         Canvas = GameObject.FindGameObjectWithTag("UI").GetComponent<Transform>();
     }
     void Start()
-    {
-   
+    {  
         ItemInfo.SetActive(false);
         Info.SetActive(false);
-        uiCamera = Camera.main;
     }
     void Update()
     {
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(targetRectTr, Input.mousePosition, uiCamera, out screenPoint);
-        Info.GetComponent<RectTransform>().SetAsLastSibling();
-        Info.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 130, screenPoint.y - 196);
-        ItemInfo.GetComponent<RectTransform>().SetAsLastSibling();
-        ItemInfo.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenPoint.x - 230, screenPoint.y + 150) ;
+        if(Info.activeSelf == true || ItemInfo.activeSelf == true)
+        {
+            Info.GetComponent<RectTransform>().SetAsLastSibling();
+            Info.transform.position = new Vector3(Input.mousePosition.x - 90, Input.mousePosition.y - 140);
+            ItemInfo.GetComponent<RectTransform>().SetAsLastSibling();
+            ItemInfo.transform.position = new Vector3(Input.mousePosition.x - 160, Input.mousePosition.y + 100);
+        }
+ 
     
     }
     public void SetCard()
@@ -80,7 +76,16 @@ public class  InventoryUI: MonoBehaviour
         }
         for (int i = 0; i < InvenItem.Length; i++)
         {           
-            //InvenItem[i].sprite = inventory.HavingItem[i].itemImg;
+           
+            if (inventory.HavingItem[i] != null)
+            {
+                InvenItem[i].SetActive(true);
+                InvenItem[i].GetComponent<Image>().sprite = inventory.HavingItem[i].itemImg.sprite;
+            }
+            else
+            {
+                InvenItem[i].SetActive(false);
+            }
         }
     }
     public void SetItem()
@@ -89,10 +94,13 @@ public class  InventoryUI: MonoBehaviour
     }
     public IEnumerator InventoryAnim()
     {
+        inven.SetActive(gameManager.isInven);
+        ItemInfo.SetActive(false);
+        Info.SetActive(false);
         gameManager.isInven = !gameManager.isInven;
         InvenUI.SetActive(gameManager.isInven);
         animator.SetTrigger("OpenInven");
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
         inven.SetActive(gameManager.isInven);
         SetCard();
         SetItem();

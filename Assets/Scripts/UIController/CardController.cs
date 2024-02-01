@@ -105,15 +105,12 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         {
             transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[1].position, Time.deltaTime * inventoryUI.speed);
             transform.DOScale(inventoryUI.trans[0].localScale, 0.15f);
-            //transform.GetChild(1).GetComponent<UnityEngine.UI.Image>().DOColor(Color.yellow, 0.15f);
+
             if (transform.position == inventoryUI.SpinSlot[1].position)
-            {
-                //transform.GetChild(1).GetComponent<UnityEngine.UI.Image>().DOColor(Color.white, 0.15f);
+            {               
                 transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = inventoryUI.frame[0];
-                transform.localScale = inventoryUI.trans[0].localScale;
-              
-                transform.SetParent(inventoryUI.SpinSlot[1]);
-                           
+                transform.localScale = inventoryUI.trans[0].localScale;            
+                transform.SetParent(inventoryUI.SpinSlot[1]);                           
                 rectTransform.anchoredPosition = Vector2.zero;
                 ismove = false;
             }
@@ -123,7 +120,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
             transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[2].position, Time.deltaTime * inventoryUI.speed);
             transform.DOScale(inventoryUI.trans[1].localScale, 0.15f);
             
-            if (transform.position == inventoryUI.SpinSlot[2].position)
+            if (rectTransform.position.x  > inventoryUI.SpinSlot[2].transform.position.x -1 && rectTransform.position.y < inventoryUI.SpinSlot[2].transform.position.y + 1)
             {
                 transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = inventoryUI.frame[1];
                 transform.localScale = inventoryUI.trans[1].localScale;

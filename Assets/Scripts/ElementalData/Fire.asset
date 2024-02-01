@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ed507526e45404c8fb7d932cea6718, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  elementalName: FIre
+  elementalName: "\uC774\uD504\uB9AC\uD2B8"
   weaponType: 1
   elementalID: 1000
-  elementalInfo: 
+  elementalInfo: "\uBD88\uB2ED"
   elementalImg: {fileID: 21300000, guid: 23444319dfa72ee4ea79290f9c044b10, type: 3}
   elementalIcon: {fileID: 21300000, guid: 850e2ccc2aac47349bc2345c9ec3bfb3, type: 3}
