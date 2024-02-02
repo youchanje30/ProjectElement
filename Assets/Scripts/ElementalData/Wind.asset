@@ -17,4 +17,5 @@ MonoBehaviour:
   elementalID: 4000
   elementalInfo: 
   elementalImg: {fileID: 21300000, guid: 15207f4a72706ff4bae0b0abb6830dcd, type: 3}
-  elementalIcon: {fileID: 21300000, guid: 1388e54ba75901b4fb7bdfaf4b67c066, type: 3}
+  elementalIcon: {fileID: 21300000, guid: 5c24b96a54ce89a4fb59930bea6833aa, type: 3}
+  UnSelcIcon: {fileID: 21300000, guid: 92a201f869913714cbbfb0dfc3c69b2e, type: 3}

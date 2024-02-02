@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
         FullScreenTxt = UIController.instance.FullScreenTxt;
         for (int i = 0; i < ElementImg.Length; i++)
         {
-            ElementImg = UIController.instance.ElementalImage;
+            ElementImg[i] = UIController.instance.ElementalImage[i];
         }
         // if (PlayerPrefs.HasKey("FullScreenData")) { SetSettingData();}
         
@@ -562,8 +562,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < ElementImg.Length; i++)
         {
             if (inventory.HavingElement[i].ElementalID != 0)
-            {
-                ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalIcon;
+            {          
                 Color color = ElementImg[i].GetComponent<Image>().color;
                 color.a = 1f;
                 ElementImg[i].GetComponent<Image>().color = color;
@@ -576,11 +575,13 @@ public class GameManager : MonoBehaviour
             }
             if(inventory.HavingElement[i].WeaponTypes == battle.WeaponType && inventory.HavingElement[i].ElementalID != 0)
             {
-                ElementImg[i].transform.GetChild(0).GetComponent<Image>().sprite = UIController.instance.SelectImg.sprite;
+                ElementImg[i].transform.parent.GetComponent<Image>().sprite = UIController.instance.SelectImg.sprite;
+                ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalIcon;
             }
             else
             {
-                ElementImg[i].transform.GetChild(0).GetComponent<Image>().sprite = UIController.instance.unSelectImg.sprite;
+                ElementImg[i].transform.parent.GetComponent<Image>().sprite = UIController.instance.unSelectImg.sprite;
+                ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].UnSelcIcon;
             }
         }
     }

@@ -16,4 +16,5 @@ public class ElementalData : ScriptableObject
     public string ElementalInfo { get { return elementalInfo; } }
     public Sprite elementalImg;
     public Sprite elementalIcon;
+    public Sprite UnSelcIcon;
 }
