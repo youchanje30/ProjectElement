@@ -70,7 +70,6 @@ public class ObjectController : MonoBehaviour
                 for (int i = 0; i < 2; i++)
                 {
                     SpawnConsumableItem(HpHealItem);
-                    // SpawnConsumableItem(SpiritSoulItem);
                 }
                 for (int i = 0; i < 5; i++)
                 {
@@ -110,25 +109,38 @@ public class ObjectController : MonoBehaviour
 
     public void SetPosShop()
     {
-        float y = 0f;
+        // float y = 0f;
+
+        
+        // float y = 0f;
+        float x = 0f;
         for (int i = 0; i < buyShopObjects.Count; i++)
         {
-             buyShopObjects[i].anchoredPosition = new Vector2(0f, -y);
-            y += buyShopObjects[i].sizeDelta.y + Space;
+            buyShopObjects[i].anchoredPosition = new Vector2(x, buyShopObjects[i].anchoredPosition.y);
+            x += buyShopObjects[i].sizeDelta.x + Space;
         }
 
-        buyScrollRect.content.sizeDelta = new Vector2(buyScrollRect.content.sizeDelta.x, y);
+        // buyScrollRect.content.sizeDelta = new Vector2(x, buyScrollRect.content.sizeDelta.y);
+
+        // x = 0f;
+        // for (int i = 0; i < buyShopObjects.Count; i++)
+        // {
+        //     buyShopObjects[i].anchoredPosition = new Vector2(x, buyShopObjects[i].anchoredPosition.y);
+        //     x += buyShopObjects[i].sizeDelta.x + Space;
+        // }
+
+        buyScrollRect.content.sizeDelta = new Vector2(x, buyScrollRect.content.sizeDelta.y);
 
         // shopObjects.Remove()
 
-        y = 0f;
+        x = 0f;
         for (int i = 0; i < sellShopObjects.Count; i++)
         {
-            sellShopObjects[i].anchoredPosition = new Vector2(0f, -y);
-            y += sellShopObjects[i].sizeDelta.y + Space;
+            sellShopObjects[i].anchoredPosition = new Vector2(x, sellShopObjects[i].anchoredPosition.y);
+            x += sellShopObjects[i].sizeDelta.x + Space;
         }
 
-        sellScrollRect.content.sizeDelta = new Vector2(sellScrollRect.content.sizeDelta.x, y);
+        sellScrollRect.content.sizeDelta = new Vector2(x, buyScrollRect.content.sizeDelta.y);
     }
 
     public void SpawnSellItem()

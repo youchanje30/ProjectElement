@@ -22,6 +22,12 @@ public class ItemData : ScriptableObject
     [SerializeField] private ItemRares itemRare;
     public ItemRares ItemRare { get { return itemRare; } }
 
+    [SerializeField] private Sprite itemRareBeforeImg;
+    public Sprite ItemRareBeforeImg { get { return itemRareBeforeImg; } }
+
+    [SerializeField] private Sprite itemRareAfterImg;
+    public Sprite ItemRareAfterImg { get { return itemRareAfterImg; } }
+
     [SerializeField] private int itemCost;
     public int ItemCost { get { return itemCost; } }
     [SerializeField] private int sellCost;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class ShopItem : MonoBehaviour
 {
@@ -23,15 +24,21 @@ public class ShopItem : MonoBehaviour
     public ItemData Item;
 
     [SerializeField] private Image itemImage;
-
     [SerializeField] private TMP_Text itemName;
     [SerializeField] private TMP_Text itemInfo;
     private int buyCost;
     private int sellCost;
     [SerializeField] private TMP_Text itemCostTxt;
-    [SerializeField] TMP_Text btnText;
-    
-    [SerializeField] TMP_Text itemRare;
+
+
+    [Header("Reverse Setting")]
+    [SerializeField] bool isChanging = false;
+    [SerializeField] float reverseTime;
+    [SerializeField] bool isReverse = false;
+    [SerializeField] GameObject afterObj;
+    [SerializeField] GameObject beforeObj;
+    [SerializeField] Transform reverseObj;
+
 
     private int itemID;
     public bool buyBool;
@@ -45,6 +52,7 @@ public class ShopItem : MonoBehaviour
             player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         }
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        
     }
 
     
@@ -60,7 +68,7 @@ public class ShopItem : MonoBehaviour
     }
 
 
-    public void Buy()
+    void Buy()
     {
         if(inventory.Gold < buyCost) return;
 
@@ -81,8 +89,6 @@ public class ShopItem : MonoBehaviour
 
         inventory.Gold -= buyCost;
 
-        // ItemManager.instance.AddItem(itemID);
-        // this.gameObject.SetActive(false);
         objectController.buyShopObjects.Remove(gameObject.GetComponent<RectTransform>());
         objectController.SetPosShop();
         Destroy(gameObject);
@@ -90,7 +96,7 @@ public class ShopItem : MonoBehaviour
         inventory.GetComponent<PlayerStatus>().SetStatue();
     }
 
-    public void Sell()
+    void Sell()
     {
         inventory.Gold += sellCost;
         inventory.RemoveItem(ItemManager.instance.AddItem(itemID));
@@ -134,10 +140,47 @@ public class ShopItem : MonoBehaviour
         else
             itemCostTxt.text = sellCost.ToString();
 
-
         itemName.text = Item.ItemName;
-        // itemCost.text = Item.ItemCost;
         itemInfo.text = Item.ItemInfo;
-        itemRare.text = Item.ItemRare.ToString();
+
+        if(afterObj)
+        {
+            afterObj.SetActive(isReverse);
+            afterObj.GetComponent<Image>().sprite = Item.ItemRareAfterImg;
+        }
+            
+        if(beforeObj)
+        {
+            beforeObj.SetActive(!isReverse);
+            beforeObj.GetComponent<Image>().sprite = Item.ItemRareBeforeImg;
+        }
+    }
+
+
+    public void ReverseObj()
+    {
+        if(isChanging) return;
+        isChanging = true;
+        // DOTween.Clear();
+        reverseObj.DORotate(new Vector3(0, 90, 0), reverseTime).SetUpdate(true).OnComplete(() =>
+        {
+            isReverse = !isReverse;
+            afterObj.SetActive(isReverse);
+            beforeObj.SetActive(!isReverse);
+            reverseObj.DORotate(new Vector3(0, 0, 0), reverseTime).SetUpdate(true).OnComplete(()=>
+            {
+                isChanging = false;
+            });
+        });
+
+        // if(isReverse)
+        // {
+            
+        // }
+        // else
+        // {
+        //     transform.DORotate(new Vector3(0, 0, 0), reverseTime);
+        // }
+
     }
 }

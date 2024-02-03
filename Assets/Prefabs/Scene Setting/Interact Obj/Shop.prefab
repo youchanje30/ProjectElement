@@ -380,8 +380,8 @@ MonoBehaviour:
   objectID: 40
   objectTag: 
   interactView: {fileID: 3804493237631498710}
-  ShopItem: {fileID: 2272788325850309193, guid: a799a66cc4a3746478e6d4eeeb2b3cc0, type: 3}
-  HpHealItem: {fileID: 2272788325850309193, guid: 11a0aac61e0af664893549ef4f4d716a, type: 3}
+  ShopItem: {fileID: 2821492544966807985, guid: 45fd47192cb5b6a4fbf40f18e7b83bd3, type: 3}
+  HpHealItem: {fileID: 2821492544966807985, guid: 20f23879ed9a1c34f8425f7548e7b80f, type: 3}
   SpiritSoulItem: {fileID: 2272788325850309193, guid: 0530bc6e010c5ab40ab91e79f509adc2, type: 3}
   buyScrollRect: {fileID: 0}
   sellScrollRect: {fileID: 0}
