@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
 public class ActiveSkill : MonoBehaviour
@@ -18,6 +19,7 @@ public class ActiveSkill : MonoBehaviour
     public bool[] SkillReady;
     public bool isCharging = false;
     public float DefaultDamage { get { return battle.atkDamage; } }
+    public bool  isUnderTheSea;
     [Space(20f)]
 
     #region 불
@@ -160,12 +162,14 @@ public class ActiveSkill : MonoBehaviour
                 }
             }
             Invoke("RandingSet", RisingTime);
+         
         }
         for (int i = 0; i < RangeCount; i++)
         {
             Debug.DrawRay(new Vector2(transform.position.x + i, transform.position.y), transform.up * -detectlength, Color.red);
             Debug.DrawRay(new Vector2(transform.position.x - i, transform.position.y), Vector3.down * detectlength, Color.red);
         }
+
     }
 
     public void TriggerSkill(WeaponTypes weapontype)
@@ -264,40 +268,42 @@ public class ActiveSkill : MonoBehaviour
         yield return new WaitForSeconds(RisingTime);
         rigid2D.velocity = new Vector2(rigid2D.velocity.x, -FallForce);
 
-        StartCoroutine(ReturnSkill());
+        
     }
     public void RandingSet()
     {
-        if (movement2D.isGround && CanLanding)
-        {
-            rigid2D.velocity = new Vector2(0,0);
-            // CameraController.instance.StartCoroutine(CameraController.instance.Shake(LandingShakeTime, LandingShakeMagnitude));
-            CameraController.instance.ShakeCamera(LandingShakeTime, LandingShakeMagnitude);
 
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
-            
-            foreach (Collider2D collider in collider2Ds)
-            {               
-                if (collider.CompareTag("Monster") && collider.GetComponentInParent<MonsterBase>().isHit == false)
+        if (Physics2D.Raycast(transform.position,Vector2.down,2,layer) && CanLanding)
+            {
+            // CameraController.instance.StartCoroutine(CameraController.instance.Shake(LandingShakeTime, LandingShakeMagnitude));
+            rigid2D.velocity = new Vector2(0, -10);
+                CameraController.instance.ShakeCamera(LandingShakeTime, LandingShakeMagnitude);
+
+                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
+
+                foreach (Collider2D collider in collider2Ds)
                 {
-                    //StartCoroutine(Hit(collider.gameObject, 0.5f));
-                    collider.GetComponentInParent<MonsterBase>().isHit = true;
-                    StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
-                    StartCoroutine(Stun(collider.gameObject, StunTime));
-                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
+                    if (collider.CompareTag("Monster") && collider.GetComponentInParent<MonsterBase>().isHit == false)
+                    {
+                        //StartCoroutine(Hit(collider.gameObject, 0.5f));
+                        collider.GetComponentInParent<MonsterBase>().isHit = true;
+                        StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
+                        StartCoroutine(Stun(collider.gameObject, StunTime));
+                        SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
+                    }
+                    if (collider.CompareTag("Destruct"))
+                    {
+                        SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
+                    }
                 }
-                if (collider.CompareTag("Destruct"))
-                {
-                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
-                }               
-            }        
-            CanLanding = false;
-            battle.isSwap = true;
-            isSouth = false;
-            battle.isGuard = false;
-            StartCoroutine(movement2D.DashCoolDown(0.01f));
-           
+                CanLanding = false;
+                battle.isSwap = true;
+                isSouth = false;
+                battle.isGuard = false;
+                StartCoroutine(movement2D.DashCoolDown(0.01f));
+                StartCoroutine(ReturnSkill());
         }
+        
     }
     public IEnumerator Stun(GameObject monster , float Stuntime)
     {

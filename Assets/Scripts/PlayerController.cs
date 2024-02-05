@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
         
         // if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.isInven|| battle.fallAtking || ischarging || battle.atking || skill.isCharging)//|| battle.Atking)
-        if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.isInven|| battle.fallAtking || ischarging || battle.atking || skill.isCharging || skill.isSouth)//|| battle.Atking)
+        if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.isInven|| battle.fallAtking || ischarging || battle.atking || skill.isCharging )//|| battle.Atking)
         {
             pressedDashKey = false;
             pressedJumpkey = false;
