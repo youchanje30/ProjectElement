@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5372167775835602029
 MonoBehaviour:
@@ -62,8 +62,10 @@ MonoBehaviour:
   CameraShakeTxt: {fileID: 0}
   FullScreenTxt: {fileID: 0}
   Scene:
-  - Chapter1_0
-  - Chapter1_1
+  - Chapter1_j
+  - Chapter1_j 1
+  - Chapter1_leebohyeon
+  - Chapter1_leebohyeon 1
   Chapter: 0
   talkBtn:
   - {fileID: 0}

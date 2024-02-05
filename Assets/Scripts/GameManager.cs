@@ -516,8 +516,10 @@ public class GameManager : MonoBehaviour
         foreach (Resolution item in resolutions)
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
+            // option.text = item.width + " x " + item.height + "  " + item.refreshRateRatio + "hz";
             option.text = item.width + " x " + item.height + "  " /*+ item.refreshRateRatio + "hz"*/;
-            //if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
+            // if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
+            if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
             {
                 resolutionDropdown.options.Add(option);
                 checkedResolutions.Add(item);

@@ -385,7 +385,7 @@ MonoBehaviour:
   SpiritSoulItem: {fileID: 2272788325850309193, guid: 0530bc6e010c5ab40ab91e79f509adc2, type: 3}
   buyScrollRect: {fileID: 0}
   sellScrollRect: {fileID: 0}
-  Space: 0
+  Space: 10
   buyShopObjects: []
   sellShopObjects: []
 --- !u!70 &6809983370859040107

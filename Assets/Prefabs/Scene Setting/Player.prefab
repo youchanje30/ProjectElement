@@ -772,6 +772,7 @@ MonoBehaviour:
   arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
   originalScale: 0
   canComboAtk: 0
+  comboAtkTime: 0.6
   ShieldAtkDashTime: 0.1
   AtkDashingPower: 10
   ShieldDashingTime: 0.2

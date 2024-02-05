@@ -3,24 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-// [System.Serializable]
-// struct WeaponInfo
-// {
-//     public enum WeaponType
-//     {
-//         None,
-//         Sword,
-//         Wand,
-//         Shield,
-//         Bow
-//     }
-
-//     [SerializeField] WeaponType weaponType;
-//     [SerializeField] float duration;
-//     [SerializeField] float force;
-// }
-
+using DG.Tweening;
 
 public class Battle : MonoBehaviour
 {
@@ -37,11 +20,6 @@ public class Battle : MonoBehaviour
     [SerializeField] float[] shakeForce;
     [SerializeField] float DamagedDuration;
     [SerializeField] float DamagedForce;
-
-    
-    // [Header("진동 설정")]
-    // [ArrayElementTitle("WeaponType")]
-    // [SerializeField] WeaponInfo[] shake;
     
 
 
@@ -64,6 +42,8 @@ public class Battle : MonoBehaviour
 
     [Header("Sword Setting")]
     [SerializeField] private bool canComboAtk = false;
+    [SerializeField] private float comboAtkTime;
+    private float curComboTime;
 
 
     [Header("Shield Setting")]
@@ -149,6 +129,20 @@ public class Battle : MonoBehaviour
         }
         barrier.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, (status.barrier / (status.maxHp * passive.shieldPer * 0.01f)));
         UIController.instance.HpFill.fillAmount = Mathf.Lerp(UIController.instance.HpFill.fillAmount, status.curHp / status.maxHp, Time.deltaTime * 5f);
+
+        if(WeaponType == WeaponTypes.Sword)
+        {
+            if(canComboAtk)
+            {
+                curComboTime += Time.deltaTime;
+                if(curComboTime >= comboAtkTime)
+                    canComboAtk = false;
+            }
+            else
+            {
+                curComboTime = 0;
+            }
+        }
     }
 
  
@@ -295,10 +289,6 @@ public class Battle : MonoBehaviour
         else
         {
             animator.SetTrigger("Atk");
-            if(WeaponType == WeaponTypes.Sword)
-            {
-                canComboAtk = true;
-            }
         }
         // 공격 중인거 종료 
 
