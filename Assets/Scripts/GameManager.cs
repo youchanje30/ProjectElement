@@ -102,7 +102,8 @@ public class GameManager : MonoBehaviour
         // timeUI = GameObject.Find("Canvas").GetComponent<TimerUI>();
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         talkManager  = GameObject.Find("Talk Manager").GetComponent<TalkManager>();
-
+        Screen.SetResolution(1920,1080,0);
+        Application.targetFrameRate = 60;
     }
 
     void Start()
@@ -516,19 +517,16 @@ public class GameManager : MonoBehaviour
         foreach (Resolution item in resolutions)
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
-            // option.text = item.width + " x " + item.height + "  " + item.refreshRateRatio + "hz";
-            option.text = item.width + " x " + item.height + "  " /*+ item.refreshRateRatio + "hz"*/;
-            // if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
-            if (item.refreshRateRatio.numerator <= 60 && item.refreshRateRatio.numerator > 50)
+            //option.text = item.width + " x " + item.height + "  " + item.refreshRateRatio + "hz";
+           option.text = item.width + " x " + item.height + "  ";
+           if(item.width <= 1920 && item.height <=1080 && item.refreshRateRatio.value == 60)
             {
                 resolutionDropdown.options.Add(option);
                 checkedResolutions.Add(item);
             }
             if (item.width == Screen.width && item.height == Screen.height)
                 resolutionDropdown.value = optionNum;
-            optionNum++;
-            
-            
+            optionNum++;                      
         }
 
     }
