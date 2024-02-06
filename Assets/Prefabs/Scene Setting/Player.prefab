@@ -490,7 +490,7 @@ Transform:
   m_GameObject: {fileID: 7141198254234339824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5525140155271563417}
@@ -553,7 +553,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -623,7 +623,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -824,12 +824,12 @@ MonoBehaviour:
   strength: 0
   dexterity: 0
   luck: 0
-  basicMaxHp: 10
+  basicMaxHp: 500
   basicHpPer: 100
-  basicDamage: 5
+  basicDamage: 3
   basicDamagePer: 100
   basicAtkSpeed: 100
-  basicCrtRate: 10
+  basicCrtRate: 5
   basicCrtDamage: 150
   basicJumpForce: 15
   basicJumpForcePer: 100
