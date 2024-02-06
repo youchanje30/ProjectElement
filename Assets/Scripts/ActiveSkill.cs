@@ -202,7 +202,6 @@ public class ActiveSkill : MonoBehaviour
     public void FIreSkill()
     {
         SkillReady[(int)battle.WeaponType] = false;
-        //�ٴڿ��� �� ������ ������� 
         for (int i = 0; i < RangeCount; i++)
         {
             hit = Physics2D.Raycast(new Vector2(transform.position.x + i, transform.position.y), transform.up * -20, detectlength, layer);

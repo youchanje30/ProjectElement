@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ed507526e45404c8fb7d932cea6718, type: 3}
   m_Name: South
   m_EditorClassIdentifier: 
-  elementalName: South
+  elementalName: "\uB178\uC6C0"
   weaponType: 3
   elementalID: 3000
-  elementalInfo: 
+  elementalInfo: "\uD638\uB791\uC774"
   elementalImg: {fileID: 21300000, guid: 434b71f6e0df3d74db92455f315e6e4f, type: 3}
   elementalIcon: {fileID: 21300000, guid: 022c86bf75148cd4ea677f662e3ebfdd, type: 3}
   UnSelcIcon: {fileID: 21300000, guid: bb30ce9dbf3879e40b244c363013c06d, type: 3}

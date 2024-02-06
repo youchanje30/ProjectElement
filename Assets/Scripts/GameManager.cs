@@ -533,7 +533,8 @@ public class GameManager : MonoBehaviour
 
     public void OpenSwap()
     {
-        swapUI.ElementImg();    
+        swapUI.ElementImg();
+        swapUI.SetInformation();
         isSlotSwap = true;
         swapUI.SlotSwapUI.SetActive(isSlotSwap);
     }

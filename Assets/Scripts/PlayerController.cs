@@ -207,6 +207,8 @@ public class PlayerController : MonoBehaviour
     {
         manager.Elements[manager.swapUI.slot].SetActive(true);
         inventory.HavingElement[manager.swapUI.slot] = ElementalManager.instance.AddElement((int)manager.ObjData.WeaponType * 1000);
+        PlayerWeaponType = inventory.HavingElement[manager.swapUI.slot].WeaponTypes;
+        SetEquipment();
         manager.isAction = false;
         manager.isSelected = false;
     }

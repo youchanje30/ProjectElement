@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class SwapUI : MonoBehaviour
     public GameObject SlotSwapUI;
     public int slot;
     public Image[] Slot;
+    public TMP_Text[] eleInfo;
     void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -57,5 +59,13 @@ public class SwapUI : MonoBehaviour
                 slot = 2;
             }
         }
+    }
+    public void SetInformation()
+    {
+        for(int i = 0;i<3;i++)
+        {
+            eleInfo[i].text = inventory.HavingElement[i].ElementalName + "\n" + inventory.HavingElement[i].ElementalInfo;
+        }
+        eleInfo[3].text = gameManager.Elemental.elementalDatas[(int)gameManager.ObjData.WeaponType].ElementalName + "\n" + gameManager.Elemental.elementalDatas[(int)gameManager.ObjData.WeaponType].ElementalInfo;
     }
 }

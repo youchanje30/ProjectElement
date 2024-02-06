@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ed507526e45404c8fb7d932cea6718, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  elementalName: Water
+  elementalName: "\uC6B4\uB514\uB124"
   weaponType: 2
   elementalID: 2000
-  elementalInfo: 
+  elementalInfo: "\uACE0\uB798"
   elementalImg: {fileID: 21300000, guid: 567d50c721738254e8c5d0a5e05c8791, type: 3}
   elementalIcon: {fileID: 21300000, guid: c740dd562a9049d4a814af4fc9fe54f6, type: 3}
   UnSelcIcon: {fileID: 21300000, guid: 282b4ac653c20ed49bf5e9848ceb52dd, type: 3}

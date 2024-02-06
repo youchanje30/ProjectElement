@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ed507526e45404c8fb7d932cea6718, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  elementalName: "\uC774\uD504\uB9AC\uD2B8"
+  elementalName: "\uC0D0\uB7EC\uB9E8\uB354"
   weaponType: 1
   elementalID: 1000
   elementalInfo: "\uBD88\uB2ED"
