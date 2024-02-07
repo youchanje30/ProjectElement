@@ -678,9 +678,9 @@ MonoBehaviour:
   isGround: 0
   maxJumpCnt: 2
   curJumpCnt: 0
-  DashCoolTime: 1
+  DashCoolTime: 0.7
   isDashing: 0
-  dashingPower: 10
+  dashingPower: 12
   maxDashCnt: 1
   curDashCnt: 0
 --- !u!95 &9054463393116159097
@@ -840,9 +840,9 @@ MonoBehaviour:
   strength: 0
   dexterity: 0
   luck: 0
-  basicMaxHp: 500
+  basicMaxHp: 50
   basicHpPer: 100
-  basicDamage: 3
+  basicDamage: 5
   basicDamagePer: 100
   basicAtkSpeed: 100
   basicCrtRate: 5
