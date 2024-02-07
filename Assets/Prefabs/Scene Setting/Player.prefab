@@ -926,13 +926,6 @@ MonoBehaviour:
   - weaponName: "\uD65C"
     skillCoolTime: 1
     isSkillReady: 1
-  SkillCoolTime:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  SkillReady: 0000000000
   isCharging: 0
   isUnderTheSea: 0
   FireFloor: {fileID: 3096906974402678174, guid: db7de1076855ad84ba51dd45a7123812, type: 3}
@@ -968,15 +961,15 @@ MonoBehaviour:
   JumpDamageIncreaseRate: 20
   LandDamageIncreaseRate: 50
   JumpForce: 30
-  FallForce: 40
+  FallForce: 50
   StunTime: 100
   RisingTime: 1
-  LandingRange:
-  - {x: 4, y: 1, z: 0}
-  - {x: 2, y: 2, z: 0}
   LandingPos:
   - {fileID: 2987700167441146525}
   - {fileID: 3200210186239389953}
+  LandingRange:
+  - {x: 4, y: 1, z: 0}
+  - {x: 2, y: 2, z: 0}
   JumpShakeTime: 0.2
   JumpShakeMagnitude: 0.25
   SouthShakeTime: 0.1

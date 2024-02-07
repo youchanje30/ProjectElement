@@ -49,6 +49,7 @@ public class ActiveSkill : MonoBehaviour
     RaycastHit2D hit;
     RaycastHit2D hit1;
     #endregion
+    [Space(20f)]
 
     #region 물
     [TitleGroup("물 스킬 정보")]
@@ -189,7 +190,7 @@ public class ActiveSkill : MonoBehaviour
         }
     }
 
-    #region 불정령
+    #region 불 정령
     public void FIreSkill()
     {
         skillData[(int)battle.WeaponType].isSkillReady = false;

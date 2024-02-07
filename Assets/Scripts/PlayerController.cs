@@ -49,7 +49,9 @@ public class PlayerController : MonoBehaviour
     [Header("Input Setting")]
     private float hAxis;
     private KeyCode JumpKey = KeyCode.C;
+    private KeyCode Jumpkey = KeyCode.Space;
     private bool pressedJumpkey;
+    private bool PressedJumpkey;
     private KeyCode DashKey = KeyCode.Z;
     private bool pressedDashKey;
     private KeyCode atkKey = KeyCode.X;
@@ -177,6 +179,7 @@ public class PlayerController : MonoBehaviour
         {
             pressedDashKey = false;
             pressedJumpkey = false;
+            PressedJumpkey=false;
             hAxis = 0;
             return;
         }
@@ -185,6 +188,7 @@ public class PlayerController : MonoBehaviour
 
         pressedDashKey = Input.GetKeyDown(DashKey);
         pressedJumpkey = Input.GetKeyDown(JumpKey);
+        PressedJumpkey = Input.GetKeyDown(Jumpkey);
         hAxis = Input.GetAxisRaw("Horizontal");
 
         pressedInteractKey = Input.GetKeyDown(InteractKey);
@@ -309,7 +313,7 @@ public class PlayerController : MonoBehaviour
 
         if (!movement2D.isDashing)
         {
-            if (pressedJumpkey) movement2D.Jump();
+            if (pressedJumpkey || PressedJumpkey) movement2D.Jump();
             movement2D.MoveX(hAxis);
         }
     }
