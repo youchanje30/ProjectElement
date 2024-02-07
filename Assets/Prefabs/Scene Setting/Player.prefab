@@ -869,20 +869,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battle: {fileID: 6729994133735113749}
   status: {fileID: 4664804212794489908}
-  passiveRate: 0000000032000000640000000000000000000000
   isGetBarrier: 0
-  duration:
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  tick:
-  - 1
-  - 1
-  - 2
-  - 1
-  - 1
+  passiveData:
+  - passiveName: '-'
+    rate: 0
+    duration: 0
+    tick: 0
+  - passiveName: "\uAC80 \uD654\uC0C1"
+    rate: 50
+    duration: 5
+    tick: 1
+  - passiveName: "\uC644\uB4DC \uC2AC\uB85C\uC6B0"
+    rate: 100
+    duration: 5
+    tick: 2
+  - passiveName: "\uBC29\uD328 \uBCA0\uB9AC\uC5B4"
+    rate: 0
+    duration: 5
+    tick: 0
+  - passiveName: '-'
+    rate: 0
+    duration: 0
+    tick: 0
   burnDamage: 10
   slowPer: 30
   shieldPer: 20
@@ -900,8 +908,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7f67be57d53ff4697e3484c79c6f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passive: {fileID: 0}
-  status: {fileID: 0}
+  passive: {fileID: 5498070469653306031}
+  status: {fileID: 4664804212794489908}
+  skillData:
+  - weaponName: '-'
+    skillCoolTime: 0
+    isSkillReady: 1
+  - weaponName: "\uAC80"
+    skillCoolTime: 1
+    isSkillReady: 1
+  - weaponName: "\uC644\uB4DC"
+    skillCoolTime: 1
+    isSkillReady: 1
+  - weaponName: "\uBC29\uD328"
+    skillCoolTime: 1
+    isSkillReady: 1
+  - weaponName: "\uD65C"
+    skillCoolTime: 1
+    isSkillReady: 1
   SkillCoolTime:
   - 1
   - 1

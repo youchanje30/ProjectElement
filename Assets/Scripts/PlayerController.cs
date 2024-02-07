@@ -294,7 +294,8 @@ public class PlayerController : MonoBehaviour
             isRepeatAtk = false;
         }
 
-        if (pressedSkillKey && skill.SkillReady[(int)battle.WeaponType] )
+        // if (pressedSkillKey && skill.SkillReady[(int)battle.WeaponType] )
+        if (pressedSkillKey && skill.skillData[(int)battle.WeaponType].isSkillReady)
         {
             skill.TriggerSkill(battle.WeaponType);
         }

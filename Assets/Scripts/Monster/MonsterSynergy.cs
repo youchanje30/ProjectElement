@@ -212,7 +212,8 @@ public class MonsterSynergy : MonoBehaviour
         {
             if (collider.CompareTag("Monster") && !isDiffusion)
             {
-                collider.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(passive.burnDamage, passive.duration[(int)BuffTypes.Burn], passive.tick[(int)BuffTypes.Burn], BuffTypes.Burn);
+                collider.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(passive.burnDamage, passive.passiveData[1].duration, passive.passiveData[1].tick, BuffTypes.Burn);
+                Debug.Log(collider.name + "Diffusion Hit");
                 isDiffusion = true;
             }
             // yield return new WaitForSeconds(SynergyCoolTime);

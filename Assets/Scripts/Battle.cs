@@ -392,8 +392,11 @@ public class Battle : MonoBehaviour
             Magic.transform.position = transform.position;
             Magic.transform.localScale = new Vector3(transform.localScale.x, Magic.transform.localScale.y, Magic.transform.localScale.z);
 
-            magic.duration = passive.duration[(int)WeaponType];
-            magic.tick = passive.tick[(int)WeaponType];
+            // magic.duration = passive.duration[(int)WeaponType];
+            // magic.tick = passive.tick[(int)WeaponType];
+            
+            magic.duration = passive.passiveData[(int)WeaponType].duration;
+            magic.tick = passive.passiveData[(int)WeaponType].tick;
             magic.per = passive.slowPer;
 
             Transform target = null;
@@ -421,7 +424,7 @@ public class Battle : MonoBehaviour
                     targetDistance = Vector2.Distance(transform.position , target.transform.position);
 
                 float colliderDistance = Vector2.Distance(transform.position , collider.transform.position);
-                Debug.Log("colliderDistance = " + colliderDistance);
+                // Debug.Log("colliderDistance = " + colliderDistance);
                 if(colliderDistance < targetDistance)
                     target = collider.transform;
             }
@@ -432,8 +435,9 @@ public class Battle : MonoBehaviour
 
     public void PlayerPasstive(GameObject monster = null)
     {
-        if(passive.passiveRate[(int)WeaponType] <= 0 || passive.passiveRate[(int)WeaponType] < Random.Range(1, 100 + 1)) return;
-
+        // if(passive.passiveRate[(int)WeaponType] <= 0 || passive.passiveRate[(int)WeaponType] < Random.Range(1, 100 + 1)) return;
+        if(passive.passiveData[(int)WeaponType].rate <= 0 || passive.passiveData[(int)WeaponType].rate < Random.Range(1, 100 + 1)) return;
+        
         // if(monster != null && WeaponType == WeaponTypes.Wand)
         // {
         //     if(monster.GetComponent<PassiveSystem>().canSlow)

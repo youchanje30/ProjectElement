@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Sirenix.OdinInspector;
 
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,138 +10,128 @@ using static UnityEngine.GraphicsBuffer;
 
 public class ActiveSkill : MonoBehaviour
 {
-    private Battle battle;
+    // 기본 설정
     private Animator animator;
     private Movement2D movement2D;
     private Rigidbody2D rigid2D;
+    private Battle battle;
     public PassiveSystem passive;
     public PlayerStatus status;
-    public float[] SkillCoolTime;
-    public bool[] SkillReady;
+
+
+    
+    // 스킬 관련 설정
+    [TitleGroup("스킬 관련 기본 정보")]
+    [System.Serializable] public class SkillData
+    {
+        [LabelText("무기 이름")] public string weaponName;
+        [LabelText("스킬 쿨타임")] public float skillCoolTime;
+        public bool isSkillReady;
+    }
+    [LabelText("스킬 데이터")] public List<SkillData> skillData;
+    // public float[] SkillCoolTime;
+    // public bool[] SkillReady;
     public bool isCharging = false;
     public float DefaultDamage { get { return battle.atkDamage; } }
     public bool  isUnderTheSea;
     [Space(20f)]
 
     #region 불
-    [Header("불")]
+    [TitleGroup("불 스킬 정보")]
     public GameObject FireFloor;
-    [Tooltip("스킬 길이")]
-    public int RangeCount;
-    [Tooltip("스킬 발동 시 데미지")]
-    public float DiffusionDamageIncreaseRate;
-    [Tooltip("바닥 감지 길이")]
-    public int detectlength;
+    [LabelText("스킬 길이")] public int RangeCount;
+    [LabelText("스킬 발동 시 데미지")] public float DiffusionDamageIncreaseRate;
+    [Tooltip("바닥 감지 길이")] public int detectlength;
     public LayerMask layer;
-    [Tooltip("발동 시간")]
-    public float ActiveTime;
-    [Tooltip("스킬 발동 시 진동 시간")]
-    public float FireShakeTime;
-    [Tooltip("스킬 발동 시 진동 세기")]
-    public float FireShakeMagnitude;
+    [LabelText("스킬 발동 시간")] public float ActiveTime;
+    [LabelText("스킬 발동 시 진동 시간")] public float FireShakeTime;
+    [LabelText("스킬 발동 시 진동 세기")]  public float FireShakeMagnitude;
     RaycastHit2D hit;
     RaycastHit2D hit1;
     #endregion
-    [Space(20f)]
 
     #region 물
-    [Header("물")]
+    [TitleGroup("물 스킬 정보")]
     public GameObject WaterBall;
     public bool isWater = false;
-    [Tooltip("1타 데미지 증가율")]
-    public float WaterDamageIncreaseRate;
-    [Tooltip("2타 데미지 증가율")]
-    public float BombDamageIncreaseRate;
-    [Tooltip("올라가는 속도")]
-    public float FloatingForce;
-    [Tooltip("올라가는 시간")]
-    public float FloatingTime;
-    [Tooltip("차징 시간")]
-    public float WaterChargeTime;
-    public Vector2[] BallPos;
-    public float BallGravity;
-    public float BallSpeed;
-    public Vector2 BombRange;
-    [Tooltip("2타 차징 시간")]
-    public float BombChargeTime;
+    [LabelText("1타 데미지 증가율")] public float WaterDamageIncreaseRate;
+    [LabelText("2타 데미지 증가율")] public float BombDamageIncreaseRate;
+    [LabelText("올라가는 속도")] public float FloatingForce;
+    [LabelText("올라가는 시간")] public float FloatingTime;
+    [LabelText("차징 시간")] public float WaterChargeTime;
+    [LabelText("투사체 발사 위치")] public Vector2[] BallPos;
+    [LabelText("투사체 중력 세기")] public float BallGravity;
+    [LabelText("투사체 속도")] public float BallSpeed;
+    [LabelText("폭파 공격 범위")] public Vector2 BombRange;
+    [LabelText("2타 차징 시간")] public float BombChargeTime;
     public float WaterY;
-    [Tooltip("폭탄 발동 시간")]
-    public float activeTime;
-    public float BombShakeTime;
-    public float BombShakeMagnitude;
+    [LabelText("폭탄 발동 시간")] public float activeTime;
+    [LabelText("폭탄 진동 시간")] public float BombShakeTime;
+    [LabelText("폭탄 진동 세기")] public float BombShakeMagnitude;
     #endregion
     [Space(20f)]
 
     #region 땅
-    [Header("땅")]
+    [TitleGroup("땅 스킬 정보")]
     public bool isSouth = false;
-    [Tooltip("점프 시 데미지 증가율")]
-    public float JumpDamageIncreaseRate;
-    [Tooltip("착지 시 데미지 증가율")]
-    public float LandDamageIncreaseRate;
-    [Tooltip("점프 세기")]
-    public float JumpForce;
-    [Tooltip("낙하 세기")]
-    public float FallForce;
-    [Tooltip("스턴 시간")]
-    public float StunTime;
-    [Tooltip("점프 시간")]
-    public float RisingTime;
-    public Vector3[] LandingRange;
-    public Transform[] LandingPos;
-    [Tooltip("점프 시 진동 시간 ")]
-    public float JumpShakeTime;
-    [Tooltip("점프 시 진동 강도")]
-    public float JumpShakeMagnitude;
-    [Tooltip("타격 시 진동 시간")]
-    public float SouthShakeTime;
-    [Tooltip("타격 시 진동 강도")]
-    public float SouthShakeMagnitude;
-    [Tooltip("착지 시 진동 시간")]
-    public float LandingShakeTime;
-    [Tooltip("착지 시 진동 당도 ")]
-    public float LandingShakeMagnitude;
+    [LabelText("점프 시 데미지 증가율")] public float JumpDamageIncreaseRate;
+    [LabelText("착지 시 데미지 증가율")] public float LandDamageIncreaseRate;
+    [LabelText("점프 세기")] public float JumpForce;
+    [LabelText("낙하 세기")] public float FallForce;
+    [LabelText("스턴 시간")] public float StunTime;
+    [LabelText("점프 시간")] public float RisingTime;
+    [LabelText("위: 착지 공격 위치 | 아래: 점프 공격 위치")] public Transform[] LandingPos;
+    [LabelText("위: 착지 공격 범위 | 아래: 점프 공격 범위")] public Vector3[] LandingRange;
+    [LabelText("점프 시 진동 시간 ")] public float JumpShakeTime;
+    [LabelText("점프 시 진동 세기")] public float JumpShakeMagnitude;
+    [LabelText("타격 시 진동 시간")] public float SouthShakeTime;
+    [LabelText("타격 시 진동 세기")] public float SouthShakeMagnitude;
+    [LabelText("착지 시 진동 시간")] public float LandingShakeTime;
+    [LabelText("착지 시 진동 세기 ")] public float LandingShakeMagnitude;
     private bool CanLanding;
     #endregion
     [Space(20f)]
 
     #region 바람
-    [Header("바람")]
+    [TitleGroup("바람 스킬 정보")]
     public GameObject Arrow;
-    public Transform Pos;
-    [Tooltip("화살 데미지 증가율 %")]
-    public float ArrowDamageIncreaseRate;
+    [LabelText("화살 소환 위치")] public Transform Pos;
+    [LabelText("화살 데미지 증가율 %")] public float ArrowDamageIncreaseRate;
     //[Tooltip("���� �� ������ ������ %")]
     //public float DeclindRate;
-    [Tooltip("차징 시간")]
-    public float ChargeTime;
-    [Tooltip("무적 시간")]
-    public float InvicibleTime;
-    [Tooltip("발사 후 딜레이")]
-    public float Delay;
-    [Tooltip("발사 시 진동 시간 ")]
-    public float WindShakeTime;
-    [Tooltip("발사 시 진동 강도")]
-    public float WindShakeMagnitude;
+    [LabelText("차징 시간")] public float ChargeTime;
+    [LabelText("무적 시간")] public float InvicibleTime;
+    [LabelText("발사 후 딜레이")] public float Delay;
+    [LabelText("발사 시 진동 시간 ")] public float WindShakeTime;
+    [LabelText("발사 시 진동 세기")] public float WindShakeMagnitude;
     #endregion
 
     void Awake()
     {
+        // 제공 기능들
         animator =  GetComponent<Animator>();
+        movement2D = GetComponent<Movement2D>();
+        rigid2D = GetComponent<Rigidbody2D>();
+
+        // 제작된 스크립트
         passive = GetComponent<PassiveSystem>();
         battle = GetComponent<Battle>();
-        rigid2D = GetComponent<Rigidbody2D>();
-        movement2D = GetComponent<Movement2D>();
+        
         status = GetComponent<PlayerStatus>();
-        for (int i = 0; i < SkillReady.Length; i++)
+
+        // for (int i = 0; i < SkillReady.Length; i++)
+        // {
+        //     SkillReady[i] = true;
+        // }
+        for (int i = 0; i < skillData.Count; i++)
         {
-            SkillReady[i] = true;
+            skillData[i].isSkillReady = true;
         }
     }
     void Update()
     {      
         if (isSouth)
-        {    
+        {
             Debug.Log("isSouth Atk");
             movement2D.curDashCnt = -1;
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[1].position, LandingRange[1], 0);
@@ -201,7 +192,8 @@ public class ActiveSkill : MonoBehaviour
     #region 불정령
     public void FIreSkill()
     {
-        SkillReady[(int)battle.WeaponType] = false;
+        skillData[(int)battle.WeaponType].isSkillReady = false;
+        // SkillReady[(int)battle.WeaponType] = false;
         for (int i = 0; i < RangeCount; i++)
         {
             hit = Physics2D.Raycast(new Vector2(transform.position.x + i, transform.position.y), transform.up * -20, detectlength, layer);
@@ -227,7 +219,8 @@ public class ActiveSkill : MonoBehaviour
     public IEnumerator WaterSkill()
     {
         float gravity;
-        SkillReady[(int)battle.WeaponType] = false;
+        skillData[(int)battle.WeaponType].isSkillReady = false;
+        // SkillReady[(int)battle.WeaponType] = false;
         isWater = true;
         battle.isSwap = false;
         isCharging = true;
@@ -249,7 +242,8 @@ public class ActiveSkill : MonoBehaviour
         battle.isSwap = true;
         isCharging = false;
         isWater = false;
-        SkillReady[(int)battle.WeaponType] = true;
+        // SkillReady[(int)battle.WeaponType] = true;
+        skillData[(int)battle.WeaponType].isSkillReady = true;
         rigid2D.gravityScale = gravity;
         StartCoroutine(ReturnSkill());  
     }
@@ -258,7 +252,8 @@ public class ActiveSkill : MonoBehaviour
     #region 땅 정령
     public IEnumerator SouthSkill()
     {
-        SkillReady[(int)battle.WeaponType] = false;
+        // SkillReady[(int)battle.WeaponType] = false;
+        skillData[(int)battle.WeaponType].isSkillReady = false;
         battle.isSwap = false;
         isSouth = true;
         battle.isGuard = true;
@@ -326,7 +321,8 @@ public class ActiveSkill : MonoBehaviour
     public IEnumerator WindSkill()
     {
         isCharging = true;
-        SkillReady[(int)battle.WeaponType] = false;
+        // SkillReady[(int)battle.WeaponType] = false;
+        skillData[(int)battle.WeaponType].isSkillReady = false;
         yield return new WaitForSeconds(ChargeTime);
         animator.SetBool("isCharge", false);
         battle.isGuard = true;
@@ -352,12 +348,21 @@ public class ActiveSkill : MonoBehaviour
     public IEnumerator ReturnSkill()
     {
         isCharging = false;
-        for (int i = 0; i < SkillReady.Length; i++)
+        // for (int i = 0; i < SkillReady.Length; i++)
+        // {
+        //     if (!SkillReady[i])
+        //     {
+        //         yield return new WaitForSeconds(SkillCoolTime[i] *= 1 - (status.coolDownReductionPer/100));
+        //         SkillReady[i] = true;
+        //     }
+        // }
+        for (int i = 0; i < skillData.Count; i++)
         {
-            if (!SkillReady[i])
+            if (!skillData[i].isSkillReady)
             {
-                yield return new WaitForSeconds(SkillCoolTime[i] *= 1 - (status.coolDownReductionPer/100));
-                SkillReady[i] = true;
+                yield return new WaitForSeconds(skillData[i].skillCoolTime * (1 - (status.coolDownReductionPer/100)));
+                // SkillReady[i] = true;
+                skillData[i].isSkillReady = true;
             }
         }
     }
