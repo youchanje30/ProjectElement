@@ -140,8 +140,6 @@ public class Movement2D : MonoBehaviour
 
         if(hAxis != 0)
         {
-            // transform.localScale = new Vector3( -(hAxis), 1, 1);
-            // transform.localScale = new Vector3( -(hAxis) * 2, 2, 1);
             transform.localScale = new Vector3(hAxis * 2, 2, 1);
             animator.SetBool("isMove", true);
         }  

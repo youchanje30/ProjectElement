@@ -494,10 +494,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5525140155271563417}
-  - {fileID: 4135913021082344152}
   - {fileID: 7154946036308757365}
-  - {fileID: 4315468924003554650}
   - {fileID: 6317585707649509668}
+  - {fileID: 4135913021082344152}
+  - {fileID: 4315468924003554650}
   - {fileID: 7402086602399045594}
   - {fileID: 4472214303243002330}
   - {fileID: 5968144621071190073}
@@ -732,58 +732,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  fallAtking: 0
-  shakeDuration:
-  - 0.1
-  - 0.1
-  - -1
-  - 0.2
-  - -1
-  shakeForce:
-  - 10
-  - 10
-  - -1
-  - 10
-  - -1
-  DamagedDuration: 0.1
-  DamagedForce: 10
   WeaponType: 0
   atking: 0
   isGuard: 0
-  atkCoolTime:
-  - 0.4
-  - 0.4
-  - 0.4
-  - 0.75
-  - 0.4
-  isAtkReady: 0101010101
-  atkPos:
-  - {fileID: 5525140155271563417}
-  - {fileID: 7154946036308757365}
-  - {fileID: 6317585707649509668}
-  - {fileID: 4135913021082344152}
-  - {fileID: 4315468924003554650}
-  atkSize:
-  - {x: 0, y: 0}
-  - {x: 2, y: 2.5}
-  - {x: 12, y: 4}
-  - {x: 4, y: 2}
-  - {x: 1.7, y: 1.7}
   arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
   originalScale: 0
+  weaponData:
+  - weaponType: 0
+    atkPos: {fileID: 5525140155271563417}
+    atkSize: {x: 0, y: 0}
+    atkCoolTime: 0
+    isAtkReady: 0
+    shakeDuration: 0
+    shakeForce: 0
+  - weaponType: 1
+    atkPos: {fileID: 7154946036308757365}
+    atkSize: {x: 2, y: 2.5}
+    atkCoolTime: 0.4
+    isAtkReady: 1
+    shakeDuration: 0.1
+    shakeForce: 10
+  - weaponType: 2
+    atkPos: {fileID: 6317585707649509668}
+    atkSize: {x: 12, y: 4}
+    atkCoolTime: 0.4
+    isAtkReady: 1
+    shakeDuration: 0
+    shakeForce: 0
+  - weaponType: 3
+    atkPos: {fileID: 4135913021082344152}
+    atkSize: {x: 4, y: 2}
+    atkCoolTime: 0.75
+    isAtkReady: 1
+    shakeDuration: 0.2
+    shakeForce: 10
+  - weaponType: 4
+    atkPos: {fileID: 4315468924003554650}
+    atkSize: {x: 1.7, y: 1.7}
+    atkCoolTime: 0.4
+    isAtkReady: 1
+    shakeDuration: 0
+    shakeForce: 0
   canComboAtk: 0
   comboAtkTime: 0.6
-  ShieldAtkDashTime: 0.1
-  AtkDashingPower: 10
-  ShieldDashingTime: 0.2
-  DashingPower: 10
-  ShieldDashAtkSize: {x: 4, y: 2}
-  ShieldDashPos: {fileID: 4472214303243002330}
+  shieldAtkDashTime: 0.1
+  shieldAtkDashPower: 10
+  shieldDashAtkDashTime: 0.2
+  shieldDashAtkDashPower: 10
+  shieldDashAtkPos: {fileID: 4472214303243002330}
+  shieldDashAtkSize: {x: 4, y: 2}
   barrier: {fileID: 3277141783882987306}
+  fallAtking: 0
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
   isSwap: 0
   swapTime: 0.2
+  DamagedDuration: 0.1
+  DamagedForce: 10
 --- !u!114 &8509772043893616530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,6 +910,7 @@ MonoBehaviour:
   - 1
   SkillReady: 0000000000
   isCharging: 0
+  isUnderTheSea: 0
   FireFloor: {fileID: 3096906974402678174, guid: db7de1076855ad84ba51dd45a7123812, type: 3}
   RangeCount: 4
   DiffusionDamageIncreaseRate: 20

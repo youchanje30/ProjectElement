@@ -3,31 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum DestructTypes
-{
-    Chest
+// public enum DestructTypes
+// {
+//     Chest
 
-}
+// }
 
 
 public class DestructObject : MonoBehaviour
 {
-    public DestructTypes DestructType;
+    // public DestructTypes DestructType;
 
     public GameObject coin;
-    public GameObject spiritSoul;
-
-    
+    [SerializeField] bool canDropCoin;
 
     public void DestroyObj()
     {
-        switch(DestructType)
-        {
-            case DestructTypes.Chest:
-                BreakChest();
-                break;
+        if(canDropCoin)
+            BreakChest();
+        else
+            Destroy(gameObject);
 
-        }
+
+        // switch(DestructType)
+        // {
+        //     case DestructTypes.Chest:
+        //         BreakChest();
+        //         break;
+
+
+
+        //     default:
+        //         break;
+        // }
     }
 
     public void DeadMonster()

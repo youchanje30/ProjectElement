@@ -171,7 +171,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa615dbe36d24443b82b09a1cb2158e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestructType: 0
   coin: {fileID: 8720883770288789512, guid: 73e273a69cedda445950d414bec44684, type: 3}
-  spiritSoul: {fileID: 0}
-  DropCoinRate: 0
+  canDropCoin: 1

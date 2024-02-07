@@ -3,67 +3,86 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Sirenix.OdinInspector;
 using DG.Tweening;
 
 public class Battle : MonoBehaviour
 {
+    // 플레이어 기본 정보
     public Animator animator;
     private PlayerStatus status;
-    
     private Movement2D movement2D;
     private Rigidbody2D rigid2D;
     private PassiveSystem passive;
     private Synergy synergy;
-    public bool fallAtking;
-    [Header("진동 설정")]
-    [SerializeField] float[] shakeDuration;
-    [SerializeField] float[] shakeForce;
-    [SerializeField] float DamagedDuration;
-    [SerializeField] float DamagedForce;
     
 
-
-
-    [Header("Weapon Setting")]
-    [Tooltip("무기 타입")]
+    [TitleGroup("전투 관련 정보")]
     public WeaponTypes WeaponType;
     public bool atking;
     public bool isGuard;
-    public float[] atkCoolTime;
-    public bool[] isAtkReady;
-    public Transform[] atkPos;
-    public Vector2[] atkSize;
-    // public Transform[] atkPos;
     public GameObject arrow;
-
     public float originalScale;
     public float atkDamage { get { return status.AtkDamage();} }
     public float WeatheringDamage { get { return atkDamage * ( 1 + (synergy.SouthSpiritDamageIncreaseRate / 100)); } }
+    
 
-    [Header("Sword Setting")]
+    [TitleGroup("무기 관련 기본 설정")]
+    [ListDrawerSettings(ShowIndexLabels = true)]
+    [LabelText("무기 정보")] public List<WeaponData> weaponData;
+    [System.Serializable] public class WeaponData
+    {
+        [LabelText("무기 타입")]
+        public WeaponTypes weaponType;
+
+
+        [Header("공격 관련 정보")]
+        [LabelText("공격 위치")] public Transform atkPos;
+        [LabelText("공격 범위")] public Vector2 atkSize;
+
+        [LabelText("공격 쿨타임")] public float atkCoolTime;
+        /*[LabelText("공격 준비 여부")]*/ public bool isAtkReady;
+
+        [LabelText("진동 시간")] public float shakeDuration;
+        [LabelText("진동 세기")] public float shakeForce;
+
+    }
+
+
+    [TitleGroup("추가적인 검 설정")]
     [SerializeField] private bool canComboAtk = false;
-    [SerializeField] private float comboAtkTime;
+    [LabelText("콤보 유지 시간")] [SerializeField] private float comboAtkTime;
     private float curComboTime;
 
 
+    [TitleGroup("추가적인 방패 설정")]
     [Header("Shield Setting")]
-    [SerializeField] private float ShieldAtkDashTime;
-    [SerializeField] private float AtkDashingPower;
-    [Space(5f)]
-    [SerializeField] private float ShieldDashingTime;
-    [SerializeField] private float DashingPower;
-    [SerializeField] private Vector2 ShieldDashAtkSize;
-    [SerializeField] private Transform ShieldDashPos;
+    [LabelText("방패 일반공격 대쉬 시간")] [SerializeField] private float shieldAtkDashTime;
+    [LabelText("방패 일반공격 대쉬 세기")] [SerializeField] private float shieldAtkDashPower;
+    [LabelText("방패 차징공격 대쉬 시간")] [SerializeField] private float shieldDashAtkDashTime;
+    [LabelText("방패 차징공격 대쉬 세기")] [SerializeField] private float shieldDashAtkDashPower;
+    [LabelText("방패 차징공격 위치")] [SerializeField] private Transform shieldDashAtkPos;
+    [LabelText("방패 차징공격 범위")] [SerializeField] private Vector2 shieldDashAtkSize;
     public GameObject barrier;
     // public bool 
-    [Space(20f)]
+    
+    [TitleGroup("낙하 공격 설정")]
+    public bool fallAtking;
+    [LabelText("낙하 공격 위치")] [SerializeField] Transform fallDownAtkPos;
+    [LabelText("낙하 공격 범위")] [SerializeField] Vector2 fallDownAtkSize;
 
-    [SerializeField] Transform fallDownAtkPos;
-    [SerializeField] Vector2 fallDownAtkSize;
-
+    
+    [TitleGroup("스왑 설정")]
     [Header("Swap Setting")]
     [SerializeField] public bool isSwap;
-    [SerializeField] private float swapTime;
+    [LabelText("스왑 가능 시간")] [SerializeField] private float swapTime;
+
+
+
+    [TitleGroup("추가적인 진동 설정")]
+    [LabelText("피격시 진동 지속 시간")] [SerializeField] float DamagedDuration;
+    [LabelText("피격시 진동 세기")] [SerializeField] float DamagedForce;
+    
 
 
 
@@ -77,11 +96,15 @@ public class Battle : MonoBehaviour
         
         fallAtking = false;
         originalScale = rigid2D.gravityScale;
-        // weaponType = 0;    
-        for (int i = 0; i < isAtkReady.Length; i++)
-        {
-            isAtkReady[i] = true;
-        }
+
+        // for (int i = 0; i < isAtkReady.Length; i++)
+        // {
+        //     isAtkReady[i] = true;
+        // }
+
+        for (int i = 0; i < weaponData.Count; i ++)
+            weaponData[i].isAtkReady = true;
+
         isSwap = true;
         animator = GetComponent<Animator>();
     }
@@ -205,7 +228,9 @@ public class Battle : MonoBehaviour
     public void Atk(GameObject AtkObj)
     {
         // CameraController.instance.StartCoroutine(CameraController.instance.Shake(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
-        CameraController.instance.ShakeCamera(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]);
+        // CameraController.instance.ShakeCamera(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]);
+        CameraController.instance.ShakeCamera(weaponData[(int)WeaponType].shakeDuration, weaponData[(int)WeaponType].shakeForce);
+        
         // CameraController.instance.StartCoroutine(CameraController.instance.ShakeR(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
         
         if(AtkObj.CompareTag("Monster"))
@@ -243,7 +268,8 @@ public class Battle : MonoBehaviour
             return;
         }
 
-        if(!isAtkReady[(int)WeaponType]) return;
+        // if(!isAtkReady[(int)WeaponType]) return;
+        if(!weaponData[(int)WeaponType].isAtkReady) return;
 
         if(WeaponType == WeaponTypes.Bow)
         {
@@ -268,7 +294,8 @@ public class Battle : MonoBehaviour
     {
         rigid2D.velocity = Vector2.zero;
         atking = true;
-        isAtkReady[(int)WeaponType] = false;
+        // isAtkReady[(int)WeaponType] = false;
+        weaponData[(int)WeaponType].isAtkReady = false;
         animator.SetBool("isAct", true);
 
         //isSwap = false; 스왑 1안 추가 나중에 주석 풀면 됨
@@ -301,7 +328,8 @@ public class Battle : MonoBehaviour
 
     public void AtkDetection()
     {
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
+        // Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(weaponData[(int)WeaponType].atkPos.position, weaponData[(int)WeaponType].atkSize, 0);
         foreach(Collider2D collider in collider2Ds)
         {
             if(collider.tag == "Monster" || collider.tag == "Destruct")
@@ -322,12 +350,20 @@ public class Battle : MonoBehaviour
 
     public IEnumerator ReturnAttack()
     {
-        for (int i = 0; i < isAtkReady.Length; i++)
+        // for (int i = 0; i < isAtkReady.Length; i++)
+        // {
+        //     if (!isAtkReady[i])
+        //     {
+        //         yield return new WaitForSeconds(atkCoolTime[i] / (status.atkSpeed * 0.01f));
+        //         isAtkReady[i] = true;
+        //     }
+        // }
+        for (int i = 0; i < weaponData.Count; i++)
         {
-            if (!isAtkReady[i])
+            if (!weaponData[i].isAtkReady)
             {
-                yield return new WaitForSeconds(atkCoolTime[i] / (status.atkSpeed * 0.01f));
-                isAtkReady[i] = true;
+                yield return new WaitForSeconds(weaponData[i].atkCoolTime / (status.atkSpeed * 0.01f));
+                weaponData[i].isAtkReady = true;
             }
         }
     }
@@ -341,7 +377,9 @@ public class Battle : MonoBehaviour
         {
             GameObject ThrowArrow = Instantiate(arrow);
             ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
-            ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
+            // ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
+            ThrowArrow.transform.position = weaponData[(int)WeaponType].atkPos.position;
+            
             ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
         }
 
@@ -361,7 +399,8 @@ public class Battle : MonoBehaviour
             Transform target = null;
             float targetDistance = 100;
             
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
+            // Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(weaponData[(int)WeaponType].atkPos.position, weaponData[(int)WeaponType].atkSize, 0);
             bool isMonster = false;
             foreach(Collider2D collider in collider2Ds)
             {
@@ -441,7 +480,8 @@ public class Battle : MonoBehaviour
 
     public void ChargingBowAtk(bool isCharged = false)
     {
-        isAtkReady[(int)WeaponType] = false;
+        // isAtkReady[(int)WeaponType] = false;
+        weaponData[(int)WeaponType].isAtkReady = false;
         atking = true;
         // 공격 애니메이션 시작
 
@@ -452,7 +492,8 @@ public class Battle : MonoBehaviour
         else
             ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage / 2;
 
-        ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
+        // ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
+        ThrowArrow.transform.position = weaponData[(int)WeaponType].atkPos.position;
         ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
         atking = false;
     }
@@ -462,8 +503,8 @@ public class Battle : MonoBehaviour
         float originalGravity = rigid2D.gravityScale;
         rigid2D.gravityScale = 0f;
         rigid2D.velocity = Vector2.zero;
-        rigid2D.velocity = new Vector2(transform.localScale.x * AtkDashingPower, 0f);
-        yield return new WaitForSeconds(ShieldAtkDashTime);
+        rigid2D.velocity = new Vector2(transform.localScale.x * shieldAtkDashPower, 0f);
+        yield return new WaitForSeconds(shieldAtkDashTime);
         // rigid2D.gravityScale = originalGravity;
         rigid2D.gravityScale = 4f;
         if(atking)
@@ -478,12 +519,12 @@ public class Battle : MonoBehaviour
         float originalGravity = rigid2D.gravityScale;
 
         rigid2D.gravityScale = 0f;
-        rigid2D.velocity = new Vector2(transform.localScale.x * DashingPower, 0f);
+        rigid2D.velocity = new Vector2(transform.localScale.x * shieldDashAtkDashPower, 0f);
 
-        yield return new WaitForSeconds(ShieldDashingTime * 0.5f);
+        yield return new WaitForSeconds(shieldDashAtkDashTime * 0.5f);
         Debug.Log("DashGuard Atk");
 
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(ShieldDashPos.position, ShieldDashAtkSize, 0);
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(shieldDashAtkPos.position, shieldDashAtkSize, 0);
         foreach(Collider2D collider in collider2Ds)
         {
             if(collider.tag == "Monster" || collider.tag == "Destruct")
@@ -492,7 +533,7 @@ public class Battle : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(ShieldDashingTime * 0.5f);
+        yield return new WaitForSeconds(shieldDashAtkDashTime * 0.5f);
 
         rigid2D.gravityScale = originalGravity;
         movement2D.isDashing = false;
@@ -506,17 +547,13 @@ public class Battle : MonoBehaviour
         Gizmos.color = Color.blue;
         
             
-        Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);
-        Gizmos.DrawWireCube(fallDownAtkPos.position, fallDownAtkSize);    
-        Gizmos.DrawWireCube(ShieldDashPos.position, ShieldDashAtkSize);
-
-        Gizmos.color = Color.red;  
-        if(WeaponType == WeaponTypes.Wand)
-        {
-            // Gizmos.DrawWireSphere(transform.position, atkSize[(int)WeaponType].x);
-            Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);
-        }  
-        // Gizmos.DrawWireCube(ComboAtkPos.position, ComboAtkSize);    
+        // Gizmos.DrawWireCube(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType]);
+        Gizmos.DrawWireCube(weaponData[(int)WeaponType].atkPos.position, weaponData[(int)WeaponType].atkSize);
+        
+            
+        Gizmos.DrawWireCube(fallDownAtkPos.position, fallDownAtkSize);
+        if(WeaponType == WeaponTypes.Shield)
+            Gizmos.DrawWireCube(shieldDashAtkPos.position, shieldDashAtkSize);
     }
 
 
