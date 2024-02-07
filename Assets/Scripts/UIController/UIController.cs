@@ -60,13 +60,6 @@ public class UIController : MonoBehaviour
     public TMP_Text TimerOnOff;
     public int OnOff;
 
-    //[Header("카메라 포인트")]
-    //CameraController controller;
-    //Camera Camera;
-    //Transform Target;
-    //public Transform StartPoint;
-    //public Transform EndPoint;
-
     void Awake()
     {
         if(!instance)
@@ -75,23 +68,18 @@ public class UIController : MonoBehaviour
             Destroy(gameObject);
 
         GetComponent<Canvas>().worldCamera = Camera.main;
-        //Camera = Camera.main;
-        //controller = Camera.transform.parent.GetComponent<CameraController>();
-        //Target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        OnOff = 1; 
     }
 
 
      void Start()
     {
-        OnOff = 1;
+       
     }
     void Update()
     {
         Gold.text = GameManager.instance.inventory.Gold.ToString();
-        timerUI.SetActive(GameManager.instance.isTimer);
-        //StartPoint.position = new Vector3(StartPoint.position.x, Target.position.y, StartPoint.position.z);
-        //EndPoint.position = new Vector3(EndPoint.position.x, Target.position.y, EndPoint.position.z);
-        //EndCamera();
+        timerUI.SetActive(OnOff == 0);
     }
 
     public void GameSettingBtn(int btn)
@@ -165,20 +153,5 @@ public class UIController : MonoBehaviour
         //gameManager.SaveSettingData();
     }
 
-    //public void EndCamera()
-    //{
-    //    if (StartPoint.position.x >= Target.position.x)
-    //    {
-    //        controller.cinemachineCam.Follow = StartPoint;
-    //    }
-    //    else if (Target.position.x >= EndPoint.position.x)
-    //    {
-    //        controller.cinemachineCam.Follow = EndPoint;
-    //    }
-    //    else
-    //    {
-    //        controller.cinemachineCam.Follow = Target;
-    //    }
-    //}
 
 }

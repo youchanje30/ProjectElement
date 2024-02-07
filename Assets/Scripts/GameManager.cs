@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour
     [Header("Timer Setting")]
     //[SerializeField] private TimerUI timeUI;
     public float TimerVal;
-    public bool isTimer = false;
 
     [Header("Shop Setting")]
     public GameObject ShopUI;
@@ -88,6 +87,14 @@ public class GameManager : MonoBehaviour
     public GameObject[] Elements;
     public GameObject[] ElementImg;
 
+
+    [Header("카메라 포인트")]
+    CameraController controller;
+    Camera Camera;
+    Transform Target;
+    public Transform StartPoint;
+    public Transform EndPoint;
+
     void Awake()
     {
         TimerVal = 0;
@@ -102,8 +109,11 @@ public class GameManager : MonoBehaviour
         // timeUI = GameObject.Find("Canvas").GetComponent<TimerUI>();
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         talkManager  = GameObject.Find("Talk Manager").GetComponent<TalkManager>();
-        Screen.SetResolution(1920,1080,0);
         Application.targetFrameRate = 60;
+        Camera = Camera.main;
+        controller = Camera.transform.parent.GetComponent<CameraController>();
+        Target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+
     }
 
     void Start()
@@ -132,7 +142,7 @@ public class GameManager : MonoBehaviour
         // if (PlayerPrefs.HasKey("FullScreenData")) { SetSettingData();}
         
         SetResolution();
-
+        SetSettingData();
         for (int i = 0; i < player.inventory.HasWeapon.Length; i++)
         {
             player.inventory.HavingElement[i] = Elemental.AddElement(0);
@@ -176,6 +186,9 @@ public class GameManager : MonoBehaviour
         TimerSetting();
         LogStat();
         SetImage();
+        StartPoint.position = new Vector3(StartPoint.position.x, Target.position.y, StartPoint.position.z);
+        EndPoint.position = new Vector3(EndPoint.position.x, Target.position.y, EndPoint.position.z);
+        EndCamera();
     }
 
     public void OpenSystem()
@@ -198,7 +211,7 @@ public class GameManager : MonoBehaviour
     public void OptionSetting()
     {
         FullScreenTxt.text = PlayerPrefs.GetInt("FullScreenData") == 0 ? "전체 화면" : "창모드";
-        //UIController.instance.TimerOnOff.text = PlayerPrefs.GetInt("TimerData") == 0 ? "켜짐" : "꺼짐";
+        UIController.instance.TimerOnOff.text = UIController.instance.OnOff == 0 ? "켜짐" : "꺼짐";
         audioManager.ChangeBGMVol();
         audioManager.ChangeSFXVol();
     }
@@ -263,7 +276,7 @@ public class GameManager : MonoBehaviour
     {
         resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionData");
         fullScreen = PlayerPrefs.GetInt("FullScreenData");
-        isTimer = UIController.instance.OnOff == 0 ? true : false;
+        UIController.instance.OnOff = PlayerPrefs.GetInt("TimerData");
         audioManager.BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMData");
         audioManager.SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXData");
     }
@@ -289,8 +302,8 @@ public class GameManager : MonoBehaviour
             case 3: // Setting Btn
                 SystemPanel.SetActive(false);
                 SettingPanel.SetActive(true);
-                OptionSetting();
                 SetResolution();
+                OptionSetting();
                 break;
 
             case 4: //Exit Btn
@@ -519,7 +532,7 @@ public class GameManager : MonoBehaviour
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
             //option.text = item.width + " x " + item.height + "  " + item.refreshRateRatio + "hz";
            option.text = item.width + " x " + item.height + "  ";
-           if(item.width <= 1920 && item.height <=1080 && item.refreshRateRatio.value == 60)
+           if(/*item.width <= 1920 && item.height <=1080 &&*/ item.refreshRateRatio.value == 60)
             {
                 resolutionDropdown.options.Add(option);
                 checkedResolutions.Add(item);
@@ -549,9 +562,9 @@ public class GameManager : MonoBehaviour
         // Screen.SetResolution(resolutions[resolutionNum].width, 
         // resolutions[resolutionNum].height, 
         // fullScreen == 0 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
-        Screen.SetResolution(checkedResolutions[resolutionNum].width, 
-        checkedResolutions[resolutionNum].height, 
-        fullScreen == 0 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
+        Screen.SetResolution(checkedResolutions[resolutionNum].width,
+        checkedResolutions[resolutionNum].height,
+        fullScreen == 0 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);     
     }
 
     public void LogStat()
@@ -584,6 +597,22 @@ public class GameManager : MonoBehaviour
                 ElementImg[i].transform.parent.GetComponent<Image>().sprite = UIController.instance.unSelectImg.sprite;
                 ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].UnSelcIcon;
             }
+        }
+    }
+
+    public void EndCamera()
+    {
+        if (StartPoint.position.x >= Target.position.x)
+        {
+            controller.cinemachineCam.Follow = StartPoint;
+        }
+        else if (Target.position.x >= EndPoint.position.x)
+        {
+            controller.cinemachineCam.Follow = EndPoint;
+        }
+        else
+        {
+            controller.cinemachineCam.Follow = Target;
         }
     }
 }

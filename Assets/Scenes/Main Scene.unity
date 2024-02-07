@@ -847,6 +847,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: -17
       objectReference: {fileID: 0}
+    - target: {fileID: 8921915156531338632, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: EndPoint
+      value: 
+      objectReference: {fileID: 1502793069}
+    - target: {fileID: 8921915156531338632, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
+      propertyPath: StartPoint
+      value: 
+      objectReference: {fileID: 1740858697}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8188896901488171466, guid: da0d0297a20ccb94aa46eaf8c2134384, type: 3}
@@ -10088,6 +10096,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1502793069 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 891055357591295839, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
+  m_PrefabInstance: {fileID: 1440194426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1531658155
 GameObject:
   m_ObjectHideFlags: 0
@@ -10355,6 +10368,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1740858697 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3083002206320670089, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
+  m_PrefabInstance: {fileID: 1440194426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1785163524
 GameObject:
   m_ObjectHideFlags: 0
@@ -10890,7 +10908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6983024327663092683, guid: 65b917db7f81a4f4982a156ed22edf5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.4
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6983024327663092683, guid: 65b917db7f81a4f4982a156ed22edf5c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10927,6 +10945,10 @@ PrefabInstance:
     - target: {fileID: 6983024327663092683, guid: 65b917db7f81a4f4982a156ed22edf5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124891710666565605, guid: 65b917db7f81a4f4982a156ed22edf5c, type: 3}
+      propertyPath: orthographic size
+      value: 36.177834
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
