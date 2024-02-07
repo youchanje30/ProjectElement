@@ -137,27 +137,21 @@ public class PlayerController : MonoBehaviour
     {
         if (manager.isShop && Input.GetKeyDown(KeyCode.Escape))
         {
-            manager.isShop = false;
-            manager.ShopUI.SetActive(false);
+            Invoke("closeShop", 0.01f);
         }
 
         if (manager.isSpiritAwake && Input.GetKeyDown(KeyCode.Escape))
         {
-            manager.isSpiritAwake = false;
-            manager.SpiritAwakeUI.SetActive(false);
+            Invoke("closeSpiritawake", 0.01f);
         }
 
         if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.Escape))
         {
-            manager.isAction = false;
-            manager.isSelected = false;
-            manager.isSlotSwap = false;
-            manager.swapUI.SlotSwapUI.SetActive(false);
+            Invoke("closeslotSwap", 0.01f);
         }
         if(manager.isInven && Input.GetKeyDown(KeyCode.Escape))
         {
-            manager.isInven = false;
-            manager.inventoryUI.InvenUI.SetActive(false);
+            Invoke("closeinven", 0.01f);
         }
         if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.E)) // 수정 해야함
         {
@@ -390,5 +384,27 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+    }
+    public void closeShop()
+    {
+        manager.isShop = false;
+        manager.ShopUI.SetActive(false);
+    }
+    public void closeSpiritawake()
+    {
+        manager.isSpiritAwake = false;
+        manager.SpiritAwakeUI.SetActive(false);
+    }
+    public void closeslotSwap()
+    {
+        manager.isAction = false;
+        manager.isSelected = false;
+        manager.isSlotSwap = false;
+        manager.swapUI.SlotSwapUI.SetActive(false);
+    }
+    public void closeinven()
+    {
+        manager.isInven = false;
+        manager.inventoryUI.InvenUI.SetActive(false);
     }
 }

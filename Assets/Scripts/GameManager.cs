@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;
     [SerializeField] private TalkManager talkManager;
-    [SerializeField] private bool isSystem;
+    [SerializeField] bool isSystem;
 
     [Header("Setting Panel")]
     [SerializeField] private GameObject SettingPanel;
@@ -171,8 +171,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0f && isSystem)
         {
-            isSystem = !isSystem;
-            SystemPanel.SetActive(isSystem);
+            OpenSystem();
             SettingPanel.SetActive(false);
             //GraphicSetting();
             SetSettingData();
