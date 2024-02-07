@@ -36,16 +36,20 @@ public class Battle : MonoBehaviour
         public WeaponTypes weaponType;
 
 
-        [Header("공격 관련 정보")]
+        [Header("공격 관련 설정")]
         [LabelText("공격 위치")] public Transform atkPos;
         [LabelText("공격 범위")] public Vector2 atkSize;
 
         [LabelText("공격 쿨타임")] public float atkCoolTime;
         /*[LabelText("공격 준비 여부")]*/ public bool isAtkReady;
 
+        [Header("진동 관련 설정")]
         [LabelText("진동 시간")] public float shakeDuration;
         [LabelText("진동 세기")] public float shakeForce;
 
+        [Header("데미지 관련 정보")]
+        [LabelText("크리티컬 데미지%")] public float weaponCrtDamage;
+        [LabelText("데미지 %")] public float weaponDamage;
     }
 
 

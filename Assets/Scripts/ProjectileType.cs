@@ -37,7 +37,7 @@ public class ProjectileType : MonoBehaviour
                 break;
 
             case Type.Magic:
-                if (target.gameObject.activeSelf)
+                if (target != null && target.gameObject.activeSelf)
                     transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * moveSpeed);
                 else
                     transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;

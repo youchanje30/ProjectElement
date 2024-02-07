@@ -119,9 +119,11 @@ public class PlayerStatus : MonoBehaviour
         SetEquipment();
 
         maxHp = (basicMaxHp + increaseMaxHp) * (basicHpPer + increaseHpPer) * (0.01f);
-        damage = (basicDamage + increaseDamage) * (basicDamagePer + increaseDamagePer) * (0.01f);
+        // 무기 데미지 추가
+        damage = battle.weaponData[(int)battle.WeaponType].weaponDamage * ((basicDamage + increaseDamage) * (basicDamagePer + increaseDamagePer) * (0.01f));
         crtRate = basicCrtRate + increaseCrtRate;
-        crtDamage = basicCrtDamage + increaseCrtDamage;
+        // 무기 크리티컬 데미지 추가
+        crtDamage = basicCrtDamage + increaseCrtDamage + battle.weaponData[(int)battle.WeaponType].weaponCrtDamage;
         atkSpeed = basicAtkSpeed + increaseAtkSpeed;
         missRate = basicMissRate + increaseMissRate;
         coolDownReductionPer = basicCoolDownReductionPer + increaseCoolDownReductionPer;

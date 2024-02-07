@@ -745,6 +745,8 @@ MonoBehaviour:
     isAtkReady: 0
     shakeDuration: 0
     shakeForce: 0
+    weaponCrtDamage: 0
+    weaponDamage: 100
   - weaponType: 1
     atkPos: {fileID: 7154946036308757365}
     atkSize: {x: 2, y: 2.5}
@@ -752,6 +754,8 @@ MonoBehaviour:
     isAtkReady: 1
     shakeDuration: 0.1
     shakeForce: 10
+    weaponCrtDamage: 0
+    weaponDamage: 100
   - weaponType: 2
     atkPos: {fileID: 6317585707649509668}
     atkSize: {x: 12, y: 4}
@@ -759,6 +763,8 @@ MonoBehaviour:
     isAtkReady: 1
     shakeDuration: 0
     shakeForce: 0
+    weaponCrtDamage: 0
+    weaponDamage: 100
   - weaponType: 3
     atkPos: {fileID: 4135913021082344152}
     atkSize: {x: 4, y: 2}
@@ -766,6 +772,8 @@ MonoBehaviour:
     isAtkReady: 1
     shakeDuration: 0.2
     shakeForce: 10
+    weaponCrtDamage: 0
+    weaponDamage: 100
   - weaponType: 4
     atkPos: {fileID: 4315468924003554650}
     atkSize: {x: 1.7, y: 1.7}
@@ -773,6 +781,8 @@ MonoBehaviour:
     isAtkReady: 1
     shakeDuration: 0
     shakeForce: 0
+    weaponCrtDamage: 0
+    weaponDamage: 100
   canComboAtk: 0
   comboAtkTime: 0.6
   shieldAtkDashTime: 0.1
