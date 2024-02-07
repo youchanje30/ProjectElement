@@ -505,7 +505,7 @@ Transform:
   - {fileID: 1175219381179392127}
   - {fileID: 8358024266522001532}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4316813253061002341
 SpriteRenderer:
@@ -747,7 +747,7 @@ MonoBehaviour:
     shakeForce: 0
     weaponCrtDamage: 0
     weaponDamage: 100
-  - weaponType: 1
+  - weaponType: 2
     atkPos: {fileID: 7154946036308757365}
     atkSize: {x: 2, y: 2.5}
     atkCoolTime: 0.4
@@ -756,7 +756,7 @@ MonoBehaviour:
     shakeForce: 10
     weaponCrtDamage: 0
     weaponDamage: 100
-  - weaponType: 2
+  - weaponType: 3
     atkPos: {fileID: 6317585707649509668}
     atkSize: {x: 12, y: 4}
     atkCoolTime: 0.4
@@ -765,7 +765,7 @@ MonoBehaviour:
     shakeForce: 0
     weaponCrtDamage: 0
     weaponDamage: 100
-  - weaponType: 3
+  - weaponType: 4
     atkPos: {fileID: 4135913021082344152}
     atkSize: {x: 4, y: 2}
     atkCoolTime: 0.75
@@ -886,24 +886,24 @@ MonoBehaviour:
     duration: 0
     tick: 0
   - passiveName: "\uAC80 \uD654\uC0C1"
-    rate: 50
-    duration: 5
+    rate: 15
+    duration: 2
     tick: 1
   - passiveName: "\uC644\uB4DC \uC2AC\uB85C\uC6B0"
     rate: 100
-    duration: 5
+    duration: 2
     tick: 2
   - passiveName: "\uBC29\uD328 \uBCA0\uB9AC\uC5B4"
     rate: 0
-    duration: 5
+    duration: 10
     tick: 0
   - passiveName: '-'
     rate: 0
     duration: 0
     tick: 0
-  burnDamage: 10
-  slowPer: 30
-  shieldPer: 20
+  burnDamage: 5
+  slowPer: 50
+  shieldPer: 10
   bowPer: 20
   unAtkedTime: 0
 --- !u!114 &4171092834519731156
@@ -925,55 +925,55 @@ MonoBehaviour:
     skillCoolTime: 0
     isSkillReady: 1
   - weaponName: "\uAC80"
-    skillCoolTime: 1
+    skillCoolTime: 8
     isSkillReady: 1
   - weaponName: "\uC644\uB4DC"
-    skillCoolTime: 1
+    skillCoolTime: 10
     isSkillReady: 1
   - weaponName: "\uBC29\uD328"
-    skillCoolTime: 1
+    skillCoolTime: 12
     isSkillReady: 1
   - weaponName: "\uD65C"
-    skillCoolTime: 1
+    skillCoolTime: 9
     isSkillReady: 1
   isCharging: 0
   isUnderTheSea: 0
   FireFloor: {fileID: 3096906974402678174, guid: db7de1076855ad84ba51dd45a7123812, type: 3}
-  RangeCount: 4
-  DiffusionDamageIncreaseRate: 20
+  RangeCount: 10
+  DiffusionDamageIncreaseRate: 50
   detectlength: 20
   layer:
     serializedVersion: 2
     m_Bits: 64
   ActiveTime: 3
-  FireShakeTime: 0.05
-  FireShakeMagnitude: 10
+  FireShakeTime: 0.5
+  FireShakeMagnitude: 15
   WaterBall: {fileID: 3054785954419580376, guid: 02e9dce7710091749a6c01825bbde7f9, type: 3}
   isWater: 0
   WaterDamageIncreaseRate: 0
   BombDamageIncreaseRate: 0
   FloatingForce: 12
-  FloatingTime: 0.5
-  WaterChargeTime: 2
+  FloatingTime: 1
+  WaterChargeTime: 1
   BallPos:
   - {x: -1.5, y: 2}
   - {x: 0, y: 2}
   - {x: 1.5, y: 2}
   BallGravity: 10
   BallSpeed: 8
-  BombRange: {x: 10, y: 10}
+  BombRange: {x: 20, y: 10}
   BombChargeTime: 1
   WaterY: 0
   activeTime: 10
   BombShakeTime: 0.1
-  BombShakeMagnitude: 30
+  BombShakeMagnitude: 20
   isSouth: 0
   JumpDamageIncreaseRate: 20
   LandDamageIncreaseRate: 50
-  JumpForce: 30
-  FallForce: 50
+  JumpForce: 10
+  FallForce: 40
   StunTime: 100
-  RisingTime: 1
+  RisingTime: 2
   LandingPos:
   - {fileID: 2987700167441146525}
   - {fileID: 3200210186239389953}
@@ -992,8 +992,8 @@ MonoBehaviour:
   ChargeTime: 2
   InvicibleTime: 1
   Delay: 1
-  WindShakeTime: 0.1
-  WindShakeMagnitude: 30
+  WindShakeTime: 0.05
+  WindShakeMagnitude: 10
 --- !u!114 &6781280166762617137
 MonoBehaviour:
   m_ObjectHideFlags: 0

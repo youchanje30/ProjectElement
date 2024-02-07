@@ -353,6 +353,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: FallForce
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: JumpForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: RangeCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: RisingTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: BombRange.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: FloatingTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: FireShakeTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: WindShakeTime
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: WaterChargeTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: BombShakeMagnitude
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: FireShakeMagnitude
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: WindShakeMagnitude
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171092834519731156, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: DiffusionDamageIncreaseRate
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: weaponData.Array.size
       value: 5
