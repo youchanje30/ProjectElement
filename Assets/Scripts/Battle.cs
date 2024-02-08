@@ -239,7 +239,7 @@ public class Battle : MonoBehaviour
         
         if(AtkObj.CompareTag("Monster"))
         {       
-            if(AtkObj.GetComponentInParent<MonsterSynergy>().isWeathering && WeaponType == WeaponTypes.Shield)
+            if(AtkObj.GetComponentInParent<MonsterSynergy>().isWeathering && WeaponType == WeaponTypes.Shield && status.barrier > 0)
             {
                 Debug.Log(WeatheringDamage);
                 AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(WeatheringDamage);
