@@ -158,6 +158,8 @@ public class GameManager : MonoBehaviour
             isStatusUpgrade = true;
             statusUpgradeTimes = 3;
             statusUpdrageUI.SetActive(true);
+            UIController.instance.statusUpPoint.transform.position = new Vector3(UIController.instance.statusUpButton[0].transform.position.x, UIController.instance.statusUpPoint.transform.position.y);
+            UIController.instance.Slot = 0;
         }
     }
 
@@ -368,6 +370,8 @@ public class GameManager : MonoBehaviour
         talkTxt.text = talkingData;
         talkIndex++;
         isAction = true;
+        UIController.instance.Slot = 0;
+        UIController.instance.TalkPoint.transform.position = new Vector3(UIController.instance.TalkPoint.transform.position.x, UIController.instance.TalkButton[0].transform.position.y);
 
     }
 
@@ -382,6 +386,8 @@ public class GameManager : MonoBehaviour
         talkTxt.text = firstTalkData;
         isSelected = true;
         TalkPanel.SetActive(true);
+        UIController.instance.Slot = 0;
+        UIController.instance.TalkPoint.transform.position = new Vector3(UIController.instance.TalkPoint.transform.position.x, UIController.instance.TalkButton[0].transform.position.y);
     }
     
 

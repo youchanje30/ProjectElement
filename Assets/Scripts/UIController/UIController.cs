@@ -28,6 +28,8 @@ public class UIController : MonoBehaviour
 
     [Header("스탯 강화 UI")]
     public GameObject statusUpdrageUI;
+    public GameObject[] statusUpButton;
+    public GameObject statusUpPoint;
     [Space(20f)]
 
     [Header("상점 관련 UI")]
@@ -51,8 +53,10 @@ public class UIController : MonoBehaviour
     public TMP_Text FullScreenTxt;
     public GameObject[] SystemButton;
     public GameObject[] SettingButton;
+    public GameObject[] TalkButton;
     public GameObject SystemPoint;
     public GameObject SettingPoint;
+    public GameObject TalkPoint;
     public int Slot;
     public int settingslot;
 
@@ -89,6 +93,14 @@ public class UIController : MonoBehaviour
         {
             SettingKeyboardCon();
         }
+        else if(TalkPanel.activeSelf == true)
+        {
+            TalkKeyboardCon();
+        }
+        else if(statusUpdrageUI.activeSelf == true)
+        {
+            StatusUPKeyboardCon();
+        }
     }
 
     public void GameSettingBtn(int btn)
@@ -100,6 +112,7 @@ public class UIController : MonoBehaviour
     {
         GameManager.instance.Delete();
     }
+
     public void TalkBtn(int BtnNum)
     {
         GameManager.instance.TalkBtn(BtnNum);
@@ -109,6 +122,7 @@ public class UIController : MonoBehaviour
     {
         GameManager.instance.SaveSettingData();
     }
+
     public void SystemBtn(int BtnNum)
     {
         GameManager.instance.SystemBtn(BtnNum);
@@ -239,10 +253,10 @@ public class UIController : MonoBehaviour
             switch (settingslot)
             {
                 case 0:
-                    GameManager.instance.GameSettingBtn(2);
+                    GameManager.instance.GameSettingBtn(1);
                     break;
                 case 1:
-                    GameManager.instance.GameSettingBtn(1);
+                    GameManager.instance.GameSettingBtn(2);
                     break;
                 case 2:
                 case 3:
@@ -271,5 +285,47 @@ public class UIController : MonoBehaviour
                     break;
             }
         }
+    }
+    public void TalkKeyboardCon()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Slot != 0)
+        {
+            TalkPoint.transform.position = new Vector3(TalkPoint.transform.position.x, TalkButton[Slot - 1].transform.position.y);
+            Slot -= 1;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow) && Slot != 2)
+        {
+            TalkPoint.transform.position = new Vector3(TalkPoint.transform.position.x, TalkButton[Slot + 1].transform.position.y);
+            Slot += 1;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Invoke("activeTalk", 0.01f);
+        }
+    }
+    public void StatusUPKeyboardCon()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow) && Slot != 2)
+        {
+            statusUpPoint.transform.position = new Vector3(statusUpButton[Slot + 1].transform.position.x, statusUpPoint.transform.position.y);
+            Slot += 1;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && Slot != 0)
+        {
+            statusUpPoint.transform.position = new Vector3(statusUpButton[Slot - 1].transform.position.x, statusUpPoint.transform.position.y);
+            Slot -= 1;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Invoke("Upgradestatus", 0.01f);
+        }
+    }
+    public void activeTalk()
+    {
+        GameManager.instance.TalkBtn(Slot + 1);
+    }
+    public void Upgradestatus()
+    {
+        GameManager.instance.UpgradeStatus(Slot);
     }
 }
