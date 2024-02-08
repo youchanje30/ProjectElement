@@ -689,11 +689,11 @@ MonoBehaviour:
   maxDashCnt: 1
   curDashCnt: 0
   floorY: 0.85
-  floorSize: {x: 1.05, y: 0.05}
+  floorSize: {x: 0.9, y: 0.14}
   isNearFloor: 0
-  nearFloorY: 0.8
-  nearFloorX: 0.5
-  nearFloorRayLength: 0.2
+  nearFloorY: 0.78
+  nearFloorX: 0.45
+  nearFloorRayLength: 0.14
 --- !u!95 &9054463393116159097
 Animator:
   serializedVersion: 5

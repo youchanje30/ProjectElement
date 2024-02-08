@@ -117,21 +117,6 @@ public class Battle : MonoBehaviour
 
     void Update()
     {
-
-        // Vector2 underVec = new Vector2(rigid2D.transform.position.x - 0.5f, rigid2D.transform.position.y - 0.9f);
-        // Debug.DrawRay(underVec, new Vector3(0, -0.2f, 0), new Color(0,1,0));
-        // RaycastHit2D MiddleRaycast = Physics2D.Raycast(underVec, Vector3.down, 0.2f ,LayerMask.GetMask("Platform"));
-
-        // Vector2 leftUnderVec = new Vector2(rigid2D.transform.position.x, rigid2D.transform.position.y - 0.9f);
-        // Debug.DrawRay(leftUnderVec, new Vector3(0, -0.2f, 0), new Color(0,1,0));
-        // RaycastHit2D LeftRaycast = Physics2D.Raycast(leftUnderVec, Vector3.down, 0.2f ,LayerMask.GetMask("Platform"));
-
-        // Vector2 rightUnderVec = new Vector2(rigid2D.transform.position.x + 0.5f, rigid2D.transform.position.y - 0.9f);
-        // Debug.DrawRay(rightUnderVec, new Vector3(0, -0.2f, 0), new Color(0,1,0));
-        // RaycastHit2D RightRaycast = Physics2D.Raycast(rightUnderVec, Vector3.down, 0.2f ,LayerMask.GetMask("Platform"));
-
-        // if(fallAtking && movement2D.isGround) //착지 공격 참 + 땅에 도착 참
-        // if(fallAtking && (MiddleRaycast.collider != null || LeftRaycast.collider != null || RightRaycast.collider != null))
         if(fallAtking && movement2D.isNearFloor)
         {
             animator.SetBool("isGround", true);
@@ -152,7 +137,7 @@ public class Battle : MonoBehaviour
                     // collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
                 }
             }
-            
+            Debug.Log("Stop FallingAtk");
         }
         barrier.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, (status.barrier / (status.maxHp * passive.shieldPer * 0.01f)));
         UIController.instance.HpFill.fillAmount = Mathf.Lerp(UIController.instance.HpFill.fillAmount, status.curHp / status.maxHp, Time.deltaTime * 5f);
