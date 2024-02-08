@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-
+    [SerializeField] private UIController uiCon;
    
     
     [Header("BGM 설정")]
@@ -30,7 +30,13 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        uiCon = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
         
+        if(!BGMVolumeSlider)
+            BGMVolumeSlider = uiCon.bgmSlider;
+
+        if(!SFXVolumeSlider)
+            SFXVolumeSlider = uiCon.sfxSlider;
     }
 
     void Start()

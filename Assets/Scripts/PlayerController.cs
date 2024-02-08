@@ -48,18 +48,18 @@ public class PlayerController : MonoBehaviour
 
     [Header("Input Setting")]
     private float hAxis;
-    private KeyCode JumpKey = KeyCode.C;
-    private KeyCode Jumpkey = KeyCode.Space;
+    [SerializeField] private KeyCode JumpKey = KeyCode.C;
+    [SerializeField] private KeyCode Jumpkey = KeyCode.Space;
     private bool pressedJumpkey;
     private bool PressedJumpkey;
-    private KeyCode DashKey = KeyCode.Z;
+    [SerializeField] private KeyCode DashKey = KeyCode.Z;
     private bool pressedDashKey;
-    private KeyCode atkKey = KeyCode.X;
+    [SerializeField] private KeyCode atkKey = KeyCode.X;
     [SerializeField] float turnToChargeTime = 0.1f;
     // private bool isAtkKey;
 
     private bool pressedAtkKey;
-    private KeyCode SkillKey = KeyCode.F;
+    [SerializeField] private KeyCode SkillKey = KeyCode.F;
     private bool pressedSkillKey;
     private bool isRepeatAtk = false;
     [SerializeField] private KeyCode ioInventory = KeyCode.Tab;

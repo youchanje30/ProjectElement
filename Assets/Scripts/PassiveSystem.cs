@@ -31,8 +31,8 @@ public class PassiveSystem : MonoBehaviour
     {
         [LabelText("패시브 이름")] public string passiveName;
         [LabelText("패시브 확률")] public int rate;
-        [LabelText("패시브 지속 시간")] public int duration;
-        [LabelText("패시브 틱")]public int tick;
+        [LabelText("패시브 지속 시간")] public float duration;
+        [LabelText("패시브 틱")]public float tick;
     }
 
 

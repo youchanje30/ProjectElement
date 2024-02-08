@@ -12,6 +12,7 @@ public class ProjectileType : MonoBehaviour
     public Type Projectile;
     private CapsuleCollider2D Collider2D;
     [SerializeField] Battle battle;
+    [SerializeField] Rigidbody2D rigid;
     ActiveSkill skill;
     public float Damage;
     public float moveSpeed;
@@ -22,38 +23,11 @@ public class ProjectileType : MonoBehaviour
     public float per;
     [Tooltip("관통 후 데미지 감소율 %")]
     public float DeclineRate;
-
-    void Update()
+    
+    void Awake()
     {
-        Move();
-    }
-
-    void Move()
-    {
-        switch (Projectile)
-        {
-            case Type.Arrow:
-                transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;
-                break;
-
-            case Type.Magic:
-                if (target != null && target.gameObject.activeSelf)
-                    transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * moveSpeed);
-                else
-                    transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;
-                break;
-
-            case Type.WindSkill:
-                transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;
-                break;
-            case Type.Bomb:
-                // StartCoroutine(BombAtk());
-                break;
-        }
-    }
-
-    private void Awake()
-    {
+        if(!rigid)
+            rigid = GetComponent<Rigidbody2D>();
         Collider2D = GetComponent<CapsuleCollider2D>();
         skill = GameObject.FindGameObjectWithTag("Player").GetComponent<ActiveSkill>();
         battle = skill.GetComponent<Battle>();
@@ -69,6 +43,37 @@ public class ProjectileType : MonoBehaviour
         else if(Projectile == Type.WaterSkill )
         {
             Invoke("Remove", skill.activeTime);
+        }
+    }
+
+    void Update()
+    {
+        Move();
+    }
+
+    void Move()
+    {
+        switch (Projectile)
+        {
+            case Type.Arrow:
+                // transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;`
+                rigid.velocity = new Vector2(transform.localScale.x, 0).normalized * moveSpeed;
+                break;
+
+            case Type.Magic:
+                if (target != null && target.parent.gameObject.activeSelf)
+                    transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * moveSpeed);
+                else
+                    rigid.velocity = new Vector2(transform.localScale.x, 0).normalized * moveSpeed;
+                    // transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;
+                break;
+
+            case Type.WindSkill:
+                transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;
+                break;
+            case Type.Bomb:
+                // StartCoroutine(BombAtk());
+                break;
         }
     }
     

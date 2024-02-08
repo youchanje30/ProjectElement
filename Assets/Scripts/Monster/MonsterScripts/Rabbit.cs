@@ -89,6 +89,7 @@ public class Rabbit : MonsterBase
         if(canAtk && other.CompareTag("Player"))
         {
             canAtk = false;
+            curAtkCoolTime = maxAtkCoolTime;
             other.GetComponent<Battle>().GetDamaged(damage);
         }
     }

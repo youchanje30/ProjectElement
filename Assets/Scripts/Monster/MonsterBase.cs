@@ -11,7 +11,7 @@ public class MonsterBase : MonoBehaviour
     [Header("필요 컴포넌트")]
     public MonsterData monsterData;
     [SerializeField] protected Rigidbody2D rigid;
-    [SerializeField] protected Animator animator;
+    public Animator animator;
     [SerializeField] protected DetectPlayer trackDetect;
     [SerializeField] protected DetectPlayer tryAtkDetect;
     [SerializeField] protected Transform target;
@@ -288,8 +288,8 @@ public class MonsterBase : MonoBehaviour
             if(!collider.CompareTag("Player")) continue;
                 
             collider.GetComponent<Battle>().GetDamaged(damage);
-            Debug.Log(atkInfo[index].atkPos);
-            Debug.Log(atkInfo[index].atkSize);
+            // Debug.Log(atkInfo[index].atkPos);
+            // Debug.Log(atkInfo[index].atkSize);
 
         }
     }
@@ -321,6 +321,7 @@ public class MonsterBase : MonoBehaviour
         if(isKnockback || isDead) return;
 
         curHp -= getDamage;
+        if(isAtking) AtkEnd();
 
         // 체력바 추가 해야 함
 
@@ -329,6 +330,7 @@ public class MonsterBase : MonoBehaviour
             isDead = true;
             animator.SetTrigger("Dead");
             Invoke("Dead", 1f); // 안죽는 경우 대비
+            SetDead();
         }
 
         // animator.ResetTrigger("Hurt");
@@ -347,6 +349,12 @@ public class MonsterBase : MonoBehaviour
 
         isKnockback = true;
         StartCoroutine(Knockback(knockX));
+    }
+
+    protected void SetDead()
+    {
+        gameObject.GetComponentInChildren<BoxCollider2D>().enabled = false;
+        rigid.bodyType = RigidbodyType2D.Static;
     }
 
     protected IEnumerator Knockback(int dir)

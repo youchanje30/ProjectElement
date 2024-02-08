@@ -51,8 +51,14 @@ public class Movement2D : MonoBehaviour
     public int curDashCnt;
     
 
-
-
+    [Header("Ground Check")]
+    [SerializeField] float floorY;
+    [SerializeField] Vector2 floorSize;
+    public bool isNearFloor;
+    [SerializeField] float nearFloorY;
+    [SerializeField] float nearFloorX;
+    [SerializeField] float nearFloorRayLength;
+    
 
 
     void Awake() 
@@ -70,36 +76,16 @@ public class Movement2D : MonoBehaviour
 
 
     void Update()
-    { 
-        // Bounds bounds = boxCollider2D.bounds;
-        // footPos = new Vector2(bounds.center.x, bounds.min.y);
-
-        //footPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.5f);
-        //isground = Physics2D.OverlapBox(footPos, new Vector2(1f, 0.1f), Layer);
-        isGround = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x, 
-        // gameObject.transform.position.y -0.47f), new Vector2(0.55f, 0.01f), 0f, GroundLayer);
-        gameObject.transform.position.y -0.95f), new Vector2(0.55f, 0.05f), 0f, GroundLayer);
-
-        // Debug.Log(isGround);
-
+    {
+        CheckGround();
         
-        /* Vector2 upVec = new Vector2(rigid2D.position.x, boxCollider2D.bounds.min.y);
-        Debug.DrawRay(upVec, Vector3.up, new Color(1,0,0));
-        RaycastHit2D raycast = Physics2D.Raycast(upVec, Vector3.up, 1f ,LayerMask.GetMask("Platform"));
 
-        if(raycast.collider != null)
-        {
-            transform.position = new Vector2(transform.position.x ,transform.position.y + (raycast.transform.position.y - boxCollider2D.bounds.min.y));
-        } */
 
         if(isGround == true && rigid2D.velocity.y < 0)
         {
             curJumpCnt = maxJumpCnt;
-            // curDashCnt = maxDashCnt;
             animator.SetBool("isGround", true);
-            // animator.SetBool("isJump", false);
             animator.SetBool("isAct", false);
-            // Debug.Log("Reset Cnt");
         }
 
         if(isGround == true && rigid2D.velocity.y <= 0 && Input.GetKeyDown(KeyCode.DownArrow))
@@ -109,19 +95,11 @@ public class Movement2D : MonoBehaviour
                 StartCoroutine(DisableCollision());
             }
         }
-
-        /* if( !isDashing && rigid2D.velocity.y > 0)
-        {
-            // rigid2D.gravityScale = 
-        }
-        else if(!isDashing)
-        {
-            // rigid2D.gravityScale = 
-        } */
         
-        animator.SetBool("isGround", isGround);
-
-        
+        if(isGround == true && rigid2D.velocity.y <= 0)
+            animator.SetBool("isGround", isGround);
+        else
+            animator.SetBool("isGround", false);
     }
 
     void OnDrawGizmos()
@@ -129,7 +107,8 @@ public class Movement2D : MonoBehaviour
         Gizmos.color = Color.blue;
         //Gizmos.DrawCube(footPos, new Vector2(1f, 0.1f));
         // Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.47f), new Vector2(0.55f, 0.01f));
-        Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.95f), new Vector2(0.55f, 0.05f));
+        // Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.95f), new Vector2(0.55f, 0.05f));
+        Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - floorY), floorSize);
     
     }
 
@@ -140,7 +119,7 @@ public class Movement2D : MonoBehaviour
 
         if(hAxis != 0)
         {
-            transform.localScale = new Vector3(hAxis * 2, 2, 1);
+            transform.localScale = new Vector3(hAxis * 1.8f, 1.8f, 1);
             animator.SetBool("isMove", true);
         }  
         else
@@ -222,5 +201,25 @@ public class Movement2D : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         Physics2D.IgnoreCollision(boxCollider2D, platformCollider, false);
         
+    }
+
+    private void CheckGround()
+    {
+        isGround = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x, 
+        gameObject.transform.position.y - floorY), floorSize, 0f, GroundLayer);
+
+        isNearFloor = false;
+        for (int i = 0; i < 3; i++)
+        {
+            Vector2 nearVec = new Vector2(transform.position.x + (1 - i) * nearFloorX, transform.position.y - nearFloorY);
+            Debug.DrawRay(nearVec, new Vector3(0, -nearFloorRayLength, 0), new Color(0,1,0));
+            RaycastHit2D raycast = Physics2D.Raycast(nearVec, Vector3.down, nearFloorRayLength, LayerMask.GetMask("Platform"));
+
+            if(raycast.collider != null) 
+            {
+                isNearFloor = true;
+                break;   
+            }
+        }
     }
 }

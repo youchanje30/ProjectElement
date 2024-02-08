@@ -142,7 +142,8 @@ public class GameManager : MonoBehaviour
         // if (PlayerPrefs.HasKey("FullScreenData")) { SetSettingData();}
         
         SetResolution();
-        SetSettingData();
+        if(PlayerPrefs.HasKey("BGMData"))
+            SetSettingData();
         for (int i = 0; i < player.inventory.HasWeapon.Length; i++)
         {
             player.inventory.HavingElement[i] = Elemental.AddElement(0);
@@ -152,7 +153,7 @@ public class GameManager : MonoBehaviour
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
 
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().name == "Main Scene")
         {
             isAction = true;
             isStatusUpgrade = true;
@@ -542,8 +543,8 @@ public class GameManager : MonoBehaviour
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
             //option.text = item.width + " x " + item.height + "  " + item.refreshRateRatio + "hz";
-           option.text = item.width + " x " + item.height + "  ";
-           if(/*item.width <= 1920 && item.height <=1080 &&*/ item.refreshRateRatio.value == 60)
+            option.text = item.width + " x " + item.height + "  ";
+            if(/*item.width <= 1920 && item.height <=1080 &&*/ item.refreshRateRatio.value == 60)
             {
                 resolutionDropdown.options.Add(option);
                 checkedResolutions.Add(item);

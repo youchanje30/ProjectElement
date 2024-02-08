@@ -490,7 +490,7 @@ Transform:
   m_GameObject: {fileID: 7141198254234339824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5525140155271563417}
@@ -505,7 +505,7 @@ Transform:
   - {fileID: 1175219381179392127}
   - {fileID: 8358024266522001532}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4316813253061002341
 SpriteRenderer:
@@ -683,6 +683,12 @@ MonoBehaviour:
   dashingPower: 12
   maxDashCnt: 1
   curDashCnt: 0
+  floorY: 0.85
+  floorSize: {x: 0.55, y: 0.05}
+  isNearFloor: 0
+  nearFloorY: 0.8
+  nearFloorX: 0.5
+  nearFloorRayLength: 0.2
 --- !u!95 &9054463393116159097
 Animator:
   serializedVersion: 5
@@ -735,7 +741,7 @@ MonoBehaviour:
   WeaponType: 0
   atking: 0
   isGuard: 0
-  arrow: {fileID: 3054785954419580376, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
+  arrow: {fileID: 6992588384899424794, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
   originalScale: 0
   weaponData:
   - weaponType: 0
@@ -755,7 +761,7 @@ MonoBehaviour:
     shakeDuration: 0.1
     shakeForce: 10
     weaponCrtDamage: 0
-    weaponDamage: 1
+    weaponDamage: 100
   - weaponType: 2
     atkPos: {fileID: 6317585707649509668}
     atkSize: {x: 12, y: 4}
@@ -764,7 +770,7 @@ MonoBehaviour:
     shakeDuration: 0
     shakeForce: 0
     weaponCrtDamage: 0
-    weaponDamage: 1
+    weaponDamage: 100
   - weaponType: 3
     atkPos: {fileID: 4135913021082344152}
     atkSize: {x: 4, y: 2}
@@ -773,7 +779,7 @@ MonoBehaviour:
     shakeDuration: 0.2
     shakeForce: 10
     weaponCrtDamage: 0
-    weaponDamage: 1
+    weaponDamage: 100
   - weaponType: 4
     atkPos: {fileID: 4315468924003554650}
     atkSize: {x: 1.7, y: 1.7}
