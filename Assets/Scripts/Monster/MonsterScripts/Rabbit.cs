@@ -20,10 +20,12 @@ public class Rabbit : MonsterBase
 
     protected override void Update()
     {
+        if(isDead) return;
+
         CheckState();
         TimeProcess();
         
-        if(canAtk && !isAtking && !isDead)
+        if(canAtk && !isAtking)
         {
             Atk();
             curAtkCoolTime = Random.Range(minAtkCoolTime, maxAtkCoolTime);
@@ -89,7 +91,6 @@ public class Rabbit : MonsterBase
         if(canAtk && other.CompareTag("Player"))
         {
             canAtk = false;
-            curAtkCoolTime = maxAtkCoolTime;
             other.GetComponent<Battle>().GetDamaged(damage);
         }
     }
