@@ -49,6 +49,13 @@ public class UIController : MonoBehaviour
     public GameObject DataResetCheck;
     public TMP_Text CameraShakeTxt;
     public TMP_Text FullScreenTxt;
+    public GameObject[] SystemButton;
+    public GameObject[] SettingButton;
+    public GameObject SystemPoint;
+    public GameObject SettingPoint;
+    public int Slot;
+    public int settingslot;
+
 
     [Header("재산 UI")]
     public GameObject WealthUI;
@@ -62,24 +69,26 @@ public class UIController : MonoBehaviour
 
     void Awake()
     {
-        if(!instance)
+        if (!instance)
             instance = this;
         else
             Destroy(gameObject);
 
         GetComponent<Canvas>().worldCamera = Camera.main;
-        OnOff = 1; 
-    }
-
-
-     void Start()
-    {
-       
+        OnOff = 1;
     }
     void Update()
     {
         Gold.text = GameManager.instance.inventory.Gold.ToString();
         timerUI.SetActive(OnOff == 0);
+        if (SystemPanel.activeSelf == true && SettingPanel.activeSelf == false)
+        {
+            SystemKeyboardCon();
+        }
+        else if(SettingPanel.activeSelf == true)
+        {
+            SettingKeyboardCon();
+        }
     }
 
     public void GameSettingBtn(int btn)
@@ -152,6 +161,115 @@ public class UIController : MonoBehaviour
         TimerOnOff.text = OnOff == 0 ? "켜짐" : "꺼짐";
         //gameManager.SaveSettingData();
     }
+    public void SystemKeyboardCon()
+    {
+       
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Slot != 0)
+        {
+            SystemPoint.transform.position = new Vector3(SystemPoint.transform.position.x, SystemButton[Slot - 1].transform.position.y);
+                    Slot -= 1;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow) && Slot != 3)
+        {
+            SystemPoint.transform.position = new Vector3(SystemPoint.transform.position.x, SystemButton[Slot + 1].transform.position.y);
+                    Slot += 1;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            GameManager.instance.SystemBtn(Slot + 1);
+        }
+    }
+    public void SettingKeyboardCon()
+    {
+        if (DataResetCheck.activeSelf == false)
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow) && settingslot != 10)
+            {
+                if (settingslot == 0 || settingslot == 2 || settingslot == 7)
+                {
+                    SettingPoint.transform.position = new Vector3(SettingButton[settingslot + 1].transform.position.x + 40, SettingButton[settingslot + 1].transform.position.y);
+                    settingslot += 1;
 
-
+                }
+                else if (settingslot == 3 || settingslot == 4 || settingslot == 5 || settingslot == 8 || settingslot == 9)
+                {
+                    SettingPoint.transform.position = new Vector3(SettingButton[settingslot + 1].transform.position.x - 120, SettingButton[settingslot + 1].transform.position.y);
+                    settingslot += 1;
+                }
+                else
+                {
+                    SettingPoint.transform.position = new Vector3(SettingButton[settingslot + 1].transform.position.x - 40, SettingButton[settingslot + 1].transform.position.y);
+                    settingslot += 1;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && settingslot != 0)
+            {
+                if (settingslot == 2 || settingslot == 4 || settingslot == 9)
+                {
+                    SettingPoint.transform.position = new Vector3(SettingButton[settingslot - 1].transform.position.x + 40, SettingButton[settingslot - 1].transform.position.y);
+                    settingslot -= 1;
+                }
+                else if (settingslot == 5 || settingslot == 6 || settingslot == 7 || settingslot == 10)
+                {
+                    SettingPoint.transform.position = new Vector3(SettingButton[settingslot - 1].transform.position.x - 120, SettingButton[settingslot - 1].transform.position.y);
+                    settingslot -= 1;
+                }
+                else
+                {
+                    SettingPoint.transform.position = new Vector3(SettingButton[settingslot - 1].transform.position.x - 40, SettingButton[settingslot - 1].transform.position.y);
+                    settingslot -= 1;
+                }
+            }         
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow) && settingslot != 12)
+            {
+                SettingPoint.transform.position = new Vector3(SettingButton[12].transform.position.x - 150, SettingButton[12].transform.position.y);
+                settingslot  = 12;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && settingslot != 11)
+            {
+                SettingPoint.transform.position = new Vector3(SettingButton[11].transform.position.x - 150, SettingButton[11].transform.position.y);
+                settingslot = 11;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            switch (settingslot)
+            {
+                case 0:
+                    GameManager.instance.GameSettingBtn(2);
+                    break;
+                case 1:
+                    GameManager.instance.GameSettingBtn(1);
+                    break;
+                case 2:
+                case 3:
+                    GameManager.instance.GameSettingBtn(3);
+                    break;
+                case 6:
+                    GameManager.instance.GameSettingBtn(5);
+                    break;
+                case 7:
+                case 8:
+                    timerSetting();
+                    break;
+                case 9:
+                    GameManager.instance.SystemBtn(5);
+                    break;
+                case 10:
+                    GameManager.instance.SystemBtn(6);
+                    break;
+                case 11:
+                    GameManager.instance.DataReset(0);
+                    break;
+                case 12:
+                    GameManager.instance.DataReset(1);
+                    SettingPoint.transform.position = new Vector3(SettingButton[6].transform.position.x - 120, SettingButton[6].transform.position.y);
+                    settingslot = 6;
+                    break;
+            }
+        }
+    }
 }

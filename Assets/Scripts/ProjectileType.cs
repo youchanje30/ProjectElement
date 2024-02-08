@@ -83,7 +83,7 @@ public class ProjectileType : MonoBehaviour
         //     }
         // }
         // else if (other.CompareTag("Monster") && Projectile != Type.Bomb)
-        if(other.gameObject.layer == LayerMask.NameToLayer("Platform") && Projectile == Type.Arrow || other.gameObject.layer == LayerMask.NameToLayer("Platform") && Projectile == Type.WindSkill)
+        if(other.gameObject.layer == LayerMask.NameToLayer("Platform") && Projectile == Type.Arrow || other.gameObject.layer == LayerMask.NameToLayer("Platform") && Projectile == Type.Magic || other.gameObject.layer == LayerMask.NameToLayer("Platform") && Projectile == Type.WindSkill)
         {
             Remove();
         }

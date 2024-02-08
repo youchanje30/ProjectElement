@@ -195,6 +195,8 @@ public class GameManager : MonoBehaviour
         isSystem = !isSystem;
         SystemPanel.SetActive(isSystem);
         Time.timeScale = 0f;
+        UIController.instance.SystemPoint.transform.position = new Vector3(UIController.instance.SystemPoint.transform.position.x, UIController.instance.SystemButton[0].transform.position.y);
+        UIController.instance.Slot = 0;
     }
 
     public void TimerSetting()
@@ -252,6 +254,8 @@ public class GameManager : MonoBehaviour
             //카메라 흔들림
             case 5: // 데이터 초기화
                DataResetCheck.SetActive(true);
+                UIController.instance.SettingPoint.transform.position = new Vector3(UIController.instance.SettingButton[11].transform.position.x - 150, UIController.instance.SettingButton[11].transform.position.y);
+                UIController.instance.settingslot = 11;
                 break;
         }
     }
@@ -303,6 +307,8 @@ public class GameManager : MonoBehaviour
                 SettingPanel.SetActive(true);
                 SetResolution();
                 OptionSetting();
+                UIController.instance.SettingPoint.transform.position = new Vector3(UIController.instance.SettingButton[0].transform.position.x - 40, UIController.instance.SettingButton[0].transform.position.y);
+                UIController.instance.settingslot = 0;
                 break;
 
             case 4: //Exit Btn
