@@ -244,7 +244,7 @@ public class ActiveSkill : MonoBehaviour
         isCharging = false;
         isWater = false;
         // SkillReady[(int)battle.WeaponType] = true;
-        skillData[(int)battle.WeaponType].isSkillReady = true;
+        //skillData[(int)battle.WeaponType].isSkillReady = true;
         rigid2D.gravityScale = gravity;
         StartCoroutine(ReturnSkill());  
     }
