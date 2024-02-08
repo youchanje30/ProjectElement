@@ -747,7 +747,7 @@ MonoBehaviour:
     shakeForce: 0
     weaponCrtDamage: 0
     weaponDamage: 100
-  - weaponType: 2
+  - weaponType: 1
     atkPos: {fileID: 7154946036308757365}
     atkSize: {x: 2, y: 2.5}
     atkCoolTime: 0.4
@@ -755,8 +755,8 @@ MonoBehaviour:
     shakeDuration: 0.1
     shakeForce: 10
     weaponCrtDamage: 0
-    weaponDamage: 100
-  - weaponType: 3
+    weaponDamage: 1
+  - weaponType: 2
     atkPos: {fileID: 6317585707649509668}
     atkSize: {x: 12, y: 4}
     atkCoolTime: 0.4
@@ -764,8 +764,8 @@ MonoBehaviour:
     shakeDuration: 0
     shakeForce: 0
     weaponCrtDamage: 0
-    weaponDamage: 100
-  - weaponType: 4
+    weaponDamage: 1
+  - weaponType: 3
     atkPos: {fileID: 4135913021082344152}
     atkSize: {x: 4, y: 2}
     atkCoolTime: 0.75
@@ -773,7 +773,7 @@ MonoBehaviour:
     shakeDuration: 0.2
     shakeForce: 10
     weaponCrtDamage: 0
-    weaponDamage: 100
+    weaponDamage: 1
   - weaponType: 4
     atkPos: {fileID: 4315468924003554650}
     atkSize: {x: 1.7, y: 1.7}
@@ -887,15 +887,15 @@ MonoBehaviour:
     tick: 0
   - passiveName: "\uAC80 \uD654\uC0C1"
     rate: 15
-    duration: 2
-    tick: 2
+    duration: 5
+    tick: 1
   - passiveName: "\uC644\uB4DC \uC2AC\uB85C\uC6B0"
     rate: 100
-    duration: 2
-    tick: 1
+    duration: 4
+    tick: 2
   - passiveName: "\uBC29\uD328 \uBCA0\uB9AC\uC5B4"
     rate: 0
-    duration: 10
+    duration: 5
     tick: 0
   - passiveName: '-'
     rate: 0
@@ -904,7 +904,7 @@ MonoBehaviour:
   burnDamage: 8
   slowPer: 50
   shieldPer: 20
-  bowPer: 20
+  bowPer: 100
   unAtkedTime: 0
 --- !u!114 &4171092834519731156
 MonoBehaviour:

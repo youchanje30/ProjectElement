@@ -127,10 +127,10 @@ MonoBehaviour:
   CameraShakeTxt: {fileID: 0}
   FullScreenTxt: {fileID: 0}
   Scene:
-  - Chapter1_j
-  - Chapter1_j 1
-  - Chapter1_leebohyeon
-  - Chapter1_leebohyeon 1
+  - Stage1
+  - Stage2
+  - Stage3
+  - Stage4
   Chapter: 0
   talkBtn:
   - {fileID: 0}
@@ -143,7 +143,6 @@ MonoBehaviour:
   isSelected: 0
   ObjData: {fileID: 0}
   TimerVal: 0
-  isTimer: 0
   ShopUI: {fileID: 0}
   isShop: 0
   viewBuy: 1
