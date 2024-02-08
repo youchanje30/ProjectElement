@@ -731,6 +731,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7876326807568582025, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: DashCoolTime
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7876326807568582025, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: dashingPower
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

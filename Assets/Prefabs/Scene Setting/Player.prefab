@@ -445,7 +445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5050139407081948622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.938, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -505,7 +505,7 @@ Transform:
   - {fileID: 1175219381179392127}
   - {fileID: 8358024266522001532}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4316813253061002341
 SpriteRenderer:
@@ -678,9 +678,9 @@ MonoBehaviour:
   isGround: 0
   maxJumpCnt: 2
   curJumpCnt: 0
-  DashCoolTime: 1
+  DashCoolTime: 0.7
   isDashing: 0
-  dashingPower: 10
+  dashingPower: 12
   maxDashCnt: 1
   curDashCnt: 0
 --- !u!95 &9054463393116159097
@@ -755,7 +755,7 @@ MonoBehaviour:
     shakeDuration: 0.1
     shakeForce: 10
     weaponCrtDamage: 0
-    weaponDamage: 100
+    weaponDamage: 1
   - weaponType: 2
     atkPos: {fileID: 6317585707649509668}
     atkSize: {x: 12, y: 4}
@@ -764,7 +764,7 @@ MonoBehaviour:
     shakeDuration: 0
     shakeForce: 0
     weaponCrtDamage: 0
-    weaponDamage: 100
+    weaponDamage: 1
   - weaponType: 3
     atkPos: {fileID: 4135913021082344152}
     atkSize: {x: 4, y: 2}
@@ -773,7 +773,7 @@ MonoBehaviour:
     shakeDuration: 0.2
     shakeForce: 10
     weaponCrtDamage: 0
-    weaponDamage: 100
+    weaponDamage: 1
   - weaponType: 4
     atkPos: {fileID: 4315468924003554650}
     atkSize: {x: 1.7, y: 1.7}
@@ -840,9 +840,9 @@ MonoBehaviour:
   strength: 0
   dexterity: 0
   luck: 0
-  basicMaxHp: 500
+  basicMaxHp: 50
   basicHpPer: 100
-  basicDamage: 3
+  basicDamage: 5
   basicDamagePer: 100
   basicAtkSpeed: 100
   basicCrtRate: 5
@@ -886,12 +886,12 @@ MonoBehaviour:
     duration: 0
     tick: 0
   - passiveName: "\uAC80 \uD654\uC0C1"
-    rate: 50
+    rate: 15
     duration: 5
     tick: 1
   - passiveName: "\uC644\uB4DC \uC2AC\uB85C\uC6B0"
     rate: 100
-    duration: 5
+    duration: 4
     tick: 2
   - passiveName: "\uBC29\uD328 \uBCA0\uB9AC\uC5B4"
     rate: 0
@@ -901,10 +901,10 @@ MonoBehaviour:
     rate: 0
     duration: 0
     tick: 0
-  burnDamage: 10
-  slowPer: 30
+  burnDamage: 8
+  slowPer: 50
   shieldPer: 20
-  bowPer: 20
+  bowPer: 100
   unAtkedTime: 0
 --- !u!114 &4171092834519731156
 MonoBehaviour:
@@ -925,61 +925,61 @@ MonoBehaviour:
     skillCoolTime: 0
     isSkillReady: 1
   - weaponName: "\uAC80"
-    skillCoolTime: 1
+    skillCoolTime: 7
     isSkillReady: 1
   - weaponName: "\uC644\uB4DC"
-    skillCoolTime: 1
+    skillCoolTime: 7
     isSkillReady: 1
   - weaponName: "\uBC29\uD328"
-    skillCoolTime: 1
+    skillCoolTime: 6
     isSkillReady: 1
   - weaponName: "\uD65C"
-    skillCoolTime: 1
+    skillCoolTime: 9
     isSkillReady: 1
   isCharging: 0
   isUnderTheSea: 0
   FireFloor: {fileID: 3096906974402678174, guid: db7de1076855ad84ba51dd45a7123812, type: 3}
-  RangeCount: 4
-  DiffusionDamageIncreaseRate: 20
-  detectlength: 20
+  RangeCount: 10
+  DiffusionDamageIncreaseRate: 180
+  detectlength: 15
   layer:
     serializedVersion: 2
     m_Bits: 64
   ActiveTime: 3
-  FireShakeTime: 0.05
-  FireShakeMagnitude: 10
+  FireShakeTime: 0.2
+  FireShakeMagnitude: 1.5
   WaterBall: {fileID: 3054785954419580376, guid: 02e9dce7710091749a6c01825bbde7f9, type: 3}
   isWater: 0
-  WaterDamageIncreaseRate: 0
-  BombDamageIncreaseRate: 0
-  FloatingForce: 12
-  FloatingTime: 0.5
-  WaterChargeTime: 2
+  WaterDamageIncreaseRate: 20
+  BombDamageIncreaseRate: 150
+  FloatingForce: 15
+  FloatingTime: 0.2
+  WaterChargeTime: 0.5
   BallPos:
   - {x: -1.5, y: 2}
   - {x: 0, y: 2}
   - {x: 1.5, y: 2}
   BallGravity: 10
   BallSpeed: 8
-  BombRange: {x: 10, y: 10}
+  BombRange: {x: 15, y: 10}
   BombChargeTime: 1
   WaterY: 0
   activeTime: 10
-  BombShakeTime: 0.1
-  BombShakeMagnitude: 30
+  BombShakeTime: 0.15
+  BombShakeMagnitude: 20
   isSouth: 0
-  JumpDamageIncreaseRate: 20
-  LandDamageIncreaseRate: 50
-  JumpForce: 30
-  FallForce: 50
-  StunTime: 100
-  RisingTime: 1
+  JumpDamageIncreaseRate: 0
+  LandDamageIncreaseRate: 200
+  JumpForce: 20
+  FallForce: 40
+  StunTime: 5
+  RisingTime: 0.5
   LandingPos:
   - {fileID: 2987700167441146525}
   - {fileID: 3200210186239389953}
   LandingRange:
-  - {x: 4, y: 1, z: 0}
-  - {x: 2, y: 2, z: 0}
+  - {x: 10, y: 2, z: 0}
+  - {x: 0, y: 0, z: 0}
   JumpShakeTime: 0.2
   JumpShakeMagnitude: 0.25
   SouthShakeTime: 0.1
@@ -988,12 +988,12 @@ MonoBehaviour:
   LandingShakeMagnitude: 20
   Arrow: {fileID: 3054785954419580376, guid: 88320b9d25572f34fac3f5c97b155539, type: 3}
   Pos: {fileID: 4315468924003554650}
-  ArrowDamageIncreaseRate: 200
-  ChargeTime: 2
+  ArrowDamageIncreaseRate: 250
+  ChargeTime: 2.5
   InvicibleTime: 1
-  Delay: 1
-  WindShakeTime: 0.1
-  WindShakeMagnitude: 30
+  Delay: 0.7
+  WindShakeTime: 0.05
+  WindShakeMagnitude: 5
 --- !u!114 &6781280166762617137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battle: {fileID: 0}
   SouthSpiritDamageIncreaseRate: 100
-  BarrierDecreaseRate: 0
+  BarrierDecreaseRate: 3
 --- !u!1 &7219966532605892540
 GameObject:
   m_ObjectHideFlags: 0

@@ -353,29 +353,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
-      propertyPath: weaponData.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
-      propertyPath: weaponData.Array.data[1].weaponType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
-      propertyPath: weaponData.Array.data[2].weaponType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
-      propertyPath: weaponData.Array.data[3].weaponType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7141198254234339824, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7141198254234339824, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
