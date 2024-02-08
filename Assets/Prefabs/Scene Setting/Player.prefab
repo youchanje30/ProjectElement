@@ -618,7 +618,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0022688508, y: -0.016181827}
+  m_Offset: {x: 0, y: -0.016181827}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -652,7 +652,12 @@ MonoBehaviour:
   - {fileID: 9100000, guid: b622ced3de7f13541935dcd9d1be885a, type: 2}
   - {fileID: 9100000, guid: 6c22786c3c8be884cb0957e7a46afb3b, type: 2}
   - {fileID: 9100000, guid: c36ed572a00539e4cba40334d6a15f33, type: 2}
+  JumpKey: 99
+  Jumpkey: 32
+  DashKey: 122
+  atkKey: 120
   turnToChargeTime: 0.1
+  SkillKey: 102
   ioInventory: 9
   InteractKey: 101
   FirstSlot: 97
@@ -684,7 +689,7 @@ MonoBehaviour:
   maxDashCnt: 1
   curDashCnt: 0
   floorY: 0.85
-  floorSize: {x: 0.55, y: 0.05}
+  floorSize: {x: 1.05, y: 0.05}
   isNearFloor: 0
   nearFloorY: 0.8
   nearFloorX: 0.5

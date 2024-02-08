@@ -37,17 +37,18 @@ public class AudioManager : MonoBehaviour
 
         if(!SFXVolumeSlider)
             SFXVolumeSlider = uiCon.sfxSlider;
+        Init();
     }
 
     void Start()
     {
-        if(!BGMVolumeSlider)
-            BGMVolumeSlider = UIController.instance.bgmSlider;
+        // if(!BGMVolumeSlider)
+        //     BGMVolumeSlider = UIController.instance.bgmSlider;
 
-        if(!SFXVolumeSlider)
-            SFXVolumeSlider = UIController.instance.sfxSlider;
+        // if(!SFXVolumeSlider)
+        //     SFXVolumeSlider = UIController.instance.sfxSlider;
 
-        Init();
+        // Init();
     }
 
     void Update()
