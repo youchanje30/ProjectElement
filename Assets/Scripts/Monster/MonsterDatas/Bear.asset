@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectType: 1
   atkType: 1
-  maxMoveSpeed: 3
+  maxMoveSpeed: 5
   maxHp: 1000
-  maxDamage: 5
-  maxAtkCoolTime: 3
-  maxKnockbackTime: 0.2
+  maxDamage: 15
+  maxAtkCoolTime: 5
+  maxKnockbackTime: 0
   imageScale: 2.8
   floorRayX: 2
   floorRayY: 1.2
