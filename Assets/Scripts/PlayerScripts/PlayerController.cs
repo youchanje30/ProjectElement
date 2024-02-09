@@ -162,10 +162,18 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(ioInventory) && Time.timeScale != 0)
+        if (Input.GetKeyDown(ioInventory) && Time.timeScale != 0 && !manager.isShop && !manager.isSlotSwap && !manager.isAction)
         {
-           StartCoroutine( manager.inventoryUI.InventoryAnim());
+            if ( manager.isInven)
+            {
+                Invoke("closeinven", 0.1f);
+            }
+            else 
+            { 
+            StartCoroutine( manager.inventoryUI.InventoryAnim());
+            }
         }
+       
 
         
         // if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.isInven|| battle.fallAtking || ischarging || battle.atking || skill.isCharging)//|| battle.Atking)
@@ -410,5 +418,6 @@ public class PlayerController : MonoBehaviour
         manager.isAction = false;
         manager.isInven = false;
         manager.inventoryUI.InvenUI.SetActive(false);
+        manager.inventoryUI.inven.SetActive(false);
     }
 }

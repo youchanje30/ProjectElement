@@ -60,6 +60,7 @@ public class  InventoryUI: MonoBehaviour
     }
     public void SetCard()
     {
+        
         for (int i = 0; i < EleCards.Length; i++)
         {
             EleCards[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalImg;
@@ -88,21 +89,15 @@ public class  InventoryUI: MonoBehaviour
             }
         }
     }
-    public void SetItem()
-    {
-
-    }
     public IEnumerator InventoryAnim()
     {
-        inven.SetActive(gameManager.isInven);
-        ItemInfo.SetActive(false);
-        Info.SetActive(false);
+        //ItemInfo.SetActive(false);
+        //Info.SetActive(false);
         gameManager.isInven = !gameManager.isInven;
         InvenUI.SetActive(gameManager.isInven);
-        animator.SetTrigger("OpenInven");
-        yield return new WaitForSeconds(0.2f);
+        animator.SetTrigger("OpenInven");   
+         yield return new WaitForSeconds(0.2f);
         inven.SetActive(gameManager.isInven);
         SetCard();
-        SetItem();
     }  
 }
