@@ -387,11 +387,13 @@ public class PlayerController : MonoBehaviour
     }
     public void closeShop()
     {
+        manager.isAction = false;
         manager.isShop = false;
         manager.ShopUI.SetActive(false);
     }
     public void closeSpiritawake()
     {
+        manager.isAction = false;
         manager.isSpiritAwake = false;
         manager.SpiritAwakeUI.SetActive(false);
     }
@@ -404,6 +406,7 @@ public class PlayerController : MonoBehaviour
     }
     public void closeinven()
     {
+        manager.isAction = false;
         manager.isInven = false;
         manager.inventoryUI.InvenUI.SetActive(false);
     }

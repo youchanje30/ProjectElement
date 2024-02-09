@@ -88,18 +88,21 @@ public class UIController : MonoBehaviour
         if (SystemPanel.activeSelf == true && SettingPanel.activeSelf == false)
         {
             SystemKeyboardCon();
+           
         }
         else if(SettingPanel.activeSelf == true)
         {
             SettingKeyboardCon();
+
         }
         else if(TalkPanel.activeSelf == true)
         {
-            TalkKeyboardCon();
+            Invoke("TalkKeyboardCon", 0.05f);
+
         }
         else if(statusUpdrageUI.activeSelf == true)
         {
-            StatusUPKeyboardCon();
+            Invoke("StatusUPKeyboardCon", 0.05f);
         }
     }
 
@@ -191,6 +194,7 @@ public class UIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             GameManager.instance.SystemBtn(Slot + 1);
+           
         }
     }
     public void SettingKeyboardCon()
@@ -284,6 +288,7 @@ public class UIController : MonoBehaviour
                     settingslot = 6;
                     break;
             }
+   
         }
     }
     public void TalkKeyboardCon()
@@ -300,7 +305,7 @@ public class UIController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Invoke("activeTalk", 0.01f);
+            Invoke("activeTalk", 0.05f);
         }
     }
     public void StatusUPKeyboardCon()
@@ -317,7 +322,7 @@ public class UIController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Invoke("Upgradestatus", 0.01f);
+            Invoke("Upgradestatus", 0.05f);
         }
     }
     public void activeTalk()
@@ -328,4 +333,5 @@ public class UIController : MonoBehaviour
     {
         GameManager.instance.UpgradeStatus(Slot);
     }
+
 }

@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 && !isAction && !isShop && !isSlotSwap && !isSpiritAwake && !isInven && !isSystem)
         {
             Invoke("OpenSystem", 0.01f);
+            isAction = true;
         }
         if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0f && isSystem)
         {
@@ -179,6 +180,7 @@ public class GameManager : MonoBehaviour
             //GraphicSetting();
             SetSettingData();
             Time.timeScale = 1f;
+            isAction = false;
         }
         if (isStatusUpgrade)
         {
@@ -233,7 +235,6 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 resolutionDropdown.value++;
-
                 break;
 
             case 2:
@@ -293,10 +294,11 @@ public class GameManager : MonoBehaviour
         {
             case 1: //Resume Btn
                 SystemPanel.SetActive(false);
-                SettingPanel.SetActive(false);
+                SettingPanel.SetActive(false);   
+                isAction = false;
                 GraphicSetting();
                 isSystem = !isSystem;
-                Time.timeScale = 1f;
+                Time.timeScale = 1f;                
                 break;
 
             case 2: //Reset Btn
@@ -544,7 +546,7 @@ public class GameManager : MonoBehaviour
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
             //option.text = item.width + " x " + item.height + "  " + item.refreshRateRatio + "hz";
             option.text = item.width + " x " + item.height + "  ";
-            if(/*item.width <= 1920 && item.height <=1080 &&*/ item.refreshRateRatio.value == 60)
+            if(/*item.width <= 1920 && item.height <=1080 &&*/ item.refreshRateRatio.value <= 60 && item.refreshRateRatio.value > 59.9)
             {
                 resolutionDropdown.options.Add(option);
                 checkedResolutions.Add(item);

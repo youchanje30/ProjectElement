@@ -6,7 +6,6 @@ public class Interact : MonoBehaviour
 {
     [SerializeField] private GameObject scanObj;
     private Inventory inven;
-    public GameObject ScanObj;
     public bool isActionning;
 
 
@@ -24,7 +23,6 @@ public class Interact : MonoBehaviour
             if(scanObj != null)
             {
                 scanObj.gameObject.GetComponent<ObjectController>().InteractView(false);
-                ScanObj = scanObj;
             }
                 
 
@@ -32,7 +30,6 @@ public class Interact : MonoBehaviour
 
             scanObj = other.gameObject;
             scanObj.gameObject.GetComponent<ObjectController>().InteractView(true);
-            ScanObj = scanObj;
         }
         else if(other.CompareTag("Coin"))
         {
@@ -49,7 +46,6 @@ public class Interact : MonoBehaviour
         {
             scanObj = other.gameObject;
             scanObj.gameObject.GetComponent<ObjectController>().InteractView(true);
-            ScanObj = scanObj;
         }
     }
 
