@@ -187,7 +187,7 @@ public class Movement2D : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-           if(other.gameObject.CompareTag("OneWayPlatForm"))
+        if(other.gameObject.CompareTag("OneWayPlatForm"))
         {
             currentOneWayPlatform = null;
         }
@@ -198,7 +198,7 @@ public class Movement2D : MonoBehaviour
         CompositeCollider2D platformCollider = currentOneWayPlatform.GetComponent<CompositeCollider2D>();
 
         Physics2D.IgnoreCollision(boxCollider2D, platformCollider);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.45f);
         Physics2D.IgnoreCollision(boxCollider2D, platformCollider, false);
         
     }

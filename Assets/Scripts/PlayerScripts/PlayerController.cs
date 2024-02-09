@@ -295,6 +295,7 @@ public class PlayerController : MonoBehaviour
         // if (pressedSkillKey && skill.SkillReady[(int)battle.WeaponType] )
         if (pressedSkillKey && skill.skillData[(int)battle.WeaponType].isSkillReady)
         {
+            animator.SetTrigger("Skill");
             skill.TriggerSkill(battle.WeaponType);
         }
     }

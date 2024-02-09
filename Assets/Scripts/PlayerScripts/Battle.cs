@@ -139,7 +139,10 @@ public class Battle : MonoBehaviour
             }
             Debug.Log("Stop FallingAtk");
         }
-        barrier.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, (status.barrier / (status.maxHp * passive.shieldPer * 0.01f)));
+
+        if(passive.isGetBarrier)
+            barrier.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 255f * (status.barrier / (status.maxHp * passive.shieldPer * 0.01f))) / 255;
+
         UIController.instance.HpFill.fillAmount = Mathf.Lerp(UIController.instance.HpFill.fillAmount, status.curHp / status.maxHp, Time.deltaTime * 5f);
 
         if(WeaponType == WeaponTypes.Sword)
@@ -181,6 +184,7 @@ public class Battle : MonoBehaviour
             {
                 getDmg -= status.barrier;
                 status.barrier = 0f;
+                barrier.SetActive(false);
             }
 
             status.curHp -= getDmg;
@@ -516,7 +520,6 @@ public class Battle : MonoBehaviour
         rigid2D.velocity = new Vector2(transform.localScale.x * shieldDashAtkDashPower, 0f);
 
         yield return new WaitForSeconds(shieldDashAtkDashTime * 0.5f);
-        Debug.Log("DashGuard Atk");
 
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(shieldDashAtkPos.position, shieldDashAtkSize, 0);
         foreach(Collider2D collider in collider2Ds)

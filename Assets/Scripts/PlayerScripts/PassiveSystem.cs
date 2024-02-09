@@ -61,6 +61,8 @@ public class PassiveSystem : MonoBehaviour
             {
                 isGetBarrier = true;
                 unAtkedTime = 0f;
+                battle.barrier.SetActive(true);
+                battle.barrier.GetComponent<Animator>().SetTrigger("GetBarrier");
                 ActivePassive(WeaponTypes.Shield);
             }
         }       
@@ -107,6 +109,6 @@ public class PassiveSystem : MonoBehaviour
     public void Atked()
     {
         unAtkedTime = 0f;
-        isGetBarrier = false;
+        // isGetBarrier = false;
     }
 }
