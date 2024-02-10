@@ -293,19 +293,19 @@ public class UIController : MonoBehaviour
     }
     public void TalkKeyboardCon()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && Slot != 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Slot != 0 && GameManager.instance.talkBtn[1].activeSelf == true && GameManager.instance.talkBtn[2].activeSelf == true)
         {
             TalkPoint.transform.position = new Vector3(TalkPoint.transform.position.x, TalkButton[Slot - 1].transform.position.y);
             Slot -= 1;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow) && Slot != 2)
+        if (Input.GetKeyDown(KeyCode.DownArrow) && Slot != 2 && GameManager.instance.talkBtn[1].activeSelf == true && GameManager.instance.talkBtn[2].activeSelf == true)
         {
             TalkPoint.transform.position = new Vector3(TalkPoint.transform.position.x, TalkButton[Slot + 1].transform.position.y);
             Slot += 1;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Invoke("activeTalk", 0.05f);
+            Invoke("activeTalk", 0.1f);
         }
     }
     public void StatusUPKeyboardCon()
