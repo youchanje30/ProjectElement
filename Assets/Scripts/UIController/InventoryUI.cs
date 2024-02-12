@@ -55,8 +55,16 @@ public class  InventoryUI: MonoBehaviour
             ItemInfo.GetComponent<RectTransform>().SetAsLastSibling();
             ItemInfo.transform.position = new Vector3(Input.mousePosition.x - 160, Input.mousePosition.y + 100);
         }
- 
-    
+        if(Input.GetKeyDown(KeyCode.E) && Slot[0].GetComponent<CardController>().ismove == false 
+            && Slot[1].GetComponent<CardController>().ismove == false && Slot[2].GetComponent<CardController>().ismove == false)
+        {
+            for(int i = 0; i < Slot.Length; i++)
+            {
+                Slot[i].GetComponent<CardController>().ismove = true;
+            }
+        }
+
+
     }
     public void SetCard()
     {

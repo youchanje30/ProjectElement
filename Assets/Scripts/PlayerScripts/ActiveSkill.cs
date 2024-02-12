@@ -171,7 +171,7 @@ public class ActiveSkill : MonoBehaviour
         {
             case WeaponTypes.Sword:
                 // CameraController.instance.ShakeCamera(FireShakeTime, FireShakeMagnitude);
-                FireSkill();
+                //FireSkill();
                 break;
             case WeaponTypes.Wand:
                 animator.SetTrigger("Skill");

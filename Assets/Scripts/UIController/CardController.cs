@@ -35,10 +35,10 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         if (ismove == true)
           MoveElementsCard();
 
-        if (Input.GetKeyDown(KeyCode.E) && gameManager.isInven)
-        {
-            ismove = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.E) && gameManager.isInven)
+        //{
+        //    ismove = true;
+        //}
     }
 
     void Awake()
