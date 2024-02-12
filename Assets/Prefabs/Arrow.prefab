@@ -164,6 +164,9 @@ MonoBehaviour:
   Projectile: 0
   battle: {fileID: 0}
   rigid: {fileID: 3137563934006655373}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   Damage: 2
   moveSpeed: 5
   target: {fileID: 0}

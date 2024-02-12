@@ -474,6 +474,37 @@ Transform:
   m_Father: {fileID: 5968144621071190073}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5703899125636749365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883222462688627655}
+  m_Layer: 3
+  m_Name: Bow Skill Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &883222462688627655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5703899125636749365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2183464480881181263}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7141198254234339824
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +558,7 @@ Transform:
   - {fileID: 5236275807440971110}
   - {fileID: 1175219381179392127}
   - {fileID: 8358024266522001532}
+  - {fileID: 883222462688627655}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1020,7 +1052,7 @@ MonoBehaviour:
   LandingShakeTime: 0.2
   LandingShakeMagnitude: 20
   Arrow: {fileID: 3054785954419580376, guid: 88320b9d25572f34fac3f5c97b155539, type: 3}
-  Pos: {fileID: 4315468924003554650}
+  Pos: {fileID: 883222462688627655}
   ArrowDamageIncreaseRate: 250
   ChargeTime: 2.5
   InvicibleTime: 1
@@ -1054,6 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f1f752711a7db4eb9940291e226361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hit: 0
 --- !u!1 &7219966532605892540
 GameObject:
   m_ObjectHideFlags: 0

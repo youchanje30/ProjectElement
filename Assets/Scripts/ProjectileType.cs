@@ -13,6 +13,7 @@ public class ProjectileType : MonoBehaviour
     private CapsuleCollider2D Collider2D;
     [SerializeField] Battle battle;
     [SerializeField] Rigidbody2D rigid;
+    [SerializeField] int groundLayer = 6;
     ActiveSkill skill;
     public float Damage;
     public float moveSpeed;
@@ -23,6 +24,7 @@ public class ProjectileType : MonoBehaviour
     public float per;
     [Tooltip("관통 후 데미지 감소율 %")]
     public float DeclineRate;
+    
     
     void Awake()
     {
@@ -88,14 +90,14 @@ public class ProjectileType : MonoBehaviour
         //     }
         // }
         // else if (other.CompareTag("Monster") && Projectile != Type.Bomb)
-        if(other.gameObject.layer == LayerMask.NameToLayer("Platform") && Projectile == Type.Arrow || other.gameObject.layer == LayerMask.NameToLayer("Platform") && Projectile == Type.Magic || other.gameObject.layer == LayerMask.NameToLayer("Platform") && Projectile == Type.WindSkill)
+        if(other.gameObject.layer == groundLayer && (Projectile == Type.Arrow || Projectile == Type.Magic || Projectile == Type.WindSkill))
         {
             Remove();
         }
         if (other.CompareTag("Monster") && Projectile != Type.Bomb)
         {
-            // other.GetComponent<Monster>().GetDamaged(Damage);
-                other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
+            other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
+            Debug.Log(Damage);
             if (Projectile == Type.Magic)
             {
                 other.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(0f, duration, tick, BuffTypes.Slow, per);
@@ -126,17 +128,13 @@ public class ProjectileType : MonoBehaviour
 
         if (Projectile == Type.WaterSkill)
         {
-            if (other.gameObject.layer == 6/*|| other.tag == "OneWayPlatForm"*/)
+            if (other.gameObject.layer == groundLayer)
             {
-                WaterY(skill.WaterY);
-                //if (other.tag == "Monster")
-                //{
-                //   // other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
-                //}
-                //Remove();
+                WaterY(); //skill.WaterY);
             }
         }
     }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Monster"))
@@ -155,14 +153,13 @@ public class ProjectileType : MonoBehaviour
 
     public IEnumerator BombAtk()
     {
-        // Debug.Log("BombAtk 1");
-       
-        yield return new WaitForSeconds(skill.BombChargeTime);
-        // CameraController.instance.StartCoroutine(CameraController.instance.Shake(skill.BombShakeTime,skill.BombShakeMagnitude));
+        yield return new WaitForSeconds(skill.BombChargeTime - 0.5f);
+        GetComponent<Animator>().SetTrigger("Bomb");
+
+        yield return new WaitForSeconds(0.5f);
         CameraController.instance.ShakeCamera(skill.BombShakeTime,skill.BombShakeMagnitude);
         
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(transform.position, skill.BombRange, 0);
-        
         foreach (Collider2D collider in collider2Ds)
         {
             if (collider.CompareTag("Monster"))
@@ -179,17 +176,23 @@ public class ProjectileType : MonoBehaviour
         
         Remove();
     }
-    public void WaterY(float y)
+    public void WaterY(float y = 0f)
     {
-        if(transform.position.y <= y)
-        { 
-            transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
-            transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
-            transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
+        // if(transform.position.y <= y)
+        // { 
+        //     transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        //     transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
+        //     transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        //     transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
             
-            StartCoroutine(BombAtk());
-        }
+        //     StartCoroutine(BombAtk());
+        // }
+        transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        // transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
+        transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
+        
+        StartCoroutine(BombAtk());
     }
     //private void OnDrawGizmos()
     //{

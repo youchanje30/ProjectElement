@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
+using UnityEditor.Timeline;
 
 public class ActiveSkill : MonoBehaviour
 {
@@ -92,7 +93,7 @@ public class ActiveSkill : MonoBehaviour
     private bool CanLanding;
     #endregion
     [Space(20f)]
-
+    
     #region 바람
     [TitleGroup("바람 스킬 정보")]
     public GameObject Arrow;
@@ -169,30 +170,32 @@ public class ActiveSkill : MonoBehaviour
         switch (weapontype)
         {
             case WeaponTypes.Sword:
-                // CameraController.instance.StartCoroutine(CameraController.instance.Shake(FireShakeTime, FireShakeMagnitude));
-                CameraController.instance.ShakeCamera(FireShakeTime, FireShakeMagnitude);
-                FIreSkill();
+                // CameraController.instance.ShakeCamera(FireShakeTime, FireShakeMagnitude);
+                FireSkill();
                 break;
             case WeaponTypes.Wand:
+                animator.SetTrigger("Skill");
                 WaterY = transform.position.y;
                 StartCoroutine(WaterSkill());
                 break;
             case WeaponTypes.Shield:
                 // CameraController.instance.StartCoroutine(CameraController.instance.Shake(JumpShakeTime, JumpShakeMagnitude));
-                CameraController.instance.ShakeCamera(JumpShakeTime, JumpShakeMagnitude);
+                animator.SetTrigger("Skill");CameraController.instance.ShakeCamera(JumpShakeTime, JumpShakeMagnitude);
                 StartCoroutine(SouthSkill());
                 break;
             case WeaponTypes.Bow:
-                animator.SetBool("isCharge", true);
-                animator.SetTrigger("Charging");      
+                // animator.SetBool("isCharge", true);
+                // animator.SetTrigger("Charging");
+                animator.SetTrigger("Skill");
                 StartCoroutine(WindSkill());
                 break;
         }
     }
 
     #region 불 정령
-    public void FIreSkill()
+    public void FireSkill()
     {
+        CameraController.instance.ShakeCamera(FireShakeTime, FireShakeMagnitude);
         skillData[(int)battle.WeaponType].isSkillReady = false;
         // SkillReady[(int)battle.WeaponType] = false;
         for (int i = 0; i < RangeCount; i++)
@@ -212,6 +215,8 @@ public class ActiveSkill : MonoBehaviour
                 Fire.GetComponent<ProjectileType>().Damage = DefaultDamage * (1 + (DiffusionDamageIncreaseRate / 100));
             }
         }
+        battle.isSwap = true;
+        battle.atking = false;
         StartCoroutine(ReturnSkill());
     }
     #endregion
@@ -221,6 +226,7 @@ public class ActiveSkill : MonoBehaviour
     {
         float gravity;
         skillData[(int)battle.WeaponType].isSkillReady = false;
+    
         // SkillReady[(int)battle.WeaponType] = false;
         isWater = true;
         battle.isSwap = false;
@@ -295,6 +301,7 @@ public class ActiveSkill : MonoBehaviour
                 battle.isSwap = true;
                 isSouth = false;
                 battle.isGuard = false;
+                EffectManager.instance.SpawnEffect(transform.position, Effect.South, LandingRange[0]);
                 StartCoroutine(movement2D.DashCoolDown(0.01f));
                 StartCoroutine(ReturnSkill());
         }

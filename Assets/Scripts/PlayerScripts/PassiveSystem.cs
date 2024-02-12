@@ -79,6 +79,9 @@ public class PassiveSystem : MonoBehaviour
 
             case WeaponTypes.Shield:
                 status.barrier = status.maxHp * shieldPer * 0.01f;
+                isGetBarrier = true;
+                battle.barrier.SetActive(true);
+                battle.barrier.GetComponent<Animator>().SetTrigger("GetBarrier");
                 break;
 
             case WeaponTypes.Wand:
@@ -98,6 +101,7 @@ public class PassiveSystem : MonoBehaviour
             status.barrier = 0f;
             unAtkedTime = 0f;
             isGetBarrier = false;
+            battle.barrier.SetActive(false);
         }
         
     }
