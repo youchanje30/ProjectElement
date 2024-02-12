@@ -74,6 +74,10 @@ public class Battle : MonoBehaviour
     public bool fallAtking;
     [LabelText("낙하 공격 위치")] [SerializeField] Transform fallDownAtkPos;
     [LabelText("낙하 공격 범위")] [SerializeField] Vector2 fallDownAtkSize;
+    [LabelText("낙하 공격 후딜레이 시간")] [SerializeField] float fallDownAtkTime;
+    float curFallDownAtkTime;
+    bool canFallDownHit;
+    
 
     
     [TitleGroup("스왑 설정")]
@@ -119,25 +123,31 @@ public class Battle : MonoBehaviour
     {
         if(fallAtking && movement2D.isNearFloor)
         {
-            animator.SetBool("isGround", true);
-            animator.SetBool("isAct", false);
-            fallAtking = false;
-            atking = false;
-            rigid2D.gravityScale = originalScale;
-            // rigid2D.velocity = Vector2.zero;
-            
-            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(fallDownAtkPos.position, fallDownAtkSize, 0);
-            foreach(Collider2D collider in collider2Ds)
-            {
-                
-                if(collider.tag == "Monster" || collider.tag == "Destruct")
+            if(canFallDownHit)
+            {   
+                canFallDownHit = false;
+                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(fallDownAtkPos.position, fallDownAtkSize, 0);
+                foreach(Collider2D collider in collider2Ds)
                 {
-                    Atk(collider.gameObject);
-                    
-                    // collider.gameObject.GetComponent<Monster>().GetDamaged(meleeDmg);
+                    if(collider.tag == "Monster" || collider.tag == "Destruct")
+                    {
+                        Atk(collider.gameObject);
+                    }
                 }
             }
-            Debug.Log("Stop FallingAtk");
+            
+            if(curFallDownAtkTime <= fallDownAtkTime)
+            {
+                curFallDownAtkTime += Time.deltaTime;
+            }
+            else
+            {
+                animator.SetBool("isGround", true);
+                animator.SetBool("isAct", false);
+                fallAtking = false;
+                atking = false;
+                rigid2D.gravityScale = originalScale;
+            }          
         }
 
         if(passive.isGetBarrier)
@@ -214,8 +224,7 @@ public class Battle : MonoBehaviour
             status.curHp = status.maxHp;
         }
     }
-
-#endregion
+    #endregion
 
     #region 공격 관련 함수들
     public void Atk(GameObject AtkObj)
@@ -258,7 +267,8 @@ public class Battle : MonoBehaviour
     {
         if(id == 0 && !movement2D.isGround)
         {
-            StartCoroutine(FallDownAtk());
+            if(WeaponType != WeaponTypes.Bow && WeaponType != WeaponTypes.Wand)
+                StartCoroutine(FallDownAtk());
             return;
         }
 
@@ -462,6 +472,8 @@ public class Battle : MonoBehaviour
         {
             // 체공 시간
             // originalScale = rigid2D.gravityScale;
+            curFallDownAtkTime = 0f;
+            canFallDownHit = true;
             atking = true;
             fallAtking = true;
             rigid2D.gravityScale = 0f;

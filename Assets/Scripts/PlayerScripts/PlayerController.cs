@@ -270,7 +270,7 @@ public class PlayerController : MonoBehaviour
                     ischarging = true;
                 }
 
-                if(!isBegincharging && chargingTime >= turnToChargeTime)
+                if(!isBegincharging && (chargingTime >= turnToChargeTime || battle.WeaponType == WeaponTypes.Bow))
                 {
                     isBegincharging = true;
                     animator.SetBool("isCharge", true);

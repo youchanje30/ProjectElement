@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public enum DetectTypes { none, box, capsule }
@@ -46,13 +47,17 @@ public class MonsterBase : MonoBehaviour
     protected bool canTrack; // 추적 이동 canMove와 구분해서 사용예정
     protected bool canAtk;
 
+
     [System.Serializable]
     public struct AtkInfo
     {
-        public Vector3 atkPos;
-        public Vector2 atkSize;
+        [LabelText("공격 종류")] public string atkName;
+        [LabelText("공격 위치")] public Vector3 atkPos;
+        [LabelText("공격 범위")] public Vector2 atkSize;
     }
     
+    [TitleGroup("공격 기본 설정")]
+    [ListDrawerSettings(ShowIndexLabels = true)]
     [SerializeField] protected AtkInfo[] atkInfo;
     #endregion
 
