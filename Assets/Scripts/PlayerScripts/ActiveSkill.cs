@@ -7,7 +7,6 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
-using UnityEditor.Timeline;
 
 public class ActiveSkill : MonoBehaviour
 {
