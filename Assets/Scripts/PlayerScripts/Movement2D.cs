@@ -78,17 +78,15 @@ public class Movement2D : MonoBehaviour
     void Update()
     {
         CheckGround();
-        
 
-
-        if(isGround == true && rigid2D.velocity.y < 0)
+        if(isGround && rigid2D.velocity.y < 0)
         {
             curJumpCnt = maxJumpCnt;
             animator.SetBool("isGround", true);
             animator.SetBool("isAct", false);
         }
 
-        if(isGround == true && rigid2D.velocity.y <= 0 && Input.GetKeyDown(KeyCode.DownArrow))
+        if(isGround && rigid2D.velocity.y <= 0 && Input.GetKeyDown(KeyCode.DownArrow))
         {
             if(currentOneWayPlatform != null)
             {
@@ -96,20 +94,17 @@ public class Movement2D : MonoBehaviour
             }
         }
         
-        if(isGround == true && rigid2D.velocity.y <= 0)
-            animator.SetBool("isGround", isGround);
+        if(isGround && rigid2D.velocity.y <= 0)
+            animator.SetBool("isGround", true);
         else
             animator.SetBool("isGround", false);
+            
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        //Gizmos.DrawCube(footPos, new Vector2(1f, 0.1f));
-        // Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.47f), new Vector2(0.55f, 0.01f));
-        // Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.95f), new Vector2(0.55f, 0.05f));
         Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - floorY), floorSize);
-    
     }
 
 
@@ -213,7 +208,8 @@ public class Movement2D : MonoBehaviour
         {
             Vector2 nearVec = new Vector2(transform.position.x + (1 - i) * nearFloorX, transform.position.y - nearFloorY);
             Debug.DrawRay(nearVec, new Vector3(0, -nearFloorRayLength, 0), new Color(0,1,0));
-            RaycastHit2D raycast = Physics2D.Raycast(nearVec, Vector3.down, nearFloorRayLength, LayerMask.GetMask("Platform"));
+            // RaycastHit2D raycast = Physics2D.Raycast(nearVec, Vector3.down, nearFloorRayLength, LayerMask.GetMask("Platform"));
+            RaycastHit2D raycast = Physics2D.Raycast(nearVec, Vector3.down, nearFloorRayLength, GroundLayer);
 
             if(raycast.collider != null) 
             {

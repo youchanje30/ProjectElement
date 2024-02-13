@@ -313,9 +313,11 @@ MonoBehaviour:
   isStun: 0
   isHit: 0
   atkInfo:
-  - atkPos: {x: -2, y: 0.5, z: 0}
+  - atkName: "\uC190\uC73C\uB85C \uCC0D\uAE30"
+    atkPos: {x: -2, y: 0.5, z: 0}
     atkSize: {x: 8, y: 6}
-  - atkPos: {x: 0, y: -2, z: 0}
+  - atkName: "\uAD81\uC911 \uB545 \uCC0D\uAE30"
+    atkPos: {x: 0, y: -2, z: 0}
     atkSize: {x: 10, y: 5}
   isRushAtk: 0
   atkChargingTime:

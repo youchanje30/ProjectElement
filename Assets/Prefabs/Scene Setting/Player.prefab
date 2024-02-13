@@ -860,6 +860,7 @@ MonoBehaviour:
   fallAtking: 0
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
+  fallDownAtkTime: 1
   isSwap: 0
   swapTime: 0.2
   DamagedDuration: 0.1
