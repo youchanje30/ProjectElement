@@ -46,6 +46,9 @@ public class ActiveSkill : MonoBehaviour
     [LabelText("스킬 발동 시간")] public float ActiveTime;
     [LabelText("스킬 발동 시 진동 시간")] public float FireShakeTime;
     [LabelText("스킬 발동 시 진동 세기")]  public float FireShakeMagnitude;
+    public Transform FirePos;
+    public Vector2 FireRange;
+    [LabelText("불 스킬 데미지 증가율")] public float FIreDamage;
     RaycastHit2D hit;
     RaycastHit2D hit1;
     #endregion
@@ -145,13 +148,11 @@ public class ActiveSkill : MonoBehaviour
                     StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
                     // StartCoroutine(Hit(collider.gameObject, 0.5f));
                     // CameraController.instance.StartCoroutine(CameraController.instance.Shake(SouthShakeTime, SouthShakeMagnitude));
-                    CameraController.instance.ShakeCamera(SouthShakeTime, SouthShakeMagnitude);
-
-                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
+                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (FIreDamage / 100)));              
                 }
                 if( collider.CompareTag("Destruct"))
                 {
-                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
+                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (FIreDamage / 100)));
                 }
             }
             Invoke("RandingSet", RisingTime);
@@ -170,7 +171,7 @@ public class ActiveSkill : MonoBehaviour
         switch (weapontype)
         {
             case WeaponTypes.Sword:
-                // CameraController.instance.ShakeCamera(FireShakeTime, FireShakeMagnitude);
+                //CameraController.instance.ShakeCamera(FireShakeTime, FireShakeMagnitude);
                 //FireSkill();
                 break;
             case WeaponTypes.Wand:
@@ -198,6 +199,24 @@ public class ActiveSkill : MonoBehaviour
         CameraController.instance.ShakeCamera(FireShakeTime, FireShakeMagnitude);
         skillData[(int)battle.WeaponType].isSkillReady = false;
         // SkillReady[(int)battle.WeaponType] = false;
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(FirePos.position, FireRange, 0);
+        foreach (Collider2D collider in collider2Ds)
+        {
+            if (collider.CompareTag("Monster") && collider.GetComponentInParent<MonsterBase>().isHit == false)
+            {
+                collider.GetComponentInParent<MonsterBase>().isHit = true;
+                StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
+                // StartCoroutine(Hit(collider.gameObject, 0.5f));
+                // CameraController.instance.StartCoroutine(CameraController.instance.Shake(SouthShakeTime, SouthShakeMagnitude));
+                CameraController.instance.ShakeCamera(SouthShakeTime, SouthShakeMagnitude);
+
+                SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
+            }
+            if (collider.CompareTag("Destruct"))
+            {
+                SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
+            }
+        }
         for (int i = 0; i < RangeCount; i++)
         {
             hit = Physics2D.Raycast(new Vector2(transform.position.x + i, transform.position.y), transform.up * -20, detectlength, layer);
@@ -380,7 +399,9 @@ public class ActiveSkill : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(LandingPos[0].position, LandingRange[0]);
-        Gizmos.DrawWireCube(LandingPos[1].position, LandingRange[1]);       
+        Gizmos.DrawWireCube(LandingPos[1].position, LandingRange[1]);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(FirePos.position, FireRange);
     }
     public void SkillAtk(GameObject AtkObj, float Damage)
     {

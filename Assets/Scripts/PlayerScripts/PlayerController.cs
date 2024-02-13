@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
             }
             else 
             { 
-            StartCoroutine( manager.inventoryUI.InventoryAnim());
+            manager.inventoryUI.InventoryAnim();
             }
         }
        

@@ -590,13 +590,17 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < ElementImg.Length; i++)
         {
             if (inventory.HavingElement[i].ElementalID != 0)
-            {          
+            {
+                ElementImg[i].transform.GetChild(0).gameObject.SetActive(true);
+                ElementImg[i].transform.GetChild(1).gameObject.SetActive(true);
                 Color color = ElementImg[i].GetComponent<Image>().color;
                 color.a = 1f;
-                ElementImg[i].GetComponent<Image>().color = color;
+                ElementImg[i].GetComponent<Image>().color = color;             
             }
             else
             {
+                ElementImg[i].transform.GetChild(0).gameObject.SetActive(false);
+                ElementImg[i].transform.GetChild(1).gameObject.SetActive(false);
                 Color color = ElementImg[i].GetComponent<Image>().color;
                 color.a = 0f;
                 ElementImg[i].GetComponent<Image>().color = color;

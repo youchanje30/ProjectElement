@@ -93,7 +93,7 @@ public class ProjectileType : MonoBehaviour
         {
             Remove();
         }
-        if (other.CompareTag("Monster") && Projectile != Type.Bomb)
+        if (other.CompareTag("Monster") && Projectile != Type.Bomb && Projectile != Type.FireSkill)
         {
             other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
             Debug.Log(Damage);
@@ -106,7 +106,7 @@ public class ProjectileType : MonoBehaviour
             {
                 battle.PlayerSynergy(other.gameObject);
             }
-            if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill && Projectile != Type.FireSkill)
+            if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill )
             {
                 Destroy(gameObject);
             }
