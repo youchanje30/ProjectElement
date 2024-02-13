@@ -892,6 +892,7 @@ MonoBehaviour:
   arrowNormalSpeed: 20
   arrowChargeDamage: 100
   arrowChargeSpeed: 20
+  magicSpeed: 10
   fallAtking: 0
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
@@ -1098,7 +1099,7 @@ MonoBehaviour:
   Delay: 0.7
   WindShakeTime: 0.05
   WindShakeMagnitude: 5
-  arrowSkillSpeed: 0
+  arrowSkillSpeed: 10
 --- !u!114 &6781280166762617137
 MonoBehaviour:
   m_ObjectHideFlags: 0

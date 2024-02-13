@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Effect { Fire, South}
+public enum SkillEffect { Fire, South }
+public enum AtkEffect { Fire = 2, Water, South, Wind , Crt }
 
 public class EffectManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class EffectManager : MonoBehaviour
 
     public GameObject[] effectPrefabs;
     public List<GameObject>[] effectPools;
+
+    public bool isCrt;
 
 
     void Awake()
@@ -27,18 +30,17 @@ public class EffectManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
 
-    public void SpawnEffect(Vector3 spawnPos, Effect effect, Vector2 size)
+    public void SpawnEffect(Vector3 spawnPos, int effect, Vector2 size)
     {
         GameObject ef = null;
 
-        foreach (var item in effectPools[(int)effect])
+        foreach (var item in effectPools[effect])
         {
             if(!item.activeSelf)
             {
@@ -49,10 +51,19 @@ public class EffectManager : MonoBehaviour
 
         if(!ef)
         {
-            ef = Instantiate(effectPrefabs[(int)effect], transform);
-            effectPools[(int)effect].Add(ef);
+            ef = Instantiate(effectPrefabs[effect], transform);
+            effectPools[effect].Add(ef);
         }
-        ef.GetComponent<EffectController>().size = size;
+
+        if(ef.GetComponent<EffectController>().isFix)
+            ef.GetComponent<EffectController>().size = size;
+
+        if(isCrt)
+        {
+            isCrt = false;
+            SpawnEffect(spawnPos, (int)AtkEffect.Crt, size);
+        }
+
         ef.transform.position = spawnPos;
         ef.SetActive(true);
     }

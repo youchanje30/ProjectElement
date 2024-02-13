@@ -150,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 1662406608036965016, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 8333c1cf217d1fa4896defc59b5e19e0, type: 2}
+      objectReference: {fileID: 9100000, guid: ab742ca3c4c0eef429ba3b3c9754519f, type: 2}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -266,6 +266,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5234046894563744887, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1625852029635147732}
+    - targetCorrespondingSourceObject: {fileID: 4904571500628892550, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4665035976893205946}
   m_SourcePrefab: {fileID: 100100000, guid: bcab59f8b8043a540ad625334218e733, type: 3}
 --- !u!114 &1069022326351027317 stripped
 MonoBehaviour:
@@ -324,6 +327,56 @@ MonoBehaviour:
   - 1
   - 2
   atkCheck: {fileID: 1229426727661310261}
+--- !u!1 &3078978279375968089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4904571500628892550, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+  m_PrefabInstance: {fileID: 7974242877249440991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &4665035976893205946
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078978279375968089}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.1, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 1.8}
+  m_EdgeRadius: 0
 --- !u!114 &5373036055377236901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2610654531360661370, guid: bcab59f8b8043a540ad625334218e733, type: 3}

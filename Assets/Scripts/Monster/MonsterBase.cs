@@ -338,7 +338,6 @@ public class MonsterBase : MonoBehaviour
             SetDead();
         }
 
-        // animator.ResetTrigger("Hurt");
         animator.SetTrigger("Hurt");
 
         if(!canKncokBack) return;

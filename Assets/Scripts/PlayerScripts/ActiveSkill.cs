@@ -198,7 +198,9 @@ public class ActiveSkill : MonoBehaviour
     {
         CameraController.instance.ShakeCamera(FireShakeTime, FireShakeMagnitude);
         skillData[(int)battle.WeaponType].isSkillReady = false;
-        // SkillReady[(int)battle.WeaponType] = false;
+        
+        EffectManager.instance.SpawnEffect(FirePos.position, (int)SkillEffect.Fire, FireRange);
+
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(FirePos.position, FireRange, 0);
         foreach (Collider2D collider in collider2Ds)
         {
@@ -206,8 +208,6 @@ public class ActiveSkill : MonoBehaviour
             {
                 collider.GetComponentInParent<MonsterBase>().isHit = true;
                 StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
-                // StartCoroutine(Hit(collider.gameObject, 0.5f));
-                // CameraController.instance.StartCoroutine(CameraController.instance.Shake(SouthShakeTime, SouthShakeMagnitude));
                 CameraController.instance.ShakeCamera(SouthShakeTime, SouthShakeMagnitude);
 
                 SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
@@ -320,7 +320,7 @@ public class ActiveSkill : MonoBehaviour
                 battle.isSwap = true;
                 isSouth = false;
                 battle.isGuard = false;
-                EffectManager.instance.SpawnEffect(transform.position, Effect.South, LandingRange[0]);
+                EffectManager.instance.SpawnEffect(transform.position, (int)SkillEffect.South, LandingRange[0]);
                 StartCoroutine(movement2D.DashCoolDown(0.01f));
                 StartCoroutine(ReturnSkill());
         }
@@ -411,6 +411,7 @@ public class ActiveSkill : MonoBehaviour
         {
             Debug.Log(Damage);
             AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
+            EffectManager.instance.SpawnEffect(AtkObj.transform.position, 1 + (int)battle.WeaponType, Vector2.one);
         }
 
         if (AtkObj.CompareTag("Destruct"))

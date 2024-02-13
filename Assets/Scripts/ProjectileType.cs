@@ -96,7 +96,8 @@ public class ProjectileType : MonoBehaviour
         if (other.CompareTag("Monster") && Projectile != Type.Bomb && Projectile != Type.FireSkill)
         {
             other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
-            Debug.Log(Damage);
+            EffectManager.instance.SpawnEffect(other.transform.position, 1 + (int)battle.WeaponType, Vector2.one);
+
             if (Projectile == Type.Magic)
             {
                 other.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(0f, duration, tick, BuffTypes.Slow, per);

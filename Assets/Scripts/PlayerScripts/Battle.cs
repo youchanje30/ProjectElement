@@ -77,6 +77,9 @@ public class Battle : MonoBehaviour
     [LabelText("활 차징 발사 속도")] [SerializeField] float arrowChargeSpeed;
     
 
+    [TitleGroup("추가적인 완드 설정")]
+    [LabelText("완드 속도")] [SerializeField] float magicSpeed;
+
 
 
     
@@ -114,11 +117,6 @@ public class Battle : MonoBehaviour
         
         fallAtking = false;
         originalScale = rigid2D.gravityScale;
-
-        // for (int i = 0; i < isAtkReady.Length; i++)
-        // {
-        //     isAtkReady[i] = true;
-        // }
 
         for (int i = 0; i < weaponData.Count; i ++)
             weaponData[i].isAtkReady = true;
@@ -239,12 +237,10 @@ public class Battle : MonoBehaviour
     #region 공격 관련 함수들
     public void Atk(GameObject AtkObj)
     {
-        // CameraController.instance.StartCoroutine(CameraController.instance.Shake(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
-        // CameraController.instance.ShakeCamera(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]);
         CameraController.instance.ShakeCamera(weaponData[(int)WeaponType].shakeDuration, weaponData[(int)WeaponType].shakeForce);
         
         ParticleManager.instance.SpawnParticle(AtkObj.transform.position, AtkObj.transform.position.x - transform.position.x);
-        // CameraController.instance.StartCoroutine(CameraController.instance.ShakeR(shakeDuration[(int)WeaponType], shakeForce[(int)WeaponType]));
+        EffectManager.instance.SpawnEffect(AtkObj.transform.position, 1 + (int)WeaponType, Vector2.one);
         
         if(AtkObj.CompareTag("Monster"))
         {       
@@ -253,16 +249,16 @@ public class Battle : MonoBehaviour
                 Debug.Log(WeatheringDamage);
                 AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(WeatheringDamage);
                 status.barrier *= 1 - (synergy.BarrierDecreaseRate / 100);
-                Debug.Log("베리어: " +status.barrier);
+                Debug.Log("베리어: " + status.barrier);
             }  
             else
             {
                 Debug.Log(atkDamage);
                 AtkObj.GetComponentInParent<MonsterBase>().GetDamaged(atkDamage);
             }
+
             PlayerPasstive(AtkObj);
             PlayerSynergy(AtkObj);
-
             return;
         }
 
@@ -282,7 +278,6 @@ public class Battle : MonoBehaviour
             return;
         }
 
-        // if(!isAtkReady[(int)WeaponType]) return;
         if(!weaponData[(int)WeaponType].isAtkReady) return;
 
         if(WeaponType == WeaponTypes.Bow)
@@ -301,19 +296,14 @@ public class Battle : MonoBehaviour
         {    
             if(WeaponType == WeaponTypes.Shield) StartCoroutine(ShieldGuard());
         }
-        // atking = true;
     }
 
     public IEnumerator Atking()
     {
         rigid2D.velocity = Vector2.zero;
         atking = true;
-        // isAtkReady[(int)WeaponType] = false;
         weaponData[(int)WeaponType].isAtkReady = false;
         animator.SetBool("isAct", true);
-
-        //isSwap = false; 스왑 1안 추가 나중에 주석 풀면 됨
-        // yield return new WaitForSeconds(Left_BeforAtkDelay[weaponType]);
         
         if(WeaponType == WeaponTypes.Wand) 
         {
@@ -333,8 +323,6 @@ public class Battle : MonoBehaviour
         }
         // 공격 중인거 종료 
 
-        /*yield return new WaitForSeconds((Left_AtkCoolTime[(int)WeaponType] / (status.atkSpeed * 0.01f)));
-        isSwap = true; 나중에 주석 풀면 됨*/
         StartCoroutine(ReturnAttack());
 
         yield return null;
@@ -342,7 +330,6 @@ public class Battle : MonoBehaviour
 
     public void AtkDetection()
     {
-        // Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(weaponData[(int)WeaponType].atkPos.position, weaponData[(int)WeaponType].atkSize, 0);
         foreach(Collider2D collider in collider2Ds)
         {
@@ -364,14 +351,6 @@ public class Battle : MonoBehaviour
 
     public IEnumerator ReturnAttack()
     {
-        // for (int i = 0; i < isAtkReady.Length; i++)
-        // {
-        //     if (!isAtkReady[i])
-        //     {
-        //         yield return new WaitForSeconds(atkCoolTime[i] / (status.atkSpeed * 0.01f));
-        //         isAtkReady[i] = true;
-        //     }
-        // }
         for (int i = 0; i < weaponData.Count; i++)
         {
             if (!weaponData[i].isAtkReady)
@@ -392,7 +371,6 @@ public class Battle : MonoBehaviour
             GameObject ThrowArrow = Instantiate(arrow);
             ThrowArrow.GetComponent<ProjectileType>().moveSpeed = arrowNormalSpeed;
             ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
-            // ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
             ThrowArrow.transform.position = weaponData[(int)WeaponType].atkPos.position;
             
             ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
@@ -403,13 +381,11 @@ public class Battle : MonoBehaviour
             GameObject Magic = Instantiate(arrow);
             ProjectileType magic = Magic.GetComponent<ProjectileType>();
             magic.Projectile = Type.Magic;
-            magic.Damage =  atkDamage;
+            magic.Damage = atkDamage;
             Magic.transform.position = transform.position;
             Magic.transform.localScale = new Vector3(transform.localScale.x, Magic.transform.localScale.y, Magic.transform.localScale.z);
-
-            // magic.duration = passive.duration[(int)WeaponType];
-            // magic.tick = passive.tick[(int)WeaponType];
             
+            magic.moveSpeed = magicSpeed;
             magic.duration = passive.passiveData[(int)WeaponType].duration;
             magic.tick = passive.passiveData[(int)WeaponType].tick;
             magic.per = passive.slowPer;
@@ -417,7 +393,6 @@ public class Battle : MonoBehaviour
             Transform target = null;
             float targetDistance = 100;
             
-            // Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(atkPos[(int)WeaponType].position, atkSize[(int)WeaponType], 0);
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(weaponData[(int)WeaponType].atkPos.position, weaponData[(int)WeaponType].atkSize, 0);
             bool isMonster = false;
             foreach(Collider2D collider in collider2Ds)
@@ -431,8 +406,8 @@ public class Battle : MonoBehaviour
 
                 if(collider.CompareTag("Monster") && !isMonster)
                 {
-                        isMonster = true;
-                        target = collider.transform;
+                    isMonster = true;
+                    target = collider.transform;
                 }
                 
                 if(target != null)
