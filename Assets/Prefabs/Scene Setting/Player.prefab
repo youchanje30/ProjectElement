@@ -881,7 +881,7 @@ MonoBehaviour:
     weaponCrtDamage: 0
     weaponDamage: 100
   canComboAtk: 0
-  comboAtkTime: 0.6
+  comboAtkTime: 0.8
   shieldAtkDashTime: 0.1
   shieldAtkDashPower: 10
   shieldDashAtkDashTime: 0.2
@@ -889,18 +889,18 @@ MonoBehaviour:
   shieldDashAtkPos: {fileID: 4472214303243002330}
   shieldDashAtkSize: {x: 4, y: 2}
   barrier: {fileID: 3277141783882987306}
-  arrowNormalSpeed: 20
+  arrowNormalSpeed: 100
   arrowChargeDamage: 100
-  arrowChargeSpeed: 20
-  magicSpeed: 10
+  arrowChargeSpeed: 40
+  magicSpeed: 15
   fallAtking: 0
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
   fallDownAtkTime: 1
   isSwap: 0
-  swapTime: 0.2
+  swapTime: 0.4
   DamagedDuration: 0.1
-  DamagedForce: 10
+  DamagedForce: 2
 --- !u!114 &8509772043893616530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,9 +942,9 @@ MonoBehaviour:
   strength: 0
   dexterity: 0
   luck: 0
-  basicMaxHp: 50
+  basicMaxHp: 100
   basicHpPer: 100
-  basicDamage: 5
+  basicDamage: 3
   basicDamagePer: 100
   basicAtkSpeed: 100
   basicCrtRate: 5
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   - {x: 1.5, y: 2}
   BallGravity: 10
   BallSpeed: 8
-  BombRange: {x: 15, y: 10}
+  BombRange: {x: 5, y: 5}
   BombChargeTime: 1
   WaterY: 0
   activeTime: 10
