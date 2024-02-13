@@ -153,15 +153,15 @@ public class GameManager : MonoBehaviour
         SaveManager.instance.Load();
         SaveManager.instance.AutoSave();
 
-        if (SceneManager.GetActiveScene().name == "Main Scene")
-        {
-            isAction = true;
-            isStatusUpgrade = true;
-            statusUpgradeTimes = 3;
-            statusUpdrageUI.SetActive(true);
-            UIController.instance.statusUpPoint.transform.position = new Vector3(UIController.instance.statusUpButton[0].transform.position.x, UIController.instance.statusUpPoint.transform.position.y);
-            UIController.instance.Slot = 0;
-        }
+        // if (SceneManager.GetActiveScene().name == "Main Scene")
+        // {
+        //     isAction = true;
+        //     isStatusUpgrade = true;
+        //     statusUpgradeTimes = 3;
+        //     statusUpdrageUI.SetActive(true);
+        //     UIController.instance.statusUpPoint.transform.position = new Vector3(UIController.instance.statusUpButton[0].transform.position.x, UIController.instance.statusUpPoint.transform.position.y);
+        //     UIController.instance.Slot = 0;
+        // }
     }
 
 

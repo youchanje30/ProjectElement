@@ -58,21 +58,20 @@ public class ProjectileType : MonoBehaviour
         switch (Projectile)
         {
             case Type.Arrow:
-                // transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;`
                 rigid.velocity = new Vector2(transform.localScale.x, 0).normalized * moveSpeed;
                 break;
 
             case Type.Magic:
                 if (target != null && target.parent.gameObject.activeSelf)
-                    transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * moveSpeed);
+                    rigid.velocity = (target.position - transform.position).normalized * moveSpeed;
                 else
                     rigid.velocity = new Vector2(transform.localScale.x, 0).normalized * moveSpeed;
-                    // transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;
                 break;
 
             case Type.WindSkill:
                 transform.position += new Vector3(transform.localScale.x, 0, 0) * Time.deltaTime * moveSpeed;
                 break;
+
             case Type.Bomb:
                 // StartCoroutine(BombAtk());
                 break;

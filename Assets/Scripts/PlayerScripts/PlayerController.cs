@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour
             
 
         // 행동 불가능한 상황
-        if (pressedAtkKey && !isRepeatAtk &&battle.WeaponType != WeaponTypes.None)
+        if (pressedAtkKey && !isRepeatAtk && battle.WeaponType != WeaponTypes.None)
         {  
             if(battle.WeaponType == WeaponTypes.Sword || battle.WeaponType == WeaponTypes.Wand || !movement2D.isGround)
             {
@@ -324,7 +324,12 @@ public class PlayerController : MonoBehaviour
 
         if (!movement2D.isDashing)
         {
-            if (pressedJumpkey || PressedJumpkey) movement2D.Jump();
+            if (pressedJumpkey || PressedJumpkey)
+            {
+                if(!movement2D.DownJump())
+                    movement2D.Jump();
+            }
+            
             movement2D.MoveX(hAxis);
         }
     }

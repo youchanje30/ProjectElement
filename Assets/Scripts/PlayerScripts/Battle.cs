@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Sirenix.OdinInspector;
 using DG.Tweening;
+using UnityEngine.Rendering;
 
 public class Battle : MonoBehaviour
 {
@@ -69,6 +70,15 @@ public class Battle : MonoBehaviour
     [LabelText("방패 차징공격 범위")] [SerializeField] private Vector2 shieldDashAtkSize;
     public GameObject barrier;
     // public bool 
+
+    [TitleGroup("추가적인 활 설정")]
+    [LabelText("활 기본 발사 속도")] [SerializeField] float arrowNormalSpeed;
+    [LabelText("활 차징 공격 데미지%")] [SerializeField] float arrowChargeDamage;
+    [LabelText("활 차징 발사 속도")] [SerializeField] float arrowChargeSpeed;
+    
+
+
+
     
     [TitleGroup("낙하 공격 설정")]
     public bool fallAtking;
@@ -380,6 +390,7 @@ public class Battle : MonoBehaviour
         if(WeaponType == WeaponTypes.Bow)
         {
             GameObject ThrowArrow = Instantiate(arrow);
+            ThrowArrow.GetComponent<ProjectileType>().moveSpeed = arrowNormalSpeed;
             ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
             // ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
             ThrowArrow.transform.position = weaponData[(int)WeaponType].atkPos.position;
@@ -490,21 +501,26 @@ public class Battle : MonoBehaviour
 
     public void ChargingBowAtk(bool isCharged = false)
     {
-        // isAtkReady[(int)WeaponType] = false;
         weaponData[(int)WeaponType].isAtkReady = false;
         atking = true;
         // 공격 애니메이션 시작
 
         //화살 소환
-        GameObject ThrowArrow = Instantiate(arrow);
-        if(isCharged)
-            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
-        else
-            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage / 2;
+        GameObject shootArrow = Instantiate(arrow);
 
-        // ThrowArrow.transform.position = atkPos[(int)WeaponType].position;
-        ThrowArrow.transform.position = weaponData[(int)WeaponType].atkPos.position;
-        ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
+        if(isCharged)
+        {
+            shootArrow.GetComponent<ProjectileType>().Damage = atkDamage * arrowChargeDamage * 0.01f;
+            shootArrow.GetComponent<ProjectileType>().moveSpeed = arrowChargeSpeed;
+        }
+        else
+        {
+            shootArrow.GetComponent<ProjectileType>().Damage = atkDamage;
+            shootArrow.GetComponent<ProjectileType>().moveSpeed = arrowNormalSpeed;
+        }
+
+        shootArrow.transform.position = weaponData[(int)WeaponType].atkPos.position;
+        shootArrow.transform.localScale = new Vector3(transform.localScale.x, shootArrow.transform.localScale.y, shootArrow.transform.localScale.z);
         atking = false;
     }
 

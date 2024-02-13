@@ -105,6 +105,7 @@ public class ActiveSkill : MonoBehaviour
     [LabelText("발사 후 딜레이")] public float Delay;
     [LabelText("발사 시 진동 시간 ")] public float WindShakeTime;
     [LabelText("발사 시 진동 세기")] public float WindShakeMagnitude;
+    [LabelText("활 스킬 발사 속도")] [SerializeField] float arrowSkillSpeed;
     #endregion
 
     void Awake()
@@ -330,18 +331,20 @@ public class ActiveSkill : MonoBehaviour
         isCharging = true;
         // SkillReady[(int)battle.WeaponType] = false;
         skillData[(int)battle.WeaponType].isSkillReady = false;
+
         yield return new WaitForSeconds(ChargeTime);
         animator.SetBool("isCharge", false);
         battle.isGuard = true;
         GameObject MagicArrow = Instantiate(Arrow);
-        // CameraController.instance.StartCoroutine(CameraController.instance.Shake(WindShakeTime, WindShakeMagnitude));
         CameraController.instance.ShakeCamera(WindShakeTime, WindShakeMagnitude);
         MagicArrow.GetComponent<ProjectileType>().Damage = DefaultDamage * (1 + (ArrowDamageIncreaseRate/100));
-       // MagicArrow.GetComponent<ProjectileType>().DeclineRate = DeclindRate;
+        MagicArrow.GetComponent<ProjectileType>().moveSpeed = arrowSkillSpeed;
+
         MagicArrow.transform.position = Pos.position;
         MagicArrow.transform.localScale = new Vector3(transform.localScale.x, MagicArrow.transform.localScale.y, MagicArrow.transform.localScale.z);
         StartCoroutine(ReturnSkill());
         StartCoroutine(delay());
+        Debug.Log("현재 무적시간 입니다.");
         yield return new WaitForSeconds(InvicibleTime);
         battle.isGuard = false;
     }

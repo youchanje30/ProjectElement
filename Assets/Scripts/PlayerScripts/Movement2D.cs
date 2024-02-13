@@ -77,7 +77,6 @@ public class Movement2D : MonoBehaviour
 
     void Update()
     {
-        CheckGround();
 
         if(isGround && rigid2D.velocity.y < 0)
         {
@@ -86,7 +85,7 @@ public class Movement2D : MonoBehaviour
             animator.SetBool("isAct", false);
         }
 
-        if(isGround && rigid2D.velocity.y <= 0 && Input.GetKeyDown(KeyCode.DownArrow))
+        if(isGround && rigid2D.velocity.y <= 0 && Input.GetKey(KeyCode.DownArrow) && (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.C)))
         {
             if(currentOneWayPlatform != null)
             {
@@ -94,11 +93,16 @@ public class Movement2D : MonoBehaviour
             }
         }
         
-        if(isGround && rigid2D.velocity.y <= 0)
+        if(isGround && rigid2D.velocity.y <= 0.1f)
             animator.SetBool("isGround", true);
         else
             animator.SetBool("isGround", false);
-            
+        
+    }
+
+    void FixedUpdate()
+    {
+        CheckGround();
     }
 
     void OnDrawGizmos()
@@ -141,7 +145,19 @@ public class Movement2D : MonoBehaviour
         }
     }
 
-
+    public bool DownJump()
+    {
+        if(isGround && rigid2D.velocity.y <= 0 && Input.GetKey(KeyCode.DownArrow) && (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.C)))
+        {
+            Debug.Log("DownJump!");
+            if(currentOneWayPlatform != null)
+            {
+                StartCoroutine(DisableCollision());
+                return true;
+            }
+        }
+        return false;
+    }
 
     public IEnumerator Dash()
     {

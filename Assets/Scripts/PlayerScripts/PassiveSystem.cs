@@ -10,19 +10,9 @@ public class PassiveSystem : MonoBehaviour
     [SerializeField] private Battle battle;
     [SerializeField] private PlayerStatus status;
 
-
     [Header("현재 상태")]
     public bool isGetBarrier;
     // 활은 상시로 켜져있음
-
-
-    // [Header("시간 관련")]
-    // public int[] passiveRate;
-    // public float[] duration;
-    // public float[] tick;
-
-    
-
     
     [TitleGroup("패시브 관련 기본 정보")]
     [ListDrawerSettings(ShowIndexLabels = true)]
@@ -86,7 +76,7 @@ public class PassiveSystem : MonoBehaviour
 
             case WeaponTypes.Wand:
                 monster.ContinueBuff(0f, passiveData[2].duration, passiveData[2].tick, BuffTypes.Slow, slowPer);
-                break;            
+                break;
 
             default:
                 Debug.Log("Active Passive Default Case");
