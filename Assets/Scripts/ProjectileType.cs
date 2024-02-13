@@ -129,7 +129,7 @@ public class ProjectileType : MonoBehaviour
         {
             if (other.gameObject.layer == groundLayer)
             {
-                WaterY(); //skill.WaterY);
+                WaterY(skill.WaterY);
             }
         }
     }
@@ -177,19 +177,21 @@ public class ProjectileType : MonoBehaviour
     }
     public void WaterY(float y = 0f)
     {
-        // if(transform.position.y <= y)
-        // { 
+
         //     transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         //     transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
         //     transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
         //     transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
-            
+
         //     StartCoroutine(BombAtk());
         // }
-        transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        // transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
-        transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
-        transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
+        if (transform.position.y <= y)
+        {
+            transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            // transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
+            transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
+            transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
+        }
         
         StartCoroutine(BombAtk());
     }

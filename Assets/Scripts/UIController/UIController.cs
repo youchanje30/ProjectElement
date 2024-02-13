@@ -312,12 +312,12 @@ public class UIController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow) && Slot != 2)
         {
-            statusUpPoint.transform.position = new Vector3(statusUpButton[Slot + 1].transform.position.x, statusUpPoint.transform.position.y);
+            statusUpPoint.transform.position = new Vector3(statusUpButton[Slot + 1].transform.position.x, statusUpButton[Slot + 1].transform.position.y + 40);
             Slot += 1;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) && Slot != 0)
         {
-            statusUpPoint.transform.position = new Vector3(statusUpButton[Slot - 1].transform.position.x, statusUpPoint.transform.position.y);
+            statusUpPoint.transform.position = new Vector3(statusUpButton[Slot - 1].transform.position.x, statusUpButton[Slot + 1].transform.position.y + 40);
             Slot -= 1;
         }
         if (Input.GetKeyDown(KeyCode.E))

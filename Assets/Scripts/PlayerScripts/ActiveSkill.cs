@@ -160,8 +160,8 @@ public class ActiveSkill : MonoBehaviour
         }
         for (int i = 0; i < RangeCount; i++)
         {
-            Debug.DrawRay(new Vector2(transform.position.x + i, transform.position.y), transform.up * -detectlength, Color.red);
-            Debug.DrawRay(new Vector2(transform.position.x - i, transform.position.y), Vector3.down * detectlength, Color.red);
+            Debug.DrawRay(new Vector2(transform.position.x + i, transform.position.y ), transform.up * -detectlength, Color.red);
+            Debug.DrawRay(new Vector2(transform.position.x - i, transform.position.y ), Vector3.down * detectlength, Color.red);
         }
 
     }
