@@ -19,6 +19,6 @@ MonoBehaviour:
   maxDamage: 15
   maxAtkCoolTime: 5
   maxKnockbackTime: 0
-  imageScale: 2.8
+  imageScale: 3.5
   floorRayX: 2.8
-  floorRayY: 1.7
+  floorRayY: 2.56
