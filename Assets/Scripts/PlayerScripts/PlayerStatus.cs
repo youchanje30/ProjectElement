@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
@@ -109,6 +110,9 @@ public class PlayerStatus : MonoBehaviour
     {
         bool isCrt = Random.Range(1, 100 + 1) <= crtRate;
         float finalDmg = isCrt ? damage * crtDamage * 0.01f : damage;
+        
+        if(isCrt) EffectManager.instance.isCrt = true;
+        
 
         return finalDmg;
     }

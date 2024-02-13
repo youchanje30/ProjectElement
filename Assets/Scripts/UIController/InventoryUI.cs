@@ -97,15 +97,18 @@ public class  InventoryUI: MonoBehaviour
             }
         }
     }
-    public IEnumerator InventoryAnim()
+    public void InventoryAnim()
     {
         //ItemInfo.SetActive(false);
         //Info.SetActive(false);
         gameManager.isInven = !gameManager.isInven;
         InvenUI.SetActive(gameManager.isInven);
-        animator.SetTrigger("OpenInven");   
-         yield return new WaitForSeconds(0.2f);
+        animator.SetTrigger("OpenInven");
+        Invoke("InventorySetting", 0.2f);
+    }  
+    public void InventorySetting()
+    {      
         inven.SetActive(gameManager.isInven);
         SetCard();
-    }  
+    }
 }

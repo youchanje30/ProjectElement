@@ -93,10 +93,11 @@ public class ProjectileType : MonoBehaviour
         {
             Remove();
         }
-        if (other.CompareTag("Monster") && Projectile != Type.Bomb)
+        if (other.CompareTag("Monster") && Projectile != Type.Bomb && Projectile != Type.FireSkill)
         {
             other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
-            Debug.Log(Damage);
+            EffectManager.instance.SpawnEffect(other.transform.position, 1 + (int)battle.WeaponType, Vector2.one);
+
             if (Projectile == Type.Magic)
             {
                 other.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(0f, duration, tick, BuffTypes.Slow, per);
@@ -106,7 +107,7 @@ public class ProjectileType : MonoBehaviour
             {
                 battle.PlayerSynergy(other.gameObject);
             }
-            if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill && Projectile != Type.FireSkill)
+            if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill )
             {
                 Destroy(gameObject);
             }
@@ -129,7 +130,7 @@ public class ProjectileType : MonoBehaviour
         {
             if (other.gameObject.layer == groundLayer)
             {
-                WaterY(); //skill.WaterY);
+                WaterY(skill.WaterY);
             }
         }
     }
@@ -177,19 +178,21 @@ public class ProjectileType : MonoBehaviour
     }
     public void WaterY(float y = 0f)
     {
-        // if(transform.position.y <= y)
-        // { 
+
         //     transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         //     transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
         //     transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
         //     transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
-            
+
         //     StartCoroutine(BombAtk());
         // }
-        transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        // transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
-        transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
-        transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
+        if (transform.position.y <= y)
+        {
+            transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            // transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
+            transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
+            transform.GetComponent<ProjectileType>().Projectile = Type.Bomb;
+        }
         
         StartCoroutine(BombAtk());
     }

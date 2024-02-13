@@ -5,6 +5,9 @@ using UnityEngine;
 public class EffectController : MonoBehaviour
 {
     [SerializeField] LayerMask layer;
+
+    public bool isFix;
+
     public Vector2 size;
 
     void Update()
@@ -14,6 +17,16 @@ public class EffectController : MonoBehaviour
 
     void OnEnable()
     {
+        if(!isFix) 
+        {
+            Vector2 vec = (Vector2)transform.position;
+            vec.x += Random.Range(-1f, 1f);
+            vec.y += Random.Range(-1f, 1f);
+
+            transform.position = vec;
+
+            return;
+        }
         
         float err = size.x / GetComponent<SpriteRenderer>().bounds.size.x;
         transform.localScale *= err;

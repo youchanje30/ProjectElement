@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1562905755616597099
 MonoBehaviour:
@@ -45,5 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPrefabs:
+  - {fileID: 5258434969575914386, guid: 34a73eb9228069a468d1ffdf82f04016, type: 3}
   - {fileID: 5258434969575914386, guid: 80450282fc3484342ba8c9afed0c1376, type: 3}
-  - {fileID: 5258434969575914386, guid: 80450282fc3484342ba8c9afed0c1376, type: 3}
+  - {fileID: 6971229756988539693, guid: 4c2bea5139976844797ebbdd41db004b, type: 3}
+  - {fileID: 6971229756988539693, guid: 515acdac31121244ebadebafa9523702, type: 3}
+  - {fileID: 6971229756988539693, guid: 79087ecd0e1d0be4099cd96f5ada1beb, type: 3}
+  - {fileID: 6971229756988539693, guid: 6f73ac0b49497494fb65a8c699a5b5a8, type: 3}
+  - {fileID: 6971229756988539693, guid: 22cbdfe1bc91e53408b26315c050a91e, type: 3}
