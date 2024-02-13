@@ -370,7 +370,7 @@ public class MonsterBase : MonoBehaviour
         // transform.localScale = new Vector3(-dir * monsterData.imageScale, monsterData.imageScale , 1);
         ChangeLocalScale(dir);
         
-        rigid.velocity = Vector2.left * dir * 10;
+        rigid.velocity = Vector2.left * dir * 5;
         while (ctime < knockbackTime)
         {
             ctime += Time.deltaTime;
