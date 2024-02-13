@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class  InventoryUI: MonoBehaviour
+public class InventoryUI : MonoBehaviour
 {
     public RectTransform rectTransform;
     public GameManager gameManager;
@@ -30,9 +30,11 @@ public class  InventoryUI: MonoBehaviour
     public float speed = 6;
     public Sprite[] frame;
     public Transform[] trans;
+    public ElementalData[] WeaponTypes;
 
     [Space(20f)]
     public float Speed;
+
     void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -42,33 +44,31 @@ public class  InventoryUI: MonoBehaviour
         Canvas = GameObject.FindGameObjectWithTag("UI").GetComponent<Transform>();
     }
     void Start()
-    {  
+    {
         ItemInfo.SetActive(false);
         Info.SetActive(false);
     }
     void Update()
     {
-        if(Info.activeSelf == true || ItemInfo.activeSelf == true)
+        if (Info.activeSelf == true || ItemInfo.activeSelf == true)
         {
             Info.GetComponent<RectTransform>().SetAsLastSibling();
-            Info.transform.position = new Vector3(Input.mousePosition.x - 90, Input.mousePosition.y - 140);
+            Info.transform.position = new Vector3(Input.mousePosition.x - 140, Input.mousePosition.y - 160);
             ItemInfo.GetComponent<RectTransform>().SetAsLastSibling();
             ItemInfo.transform.position = new Vector3(Input.mousePosition.x - 160, Input.mousePosition.y + 100);
         }
-        if(Input.GetKeyDown(KeyCode.E) && Slot[0].GetComponent<CardController>().ismove == false 
-            && Slot[1].GetComponent<CardController>().ismove == false && Slot[2].GetComponent<CardController>().ismove == false)
+        if (Input.GetKeyDown(KeyCode.E) && gameManager.isInven)
         {
-            for(int i = 0; i < Slot.Length; i++)
-            {
-                Slot[i].GetComponent<CardController>().ismove = true;
-            }
+            //for (int i = 0; i < WeaponTypes.Length; i++)
+            //    Slot[i].GetComponent<CardController>().MoveElementsCard();
+            MoveElementsCard();
         }
 
 
     }
     public void SetCard()
     {
-        
+
         for (int i = 0; i < EleCards.Length; i++)
         {
             EleCards[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalImg;
@@ -84,8 +84,8 @@ public class  InventoryUI: MonoBehaviour
             }
         }
         for (int i = 0; i < InvenItem.Length; i++)
-        {           
-           
+        {
+
             if (inventory.HavingItem[i] != null)
             {
                 InvenItem[i].SetActive(true);
@@ -105,10 +105,32 @@ public class  InventoryUI: MonoBehaviour
         InvenUI.SetActive(gameManager.isInven);
         animator.SetTrigger("OpenInven");
         Invoke("InventorySetting", 0.2f);
-    }  
+    }
     public void InventorySetting()
-    {      
+    {
         inven.SetActive(gameManager.isInven);
+        SetCard();
+    }
+    public void MoveElementsCard()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            WeaponTypes[i] = inventory.HavingElement[i];
+        }
+        if (inventory.HavingElement[2].WeaponTypes != global::WeaponTypes.None)
+        {
+            //ElementalData elementalData = inventoryUI.WeaponTypes[2];
+            inventory.HavingElement[0] = WeaponTypes[2];
+            inventory.HavingElement[1] = WeaponTypes[0];
+            inventory.HavingElement[2] = WeaponTypes[1];
+            Debug.Log(1);
+        }
+        else if (inventory.HavingElement[1].WeaponTypes != global::WeaponTypes.None)
+        {
+            inventory.HavingElement[0] = WeaponTypes[1];
+            inventory.HavingElement[1] = WeaponTypes[0];
+
+        }
         SetCard();
     }
 }

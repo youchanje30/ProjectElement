@@ -175,12 +175,15 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0f && isSystem)
         {
+            UIController.instance.SettingButton[UIController.instance.settingslot].GetComponent<Image>().color = Color.white;
+            UIController.instance.SystemButton[UIController.instance.Slot].GetComponent<Image>().color = Color.white;
             OpenSystem();
             SettingPanel.SetActive(false);
             //GraphicSetting();
             SetSettingData();
             Time.timeScale = 1f;
             isAction = false;
+           
         }
         if (isStatusUpgrade)
         {
@@ -202,6 +205,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         UIController.instance.SystemPoint.transform.position = new Vector3(UIController.instance.SystemPoint.transform.position.x, UIController.instance.SystemButton[0].transform.position.y);
         UIController.instance.Slot = 0;
+        UIController.instance.SystemButton[0].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
     }
 
     public void TimerSetting()
@@ -260,6 +264,7 @@ public class GameManager : MonoBehaviour
                DataResetCheck.SetActive(true);
                 UIController.instance.SettingPoint.transform.position = new Vector3(UIController.instance.SettingButton[11].transform.position.x - 150, UIController.instance.SettingButton[11].transform.position.y);
                 UIController.instance.settingslot = 11;
+                UIController.instance.SettingButton[11].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
                 break;
         }
     }
@@ -298,12 +303,14 @@ public class GameManager : MonoBehaviour
                 isAction = false;
                 GraphicSetting();
                 isSystem = !isSystem;
+                UIController.instance.SystemButton[UIController.instance.Slot].GetComponent<Image>().color = Color.white;
                 Time.timeScale = 1f;                
                 break;
 
             case 2: //Reset Btn
                 SaveManager.instance.ResetData();
                 SceneManager.LoadScene("Main Scene");
+                UIController.instance.SystemButton[UIController.instance.Slot].GetComponent<Image>().color = Color.white;
                 Time.timeScale = 1f;
                 break;
 
@@ -312,11 +319,14 @@ public class GameManager : MonoBehaviour
                 SettingPanel.SetActive(true);
                 SetResolution();
                 OptionSetting();
+              //  UIController.instance.SystemButton[UIController.instance.Slot].GetComponent<Image>().color = Color.white;
                 UIController.instance.SettingPoint.transform.position = new Vector3(UIController.instance.SettingButton[0].transform.position.x - 40, UIController.instance.SettingButton[0].transform.position.y);
                 UIController.instance.settingslot = 0;
+                UIController.instance.SettingButton[0].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
                 break;
 
             case 4: //Exit Btn
+                UIController.instance.SystemButton[UIController.instance.Slot].GetComponent<Image>().color = Color.white;
                 PlayerPrefs.Save();
                 SaveManager.instance.Save();
                 Application.Quit();
@@ -325,6 +335,7 @@ public class GameManager : MonoBehaviour
             case 5: //Setting Resume Btn
                 SettingPanel.SetActive(false);
                 SystemPanel.SetActive(true);
+                UIController.instance.SettingButton[UIController.instance.settingslot].GetComponent<Image>().color = Color.white;
                 GraphicSetting();
                 SaveSettingData();
                 OptionSetting();
@@ -334,6 +345,7 @@ public class GameManager : MonoBehaviour
             case 6: //Setting Exit Btn
                 SettingPanel.SetActive(false);
                 SystemPanel.SetActive(true);
+                UIController.instance.SettingButton[UIController.instance.settingslot].GetComponent<Image>().color = Color.white;
                 SetSettingData();
                 break;
         }

@@ -21,19 +21,18 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     Transform ParentPos;
     public InventoryUI inventoryUI;
     public RectTransform rectTransform;
-    public bool ismove;
+    
    
     void Start()
     {
-        ismove = false;
         inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
     {
-        if (ismove == true)
-          MoveElementsCard();
+        //if (ismove == true && gameManager.inventory.HavingElement[1].WeaponTypes != WeaponTypes.None)
+        //  MoveElementsCard();
 
         //if (Input.GetKeyDown(KeyCode.E) && gameManager.isInven)
         //{
@@ -91,55 +90,61 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
                 //gameManager.Elements[Setslot].gameObject.SetActive(true);
             }
             
-            inventoryUI.inventory.HavingElement[eventData.pointerDrag.GetComponent<CardController>().Setslot] = inventoryUI.gameManager.Elemental.AddElement(int.Parse(transform.GetComponent<Text>().text));
-            inventoryUI.inventory.HavingElement[Setslot] = inventoryUI.gameManager.Elemental.AddElement(int.Parse(eventData.pointerDrag.GetComponent<Text>().text));
+            inventoryUI.inventory.HavingElement[eventData.pointerDrag.GetComponent<CardController>().Setslot] = gameManager.Elemental.AddElement(int.Parse(transform.GetComponent<Text>().text));
+            inventoryUI.inventory.HavingElement[Setslot] = gameManager.Elemental.AddElement(int.Parse(eventData.pointerDrag.GetComponent<Text>().text));
 
             inventoryUI.SetCard();
 
         }
     }
-    public void MoveElementsCard()
-    {
-        
-        if (transform.parent == inventoryUI.SpinSlot[0])
-        {
-            transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[1].position, Time.deltaTime * inventoryUI.speed);
-            transform.DOScale(inventoryUI.trans[0].localScale, 0.15f);
+    //public void MoveElementsCard()
+    //{
+        //if (transform.parent == inventoryUI.SpinSlot[0])
+        //{
 
-            if (transform.position == inventoryUI.SpinSlot[1].position)
-            {               
-                transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = inventoryUI.frame[0];
-                transform.localScale = inventoryUI.trans[0].localScale;            
-                transform.SetParent(inventoryUI.SpinSlot[1]);                           
-                rectTransform.anchoredPosition = Vector2.zero;
-                ismove = false;
-            }
-        }
-        else if (transform.parent == inventoryUI.SpinSlot[1])
-        {
-            transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[2].position, Time.deltaTime * inventoryUI.speed);
-            transform.DOScale(inventoryUI.trans[1].localScale, 0.15f);
-            
-            if (rectTransform.position.x  > inventoryUI.SpinSlot[2].transform.position.x -1 && rectTransform.position.y < inventoryUI.SpinSlot[2].transform.position.y + 1)
-            {
-                transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = inventoryUI.frame[1];
-                transform.localScale = inventoryUI.trans[1].localScale;
-                transform.SetParent(inventoryUI.SpinSlot[2]);             
-                rectTransform.anchoredPosition = Vector2.zero;
-                ismove = false;
-            }
-        }
-        else if (transform.parent == inventoryUI.SpinSlot[2])
-        {
-            transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[0].position, Time.deltaTime * inventoryUI.speed * 2);
+        //    transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[1].position, Time.deltaTime * inventoryUI.speed);
+        //    transform.DOScale(inventoryUI.trans[0].localScale, 0.15f);
 
-            if (transform.position == inventoryUI.SpinSlot[0].position)
-            {
-                transform.SetParent(inventoryUI.SpinSlot[0]);
-                rectTransform.anchoredPosition = Vector2.zero;
-                ismove = false;
-            }
-        }
-    }
+        //    if (rectTransform.position.x > inventoryUI.SpinSlot[1].transform.position.x - 1 && rectTransform.position.y > inventoryUI.SpinSlot[1].transform.position.y -     1)
+        //    {               
+        //        transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = inventoryUI.frame[0];
+        //        transform.localScale = inventoryUI.trans[0].localScale;            
+        //        transform.SetParent(inventoryUI.SpinSlot[1]);                           
+        //        rectTransform.anchoredPosition = Vector2.zero;
+
+        //        ismove = false;
+        //    }
+        //}
+        //else if (transform.parent == inventoryUI.SpinSlot[1])
+        //{
+
+        //    transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[2].position, Time.deltaTime * inventoryUI.speed);
+        //    transform.DOScale(inventoryUI.trans[1].localScale, 0.15f);
+
+        //    if (rectTransform.position.x  > inventoryUI.SpinSlot[2].transform.position.x -1 && rectTransform.position.y < inventoryUI.SpinSlot[2].transform.position.y + 1)
+        //    {
+        //        transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = inventoryUI.frame[1];
+        //        transform.localScale = inventoryUI.trans[1].localScale;
+        //        transform.SetParent(inventoryUI.SpinSlot[2]);             
+        //        rectTransform.anchoredPosition = Vector2.zero;
+
+        //        ismove = false;
+        //    }
+        //}
+        //else if (transform.parent == inventoryUI.SpinSlot[2])
+        //{
+
+        //    transform.position = Vector3.MoveTowards(transform.position, inventoryUI.SpinSlot[0].position, Time.deltaTime * inventoryUI.speed * 2);
+
+        //    if (rectTransform.position.x < inventoryUI.SpinSlot[0].transform.position.x + 2 && rectTransform.position.y < inventoryUI.SpinSlot[2].transform.position.y +2)
+        //    {
+        //        transform.SetParent(inventoryUI.SpinSlot[0]);
+        //        rectTransform.anchoredPosition = Vector2.zero;
+
+        //        ismove = false;           
+        //    }
+        //}
+
+    //}
 }
 

@@ -308,6 +308,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("Skill");
                 battle.isSwap = false;
                 battle.atking = true;
+                rigid2D.velocity = Vector3.zero;
             }
             else
             {

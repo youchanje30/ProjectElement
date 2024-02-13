@@ -184,25 +184,33 @@ public class UIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && Slot != 0)
         {
             SystemPoint.transform.position = new Vector3(SystemPoint.transform.position.x, SystemButton[Slot - 1].transform.position.y);
-                    Slot -= 1;
+            SystemButton[Slot].GetComponent<Image>().color = Color.white;
+            SystemButton[Slot - 1].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
+           
+            Slot -= 1;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow) && Slot != 3)
         {
             SystemPoint.transform.position = new Vector3(SystemPoint.transform.position.x, SystemButton[Slot + 1].transform.position.y);
-                    Slot += 1;
+            SystemButton[Slot].GetComponent<Image>().color = Color.white;
+            SystemButton[Slot + 1].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
+            
+            Slot += 1;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
             GameManager.instance.SystemBtn(Slot + 1);
-           
         }
     }
     public void SettingKeyboardCon()
     {
+           
         if (DataResetCheck.activeSelf == false)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) && settingslot != 10)
             {
+                SettingButton[settingslot+1].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
+                SettingButton[settingslot].GetComponent<Image>().color = Color.white;
                 if (settingslot == 0 || settingslot == 2 || settingslot == 7)
                 {
                     SettingPoint.transform.position = new Vector3(SettingButton[settingslot + 1].transform.position.x + 40, SettingButton[settingslot + 1].transform.position.y);
@@ -219,9 +227,12 @@ public class UIController : MonoBehaviour
                     SettingPoint.transform.position = new Vector3(SettingButton[settingslot + 1].transform.position.x - 40, SettingButton[settingslot + 1].transform.position.y);
                     settingslot += 1;
                 }
+                
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow) && settingslot != 0)
             {
+                SettingButton[settingslot - 1].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
+                SettingButton[settingslot].GetComponent<Image>().color = Color.white;
                 if (settingslot == 2 || settingslot == 4 || settingslot == 9)
                 {
                     SettingPoint.transform.position = new Vector3(SettingButton[settingslot - 1].transform.position.x + 40, SettingButton[settingslot - 1].transform.position.y);
@@ -243,11 +254,15 @@ public class UIController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) && settingslot != 12)
             {
+                SettingButton[12].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
+                SettingButton[11].GetComponent<Image>().color = Color.white;
                 SettingPoint.transform.position = new Vector3(SettingButton[12].transform.position.x - 150, SettingButton[12].transform.position.y);
                 settingslot  = 12;
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow) && settingslot != 11)
             {
+                SettingButton[11].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
+                SettingButton[12].GetComponent<Image>().color = Color.white;
                 SettingPoint.transform.position = new Vector3(SettingButton[11].transform.position.x - 150, SettingButton[11].transform.position.y);
                 settingslot = 11;
             }
