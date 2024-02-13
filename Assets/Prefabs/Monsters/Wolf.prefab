@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: caf75bb6adb1fa148ae91fb32bb451f8, type: 2}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalScale.x
@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 24.72
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -6.47
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.z
@@ -42,15 +42,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -874579748, guid: 8ae1f7678a7c5ca40ab50cfaaaf41880, type: 3}
+    - target: {fileID: 4847805349945535956, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5234046894563744887, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Name
       value: Wolf
@@ -155,16 +159,12 @@ MonoBehaviour:
   damage: 0
   isStun: 0
   isHit: 0
-  atkPos:
-  - {x: -1, y: -1, z: 0}
-  - {x: -1, y: 1, z: 0}
-  atkSize:
-  - {x: 5, y: 2}
-  - {x: 2, y: 2}
   atkInfo:
-  - atkPos: {x: -1, y: -1, z: 0}
+  - atkName: 
+    atkPos: {x: -1, y: -1, z: 0}
     atkSize: {x: 5, y: 2}
-  - atkPos: {x: -2, y: 1, z: 0}
+  - atkName: 
+    atkPos: {x: -2, y: 1, z: 0}
     atkSize: {x: 4, y: 2}
 --- !u!114 &5373036055377236901 stripped
 MonoBehaviour:
