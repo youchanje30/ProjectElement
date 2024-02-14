@@ -336,13 +336,19 @@ public class MonsterBase : MonoBehaviour
             animator.SetTrigger("Dead");
             Invoke("Dead", 1f); // 안죽는 경우 대비
             SetDead();
+            return;
         }
 
-        animator.SetTrigger("Hurt");
+        animator.SetBool("Hurt", true);
 
-        if(!canKncokBack) return;
-
+        if(!canKncokBack)
+        {
+            animator.SetBool("Hurt", false);
+            return;
+        }
         
+
+
         float subX = transform.position.x - target.position.x;
         int knockX = 1;
 
@@ -377,7 +383,7 @@ public class MonsterBase : MonoBehaviour
         }
         isKnockback = false;
         rigid.velocity = Vector2.zero;
-
+        animator.SetBool("Hurt", false);
         //sprite.color = new Color(1, 1, 1);
     }
     #endregion
