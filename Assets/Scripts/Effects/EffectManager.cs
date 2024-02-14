@@ -58,7 +58,7 @@ public class EffectManager : MonoBehaviour
         if(ef.GetComponent<EffectController>().isFix)
             ef.GetComponent<EffectController>().size = size;
 
-        if(isCrt)
+        if(isCrt && effect >= 2)
         {
             isCrt = false;
             SpawnEffect(spawnPos, (int)AtkEffect.Crt, size);

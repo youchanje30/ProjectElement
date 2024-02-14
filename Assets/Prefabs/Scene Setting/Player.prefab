@@ -889,10 +889,10 @@ MonoBehaviour:
   shieldDashAtkPos: {fileID: 4472214303243002330}
   shieldDashAtkSize: {x: 4, y: 2}
   barrier: {fileID: 3277141783882987306}
-  arrowNormalSpeed: 100
+  arrowNormalSpeed: 50
   arrowChargeDamage: 100
-  arrowChargeSpeed: 40
-  magicSpeed: 15
+  arrowChargeSpeed: 50
+  magicSpeed: 10
   fallAtking: 0
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   Delay: 0.7
   WindShakeTime: 0.05
   WindShakeMagnitude: 5
-  arrowSkillSpeed: 10
+  arrowSkillSpeed: 50
 --- !u!114 &6781280166762617137
 MonoBehaviour:
   m_ObjectHideFlags: 0
