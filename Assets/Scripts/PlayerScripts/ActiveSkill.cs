@@ -236,7 +236,7 @@ public class ActiveSkill : MonoBehaviour
         }
         battle.isSwap = true;
         battle.atking = false;
-        StartCoroutine("ReturnSkill");
+        StartCoroutine(ReturnSkill(1));
     }
     #endregion
 
@@ -271,7 +271,7 @@ public class ActiveSkill : MonoBehaviour
         // SkillReady[(int)battle.WeaponType] = true;
         //skillData[(int)battle.WeaponType].isSkillReady = true;
         rigid2D.gravityScale = gravity;
-        StartCoroutine("ReturnSkill");  
+        StartCoroutine(ReturnSkill(2));  
     }
     #endregion
 
@@ -322,7 +322,7 @@ public class ActiveSkill : MonoBehaviour
                 battle.isGuard = false;
                 EffectManager.instance.SpawnEffect(transform.position, (int)SkillEffect.South, LandingRange[0]);
                 StartCoroutine(movement2D.DashCoolDown(0.01f));
-                StartCoroutine("ReturnSkill");
+                StartCoroutine(ReturnSkill(3));
         }
         
     }
@@ -361,7 +361,7 @@ public class ActiveSkill : MonoBehaviour
 
         MagicArrow.transform.position = Pos.position;
         MagicArrow.transform.localScale = new Vector3(transform.localScale.x, MagicArrow.transform.localScale.y, MagicArrow.transform.localScale.z);
-        StartCoroutine("ReturnSkill");
+        StartCoroutine(ReturnSkill(4));
         StartCoroutine(delay());
         Debug.Log("현재 무적시간 입니다.");
         yield return new WaitForSeconds(InvicibleTime);
@@ -374,7 +374,7 @@ public class ActiveSkill : MonoBehaviour
     #endregion
 
 
-    public IEnumerator ReturnSkill()
+    public IEnumerator ReturnSkill(int i)
     {
         isCharging = false;
         // for (int i = 0; i < SkillReady.Length; i++)
@@ -385,15 +385,9 @@ public class ActiveSkill : MonoBehaviour
         //         SkillReady[i] = true;
         //     }
         // }
-        for (int i = 0; i < skillData.Count; i++)
-        {
-            if (!skillData[i].isSkillReady)
-            {
                 yield return new WaitForSeconds(skillData[i].skillCoolTime * (1 - (status.coolDownReductionPer/100)));
                 // SkillReady[i] = true;
                 skillData[i].isSkillReady = true;
-            }
-        }
     }
     private void OnDrawGizmos()
     {
