@@ -196,13 +196,12 @@ public class ProjectileType : MonoBehaviour
         
         StartCoroutine(BombAtk());
     }
-    //private void OnDrawGizmos()
-    //{
-    //    if(Projectile == Type.FireSkill)
-    //    {
-    //        Gizmos.color = Color.red;
-    //        Gizmos.DrawLine(new Vector3(transform.position.x + 0.6f, transform.position.y),new Vector3(transform.position.x + 1.1f, transform.position.y));
-    //        Gizmos.DrawLine(new Vector3(transform.position.x - 0.6f, transform.position.y), new Vector3(transform.position.x - 1.1f, transform.position.y));
-    //    }
-    //}
+    private void OnDrawGizmos()
+    {
+        if (Projectile == Type.WaterSkill || Projectile == Type.Bomb)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireCube(new Vector3(transform.position.x , transform.position.y), new Vector3(skill.BombRange.x, skill.BombRange.y));
+        }
+    }
 }
