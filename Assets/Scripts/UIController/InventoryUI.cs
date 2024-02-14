@@ -18,6 +18,7 @@ public class InventoryUI : MonoBehaviour
     public GameObject Info;
     public RectTransform[] Card;
     public GameObject[] EleCards;
+    public GameObject[] CardImg;
     public GameObject[] InvenItem;
     public GameObject InvenUI;
     public TextMeshProUGUI Stat;
@@ -72,15 +73,18 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < EleCards.Length; i++)
         {
             EleCards[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalImg;
+            CardImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalCard;
             Slot[i].GetComponent<Text>().text = inventory.HavingElement[i].ElementalID.ToString();
             Slot[i].GetComponent<CardController>().Setslot = i;
             if (EleCards[i].GetComponent<Image>().sprite != null)
             {
                 EleCards[i].SetActive(true);
+                CardImg[i].GetComponent<Image>().color = Color.white;
             }
             else
             {
                 EleCards[i].SetActive(false);
+                CardImg[i].GetComponent<Image>().color = new Color(0.9921569f, 0.9529412f, 0.9176471f);
             }
         }
         for (int i = 0; i < InvenItem.Length; i++)
@@ -104,12 +108,14 @@ public class InventoryUI : MonoBehaviour
         gameManager.isInven = !gameManager.isInven;
         InvenUI.SetActive(gameManager.isInven);
         animator.SetTrigger("OpenInven");
-        Invoke("InventorySetting", 0.2f);
+        Invoke("InventorySetting", 0.3f);
+       
     }
     public void InventorySetting()
     {
         inven.SetActive(gameManager.isInven);
         SetCard();
+        Time.timeScale = 0f;
     }
     public void MoveElementsCard()
     {

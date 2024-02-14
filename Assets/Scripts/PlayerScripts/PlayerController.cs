@@ -152,6 +152,7 @@ public class PlayerController : MonoBehaviour
         if(manager.isInven && Input.GetKeyDown(KeyCode.Escape))
         {
             Invoke("closeinven", 0.01f);
+            Time.timeScale = 1f;
         }
         if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.E)) // 수정 해야함
         {
@@ -162,13 +163,14 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(ioInventory) && Time.timeScale != 0 && !manager.isShop && !manager.isSlotSwap && !manager.isAction)
+        if (Input.GetKeyDown(ioInventory) && !manager.isShop && !manager.isSlotSwap && !manager.isAction)
         {
-            if ( manager.isInven)
+            if ( manager.isInven )
             {
                 Invoke("closeinven", 0.1f);
+                Time.timeScale = 1f;
             }
-            else 
+            else if( Time.timeScale != 0)
             { 
             manager.inventoryUI.InventoryAnim();
             }

@@ -89,12 +89,14 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
                 //gameManager.Elements[eventData.pointerDrag.GetComponent<CardController>().Setslot].gameObject.SetActive(true);
                 //gameManager.Elements[Setslot].gameObject.SetActive(true);
             }
-            
-            inventoryUI.inventory.HavingElement[eventData.pointerDrag.GetComponent<CardController>().Setslot] = gameManager.Elemental.AddElement(int.Parse(transform.GetComponent<Text>().text));
-            inventoryUI.inventory.HavingElement[Setslot] = gameManager.Elemental.AddElement(int.Parse(eventData.pointerDrag.GetComponent<Text>().text));
 
-            inventoryUI.SetCard();
+            if (inventoryUI.inventory.HavingElement[Setslot].WeaponTypes != WeaponTypes.None && inventoryUI.inventory.HavingElement[eventData.pointerDrag.GetComponent<CardController>().Setslot].WeaponTypes != WeaponTypes.None)
+            {
+                inventoryUI.inventory.HavingElement[eventData.pointerDrag.GetComponent<CardController>().Setslot] = gameManager.Elemental.AddElement(int.Parse(transform.GetComponent<Text>().text));
+                inventoryUI.inventory.HavingElement[Setslot] = gameManager.Elemental.AddElement(int.Parse(eventData.pointerDrag.GetComponent<Text>().text));
 
+                inventoryUI.SetCard();
+            }
         }
     }
     //public void MoveElementsCard()
