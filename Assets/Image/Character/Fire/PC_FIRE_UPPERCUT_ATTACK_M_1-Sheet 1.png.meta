@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6279baf75b77a1440bdb2ab0fa515eb2
+guid: d0589f471ed62e148a4e7616b0688e4a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -137,7 +137,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -147,91 +147,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: PC_FIRE_UPPERCUT_ATTACK_M_1-Sheet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0bce4d213b730184a919a343f3b8029f
-      internalID: -749615130
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PC_FIRE_UPPERCUT_ATTACK_M_1-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 64
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5dba436d4c249ad4c96202470071e359
-      internalID: -198111831
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PC_FIRE_UPPERCUT_ATTACK_M_1-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 8
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f131e74cf8ee5a448bd0be82f55ee4cb
-      internalID: 1973212187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PC_FIRE_UPPERCUT_ATTACK_M_1-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 8
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3063a3e60484f514fa86f82da9efaa1e
-      internalID: 79960862
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -242,11 +158,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      PC_FIRE_UPPERCUT_ATTACK_M_1-Sheet_0: -749615130
-      PC_FIRE_UPPERCUT_ATTACK_M_1-Sheet_1: -198111831
-      PC_FIRE_UPPERCUT_ATTACK_M_1-Sheet_2: 1973212187
-      PC_FIRE_UPPERCUT_ATTACK_M_1-Sheet_3: 79960862
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
