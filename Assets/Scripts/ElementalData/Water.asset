@@ -19,3 +19,4 @@ MonoBehaviour:
   elementalImg: {fileID: 21300000, guid: 567d50c721738254e8c5d0a5e05c8791, type: 3}
   elementalIcon: {fileID: 21300000, guid: c740dd562a9049d4a814af4fc9fe54f6, type: 3}
   UnSelcIcon: {fileID: 21300000, guid: 282b4ac653c20ed49bf5e9848ceb52dd, type: 3}
+  elementalCard: {fileID: 21300000, guid: 91262488d0a3ec448ae3f06d9d130271, type: 3}

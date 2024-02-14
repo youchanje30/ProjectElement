@@ -13,6 +13,7 @@ public class SwapUI : MonoBehaviour
     public GameObject SlotSwapUI;
     public int slot;
     public Image[] Slot;
+    public Image[] CardImg;
     public TMP_Text[] eleInfo;
     void Awake()
     {
@@ -30,20 +31,23 @@ public class SwapUI : MonoBehaviour
         for (int i = 0; i < inventory.HasWeapon.Length; i++)
         {
             Slot[i].sprite = inventory.HavingElement[i].elementalImg;
+            CardImg[i].sprite = inventory.HavingElement[i].elementalCard;
         }
         Slot[3].sprite = gameManager.Elemental.elementalDatas[(int)gameManager.ObjData.WeaponType].elementalImg;
-        
+        CardImg[3].sprite = gameManager.Elemental.elementalDatas[(int)gameManager.ObjData.WeaponType].elementalCard;
     }
     public void sellectSlot()
     {     if (SlotSwapUI.activeSelf == true)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) && rectTransform.anchoredPosition.x < 562)
             {
-                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x + 562, -277);
+                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x + 562, -287);
+                rectTransform.parent.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(rectTransform.anchoredPosition.x - 87, -281);
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) && rectTransform.anchoredPosition.x > -562)
             {
-                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x - 562, -277);
+                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x - 562, -287);
+                rectTransform.parent.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(rectTransform.anchoredPosition.x - 87, -281);
             }
 
             if (rectTransform.anchoredPosition.x == -562)
