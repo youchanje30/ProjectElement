@@ -18,4 +18,5 @@ public class ElementalData : ScriptableObject
     public Sprite elementalIcon;
     public Sprite UnSelcIcon;
     public Sprite elementalCard;
+    public Sprite SynergyIcon;
 }
