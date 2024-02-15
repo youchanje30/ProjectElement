@@ -165,12 +165,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(ioInventory) && !manager.isShop && !manager.isSlotSwap && !manager.isAction)
         {
-            if ( manager.isInven )
+            if ( manager.isInven && Time.timeScale == 0)
             {
                 Invoke("closeinven", 0.1f);
                 Time.timeScale = 1f;
             }
-            else if( Time.timeScale != 0)
+            else if( Time.timeScale != 0 && !manager.isInven)
             { 
             manager.inventoryUI.InventoryAnim();
             }
