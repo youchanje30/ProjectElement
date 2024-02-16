@@ -20,3 +20,4 @@ MonoBehaviour:
   elementalIcon: {fileID: 21300000, guid: 022c86bf75148cd4ea677f662e3ebfdd, type: 3}
   UnSelcIcon: {fileID: 21300000, guid: bb30ce9dbf3879e40b244c363013c06d, type: 3}
   elementalCard: {fileID: 21300000, guid: 3f40ca7b65f4e2c46a7c40263bbb7193, type: 3}
+  SynergyIcon: {fileID: 21300000, guid: e0f4674f9307ed7469b1d014f8c44008, type: 3}
