@@ -131,6 +131,9 @@ MonoBehaviour:
   - Stage2
   - Stage3
   - Stage4
+  - Stage7
+  - Stage6
+  - Stage7
   Chapter: 0
   talkBtn:
   - {fileID: 0}

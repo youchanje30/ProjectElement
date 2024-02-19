@@ -369,8 +369,11 @@ public class Battle : MonoBehaviour
         if(WeaponType == WeaponTypes.Bow)
         {
             GameObject ThrowArrow = Instantiate(arrow);
-            ThrowArrow.GetComponent<ProjectileType>().moveSpeed = arrowNormalSpeed;
-            ThrowArrow.GetComponent<ProjectileType>().Damage = atkDamage;
+            ProjectileType projectileType = ThrowArrow.GetComponent<ProjectileType>();
+            ThrowArrow.GetComponent<ProjectileType>().weaponType = WeaponType;
+            projectileType.moveSpeed = arrowNormalSpeed;
+            projectileType.Damage = atkDamage;
+            
             ThrowArrow.transform.position = weaponData[(int)WeaponType].atkPos.position;
             
             ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
@@ -380,6 +383,7 @@ public class Battle : MonoBehaviour
         {
             GameObject Magic = Instantiate(arrow);
             ProjectileType magic = Magic.GetComponent<ProjectileType>();
+            Magic.GetComponent<ProjectileType>().weaponType = WeaponType;
             magic.Projectile = Type.Magic;
             magic.Damage = atkDamage;
             Magic.transform.position = transform.position;
@@ -493,6 +497,7 @@ public class Battle : MonoBehaviour
             shootArrow.GetComponent<ProjectileType>().Damage = atkDamage;
             shootArrow.GetComponent<ProjectileType>().moveSpeed = arrowNormalSpeed;
         }
+        shootArrow.GetComponent<ProjectileType>().weaponType = WeaponType;
 
         shootArrow.transform.position = weaponData[(int)WeaponType].atkPos.position;
         shootArrow.transform.localScale = new Vector3(transform.localScale.x, shootArrow.transform.localScale.y, shootArrow.transform.localScale.z);

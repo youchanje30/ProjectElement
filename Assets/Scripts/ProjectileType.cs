@@ -12,6 +12,7 @@ public class ProjectileType : MonoBehaviour
     public Type Projectile;
     private CapsuleCollider2D Collider2D;
     [SerializeField] Battle battle;
+    public WeaponTypes weaponType;
     [SerializeField] Rigidbody2D rigid;
     [SerializeField] int groundLayer = 6;
     ActiveSkill skill;
@@ -96,7 +97,7 @@ public class ProjectileType : MonoBehaviour
         if (other.CompareTag("Monster") && Projectile != Type.Bomb && Projectile != Type.FireSkill)
         {
             other.GetComponentInParent<MonsterBase>().GetDamaged(Damage);
-            EffectManager.instance.SpawnEffect(other.transform.position, 1 + (int)battle.WeaponType, Vector2.one);
+            EffectManager.instance.SpawnEffect(other.transform.position, 1 + (int)weaponType, Vector2.one);
 
             if (Projectile == Type.Magic)
             {

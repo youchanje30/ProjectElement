@@ -118,7 +118,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        statusUpdrageUI = UIController.instance.statusUpdrageUI;
 
         ShopUI = UIController.instance.shopUI;
         buyPanel = UIController.instance.buyPanel;
