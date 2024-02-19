@@ -26,11 +26,11 @@ public class UIController : MonoBehaviour
     public ScrollRect sellScrollRect;
     [Space(20f)]
 
-    [Header("스탯 강화 UI")]
-    public GameObject statusUpdrageUI;
-    public GameObject[] statusUpButton;
-    public GameObject statusUpPoint;
-    [Space(20f)]
+    //[Header("스탯 강화 UI")]
+    //public GameObject statusUpdrageUI;
+    //public GameObject[] statusUpButton;
+    //public GameObject statusUpPoint;
+    //[Space(20f)]
 
     [Header("상점 관련 UI")]
     public GameObject shopUI;
@@ -97,13 +97,13 @@ public class UIController : MonoBehaviour
         }
         else if(TalkPanel.activeSelf == true)
         {
-            Invoke("TalkKeyboardCon", 0.05f);
+            Invoke("TalkKeyboardCon",0.1f);
 
         }
-        else if(statusUpdrageUI.activeSelf == true)
-        {
-            Invoke("StatusUPKeyboardCon", 0.05f);
-        }
+        //else if(statusUpdrageUI.activeSelf == true)
+        //{
+        //    StatusUPKeyboardCon();
+        //}
     }
 
     public void GameSettingBtn(int btn)
@@ -201,7 +201,7 @@ public class UIController : MonoBehaviour
         {
             GameManager.instance.SystemBtn(Slot + 1);
         }
-    }
+    }   
     public void SettingKeyboardCon()
     {
            
@@ -267,7 +267,7 @@ public class UIController : MonoBehaviour
                 settingslot = 11;
             }
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             switch (settingslot)
             {
@@ -320,26 +320,26 @@ public class UIController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Invoke("activeTalk", 0.1f);
+            activeTalk();
         }
     }
-    public void StatusUPKeyboardCon()
-    {
-        if (Input.GetKeyDown(KeyCode.RightArrow) && Slot != 2)
-        {
-            statusUpPoint.transform.position = new Vector3(statusUpButton[Slot + 1].transform.position.x, statusUpButton[Slot + 1].transform.position.y + 40);
-            Slot += 1;
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && Slot != 0)
-        {
-            statusUpPoint.transform.position = new Vector3(statusUpButton[Slot - 1].transform.position.x, statusUpButton[Slot + 1].transform.position.y + 40);
-            Slot -= 1;
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Invoke("Upgradestatus", 0.05f);
-        }
-    }
+    //public void StatusUPKeyboardCon()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.RightArrow) && Slot != 2)
+    //    {
+    //        statusUpPoint.transform.position = new Vector3(statusUpButton[Slot + 1].transform.position.x, statusUpButton[Slot + 1].transform.position.y + 40);
+    //        Slot += 1;
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.LeftArrow) && Slot != 0)
+    //    {
+    //        statusUpPoint.transform.position = new Vector3(statusUpButton[Slot - 1].transform.position.x, statusUpButton[Slot + 1].transform.position.y + 40);
+    //        Slot -= 1;
+    //    }
+    //    if (Input.GetKeyUp(KeyCode.E))
+    //    {
+    //        Invoke("Upgradestatus", 0.05f);
+    //    }
+    //}
     public void activeTalk()
     {
         GameManager.instance.TalkBtn(Slot + 1);
