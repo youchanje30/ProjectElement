@@ -58,6 +58,7 @@ public class ObjectController : MonoBehaviour
                 break;
 
             case InteractObjects.Portal:
+                Snap();
                 // Portal(objectID);
                 break;
 
@@ -226,6 +227,17 @@ public class ObjectController : MonoBehaviour
                 break;
         }
     
+    }
+
+    public void Snap()
+    {    
+
+        Vector3 pos = transform.position;
+        RaycastHit2D ray = Physics2D.Raycast(pos, Vector2.down, 10f, LayerMask.GetMask("Platform"));
+        if(!ray) return;
+        
+        pos.y -= ray.distance;
+        transform.position = pos;
     }
 
     public void OpenSpiritAwake()

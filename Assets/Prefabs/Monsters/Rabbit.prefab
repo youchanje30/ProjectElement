@@ -127,7 +127,7 @@ PrefabInstance:
     - target: {fileID: 4847805349945535956, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -750613568, guid: b9f6a13ee70edba4784a4a7c5ac0c0c7, type: 3}
+      objectReference: {fileID: 509384607, guid: b9f6a13ee70edba4784a4a7c5ac0c0c7, type: 3}
     - target: {fileID: 4847805349945535956, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -199,6 +199,8 @@ MonoBehaviour:
   jumpForce: 12
   minAtkCoolTime: 3
   maxAtkCoolTime: 4
+  groundSize: {x: 1.4, y: 0.2}
+  groundOffset: {x: 0.1, y: -0.45}
 --- !u!114 &5373036055377236901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2610654531360661370, guid: bcab59f8b8043a540ad625334218e733, type: 3}

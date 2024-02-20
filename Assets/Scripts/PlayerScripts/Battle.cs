@@ -155,7 +155,8 @@ public class Battle : MonoBehaviour
                 fallAtking = false;
                 atking = false;
                 rigid2D.gravityScale = originalScale;
-            }          
+            }
+            rigid2D.velocity = Vector2.zero;
         }
 
         if(passive.isGetBarrier)

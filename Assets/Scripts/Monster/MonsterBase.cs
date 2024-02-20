@@ -226,7 +226,7 @@ public class MonsterBase : MonoBehaviour
     protected virtual bool IsOnGround() // 위치값을 받아서 확인할 수 있으면 좋을 것 같음
     {
         Vector2 frontVec = new Vector2(transform.position.x + nextDir * monsterData.floorRayX, transform.position.y - monsterData.floorRayY);
-
+        
         Debug.DrawRay(frontVec, Vector2.down, new Color(0,1,0));
         RaycastHit2D raycast = Physics2D.Raycast(frontVec, Vector2.down, 1 , LayerMask.GetMask("Platform"));
         

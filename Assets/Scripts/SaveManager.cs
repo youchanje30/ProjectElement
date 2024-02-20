@@ -101,6 +101,11 @@ public class SaveManager : MonoBehaviour
         playerGold.InnerText = player.GetComponent<Inventory>().Gold.ToString();
         root.AppendChild(playerGold);
         
+        // 현재 체력
+        XmlElement curHp = xmlDocument.CreateElement("PlayerHp");
+        curHp.InnerText = player.GetComponent<PlayerStatus>().curHp.ToString();
+        root.AppendChild(curHp);
+
         // 정수 저장
         // XmlElement playerSpiritSoul = xmlDocument.CreateElement("PlayerSpiritSoul");
         // playerSpiritSoul.InnerText = player.GetComponent<Inventory>().SpiritSoul.ToString();
@@ -198,6 +203,10 @@ public class SaveManager : MonoBehaviour
             XmlNodeList gold = xmlDocument.GetElementsByTagName("PlayerGold");
             player.GetComponent<Inventory>().Gold = int.Parse(gold[0].InnerText);
 
+            // 현재 체력
+            XmlNodeList curHp = xmlDocument.GetElementsByTagName("PlayerHp");
+            player.GetComponent<PlayerStatus>().curHp = int.Parse(curHp[0].InnerText);
+
             // 정령
             // XmlNodeList spiritSoul = xmlDocument.GetElementsByTagName("PlayerSpiritSoul");
             // player.GetComponent<Inventory>().SpiritSoul = int.Parse(spiritSoul[0].InnerText);
@@ -225,6 +234,7 @@ public class SaveManager : MonoBehaviour
         }
         else
         {
+            player.GetComponent<PlayerStatus>().curHp = player.GetComponent<PlayerStatus>().basicMaxHp;
 
         }
 
@@ -302,6 +312,10 @@ public class SaveManager : MonoBehaviour
         root.AppendChild(playerLuck);
 
 
+        // 현재 체력
+        XmlElement curHp = xmlDocument.CreateElement("PlayerHp");
+        curHp.InnerText = player.GetComponent<PlayerStatus>().basicMaxHp.ToString();
+        root.AppendChild(curHp);
         // 정수 저장
         // XmlElement playerSpiritSoul = xmlDocument.CreateElement("PlayerSpiritSoul");
         // playerSpiritSoul.InnerText = 0.ToString();

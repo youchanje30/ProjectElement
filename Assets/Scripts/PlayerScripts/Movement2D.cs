@@ -77,12 +77,14 @@ public class Movement2D : MonoBehaviour
 
     void Update()
     {
+        if(isDashing)
+            rigid2D.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
 
-        if(isGround && rigid2D.velocity.y < 0)
+        if(isGround && rigid2D.velocity.y <= 0.1f)
         {
             curJumpCnt = maxJumpCnt;
             animator.SetBool("isGround", true);
-            animator.SetBool("isAct", false);
+            // animator.SetBool("isAct", false);
         }
 
         if(isGround && rigid2D.velocity.y <= 0 && Input.GetKey(KeyCode.DownArrow) && (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.C)))
@@ -94,7 +96,10 @@ public class Movement2D : MonoBehaviour
         }
         
         if(isGround && rigid2D.velocity.y <= 0.1f)
+        {
+            curJumpCnt = maxJumpCnt;
             animator.SetBool("isGround", true);
+        }
         else
             animator.SetBool("isGround", false);
         
@@ -135,7 +140,7 @@ public class Movement2D : MonoBehaviour
         {
             animator.SetBool("isGround", false);
             animator.SetTrigger("Jump");
-            animator.SetBool("isAct", true);
+            // animator.SetBool("isAct", true);
             rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
             // Vector2 forceDir = new Vector2(0, 1);
             // rigid2D.AddForce(forceDir * jumpForce, ForceMode2D.Impulse);
@@ -161,20 +166,17 @@ public class Movement2D : MonoBehaviour
 
     public IEnumerator Dash()
     {
-        animator.SetBool("isAct", true);
+        // animator.SetBool("isAct", true);
         animator.SetTrigger("Dash");
         isDashing = true; 
         float originalGravity = rigid2D.gravityScale;
         rigid2D.gravityScale = 0f;
         rigid2D.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         battle.isGuard = true;
-        // rigid2D.velocity = new Vector2(-(transform.localScale.x) * 0f, 0f);
-        
+    
         yield return new WaitForSeconds(dashingTime);
-        // yield return new WaitForSeconds(2f);
-        
-        animator.SetBool("isAct", false);
-        // animator.SetTrigger("Das");
+    
+        animator.SetTrigger("DashEnd");
         rigid2D.gravityScale = originalGravity;
         isDashing = false;
         curDashCnt --;

@@ -102,7 +102,7 @@ public class PlayerStatus : MonoBehaviour
     void Start()
     {
         SetStatue();
-        curHp = maxHp;
+        // curHp = maxHp;
     }
 
     // 데미지 반환하는 함수
