@@ -163,6 +163,7 @@ public class Battle : MonoBehaviour
             barrier.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 255f * (status.barrier / (status.maxHp * passive.shieldPer * 0.01f))) / 255;
 
         UIController.instance.HpFill.fillAmount = Mathf.Lerp(UIController.instance.HpFill.fillAmount, status.curHp / status.maxHp, Time.deltaTime * 5f);
+        UIController.instance.BarrierFill.fillAmount = Mathf.Lerp(UIController.instance.BarrierFill.fillAmount, (status.barrier / status.maxHp), Time.deltaTime * 5f);
 
         if(WeaponType == WeaponTypes.Sword)
         {

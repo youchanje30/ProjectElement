@@ -197,12 +197,11 @@ public class ObjectController : MonoBehaviour
                 
                 break;
         } */
-
-
+ 
         switch(ObjType)
         {
             case InteractObjects.NPC:
-                GameManager.instance.Action(gameObject);
+                StartCoroutine(GameManager.instance.Action(gameObject));
                 break;
 
             case InteractObjects.Portal:

@@ -369,23 +369,23 @@ public class GameManager : MonoBehaviour
 
     public void Talk(int id)
     {
+        
         string talkingData = talkManager.GetTalk(id, talkIndex);
-
-        if(talkingData == null)
+        if (talkingData == null)
         {
             isAction = false;
             TalkPanel.SetActive(false);
             talkIndex = 0;
-            
-            
             return;
         }
-
-        talkTxt.text = talkingData;
-        talkIndex++;
-        isAction = true;
-        UIController.instance.Slot = 0;
-        UIController.instance.TalkPoint.transform.position = new Vector3(UIController.instance.TalkPoint.transform.position.x, UIController.instance.TalkButton[0].transform.position.y);
+        else
+        {
+            talkTxt.text = talkingData;
+            talkIndex++;
+            isAction = true;
+            UIController.instance.Slot = 0;
+            UIController.instance.TalkPoint.transform.position = new Vector3(UIController.instance.TalkPoint.transform.position.x, UIController.instance.TalkButton[0].transform.position.y);
+        }
 
     }
 
@@ -395,7 +395,6 @@ public class GameManager : MonoBehaviour
         {
             talkBtn[i].SetActive(true);
         }
-
         string firstTalkData = talkManager.GetFirstTalk(id);
         talkTxt.text = firstTalkData;
         isSelected = true;
@@ -405,19 +404,20 @@ public class GameManager : MonoBehaviour
     }
     
 
-    public void Action(GameObject Obj)
+    public IEnumerator Action(GameObject Obj)
     {
+        
         ObjData = Obj.GetComponent<ObjectController>();
         // Debug.Log("Manager Action");
-
-        if(isAction && !isSelected)
+        yield return new WaitForSeconds(0.1f);
+        if (isAction && !isSelected)
         {
             Talk(ObjData.objectID);
             // Debug.Log("Talk Work");
         }
         else if(!isAction && !isSelected)
         {
-            ViewTalkPanel(ObjData.objectID);
+           ViewTalkPanel(ObjData.objectID);
             isAction = true;
             // Debug.Log("ViewTalk Work");
         }
@@ -465,6 +465,7 @@ public class GameManager : MonoBehaviour
                 isAction = false;
                 TalkPanel.SetActive(false);
                 
+
                 // 플레이어 상태 변경 해야함              
                 break;
 
