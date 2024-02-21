@@ -23,6 +23,8 @@ public class Movement2D : MonoBehaviour
     
     private Rigidbody2D rigid2D;
     private BoxCollider2D boxCollider2D;
+    private CapsuleCollider2D capCollider2D;
+    
     private Animator animator;
     private GameObject currentOneWayPlatform;
     private PlayerStatus playerStatus;
@@ -68,6 +70,7 @@ public class Movement2D : MonoBehaviour
         curJumpCnt = maxJumpCnt;
 
         battle = GetComponent<Battle>();
+        capCollider2D = GetComponent<CapsuleCollider2D>();
         rigid2D = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
@@ -210,10 +213,11 @@ public class Movement2D : MonoBehaviour
     {
         CompositeCollider2D platformCollider = currentOneWayPlatform.GetComponent<CompositeCollider2D>();
 
-        Physics2D.IgnoreCollision(boxCollider2D, platformCollider);
+        // Physics2D.IgnoreCollision(boxCollider2D, platformCollider);
+        Physics2D.IgnoreCollision(capCollider2D, platformCollider);
         yield return new WaitForSeconds(0.45f);
-        Physics2D.IgnoreCollision(boxCollider2D, platformCollider, false);
-        
+        Physics2D.IgnoreCollision(capCollider2D, platformCollider, false);
+        // Physics2D.IgnoreCollision(boxCollider2D, platformCollider, false);
     }
 
     private void CheckGround()
