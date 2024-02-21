@@ -661,7 +661,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 4
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -848,7 +848,7 @@ MonoBehaviour:
   - weaponType: 1
     atkPos: {fileID: 7154946036308757365}
     atkSize: {x: 2, y: 2.5}
-    atkCoolTime: 0.4
+    atkCoolTime: 0.5
     isAtkReady: 1
     shakeDuration: 0.1
     shakeForce: 10
@@ -857,16 +857,16 @@ MonoBehaviour:
   - weaponType: 2
     atkPos: {fileID: 6317585707649509668}
     atkSize: {x: 12, y: 4}
-    atkCoolTime: 0.4
+    atkCoolTime: 0.5
     isAtkReady: 1
     shakeDuration: 0
     shakeForce: 0
     weaponCrtDamage: 0
-    weaponDamage: 100
+    weaponDamage: 80
   - weaponType: 3
     atkPos: {fileID: 4135913021082344152}
     atkSize: {x: 4, y: 2}
-    atkCoolTime: 0.75
+    atkCoolTime: 0.8
     isAtkReady: 1
     shakeDuration: 0.2
     shakeForce: 10
@@ -875,12 +875,12 @@ MonoBehaviour:
   - weaponType: 4
     atkPos: {fileID: 4315468924003554650}
     atkSize: {x: 1.7, y: 1.7}
-    atkCoolTime: 0.4
+    atkCoolTime: 0.6
     isAtkReady: 1
     shakeDuration: 0
     shakeForce: 0
     weaponCrtDamage: 0
-    weaponDamage: 100
+    weaponDamage: 90
   canComboAtk: 0
   comboAtkTime: 0.8
   shieldAtkDashTime: 0.1
@@ -890,16 +890,16 @@ MonoBehaviour:
   shieldDashAtkPos: {fileID: 4472214303243002330}
   shieldDashAtkSize: {x: 4, y: 2}
   barrier: {fileID: 3277141783882987306}
-  arrowNormalSpeed: 50
-  arrowChargeDamage: 100
+  arrowNormalSpeed: 30
+  arrowChargeDamage: 130
   arrowChargeSpeed: 50
-  magicSpeed: 10
+  magicSpeed: 8
   fallAtking: 0
   fallDownAtkPos: {fileID: 7402086602399045594}
   fallDownAtkSize: {x: 3, y: 1}
-  fallDownAtkTime: 0.4
+  fallDownAtkTime: 0.2
   isSwap: 0
-  swapTime: 0.4
+  swapTime: 1
   DamagedDuration: 0.1
   DamagedForce: 2
 --- !u!114 &8509772043893616530
@@ -945,10 +945,10 @@ MonoBehaviour:
   luck: 0
   basicMaxHp: 100
   basicHpPer: 100
-  basicDamage: 3
+  basicDamage: 5
   basicDamagePer: 100
   basicAtkSpeed: 100
-  basicCrtRate: 5
+  basicCrtRate: 10
   basicCrtDamage: 150
   basicJumpForce: 15
   basicJumpForcePer: 100
@@ -1043,7 +1043,7 @@ MonoBehaviour:
   isUnderTheSea: 0
   FireFloor: {fileID: 3096906974402678174, guid: db7de1076855ad84ba51dd45a7123812, type: 3}
   RangeCount: 10
-  DiffusionDamageIncreaseRate: 180
+  DiffusionDamageIncreaseRate: 250
   detectlength: 15
   layer:
     serializedVersion: 2
@@ -1057,7 +1057,7 @@ MonoBehaviour:
   WaterBall: {fileID: 3054785954419580376, guid: 02e9dce7710091749a6c01825bbde7f9, type: 3}
   isWater: 0
   WaterDamageIncreaseRate: 20
-  BombDamageIncreaseRate: 150
+  BombDamageIncreaseRate: 200
   FloatingForce: 15
   FloatingTime: 0.2
   WaterChargeTime: 0.5
@@ -1075,8 +1075,8 @@ MonoBehaviour:
   BombShakeMagnitude: 20
   isSouth: 0
   JumpDamageIncreaseRate: 0
-  LandDamageIncreaseRate: 200
-  JumpForce: 20
+  LandDamageIncreaseRate: 300
+  JumpForce: 15
   FallForce: 40
   StunTime: 5
   RisingTime: 0.5
@@ -1094,13 +1094,13 @@ MonoBehaviour:
   LandingShakeMagnitude: 20
   Arrow: {fileID: 3054785954419580376, guid: 88320b9d25572f34fac3f5c97b155539, type: 3}
   Pos: {fileID: 883222462688627655}
-  ArrowDamageIncreaseRate: 250
-  ChargeTime: 2.5
-  InvicibleTime: 1
-  Delay: 0.7
+  ArrowDamageIncreaseRate: 500
+  ChargeTime: 1.2
+  InvicibleTime: 0.5
+  Delay: 0.3
   WindShakeTime: 0.05
   WindShakeMagnitude: 5
-  arrowSkillSpeed: 50
+  arrowSkillSpeed: 15
 --- !u!114 &6781280166762617137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1281,7 +1281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8111717507875193638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.212, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

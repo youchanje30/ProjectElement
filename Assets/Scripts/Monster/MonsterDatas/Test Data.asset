@@ -18,7 +18,7 @@ MonoBehaviour:
   maxHp: 10000
   maxDamage: 0
   maxAtkCoolTime: 1000
-  maxKnockbackTime: 0.2
+  maxKnockbackTime: 0.3
   imageScale: 3
   floorRayX: 1.5
   floorRayY: 1
