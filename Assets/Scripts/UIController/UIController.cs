@@ -5,12 +5,14 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening.Core.Easing;
 
+
 public class UIController : MonoBehaviour
 {
     public static UIController instance;
 
     [Header("플레이어 UI")]
     public Image HpFill;
+    public Image BarrierFill;
     public GameObject[] ElementalImage;
     public Image SelectImg;
     public Image unSelectImg;
@@ -97,7 +99,7 @@ public class UIController : MonoBehaviour
         }
         else if(TalkPanel.activeSelf == true)
         {
-            Invoke("TalkKeyboardCon",0.1f);
+            TalkKeyboardCon();
 
         }
         //else if(statusUpdrageUI.activeSelf == true)
@@ -318,9 +320,9 @@ public class UIController : MonoBehaviour
             TalkPoint.transform.position = new Vector3(TalkPoint.transform.position.x, TalkButton[Slot + 1].transform.position.y);
             Slot += 1;
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E)&& GameManager.instance.isAction)
         {
-            activeTalk();
+            StartCoroutine(activeTalk());
         }
     }
     //public void StatusUPKeyboardCon()
@@ -340,13 +342,14 @@ public class UIController : MonoBehaviour
     //        Invoke("Upgradestatus", 0.05f);
     //    }
     //}
-    public void activeTalk()
+    public IEnumerator activeTalk()
     {
+        yield return new WaitForSeconds(0.1f);
         GameManager.instance.TalkBtn(Slot + 1);
     }
-    public void Upgradestatus()
-    {
-        GameManager.instance.UpgradeStatus(Slot);
-    }
+    //public void Upgradestatus()
+    //{
+    //    GameManager.instance.UpgradeStatus(Slot);
+    //}
 
 }

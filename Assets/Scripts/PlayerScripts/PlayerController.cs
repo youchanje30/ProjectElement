@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Interact Setting")]
     [SerializeField] private KeyCode InteractKey = KeyCode.E;
-    private bool pressedInteractKey;
+     private bool pressedInteractKey;
 
     [Header("Swap Setting")]
     [SerializeField] private KeyCode FirstSlot = KeyCode.A;
@@ -135,31 +135,29 @@ public class PlayerController : MonoBehaviour
 
     void InputSystem()
     {
-        if (manager.isShop && Input.GetKeyDown(KeyCode.Escape))
+        if (manager.isShop && Input.GetKeyUp(KeyCode.Escape))
         {
-            Invoke("closeShop", 0.01f);
+           closeShop();
         }
 
-        if (manager.isSpiritAwake && Input.GetKeyDown(KeyCode.Escape))
+        if (manager.isSpiritAwake && Input.GetKeyUp(KeyCode.Escape))
         {
-            Invoke("closeSpiritawake", 0.01f);
+            closeSpiritawake();
         }
 
-        if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.Escape))
+        if (manager.isSlotSwap && Input.GetKeyUp(KeyCode.Escape))
         {
-            Invoke("closeslotSwap", 0.01f);
+            closeslotSwap();
         }
-        if(manager.isInven && Input.GetKeyDown(KeyCode.Escape))
+        if(manager.isInven && Input.GetKeyUp(KeyCode.Escape))
         {
-            Invoke("closeinven", 0.01f);
+            closeinven();
             Time.timeScale = 1f;
         }
-        if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.E)) // 수정 해야함
+        if (manager.isSlotSwap && Input.GetKeyDown(KeyCode.E)) 
         {
-            manager.isSlotSwap = false;
-            manager.swapUI.SlotSwapUI.SetActive(false);
-            Invoke("EleUISwap", 0.01f);
 
+            StartCoroutine(EleUISwap());
         }
         
 
@@ -167,12 +165,12 @@ public class PlayerController : MonoBehaviour
         {
             if ( manager.isInven && Time.timeScale == 0)
             {
-                Invoke("closeinven", 0.1f);
                 Time.timeScale = 1f;
+                Invoke("closeinven", 0.1f);               
             }
             else if( Time.timeScale != 0 && !manager.isInven)
             { 
-            manager.inventoryUI.InventoryAnim();
+             manager.inventoryUI.InventoryAnim();
             }
         }
        
@@ -211,8 +209,11 @@ public class PlayerController : MonoBehaviour
 
         
     }
-    public void EleUISwap()
+    public IEnumerator EleUISwap()
     {
+        yield return new WaitForSeconds(0.1f);
+        manager.isSlotSwap = false;
+        manager.swapUI.SlotSwapUI.SetActive(false);
         manager.Elements[manager.swapUI.slot].SetActive(true);
         inventory.HavingElement[manager.swapUI.slot] = ElementalManager.instance.AddElement((int)manager.ObjData.WeaponType * 1000);
         PlayerWeaponType = inventory.HavingElement[manager.swapUI.slot].WeaponTypes;
