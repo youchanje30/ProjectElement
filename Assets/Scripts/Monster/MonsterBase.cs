@@ -46,6 +46,7 @@ public class MonsterBase : MonoBehaviour
     protected bool canMove;
     protected bool canTrack; // 추적 이동 canMove와 구분해서 사용예정
     protected bool canAtk;
+    protected float knockbackSpeed;
 
 
     [System.Serializable]
@@ -106,6 +107,7 @@ public class MonsterBase : MonoBehaviour
         atkCoolTime = monsterData.maxAtkCoolTime;
         curAtkCoolTime = atkCoolTime;
         knockbackTime = monsterData.maxKnockbackTime;
+        knockbackSpeed = monsterData.knockbackSpeed;
     }
 
     // 위치 초기화도 필요함 몬스터는 Trigger가 켜져있기 때문에..
@@ -367,7 +369,7 @@ public class MonsterBase : MonoBehaviour
         float ctime = 0;
         ChangeLocalScale(dir);
         
-        rigid.velocity = Vector2.left * dir * 5;
+        rigid.velocity = Vector2.left * dir * knockbackSpeed;
         while (ctime < knockbackTime)
         {
             ctime += Time.deltaTime;

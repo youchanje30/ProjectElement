@@ -17,6 +17,7 @@ public class MonsterData : ScriptableObject
     public float maxDamage;
     public float maxAtkCoolTime;
     public float maxKnockbackTime;
+    public float knockbackSpeed;
     [Space(20f)]
 
     [Header("몬스터 상태 관련 정보")]
