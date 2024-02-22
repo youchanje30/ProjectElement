@@ -16,7 +16,7 @@ public class MonsterBase : MonoBehaviour
     [SerializeField] protected DetectPlayer trackDetect;
     [SerializeField] protected DetectPlayer tryAtkDetect;
     [SerializeField] protected Transform target;
-    [SerializeField] private MonsterSynergy monsterSynergy;
+    [SerializeField] protected MonsterSynergy monsterSynergy;
     #endregion
 
     #region 몬스터 정보 선언
@@ -221,7 +221,6 @@ public class MonsterBase : MonoBehaviour
     protected virtual void TimeProcess()
     {
         curAtkCoolTime -= Time.deltaTime;
-
     }
 
     // 땅 위에 있는지 체크
@@ -245,6 +244,9 @@ public class MonsterBase : MonoBehaviour
         animator.SetBool("isMove", false);
 
         int targetDir = target.position.x > transform.position.x ? 1 : -1;
+        if(!IsOnGround())
+            targetDir *= -1;
+
         rigid.velocity = new Vector2(targetDir * moveSpeed, rigid.velocity.y);
         
         ChangeLocalScale(targetDir);
@@ -289,9 +291,6 @@ public class MonsterBase : MonoBehaviour
             if(!collider.CompareTag("Player")) continue;
                 
             collider.GetComponent<Battle>().GetDamaged(damage);
-            // Debug.Log(atkInfo[index].atkPos);
-            // Debug.Log(atkInfo[index].atkSize);
-
         }
     }
 

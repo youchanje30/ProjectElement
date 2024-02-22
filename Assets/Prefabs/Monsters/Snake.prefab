@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 2287d745f1cbb6c4b9a34b6206ccb165, type: 2}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalScale.x
@@ -90,11 +90,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Size.x
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Size.y
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_Offset.x
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4847805349945535956, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Sprite

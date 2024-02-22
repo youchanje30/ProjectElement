@@ -830,6 +830,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 342317699883370455, guid: 146749df2edee38408a64cea320cacf5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 342317699883370455, guid: 146749df2edee38408a64cea320cacf5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1665483386127700766, guid: 146749df2edee38408a64cea320cacf5, type: 3}
       propertyPath: m_Name
       value: Cine Cam
