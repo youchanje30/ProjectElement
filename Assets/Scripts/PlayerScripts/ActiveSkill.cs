@@ -348,6 +348,7 @@ public class ActiveSkill : MonoBehaviour
     public IEnumerator WindSkill()
     {
         isCharging = true;
+        battle.isSwap = false;
         // SkillReady[(int)battle.WeaponType] = false;
         skillData[(int)battle.WeaponType].isSkillReady = false;
 
@@ -365,6 +366,7 @@ public class ActiveSkill : MonoBehaviour
         StartCoroutine(delay());
         Debug.Log("현재 무적시간 입니다.");
         yield return new WaitForSeconds(InvicibleTime);
+        battle.isSwap = true;
         battle.isGuard = false;
     }
     public IEnumerator delay()

@@ -12,10 +12,31 @@ public class Bear : MonsterBase
     [SerializeField] float[] atkChargingTime;
     [SerializeField] DetectPlayer atkCheck;
 
+    [Space(20f)]
+    [SerializeField] BoxCollider2D rushCol;
+    [SerializeField] BoxCollider2D normalCol;
+
 
     protected override void Update()
     {
-        base.Update();
+        
+        CheckState();
+        SetState();
+
+        if(isMove)
+        {
+            Move();
+        }
+        else
+        {
+            rushCol.enabled = false;
+            normalCol.enabled = true;
+        }
+            
+        if(isTracking)
+            Tracking();
+
+        TimeProcess();
         if(isRushAtk && atkCheck.isEnter)
         {
             isRushAtk = false;
@@ -23,6 +44,20 @@ public class Bear : MonsterBase
         }
     }
 
+    protected override void Move()
+    {
+        base.Move();
+        
+        rushCol.enabled = (nextDir != 0);
+        normalCol.enabled = (nextDir == 0);
+    }
+
+    protected override void Tracking()
+    {
+        base.Tracking();
+        rushCol.enabled = true;
+        normalCol.enabled = false;
+    }
 
     public override void GetDamaged(float getDamage, bool canKncokBack = true)
     {

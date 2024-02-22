@@ -241,14 +241,11 @@ public class MonsterBase : MonoBehaviour
     {
         animator.SetBool("isRange", true);
         animator.SetBool("isMove", false);
-        // float moveDir = target.position.x - transform.position.x;
 
         int targetDir = target.position.x > transform.position.x ? 1 : -1;
         rigid.velocity = new Vector2(targetDir * moveSpeed, rigid.velocity.y);
-        // transform.position += new Vector3(targetDir, 0, 0) * moveSpeed * Time.deltaTime;
+        
         ChangeLocalScale(targetDir);
-        // transform.localScale = new Vector3(-targetDir * monsterData.imageScale, monsterData.imageScale , 1);
-        // animator.SetBool("isMove", nextDir != 0);
     }
 
     // 일반 이동
@@ -259,12 +256,9 @@ public class MonsterBase : MonoBehaviour
 
         animator.SetBool("isMove", nextDir != 0);
         animator.SetBool("isRange", false);
-
-        // transform.position += new Vector3(nextDir, 0, 0) * moveSpeed * Time.deltaTime;
+    
         rigid.velocity = new Vector2(nextDir * moveSpeed, rigid.velocity.y);
         ChangeLocalScale(nextDir);
-        // if(nextDir != 0)
-        //     transform.localScale = new Vector3(-nextDir * monsterData.imageScale, monsterData.imageScale , 1);
     }
 
     protected virtual void RandomDir()
@@ -369,10 +363,7 @@ public class MonsterBase : MonoBehaviour
 
     protected IEnumerator Knockback(int dir)
     {
-        //sprite.color = new Color(0, 0, 0); 깜빡이는 효과 Dotween 으로 할 예정
-
         float ctime = 0;
-        // transform.localScale = new Vector3(-dir * monsterData.imageScale, monsterData.imageScale , 1);
         ChangeLocalScale(dir);
         
         rigid.velocity = Vector2.left * dir * 5;
@@ -384,7 +375,6 @@ public class MonsterBase : MonoBehaviour
         isKnockback = false;
         rigid.velocity = Vector2.zero;
         animator.SetBool("Hurt", false);
-        //sprite.color = new Color(1, 1, 1);
     }
     #endregion
 

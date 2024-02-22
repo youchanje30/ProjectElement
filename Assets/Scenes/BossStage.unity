@@ -389,6 +389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bear (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4665035976893205946, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5498172926753285927, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -433,7 +437,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4665035976893205946, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

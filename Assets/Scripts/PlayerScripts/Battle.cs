@@ -23,6 +23,7 @@ public class Battle : MonoBehaviour
     public bool atking;
     public bool isGuard;
     public GameObject arrow;
+    public GameObject magic;
     public float originalScale;
     public float atkDamage { get { return status.AtkDamage();} }
     public float WeatheringDamage { get { return atkDamage * ( 1 + (synergy.SouthSpiritDamageIncreaseRate / 100)); } }
@@ -68,6 +69,7 @@ public class Battle : MonoBehaviour
     [LabelText("방패 차징공격 대쉬 세기")] [SerializeField] private float shieldDashAtkDashPower;
     [LabelText("방패 차징공격 위치")] [SerializeField] private Transform shieldDashAtkPos;
     [LabelText("방패 차징공격 범위")] [SerializeField] private Vector2 shieldDashAtkSize;
+    [SerializeField] BoxCollider2D boxCol;
     public GameObject barrier;
     // public bool 
 
@@ -79,6 +81,7 @@ public class Battle : MonoBehaviour
 
     [TitleGroup("추가적인 완드 설정")]
     [LabelText("완드 속도")] [SerializeField] float magicSpeed;
+    [SerializeField] Transform wandSpawnPos;
 
 
 
@@ -368,33 +371,34 @@ public class Battle : MonoBehaviour
         atking = false;
         animator.SetBool("isAct", false);
 
-        if(WeaponType == WeaponTypes.Bow)
-        {
-            GameObject ThrowArrow = Instantiate(arrow);
-            ProjectileType projectileType = ThrowArrow.GetComponent<ProjectileType>();
-            ThrowArrow.GetComponent<ProjectileType>().weaponType = WeaponType;
-            projectileType.moveSpeed = arrowNormalSpeed;
-            projectileType.Damage = atkDamage;
+        // if(WeaponType == WeaponTypes.Bow)
+        // {
+        //     GameObject ThrowArrow = Instantiate(arrow);
+        //     ProjectileType projectileType = ThrowArrow.GetComponent<ProjectileType>();
+        //     ThrowArrow.GetComponent<ProjectileType>().weaponType = WeaponType;
+        //     projectileType.moveSpeed = arrowNormalSpeed;
+        //     projectileType.Damage = atkDamage;
             
-            ThrowArrow.transform.position = weaponData[(int)WeaponType].atkPos.position;
+        //     ThrowArrow.transform.position = weaponData[(int)WeaponType].atkPos.position;
             
-            ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
-        }
+        //     ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
+        // }
 
         if(WeaponType == WeaponTypes.Wand)
         {
-            GameObject Magic = Instantiate(arrow);
-            ProjectileType magic = Magic.GetComponent<ProjectileType>();
+            GameObject Magic = Instantiate(magic);
+            ProjectileType magicInfo = Magic.GetComponent<ProjectileType>();
             Magic.GetComponent<ProjectileType>().weaponType = WeaponType;
-            magic.Projectile = Type.Magic;
-            magic.Damage = atkDamage;
-            Magic.transform.position = transform.position;
-            Magic.transform.localScale = new Vector3(transform.localScale.x, Magic.transform.localScale.y, Magic.transform.localScale.z);
+            magicInfo.Projectile = Type.Magic;
+            magicInfo.Damage = atkDamage;
+            Magic.transform.position = wandSpawnPos.position;
+            Magic.transform.localScale = new Vector3(transform.localScale.x < 0 ? -Magic.transform.localScale.x : Magic.transform.localScale.x,
+            Magic.transform.localScale.y, Magic.transform.localScale.z);
             
-            magic.moveSpeed = magicSpeed;
-            magic.duration = passive.passiveData[(int)WeaponType].duration;
-            magic.tick = passive.passiveData[(int)WeaponType].tick;
-            magic.per = passive.slowPer;
+            magicInfo.moveSpeed = magicSpeed;
+            magicInfo.duration = passive.passiveData[(int)WeaponType].duration;
+            magicInfo.tick = passive.passiveData[(int)WeaponType].tick;
+            magicInfo.per = passive.slowPer;
 
             Transform target = null;
             float targetDistance = 100;
@@ -424,7 +428,7 @@ public class Battle : MonoBehaviour
                 if(colliderDistance < targetDistance)
                     target = collider.transform;
             }
-            magic.target = target;
+            magicInfo.target = target;
         }
 
     }
@@ -463,7 +467,6 @@ public class Battle : MonoBehaviour
         if(!atking)
         {
             // 체공 시간
-            // originalScale = rigid2D.gravityScale;
             curFallDownAtkTime = 0f;
             canFallDownHit = true;
             atking = true;
@@ -508,15 +511,23 @@ public class Battle : MonoBehaviour
 
     public IEnumerator DashGuard()
     {
+        atking = true;
         float originalGravity = rigid2D.gravityScale;
         rigid2D.gravityScale = 0f;
         rigid2D.velocity = Vector2.zero;
         rigid2D.velocity = new Vector2(transform.localScale.x * shieldAtkDashPower, 0f);
+        boxCol.enabled = true;
         yield return new WaitForSeconds(shieldAtkDashTime);
+        
+        boxCol.enabled = false;
         // rigid2D.gravityScale = originalGravity;
         rigid2D.gravityScale = 4f;
         if(atking)
+        {
             AtkEnd();
+            Debug.Log("Atking Cancel");
+        }
+            
     }
 
     public IEnumerator ShieldGuard()
@@ -528,20 +539,22 @@ public class Battle : MonoBehaviour
 
         rigid2D.gravityScale = 0f;
         rigid2D.velocity = new Vector2(transform.localScale.x * shieldDashAtkDashPower, 0f);
-
+        boxCol.enabled = true;
         yield return new WaitForSeconds(shieldDashAtkDashTime * 0.5f);
 
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(shieldDashAtkPos.position, shieldDashAtkSize, 0);
-        foreach(Collider2D collider in collider2Ds)
-        {
-            if(collider.tag == "Monster" || collider.tag == "Destruct")
-            {
-                Atk(collider.gameObject);
-            }
-        }
+        // Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(shieldDashAtkPos.position, shieldDashAtkSize, 0);
+        // foreach(Collider2D collider in collider2Ds)
+        // {
+        //     if(collider.CompareTag("Monster") || collider.CompareTag("Destruct"))
+        //     {
+        //         Atk(collider.gameObject);
+        //     }
+        // }
+
+        // Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(shieldDashAtkPos.position, shieldDashAtkSize, 0);
 
         yield return new WaitForSeconds(shieldDashAtkDashTime * 0.5f);
-
+        boxCol.enabled = false;
         rigid2D.gravityScale = originalGravity;
         movement2D.isDashing = false;
         atking = false;
@@ -562,6 +575,4 @@ public class Battle : MonoBehaviour
         if(WeaponType == WeaponTypes.Shield)
             Gizmos.DrawWireCube(shieldDashAtkPos.position, shieldDashAtkSize);
     }
-
-    
 }

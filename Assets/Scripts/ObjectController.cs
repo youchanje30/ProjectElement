@@ -141,7 +141,8 @@ public class ObjectController : MonoBehaviour
             x += sellShopObjects[i].sizeDelta.x + Space;
         }
 
-        sellScrollRect.content.sizeDelta = new Vector2(x, buyScrollRect.content.sizeDelta.y);
+        sellScrollRect.content.sizeDelta = new Vector2(x, sellScrollRect.content.sizeDelta.y);
+        
     }
 
     public void SpawnSellItem()
@@ -160,8 +161,6 @@ public class ObjectController : MonoBehaviour
             var newUi = NewShopItem.GetComponent<RectTransform>();
             sellShopObjects.Add(newUi);
             SetPosShop();
-
-            Debug.Log(NewShopItem);
         }
     }
 

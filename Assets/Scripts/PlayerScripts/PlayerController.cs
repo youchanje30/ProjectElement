@@ -270,6 +270,7 @@ public class PlayerController : MonoBehaviour
 
                 if(!ischarging)
                 {
+                    rigid2D.velocity = Vector2.zero;
                     ischarging = true;
                 }
 
@@ -303,7 +304,9 @@ public class PlayerController : MonoBehaviour
             isRepeatAtk = false;
         }
 
-        // if (pressedSkillKey && skill.SkillReady[(int)battle.WeaponType] )
+        if(ischarging)
+            pressedSkillKey = false;
+        
         if (pressedSkillKey && skill.skillData[(int)battle.WeaponType].isSkillReady)
         {
             if(battle.WeaponType == WeaponTypes.Sword)
@@ -322,7 +325,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        if (battle.atking) return;
+        if (battle.atking || ischarging) return;
         
         if (pressedDashKey && movement2D.curDashCnt > 0) StartCoroutine(movement2D.Dash());
 
@@ -341,12 +344,16 @@ public class PlayerController : MonoBehaviour
     void Swap()
     {
         if(!battle.isSwap) return;
+        if (ischarging || battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.atking || manager.isInven || skill.isSouth || skill.isWater) return;
+
 
         if(pressedFirstSlot || pressedSecondSlot || pressedThirdSlot)
         {
             battle.isSwap = false;
             battle.StartCoroutine(battle.ReturnSwap());
         }
+        else
+            return;
 
         if (pressedFirstSlot)
         {
