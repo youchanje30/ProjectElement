@@ -155,7 +155,7 @@ public class Movement2D : MonoBehaviour
 
     public bool DownJump()
     {
-        if(isGround && rigid2D.velocity.y <= 0 && Input.GetKey(KeyCode.DownArrow) && (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.C)))
+        if(isGround && rigid2D.velocity.y <= 0.1f && Input.GetKey(KeyCode.DownArrow) && (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.C)))
         {
             Debug.Log("DownJump!");
             if(currentOneWayPlatform != null)

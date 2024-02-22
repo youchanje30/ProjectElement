@@ -317,7 +317,8 @@ public class MonsterBase : MonoBehaviour
     #region 몬스터 데미지 받음
     public virtual void GetDamaged(float getDamage, bool canKncokBack = true)
     {
-        if(isKnockback || isDead) return;
+        // if(isKnockback || isDead) return;
+        if(isDead) return;
 
         curHp -= getDamage;
         if(isAtking) AtkEnd();

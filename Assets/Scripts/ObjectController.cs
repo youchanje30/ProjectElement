@@ -110,10 +110,6 @@ public class ObjectController : MonoBehaviour
 
     public void SetPosShop()
     {
-        // float y = 0f;
-
-        
-        // float y = 0f;
         float x = 0f;
         for (int i = 0; i < buyShopObjects.Count; i++)
         {
@@ -121,18 +117,7 @@ public class ObjectController : MonoBehaviour
             x += buyShopObjects[i].sizeDelta.x + Space;
         }
 
-        // buyScrollRect.content.sizeDelta = new Vector2(x, buyScrollRect.content.sizeDelta.y);
-
-        // x = 0f;
-        // for (int i = 0; i < buyShopObjects.Count; i++)
-        // {
-        //     buyShopObjects[i].anchoredPosition = new Vector2(x, buyShopObjects[i].anchoredPosition.y);
-        //     x += buyShopObjects[i].sizeDelta.x + Space;
-        // }
-
         buyScrollRect.content.sizeDelta = new Vector2(x, buyScrollRect.content.sizeDelta.y);
-
-        // shopObjects.Remove()
 
         x = 0f;
         for (int i = 0; i < sellShopObjects.Count; i++)

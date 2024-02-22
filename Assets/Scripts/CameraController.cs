@@ -49,11 +49,6 @@ public class CameraController : MonoBehaviour
                 basicMultiChannel.m_AmplitudeGain = 0f;
             }
         }
-
-    }
-
-    void FixedUpdate()
-    {
         
         if ((Vector2)cameraHandler.position != oldPosition)
         {
@@ -65,6 +60,22 @@ public class CameraController : MonoBehaviour
  
             oldPosition = (Vector2)transform.position;
         }
+
+    }
+
+    void FixedUpdate()
+    {
+        
+        // if ((Vector2)cameraHandler.position != oldPosition)
+        // {
+        //     if (cameraTranslate != null)
+        //     {
+        //         Vector2 vec = oldPosition - (Vector2)cameraHandler.position;
+        //         cameraTranslate(vec);
+        //     }
+ 
+        //     oldPosition = (Vector2)transform.position;
+        // }
         // cameraHandler.position = Vector3.Lerp(cameraHandler.position, Target.position + Offset , Time.fixedDeltaTime * smoothness);
     }
 
