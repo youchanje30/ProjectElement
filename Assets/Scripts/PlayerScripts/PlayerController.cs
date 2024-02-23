@@ -231,6 +231,7 @@ public class PlayerController : MonoBehaviour
     {
         battle.WeaponType = PlayerWeaponType;
         ChangeAnim();
+        GameObject.FindGameObjectWithTag("Spirit").GetComponent<Spirit>().ChangeAnim();
         status.SetStatue();
         GetComponent<PassiveSystem>().Swaped();
         animator.SetFloat("AtkSpeed", status.atkSpeed * 0.01f);
