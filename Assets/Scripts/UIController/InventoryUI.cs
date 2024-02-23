@@ -56,7 +56,7 @@ public class InventoryUI : MonoBehaviour
             Info.GetComponent<RectTransform>().SetAsLastSibling();
             Info.transform.position = new Vector3(Input.mousePosition.x - 140, Input.mousePosition.y - 160);
             ItemInfo.GetComponent<RectTransform>().SetAsLastSibling();
-            ItemInfo.transform.position = new Vector3(Input.mousePosition.x - 160, Input.mousePosition.y + 100);
+            ItemInfo.transform.position = new Vector3(Input.mousePosition.x - 190, Input.mousePosition.y + 140);
         }
         if (Input.GetKeyDown(KeyCode.E) && gameManager.isInven)
         {
@@ -93,13 +93,15 @@ public class InventoryUI : MonoBehaviour
             if (inventory.HavingItem[i] != null)
             {
                 InvenItem[i].SetActive(true);
-                InvenItem[i].GetComponent<Image>().sprite = inventory.HavingItem[i].itemImg.sprite;
+                //InvenItem[i].GetComponent<Image>().sprite = inventory.HavingItem[i].itemImg.sprite;
             }
             else
             {
                 InvenItem[i].SetActive(false);
             }
         }
+        Info.SetActive(false);
+        ItemInfo.SetActive(false);
     }
     public void InventoryAnim()
     {

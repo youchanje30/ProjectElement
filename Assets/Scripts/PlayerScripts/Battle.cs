@@ -263,7 +263,10 @@ public class Battle : MonoBehaviour
             }
 
             PlayerPasstive(AtkObj);
-            PlayerSynergy(AtkObj);
+            if (WeaponType == WeaponTypes.Shield || WeaponType == WeaponTypes.Sword)
+            {
+                PlayerSynergy((int)WeaponType * 1000,AtkObj);
+            }
             return;
         }
 
@@ -451,11 +454,11 @@ public class Battle : MonoBehaviour
             //passive.ActiveSynergy(WeaponType, monster.GetComponentInParent<MonsterSynergy>());
         }
     }
-    public void PlayerSynergy(GameObject monster = null)
+    public void PlayerSynergy(int WeaponID, GameObject monster = null )
     {
-        if (monster != null)
+        if (monster != null )
         {
-            synergy.ActiveSynergy(WeaponType, monster.GetComponentInParent<MonsterSynergy>());
+            synergy.ActiveSynergy(ElementalManager.instance.AddElement(WeaponID), monster.GetComponentInParent<MonsterSynergy>());
         }
     }
 

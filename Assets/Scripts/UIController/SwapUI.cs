@@ -14,6 +14,7 @@ public class SwapUI : MonoBehaviour
     public int slot;
     public Image[] Slot;
     public Image[] CardImg;
+    public Image[] SkillImg;
     public TMP_Text[] eleInfo;
     void Awake()
     {
@@ -32,9 +33,11 @@ public class SwapUI : MonoBehaviour
         {
             Slot[i].sprite = inventory.HavingElement[i].elementalImg;
             CardImg[i].sprite = inventory.HavingElement[i].elementalCard;
+            SkillImg[i].sprite = inventory.HavingElement[i].SkillIcon;
         }
         Slot[3].sprite = gameManager.Elemental.elementalDatas[(int)gameManager.ObjData.WeaponType].elementalImg;
         CardImg[3].sprite = gameManager.Elemental.elementalDatas[(int)gameManager.ObjData.WeaponType].elementalCard;
+        SkillImg[3].sprite = gameManager.Elemental.elementalDatas[(int)gameManager.ObjData.WeaponType].SkillIcon;
     }
     public void sellectSlot()
     {     if (SlotSwapUI.activeSelf == true)
@@ -43,11 +46,13 @@ public class SwapUI : MonoBehaviour
             {
                 rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x + 562, -287);
                 rectTransform.parent.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(rectTransform.anchoredPosition.x - 87, -281);
+                rectTransform.parent.GetChild(1).GetComponent<RectTransform>().anchoredPosition = new Vector2(rectTransform.anchoredPosition.x +79.1f, -214.7f);
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) && rectTransform.anchoredPosition.x > -562)
             {
                 rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x - 562, -287);
                 rectTransform.parent.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(rectTransform.anchoredPosition.x - 87, -281);
+                rectTransform.parent.GetChild(1).GetComponent<RectTransform>().anchoredPosition = new Vector2(rectTransform.anchoredPosition.x +79.1f, -214.7f);
             }
 
             if (rectTransform.anchoredPosition.x == -562)

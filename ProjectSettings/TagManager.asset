@@ -21,6 +21,8 @@ TagManager:
   - ItemManager
   - Card
   - TileMap
+  - SpiritPos
+  - Spirit
   layers:
   - Default
   - TransparentFX
