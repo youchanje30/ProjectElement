@@ -103,11 +103,11 @@ public class ProjectileType : MonoBehaviour
             if (Projectile == Type.Magic)
             {
                 other.GetComponentInParent<MonsterDebuffBase>().ContinueBuff(0f, duration, tick, BuffTypes.Slow, per);
-                battle.PlayerSynergy(other.gameObject);
+                battle.PlayerSynergy(2000, other.gameObject);
             }
             if (Projectile == Type.Arrow)
             {
-                battle.PlayerSynergy(other.gameObject);
+                battle.PlayerSynergy(4000, other.gameObject);
             }
             if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill )
             {
