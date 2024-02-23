@@ -490,7 +490,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106262515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -4.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4185,7 +4185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935247890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -4.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4675,7 +4675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2183464480881181263, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2183464480881181263, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6027,7 +6027,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202358596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -4.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6320,40 +6320,28 @@ CompositeCollider2D:
         Y: 238124992
       - X: 1228125056
         Y: 240000000
-      - X: 1011875008
+      - X: 1010000000
         Y: 240000000
       - X: 1010000000
-        Y: 238124992
-      - X: 1010000000
-        Y: 140000000
-      - X: 991875008
         Y: 140000000
       - X: 990000000
-        Y: 138124992
+        Y: 140000000
       - X: 990000000
         Y: 10000000
-      - X: 981875008
+      - X: 980000000
         Y: 10000000
       - X: 980000000
-        Y: 8125000
-      - X: 980000000
-        Y: 0
-      - X: 671875008
         Y: 0
       - X: 670000000
-        Y: -1875000
+        Y: 0
       - X: 670000000
         Y: -100000000
-      - X: 661875008
+      - X: 660000000
         Y: -100000000
       - X: 660000000
-        Y: -101875000
-      - X: 660000000
-        Y: -110000000
-      - X: 631875008
         Y: -110000000
       - X: 630000000
-        Y: -111875000
+        Y: -110000000
       - X: 630000000
         Y: -150000000
       - X: 320000000
@@ -6416,10 +6404,8 @@ CompositeCollider2D:
         Y: 268124992
       - X: -71875000
         Y: 270000000
-      - X: -228124992
-        Y: 270000000
       - X: -230000000
-        Y: 268124992
+        Y: 270000000
       - X: -230000000
         Y: -440000000
       - X: 1228749952
@@ -6430,23 +6416,17 @@ CompositeCollider2D:
       - {x: 123, y: -43.874992}
       - {x: 122.99999, y: 23.812508}
       - {x: 122.81249, y: 24}
-      - {x: 101.18749, y: 23.999992}
-      - {x: 101, y: 23.812489}
+      - {x: 101, y: 23.999971}
       - {x: 100.99997, y: 14}
-      - {x: 99.18749, y: 13.999992}
-      - {x: 99, y: 13.812489}
+      - {x: 99, y: 13.999971}
       - {x: 98.99997, y: 1}
-      - {x: 98.18749, y: 0.99999243}
-      - {x: 98, y: 0.8124892}
+      - {x: 98, y: 0.99997073}
       - {x: 97.99997, y: 0}
-      - {x: 67.18749, y: -0.0000076}
-      - {x: 67, y: -0.1875108}
+      - {x: 67, y: -0.000029300001}
       - {x: 66.99997, y: -10}
-      - {x: 66.18749, y: -10.000009}
-      - {x: 66, y: -10.1875105}
+      - {x: 66, y: -10.00003}
       - {x: 65.99997, y: -11}
-      - {x: 63.187496, y: -11.000009}
-      - {x: 63, y: -11.1875105}
+      - {x: 63, y: -11.00003}
       - {x: 62.99997, y: -15}
       - {x: 32, y: -14.999971}
       - {x: 31.999994, y: -11.187493}
@@ -6478,8 +6458,7 @@ CompositeCollider2D:
       - {x: -7, y: 26.000029}
       - {x: -7.000008, y: 26.812508}
       - {x: -7.1875105, y: 27}
-      - {x: -22.812508, y: 26.999994}
-      - {x: -23, y: 26.812489}
+      - {x: -23, y: 26.999971}
       - {x: -22.999971, y: -44}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
@@ -77649,6 +77628,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 342317699883370455, guid: 146749df2edee38408a64cea320cacf5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 342317699883370455, guid: 146749df2edee38408a64cea320cacf5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1665483386127700766, guid: 146749df2edee38408a64cea320cacf5, type: 3}
       propertyPath: m_Name
       value: Cine Cam
@@ -79555,7 +79542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647022118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -4.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
