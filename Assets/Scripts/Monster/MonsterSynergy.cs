@@ -11,7 +11,8 @@ public class MonsterSynergy : MonoBehaviour
     [SerializeField] PassiveSystem passive;
 
 
-    [SerializeField] WeaponTypes[] Synergy;
+    [SerializeField] ElementalData[] Synergy;
+    [SerializeField] GameObject[] SynergyImage;
     [SerializeField] int SynergyIndex;
     [SerializeField] bool HaveSynergy = false;
     [SerializeField] bool CanSynergy = false;
@@ -26,7 +27,7 @@ public class MonsterSynergy : MonoBehaviour
     [Header("증발")]
     public float EvaporationDamgeIncreseRate;
     #endregion
-
+     
     #region 가열
     [Header("가열")]
     public float BurnDamgeIncreseRate;
@@ -63,6 +64,7 @@ public class MonsterSynergy : MonoBehaviour
         if (!battle) { battle = GameObject.FindGameObjectWithTag("Player").GetComponent<Battle>(); }
         if (!passive) { passive = battle.GetComponent<PassiveSystem>(); }
         CanSynergy = true;
+
     }
 
     void Update()
@@ -75,6 +77,10 @@ public class MonsterSynergy : MonoBehaviour
                 HaveSynergy = false;
                 SynergyHoldingTime = 0;
                 SynergyIndex = 0;
+                for (int i = 0; i < SynergyImage.Length; i++)
+                {
+                    SynergyImage[i].GetComponent<SpriteRenderer>().sprite = null;
+                }
             }
         }
         // if (!HaveSynergy)
@@ -82,7 +88,7 @@ public class MonsterSynergy : MonoBehaviour
         {
             for (int i = 0; i < Synergy.Length; i++)
             {
-                Synergy[i] = WeaponTypes.None;
+                Synergy[i] = null;
                 SynergyHoldingTime = 0;
                 SynergyIndex = 0;
             }
@@ -93,28 +99,30 @@ public class MonsterSynergy : MonoBehaviour
             SynergyEffect();
             for (int i = 0; i < Synergy.Length; i++)
             {
-                Synergy[i] = WeaponTypes.None;
+                Synergy[i] = null;
                 SynergyHoldingTime = 0;
                 SynergyIndex = 0;
             }
             HaveSynergy = false;
             CanSynergy = false;
-            StartCoroutine(ReturnCoolTIme());
+            //StartCoroutine(ReturnCoolTIme());
         }
-        if(monster.isHit == true)
+        if (monster.isHit == true)
         {
-           
+
         }
+ 
+      
     }
 
-    public void GetSynergy(WeaponTypes types)
+    public void GetSynergy(ElementalData types)
     {
         if (CanSynergy)
-        {
-
-            if (Synergy[SynergyIndex] == WeaponTypes.None)
+        {       
+            if (Synergy[SynergyIndex] == null)
             {
                 Synergy[SynergyIndex] = types;
+                SynergyImage[SynergyIndex].GetComponent<SpriteRenderer>().sprite = Synergy[SynergyIndex].SynergyIcon;
                 if (Synergy[0] != Synergy[1])
                 {
                     HaveSynergy = true;
@@ -123,14 +131,16 @@ public class MonsterSynergy : MonoBehaviour
                 }
                 else if (Synergy[0] == Synergy[1])
                 {
-                    Synergy[SynergyIndex] = WeaponTypes.None;
+                    Synergy[SynergyIndex] = null;
+                    SynergyImage[SynergyIndex].GetComponent<SpriteRenderer>().sprite = null;
                 }
+               
             }
         }
     }
-    public IEnumerator ReturnCoolTIme()
+    public IEnumerator ReturnCoolTIme(float i)
     {
-        yield return new WaitForSeconds(SynergyCoolTime);
+        yield return new WaitForSeconds(SynergyCoolTime - i);
         CanSynergy = true;
     }
     public void SynergyEffect()
@@ -139,42 +149,48 @@ public class MonsterSynergy : MonoBehaviour
         {
             for (int i = 0; i < Synergy.Length; i++)
             {
-                if (Synergy[j] == WeaponTypes.Sword && Synergy[i] == WeaponTypes.Shield)
+                if (Synergy[j].WeaponTypes == WeaponTypes.Sword && Synergy[i].WeaponTypes == WeaponTypes.Shield)
                 {
                     StartCoroutine(Heating());
                 }
 
-                if (Synergy[j] == WeaponTypes.Sword && Synergy[i] == WeaponTypes.Wand)
+                if (Synergy[j].WeaponTypes == WeaponTypes.Sword && Synergy[i].WeaponTypes == WeaponTypes.Wand)
                 {
-                    Evaporation();
+                    StartCoroutine(Evaporation());
                 }
-                if (Synergy[j] == WeaponTypes.Sword && Synergy[i] == WeaponTypes.Bow)
+                if (Synergy[j].WeaponTypes == WeaponTypes.Sword && Synergy[i].WeaponTypes == WeaponTypes.Bow)
                 {
                     StartCoroutine(Diffusion());
                 }
 
-                if (Synergy[j] == WeaponTypes.Wand && Synergy[i] == WeaponTypes.Shield)
+                if (Synergy[j].WeaponTypes == WeaponTypes.Wand && Synergy[i].WeaponTypes == WeaponTypes.Shield)
                 {
                     StartCoroutine(Corrosion());
                 }
 
-                if (Synergy[j] == WeaponTypes.Wand && Synergy[i] == WeaponTypes.Bow)
+                if (Synergy[j].WeaponTypes == WeaponTypes.Wand && Synergy[i].WeaponTypes == WeaponTypes.Bow)
                 {
                     StartCoroutine(Bind());
                 }
 
-                if (Synergy[j] == WeaponTypes.Shield && Synergy[i] == WeaponTypes.Bow)
+                if (Synergy[j].WeaponTypes == WeaponTypes.Shield && Synergy[i].WeaponTypes == WeaponTypes.Bow)
                 {
                     StartCoroutine(Weathering());
                 }
             }
         }
     }
-    public void Evaporation()
+    public IEnumerator Evaporation()
     {
         float evaporationDmg = DefaultDamage * ( 1 + (EvaporationDamgeIncreseRate / 100));
         monster.GetDamaged(evaporationDmg);
         Debug.Log("증발 " + evaporationDmg);
+        yield return new WaitForSeconds(2f);
+        for (int i = 0; i < SynergyImage.Length; i++)
+        {
+            SynergyImage[i].GetComponent<SpriteRenderer>().sprite = null;
+        }
+        StartCoroutine(ReturnCoolTIme(2f));
     }
 
     public IEnumerator Heating()
@@ -185,6 +201,11 @@ public class MonsterSynergy : MonoBehaviour
         Debug.Log("가열 " + passive.burnDamage);
         yield return new WaitForSeconds(Heatingduration);
         passive.burnDamage = burnDamage;
+        for (int i = 0; i < SynergyImage.Length; i++)
+        {
+            SynergyImage[i].GetComponent<SpriteRenderer>().sprite = null;
+        }
+        StartCoroutine(ReturnCoolTIme(Heatingduration));
     }
 
     public IEnumerator Bind()
@@ -193,6 +214,11 @@ public class MonsterSynergy : MonoBehaviour
         Debug.Log("소용돌이");
         yield return new WaitForSeconds(BindTime);
         isBind = false;
+        for (int i = 0; i < SynergyImage.Length; i++)
+        {
+            SynergyImage[i].GetComponent<SpriteRenderer>().sprite = null;
+        }
+        StartCoroutine(ReturnCoolTIme(BindTime));
     }
 
     public IEnumerator Corrosion()
@@ -202,6 +228,11 @@ public class MonsterSynergy : MonoBehaviour
         Debug.Log("부식");
         yield return new WaitForSeconds(CorrosionDuration);
         monster.damage = monsterDamage;
+        for (int i = 0; i < SynergyImage.Length; i++)
+        {
+            SynergyImage[i].GetComponent<SpriteRenderer>().sprite = null;
+        }
+        StartCoroutine(ReturnCoolTIme(CorrosionDuration));
     }
 
     public IEnumerator Diffusion()
@@ -219,8 +250,13 @@ public class MonsterSynergy : MonoBehaviour
             // yield return new WaitForSeconds(SynergyCoolTime);
             // isDiffusion = false;
         }
-        yield return new WaitForSeconds(SynergyCoolTime);
+        yield return new WaitForSeconds(2f);
         isDiffusion = false;
+        for (int i = 0; i < SynergyImage.Length; i++)
+        {
+            SynergyImage[i].GetComponent<SpriteRenderer>().sprite = null;
+        }
+        StartCoroutine(ReturnCoolTIme(2f));
     }
 
     public IEnumerator Weathering()
@@ -229,6 +265,11 @@ public class MonsterSynergy : MonoBehaviour
         Debug.Log("풍화" );
         yield return new WaitForSeconds(WeateringTime);
         isWeathering = false;
+        for (int i = 0; i < SynergyImage.Length; i++)
+        {
+            SynergyImage[i].GetComponent<SpriteRenderer>().sprite = null;
+        }
+        StartCoroutine(ReturnCoolTIme(WeateringTime));
     }
 
     public IEnumerator HitFalse()

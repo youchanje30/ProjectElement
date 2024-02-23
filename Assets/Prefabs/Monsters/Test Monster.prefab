@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2269852138631262038, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: BindTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2269852138631262038, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: WeateringTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2269852138631262038, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: Heatingduration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2269852138631262038, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: SynergyClearTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2269852138631262038, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: CorrosionDuration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1662406608036965016, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Controller
       value: 
@@ -133,13 +153,13 @@ MonoBehaviour:
   trackDetect: {fileID: 6444404108009269196}
   tryAtkDetect: {fileID: 5373036055377236901}
   target: {fileID: 0}
+  monsterSynergy: {fileID: 0}
   moveSpeed: 0
   curHp: 0
   damage: 0
-  atkPos:
-  - {x: -1, y: 0, z: 0}
-  atkSize:
-  - {x: 4, y: 4}
+  isStun: 0
+  isHit: 0
+  atkInfo: []
 --- !u!114 &5373036055377236901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2610654531360661370, guid: bcab59f8b8043a540ad625334218e733, type: 3}

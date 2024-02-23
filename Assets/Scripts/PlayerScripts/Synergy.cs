@@ -20,7 +20,7 @@ public class Synergy : MonoBehaviour
     {
         // battle.WeatheringDamage = battle.atkDamage *( 1 +(SouthSpiritDamageIncreaseRate / 100));
     }
-    public void ActiveSynergy(WeaponTypes type, MonsterSynergy monster = null)
+    public void ActiveSynergy(ElementalData type, MonsterSynergy monster = null)
     {
         monster.GetSynergy(type);
     }
