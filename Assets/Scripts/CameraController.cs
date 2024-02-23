@@ -49,8 +49,7 @@ public class CameraController : MonoBehaviour
                 basicMultiChannel.m_AmplitudeGain = 0f;
             }
         }
-        
-        if ((Vector2)cameraHandler.position != oldPosition)
+        else if ((Vector2)cameraHandler.position != oldPosition)
         {
             if (cameraTranslate != null)
             {

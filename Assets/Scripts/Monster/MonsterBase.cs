@@ -62,23 +62,6 @@ public class MonsterBase : MonoBehaviour
     [SerializeField] protected AtkInfo[] atkInfo;
     #endregion
 
-    /*
-
-    행동 불가능한 상태 : isDead , isAtking , isKnockback
-    위 상태는 행동을 끝내기 전까지 아무것도 할 수 없음
-
-    1. 이동 - 지속적으로 이동, 정지를 하며 플레이어를 찾아다님
-    2. 추적 - 추적 범위 내에 플레이어가 들어오면 추적을 시작. 해당 플레이어 위치로 이동 시도
-    3. 공격 - 공격 범위 내에 플레이어가 들어오면 공격을 시작. 공격이 끝난 후 행동 가능
-    
-    공격 시도 범위 / 피격 범위
-   
-    플레이어가 땅에 있는가..
-    텔레포트 위치가 땅을 벗어나지 않는가..
-
-    */
-
-
     #region 초기화
     protected virtual void Init()
     {
@@ -160,7 +143,7 @@ public class MonsterBase : MonoBehaviour
                 canAtk = true;
             canMove = false;
         }
-        else if(trackDetect.isEnter)
+        if(trackDetect.isEnter)
         {
             canTrack = true;
         }
