@@ -46,28 +46,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemDatas:
-  - {fileID: 11400000, guid: 08744e092c75f1b49bf126e166dfcfd9, type: 2}
+  - {fileID: 11400000, guid: d015b2e56d43dff4d970fb6d5ac32752, type: 2}
+  - {fileID: 11400000, guid: 1141b1a26044cbf458169b656d576fb3, type: 2}
   - {fileID: 11400000, guid: a892cf2cf949e6849ac3f88b612514b4, type: 2}
   - {fileID: 11400000, guid: cc1d4fb1010016e4fa2e6c1260c292c8, type: 2}
-  - {fileID: 11400000, guid: d015b2e56d43dff4d970fb6d5ac32752, type: 2}
+  - {fileID: 11400000, guid: 08744e092c75f1b49bf126e166dfcfd9, type: 2}
+  - {fileID: 11400000, guid: 522a78253ba13264ca437be018b53c9d, type: 2}
   - {fileID: 11400000, guid: f738e477ddc199c4d824dfb4d49b61f2, type: 2}
   - {fileID: 11400000, guid: ad0ca96e643b4154c8deec1ff13cc8ec, type: 2}
-  - {fileID: 11400000, guid: c16b919c0d42d394f8531f1209c12cf4, type: 2}
-  - {fileID: 11400000, guid: 509cc419e2109a7469981f249ddedf5d, type: 2}
-  - {fileID: 11400000, guid: c568e4833feb41b4a89e4b0781fadc16, type: 2}
-  - {fileID: 11400000, guid: 6a364d6405af9904f954d7a0e57bd5aa, type: 2}
-  - {fileID: 11400000, guid: 0244e6b47e13b43448159e76c1306218, type: 2}
-  - {fileID: 11400000, guid: 00f91bb7922bccb48aa3980d1af9d27c, type: 2}
+  - {fileID: 11400000, guid: d571acabf316a5945b0d26b7b6cad4ca, type: 2}
   - {fileID: 11400000, guid: b3525f4cddcfd5b4a9b934f416c01391, type: 2}
   - {fileID: 11400000, guid: 1027070a72afde54e93f2be2bf308c86, type: 2}
-  - {fileID: 11400000, guid: d571acabf316a5945b0d26b7b6cad4ca, type: 2}
-  - {fileID: 11400000, guid: e42192b2305a3f24bb412a75bbd9d50b, type: 2}
-  - {fileID: 11400000, guid: 30d17c33f98648040ac2aab5b83ce31d, type: 2}
-  - {fileID: 11400000, guid: 712676094a045cf44804cca1582f251e, type: 2}
+  - {fileID: 11400000, guid: 509cc419e2109a7469981f249ddedf5d, type: 2}
+  - {fileID: 11400000, guid: da2722d3ccbc6f94da27b6636c3bb4a0, type: 2}
+  - {fileID: 11400000, guid: c568e4833feb41b4a89e4b0781fadc16, type: 2}
+  - {fileID: 11400000, guid: 6a364d6405af9904f954d7a0e57bd5aa, type: 2}
+  - {fileID: 11400000, guid: c16b919c0d42d394f8531f1209c12cf4, type: 2}
+  - {fileID: 11400000, guid: c98a8e882a2652a4a82cf74bbdfd14e2, type: 2}
+  - {fileID: 11400000, guid: 0244e6b47e13b43448159e76c1306218, type: 2}
+  - {fileID: 11400000, guid: 00f91bb7922bccb48aa3980d1af9d27c, type: 2}
   CommonItemDatas: []
   RareItemDatas: []
   EpicItemDatas: []
-  ItemGetPercent: 500000000f00000005000000
+  ItemGetPercent: 46000000140000000a000000
 --- !u!114 &966535409122990007
 MonoBehaviour:
   m_ObjectHideFlags: 0
