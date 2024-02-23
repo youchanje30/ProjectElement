@@ -596,7 +596,7 @@ public class GameManager : MonoBehaviour
 
     public void LogStat()
     {
-        inventoryUI.Stat.text = "힘: " + player.GetComponent<PlayerStatus>().strength + "\n" + "민첩: " + player.GetComponent<PlayerStatus>().dexterity + "\n" + "운: " + player.GetComponent<PlayerStatus>().luck + "\n" + "\n" + "최대 체력: " + player.GetComponent<PlayerStatus>().maxHp + "\n" + "데미지: " + player.GetComponent<PlayerStatus>().damage + "\n" + "크리티컬 확률: " + player.GetComponent<PlayerStatus>().crtRate + "\n" + "공격 속도: " + player.GetComponent<PlayerStatus>().atkSpeed + "\n" + "회피 확률: " + player.GetComponent<PlayerStatus>().missRate + "\n" + "쿨타임 감소율: " + player.GetComponent<PlayerStatus>().coolDownReductionPer + "\n" + "데미지 감소율: " + player.GetComponent<PlayerStatus>().defPer + "\n" + "이동 속도: " + player.GetComponent<PlayerStatus>().playerSpeed + "\n" + "점프력: " + player.GetComponent<PlayerStatus>().jumpForce;
+        inventoryUI.Stat.text =  "최대 체력: " + player.GetComponent<PlayerStatus>().maxHp + "\n" + "데미지: " + player.GetComponent<PlayerStatus>().damage + "\n" + "크리티컬 확률: " + player.GetComponent<PlayerStatus>().crtRate + "\n" + "공격 속도: " + player.GetComponent<PlayerStatus>().atkSpeed + "\n" + "회피 확률: " + player.GetComponent<PlayerStatus>().missRate + "\n" + "쿨타임 감소율: " + player.GetComponent<PlayerStatus>().coolDownReductionPer + "\n" + "데미지 감소율: " + player.GetComponent<PlayerStatus>().defPer + "\n" + "이동 속도: " + player.GetComponent<PlayerStatus>().playerSpeed + "\n" + "점프력: " + player.GetComponent<PlayerStatus>().jumpForce;
     }
     public void SetImage()
     {
@@ -604,35 +604,38 @@ public class GameManager : MonoBehaviour
         {
             if (inventory.HavingElement[i].ElementalID != 0)
             {
-                ElementImg[i].transform.GetChild(0).gameObject.SetActive(true);
                 ElementImg[i].transform.GetChild(1).gameObject.SetActive(true);
+                ElementImg[i].transform.GetChild(2).gameObject.SetActive(true);
                 UIController.instance.UnSelectElementalImage[i].gameObject.SetActive(true);
                 Color color = ElementImg[i].GetComponent<Image>().color;
                 color.a = 1f;
-                ElementImg[i].GetComponent<Image>().color = color;             
+                ElementImg[i].GetComponent<Image>().color = color;
+                UIController.instance.UnSelectElementalImage[i].GetComponent<Image>().color = color;
             }
             else
             {
-                ElementImg[i].transform.GetChild(0).gameObject.SetActive(false);
                 ElementImg[i].transform.GetChild(1).gameObject.SetActive(false);
+                ElementImg[i].transform.GetChild(2).gameObject.SetActive(false);
                 UIController.instance.UnSelectElementalImage[i].gameObject.SetActive(false);
                 Color color = ElementImg[i].GetComponent<Image>().color;
                 color.a = 0f;
                 ElementImg[i].GetComponent<Image>().color = color;
+                UIController.instance.UnSelectElementalImage[i].GetComponent<Image>().color = color;
             }
             if(inventory.HavingElement[i].WeaponTypes == battle.WeaponType && inventory.HavingElement[i].ElementalID != 0)
             {
                 ElementImg[i].transform.parent.parent.GetComponent<Image>().sprite = UIController.instance.SelectImg.sprite;
-                ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalIcon;             
+                ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalIcon;
+
+                ElementImg[i].transform.parent.GetComponent<Image>().fillAmount = Mathf.Lerp(ElementImg[i].transform.parent.GetComponent<Image>().fillAmount, GameManager.instance.activeSkill.skillData[(int)GameManager.instance.battle.WeaponType].CurskillCoolTime / (GameManager.instance.activeSkill.skillData[(int)GameManager.instance.battle.WeaponType].skillCoolTime * (1 - (GameManager.instance.activeSkill.status.coolDownReductionPer / 100))), 1);
+                UIController.instance.UnSelectElementalImage[i].GetComponent<Image>().fillAmount = Mathf.Lerp(UIController.instance.UnSelectElementalImage[i].GetComponent<Image>().fillAmount, GameManager.instance.activeSkill.skillData[(int)GameManager.instance.battle.WeaponType].CurskillCoolTime / (GameManager.instance.activeSkill.skillData[(int)GameManager.instance.battle.WeaponType].skillCoolTime * (1 - (GameManager.instance.activeSkill.status.coolDownReductionPer / 100))), 1);
             }
             else
             {
                 ElementImg[i].transform.parent.parent.GetComponent<Image>().sprite = UIController.instance.unSelectImg.sprite;
                 ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].UnSelcIcon;
             }
-            UIController.instance.UnSelectElementalImage[i].GetComponent<Image>().sprite = inventory.HavingElement[i].UnSelcIcon;
-            ElementImg[i].transform.parent.GetComponent<Image>().fillAmount = Mathf.Lerp(ElementImg[i].transform.parent.GetComponent<Image>().fillAmount, activeSkill.skillData[(int)battle.WeaponType].CurskillCoolTime / (activeSkill.skillData[(int)battle.WeaponType].skillCoolTime * (1 - (activeSkill.status.coolDownReductionPer / 100))),1);
-            UIController.instance.UnSelectElementalImage[i].GetComponent<Image>().fillAmount = Mathf.Lerp(UIController.instance.UnSelectElementalImage[i].GetComponent<Image>().fillAmount, activeSkill.skillData[(int)battle.WeaponType].CurskillCoolTime / (activeSkill.skillData[(int)battle.WeaponType].skillCoolTime * (1 - (activeSkill.status.coolDownReductionPer / 100))), 1);
+            UIController.instance.UnSelectElementalImage[i].GetComponent<Image>().sprite = inventory.HavingElement[i].UnSelcIcon;         
         }
     }
 

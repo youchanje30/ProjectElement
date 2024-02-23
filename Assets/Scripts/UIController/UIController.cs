@@ -107,7 +107,6 @@ public class UIController : MonoBehaviour
         //{
         //    StatusUPKeyboardCon();
         //}
-
     }
 
     public void GameSettingBtn(int btn)

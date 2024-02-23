@@ -129,10 +129,14 @@ public class ActiveSkill : MonoBehaviour
         // {
         //     SkillReady[i] = true;
         // }
+      
+    }
+    private void Start()
+    {
         for (int i = 0; i < skillData.Count; i++)
         {
             skillData[i].isSkillReady = true;
-            skillData[i].CurskillCoolTime =0;
+            skillData[i].CurskillCoolTime = 0;
         }
     }
     void Update()
@@ -167,7 +171,7 @@ public class ActiveSkill : MonoBehaviour
         }
         for (int i = 0; i < skillData.Count; i++)
         {
-            if (!skillData[i].isSkillReady && skillData[i].CurskillCoolTime != 0)
+            if (!skillData[i].isSkillReady && skillData[i].CurskillCoolTime >= 0)
             {
                 skillData[i].CurskillCoolTime -= Time.deltaTime;
             }
