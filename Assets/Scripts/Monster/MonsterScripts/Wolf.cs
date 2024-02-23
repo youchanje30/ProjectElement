@@ -16,8 +16,12 @@ public class Wolf : MonsterBase
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float raycastDistance = 5f;
     [SerializeField] bool isMissState;
+    [Space(20f)]
 
-    
+    [Header("텔레포트 공격 관련")]
+    [SerializeField] Vector3 telePos;
+    //int dir { get { return (target.localScale.x > 0) ? -1 : 1; } }
+    [SerializeField] int dir;
 
     protected override void Init()
     {
@@ -83,7 +87,7 @@ public class Wolf : MonsterBase
         if(curAtkType == WolfAtkType.tele && canTrack && canAct)
         {
             canAct = false;
-            TeleportAtk();
+            TeleportEnter();
             return;
         }
 
@@ -107,13 +111,25 @@ public class Wolf : MonsterBase
     }
 
 
-    void TeleportAtk()
+    protected override void AtkDetect(int index = 0)
+    {
+        Vector3 detectPos = transform.position + atkInfo[index].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(detectPos, atkInfo[index].atkSize, 0, LayerMask.GetMask("Player"));
+        foreach(Collider2D collider in collider2Ds)
+        {
+            Debug.Log(collider.tag);
+            if(!collider.CompareTag("Player")) continue;
+                
+            collider.GetComponent<Battle>().GetDamaged(damage * 2f);
+        }
+    }
+
+    void TeleportEnter()
     {
         RaycastHit2D hit = Physics2D.Raycast((Vector2)target.position, Vector2.down, raycastDistance, groundLayer);
                         
         if(!hit)
         {
-            Invoke("ReturnAct", 0.1f);
             return;
         }
 
@@ -123,7 +139,7 @@ public class Wolf : MonsterBase
         rigid.velocity = Vector2.zero;
 
         float spawnY = hit.point.y;
-        int dir = (target.localScale.x > 0) ? -1 : 1;
+        dir = (target.localScale.x > 0) ? -1 : 1;
         RaycastHit2D wallCheck = Physics2D.Raycast((Vector2)target.position, Vector2.right * dir, 5, groundLayer);
         int time = 1;
         float spawnX = target.position.x;
@@ -147,7 +163,6 @@ public class Wolf : MonsterBase
             if(dir < 0 && wallCheck.point.x + 1.6f >= spawnX)
             {
                 spawnX = wallCheck.point.x + 1.6f;
-                Debug.Log("?");
             }
                 
 
@@ -170,10 +185,17 @@ public class Wolf : MonsterBase
             spawnX = target.position.x + dir * time * 0.25f;
         }
 
-        transform.position = new Vector3(spawnX, spawnY + 1.5f, transform.position.z);
         transform.localScale = new Vector3(dir * monsterData.imageScale, monsterData.imageScale, 1);
-        
-        animator.SetTrigger("Atk");
+
+        telePos = new Vector3(spawnX, spawnY + 1.5f, transform.position.z);
+        animator.SetTrigger("Teleport");
+    }
+
+    protected void Teleport()
+    {
+        transform.position = telePos;
+        dir = (target.localScale.x > 0) ? -1 : 1;
+        transform.localScale = new Vector3(dir * monsterData.imageScale, monsterData.imageScale, 1);
     }
 
     protected override void AtkEnd()
