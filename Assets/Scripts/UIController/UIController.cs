@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     public Image HpFill;
     public Image BarrierFill;
     public GameObject[] ElementalImage;
+    public GameObject[] UnSelectElementalImage;
     public Image SelectImg;
     public Image unSelectImg;
     [Space(20f)]
@@ -106,6 +107,7 @@ public class UIController : MonoBehaviour
         //{
         //    StatusUPKeyboardCon();
         //}
+
     }
 
     public void GameSettingBtn(int btn)

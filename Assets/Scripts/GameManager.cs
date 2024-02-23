@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public SwapUI swapUI;
     public AudioManager audioManager;
     public Battle battle;
+    public ActiveSkill activeSkill;
 
     [SerializeField] private PlayerController player;
 
@@ -113,7 +114,7 @@ public class GameManager : MonoBehaviour
         Camera = Camera.main;
         controller = Camera.transform.parent.GetComponent<CameraController>();
         Target = GameObject.FindWithTag("Player").GetComponent<Transform>();
-
+        activeSkill = player.GetComponent<ActiveSkill>();
     }
 
     void Start()
@@ -605,6 +606,7 @@ public class GameManager : MonoBehaviour
             {
                 ElementImg[i].transform.GetChild(0).gameObject.SetActive(true);
                 ElementImg[i].transform.GetChild(1).gameObject.SetActive(true);
+                UIController.instance.UnSelectElementalImage[i].gameObject.SetActive(true);
                 Color color = ElementImg[i].GetComponent<Image>().color;
                 color.a = 1f;
                 ElementImg[i].GetComponent<Image>().color = color;             
@@ -613,20 +615,24 @@ public class GameManager : MonoBehaviour
             {
                 ElementImg[i].transform.GetChild(0).gameObject.SetActive(false);
                 ElementImg[i].transform.GetChild(1).gameObject.SetActive(false);
+                UIController.instance.UnSelectElementalImage[i].gameObject.SetActive(false);
                 Color color = ElementImg[i].GetComponent<Image>().color;
                 color.a = 0f;
                 ElementImg[i].GetComponent<Image>().color = color;
             }
             if(inventory.HavingElement[i].WeaponTypes == battle.WeaponType && inventory.HavingElement[i].ElementalID != 0)
             {
-                ElementImg[i].transform.parent.GetComponent<Image>().sprite = UIController.instance.SelectImg.sprite;
-                ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalIcon;
+                ElementImg[i].transform.parent.parent.GetComponent<Image>().sprite = UIController.instance.SelectImg.sprite;
+                ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].elementalIcon;             
             }
             else
             {
-                ElementImg[i].transform.parent.GetComponent<Image>().sprite = UIController.instance.unSelectImg.sprite;
+                ElementImg[i].transform.parent.parent.GetComponent<Image>().sprite = UIController.instance.unSelectImg.sprite;
                 ElementImg[i].GetComponent<Image>().sprite = inventory.HavingElement[i].UnSelcIcon;
             }
+            UIController.instance.UnSelectElementalImage[i].GetComponent<Image>().sprite = inventory.HavingElement[i].UnSelcIcon;
+            ElementImg[i].transform.parent.GetComponent<Image>().fillAmount = Mathf.Lerp(ElementImg[i].transform.parent.GetComponent<Image>().fillAmount, activeSkill.skillData[(int)battle.WeaponType].CurskillCoolTime / (activeSkill.skillData[(int)battle.WeaponType].skillCoolTime * (1 - (activeSkill.status.coolDownReductionPer / 100))),1);
+            UIController.instance.UnSelectElementalImage[i].GetComponent<Image>().fillAmount = Mathf.Lerp(UIController.instance.UnSelectElementalImage[i].GetComponent<Image>().fillAmount, activeSkill.skillData[(int)battle.WeaponType].CurskillCoolTime / (activeSkill.skillData[(int)battle.WeaponType].skillCoolTime * (1 - (activeSkill.status.coolDownReductionPer / 100))), 1);
         }
     }
 

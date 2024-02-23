@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
+using static UnityEditor.ShaderData;
 
 public class ActiveSkill : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class ActiveSkill : MonoBehaviour
     {
         [LabelText("무기 이름")] public string weaponName;
         [LabelText("스킬 쿨타임")] public float skillCoolTime;
+        [LabelText("실시간 쿨타임")] public float CurskillCoolTime;
         public bool isSkillReady;
     }
     [LabelText("스킬 데이터")] public List<SkillData> skillData;
@@ -104,7 +106,6 @@ public class ActiveSkill : MonoBehaviour
     //[Tooltip("���� �� ������ ������ %")]
     //public float DeclindRate;
     [LabelText("차징 시간")] public float ChargeTime;
-    [LabelText("무적 시간")] public float InvicibleTime;
     [LabelText("발사 후 딜레이")] public float Delay;
     [LabelText("발사 시 진동 시간 ")] public float WindShakeTime;
     [LabelText("발사 시 진동 세기")] public float WindShakeMagnitude;
@@ -131,6 +132,7 @@ public class ActiveSkill : MonoBehaviour
         for (int i = 0; i < skillData.Count; i++)
         {
             skillData[i].isSkillReady = true;
+            skillData[i].CurskillCoolTime =0;
         }
     }
     void Update()
@@ -163,9 +165,15 @@ public class ActiveSkill : MonoBehaviour
             Debug.DrawRay(new Vector2(transform.position.x + i, transform.position.y ), transform.up * -detectlength, Color.red);
             Debug.DrawRay(new Vector2(transform.position.x - i, transform.position.y ), Vector3.down * detectlength, Color.red);
         }
-
+        for (int i = 0; i < skillData.Count; i++)
+        {
+            if (!skillData[i].isSkillReady && skillData[i].CurskillCoolTime != 0)
+            {
+                skillData[i].CurskillCoolTime -= Time.deltaTime;
+            }
+        }
     }
-
+ 
     public void TriggerSkill(WeaponTypes weapontype)
     {
         switch (weapontype)
@@ -191,6 +199,7 @@ public class ActiveSkill : MonoBehaviour
                 StartCoroutine(WindSkill());
                 break;
         }
+ 
     }
 
     #region 불 정령
@@ -356,6 +365,7 @@ public class ActiveSkill : MonoBehaviour
         animator.SetBool("isCharge", false);
         battle.isGuard = true;
         GameObject MagicArrow = Instantiate(Arrow);
+        MagicArrow.transform.position = transform.right;
         CameraController.instance.ShakeCamera(WindShakeTime, WindShakeMagnitude);
         MagicArrow.GetComponent<ProjectileType>().Damage = DefaultDamage * (1 + (ArrowDamageIncreaseRate/100));
         MagicArrow.GetComponent<ProjectileType>().moveSpeed = arrowSkillSpeed;
@@ -364,21 +374,20 @@ public class ActiveSkill : MonoBehaviour
         MagicArrow.transform.localScale = new Vector3(transform.localScale.x, MagicArrow.transform.localScale.y, MagicArrow.transform.localScale.z);
         StartCoroutine(ReturnSkill(4));
         StartCoroutine(delay());
-        Debug.Log("현재 무적시간 입니다.");
-        yield return new WaitForSeconds(InvicibleTime);
         battle.isSwap = true;
         battle.isGuard = false;
     }
     public IEnumerator delay()
     {
         yield return new WaitForSeconds(Delay);
+        isCharging = false;
     }
     #endregion
 
 
     public IEnumerator ReturnSkill(int i)
     {
-        isCharging = false;
+
         // for (int i = 0; i < SkillReady.Length; i++)
         // {
         //     if (!SkillReady[i])
@@ -387,10 +396,13 @@ public class ActiveSkill : MonoBehaviour
         //         SkillReady[i] = true;
         //     }
         // }
-                yield return new WaitForSeconds(skillData[i].skillCoolTime * (1 - (status.coolDownReductionPer/100)));
-                // SkillReady[i] = true;
-                skillData[i].isSkillReady = true;
+        skillData[i].CurskillCoolTime = skillData[i].skillCoolTime * (1 - (status.coolDownReductionPer / 100));
+        yield return new WaitForSeconds(skillData[i].skillCoolTime * (1 - (status.coolDownReductionPer/100)));
+        // SkillReady[i] = true;
+        skillData[i].isSkillReady = true;
+        skillData[i].CurskillCoolTime = 0;
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

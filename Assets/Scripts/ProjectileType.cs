@@ -75,6 +75,7 @@ public class ProjectileType : MonoBehaviour
 
             case Type.Bomb:
                 // StartCoroutine(BombAtk());
+                
                 break;
         }
     }
@@ -156,7 +157,7 @@ public class ProjectileType : MonoBehaviour
     {
         yield return new WaitForSeconds(skill.BombChargeTime - 0.5f);
         GetComponent<Animator>().SetTrigger("Bomb");
-
+        transform.localScale = new Vector3(skill.BombRange.x-1, skill.BombRange.y-1);
         yield return new WaitForSeconds(0.5f);
         CameraController.instance.ShakeCamera(skill.BombShakeTime,skill.BombShakeMagnitude);
         
@@ -187,7 +188,7 @@ public class ProjectileType : MonoBehaviour
 
         //     StartCoroutine(BombAtk());
         // }
-        if (transform.position.y <= y)
+        if (transform.position.y <= y + 2.5f)
         {
             transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             // transform.GetComponent<Rigidbody2D>().position += new Vector2(0, 0.4f);
