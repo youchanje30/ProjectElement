@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using DG.Tweening.Core.Easing;
+using DG.Tweening;
 
 
 public class UIController : MonoBehaviour
@@ -74,6 +76,11 @@ public class UIController : MonoBehaviour
     public TMP_Text TimerOnOff;
     public int OnOff;
 
+    [Header("보스 UI")]
+    public GameObject bossHpUI;
+    public Slider bossHpSlider;
+
+
     void Awake()
     {
         if (!instance)
@@ -83,6 +90,8 @@ public class UIController : MonoBehaviour
 
         GetComponent<Canvas>().worldCamera = Camera.main;
         OnOff = 1;
+        if(SceneManager.GetActiveScene().name == "BossStage")
+            bossHpUI.SetActive(true);
     }
     void Update()
     {
@@ -352,5 +361,8 @@ public class UIController : MonoBehaviour
     //{
     //    GameManager.instance.UpgradeStatus(Slot);
     //}
-
+    public void SetBossUI()
+    {
+        bossHpUI.GetComponent<RectTransform>().DOAnchorPosY(0, 0.5f).SetEase(Ease.OutBack);
+    }
 }

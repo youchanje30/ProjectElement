@@ -1,0 +1,826 @@
+fileFormatVersion: 2
+guid: 1a06ff5e870b8ec42b319aa68561a273
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6d15f17279beb64a85d076c767296c2
+      internalID: -1895244458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bb6afc9a9c2dfb4792928c2413ac30a
+      internalID: 311924630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_2
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 115973e1734da724998ec9e7c1b7784f
+      internalID: 261325603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_3
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc5002520471f2348890a60adb0fd902
+      internalID: -1386322647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_4
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68c0787b10b5edd468426e23365f6c07
+      internalID: -1285150174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_5
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d399433667d17814fb33699624c48d38
+      internalID: 1275762222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_6
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70e8993b22c74b34bad434f5998507da
+      internalID: 1243290543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_7
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89bd83f2dc571544586ea787f209910b
+      internalID: 390750283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_8
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3200969ce0d0c714ab0301a6beb7e774
+      internalID: -881531352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_9
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d449c40e16251f4d85b6f711b407384
+      internalID: 1124878985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_10
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8710e65df8b45f54baca2e8043838072
+      internalID: -2110795596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_11
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fa2f524737fd6546a7eb437c7ac67fe
+      internalID: 1071272232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_12
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b49e6eb4b4fecf744a0cb46634614631
+      internalID: -38824685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_13
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2645daf72043f1c4d8c6f3e3233789c8
+      internalID: 1389220003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_14
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cadcd22457b44b458a6ab6dec7b895e
+      internalID: 569500672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_15
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b5f6bd3694c864488527b2ddbaeff06
+      internalID: -1373334934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_16
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be7333093cfc7434197046f419c4e5be
+      internalID: 843115096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_17
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad84d01f9b86c7648ad9e44c88d5d55d
+      internalID: 376355539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_18
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1abfaffa95904bf49a8bbfed4b8ef432
+      internalID: 1189324893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_19
+      rect:
+        serializedVersion: 2
+        x: 2299
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93fc1fa99bc3e7f458bcd91ce20757fc
+      internalID: 1687541051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_20
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5c8ac16e9fc5694da7c4fdc69b14be7
+      internalID: 1834635463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_21
+      rect:
+        serializedVersion: 2
+        x: 2541
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c39377ac55587d648a599cd145fdf30e
+      internalID: -204102883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_22
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bd15f8c4a6df4949804773aa2d812fd
+      internalID: -827995466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_23
+      rect:
+        serializedVersion: 2
+        x: 2783
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 015debe5877321046b430d83280ff7e0
+      internalID: -1463175516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_24
+      rect:
+        serializedVersion: 2
+        x: 2904
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9187fb09b9d31fe4f90bf6d02198297e
+      internalID: 617347863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_25
+      rect:
+        serializedVersion: 2
+        x: 3025
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c19a3317c157514eafc7e6070bed069
+      internalID: -99529610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_26
+      rect:
+        serializedVersion: 2
+        x: 3146
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb95d1e4da4ef1345b9a83e084bdf8ec
+      internalID: 753362911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_27
+      rect:
+        serializedVersion: 2
+        x: 3267
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 940655742d31f8242940e0bc76962c87
+      internalID: 318280562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_28
+      rect:
+        serializedVersion: 2
+        x: 3388
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6670e9559b3e2704a8a13a7f23e5785d
+      internalID: 198457759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFECT_KUANG_29
+      rect:
+        serializedVersion: 2
+        x: 3509
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8220d0ff551727d448756e6ebf0930e2
+      internalID: -938311710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_0: -1895244458
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_1: 311924630
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_10: -2110795596
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_11: 1071272232
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_12: -38824685
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_13: 1389220003
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_14: 569500672
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_15: -1373334934
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_16: 843115096
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_17: 376355539
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_18: 1189324893
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_19: 1687541051
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_2: 261325603
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_20: 1834635463
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_21: -204102883
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_22: -827995466
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_23: -1463175516
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_24: 617347863
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_25: -99529610
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_26: 753362911
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_27: 318280562
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_28: 198457759
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_29: -938311710
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_3: -1386322647
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_4: -1285150174
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_5: 1275762222
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_6: 1243290543
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_7: 390750283
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_8: -881531352
+      MOB_BOSS_BEAR_PA_EFFECT_KUANG_9: 1124878985
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

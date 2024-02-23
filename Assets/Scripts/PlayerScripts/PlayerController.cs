@@ -346,7 +346,7 @@ public class PlayerController : MonoBehaviour
     void Swap()
     {
         if(!battle.isSwap) return;
-        if (ischarging || battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || movement2D.isDashing || battle.atking || manager.isInven || skill.isSouth || skill.isWater) return;
+        if (ischarging || battle.fallAtking || manager.isAction || manager.isShop || manager.isSlotSwap || battle.atking || manager.isInven || skill.isSouth || skill.isWater) return;
 
 
         if(pressedFirstSlot || pressedSecondSlot || pressedThirdSlot)

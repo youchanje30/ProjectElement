@@ -53,7 +53,7 @@ public class Wolf : MonsterBase
         }
         base.CheckState();
 
-        if(canTrack && !canAct && curAtkType == WolfAtkType.tele && curAtkCoolTime <= 0)
+        if(trackDetect.isEnter && !canAct && curAtkType == WolfAtkType.tele && curAtkCoolTime <= 0)
             canAct = true;
     }
 
@@ -83,7 +83,7 @@ public class Wolf : MonsterBase
             return;
         } 
 
-        if(curAtkType == WolfAtkType.tele && canTrack && canAct)
+        if(curAtkType == WolfAtkType.tele && trackDetect.isEnter && canAct)
         {
             canAct = false;
             TeleportEnter();

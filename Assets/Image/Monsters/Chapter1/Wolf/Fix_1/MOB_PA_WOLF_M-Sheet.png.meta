@@ -1,0 +1,1112 @@
+fileFormatVersion: 2
+guid: 8adec8774c537c8458c335bcda4c5cef
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 870
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0648892d5c20d245b3462d4aea8722d
+      internalID: -324518286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 870
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e29d61a2bbb7474da10b89ea8465f52
+      internalID: 1879133298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 870
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeeca081b12674e4a86b0264b9040d82
+      internalID: 1284829688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 870
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 285e34a7fd2550441988aba41178bfab
+      internalID: -432232127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 870
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df80a61e8ef42844e85b49df9bfceb81
+      internalID: 1356687214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 870
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aade1e4fb7415d43ad998fca56481e8
+      internalID: -2019049184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 870
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81f1ca47e1d760643badab4428439f56
+      internalID: 781273531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 725
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11df310c46ef8eb41a7ec789c7221c4a
+      internalID: 1792475016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 725
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9675323876b78b14f821109f57b637d4
+      internalID: 919807284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 725
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f689bed9ad820194ab876c491aaaa7d0
+      internalID: -364818894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 580
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01ccbc59c52c3d04bb10ccb661817700
+      internalID: 1132542189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 580
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2487b2cee2293ff40b1c1d98732d018f
+      internalID: -1902589325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 580
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: badd0be63662cd04082b8dd4dd914106
+      internalID: -336358287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 580
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 692207bdacfa6f942befd5b3799cba29
+      internalID: -3635223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 580
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af356651d24033046b4af074e317e467
+      internalID: -1858674593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 580
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c26e9fcda1364f8428f4ad6ba0594e23
+      internalID: -695367050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 580
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97aa64c17ea97b448738da94b2a4296
+      internalID: -231892450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 580
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31cfe4802e00e334886f968c760782ab
+      internalID: -2085920990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 435
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05ba0d54bf44394e8fbe18bc5820aa0
+      internalID: 1490970967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 435
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 993ba19ae536be040a558b06a00a9445
+      internalID: 674521593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 435
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61c72c3ce58a9e4f9feb1b7eb45a038
+      internalID: 1780089079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 435
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a48ffded6c433a64fa225ae0f96bc3e6
+      internalID: 229642432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 435
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5dcb74f0b493de48b8d446b410be5f3
+      internalID: -2009567474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 435
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bea822249f1263641a298bdc5b99b62d
+      internalID: 1670586118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 435
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 755e5cbb0400c4147b052afad1037598
+      internalID: 277749669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 435
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2743f998eaae33429e5581342ec2758
+      internalID: -1039995264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 435
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fc7c61db469e6d4d80b334144c29a84
+      internalID: -1486346802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 290
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4895eda623e5e24438b3094a17876361
+      internalID: 1367143448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 290
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1a126a9321a18c40bf59e975d04fb5d
+      internalID: 1588796313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 290
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e060c20bb49e55946ae79d57116e6f72
+      internalID: 941033826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 290
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42987a8d27089df4badf92595ad55177
+      internalID: -570840028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 290
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6b80a1581246ef46a98542dd1dc459c
+      internalID: -925512926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 290
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aab1657b2729f1042b28324bae52f937
+      internalID: -1761956528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 290
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5134fd7240f51f3449a25621c846566f
+      internalID: 2045336525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 290
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a06ce5aa929f09440a26fa6ba41abb4f
+      internalID: -1811943031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 290
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ae7fb5416deac47bc13a3110aa24d1
+      internalID: -297544536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 290
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecff77d6aea40264c8537d2aa71bd3a2
+      internalID: 1983811994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 290
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 123719b721f30004ba53124ce31215b1
+      internalID: 566526214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 145
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5662066221676ea41bd5930d11f28730
+      internalID: 1691412991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 145
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3c94d553640da94ea89f7181638e421
+      internalID: 235248397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 145
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b4ded4373af4b41910136552781ab2
+      internalID: 1825438099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 145
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9249929cf61921e4b8f66aa6d79153be
+      internalID: 116796184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_PA_WOLF_M-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 145
+        width: 145
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d271aea485a510942bff1a998e718126
+      internalID: -333212981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MOB_PA_WOLF_M-Sheet_0: -324518286
+      MOB_PA_WOLF_M-Sheet_1: 1879133298
+      MOB_PA_WOLF_M-Sheet_10: 1132542189
+      MOB_PA_WOLF_M-Sheet_11: -1902589325
+      MOB_PA_WOLF_M-Sheet_12: -336358287
+      MOB_PA_WOLF_M-Sheet_13: -3635223
+      MOB_PA_WOLF_M-Sheet_14: -1858674593
+      MOB_PA_WOLF_M-Sheet_15: -695367050
+      MOB_PA_WOLF_M-Sheet_16: -231892450
+      MOB_PA_WOLF_M-Sheet_17: -2085920990
+      MOB_PA_WOLF_M-Sheet_18: 1490970967
+      MOB_PA_WOLF_M-Sheet_19: 674521593
+      MOB_PA_WOLF_M-Sheet_2: 1284829688
+      MOB_PA_WOLF_M-Sheet_20: 1780089079
+      MOB_PA_WOLF_M-Sheet_21: 229642432
+      MOB_PA_WOLF_M-Sheet_22: -2009567474
+      MOB_PA_WOLF_M-Sheet_23: 1670586118
+      MOB_PA_WOLF_M-Sheet_24: 277749669
+      MOB_PA_WOLF_M-Sheet_25: -1039995264
+      MOB_PA_WOLF_M-Sheet_26: -1486346802
+      MOB_PA_WOLF_M-Sheet_27: 1367143448
+      MOB_PA_WOLF_M-Sheet_28: 1588796313
+      MOB_PA_WOLF_M-Sheet_29: 941033826
+      MOB_PA_WOLF_M-Sheet_3: -432232127
+      MOB_PA_WOLF_M-Sheet_30: -570840028
+      MOB_PA_WOLF_M-Sheet_31: -925512926
+      MOB_PA_WOLF_M-Sheet_32: -1761956528
+      MOB_PA_WOLF_M-Sheet_33: 2045336525
+      MOB_PA_WOLF_M-Sheet_34: -1811943031
+      MOB_PA_WOLF_M-Sheet_35: -297544536
+      MOB_PA_WOLF_M-Sheet_36: 1983811994
+      MOB_PA_WOLF_M-Sheet_37: 566526214
+      MOB_PA_WOLF_M-Sheet_38: 1691412991
+      MOB_PA_WOLF_M-Sheet_39: 235248397
+      MOB_PA_WOLF_M-Sheet_4: 1356687214
+      MOB_PA_WOLF_M-Sheet_40: 1825438099
+      MOB_PA_WOLF_M-Sheet_41: 116796184
+      MOB_PA_WOLF_M-Sheet_42: -333212981
+      MOB_PA_WOLF_M-Sheet_5: -2019049184
+      MOB_PA_WOLF_M-Sheet_6: 781273531
+      MOB_PA_WOLF_M-Sheet_7: 1792475016
+      MOB_PA_WOLF_M-Sheet_8: 919807284
+      MOB_PA_WOLF_M-Sheet_9: -364818894
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

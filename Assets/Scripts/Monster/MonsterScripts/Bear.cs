@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class Bear : MonsterBase
 {
@@ -16,10 +18,40 @@ public class Bear : MonsterBase
     [SerializeField] BoxCollider2D rushCol;
     [SerializeField] BoxCollider2D normalCol;
 
+    [SerializeField] bool isSpawn;
+    [SerializeField] Slider hpBar;
+    [SerializeField] float hpDecreaTime;
+
+    protected void Shake()
+    {
+        CameraController.instance.Shake(0.4f, 30);
+        
+    }
+
+    protected void Spawn()
+    {
+        isSpawn = true;
+        UIController.instance.SetBossUI();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        hpBar = UIController.instance.bossHpSlider;
+        hpBar.maxValue = monsterData.maxHp;
+        hpBar.value = curHp;
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        isSpawn = false;
+    }
 
     protected override void Update()
     {
-        
+        if(!isSpawn) return;
+
         CheckState();
         SetState();
 
@@ -61,9 +93,10 @@ public class Bear : MonsterBase
 
     public override void GetDamaged(float getDamage, bool canKncokBack = true)
     {
-        if(isKnockback || isDead) return;
+        if(isKnockback || isDead || !isSpawn) return;
 
         curHp -= getDamage;
+        SetUI();
 
         if(curHp <= 0)
         {
@@ -132,8 +165,11 @@ public class Bear : MonsterBase
                 break;
         }
     }
-
-
-
     #endregion
+
+    void SetUI()
+    {
+        DOTween.Kill(hpBar);
+        DOTween.To(() => hpBar.value, x => hpBar.value = x, curHp, hpDecreaTime).SetEase(Ease.OutQuart);
+    }
 }

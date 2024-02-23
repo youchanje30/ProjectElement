@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
     Transform Target;
     public Transform StartPoint;
     public Transform EndPoint;
+    public Transform EndYPoint;
 
     void Awake()
     {
@@ -195,6 +196,8 @@ public class GameManager : MonoBehaviour
         SetImage();
         StartPoint.position = new Vector3(StartPoint.position.x, Target.position.y, StartPoint.position.z);
         EndPoint.position = new Vector3(EndPoint.position.x, Target.position.y, EndPoint.position.z);
+        if(EndYPoint)
+            EndYPoint.position = new Vector3(Target.position.x, EndYPoint.position.y, EndYPoint.position.z);
         EndCamera();
     }
 
@@ -648,6 +651,10 @@ public class GameManager : MonoBehaviour
         else if (Target.position.x >= EndPoint.position.x)
         {
             controller.cinemachineCam.Follow = EndPoint;
+        }
+        else if(EndYPoint && Target.position.y >= EndYPoint.position.y)
+        {
+            controller.cinemachineCam.Follow = EndYPoint;
         }
         else
         {

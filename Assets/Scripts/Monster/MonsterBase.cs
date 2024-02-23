@@ -143,7 +143,7 @@ public class MonsterBase : MonoBehaviour
                 canAtk = true;
             canMove = false;
         }
-        if(trackDetect.isEnter)
+        else if(trackDetect.isEnter)
         {
             canTrack = true;
         }

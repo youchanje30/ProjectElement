@@ -1,0 +1,628 @@
+fileFormatVersion: 2
+guid: 9e140b9073b31994cbcad949995629a4
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dc519d453b70cf4c9d7ac73d2ca9406
+      internalID: -1344562235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f353f26fba88f949be2dadcfa39722e
+      internalID: 985155392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_2
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4568abd804dbc7040be165e94a23963d
+      internalID: 1528929040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_3
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c2e1b9f7218a54f9006786af595b01
+      internalID: -1207282984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_4
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e056578e57325e44fbce2f8495fcb945
+      internalID: 87640737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_5
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5578c1f54fd8204e9e4002297f8b37b
+      internalID: 803234515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_6
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28e6713251cd59b4bb9bb3a99dca172f
+      internalID: 754745281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_7
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bf80db97a9601742acc8f9f4bcc58c8
+      internalID: -1166848200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_8
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60b7f881e2fbdaa4289281b72e9d11cb
+      internalID: 1120701464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_9
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb36145df80a327489a082961726b4c2
+      internalID: -1589436478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_10
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 071d68fd82fad454c8889f0101172037
+      internalID: 788133300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_11
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7c1b0d9dbb899a49b5cce5174be6708
+      internalID: -399602571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_12
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cd46a526f4045d438bacbd9307b15bb
+      internalID: 1818400732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_13
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22e49d298eb38fc4db3b646f244995ea
+      internalID: 727357801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_14
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a009b2a4f6f88d47a7901c8f4570517
+      internalID: 255797467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_15
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db9b0e44534562845b6ea3c5d1a7dec3
+      internalID: 898476648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_16
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28795637901777e4198f78e721bd5083
+      internalID: -1077669572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_17
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72b65addf64465a4c96f6ebcbaedb48a
+      internalID: 1907413267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_18
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f1e40707d1e2bb4fa27f1289a74dab4
+      internalID: 2133220042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_19
+      rect:
+        serializedVersion: 2
+        x: 2299
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d2a74444f053724092b1021ecad3152
+      internalID: -1914143035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_BEAR_PA_EFFCT_CHARGE_20
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 0
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f389f78c855e8a4469aea175d28db64e
+      internalID: 592966664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_0: -1344562235
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_1: 985155392
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_10: 788133300
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_11: -399602571
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_12: 1818400732
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_13: 727357801
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_14: 255797467
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_15: 898476648
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_16: -1077669572
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_17: 1907413267
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_18: 2133220042
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_19: -1914143035
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_2: 1528929040
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_20: 592966664
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_3: -1207282984
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_4: 87640737
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_5: 803234515
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_6: 754745281
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_7: -1166848200
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_8: 1120701464
+      MOB_BOSS_BEAR_PA_EFFCT_CHARGE_9: -1589436478
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
