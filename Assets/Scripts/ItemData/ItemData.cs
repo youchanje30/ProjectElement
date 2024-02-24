@@ -34,7 +34,9 @@ public class ItemData : ScriptableObject
     public int SellCost { get { return sellCost; } }
     [SerializeField] private int itemID;
     public int ItemID { get { return itemID; } }
-    public Image itemImg;
+
+    // public Image itemImg;
+    public Sprite itemImg;
     [Space(40f)]
 
 

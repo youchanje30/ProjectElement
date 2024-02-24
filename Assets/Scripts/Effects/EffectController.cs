@@ -7,8 +7,8 @@ public class EffectController : MonoBehaviour
     [SerializeField] LayerMask layer;
 
     public bool isFix;
-
     public Vector2 size;
+    [SerializeField] float fixForce;
 
     void Update()
     {
@@ -20,8 +20,8 @@ public class EffectController : MonoBehaviour
         if(!isFix) 
         {
             Vector2 vec = (Vector2)transform.position;
-            vec.x += Random.Range(-1f, 1f);
-            vec.y += Random.Range(-1f, 1f);
+            vec.x += Random.Range(-1f, 1f) * fixForce;
+            vec.y += Random.Range(-1f, 1f) * fixForce;
 
             transform.position = vec;
 

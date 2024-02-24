@@ -21,10 +21,10 @@ public class Tooltip : MonoBehaviour
         Info.text = eleInfo;
         EleImg.sprite = image;
     }
-    public void SetupItemTooltip(string elename, string eleInfo, Image image)
+    public void SetupItemTooltip(string elename, string eleInfo, Sprite image)
     {
         Objname.text = elename;
         Info.text = eleInfo;
-        EleImg = image;
+        EleImg.sprite = image;
     }
 }

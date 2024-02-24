@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum SkillEffect { Fire, South }
 public enum AtkEffect { Fire = 2, Water, South, Wind , Crt }
+public enum BossEffect { charge = 7, redeye, handDown, fallDown }
+public enum MonsterEffect { poison = 11 }
 
 public class EffectManager : MonoBehaviour
 {
@@ -36,7 +39,7 @@ public class EffectManager : MonoBehaviour
     }
 
 
-    public void SpawnEffect(Vector3 spawnPos, int effect, Vector2 size)
+    public void SpawnEffect(Vector3 spawnPos, int effect, Vector2 size, bool reverse = false)
     {
         GameObject ef = null;
 
@@ -58,7 +61,13 @@ public class EffectManager : MonoBehaviour
         if(ef.GetComponent<EffectController>().isFix)
             ef.GetComponent<EffectController>().size = size;
 
-        if(isCrt && effect >= 2)
+        if(reverse)
+            ef.transform.localScale = new Vector3(Mathf.Abs(ef.transform.localScale.x) * -1, ef.transform.localScale.y, ef.transform.localScale.z);
+        else
+            ef.transform.localScale = new Vector3(Mathf.Abs(ef.transform.localScale.x), ef.transform.localScale.y, ef.transform.localScale.z);
+        
+
+        if(isCrt && effect >= 2 && effect < 7)
         {
             isCrt = false;
             SpawnEffect(spawnPos, (int)AtkEffect.Crt, size);

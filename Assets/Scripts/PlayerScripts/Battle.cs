@@ -186,7 +186,7 @@ public class Battle : MonoBehaviour
  
     #region 기본 함수
    
-    public void GetDamaged(float Damage)
+    public void GetDamaged(float Damage, bool canShake = true)
     {
         if(isGuard) return;
 
@@ -196,8 +196,8 @@ public class Battle : MonoBehaviour
         {
             float getDmg = Damage * (100 - status.defPer) * 0.01f;
             // CameraController.instance.StartCoroutine(CameraController.instance.Shake(DamagedDuration, DamagedForce));
-            
-            CameraController.instance.ShakeCamera(DamagedDuration, DamagedForce);
+            if(canShake)
+                CameraController.instance.ShakeCamera(DamagedDuration, DamagedForce);
             if (status.barrier > getDmg)
             {
                 status.barrier -= getDmg;

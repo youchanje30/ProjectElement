@@ -78,25 +78,25 @@ public class CameraController : MonoBehaviour
         // cameraHandler.position = Vector3.Lerp(cameraHandler.position, Target.position + Offset , Time.fixedDeltaTime * smoothness);
     }
 
-    public IEnumerator Shake(float duration = 0.1f , float magnitude = 0.2f)
-    {   
-        float elasped = 0f;
+    // public IEnumerator Shake(float duration = 0.1f , float magnitude = 0.2f)
+    // {   
+    //     float elasped = 0f;
 
-        while(elasped < duration)
-        {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
+    //     while(elasped < duration)
+    //     {
+    //         float x = Random.Range(-1f, 1f) * magnitude;
+    //         float y = Random.Range(-1f, 1f) * magnitude;
             
-            transform.localPosition = new Vector3(x, y, 0);
+    //         transform.localPosition = new Vector3(x, y, 0);
 
-            elasped += Time.deltaTime;
+    //         elasped += Time.deltaTime;
 
-            yield return null;
+    //         yield return null;
 
-        }
-        transform.localPosition = new Vector3(0,0,0);
+    //     }
+    //     transform.localPosition = new Vector3(0,0,0);
  
-    }
+    // }
 
     public void ShakeCamera(float time, float intensity)
     {

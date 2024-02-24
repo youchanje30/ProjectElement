@@ -129,7 +129,9 @@ public class ShopItem : MonoBehaviour
         // inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         Item = item;
 
-        itemImage = Item.itemImg;
+        if(Item.itemImg)
+            itemImage.sprite = Item.itemImg;
+            
         itemID = Item.ItemID;
 
         buyCost = Item.ItemCost;

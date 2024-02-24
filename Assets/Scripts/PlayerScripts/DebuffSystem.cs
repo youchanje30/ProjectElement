@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DebuffSystem : MonoBehaviour
 {
-    private Battle batlte;
+    private Battle battle;
 
     [System.Serializable]
     struct Debuff
@@ -20,7 +20,7 @@ public class DebuffSystem : MonoBehaviour
 
     void Awake()
     {
-        batlte = GetComponent<Battle>();
+        battle = GetComponent<Battle>();
     }
 
     public IEnumerator Poison()
@@ -29,7 +29,7 @@ public class DebuffSystem : MonoBehaviour
         
         while (debuffs[0].duration > 0)
         {
-            batlte.GetDamaged(debuffs[0].damage);
+            battle.GetDamaged(debuffs[0].damage, false);
             yield return new WaitForSeconds(debuffs[0].tick);
             Debug.Log("Get Poison");
             debuffs[0].duration -= debuffs[0].tick;

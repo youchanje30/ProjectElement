@@ -13,18 +13,28 @@ public class Bear : MonsterBase
 
     [SerializeField] float[] atkChargingTime;
     [SerializeField] DetectPlayer atkCheck;
+    [SerializeField] int[] atkRate;
 
     [Space(20f)]
     [SerializeField] BoxCollider2D rushCol;
     [SerializeField] BoxCollider2D normalCol;
 
+
+    [Header("소환 및 UI 관련")]
     [SerializeField] bool isSpawn;
     [SerializeField] Slider hpBar;
     [SerializeField] float hpDecreaTime;
+    
+
+    [Header("이펙트 관련 설정")]
+    [SerializeField] Transform redeyeEffect;
+    [SerializeField] Transform chargeEffect;
+    [SerializeField] Transform kuangEffect;
+    [SerializeField] Transform downEffect;
 
     protected void Shake()
     {
-        CameraController.instance.Shake(0.4f, 30);
+        CameraController.instance.ShakeCamera(0.4f, 20);
         
     }
 
@@ -46,6 +56,24 @@ public class Bear : MonsterBase
     {
         base.Awake();
         isSpawn = false;
+    }
+
+    void Effect(int index = 0)
+    {
+        Vector3 detectPos = transform.position + atkInfo[index].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
+        switch (index)
+        {
+            
+            case 0: // HankAtk
+                EffectManager.instance.SpawnEffect(detectPos, (int)BossEffect.handDown, atkInfo[index].atkSize, transform.localScale.x < 0);
+                break;
+            
+            case 1: // Down
+                EffectManager.instance.SpawnEffect(detectPos, (int)BossEffect.fallDown, atkInfo[index].atkSize);
+                break;
+            default:
+                break;
+        }
     }
 
     protected override void Update()
@@ -110,11 +138,16 @@ public class Bear : MonsterBase
     {
         isAtking = true;
         canAtk = false;
+        EffectManager.instance.SpawnEffect(redeyeEffect.position, (int)BossEffect.redeye, Vector2.zero);
 
-        int randomAct = Random.Range(1, 100 + 1);
-        if(randomAct < 50)
+        int randomSum = 0;
+        for (int i = 0; i < atkRate.Length; i++)
+            randomSum += atkRate[i];
+            
+        int randomAct = Random.Range(1, randomSum + 1);
+        if(randomAct <= atkRate[0])
             animator.SetTrigger("HandAtk");
-        else if(randomAct < 80)
+        else if(randomAct <= atkRate[1] + atkRate[0])
             animator.SetTrigger("DownAtk");
         else
             animator.SetTrigger("RushAtk");
@@ -147,7 +180,7 @@ public class Bear : MonsterBase
         switch (atkType)
         {
             case AtkTypes.HandAtk:
-
+                EffectManager.instance.SpawnEffect(chargeEffect.position, (int)BossEffect.charge, Vector2.zero);
                 break;
 
             case AtkTypes.DownAtk:

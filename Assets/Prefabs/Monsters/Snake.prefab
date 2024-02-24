@@ -167,6 +167,9 @@ MonoBehaviour:
   - atkName: 
     atkPos: {x: -1, y: 0, z: 0}
     atkSize: {x: 4, y: 2}
+  poisonDuration: 3
+  poisonTick: 1
+  poisonDamage: 2
 --- !u!114 &5373036055377236901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2610654531360661370, guid: bcab59f8b8043a540ad625334218e733, type: 3}
