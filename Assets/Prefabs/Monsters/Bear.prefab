@@ -390,6 +390,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1756050482, guid: 53d542e2a1c266646ae259c9e542e137, type: 3}
+    - target: {fileID: 4847805349945535956, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4904571500628892550, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Name
       value: N_Monster

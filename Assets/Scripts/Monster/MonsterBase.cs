@@ -304,6 +304,8 @@ public class MonsterBase : MonoBehaviour
         // if(isKnockback || isDead) return;
         if(isDead) return;
 
+        Debug.Log(getDamage);
+
         curHp -= getDamage;
         if(isAtking) AtkEnd();
 

@@ -183,7 +183,7 @@ public class Wolf : MonsterBase
             spawnX = target.position.x + dir * time * 0.25f;
         }
 
-        // transform.localScale = new Vector3(dir * monsterData.imageScale, monsterData.imageScale, 1);
+        transform.localScale = new Vector3(dir * monsterData.imageScale, monsterData.imageScale, 1);
 
         telePos = new Vector3(spawnX, spawnY + 1.5f, transform.position.z);
         animator.SetTrigger("Teleport");
