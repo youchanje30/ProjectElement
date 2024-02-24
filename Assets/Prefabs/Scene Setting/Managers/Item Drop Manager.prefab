@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8404975112673965543
 MonoBehaviour:
@@ -48,17 +48,12 @@ MonoBehaviour:
   SpiritSoul: {fileID: 8720883770288789512, guid: abc224e8dece62a469a09275fe66b0f0, type: 3}
   CoinDropRate: 80
   CoinBuckets:
-  - DropWeight: 2
-    MinDropItem: 1
-    MaxDropItem: 2
   - DropWeight: 1
-    MinDropItem: 4
-    MaxDropItem: 5
+    MinDropItem: 70
+    MaxDropItem: 70
   - DropWeight: 1
-    MinDropItem: 9
-    MaxDropItem: 10
-  SpiritSoulDropRate: 10
-  SpiritSoulBuckets:
+    MinDropItem: 50
+    MaxDropItem: 50
   - DropWeight: 1
-    MinDropItem: 1
-    MaxDropItem: 3
+    MinDropItem: 100
+    MaxDropItem: 100

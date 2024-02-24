@@ -9,9 +9,9 @@ public class ItemDropManager : MonoBehaviour
     {
         [Range (1, 10)]
         public int DropWeight;
-        [Range (0, 10)]
+        [Range (0, 10000)]
         public int MinDropItem;
-        [Range (0, 10)]
+        [Range (0, 10000)]
         public int MaxDropItem;
     }
 
