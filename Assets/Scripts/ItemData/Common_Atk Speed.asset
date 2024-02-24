@@ -21,7 +21,7 @@ MonoBehaviour:
   itemCost: 900
   sellCost: 0
   itemID: 1004
-  itemImg: {fileID: -324518286, guid: 8adec8774c537c8458c335bcda4c5cef, type: 3}
+  itemImg: {fileID: 21300000, guid: bd8eac4f94f7825419ece6d9c6f0545f, type: 3}
   hp: 0
   hpPer: 0
   damage: 0
