@@ -923,8 +923,8 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 5e93b15e7bab76841ae994bd154bdb26, type: 2}
   - {fileID: 9100000, guid: d5fcc18cb19939843b44f768078987eb, type: 2}
   - {fileID: 9100000, guid: b622ced3de7f13541935dcd9d1be885a, type: 2}
-  - {fileID: 9100000, guid: 6c22786c3c8be884cb0957e7a46afb3b, type: 2}
-  - {fileID: 9100000, guid: c36ed572a00539e4cba40334d6a15f33, type: 2}
+  - {fileID: 9100000, guid: b64b7b58b9eb770499837a197d022319, type: 2}
+  - {fileID: 9100000, guid: c9ef69833dec52643892bc6f0e2b0229, type: 2}
   JumpKey: 99
   Jumpkey: 32
   DashKey: 122
@@ -1080,6 +1080,7 @@ MonoBehaviour:
   arrowNormalSpeed: 30
   arrowChargeDamage: 130
   arrowChargeSpeed: 50
+  chargingAnimator: {fileID: 0}
   magicSpeed: 8
   wandSpawnPos: {fileID: 5325110475537225770}
   fallAtking: 0

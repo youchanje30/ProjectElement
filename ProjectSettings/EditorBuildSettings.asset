@@ -15,11 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/BossStage.unity
     guid: 60ae1db4ddf97c447b326359276c2237
   - enabled: 1
-    path: Assets/Scenes/Stage-Long.ver/Stage1.unity
-    guid: 2e4a25287ee4f3642b8add5bed454242
+    path: Assets/Scenes/Stage-Short.ver/Stage1.unity
+    guid: d89b272e604da5949be3682114b94127
   - enabled: 1
-    path: Assets/Scenes/Stage-Long.ver/Stage2.unity
-    guid: ca170b4fbeb1441429f8f6bd36703a23
+    path: Assets/Scenes/Stage-Short.ver/Stage2.unity
+    guid: ca23a827b9fa2b44a805088be07c1902
   - enabled: 1
     path: Assets/Scenes/Stage-Short.ver/Stage3.unity
     guid: e9e42b06d053b32438d9ffd89972d334
