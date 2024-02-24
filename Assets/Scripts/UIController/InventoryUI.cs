@@ -93,7 +93,7 @@ public class InventoryUI : MonoBehaviour
             if (inventory.HavingItem[i] != null)
             {
                 InvenItem[i].SetActive(true);
-                //InvenItem[i].GetComponent<Image>().sprite = inventory.HavingItem[i].itemImg.sprite;
+                InvenItem[i].GetComponent<Image>().sprite = inventory.HavingItem[i].itemImg;
             }
             else
             {

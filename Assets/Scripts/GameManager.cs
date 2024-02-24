@@ -599,9 +599,10 @@ public class GameManager : MonoBehaviour
 
     public void LogStat()
     {
-        inventoryUI.Stat.text =  "최대 체력: " + player.GetComponent<PlayerStatus>().maxHp + "\n" + "데미지: " + player.GetComponent<PlayerStatus>().damage + "\n" + "크리티컬 확률: " + player.GetComponent<PlayerStatus>().crtRate 
-            +"\n" + "크리티컬 데미지: " + player.GetComponent<PlayerStatus>().crtDamage / 100 + "배" + "\n" + "공격 속도: " + player.GetComponent<PlayerStatus>().atkSpeed 
-            + "\n"  + "회피 확률: " + player.GetComponent<PlayerStatus>().missRate + "\n" + "쿨타임 감소율: " + player.GetComponent<PlayerStatus>().coolDownReductionPer + "\n" + "데미지 감소율: " + player.GetComponent<PlayerStatus>().defPer
+        inventoryUI.Stat.text =  "최대 체력: " + player.GetComponent<PlayerStatus>().maxHp + "\n" + "데미지: " + player.GetComponent<PlayerStatus>().damage 
+            + "\n" + "크리티컬 확률: " + player.GetComponent<PlayerStatus>().crtRate  +"\n" + "크리티컬 데미지: " + player.GetComponent<PlayerStatus>().crtDamage / 100 + "배"
+            + "\n" + "공격 속도: " + player.GetComponent<PlayerStatus>().atkSpeed  + "\n"  + "회피 확률: " + player.GetComponent<PlayerStatus>().missRate 
+            + "\n" + "쿨타임 감소율: " + player.GetComponent<PlayerStatus>().coolDownReductionPer + "\n" + "데미지 감소율: " + player.GetComponent<PlayerStatus>().defPer
             + "\n" + "이동 속도: " + player.GetComponent<PlayerStatus>().playerSpeed + "\n" + "점프력: " + player.GetComponent<PlayerStatus>().jumpForce;
     }
     public void SetImage()
