@@ -290,17 +290,9 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ee59c1227145cb242b2acfcf6275f556, type: 2}
-    - target: {fileID: 1969870935754606517, guid: bcab59f8b8043a540ad625334218e733, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1969870935754606517, guid: bcab59f8b8043a540ad625334218e733, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalScale.x
@@ -312,11 +304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.96
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.z
@@ -365,14 +357,6 @@ PrefabInstance:
     - target: {fileID: 4591488043960539050, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Offset.y
       value: 0.17141995
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678280499716885338, guid: bcab59f8b8043a540ad625334218e733, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678280499716885338, guid: bcab59f8b8043a540ad625334218e733, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4699783256451698677, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Size.x
@@ -497,15 +481,15 @@ MonoBehaviour:
     atkSize: {x: 15, y: 4}
   isRushAtk: 0
   atkChargingTime:
-  - 2
+  - 1
   - 2
   atkCheck: {fileID: 1229426727661310261}
-  atkRate: 640000000000000000000000
+  atkRate: 1e0000001e0000001e000000
   rushCol: {fileID: 8528279629814333700}
   normalCol: {fileID: 5841746687657040757}
   isSpawn: 0
   hpBar: {fileID: 0}
-  hpDecreaTime: 1.5
+  hpDecreaTime: 2
   redeyeEffect: {fileID: 8306805162793704280}
   chargeEffect: {fileID: 1978805656148478593}
   kuangEffect: {fileID: 0}
