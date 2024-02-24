@@ -978,11 +978,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2740759569370255528, guid: 13eb0c3ca95162042ad034119b59e1fc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5457820780229101516, guid: 13eb0c3ca95162042ad034119b59e1fc, type: 3}
+      propertyPath: atkTypeRate.Array.data[0]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5457820780229101516, guid: 13eb0c3ca95162042ad034119b59e1fc, type: 3}
       propertyPath: atkTypeRate.Array.data[1]
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5498172926753285927, guid: 13eb0c3ca95162042ad034119b59e1fc, type: 3}
       propertyPath: m_RootOrder
