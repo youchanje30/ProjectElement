@@ -379,7 +379,8 @@ public class MonsterBase : MonoBehaviour
     protected virtual void Reward()
     {
         GameObject Coin = ItemDropManager.instance.Coin;
-        for (int i = 0; i < ItemDropManager.instance.CoinDrop(); i++)
+        int j = ItemDropManager.instance.CoinDrop();
+        for (int i = 0; i < j; i++)
         {
             GameObject spawnCoin = Instantiate(Coin);
             spawnCoin.transform.position = transform.position;

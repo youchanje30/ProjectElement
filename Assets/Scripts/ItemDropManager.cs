@@ -41,15 +41,18 @@ public class ItemDropManager : MonoBehaviour
         }
 
         int GetBucket = Random.Range(1, DropWeights + 1);
-        for (int i = 0, j = 0; i < CoinBuckets.Length; i++)
+        int curRate = 0;
+        for (int i = 0; i < CoinBuckets.Length; i++)
         {
-            j += CoinBuckets[i].DropWeight;
-            if(GetBucket <= j)
+            curRate += CoinBuckets[i].DropWeight;
+            if(GetBucket <= curRate)
             {
                 DropCoins = Random.Range(CoinBuckets[i].MinDropItem, CoinBuckets[i].MaxDropItem + 1);
+                break;
             }
         }
 
+        Debug.Log(DropCoins);
         return DropCoins;
     }
 
