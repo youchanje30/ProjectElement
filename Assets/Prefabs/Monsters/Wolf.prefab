@@ -94,19 +94,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Size.x
-      value: 4.5
+      value: 7.357054
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Size.y
-      value: 1.4
+      value: 1.215323
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Offset.x
-      value: -1.7
+      value: -0.2714727
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: 0.09233841
       objectReference: {fileID: 0}
     - target: {fileID: 4847805349945535956, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Sprite
@@ -180,11 +180,11 @@ MonoBehaviour:
   isHit: 0
   atkInfo:
   - atkName: 
-    atkPos: {x: -1, y: -1, z: 0}
-    atkSize: {x: 5, y: 2}
+    atkPos: {x: -1.5, y: 0, z: 0}
+    atkSize: {x: 5, y: 3}
   - atkName: 
-    atkPos: {x: -2, y: 1, z: 0}
-    atkSize: {x: 4, y: 2}
+    atkPos: {x: -2, y: 0, z: 0}
+    atkSize: {x: 4, y: 3}
   curAtkType: 0
   atkTypeRate: 3c00000028000000
   canAct: 0
@@ -192,7 +192,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   raycastDistance: 5
-  isMissState: 0
   telePos: {x: 0, y: 0, z: 0}
   dir: 0
 --- !u!114 &5373036055377236901 stripped
