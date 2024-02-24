@@ -405,29 +405,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1625852029635147732, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
-      propertyPath: atkRate.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1625852029635147732, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
-      propertyPath: atkRate.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1625852029635147732, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
-      propertyPath: atkRate.Array.data[2]
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1625852029635147732, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
-      propertyPath: atkChargingTime.Array.data[0]
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2740759569370255528, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
       propertyPath: m_Name
       value: Bear
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740759569370255528, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5498172926753285927, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
       propertyPath: m_RootOrder
@@ -439,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5498172926753285927, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.4
+      value: -4.96
       objectReference: {fileID: 0}
     - target: {fileID: 5498172926753285927, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
       propertyPath: m_LocalPosition.z
@@ -473,8 +453,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4665035976893205946, guid: f89c8c08d8119144eb2b39854df5c056, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -997,22 +976,16 @@ CompositeCollider2D:
         Y: 278124992
       - X: 768124992
         Y: 280000000
-      - X: 471875008
+      - X: 470000000
         Y: 280000000
       - X: 470000000
-        Y: 278124992
-      - X: 470000000
-        Y: 40000000
-      - X: 461875008
         Y: 40000000
       - X: 460000000
-        Y: 38125000
+        Y: 40000000
       - X: 460000000
-        Y: 30000000
-      - X: 371875008
         Y: 30000000
       - X: 370000000
-        Y: 28125000
+        Y: 30000000
       - X: 370000000
         Y: -80000000
       - X: -60000000
@@ -1033,10 +1006,8 @@ CompositeCollider2D:
         Y: 278124992
       - X: -161875008
         Y: 280000000
-      - X: -468124992
-        Y: 280000000
       - X: -470000000
-        Y: 278124992
+        Y: 280000000
       - X: -470000000
         Y: -460000000
       - X: 768750016
@@ -1047,14 +1018,11 @@ CompositeCollider2D:
       - {x: 77, y: -45.874992}
       - {x: 76.99999, y: 27.812506}
       - {x: 76.812485, y: 28}
-      - {x: 47.187496, y: 27.999994}
-      - {x: 47, y: 27.81249}
+      - {x: 47, y: 27.999971}
       - {x: 46.999973, y: 4}
-      - {x: 46.187496, y: 3.9999924}
-      - {x: 46, y: 3.8124893}
+      - {x: 46, y: 3.999971}
       - {x: 45.999973, y: 3}
-      - {x: 37.187496, y: 2.9999924}
-      - {x: 37, y: 2.8124893}
+      - {x: 37, y: 2.999971}
       - {x: 36.999973, y: -8}
       - {x: -6, y: -7.9999704}
       - {x: -6.0000076, y: 2.8125076}
@@ -1065,8 +1033,7 @@ CompositeCollider2D:
       - {x: -16, y: 4.0000296}
       - {x: -16.000008, y: 27.812506}
       - {x: -16.187511, y: 28}
-      - {x: -46.812508, y: 27.999994}
-      - {x: -47, y: 27.81249}
+      - {x: -47, y: 27.999971}
       - {x: -46.999973, y: -46}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
