@@ -5806,8 +5806,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC0C8 \uAC8C\uC784\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f504e0a6b4f164143a34bfa60b45b857, type: 2}
-  m_sharedMaterial: {fileID: -8534061657180306502, guid: f504e0a6b4f164143a34bfa60b45b857, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2d9874fa46c203a47ab09eaeb808d782, type: 2}
+  m_sharedMaterial: {fileID: 187049056151231303, guid: 2d9874fa46c203a47ab09eaeb808d782, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8918,7 +8918,7 @@ RectTransform:
   - {fileID: 517755642034823279}
   - {fileID: 1230809696173668126}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12055,8 +12055,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uAC8C\uC784 \uC885\uB8CC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f504e0a6b4f164143a34bfa60b45b857, type: 2}
-  m_sharedMaterial: {fileID: -8534061657180306502, guid: f504e0a6b4f164143a34bfa60b45b857, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2d9874fa46c203a47ab09eaeb808d782, type: 2}
+  m_sharedMaterial: {fileID: 187049056151231303, guid: 2d9874fa46c203a47ab09eaeb808d782, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22142,8 +22142,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC774\uC5B4\uC11C \uD558\uAE30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f504e0a6b4f164143a34bfa60b45b857, type: 2}
-  m_sharedMaterial: {fileID: -8534061657180306502, guid: f504e0a6b4f164143a34bfa60b45b857, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2d9874fa46c203a47ab09eaeb808d782, type: 2}
+  m_sharedMaterial: {fileID: 187049056151231303, guid: 2d9874fa46c203a47ab09eaeb808d782, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22574,8 +22574,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uD658\uACBD \uC124\uC815"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f504e0a6b4f164143a34bfa60b45b857, type: 2}
-  m_sharedMaterial: {fileID: -8534061657180306502, guid: f504e0a6b4f164143a34bfa60b45b857, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2d9874fa46c203a47ab09eaeb808d782, type: 2}
+  m_sharedMaterial: {fileID: 187049056151231303, guid: 2d9874fa46c203a47ab09eaeb808d782, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
