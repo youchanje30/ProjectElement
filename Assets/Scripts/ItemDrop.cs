@@ -10,9 +10,12 @@ public class ItemDrop : MonoBehaviour
     void Awake()
     {
         rigid2D = GetComponent<Rigidbody2D>();
-        Drop();
     }
 
+    private void OnEnable()
+    {
+        Drop();
+    }
     
     public void Drop()
     {

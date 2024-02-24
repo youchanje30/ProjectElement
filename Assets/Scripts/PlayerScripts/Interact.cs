@@ -35,7 +35,8 @@ public class Interact : MonoBehaviour
         {
             //골드 획득 시스템
             inven.GetGold();
-            Destroy(other.transform.parent.gameObject);
+            other.transform.parent.gameObject.SetActive(false);
+            // Destroy(other.transform.parent.gameObject);
         }
     }
 
