@@ -6,12 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class IntroUI : MonoBehaviour
 {
+    public GameObject introUI;
     public GameObject LoadBtn;
     public GameObject OptionUI;
 
     void Start()
     {
-        if(File.Exists(Application.dataPath + "/DataXML.xml"))
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            introUI.SetActive(false);
+        }
+        else
+        {
+            introUI.SetActive(true);
+        }
+        if (File.Exists(Application.dataPath + "/DataXML.xml"))
         {
             LoadBtn.SetActive(true);
         }
@@ -20,13 +29,6 @@ public class IntroUI : MonoBehaviour
             LoadBtn.SetActive(false);
         }
     }
-
-
-    void Update()
-    {
-        
-    }
-
 
     public void IntroBtn(int num)
     {
@@ -37,14 +39,17 @@ public class IntroUI : MonoBehaviour
                 {
                     File.Delete(Application.dataPath + "/DataXML.xml");
                 }
-                SceneManager.LoadScene("Main Scene");
+                SceneManager.LoadScene(1); // MainScene
                 break;
+
             case 1:
-                SceneManager.LoadScene("Main Scene");
+                SceneManager.LoadScene(GameManager.instance.SceneNum);
                 break;
+
             case 2:
                 OptionUI.SetActive(true);
                 break;
+
             case 3:
                 PlayerPrefs.Save();
                 SaveManager.instance.Save();

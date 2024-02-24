@@ -116,7 +116,10 @@ public class SaveManager : MonoBehaviour
         clearStageNum.InnerText = manager.clearStage.ToString();
         root.AppendChild(clearStageNum);
 
-
+        //스테이지 번호 저장
+        XmlElement sceneNum = xmlDocument.CreateElement("SceneNum");
+        sceneNum.InnerText = manager.SceneNum.ToString();
+        root.AppendChild(sceneNum);
         /* string a = KeyCode.A.ToString();
         KeyCode B = (KeyCode)System.Enum.Parse(typeof(KeyCode), a); */
 
@@ -194,6 +197,10 @@ public class SaveManager : MonoBehaviour
             // 클리어 스테이지 개수
             XmlNodeList clearStageNum = xmlDocument.GetElementsByTagName("ClearStageNum");
             manager.clearStage = int.Parse(clearStageNum[0].InnerText);
+
+            //스테이지 번호
+            XmlNodeList sceneNum = xmlDocument.GetElementsByTagName("SceneNum");
+            manager.SceneNum = int.Parse(sceneNum[0].InnerText);
 
             //시간
             XmlNodeList timer = xmlDocument.GetElementsByTagName("Timer");
@@ -325,6 +332,10 @@ public class SaveManager : MonoBehaviour
         XmlElement clearStageNum = xmlDocument.CreateElement("ClearStageNum");
         clearStageNum.InnerText = 0.ToString();
         root.AppendChild(clearStageNum);
+
+        XmlElement sceneNum = xmlDocument.CreateElement("SceneNum");
+        sceneNum.InnerText =0.ToString();
+        root.AppendChild(sceneNum);
 
         // 아이템 데이터 저장
         XmlElement playerItemData, Datas;

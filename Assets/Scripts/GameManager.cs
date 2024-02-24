@@ -97,6 +97,8 @@ public class GameManager : MonoBehaviour
     public Transform EndPoint;
     public Transform EndYPoint;
 
+    public int SceneNum;
+
     void Awake()
     {
         TimerVal = 0;
@@ -152,6 +154,15 @@ public class GameManager : MonoBehaviour
         
 
         SaveManager.instance.Load();
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            isAction = true;
+            Debug.Log("인트로 씬");
+        }
+        else
+        {
+            SceneNum = SceneManager.GetActiveScene().buildIndex;
+        }
         SaveManager.instance.AutoSave();
 
         // if (SceneManager.GetActiveScene().name == "Main Scene")
@@ -163,6 +174,8 @@ public class GameManager : MonoBehaviour
         //     UIController.instance.statusUpPoint.transform.position = new Vector3(UIController.instance.statusUpButton[0].transform.position.x, UIController.instance.statusUpPoint.transform.position.y);
         //     UIController.instance.Slot = 0;
         // }
+        
+       
     }
 
 
@@ -191,7 +204,10 @@ public class GameManager : MonoBehaviour
             isInven = false;
             inventoryUI.InvenUI.SetActive(false);
         }
-        TimerSetting();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            TimerSetting();
+        }
         LogStat();
         SetImage();
         StartPoint.position = new Vector3(StartPoint.position.x, Target.position.y, StartPoint.position.z);
@@ -336,18 +352,24 @@ public class GameManager : MonoBehaviour
                 break;
 
             case 5: //Setting Resume Btn
-                SettingPanel.SetActive(false);
-                SystemPanel.SetActive(true);
-                UIController.instance.SettingButton[UIController.instance.settingslot].GetComponent<Image>().color = Color.white;
-                GraphicSetting();
-                SaveSettingData();
-                OptionSetting();
-                SetSettingData();
+                    SettingPanel.SetActive(false);
+                    if (SceneManager.GetActiveScene().buildIndex != 0)
+                    {
+                        SystemPanel.SetActive(true);
+                    }
+                    UIController.instance.SettingButton[UIController.instance.settingslot].GetComponent<Image>().color = Color.white;
+                    GraphicSetting();
+                    SaveSettingData();
+                    OptionSetting();
+                    SetSettingData();
                 break;
 
             case 6: //Setting Exit Btn
                 SettingPanel.SetActive(false);
-                SystemPanel.SetActive(true);
+                if (SceneManager.GetActiveScene().buildIndex != 0)
+                {
+                    SystemPanel.SetActive(true);
+                }
                 UIController.instance.SettingButton[UIController.instance.settingslot].GetComponent<Image>().color = Color.white;
                 SetSettingData();
                 break;
@@ -440,7 +462,7 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 Delete();
-                SceneManager.LoadScene("Main Scene");
+                SceneManager.LoadScene(0);
                 Time.timeScale = 1f;
                 break;
             case 1:
