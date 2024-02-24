@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6545781472814287511
 SpriteRenderer:
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 2788f27d8465f314da1194ed6472178b, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &4014825118175504424
@@ -122,7 +122,7 @@ MonoBehaviour:
   battle: {fileID: 0}
   animator: {fileID: 4014825118175504424}
   spiritAnimator:
-  - {fileID: 9100000, guid: 81ed436b5f7575c46a570e1560cd57cb, type: 2}
+  - {fileID: 9100000, guid: d3375ad9459a9dd4a9d6a97aae56192c, type: 2}
   - {fileID: 9100000, guid: 81ed436b5f7575c46a570e1560cd57cb, type: 2}
   - {fileID: 9100000, guid: b2390fa7aba654f4991126b336764f74, type: 2}
   - {fileID: 9100000, guid: bc20a3a86ca806c40a322129234d561a, type: 2}

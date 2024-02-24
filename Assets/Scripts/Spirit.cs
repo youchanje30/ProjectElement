@@ -85,7 +85,7 @@ public class Spirit : MonoBehaviour
 
     void LookAtTarget()
     {
-        transform.localScale = new Vector3(imageScale * transform.position.x < target.position.x ? 1 : -1, imageScale, 1);
+        transform.localScale = new Vector3(imageScale * transform.position.x < target.position.x ? -1 : 1, imageScale, 1);
     }
 
     public void ChangeAnim()
