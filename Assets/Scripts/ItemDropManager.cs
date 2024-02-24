@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemDropManager : MonoBehaviour
@@ -20,6 +21,8 @@ public class ItemDropManager : MonoBehaviour
     public GameObject Coin; // 코인
     public GameObject SpiritSoul; // 정령 정수
     [Space(20f)]
+
+    public List<GameObject> pools = new List<GameObject>();
 
     // 코인 정보
     [Header("Coin Drop Setting")]
@@ -52,8 +55,30 @@ public class ItemDropManager : MonoBehaviour
             }
         }
 
-        Debug.Log(DropCoins);
         return DropCoins;
+    }
+
+    public GameObject GetCoin()
+    {
+        GameObject coin = null;
+
+        foreach (GameObject item in pools)
+        {
+            if(!item.activeSelf)
+            {
+                coin = item;
+                break;
+            }
+        }
+
+        if(!coin)
+        {
+            coin = Instantiate(Coin, transform);
+            pools.Add(coin);
+        }
+
+        coin.SetActive(true);
+        return coin;
     }
 
     void Awake()

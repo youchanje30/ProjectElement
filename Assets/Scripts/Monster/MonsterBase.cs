@@ -382,7 +382,7 @@ public class MonsterBase : MonoBehaviour
         int j = ItemDropManager.instance.CoinDrop();
         for (int i = 0; i < j; i++)
         {
-            GameObject spawnCoin = Instantiate(Coin);
+            GameObject spawnCoin = ItemDropManager.instance.GetCoin();
             spawnCoin.transform.position = transform.position;
         }
     }

@@ -68,7 +68,7 @@ MonoBehaviour:
   CommonItemDatas: []
   RareItemDatas: []
   EpicItemDatas: []
-  ItemGetPercent: 46000000140000000a000000
+  ItemGetPercent: 460000001900000005000000
 --- !u!114 &966535409122990007
 MonoBehaviour:
   m_ObjectHideFlags: 0
