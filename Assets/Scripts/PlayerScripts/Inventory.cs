@@ -10,6 +10,10 @@ public class Inventory : MonoBehaviour
     public ItemData[] HavingItem;
     public ElementalData[] HavingElement;
     public bool[] HasWeapon;
+    
+
+    [Header("코인 1개 당 얻는 골드 양")]
+    public int getCoin = 1;
 
     public void Update()
     {
@@ -17,7 +21,7 @@ public class Inventory : MonoBehaviour
     }
     public void GetGold()
     {
-        Gold++;
+        Gold += getCoin;
         SaveManager.instance.Save();
     }
 
