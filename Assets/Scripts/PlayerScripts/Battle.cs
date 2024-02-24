@@ -77,6 +77,7 @@ public class Battle : MonoBehaviour
     [LabelText("활 기본 발사 속도")] [SerializeField] float arrowNormalSpeed;
     [LabelText("활 차징 공격 데미지%")] [SerializeField] float arrowChargeDamage;
     [LabelText("활 차징 발사 속도")] [SerializeField] float arrowChargeSpeed;
+    [SerializeField] RuntimeAnimatorController chargingAnimator;
     
 
     [TitleGroup("추가적인 완드 설정")]
@@ -499,6 +500,7 @@ public class Battle : MonoBehaviour
         {
             shootArrow.GetComponent<ProjectileType>().Damage = atkDamage * arrowChargeDamage * 0.01f;
             shootArrow.GetComponent<ProjectileType>().moveSpeed = arrowChargeSpeed;
+            shootArrow.GetComponent<Animator>().runtimeAnimatorController = chargingAnimator;
         }
         else
         {
