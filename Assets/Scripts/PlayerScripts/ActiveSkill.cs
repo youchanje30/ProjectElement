@@ -7,7 +7,6 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
-using static UnityEditor.ShaderData;
 
 public class ActiveSkill : MonoBehaviour
 {

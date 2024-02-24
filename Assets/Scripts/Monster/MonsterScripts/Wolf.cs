@@ -14,7 +14,7 @@ public class Wolf : MonsterBase
     [SerializeField] bool canAct;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float raycastDistance = 5f;
-    [SerializeField] bool isMissState;
+    // [SerializeField] bool isMissState;
     [Space(20f)]
 
     [Header("텔레포트 공격 관련")]
@@ -134,7 +134,6 @@ public class Wolf : MonsterBase
 
         isAtking = true;
         canAct = false;
-        isMissState = true;
         rigid.velocity = Vector2.zero;
 
         float spawnY = hit.point.y;
@@ -201,14 +200,8 @@ public class Wolf : MonsterBase
     {
         base.AtkEnd();
         SetAtkType();
-        isMissState = false;
     }
 
-    public override void GetDamaged(float getDamage, bool canKncokBack = true)
-    {
-        if(isMissState) return;
-        base.GetDamaged(getDamage, canKncokBack);
-    }
 
     void ReturnAct()
     {
