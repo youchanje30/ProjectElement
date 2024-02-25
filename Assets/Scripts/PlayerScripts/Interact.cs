@@ -8,7 +8,6 @@ public class Interact : MonoBehaviour
     private Inventory inven;
     public bool isActionning;
 
-
     void Awake()
     {
         inven = GetComponent<Inventory>();
