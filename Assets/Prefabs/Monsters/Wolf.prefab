@@ -116,6 +116,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5002002695191462300, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5234046894563744887, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Name
       value: Wolf

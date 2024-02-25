@@ -6,9 +6,13 @@ public class EffectController : MonoBehaviour
 {
     [SerializeField] LayerMask layer;
 
-    public bool isFix;
+    [Header("바닥 붙는 여부")] public bool isGroundFix;
+    [Header("크기 보정 여부")] public bool isSizeFix;
+    [Header("위치 오차 여부")] public bool isPositionErrorFix;
+
+    [Header("위치 오차 정도")] [SerializeField] float fixForce;
+
     public Vector2 size;
-    [SerializeField] float fixForce;
 
     void Update()
     {
@@ -17,27 +21,31 @@ public class EffectController : MonoBehaviour
 
     void OnEnable()
     {
-        if(!isFix) 
+        if(isPositionErrorFix) 
         {
             Vector2 vec = (Vector2)transform.position;
             vec.x += Random.Range(-1f, 1f) * fixForce;
             vec.y += Random.Range(-1f, 1f) * fixForce;
 
             transform.position = vec;
-
-            return;
         }
-        
-        float err = size.x / GetComponent<SpriteRenderer>().bounds.size.x;
-        transform.localScale *= err;
 
-        Vector3 pos = transform.position;
-        RaycastHit2D ray = Physics2D.Raycast(pos, Vector2.down, 5f, layer);
-        if(!ray) return;
-        
-        pos.y -= ray.distance;
+        if(isSizeFix)
+        {
+            float sizeFix = size.x / GetComponent<SpriteRenderer>().bounds.size.x;
+            transform.localScale *= sizeFix;
+        }
 
-        transform.position = pos;
+        if(isGroundFix)
+        {
+            Vector3 pos = transform.position;
+            RaycastHit2D ray = Physics2D.Raycast(pos, Vector2.down, 5f, layer);
+            if(!ray) return;
+            
+            pos.y -= ray.distance;
+
+            transform.position = pos;
+        }
     }
 
     public void EffectEnd()

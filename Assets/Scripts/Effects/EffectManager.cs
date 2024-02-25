@@ -58,7 +58,7 @@ public class EffectManager : MonoBehaviour
             effectPools[effect].Add(ef);
         }
 
-        if(ef.GetComponent<EffectController>().isFix)
+        if(ef.GetComponent<EffectController>().isSizeFix)
             ef.GetComponent<EffectController>().size = size;
 
         if(reverse)

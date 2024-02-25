@@ -122,6 +122,8 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 64
-  isFix: 1
-  size: {x: 0, y: 0}
+  isGroundFix: 1
+  isSizeFix: 0
+  isPositionErrorFix: 0
   fixForce: 1
+  size: {x: 0, y: 0}
