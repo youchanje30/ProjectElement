@@ -310,8 +310,10 @@ public class GameManager : MonoBehaviour
         resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionData");
         fullScreen = PlayerPrefs.GetInt("FullScreenData");
         UIController.instance.OnOff = PlayerPrefs.GetInt("TimerData");
-        audioManager.BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMData");
-        audioManager.SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXData");
+        if(audioManager.BGMVolumeSlider)
+            audioManager.BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMData");
+        if(audioManager.BGMVolumeSlider)
+            audioManager.SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXData");
     }
 
     public void SystemBtn(int BtnNum)
