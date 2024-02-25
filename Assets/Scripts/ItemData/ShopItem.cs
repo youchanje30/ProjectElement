@@ -88,6 +88,7 @@ public class ShopItem : MonoBehaviour
         }
 
         inventory.Gold -= buyCost;
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Selling);
 
         objectController.buyShopObjects.Remove(gameObject.GetComponent<RectTransform>());
         objectController.SetPosShop();
@@ -164,6 +165,7 @@ public class ShopItem : MonoBehaviour
         if(isChanging) return;
         isChanging = true;
         // DOTween.Clear();
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
         reverseObj.DORotate(new Vector3(0, 90, 0), reverseTime).SetUpdate(true).OnComplete(() =>
         {
             isReverse = !isReverse;

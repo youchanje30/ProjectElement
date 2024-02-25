@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7464646255189480712
 MonoBehaviour:
@@ -44,8 +44,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18fe1efb388e8194e8a0acc085ada51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiCon: {fileID: 0}
   bgmClip: {fileID: 0}
   BGMVolumeSlider: {fileID: 0}
-  sfxClips: []
+  sfxClips:
+  - {fileID: 8300000, guid: a4a6b70a37a034043911f0bb4174d975, type: 3}
+  - {fileID: 8300000, guid: 618c02ef0fe10ff46a126c53967eb79c, type: 3}
+  - {fileID: 8300000, guid: 6f393359f63fae84fb5a10cd458ead80, type: 3}
+  - {fileID: 8300000, guid: 4e5c970fee603e2418b392e5e1a18d1c, type: 3}
+  - {fileID: 8300000, guid: 0bc966937048c2c4b99dc479846c180b, type: 3}
+  - {fileID: 8300000, guid: 9adacc072b833b14ba546a2cea87ad35, type: 3}
+  - {fileID: 8300000, guid: 3309ff6b09ce3aa45869512ca4196cc1, type: 3}
+  - {fileID: 8300000, guid: 51981339a6720464b80eda4b7d44078d, type: 3}
+  - {fileID: 8300000, guid: 2523ebedd5f004842ab61d2cdfcc7e05, type: 3}
+  - {fileID: 8300000, guid: 4889c017b49ec9f47b6651b4a3a7c174, type: 3}
+  - {fileID: 8300000, guid: 6fa23e4f11cc9a142aaee749bf28809a, type: 3}
+  - {fileID: 8300000, guid: e386410120d2df949bd9f4fdb6264340, type: 3}
+  - {fileID: 8300000, guid: e7b8a4f48c9bfe040b4d497cda94b5d7, type: 3}
+  - {fileID: 8300000, guid: 65c265d25a9123040a0505b68d0208e2, type: 3}
+  - {fileID: 8300000, guid: 23da5e4ac9c708a4086ddeff7983f4a1, type: 3}
+  - {fileID: 8300000, guid: e5a2776d2ec19de459cbffaecb3bed1e, type: 3}
+  - {fileID: 8300000, guid: b2d41258318d08e4e992636317a53e19, type: 3}
+  - {fileID: 8300000, guid: b95dcfcd5d00a6c43b97bef314951287, type: 3}
+  - {fileID: 8300000, guid: d9f89e23e2ffd5e488778c9d8ccfe877, type: 3}
+  - {fileID: 8300000, guid: 3f505923a5dcdbf4eab0f3c280a33389, type: 3}
+  - {fileID: 8300000, guid: 83594e565340d364cb8269f2960c0871, type: 3}
   channels: 16
   SFXVolumeSlider: {fileID: 0}

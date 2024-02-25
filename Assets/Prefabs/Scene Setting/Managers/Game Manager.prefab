@@ -61,6 +61,7 @@ Transform:
   m_Children:
   - {fileID: 3083002206320670089}
   - {fileID: 891055357591295839}
+  - {fileID: 8067841858992247226}
   m_Father: {fileID: 7145054607126248307}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -116,6 +117,7 @@ MonoBehaviour:
   swapUI: {fileID: 0}
   audioManager: {fileID: 0}
   battle: {fileID: 0}
+  activeSkill: {fileID: 0}
   player: {fileID: 0}
   clearStage: 0
   SystemPanel: {fileID: 0}
@@ -168,6 +170,9 @@ MonoBehaviour:
   - {fileID: 0}
   StartPoint: {fileID: 3083002206320670089}
   EndPoint: {fileID: 891055357591295839}
+  EndYPoint: {fileID: 0}
+  cameraPoint: {fileID: 8067841858992247226}
+  SceneNum: 0
   fullScreen: 0
 --- !u!1 &8190130175758252450
 GameObject:
@@ -194,6 +199,37 @@ Transform:
   m_GameObject: {fileID: 8190130175758252450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 37.4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5767520050183775697}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8367246448105515379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8067841858992247226}
+  m_Layer: 0
+  m_Name: CamepaPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8067841858992247226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367246448105515379}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

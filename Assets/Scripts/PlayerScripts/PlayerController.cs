@@ -122,16 +122,8 @@ public class PlayerController : MonoBehaviour
         InputSystem();
         Act();
         Move();
-       // PlayerUISystem();
         Swap();
     }
-
-    //void PlayerUISystem()
-    //{
-    //    playerHpBar.value = Mathf.Lerp(playerHpBar.value, status.curHp, Time.deltaTime * 5f);
-    //    HpFill.color = gradient.Evaluate(playerHpBar.normalizedValue);
-    //    BarrierBar.value = Mathf.Lerp(BarrierBar.value, status.barrier, Time.deltaTime * 5f);
-    //}
 
     void InputSystem()
     {
@@ -281,6 +273,10 @@ public class PlayerController : MonoBehaviour
                     isBegincharging = true;
                     animator.SetBool("isCharge", true);
                     animator.SetTrigger("Charging");
+                    if(battle.WeaponType == WeaponTypes.Bow)
+                    {
+                        AudioManager.instance.PlaySfx(AudioManager.Sfx.BowCharging);
+                    }
                 }
             }
         }
@@ -359,6 +355,7 @@ public class PlayerController : MonoBehaviour
 
         if (pressedFirstSlot)
         {
+            AudioManager.instance.StopSfx(AudioManager.Sfx.Walk);
             PlayerWeaponType = inventory.HavingElement[0].WeaponTypes;
             SetEquipment();
             return;
@@ -366,6 +363,7 @@ public class PlayerController : MonoBehaviour
 
         if (pressedSecondSlot)
         {
+            AudioManager.instance.StopSfx(AudioManager.Sfx.Walk);
             PlayerWeaponType = inventory.HavingElement[1].WeaponTypes;
             SetEquipment();
             return;
@@ -373,6 +371,7 @@ public class PlayerController : MonoBehaviour
         
         if (pressedThirdSlot)
         {
+            AudioManager.instance.StopSfx(AudioManager.Sfx.Walk);
             PlayerWeaponType = inventory.HavingElement[2].WeaponTypes;
             SetEquipment();
             return;

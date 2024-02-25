@@ -143,13 +143,10 @@ public class Movement2D : MonoBehaviour
         {
             animator.SetBool("isGround", false);
             animator.SetTrigger("Jump");
-            // animator.SetBool("isAct", true);
             rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
-            // Vector2 forceDir = new Vector2(0, 1);
-            // rigid2D.AddForce(forceDir * jumpForce, ForceMode2D.Impulse);
-            // 하강할 때 점프가 제대로 되지 않고, 힘을 주는 방식이라 조금 부정확한듯
             curJumpCnt --;
 
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Jump);
         }
     }
 
@@ -238,5 +235,10 @@ public class Movement2D : MonoBehaviour
                 break;   
             }
         }
+    }
+
+    void MoveSound()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Walk);
     }
 }

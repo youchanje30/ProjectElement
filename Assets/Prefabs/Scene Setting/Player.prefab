@@ -921,8 +921,8 @@ MonoBehaviour:
   inventory: {fileID: 8509772043893616530}
   anim:
   - {fileID: 9100000, guid: 5e93b15e7bab76841ae994bd154bdb26, type: 2}
-  - {fileID: 9100000, guid: 6e333f13c849e52468bc370b84a78922, type: 2}
-  - {fileID: 9100000, guid: 1a2d06294c87a20468143d1cc1081f5b, type: 2}
+  - {fileID: 9100000, guid: 0cc390b2609037249ba40b5c118810d8, type: 2}
+  - {fileID: 9100000, guid: 6dfc8eafc3c40d24fae8924bb2efe2af, type: 2}
   - {fileID: 9100000, guid: b64b7b58b9eb770499837a197d022319, type: 2}
   - {fileID: 9100000, guid: c9ef69833dec52643892bc6f0e2b0229, type: 2}
   JumpKey: 99
@@ -1091,6 +1091,8 @@ MonoBehaviour:
   swapTime: 1
   DamagedDuration: 0.1
   DamagedForce: 2
+  damagedColor: {r: 0, g: 0, b: 0, a: 0}
+  damagedTime: 0
 --- !u!114 &8509772043893616530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1117,7 +1119,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9e78c71fab5d52546a96bef8d62d1612, type: 2}
   - {fileID: 11400000, guid: 9e78c71fab5d52546a96bef8d62d1612, type: 2}
   HasWeapon: 000000
-  getCoin: 1
+  getCoin: 10
 --- !u!114 &4664804212794489908
 MonoBehaviour:
   m_ObjectHideFlags: 0

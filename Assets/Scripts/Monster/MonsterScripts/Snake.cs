@@ -8,11 +8,14 @@ public class Snake : MonsterBase
     [SerializeField] float poisonDuration;
     [SerializeField] float poisonTick;
     [SerializeField] float poisonDamage;
+    [Space(20f)]
 
+    [Header("이펙트 위치 정보")]
+    [SerializeField] Transform poisonPos;
 
     protected override void AtkDetect(int index = 0)
     {
-        Vector3 detectPos = transform.position + atkInfo[index].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
+        Vector3 detectPos = transform.position + atkInfo[index].atkPos * (transform.localScale.x > 0 ? 1 : -1);
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(detectPos, atkInfo[index].atkSize, 0, LayerMask.GetMask("Player"));
         foreach(Collider2D collider in collider2Ds)
         {
@@ -26,7 +29,7 @@ public class Snake : MonsterBase
 
     void Effect(int index = 0)
     {
-        Vector3 detectPos = transform.position + atkInfo[index].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
+        Vector3 detectPos = poisonPos.position;
         EffectManager.instance.SpawnEffect(detectPos, (int)MonsterEffect.poison, atkInfo[index].atkSize, transform.localScale.x < 0);
     }
 }

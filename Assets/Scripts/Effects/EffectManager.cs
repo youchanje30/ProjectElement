@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum SkillEffect { Fire, South }
 public enum AtkEffect { Fire = 2, Water, South, Wind , Crt }
-public enum BossEffect { charge = 7, redeye, handDown, fallDown }
+public enum BossEffect { charge = 7, handDown, fallDownFront, fallDownBack }
 public enum MonsterEffect { poison = 11 }
 
 public class EffectManager : MonoBehaviour

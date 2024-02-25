@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
     public Transform StartPoint;
     public Transform EndPoint;
     public Transform EndYPoint;
+    public Transform cameraPoint;
 
     public int SceneNum;
 
@@ -210,10 +211,11 @@ public class GameManager : MonoBehaviour
         }
         LogStat();
         SetImage();
-        StartPoint.position = new Vector3(StartPoint.position.x, Target.position.y, StartPoint.position.z);
-        EndPoint.position = new Vector3(EndPoint.position.x, Target.position.y, EndPoint.position.z);
-        if(EndYPoint)
-            EndYPoint.position = new Vector3(Target.position.x, EndYPoint.position.y, EndYPoint.position.z);
+
+        // StartPoint.position = new Vector3(StartPoint.position.x, Target.position.y, StartPoint.position.z);
+        // EndPoint.position = new Vector3(EndPoint.position.x, Target.position.y, EndPoint.position.z);
+        // if(EndYPoint)
+        //     EndYPoint.position = new Vector3(Target.position.x, EndYPoint.position.y, EndYPoint.position.z);
         EndCamera();
     }
 
@@ -670,21 +672,44 @@ public class GameManager : MonoBehaviour
 
     public void EndCamera()
     {
+        Vector3 endPos = cameraPoint.position;
+        bool posFix = false;
+
         if (StartPoint.position.x >= Target.position.x)
         {
-            controller.cinemachineCam.Follow = StartPoint;
+            // controller.cinemachineCam.Follow = StartPoint;
+            posFix = true;
+            endPos.x = StartPoint.position.x;
         }
         else if (Target.position.x >= EndPoint.position.x)
         {
-            controller.cinemachineCam.Follow = EndPoint;
-        }
-        else if(EndYPoint && Target.position.y >= EndYPoint.position.y)
-        {
-            controller.cinemachineCam.Follow = EndYPoint;
+            // controller.cinemachineCam.Follow = EndPoint;
+            posFix = true;
+            endPos.x = EndPoint.position.x;
         }
         else
         {
-            controller.cinemachineCam.Follow = Target;
+            endPos.x = Target.position.x;
         }
+
+        if(EndYPoint && Target.position.y >= EndYPoint.position.y)
+        {
+            // controller.cinemachineCam.Follow = EndYPoint;
+            posFix = true;
+            endPos.y = EndYPoint.position.y;
+        }
+        else
+        {
+            endPos.y = Target.position.y;
+        }
+        
+
+        if(posFix)
+            controller.cinemachineCam.Follow = cameraPoint;
+        else
+            controller.cinemachineCam.Follow = Target;
+
+        cameraPoint.position = endPos;
+
     }
 }

@@ -20,6 +20,12 @@ public class Bear : MonsterBase
     [SerializeField] BoxCollider2D normalCol;
 
 
+    [Header("점프 찍기 공격 관련")]
+    [Header("상승 힘")] [SerializeField] float upForce;
+    [Header("상승 시간")] [SerializeField] float upTime;
+    [Header("낙하 힘")] [SerializeField] float downForce;
+
+
     [Header("소환 및 UI 관련")]
     [SerializeField] bool isSpawn;
     [SerializeField] Slider hpBar;
@@ -27,14 +33,16 @@ public class Bear : MonsterBase
     
 
     [Header("이펙트 관련 설정")]
-    [SerializeField] Transform redeyeEffect;
     [SerializeField] Transform chargeEffect;
     [SerializeField] Transform kuangEffect;
     [SerializeField] Transform downEffect;
+    [SerializeField] GameObject redeyeEffect;
+    bool isRedeye;
 
     protected void Shake()
     {
         CameraController.instance.ShakeCamera(0.4f, 20);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Appear);
         
     }
 
@@ -47,9 +55,12 @@ public class Bear : MonsterBase
     protected override void Start()
     {
         base.Start();
+        isRedeye = false;
         hpBar = UIController.instance.bossHpSlider;
         hpBar.maxValue = monsterData.maxHp;
         hpBar.value = curHp;
+        rushCol.enabled = true;
+        normalCol.enabled = false;
     }
 
     protected override void Awake()
@@ -69,7 +80,7 @@ public class Bear : MonsterBase
                 break;
             
             case 1: // Down
-                EffectManager.instance.SpawnEffect(detectPos, (int)BossEffect.fallDown, atkInfo[index].atkSize);
+                // EffectManager.instance.SpawnEffect(detectPos, (int)BossEffect.fallDown, atkInfo[index].atkSize);
                 break;
             default:
                 break;
@@ -80,6 +91,7 @@ public class Bear : MonsterBase
     {
         if(!isSpawn) return;
 
+        TimeProcess();
         CheckState();
         SetState();
 
@@ -87,16 +99,15 @@ public class Bear : MonsterBase
         {
             Move();
         }
-        else
-        {
-            rushCol.enabled = false;
-            normalCol.enabled = true;
-        }
+        // else
+        // {
+        //     rushCol.enabled = false;
+        //     normalCol.enabled = true;
+        // }
             
         if(isTracking)
             Tracking();
 
-        TimeProcess();
         if(isRushAtk && atkCheck.isEnter)
         {
             isRushAtk = false;
@@ -104,19 +115,29 @@ public class Bear : MonsterBase
         }
     }
 
+    protected override void TimeProcess()
+    {
+        base.TimeProcess();
+        if(!isRedeye && curAtkCoolTime <= 0.5f)
+        {
+            isRedeye = true;
+            redeyeEffect.SetActive(true);
+        }
+    }
+
     protected override void Move()
     {
         base.Move();
         
-        rushCol.enabled = (nextDir != 0);
-        normalCol.enabled = (nextDir == 0);
+        // rushCol.enabled = (nextDir != 0);
+        // normalCol.enabled = (nextDir == 0);
     }
 
     protected override void Tracking()
     {
         base.Tracking();
-        rushCol.enabled = true;
-        normalCol.enabled = false;
+        // rushCol.enabled = true;
+        // normalCol.enabled = false;
     }
 
     public override void GetDamaged(float getDamage, bool canKncokBack = true)
@@ -138,7 +159,8 @@ public class Bear : MonsterBase
     {
         isAtking = true;
         canAtk = false;
-        EffectManager.instance.SpawnEffect(redeyeEffect.position, (int)BossEffect.redeye, Vector2.zero);
+        redeyeEffect.SetActive(false);
+        // EffectManager.instance.SpawnEffect(redeyeEffect.position, (int)BossEffect.redeye, Vector2.zero);
 
         int randomSum = 0;
         for (int i = 0; i < atkRate.Length; i++)
@@ -146,18 +168,36 @@ public class Bear : MonsterBase
             
         int randomAct = Random.Range(1, randomSum + 1);
         if(randomAct <= atkRate[0])
+        {   
+            rushCol.enabled = false;
+            normalCol.enabled = true;
             animator.SetTrigger("HandAtk");
+        }
         else if(randomAct <= atkRate[1] + atkRate[0])
+        {
             animator.SetTrigger("DownAtk");
+            EffectManager.instance.SpawnEffect(transform.position, (int)BossEffect.fallDownBack, Vector2.zero);
+            EffectManager.instance.SpawnEffect(transform.position, (int)BossEffect.fallDownFront, Vector2.zero);
+            
+            rushCol.enabled = false;
+            normalCol.enabled = true;
+        }
         else
+        {
             animator.SetTrigger("RushAtk");
+            rushCol.enabled = true;
+            normalCol.enabled = false;
+        }
+            
     }
 
     protected override void AtkEnd()
     {
         base.AtkEnd();
-        // rushCol.enabled = false;
+        isRedeye = false;
         isRushAtk = false;
+        rushCol.enabled = true;
+        normalCol.enabled = false;
     }
 
 
@@ -167,6 +207,12 @@ public class Bear : MonsterBase
     {
         ChargingAct(atkType);
         float curChargingTime = 0;
+        while (curChargingTime <= upTime)
+        {
+            curChargingTime += Time.deltaTime;
+            yield return null;
+        }
+        FallDown();
         while (curChargingTime <= atkChargingTime[(int)atkType])
         {
             curChargingTime += Time.deltaTime;
@@ -184,7 +230,7 @@ public class Bear : MonsterBase
                 break;
 
             case AtkTypes.DownAtk:
-                rigid.velocity = Vector2.up * 10;
+                rigid.velocity = Vector2.up * upForce;
                 break;
 
             case AtkTypes.Rush:
@@ -197,6 +243,11 @@ public class Bear : MonsterBase
                 Debug.Log("Called ChargingAct : default");
                 break;
         }
+    }
+
+    protected void FallDown()
+    {
+        rigid.velocity = Vector2.down * downForce;
     }
     #endregion
 

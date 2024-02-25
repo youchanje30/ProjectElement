@@ -46,14 +46,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Coin: {fileID: 8720883770288789512, guid: 73e273a69cedda445950d414bec44684, type: 3}
   SpiritSoul: {fileID: 8720883770288789512, guid: abc224e8dece62a469a09275fe66b0f0, type: 3}
+  pools: []
   CoinDropRate: 80
   CoinBuckets:
   - DropWeight: 1
-    MinDropItem: 70
-    MaxDropItem: 70
+    MinDropItem: 7
+    MaxDropItem: 7
   - DropWeight: 1
-    MinDropItem: 50
-    MaxDropItem: 50
+    MinDropItem: 5
+    MaxDropItem: 5
   - DropWeight: 1
-    MinDropItem: 100
-    MaxDropItem: 100
+    MinDropItem: 10
+    MaxDropItem: 10

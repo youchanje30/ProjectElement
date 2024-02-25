@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,12 +25,33 @@ public class AudioManager : MonoBehaviour
     public Slider SFXVolumeSlider;
 
 
-    public enum Sfx {};
+    public enum Sfx { Appear, Jump, Selling, Portal, Select, Punch1,
+    ShieldAtk, ShieldJumpAtk, SwordAtk, BowAtk = 11, BowCharging, Walk
+    , SouthSkill, WaterBomb, Inventory, fallDownAtk };
 
 
     void Awake()
     {
-        instance = this;
+        if(!instance)
+            instance = this;
+        else
+        {
+            instance.Set();
+            Destroy(gameObject);
+        }
+        
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void Start()
+    {    
+        Set();
+        Init();
+    }
+
+    public void Set()
+    {
         uiCon = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
         
         if(!BGMVolumeSlider)
@@ -37,22 +59,8 @@ public class AudioManager : MonoBehaviour
 
         if(!SFXVolumeSlider)
             SFXVolumeSlider = uiCon.sfxSlider;
-        Init();
-    }
 
-    void Start()
-    {
-        // if(!BGMVolumeSlider)
-        //     BGMVolumeSlider = UIController.instance.bgmSlider;
-
-        // if(!SFXVolumeSlider)
-        //     SFXVolumeSlider = UIController.instance.sfxSlider;
-
-        // Init();
-    }
-
-    void Update()
-    {
+        Invoke("SoundLoad", 0.1f);
     }
 
     void Init()
@@ -65,7 +73,6 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.loop = true;
         bgmPlayer.volume = BGMVolumeSlider.value;
         bgmPlayer.clip = bgmClip;
-
 
         //SFX Player 초기화
         GameObject sfxObject = new GameObject("SFXPlayer");
@@ -80,7 +87,6 @@ public class AudioManager : MonoBehaviour
 
     }
     
-
     public void PlaySfx(Sfx sfx)
     {
         for (int i = 0; i < sfxPlayers.Length; i++)
@@ -90,10 +96,38 @@ public class AudioManager : MonoBehaviour
             if(sfxPlayers[loopIndex].isPlaying)
                 continue;
 
+            int randIndex = 0;
+            switch (sfx)
+            {
+                case Sfx.SwordAtk:
+                    randIndex += Random.Range(0, 2 + 1);
+                    break;
+                
+                case Sfx.fallDownAtk:
+                    randIndex += Random.Range(0, 1 + 1);
+                    break;
+
+                default:
+                    break;
+            }
+
             channelIndex = loopIndex;
-            sfxPlayers[loopIndex].clip = sfxClips[(int)sfx];
+            sfxPlayers[loopIndex].clip = sfxClips[(int)sfx + randIndex];
             sfxPlayers[loopIndex].Play();
             break;
+        }
+    }
+
+    public void StopSfx(Sfx sfx)
+    {
+        for (int i = 0; i < sfxPlayers.Length; i++)
+        {
+
+            if(sfxPlayers[i].clip == sfxClips[(int)sfx] && sfxPlayers[i].isPlaying)
+            {
+                sfxPlayers[i].Stop();
+                break;
+            }
         }
     }
 
@@ -136,4 +170,25 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    void AutoSoundSave()
+    {
+        SoundSave();
+        Invoke("AutoSoundSave", 10f);
+    }
+
+
+    public void SoundSave()
+    {
+        PlayerPrefs.SetFloat("BGMVol", BGMVolumeSlider.value);
+        PlayerPrefs.SetFloat("SFXVol", SFXVolumeSlider.value);
+    }
+
+    public void SoundLoad()
+    {
+        if(PlayerPrefs.HasKey("BGMVol") && BGMVolumeSlider != null)
+            BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMVol");
+            
+        if(PlayerPrefs.HasKey("SFXVol") && BGMVolumeSlider != null)
+            SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXVol");
+    }
 }

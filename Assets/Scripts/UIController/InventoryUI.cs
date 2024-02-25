@@ -109,6 +109,7 @@ public class InventoryUI : MonoBehaviour
         //Info.SetActive(false);
         gameManager.isInven = !gameManager.isInven;
         InvenUI.SetActive(gameManager.isInven);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Inventory);
         animator.SetTrigger("OpenInven");
         Invoke("InventorySetting", 0.3f);
        

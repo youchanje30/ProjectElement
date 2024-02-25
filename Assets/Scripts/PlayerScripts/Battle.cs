@@ -109,6 +109,9 @@ public class Battle : MonoBehaviour
     [LabelText("피격시 진동 세기")] [SerializeField] float DamagedForce;
     
 
+    [TitleGroup("피격 관련 설정")]
+    [LabelText("피격 시 색깔")] [SerializeField] Color damagedColor;
+    [LabelText("색깔 변경 속도")] [SerializeField] float damagedTime;
 
 
     void Awake()
@@ -146,6 +149,7 @@ public class Battle : MonoBehaviour
                         Atk(collider.gameObject);
                     }
                 }
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.fallDownAtk);
             }
             
             if(curFallDownAtkTime <= fallDownAtkTime)
@@ -192,27 +196,33 @@ public class Battle : MonoBehaviour
         if(isGuard) return;
 
         bool isMiss = Random.Range(1, 100 + 1) <= status.missRate;
+        
 
-        if(!isMiss)
+
+        if(isMiss) return;
+        
+        float getDmg = Damage * (100 - status.defPer) * 0.01f;
+        // CameraController.instance.StartCoroutine(CameraController.instance.Shake(DamagedDuration, DamagedForce));
+        // DOTween.Kill(transform);
+        GetComponent<SpriteRenderer>().DOColor(damagedColor, damagedTime).OnComplete(()=>
+        GetComponent<SpriteRenderer>().DOColor(Color.white, damagedTime));
+
+        if(canShake)
+            CameraController.instance.ShakeCamera(DamagedDuration, DamagedForce);
+        if (status.barrier > getDmg)
         {
-            float getDmg = Damage * (100 - status.defPer) * 0.01f;
-            // CameraController.instance.StartCoroutine(CameraController.instance.Shake(DamagedDuration, DamagedForce));
-            if(canShake)
-                CameraController.instance.ShakeCamera(DamagedDuration, DamagedForce);
-            if (status.barrier > getDmg)
-            {
-                status.barrier -= getDmg;
-                getDmg = 0f;
-            }
-            else
-            {
-                getDmg -= status.barrier;
-                status.barrier = 0f;
-                barrier.SetActive(false);
-            }
-
-            status.curHp -= getDmg;
+            status.barrier -= getDmg;
+            getDmg = 0f;
         }
+        else
+        {
+            getDmg -= status.barrier;
+            status.barrier = 0f;
+            barrier.SetActive(false);
+        }
+
+        status.curHp -= getDmg;
+    
             
 
         passive.Atked();
@@ -287,6 +297,8 @@ public class Battle : MonoBehaviour
             return;
         }
 
+        if(WeaponType == WeaponTypes.Bow)
+            AudioManager.instance.StopSfx(AudioManager.Sfx.BowCharging);
         if(!weaponData[(int)WeaponType].isAtkReady) return;
 
         if(WeaponType == WeaponTypes.Bow)
@@ -320,6 +332,7 @@ public class Battle : MonoBehaviour
         }
         else if(WeaponType == WeaponTypes.Sword)
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.SwordAtk);
             if(canComboAtk)
                 animator.SetTrigger("ComboAtk");
             else
@@ -374,19 +387,6 @@ public class Battle : MonoBehaviour
     {
         atking = false;
         animator.SetBool("isAct", false);
-
-        // if(WeaponType == WeaponTypes.Bow)
-        // {
-        //     GameObject ThrowArrow = Instantiate(arrow);
-        //     ProjectileType projectileType = ThrowArrow.GetComponent<ProjectileType>();
-        //     ThrowArrow.GetComponent<ProjectileType>().weaponType = WeaponType;
-        //     projectileType.moveSpeed = arrowNormalSpeed;
-        //     projectileType.Damage = atkDamage;
-            
-        //     ThrowArrow.transform.position = weaponData[(int)WeaponType].atkPos.position;
-            
-        //     ThrowArrow.transform.localScale =  new Vector3(transform.localScale.x, ThrowArrow.transform.localScale.y, ThrowArrow.transform.localScale.z);
-        // }
 
         if(WeaponType == WeaponTypes.Wand)
         {
@@ -495,6 +495,8 @@ public class Battle : MonoBehaviour
 
         //화살 소환
         GameObject shootArrow = Instantiate(arrow);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.BowAtk);
+        // AudioManager.instance.StopSfx(AudioManager.Sfx.BowCharging);
 
         if(isCharged)
         {
@@ -516,6 +518,7 @@ public class Battle : MonoBehaviour
 
     public IEnumerator DashGuard()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ShieldAtk);
         atking = true;
         float originalGravity = rigid2D.gravityScale;
         rigid2D.gravityScale = 0f;
@@ -537,6 +540,7 @@ public class Battle : MonoBehaviour
 
     public IEnumerator ShieldGuard()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ShieldAtk);
         atking = true;
         isGuard = true;
         movement2D.isDashing = true;
@@ -546,17 +550,6 @@ public class Battle : MonoBehaviour
         rigid2D.velocity = new Vector2(transform.localScale.x * shieldDashAtkDashPower, 0f);
         boxCol.enabled = true;
         yield return new WaitForSeconds(shieldDashAtkDashTime * 0.5f);
-
-        // Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(shieldDashAtkPos.position, shieldDashAtkSize, 0);
-        // foreach(Collider2D collider in collider2Ds)
-        // {
-        //     if(collider.CompareTag("Monster") || collider.CompareTag("Destruct"))
-        //     {
-        //         Atk(collider.gameObject);
-        //     }
-        // }
-
-        // Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(shieldDashAtkPos.position, shieldDashAtkSize, 0);
 
         yield return new WaitForSeconds(shieldDashAtkDashTime * 0.5f);
         boxCol.enabled = false;

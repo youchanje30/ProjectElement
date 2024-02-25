@@ -123,7 +123,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isGroundFix: 1
-  isSizeFix: 0
+  isSizeFix: 1
   isPositionErrorFix: 0
   fixForce: 1
   size: {x: 0, y: 0}
