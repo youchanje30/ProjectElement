@@ -266,7 +266,8 @@ public class MonsterBase : MonoBehaviour
 
     protected virtual void AtkDetect(int index = 0)
     {
-        Vector3 detectPos = transform.position + atkInfo[index].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
+        // Vector3 detectPos = transform.position + atkInfo[index].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
+        Vector3 detectPos = transform.position + atkInfo[index].atkPos * (transform.localScale.x > 0 ? 1 : -1);
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(detectPos, atkInfo[index].atkSize, 0, LayerMask.GetMask("Player"));
         foreach(Collider2D collider in collider2Ds)
         {
@@ -290,7 +291,8 @@ public class MonsterBase : MonoBehaviour
 
         for (int i = 0; i < atkInfo.Length; i++)
         {
-            Vector3 detectPos = transform.position + atkInfo[i].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
+            Vector3 detectPos = transform.position + atkInfo[i].atkPos * (transform.localScale.x > 0 ? 1 : -1);
+            // Vector3 detectPos = transform.position + atkInfo[i].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
             Gizmos.DrawWireCube(detectPos, atkInfo[i].atkSize);
         }
         
