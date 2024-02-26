@@ -179,16 +179,25 @@ public class AudioManager : MonoBehaviour
 
     public void SoundSave()
     {
-        PlayerPrefs.SetFloat("BGMVol", BGMVolumeSlider.value);
-        PlayerPrefs.SetFloat("SFXVol", SFXVolumeSlider.value);
+        PlayerPrefs.SetFloat("BGMData", BGMVolumeSlider.value);
+        PlayerPrefs.SetFloat("SFXData", SFXVolumeSlider.value);
     }
 
     public void SoundLoad()
     {
-        if(PlayerPrefs.HasKey("BGMVol") && BGMVolumeSlider != null)
-            BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMVol");
+        if(PlayerPrefs.HasKey("BGMData") && BGMVolumeSlider != null)
+            BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMData");
+        else if(!PlayerPrefs.HasKey("BGMData"))
+            Debug.Log("Dont has Ket BGMData");
+        else
+            Debug.Log("Null Reference 1");
             
-        if(PlayerPrefs.HasKey("SFXVol") && BGMVolumeSlider != null)
-            SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXVol");
+            
+        if(PlayerPrefs.HasKey("SFXData") && BGMVolumeSlider != null)
+            SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXData");
+        else if(!PlayerPrefs.HasKey("SFXData"))
+            Debug.Log("Dont has Ket SFXData");
+        else
+            Debug.Log("Null Reference 2");
     }
 }

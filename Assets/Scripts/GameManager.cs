@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
         // if (PlayerPrefs.HasKey("FullScreenData")) { SetSettingData();}
         
         SetResolution();
-        if(PlayerPrefs.HasKey("BGMData"))
+        // if(PlayerPrefs.HasKey("BGMData"))
             SetSettingData();
         for (int i = 0; i < player.inventory.HasWeapon.Length; i++)
         {
@@ -288,6 +288,7 @@ public class GameManager : MonoBehaviour
                 UIController.instance.SettingButton[11].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
                 break;
         }
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
     }
     public void Delete()
     {
@@ -378,6 +379,7 @@ public class GameManager : MonoBehaviour
                 SetSettingData();
                 break;
         }
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
     }
 
     public void RandomStageRoad()
@@ -416,6 +418,7 @@ public class GameManager : MonoBehaviour
             UIController.instance.Slot = 0;
             UIController.instance.TalkPoint.transform.position = new Vector3(UIController.instance.TalkPoint.transform.position.x, UIController.instance.TalkButton[0].transform.position.y);
         }
+        // AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
 
     }
 
@@ -431,6 +434,7 @@ public class GameManager : MonoBehaviour
         TalkPanel.SetActive(true);
         UIController.instance.Slot = 0;
         UIController.instance.TalkPoint.transform.position = new Vector3(UIController.instance.TalkPoint.transform.position.x, UIController.instance.TalkButton[0].transform.position.y);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
     }
     
 
@@ -438,18 +442,15 @@ public class GameManager : MonoBehaviour
     {
         
         ObjData = Obj.GetComponent<ObjectController>();
-        // Debug.Log("Manager Action");
         yield return new WaitForSeconds(0.1f);
         if (isAction && !isSelected)
         {
             Talk(ObjData.objectID);
-            // Debug.Log("Talk Work");
         }
         else if(!isAction && !isSelected)
         {
            ViewTalkPanel(ObjData.objectID);
             isAction = true;
-            // Debug.Log("ViewTalk Work");
         }
     }
 
@@ -471,7 +472,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 1:
                 DataResetCheck.SetActive(false);
-                 break;
+                break;
 
         }
     }
@@ -505,9 +506,8 @@ public class GameManager : MonoBehaviour
                 TalkPanel.SetActive(false);
                 break;
         }
-
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
     }
-    
       
    
     public void Active(int objectID) //정령 2번 선택지

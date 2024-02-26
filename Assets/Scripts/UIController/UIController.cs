@@ -182,9 +182,11 @@ public class UIController : MonoBehaviour
     public void DataReset(int BtnNum)
     {
         GameManager.instance.DataReset(BtnNum);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
     }
     public void timerSetting()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
         OnOff++;
         OnOff %= 2;
         TimerOnOff.text = OnOff == 0 ? "켜짐" : "꺼짐";
@@ -198,7 +200,7 @@ public class UIController : MonoBehaviour
             SystemPoint.transform.position = new Vector3(SystemPoint.transform.position.x, SystemButton[Slot - 1].transform.position.y);
             SystemButton[Slot].GetComponent<Image>().color = Color.white;
             SystemButton[Slot - 1].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
-           
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
             Slot -= 1;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow) && Slot != 3)
@@ -206,7 +208,7 @@ public class UIController : MonoBehaviour
             SystemPoint.transform.position = new Vector3(SystemPoint.transform.position.x, SystemButton[Slot + 1].transform.position.y);
             SystemButton[Slot].GetComponent<Image>().color = Color.white;
             SystemButton[Slot + 1].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
-            
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
             Slot += 1;
         }
         if (Input.GetKeyDown(KeyCode.E))
@@ -239,10 +241,12 @@ public class UIController : MonoBehaviour
                     SettingPoint.transform.position = new Vector3(SettingButton[settingslot + 1].transform.position.x - 40, SettingButton[settingslot + 1].transform.position.y);
                     settingslot += 1;
                 }
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
                 
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow) && settingslot != 0)
             {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
                 SettingButton[settingslot - 1].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
                 SettingButton[settingslot].GetComponent<Image>().color = Color.white;
                 if (settingslot == 2 || settingslot == 4 || settingslot == 9)
@@ -266,6 +270,7 @@ public class UIController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) && settingslot != 12)
             {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
                 SettingButton[12].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
                 SettingButton[11].GetComponent<Image>().color = Color.white;
                 SettingPoint.transform.position = new Vector3(SettingButton[12].transform.position.x - 150, SettingButton[12].transform.position.y);
@@ -273,6 +278,7 @@ public class UIController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow) && settingslot != 11)
             {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
                 SettingButton[11].GetComponent<Image>().color = new Color(0.6901961f, 0.6901961f, 0.6901961f);
                 SettingButton[12].GetComponent<Image>().color = Color.white;
                 SettingPoint.transform.position = new Vector3(SettingButton[11].transform.position.x - 150, SettingButton[11].transform.position.y);
@@ -322,11 +328,13 @@ public class UIController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && Slot != 0 && GameManager.instance.talkBtn[1].activeSelf == true && GameManager.instance.talkBtn[2].activeSelf == true)
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
             TalkPoint.transform.position = new Vector3(TalkPoint.transform.position.x, TalkButton[Slot - 1].transform.position.y);
             Slot -= 1;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow) && Slot != 2 && GameManager.instance.talkBtn[1].activeSelf == true && GameManager.instance.talkBtn[2].activeSelf == true)
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
             TalkPoint.transform.position = new Vector3(TalkPoint.transform.position.x, TalkButton[Slot + 1].transform.position.y);
             Slot += 1;
         }

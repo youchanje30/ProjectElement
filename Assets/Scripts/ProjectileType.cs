@@ -115,9 +115,14 @@ public class ProjectileType : MonoBehaviour
             }
             if (Projectile == Type.WaterSkill)
             {
+                battle.PlayerSynergy(2000, other.gameObject);
                 skill.passive.ActivePassive(WeaponTypes.Wand, other.GetComponentInParent<MonsterDebuffBase>());
                 //Damage *= 1 - (DeclineRate / 100);
-            }    
+            }
+            if (Projectile == Type.WindSkill)
+            {
+                battle.PlayerSynergy(4000, other.gameObject);
+            }
         }
         else if (other.CompareTag("Destruct"))
         {
@@ -169,7 +174,8 @@ public class ProjectileType : MonoBehaviour
             {
                 
                 skill.passive.ActivePassive(WeaponTypes.Wand, collider.GetComponentInParent<MonsterDebuffBase>());
-                skill.SkillAtk(collider.gameObject, skill.DefaultDamage * (1 + (skill.BombDamageIncreaseRate / 100)));              
+                skill.SkillAtk(collider.gameObject, skill.DefaultDamage * (1 + (skill.BombDamageIncreaseRate / 100)));
+                battle.PlayerSynergy(1000, collider.gameObject);
             }
             if (collider.CompareTag("Destruct"))
             {

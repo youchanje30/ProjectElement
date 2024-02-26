@@ -136,7 +136,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.91665447, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.3196168, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -921,8 +921,8 @@ MonoBehaviour:
   inventory: {fileID: 8509772043893616530}
   anim:
   - {fileID: 9100000, guid: 5e93b15e7bab76841ae994bd154bdb26, type: 2}
-  - {fileID: 9100000, guid: 0cc390b2609037249ba40b5c118810d8, type: 2}
-  - {fileID: 9100000, guid: 6dfc8eafc3c40d24fae8924bb2efe2af, type: 2}
+  - {fileID: 9100000, guid: 6157ae60678c698479770939b56dd990, type: 2}
+  - {fileID: 9100000, guid: d1de680cc0ecbd847b7f1a81ae3cbe91, type: 2}
   - {fileID: 9100000, guid: b64b7b58b9eb770499837a197d022319, type: 2}
   - {fileID: 9100000, guid: c9ef69833dec52643892bc6f0e2b0229, type: 2}
   JumpKey: 99
@@ -1090,9 +1090,9 @@ MonoBehaviour:
   isSwap: 0
   swapTime: 0.8
   DamagedDuration: 0.1
-  DamagedForce: 2
-  damagedColor: {r: 0, g: 0, b: 0, a: 0}
-  damagedTime: 0
+  DamagedForce: 5
+  damagedColor: {r: 1, g: 0, b: 0, a: 1}
+  damagedTime: 0.2
 --- !u!114 &8509772043893616530
 MonoBehaviour:
   m_ObjectHideFlags: 0

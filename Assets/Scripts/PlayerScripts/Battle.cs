@@ -205,11 +205,13 @@ public class Battle : MonoBehaviour
         float getDmg = Damage * (100 - status.defPer) * 0.01f;
         // CameraController.instance.StartCoroutine(CameraController.instance.Shake(DamagedDuration, DamagedForce));
         // DOTween.Kill(transform);
-        GetComponent<SpriteRenderer>().DOColor(damagedColor, damagedTime).OnComplete(()=>
-        GetComponent<SpriteRenderer>().DOColor(Color.white, damagedTime));
-
         if(canShake)
+        {
+            GetComponent<SpriteRenderer>().DOColor(damagedColor, damagedTime).OnComplete(()=>
+            GetComponent<SpriteRenderer>().DOColor(Color.white, damagedTime));
             CameraController.instance.ShakeCamera(DamagedDuration, DamagedForce);
+        }
+
         if (status.barrier > getDmg)
         {
             status.barrier -= getDmg;
@@ -261,7 +263,7 @@ public class Battle : MonoBehaviour
         EffectManager.instance.SpawnEffect(AtkObj.transform.position, 1 + (int)WeaponType, Vector2.one);
         
         if(AtkObj.CompareTag("Monster"))
-        {       
+        {
             if(AtkObj.GetComponentInParent<MonsterSynergy>().isWeathering && WeaponType == WeaponTypes.Shield && passive.isGetBarrier)
             {
                 Debug.Log(WeatheringDamage);

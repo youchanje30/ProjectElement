@@ -153,7 +153,8 @@ public class ActiveSkill : MonoBehaviour
                     StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
                     // StartCoroutine(Hit(collider.gameObject, 0.5f));
                     // CameraController.instance.StartCoroutine(CameraController.instance.Shake(SouthShakeTime, SouthShakeMagnitude));
-                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (FIreDamage / 100)));              
+                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (FIreDamage / 100)));
+                    battle.PlayerSynergy(3000, collider.gameObject);
                 }
                 if( collider.CompareTag("Destruct"))
                 {
@@ -225,6 +226,7 @@ public class ActiveSkill : MonoBehaviour
                 CameraController.instance.ShakeCamera(SouthShakeTime, SouthShakeMagnitude);
 
                 SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
+                battle.PlayerSynergy(1000, collider.gameObject);
             }
             if (collider.CompareTag("Destruct"))
             {
@@ -306,7 +308,6 @@ public class ActiveSkill : MonoBehaviour
     }
     public void RandingSet()
     {
-
         if (Physics2D.Raycast(transform.position,Vector2.down,2,layer) && CanLanding)
             {
             // CameraController.instance.StartCoroutine(CameraController.instance.Shake(LandingShakeTime, LandingShakeMagnitude));
@@ -322,8 +323,9 @@ public class ActiveSkill : MonoBehaviour
                         //StartCoroutine(Hit(collider.gameObject, 0.5f));
                         collider.GetComponentInParent<MonsterBase>().isHit = true;
                         StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
-                        StartCoroutine(Stun(collider.gameObject, StunTime));
                         SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
+                        StartCoroutine(Stun(collider.gameObject, StunTime));
+                        battle.PlayerSynergy(3000, collider.gameObject);
                     }
                     if (collider.CompareTag("Destruct"))
                     {
@@ -345,9 +347,14 @@ public class ActiveSkill : MonoBehaviour
     {
        // monster.GetComponentInParent<MonsterBase>().moveSpeed = 0;
         monster.GetComponentInParent<MonsterBase>().isStun = true;
+        monster.GetComponentInParent<MonsterBase>().animator.enabled = false;
         yield return new WaitForSeconds(Stuntime);
         // monster.GetComponentInParent<MonsterBase>().moveSpeed = monster.GetComponentInParent<MonsterBase>().monsterData.maxMoveSpeed;
-        monster.GetComponentInParent<MonsterBase>().isStun = false;
+        if(monster.transform.parent.gameObject.activeSelf)
+        {
+            monster.GetComponentInParent<MonsterBase>().isStun = false;
+            monster.GetComponentInParent<MonsterBase>().animator.enabled = true;
+        }
     }
     //public IEnumerator Hit(GameObject monster, float time)
     //{
