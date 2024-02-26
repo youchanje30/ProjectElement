@@ -51,10 +51,10 @@ MonoBehaviour:
   CoinBuckets:
   - DropWeight: 1
     MinDropItem: 7
-    MaxDropItem: 7
+    MaxDropItem: 8
   - DropWeight: 1
     MinDropItem: 5
-    MaxDropItem: 5
+    MaxDropItem: 6
   - DropWeight: 1
     MinDropItem: 10
-    MaxDropItem: 10
+    MaxDropItem: 11
