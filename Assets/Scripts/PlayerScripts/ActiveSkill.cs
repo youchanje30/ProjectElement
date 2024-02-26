@@ -153,7 +153,8 @@ public class ActiveSkill : MonoBehaviour
                     StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
                     // StartCoroutine(Hit(collider.gameObject, 0.5f));
                     // CameraController.instance.StartCoroutine(CameraController.instance.Shake(SouthShakeTime, SouthShakeMagnitude));
-                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (FIreDamage / 100)));              
+                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (FIreDamage / 100)));
+                    battle.PlayerSynergy(3000, collider.gameObject);
                 }
                 if( collider.CompareTag("Destruct"))
                 {
@@ -225,6 +226,7 @@ public class ActiveSkill : MonoBehaviour
                 CameraController.instance.ShakeCamera(SouthShakeTime, SouthShakeMagnitude);
 
                 SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
+                battle.PlayerSynergy(1000, collider.gameObject);
             }
             if (collider.CompareTag("Destruct"))
             {
@@ -323,7 +325,7 @@ public class ActiveSkill : MonoBehaviour
                         StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
                         SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
                         StartCoroutine(Stun(collider.gameObject, StunTime));
-                        battle.PlayerSynergy(4000, collider.gameObject);
+                        battle.PlayerSynergy(3000, collider.gameObject);
                     }
                     if (collider.CompareTag("Destruct"))
                     {
