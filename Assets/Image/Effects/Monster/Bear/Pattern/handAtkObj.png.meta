@@ -1,0 +1,2190 @@
+fileFormatVersion: 2
+guid: 0fea662481868f94f8895581c56fcebf
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: handAtkObj_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d4f8ad92366274985d886d1bd1c299
+      internalID: -890193596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a05e0ec8fe14f74699391be467c4a02
+      internalID: -382280065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_2
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaad3926d8f3bab46821ee703041dc09
+      internalID: 1904960674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_3
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aacee05f0f2fd24b970aa74554d43b2
+      internalID: -302101054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_4
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 458ea7910626c89409286ba273e82636
+      internalID: 23399491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_5
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 642d5b111e6a9dc4d9167c60c10cd19f
+      internalID: -55263302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_6
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2337d184efbd9e24a95144d40b8cf807
+      internalID: 297439958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_7
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da0635bbe5e0d22408b6cb1572503ab7
+      internalID: 564905352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_8
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0df99f9573ba73e4e9029ab67e317721
+      internalID: 1458919238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_9
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 047d5264810f9c2469c6c2867a3efbfc
+      internalID: 1472637105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_10
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa18f2f8e083b154e90161eb0693b1a5
+      internalID: -1641952693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_11
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fb70fe31c039414aaae766087fd2ef0
+      internalID: -321806486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_12
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2deb45834637e5b468902b82901edec1
+      internalID: 50576185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_13
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca5ff4456241670418e6429843c46446
+      internalID: -291389565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_14
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03fcc2152c0eb85479d2a31679b78757
+      internalID: 1045682414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_15
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a652e87d98db40247a3161866f4433af
+      internalID: 1549919710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_16
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 391
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fa71f1bd6fe5664c978e689c6debe9b
+      internalID: -1098189072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f6ffa1ea5f111a45b545515b75fd93a
+      internalID: 904045133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_18
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 568069ba462509545af1a061a66cfd82
+      internalID: 1090339262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_19
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bee4a0ca6a5a48a4792f2677f2a51a1c
+      internalID: -1112174955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_20
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e1ec920bbaf9e541820c30d2cf496e8
+      internalID: 1691395445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_21
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ef10f03b600d2488eaac865319bd26
+      internalID: -79981105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_22
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b08fa09afd01e43b85b42ca88a5595
+      internalID: 856482991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_23
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de07b927bd9771841ab604780ca64ec5
+      internalID: -2137092273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_24
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83109527e234b95468dc6c311587e89d
+      internalID: -1473255223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_25
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2658ccc8f80f2e429932043185bd074
+      internalID: -1966951644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_26
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 692f7380d5dc23241b686847b91ff77d
+      internalID: 1530869573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_27
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551dfacd1a971a84880442c85cc1d816
+      internalID: 2101165085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_28
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1523c4cf3a9cfbd4a87517d6f8955266
+      internalID: -1479324109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_29
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 732706fdb3a4d6d44bba4a04f5c5663a
+      internalID: -1597502613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_30
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5939227c571ee6489f7413d7b2a7643
+      internalID: -178770625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_31
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5150dc52ff79ce499ada6776a806da7
+      internalID: -1284186379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_32
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 462ac7fa982f9ce4fa082f9da9604495
+      internalID: 1564174148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_33
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2385132d9e66bd447aa0324b9371836e
+      internalID: -2109963111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_34
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d26f50e01e35d404fb17ae9b43378671
+      internalID: -19857921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_35
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ba66fee359d38046a4285f8b6dfc0e6
+      internalID: 768560300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_36
+      rect:
+        serializedVersion: 2
+        x: 2299
+        y: 270
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a63806c8631ee84aa47b121d9b8cf83
+      internalID: -1727376119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fae7e9ea3cdd454ba15ee6927a7e3a9
+      internalID: 589153126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_38
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37fca4738a4a6124f9f871ab6454044b
+      internalID: 1038118330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_39
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8339240f214f2747b0b821470583368
+      internalID: -126958239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_40
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 144b0adcbb6ff524db89a4ebe3dda0b0
+      internalID: -1303263527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_41
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19a243d864283ac45a6ffa15b0e2cf69
+      internalID: -1620017223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_42
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bfdf326a267d19478fc40bda1f774b5
+      internalID: 1681930045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_43
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa1fa0308c39a0940a9c405739a61cb5
+      internalID: 159371337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_44
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce2636fb42deea4cbf8d505d5600b22
+      internalID: -205718505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_45
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fffb61ef866b58248b6ac82b3978ff4d
+      internalID: -1924633304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_46
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27e184035a5f13f43a60eab1d5863f22
+      internalID: -1433714723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_47
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 901c50b01df0e294c9040dde55826d9f
+      internalID: -1687142403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_48
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b6f2609f3e81f42b882aceeef6373e
+      internalID: -878845161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_49
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f915415060ad25246ab8520bfc683661
+      internalID: 805683204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_50
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60b897dd2517d94a835519983c8212d
+      internalID: 410344909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_51
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1000c94d1a73f046b00af93b474f751
+      internalID: -1325014662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_52
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e1c4764008c8fb41bb05aca90cf0792
+      internalID: -466776940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_53
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f8449ddf15e269448866abd1d52b8f9
+      internalID: 1137802670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_54
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 011379c8fbffd6b4ca5f1f5f258129af
+      internalID: -888568687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_55
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcb1bc66e7b7a354384e88a45283cc6f
+      internalID: -1142822483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_56
+      rect:
+        serializedVersion: 2
+        x: 2299
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef22886a7f3fd94458da2b99c10c924a
+      internalID: 2133821924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_57
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf58a5366ed6fc4ca521ae6dafcafa3
+      internalID: -1395142646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_58
+      rect:
+        serializedVersion: 2
+        x: 2541
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10bf5f0b7f858b74eba9d4ebe5b4b25b
+      internalID: -1432242366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_59
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 393b252a5c647354f8060e972cfaeeea
+      internalID: -1741765885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_60
+      rect:
+        serializedVersion: 2
+        x: 2783
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74d386a4412a79c4a9e2fdec0582fcb4
+      internalID: 972162773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_61
+      rect:
+        serializedVersion: 2
+        x: 2904
+        y: 149
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f22581911b70041865efde09f4d802
+      internalID: 866925691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_62
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99af5cffd7cb464fa279d2e64f08d0f
+      internalID: 748561931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_63
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b11ec758c11685546a055530d56ea70a
+      internalID: 30107152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_64
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03e08c5e6bcd3a6458e66e023d696805
+      internalID: 744964700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_65
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1bb0c74e0163734e81b3560b8eea5c9
+      internalID: 97784010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_66
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3e2f9f42253ead428181cf204cc9ac3
+      internalID: 2113798276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_67
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b80d9f4ca7735d749852de7734033872
+      internalID: 508469339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_68
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e221362fe5fdeb94494130354f08f057
+      internalID: -1088043976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_69
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259e53637a317ff4497f7f8cd6504aa8
+      internalID: 450559476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_70
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5370cdc70ddd0d49aa9ff8aedc066b4
+      internalID: 746545994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_71
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45a26479ae210c41a77719b2833b7e0
+      internalID: -1420337548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_72
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fdb5c49969f33643bb9d83a965e6b89
+      internalID: 81555167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_73
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 178784d09d97da6418800ab594ec0cfc
+      internalID: 40283608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_74
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf613f52d428ca148a835f2eb5a46c6b
+      internalID: -845185094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_75
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b6ea2fd210118419283331246bfb46
+      internalID: -1401556884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_76
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cfed3a82150317489620edc4a74dc70
+      internalID: 1227402020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_77
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d629267ea362db24f9ca9f9056ac49ab
+      internalID: -60227430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_78
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff81f89f2c4fefd44875d071f09c6bf8
+      internalID: -1648177698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_79
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3079e983e86692448d3b5edd2e4c310
+      internalID: 590353053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_80
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 207760b5311c33246807d0b0a0935c18
+      internalID: -1612513675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_81
+      rect:
+        serializedVersion: 2
+        x: 2299
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0db53fa5aafd26043a0ea3581ae42661
+      internalID: 1781486823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_82
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3524876e2fb7fd4ba03c9f6f5515bcf
+      internalID: 1442283081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_83
+      rect:
+        serializedVersion: 2
+        x: 2541
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f694c27ba555b1419d91da8eb861e59
+      internalID: 1395277944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_84
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6755dc8f57e8b49ad126d9161d3cf2
+      internalID: 848917803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_85
+      rect:
+        serializedVersion: 2
+        x: 2783
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b36b4f83bde2df740be6f342fb48a88b
+      internalID: -606149998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_86
+      rect:
+        serializedVersion: 2
+        x: 2904
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d3624db4709bb469bdf90b71dd8e46
+      internalID: 1265332025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_87
+      rect:
+        serializedVersion: 2
+        x: 3025
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe5f495ab4b87994b9e8f23644bc7c49
+      internalID: 1724907418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_88
+      rect:
+        serializedVersion: 2
+        x: 3146
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c97f1bb249176f4a89376e45ad49cba
+      internalID: -1315253032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_89
+      rect:
+        serializedVersion: 2
+        x: 3267
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b9d56bd158f9224cb702a48bedf0575
+      internalID: 1842045513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_90
+      rect:
+        serializedVersion: 2
+        x: 3388
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec532b540746e4540844c51d24afe57c
+      internalID: -1738522393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: handAtkObj_91
+      rect:
+        serializedVersion: 2
+        x: 3509
+        y: 28
+        width: 121
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 831d1d4c7c553c44ba185b55fed8c29e
+      internalID: 72380949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      handAtkObj_0: -890193596
+      handAtkObj_1: -382280065
+      handAtkObj_10: -1641952693
+      handAtkObj_11: -321806486
+      handAtkObj_12: 50576185
+      handAtkObj_13: -291389565
+      handAtkObj_14: 1045682414
+      handAtkObj_15: 1549919710
+      handAtkObj_16: -1098189072
+      handAtkObj_17: 904045133
+      handAtkObj_18: 1090339262
+      handAtkObj_19: -1112174955
+      handAtkObj_2: 1904960674
+      handAtkObj_20: 1691395445
+      handAtkObj_21: -79981105
+      handAtkObj_22: 856482991
+      handAtkObj_23: -2137092273
+      handAtkObj_24: -1473255223
+      handAtkObj_25: -1966951644
+      handAtkObj_26: 1530869573
+      handAtkObj_27: 2101165085
+      handAtkObj_28: -1479324109
+      handAtkObj_29: -1597502613
+      handAtkObj_3: -302101054
+      handAtkObj_30: -178770625
+      handAtkObj_31: -1284186379
+      handAtkObj_32: 1564174148
+      handAtkObj_33: -2109963111
+      handAtkObj_34: -19857921
+      handAtkObj_35: 768560300
+      handAtkObj_36: -1727376119
+      handAtkObj_37: 589153126
+      handAtkObj_38: 1038118330
+      handAtkObj_39: -126958239
+      handAtkObj_4: 23399491
+      handAtkObj_40: -1303263527
+      handAtkObj_41: -1620017223
+      handAtkObj_42: 1681930045
+      handAtkObj_43: 159371337
+      handAtkObj_44: -205718505
+      handAtkObj_45: -1924633304
+      handAtkObj_46: -1433714723
+      handAtkObj_47: -1687142403
+      handAtkObj_48: -878845161
+      handAtkObj_49: 805683204
+      handAtkObj_5: -55263302
+      handAtkObj_50: 410344909
+      handAtkObj_51: -1325014662
+      handAtkObj_52: -466776940
+      handAtkObj_53: 1137802670
+      handAtkObj_54: -888568687
+      handAtkObj_55: -1142822483
+      handAtkObj_56: 2133821924
+      handAtkObj_57: -1395142646
+      handAtkObj_58: -1432242366
+      handAtkObj_59: -1741765885
+      handAtkObj_6: 297439958
+      handAtkObj_60: 972162773
+      handAtkObj_61: 866925691
+      handAtkObj_62: 748561931
+      handAtkObj_63: 30107152
+      handAtkObj_64: 744964700
+      handAtkObj_65: 97784010
+      handAtkObj_66: 2113798276
+      handAtkObj_67: 508469339
+      handAtkObj_68: -1088043976
+      handAtkObj_69: 450559476
+      handAtkObj_7: 564905352
+      handAtkObj_70: 746545994
+      handAtkObj_71: -1420337548
+      handAtkObj_72: 81555167
+      handAtkObj_73: 40283608
+      handAtkObj_74: -845185094
+      handAtkObj_75: -1401556884
+      handAtkObj_76: 1227402020
+      handAtkObj_77: -60227430
+      handAtkObj_78: -1648177698
+      handAtkObj_79: 590353053
+      handAtkObj_8: 1458919238
+      handAtkObj_80: -1612513675
+      handAtkObj_81: 1781486823
+      handAtkObj_82: 1442283081
+      handAtkObj_83: 1395277944
+      handAtkObj_84: 848917803
+      handAtkObj_85: -606149998
+      handAtkObj_86: 1265332025
+      handAtkObj_87: 1724907418
+      handAtkObj_88: -1315253032
+      handAtkObj_89: 1842045513
+      handAtkObj_9: 1472637105
+      handAtkObj_90: -1738522393
+      handAtkObj_91: 72380949
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -147,6 +147,7 @@ public class Battle : MonoBehaviour
                     if(collider.tag == "Monster" || collider.tag == "Destruct")
                     {
                         Atk(collider.gameObject);
+                        ParticleManager.instance.SpawnParticle(collider.gameObject.transform.position, transform.position.x - collider.gameObject.transform.position.x);
                     }
                 }
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.fallDownAtk);
@@ -218,6 +219,7 @@ public class Battle : MonoBehaviour
         {
             getDmg -= status.barrier;
             status.barrier = 0f;
+            passive.isGetBarrier = false;
             barrier.SetActive(false);
         }
 
@@ -288,13 +290,20 @@ public class Battle : MonoBehaviour
         }
     }
 
-    public void AtkAction(int id)
+    public void AtkAction(int id, bool isCharging = false)
     {
         if(id == 0 && !movement2D.isGround)
         {
             if(WeaponType != WeaponTypes.Bow && WeaponType != WeaponTypes.Wand)
+            {
                 StartCoroutine(FallDownAtk());
-            return;
+                return;
+            }
+            
+            if(WeaponType == WeaponTypes.Wand || (WeaponType == WeaponTypes.Bow && !isCharging))
+            {
+                return;
+            }
         }
 
         if(WeaponType == WeaponTypes.Bow)

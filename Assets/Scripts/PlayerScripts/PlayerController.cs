@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
         
         // if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.isInven|| battle.fallAtking || ischarging || battle.atking || skill.isCharging)//|| battle.Atking)
         if (movement2D.isDashing || manager.isAction || manager.isShop || manager.isSlotSwap || manager.isInven
-        || battle.fallAtking || ischarging || battle.atking || skill.isCharging )//|| battle.Atking)
+        || battle.fallAtking || ischarging || battle.atking || skill.isCharging )
         {
             pressedDashKey = false;
             pressedJumpkey = false;
@@ -248,18 +248,48 @@ public class PlayerController : MonoBehaviour
             return;
         }
             
-
+        
         // 행동 불가능한 상황
         if (pressedAtkKey && !isRepeatAtk && battle.WeaponType != WeaponTypes.None)
         {  
             if(battle.WeaponType == WeaponTypes.Sword || battle.WeaponType == WeaponTypes.Wand || !movement2D.isGround)
             {
                 isRepeatAtk = true;
-                battle.AtkAction(0);
+                if(battle.WeaponType == WeaponTypes.Bow)
+                {
+                    if(chargingTime >= 0.05f)
+                    {   
+                        battle.AtkAction(0, true);
+                        chargingTime = 0f;
+                        isRepeatAtk = true;
+                        isBegincharging = false;
+                        ischarging = false;
+                        animator.SetBool("isCharge", false);
+                    }
+                }
+                else
+                {
+                    battle.AtkAction(0);
+                    if(battle.WeaponType == WeaponTypes.Shield)
+                    {
+                        chargingTime = 0f;
+                        isRepeatAtk = true;
+                        isBegincharging = false;
+                        ischarging = false;
+                        animator.SetBool("isCharge", false);
+                    }
+                }
                 return;
             }
             else
             {
+                if(rigid2D.velocity.y >= 0.1f)
+                {
+                    pressedAtkKey = false;
+                    return;
+                }
+                    
+
                 chargingTime += Time.deltaTime;
 
                 if(!ischarging)

@@ -34,10 +34,16 @@ public class Bear : MonsterBase
 
     [Header("이펙트 관련 설정")]
     [SerializeField] Transform chargeEffect;
-    [SerializeField] Transform kuangEffect;
-    [SerializeField] Transform downEffect;
     [SerializeField] GameObject redeyeEffect;
     bool isRedeye;
+
+    [Header("각 공격 관련 설정")]
+    [SerializeField] float[] waitTime;
+    [SerializeField] Vector3 startHandAtkObjPos;
+    [SerializeField] float distanceObjs;
+    Vector3[] spawnHandAtkPos = new Vector3[4];
+
+
 
     protected void Shake()
     {
@@ -87,6 +93,24 @@ public class Bear : MonsterBase
         }
     }
 
+
+    protected override void AtkDetect(int index = 0)
+    {
+        base.AtkDetect(index);
+        switch (index)
+        {
+            case 0:
+                StartCoroutine(HandAtkObj());
+                break;
+
+            case 1:
+                break;
+
+            default:
+                break;
+        }
+    }
+
     protected override void Update()
     {
         if(!isSpawn) return;
@@ -99,11 +123,6 @@ public class Bear : MonsterBase
         {
             Move();
         }
-        // else
-        // {
-        //     rushCol.enabled = false;
-        //     normalCol.enabled = true;
-        // }
             
         if(isTracking)
             Tracking();
@@ -123,21 +142,6 @@ public class Bear : MonsterBase
             isRedeye = true;
             redeyeEffect.SetActive(true);
         }
-    }
-
-    protected override void Move()
-    {
-        base.Move();
-        
-        // rushCol.enabled = (nextDir != 0);
-        // normalCol.enabled = (nextDir == 0);
-    }
-
-    protected override void Tracking()
-    {
-        base.Tracking();
-        // rushCol.enabled = true;
-        // normalCol.enabled = false;
     }
 
     public override void GetDamaged(float getDamage, bool canKncokBack = true)
@@ -160,7 +164,6 @@ public class Bear : MonsterBase
         isAtking = true;
         canAtk = false;
         redeyeEffect.SetActive(false);
-        // EffectManager.instance.SpawnEffect(redeyeEffect.position, (int)BossEffect.redeye, Vector2.zero);
 
         int randomSum = 0;
         for (int i = 0; i < atkRate.Length; i++)
@@ -221,6 +224,8 @@ public class Bear : MonsterBase
         animator.SetTrigger("ChargingFin");
     }
 
+    
+
     protected void ChargingAct(AtkTypes atkType)
     {
         switch (atkType)
@@ -255,5 +260,41 @@ public class Bear : MonsterBase
     {
         DOTween.Kill(hpBar);
         DOTween.To(() => hpBar.value, x => hpBar.value = x, curHp, hpDecreaTime).SetEase(Ease.OutQuart);
+    }
+
+
+    IEnumerator HandAtkObj()
+    {
+        int goObjVec = transform.localScale.x > 0 ? 1 : -1;
+        Vector3 detectPos = transform.position + startHandAtkObjPos * goObjVec;
+        
+        for (int i = 0; i < waitTime.Length; i++)
+        {
+            spawnHandAtkPos[i] = detectPos;
+            detectPos.x += distanceObjs * goObjVec;
+        }
+        
+        for (int i = 0; i < waitTime.Length; i++)
+        {
+            yield return new WaitForSeconds(waitTime[i]);
+            EffectManager.instance.SpawnEffect(spawnHandAtkPos[i], 11 + i, Vector2.zero);
+        }
+    }
+
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        Gizmos.color = Color.blue;
+
+        int goObjVec = transform.localScale.x > 0 ? 1 : -1;
+        Vector3 detectPos = transform.position + startHandAtkObjPos * goObjVec;
+        
+        for (int i = 0; i < waitTime.Length; i++)
+        {
+            Gizmos.DrawWireCube(detectPos, new Vector2(0.5f, 0.5f));
+            detectPos.x += distanceObjs * goObjVec;
+        }
+        
     }
 }
