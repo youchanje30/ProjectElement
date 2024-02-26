@@ -50,11 +50,11 @@ MonoBehaviour:
   CoinDropRate: 80
   CoinBuckets:
   - DropWeight: 1
-    MinDropItem: 7
-    MaxDropItem: 8
+    MinDropItem: 6
+    MaxDropItem: 7
   - DropWeight: 1
-    MinDropItem: 5
-    MaxDropItem: 6
+    MinDropItem: 8
+    MaxDropItem: 9
   - DropWeight: 1
     MinDropItem: 10
     MaxDropItem: 11

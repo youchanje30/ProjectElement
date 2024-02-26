@@ -778,7 +778,7 @@ Transform:
   - {fileID: 5325110475537225770}
   - {fileID: 8841014980749475784}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4316813253061002341
 SpriteRenderer:
@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  WeaponType: 0
+  WeaponType: 1
   atking: 0
   isGuard: 0
   arrow: {fileID: 6992588384899424794, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
@@ -1033,7 +1033,7 @@ MonoBehaviour:
     weaponDamage: 100
   - weaponType: 1
     atkPos: {fileID: 7154946036308757365}
-    atkSize: {x: 2, y: 2.5}
+    atkSize: {x: 2.5, y: 2.5}
     atkCoolTime: 0.5
     isAtkReady: 1
     shakeDuration: 0.1
@@ -1051,7 +1051,7 @@ MonoBehaviour:
     weaponDamage: 80
   - weaponType: 3
     atkPos: {fileID: 4135913021082344152}
-    atkSize: {x: 4, y: 2}
+    atkSize: {x: 3, y: 2}
     atkCoolTime: 0.8
     isAtkReady: 1
     shakeDuration: 0.2
@@ -1088,7 +1088,7 @@ MonoBehaviour:
   fallDownAtkSize: {x: 3, y: 1}
   fallDownAtkTime: 0.2
   isSwap: 0
-  swapTime: 1
+  swapTime: 0.8
   DamagedDuration: 0.1
   DamagedForce: 2
   damagedColor: {r: 0, g: 0, b: 0, a: 0}
@@ -1221,19 +1221,19 @@ MonoBehaviour:
     CurskillCoolTime: 0
     isSkillReady: 1
   - weaponName: "\uAC80"
-    skillCoolTime: 7
+    skillCoolTime: 11
     CurskillCoolTime: 0
     isSkillReady: 1
   - weaponName: "\uC644\uB4DC"
-    skillCoolTime: 7
+    skillCoolTime: 10
     CurskillCoolTime: 0
     isSkillReady: 1
   - weaponName: "\uBC29\uD328"
-    skillCoolTime: 6
+    skillCoolTime: 8
     CurskillCoolTime: 0
     isSkillReady: 1
   - weaponName: "\uD65C"
-    skillCoolTime: 9
+    skillCoolTime: 12
     CurskillCoolTime: 0
     isSkillReady: 1
   isCharging: 0
@@ -1293,7 +1293,7 @@ MonoBehaviour:
   Pos: {fileID: 883222462688627655}
   ArrowDamageIncreaseRate: 500
   ChargeTime: 1.2
-  Delay: 0.3
+  Delay: 0.6
   WindShakeTime: 0.05
   WindShakeMagnitude: 5
   arrowSkillSpeed: 15
@@ -1402,7 +1402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7219966532605892540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0.623, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

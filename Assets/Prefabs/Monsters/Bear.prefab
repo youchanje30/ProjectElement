@@ -269,11 +269,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9025737441897270199, guid: f2017c2ebec408d4680e45a119649737, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -0.94
       objectReference: {fileID: 0}
     - target: {fileID: 9025737441897270199, guid: f2017c2ebec408d4680e45a119649737, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 9025737441897270199, guid: f2017c2ebec408d4680e45a119649737, type: 3}
       propertyPath: m_LocalPosition.z
@@ -344,7 +344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalScale.x
@@ -544,7 +544,7 @@ MonoBehaviour:
   - 2
   - 1
   atkCheck: {fileID: 1229426727661310261}
-  atkRate: 1e0000001e0000001e000000
+  atkRate: 210000002100000021000000
   rushCol: {fileID: 8528279629814333700}
   normalCol: {fileID: 5841746687657040757}
   upForce: 10
@@ -554,16 +554,14 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   hpDecreaTime: 1.5
   chargeEffect: {fileID: 1978805656148478593}
-  kuangEffect: {fileID: 0}
-  downEffect: {fileID: 0}
   redeyeEffect: {fileID: 5021590147904345035}
   waitTime:
-  - 0
-  - 0.2
-  - 0.2
-  - 0.2
-  startHandAtkObjPos: {x: -4, y: -2, z: 0}
-  distanceObjs: -5
+  - 0.4
+  - 0.3
+  - 0.3
+  - 0.3
+  startHandAtkObjPos: {x: -3, y: -2, z: 0}
+  distanceObjs: -3.5
 --- !u!114 &5373036055377236901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2610654531360661370, guid: bcab59f8b8043a540ad625334218e733, type: 3}

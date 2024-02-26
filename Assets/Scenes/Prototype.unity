@@ -978,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2740759569370255528, guid: 13eb0c3ca95162042ad034119b59e1fc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5457820780229101516, guid: 13eb0c3ca95162042ad034119b59e1fc, type: 3}
       propertyPath: atkTypeRate.Array.data[0]
@@ -10062,7 +10062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2740759569370255528, guid: d5f2cfe9cb4f998459bb06b1ec7d096f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5498172926753285927, guid: d5f2cfe9cb4f998459bb06b1ec7d096f, type: 3}
       propertyPath: m_RootOrder
@@ -10441,8 +10441,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
-      propertyPath: weaponData.Array.data[3].atkSize.x
-      value: 3
+      propertyPath: DamagedForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729994133735113749, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
+      propertyPath: DamagedDuration
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7141198254234339824, guid: 2388747a1a5cfae43949e6c1f4218eef, type: 3}
       propertyPath: m_Name
@@ -11153,7 +11157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2740759569370255528, guid: 3e2e36ceb58a68a4ca6cc2490eb10da2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5498172926753285927, guid: 3e2e36ceb58a68a4ca6cc2490eb10da2, type: 3}
       propertyPath: m_RootOrder
@@ -11161,11 +11165,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5498172926753285927, guid: 3e2e36ceb58a68a4ca6cc2490eb10da2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.9
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 5498172926753285927, guid: 3e2e36ceb58a68a4ca6cc2490eb10da2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.52
+      value: -2.1
       objectReference: {fileID: 0}
     - target: {fileID: 5498172926753285927, guid: 3e2e36ceb58a68a4ca6cc2490eb10da2, type: 3}
       propertyPath: m_LocalPosition.z
