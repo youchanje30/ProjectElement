@@ -112,12 +112,16 @@ public class ProjectileType : MonoBehaviour
             if (Projectile != Type.WindSkill && Projectile != Type.WaterSkill )
             {
                 Destroy(gameObject);
+                if(Projectile == Type.WindSkill)
+                    battle.PlayerSynergy(4000, other.gameObject);
             }
             if (Projectile == Type.WaterSkill)
             {
+                
+                battle.PlayerSynergy(2000, other.gameObject);
                 skill.passive.ActivePassive(WeaponTypes.Wand, other.GetComponentInParent<MonsterDebuffBase>());
                 //Damage *= 1 - (DeclineRate / 100);
-            }    
+            }
         }
         else if (other.CompareTag("Destruct"))
         {

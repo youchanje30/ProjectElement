@@ -536,9 +536,11 @@ MonoBehaviour:
   - atkName: "\uC190\uC73C\uB85C \uCC0D\uAE30"
     atkPos: {x: -3.54, y: 1, z: 0}
     atkSize: {x: 8, y: 7}
+    damageRate: 100
   - atkName: "\uAD81\uC911 \uB545 \uCC0D\uAE30"
     atkPos: {x: 0, y: -1, z: 0}
     atkSize: {x: 15, y: 4}
+    damageRate: 100
   isRushAtk: 0
   atkChargingTime:
   - 2
@@ -554,8 +556,6 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   hpDecreaTime: 1.5
   chargeEffect: {fileID: 1978805656148478593}
-  kuangEffect: {fileID: 0}
-  downEffect: {fileID: 0}
   redeyeEffect: {fileID: 5021590147904345035}
   waitTime:
   - 0

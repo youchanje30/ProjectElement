@@ -55,6 +55,7 @@ public class MonsterBase : MonoBehaviour
         [LabelText("공격 종류")] public string atkName;
         [LabelText("공격 위치")] public Vector3 atkPos;
         [LabelText("공격 범위")] public Vector2 atkSize;
+        [LabelText("공격 데미지%")] public float damageRate;
     }
     
     [TitleGroup("공격 기본 설정")]
@@ -126,10 +127,26 @@ public class MonsterBase : MonoBehaviour
     #region 몬스터 상태 관리
     protected virtual void CheckState()
     {
-        if(isDead || isAtking || isKnockback || isStun)
+        if(isStun)
         {
             canMove = false;
             canAtk = false;
+            animator.enabled = false;
+            Debug.Log("Stoped");
+            return;
+        }
+        else
+        {
+            animator.enabled = true;
+            Debug.Log("Playing");
+        }
+
+
+        if(isDead || isAtking || isKnockback)
+        {
+            canMove = false;
+            canAtk = false;
+            
             return;
         }
 
@@ -272,7 +289,7 @@ public class MonsterBase : MonoBehaviour
         {
             if(!collider.CompareTag("Player")) continue;
                 
-            collider.GetComponent<Battle>().GetDamaged(damage);
+            collider.GetComponent<Battle>().GetDamaged(damage * atkInfo[index].damageRate * 0.01f);
         }
     }
 
@@ -290,7 +307,6 @@ public class MonsterBase : MonoBehaviour
         for (int i = 0; i < atkInfo.Length; i++)
         {
             Vector3 detectPos = transform.position + atkInfo[i].atkPos * (transform.localScale.x > 0 ? 1 : -1);
-            // Vector3 detectPos = transform.position + atkInfo[i].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
             Gizmos.DrawWireCube(detectPos, atkInfo[i].atkSize);
         }
         
@@ -314,6 +330,7 @@ public class MonsterBase : MonoBehaviour
         if(curHp <= 0)
         {
             isDead = true;
+            animator.enabled = true;
             animator.SetTrigger("Dead");
             Invoke("Dead", 1f); // 안죽는 경우 대비
             SetDead();

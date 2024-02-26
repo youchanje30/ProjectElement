@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.Serialization;
 using UnityEngine;
 
 public class Wolf : MonsterBase
@@ -21,6 +22,8 @@ public class Wolf : MonsterBase
     [SerializeField] Vector3 telePos;
     //int dir { get { return (target.localScale.x > 0) ? -1 : 1; } }
     [SerializeField] int dir;
+
+    [SerializeField] Transform biteTrans;
 
     protected override void Init()
     {
@@ -44,7 +47,14 @@ public class Wolf : MonsterBase
 
     protected override void CheckState()
     {
-        if(isDead || isAtking || isKnockback || isStun)
+        if(isStun)
+        {
+            canMove = false;
+            canAtk = false;
+            return;
+        }
+
+        if(isDead || isAtking || isKnockback)
         {
             canAct = false;
             canMove = false;
@@ -112,14 +122,16 @@ public class Wolf : MonsterBase
 
     protected override void AtkDetect(int index = 0)
     {
-        Vector3 detectPos = transform.position + atkInfo[index].atkPos * (Mathf.Abs(transform.localScale.x) / transform.localScale.x);
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(detectPos, atkInfo[index].atkSize, 0, LayerMask.GetMask("Player"));
-        foreach(Collider2D collider in collider2Ds)
+        base.AtkDetect(index);
+        
+        switch (index)
         {
-            Debug.Log(collider.tag);
-            if(!collider.CompareTag("Player")) continue;
-                
-            collider.GetComponent<Battle>().GetDamaged(damage * 2f);
+            case 1:
+                EffectManager.instance.SpawnEffect(biteTrans.position, (int)MonsterEffect.Bite, Vector2.zero, transform.localScale.x < 0);
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -194,6 +206,7 @@ public class Wolf : MonsterBase
         transform.position = telePos;
         dir = (target.localScale.x > 0) ? -1 : 1;
         transform.localScale = new Vector3(dir * monsterData.imageScale, monsterData.imageScale, 1);
+        rigid.velocity = Vector2.zero;
     }
 
     protected override void AtkEnd()
