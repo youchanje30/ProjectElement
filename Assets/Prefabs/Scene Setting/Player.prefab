@@ -1034,10 +1034,10 @@ MonoBehaviour:
   - weaponType: 1
     atkPos: {fileID: 7154946036308757365}
     atkSize: {x: 2.5, y: 2.5}
-    atkCoolTime: 0.5
+    atkCoolTime: 0.4
     isAtkReady: 1
     shakeDuration: 0.1
-    shakeForce: 10
+    shakeForce: 2
     weaponCrtDamage: 0
     weaponDamage: 100
   - weaponType: 2
@@ -1054,8 +1054,8 @@ MonoBehaviour:
     atkSize: {x: 3, y: 2}
     atkCoolTime: 0.8
     isAtkReady: 1
-    shakeDuration: 0.2
-    shakeForce: 10
+    shakeDuration: 0.1
+    shakeForce: 5
     weaponCrtDamage: 0
     weaponDamage: 100
   - weaponType: 4
@@ -1090,9 +1090,9 @@ MonoBehaviour:
   isSwap: 0
   swapTime: 0.8
   DamagedDuration: 0.1
-  DamagedForce: 5
+  DamagedForce: 2
   damagedColor: {r: 1, g: 0, b: 0, a: 1}
-  damagedTime: 0.2
+  damagedTime: 1.5
 --- !u!114 &8509772043893616530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,8 +1181,8 @@ MonoBehaviour:
     duration: 0
     tick: 0
   - passiveName: "\uAC80 \uD654\uC0C1"
-    rate: 15
-    duration: 5
+    rate: 20
+    duration: 3.1
     tick: 1
   - passiveName: "\uC644\uB4DC \uC2AC\uB85C\uC6B0"
     rate: 100
@@ -1196,10 +1196,10 @@ MonoBehaviour:
     rate: 0
     duration: 0
     tick: 0
-  burnDamage: 8
-  slowPer: 50
+  burnDamage: 7
+  slowPer: 60
   shieldPer: 20
-  bowPer: 100
+  bowPer: 80
   unAtkedTime: 0
 --- !u!114 &4171092834519731156
 MonoBehaviour:
@@ -1246,8 +1246,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   ActiveTime: 3
-  FireShakeTime: 0.2
-  FireShakeMagnitude: 1.5
+  FireShakeTime: 0.15
+  FireShakeMagnitude: 5
   FirePos: {fileID: 7822402008449614104}
   FireRange: {x: 9.73, y: 1.95}
   FIreDamage: 0
@@ -1269,13 +1269,13 @@ MonoBehaviour:
   WaterY: 0
   activeTime: 10
   BombShakeTime: 0.15
-  BombShakeMagnitude: 20
+  BombShakeMagnitude: 10
   isSouth: 0
   JumpDamageIncreaseRate: 0
   LandDamageIncreaseRate: 300
   JumpForce: 15
   FallForce: 40
-  StunTime: 5
+  StunTime: 4
   RisingTime: 0.5
   LandingPos:
   - {fileID: 2987700167441146525}
@@ -1283,11 +1283,11 @@ MonoBehaviour:
   LandingRange:
   - {x: 10, y: 2, z: 0}
   - {x: 0, y: 0, z: 0}
-  JumpShakeTime: 0.2
-  JumpShakeMagnitude: 0.25
-  SouthShakeTime: 0.1
-  SouthShakeMagnitude: 0.2
-  LandingShakeTime: 0.2
+  JumpShakeTime: 0.1
+  JumpShakeMagnitude: 1
+  SouthShakeTime: 0
+  SouthShakeMagnitude: 0
+  LandingShakeTime: 0.15
   LandingShakeMagnitude: 20
   Arrow: {fileID: 3054785954419580376, guid: 88320b9d25572f34fac3f5c97b155539, type: 3}
   Pos: {fileID: 883222462688627655}
