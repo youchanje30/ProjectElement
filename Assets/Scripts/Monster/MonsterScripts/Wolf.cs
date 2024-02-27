@@ -47,21 +47,10 @@ public class Wolf : MonsterBase
 
     protected override void CheckState()
     {
-        if(isStun)
-        {
-            canMove = false;
-            canAtk = false;
-            return;
-        }
-
-        if(isDead || isAtking || isKnockback)
-        {
-            canAct = false;
-            canMove = false;
-            canAtk = false;
-            return;
-        }
         base.CheckState();
+
+        if(isDead || isAtking || isKnockback || isStun)
+            return;
 
         if(trackDetect.isEnter && !canAct && curAtkType == WolfAtkType.tele && curAtkCoolTime <= 0)
             canAct = true;
@@ -74,6 +63,7 @@ public class Wolf : MonsterBase
 
         if(isDead || isAtking || isKnockback || isStun)
         {
+            // animator.SetBool("isStun", isStun);
             canMove = false;
             canAtk = false;
             return;
@@ -213,11 +203,5 @@ public class Wolf : MonsterBase
     {
         base.AtkEnd();
         SetAtkType();
-    }
-
-
-    void ReturnAct()
-    {
-        canAct = true;
     }
 }

@@ -49,7 +49,6 @@ public class Bear : MonsterBase
     {
         CameraController.instance.ShakeCamera(0.4f, 20);
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Appear);
-        
     }
 
     protected void Spawn()

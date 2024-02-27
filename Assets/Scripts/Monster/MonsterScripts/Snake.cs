@@ -15,7 +15,10 @@ public class Snake : MonsterBase
 
     protected override void AtkDetect(int index = 0)
     {
-        Vector3 detectPos = transform.position + atkInfo[index].atkPos * (transform.localScale.x > 0 ? 1 : -1);
+        Vector3 detectPos = transform.position;
+        detectPos.x += atkInfo[index].atkPos.x * (transform.localScale.x > 0 ? 1 : -1);
+        detectPos.y += atkInfo[index].atkPos.y;
+        
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(detectPos, atkInfo[index].atkSize, 0, LayerMask.GetMask("Player"));
         foreach(Collider2D collider in collider2Ds)
         {

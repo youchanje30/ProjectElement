@@ -308,8 +308,11 @@ public class ActiveSkill : MonoBehaviour
     }
     public void RandingSet()
     {
+        Debug.Log("RandingSet() called");
         if (Physics2D.Raycast(transform.position,Vector2.down,2,layer) && CanLanding)
             {
+                
+            Debug.Log("Checked");
             // CameraController.instance.StartCoroutine(CameraController.instance.Shake(LandingShakeTime, LandingShakeMagnitude));
             rigid2D.velocity = new Vector2(0, -10);
                 CameraController.instance.ShakeCamera(LandingShakeTime, LandingShakeMagnitude);
@@ -347,13 +350,13 @@ public class ActiveSkill : MonoBehaviour
     {
        // monster.GetComponentInParent<MonsterBase>().moveSpeed = 0;
         monster.GetComponentInParent<MonsterBase>().isStun = true;
-        monster.GetComponentInParent<MonsterBase>().animator.enabled = false;
+        // monster.GetComponentInParent<MonsterBase>().animator.enabled = false;
         yield return new WaitForSeconds(Stuntime);
         // monster.GetComponentInParent<MonsterBase>().moveSpeed = monster.GetComponentInParent<MonsterBase>().monsterData.maxMoveSpeed;
         if(monster.transform.parent.gameObject.activeSelf)
         {
             monster.GetComponentInParent<MonsterBase>().isStun = false;
-            monster.GetComponentInParent<MonsterBase>().animator.enabled = true;
+            // monster.GetComponentInParent<MonsterBase>().animator.enabled = true;
         }
     }
     //public IEnumerator Hit(GameObject monster, float time)
