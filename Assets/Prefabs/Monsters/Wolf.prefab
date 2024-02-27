@@ -217,11 +217,11 @@ MonoBehaviour:
   isStun: 0
   isHit: 0
   atkInfo:
-  - atkName: 
+  - atkName: "\uC190 \uCC0D\uAE30"
     atkPos: {x: -1.5, y: 0, z: 0}
     atkSize: {x: 5, y: 3}
     damageRate: 100
-  - atkName: 
+  - atkName: "\uBB3C\uC5B4 \uB72F\uAE30"
     atkPos: {x: -2, y: 0, z: 0}
     atkSize: {x: 4, y: 3}
     damageRate: 100
@@ -232,6 +232,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   raycastDistance: 5
+  wallcastDistance: 3.5
   telePos: {x: 0, y: 0, z: 0}
   dir: 0
   biteTrans: {fileID: 5100701566265204605}

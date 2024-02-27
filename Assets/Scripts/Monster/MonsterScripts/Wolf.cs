@@ -15,15 +15,17 @@ public class Wolf : MonsterBase
     [SerializeField] bool canAct;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float raycastDistance = 5f;
-    // [SerializeField] bool isMissState;
+    [SerializeField] float wallcastDistance = 4;
     [Space(20f)]
 
     [Header("텔레포트 공격 관련")]
     [SerializeField] Vector3 telePos;
     //int dir { get { return (target.localScale.x > 0) ? -1 : 1; } }
     [SerializeField] int dir;
-
+    
     [SerializeField] Transform biteTrans;
+
+
 
     protected override void Init()
     {
@@ -140,7 +142,7 @@ public class Wolf : MonsterBase
 
         float spawnY = hit.point.y;
         dir = (target.localScale.x > 0) ? -1 : 1;
-        RaycastHit2D wallCheck = Physics2D.Raycast((Vector2)target.position, Vector2.right * dir, 5, groundLayer);
+        RaycastHit2D wallCheck = Physics2D.Raycast((Vector2)target.position, Vector2.right * dir, wallcastDistance, groundLayer);
         int time = 1;
         float spawnX = target.position.x;
 
@@ -172,7 +174,7 @@ public class Wolf : MonsterBase
         }
         else
         {
-            for (; time < 16; time ++)
+            for (; time < wallcastDistance * 4; time ++)
             {
                 RaycastHit2D here = Physics2D.Raycast(new Vector2(target.position.x + dir * time * 0.25f, target.position.y), Vector2.down, raycastDistance, groundLayer);
                 if(!here || Mathf.Abs(spawnY - here.point.y) > 0.1f)
