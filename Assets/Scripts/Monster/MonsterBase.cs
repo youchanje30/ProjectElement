@@ -127,22 +127,8 @@ public class MonsterBase : MonoBehaviour
     #region 몬스터 상태 관리
     protected virtual void CheckState()
     {
-        if(isStun)
-        {
-            canMove = false;
-            canAtk = false;
-            animator.enabled = false;
-            Debug.Log("Stoped");
-            return;
-        }
-        else
-        {
-            animator.enabled = true;
-            Debug.Log("Playing");
-        }
-
-
-        if(isDead || isAtking || isKnockback)
+        animator.SetBool("isStun", isStun);
+        if(isDead || isAtking || isKnockback || isStun)
         {
             canMove = false;
             canAtk = false;
@@ -283,7 +269,10 @@ public class MonsterBase : MonoBehaviour
 
     protected virtual void AtkDetect(int index = 0)
     {
-        Vector3 detectPos = transform.position + atkInfo[index].atkPos * (transform.localScale.x > 0 ? 1 : -1);
+        Vector3 detectPos = transform.position;
+        detectPos.x += atkInfo[index].atkPos.x * (transform.localScale.x > 0 ? 1 : -1);
+        detectPos.y += atkInfo[index].atkPos.y;
+
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(detectPos, atkInfo[index].atkSize, 0, LayerMask.GetMask("Player"));
         foreach(Collider2D collider in collider2Ds)
         {
@@ -306,7 +295,11 @@ public class MonsterBase : MonoBehaviour
 
         for (int i = 0; i < atkInfo.Length; i++)
         {
-            Vector3 detectPos = transform.position + atkInfo[i].atkPos * (transform.localScale.x > 0 ? 1 : -1);
+            // Vector3 detectPos = transform.position + atkInfo[i].atkPos * (transform.localScale.x > 0 ? 1 : -1);
+            Vector3 detectPos = transform.position;
+            detectPos.x += atkInfo[i].atkPos.x * (transform.localScale.x > 0 ? 1 : -1);
+            detectPos.y += atkInfo[i].atkPos.y;
+        
             Gizmos.DrawWireCube(detectPos, atkInfo[i].atkSize);
         }
         
@@ -320,8 +313,6 @@ public class MonsterBase : MonoBehaviour
         // if(isKnockback || isDead) return;
         if(isDead) return;
 
-        Debug.Log(getDamage);
-
         curHp -= getDamage;
         if(isAtking) AtkEnd();
 
@@ -330,7 +321,7 @@ public class MonsterBase : MonoBehaviour
         if(curHp <= 0)
         {
             isDead = true;
-            animator.enabled = true;
+            // animator.enabled = true;
             animator.SetTrigger("Dead");
             Invoke("Dead", 1f); // 안죽는 경우 대비
             SetDead();
