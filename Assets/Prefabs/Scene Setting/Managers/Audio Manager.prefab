@@ -54,7 +54,7 @@ MonoBehaviour:
   - soundName: "\uAC77\uAE30"
     soundClip: {fileID: 8300000, guid: 65c265d25a9123040a0505b68d0208e2, type: 3}
   - soundName: "\uC810\uD504"
-    soundClip: {fileID: 8300000, guid: 2beaad16234d2bd40925d3226e0b85ea, type: 3}
+    soundClip: {fileID: 8300000, guid: 29f1c855bb00d714392962779d80435a, type: 3}
   - soundName: "\uB300\uC26C"
     soundClip: {fileID: 8300000, guid: abe3acb8a87dafe4f98b8ca1700d68e5, type: 3}
   - soundName: "\uD53C\uACA9"
@@ -77,7 +77,7 @@ MonoBehaviour:
     - soundName: "\uACF5\uACA9"
       soundClip: {fileID: 8300000, guid: e288ef1ebe4cf624187fbae593f25348, type: 3}
     - soundName: "\uC2A4\uD0AC"
-      soundClip: {fileID: 8300000, guid: 3e81b17649996fb41a777664fed51e8c, type: 3}
+      soundClip: {fileID: 0}
     - soundName: "\uBB3C \uC2A4\uD0AC \uD130\uC9C8 \uB54C"
       soundClip: {fileID: 8300000, guid: b38e1a2addfdb37459fa419e04367de3, type: 3}
   - infoName: "\uBC29\uD328 \uC18C\uB9AC \uC815\uB9AC"
@@ -119,11 +119,11 @@ MonoBehaviour:
   - infoName: "\uB291\uB300"
     soundDatas:
     - soundName: "\uB300\uC26C"
-      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+      soundClip: {fileID: 0}
     - soundName: "\uBB3C\uAE30"
-      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+      soundClip: {fileID: 0}
     - soundName: "\uCC0D\uAE30"
-      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+      soundClip: {fileID: 0}
   - infoName: "\uACF0"
     soundDatas:
     - soundName: "\uC55E\uBC1C \uC624\uBE0C\uC81D\uD2B8"
@@ -135,6 +135,6 @@ MonoBehaviour:
     - soundName: "\uB3CC\uC9C4 \uC774\uB3D9"
       soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
     - soundName: "\uC810\uD504 \uCC0D\uAE30"
-      soundClip: {fileID: 8300000, guid: 83594e565340d364cb8269f2960c0871, type: 3}
+      soundClip: {fileID: 8300000, guid: 46d5963a202d21c469317662bdfbc386, type: 3}
     - soundName: "\uB4F1\uC7A5"
       soundClip: {fileID: 8300000, guid: a4a6b70a37a034043911f0bb4174d975, type: 3}
