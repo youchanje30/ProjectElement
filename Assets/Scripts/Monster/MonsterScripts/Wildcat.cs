@@ -184,6 +184,8 @@ public class Wildcat : MonsterBase
         if(curHp <= 0)
         {
             isDead = true;
+            isStun = false;
+            animator.SetBool("isStun", false);
             animator.SetTrigger("Dead");
             Invoke("Dead", 1.8f);
         }

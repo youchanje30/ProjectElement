@@ -62,6 +62,8 @@ public class Movement2D : MonoBehaviour
     [SerializeField] float nearFloorRayLength;
     
 
+    [SerializeField] Transform dashEffect;
+
 
     void Awake() 
     {
@@ -166,13 +168,14 @@ public class Movement2D : MonoBehaviour
     public IEnumerator Dash()
     {
         // animator.SetBool("isAct", true);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Dash);
+        EffectManager.instance.SpawnEffect(dashEffect.position, 7, Vector2.zero, transform.localScale.x < 0);
         animator.SetTrigger("Dash");
         isDashing = true; 
         float originalGravity = rigid2D.gravityScale;
         rigid2D.gravityScale = 0f;
         rigid2D.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         battle.isGuard = true;
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.Dash);
         yield return new WaitForSeconds(dashingTime);
     
         animator.SetTrigger("DashEnd");

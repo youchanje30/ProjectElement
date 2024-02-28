@@ -44,6 +44,12 @@ public class Bear : MonsterBase
     Vector3[] spawnHandAtkPos = new Vector3[4];
 
 
+    [Header("착지 이후 진동 관련 설정")]
+    [SerializeField] float shakeDuration;
+    [SerializeField] float shakeForce;
+
+    
+
     void MoveSound()
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_RushMove);
@@ -109,6 +115,7 @@ public class Bear : MonsterBase
 
             case 1:
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_JumpDown);
+                CameraController.instance.ShakeCamera(shakeDuration, shakeForce);
                 break;
 
             case 2:
@@ -163,6 +170,8 @@ public class Bear : MonsterBase
         if(curHp <= 0)
         {
             isDead = true;
+            isStun = false;
+            animator.SetBool("isStun", false);
             animator.SetTrigger("Dead");
             Invoke("Dead", 1.8f);
         }

@@ -59,6 +59,8 @@ MonoBehaviour:
     soundClip: {fileID: 8300000, guid: abe3acb8a87dafe4f98b8ca1700d68e5, type: 3}
   - soundName: "\uD53C\uACA9"
     soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+  - soundName: "\uACF5\uACA9 \uC131\uACF5"
+    soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
   weaponSoundDatas:
   - infoName: "\uAC80 \uC18C\uB9AC \uC815\uB9AC"
     soundDatas:

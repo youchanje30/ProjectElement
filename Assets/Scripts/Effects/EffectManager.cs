@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum SkillEffect { Fire, South }
-public enum AtkEffect { Fire = 2, Water, South, Wind , Crt }
-public enum BossEffect { charge = 7, handDown, fallDownFront, fallDownBack }
-public enum HandAtk { one = 11, two, three, four }
-public enum MonsterEffect { poison = 15, Bite }
+public enum AtkEffect { Fire = 2, Water, South, Wind , Crt, Dash }
+public enum BossEffect { charge = 8, handDown, fallDownFront, fallDownBack }
+public enum HandAtk { one = 12, two, three, four }
+public enum MonsterEffect { poison = 16, Bite }
 
 public class EffectManager : MonoBehaviour
 {

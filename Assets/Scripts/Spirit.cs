@@ -24,6 +24,9 @@ public class Spirit : MonoBehaviour
     float                                       curSpeed;
     [SerializeField] float                      maxSpeed;
 
+    [SerializeField] float emotionTime;
+    float curTime;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -33,6 +36,7 @@ public class Spirit : MonoBehaviour
 
 
         imageScale = Mathf.Abs(transform.localScale.x);
+        curTime = 0;
     }
 
     void Start()
@@ -45,6 +49,12 @@ public class Spirit : MonoBehaviour
     
     void Update()
     {
+        curTime += Time.deltaTime;
+        if(emotionTime <= curTime)
+        {
+            animator.SetTrigger("Emotion");
+            curTime = 0f;
+        }
         LookAtTarget();
         AddTargetPos();
     }
