@@ -321,7 +321,8 @@ public class MonsterBase : MonoBehaviour
         if(curHp <= 0)
         {
             isDead = true;
-            // animator.enabled = true;
+            isStun = false;
+            animator.SetBool("isStun", false);
             animator.SetTrigger("Dead");
             Invoke("Dead", 1f); // 안죽는 경우 대비
             SetDead();

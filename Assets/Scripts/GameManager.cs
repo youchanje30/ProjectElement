@@ -236,7 +236,7 @@ public class GameManager : MonoBehaviour
     public void TimerSetting()
     {
         TimerVal += Time.deltaTime;
-        UIController.instance.TimeTxt.text = ((int)TimerVal / 3600).ToString("D2") + ":" + ((int)TimerVal / 60 % 60).ToString("D2") + ":" + ((int)TimerVal % 60).ToString("D2");
+        UIController.instance.TimeTxt.text = ((int)TimerVal / 3600).ToString("D2") + " : " + ((int)TimerVal / 60 % 60).ToString("D2") + " : " + ((int)TimerVal % 60).ToString("D2");
         //(TimerVal / 3600).ToString("D2") + ":" + (TimerVal / 60 % 60).ToString("D2") + ":" + (TimerVal % 60).ToString("D2");
         // TimerVal += Time.deltaTime;
         // string Txt = string.Format("{0:D2}:{1:D2}:{2:D3}", TimerVal % 3600, TimerVal % 60 , TimerVal % 1);
@@ -400,7 +400,11 @@ public class GameManager : MonoBehaviour
         SaveManager.instance.Save();
 
         if(clearStage > 0 && clearStage % 5 == 3)
+        {
+            clearStage ++;
+            SaveManager.instance.Save();
             SceneManager.LoadScene("ShopStage");
+        }
         else
             SceneManager.LoadScene(curStageName);
     }

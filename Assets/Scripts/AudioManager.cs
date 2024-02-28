@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
 
     public enum Sfx
     {
-        Walk, Jump, Dash, Hit, // 기본 행동 4가지
+        Walk, Jump, Dash, Hit, AtkSuccess, // 기본 행동 5가지
         Sword_WidthAtk, Sword_UpperAtk, Sword_JumpAtk, Sword_SkillStart, Sword_Skill, // 칼 행동 5가지
         Wand_Atk, Wand_Skill, Wand_Bomb, // 완드 행동 3가지
         Shield_Charging, Shield_Atk, Shield_JumpAtk, Shield_Skill, // 방패 행동 4가지

@@ -208,13 +208,18 @@ public class ActiveSkill : MonoBehaviour
     }
 
     #region 불 정령
+    void FireSkillSound()
+    {
+        Debug.Log("Play Sfx");
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Sword_Skill);
+    }
+
     public void FireSkill()
     {
         CameraController.instance.ShakeCamera(FireShakeTime, FireShakeMagnitude);
         skillData[(int)battle.WeaponType].isSkillReady = false;
         
         EffectManager.instance.SpawnEffect(FirePos.position, (int)SkillEffect.Fire, FireRange);
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.Sword_Skill);
 
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(FirePos.position, FireRange, 0);
         foreach (Collider2D collider in collider2Ds)
@@ -233,6 +238,8 @@ public class ActiveSkill : MonoBehaviour
                 SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
             }
         }
+        if(collider2Ds.Length > 0)
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.AtkSuccess);
         for (int i = 0; i < RangeCount; i++)
         {
             hit = Physics2D.Raycast(new Vector2(transform.position.x + i, transform.position.y), transform.up * -20, detectlength, layer);
@@ -336,6 +343,9 @@ public class ActiveSkill : MonoBehaviour
                         SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
                     }
                 }
+                
+                if(collider2Ds.Length > 0)
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.AtkSuccess);
                 CanLanding = false;
                 battle.isSwap = true;
                 isSouth = false;

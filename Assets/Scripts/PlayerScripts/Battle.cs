@@ -150,6 +150,8 @@ public class Battle : MonoBehaviour
                         ParticleManager.instance.SpawnParticle(collider.gameObject.transform.position, transform.position.x - collider.gameObject.transform.position.x);
                     }
                 }
+                if(collider2Ds.Length > 0)
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.AtkSuccess);
                 
                 if(WeaponType == WeaponTypes.Sword)
                     AudioManager.instance.PlaySfx(AudioManager.Sfx.Sword_JumpAtk);
@@ -386,6 +388,8 @@ public class Battle : MonoBehaviour
                 Atk(collider.gameObject);
             }
         }
+        if(collider2Ds.Length > 0)
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.AtkSuccess);
     }
 
     public IEnumerator ReturnSwap()

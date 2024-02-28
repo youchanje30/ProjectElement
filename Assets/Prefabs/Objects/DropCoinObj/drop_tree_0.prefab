@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 40b62ecc79b2ec54eb81e0eef816cca1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c043127e577b6046864581259ca4e02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0.022920638, y: -0.27963176}
+  m_Offset: {x: 0.022920638, y: -0.34}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -209,7 +209,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: -0.0068761706, y: -0.43320006}
+  m_Offset: {x: -0.0068761706, y: -0.46}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -254,7 +254,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0.056155577}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -299,7 +299,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: -0.001146026, y: 0.3426636}
+  m_Offset: {x: -0.001146026, y: 0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -352,61 +352,61 @@ CompositeCollider2D:
   - m_Collider: {fileID: 1059336835791276193}
     m_ColliderPaths:
     - - X: 1882793
-        Y: 4174857
+        Y: 3248221
       - X: -1905713
-        Y: 4174857
+        Y: 3248221
       - X: -1905713
-        Y: 2678414
+        Y: 1751778
       - X: 1882793
-        Y: 2678414
+        Y: 1751778
   - m_Collider: {fileID: 8203776961003968264}
     m_ColliderPaths:
     - - X: 2547491
-        Y: 2730856
+        Y: 2169300
       - X: -2547491
-        Y: 2730856
+        Y: 2169300
       - X: -2547491
-        Y: -1607745
+        Y: -2169300
       - X: 2547491
-        Y: -1607745
+        Y: -2169300
   - m_Collider: {fileID: 5870177059656912385}
     m_ColliderPaths:
     - - X: 1791110
-        Y: -4030732
+        Y: -4298731
       - X: -1928634
-        Y: -4030732
+        Y: -4298731
       - X: -1928634
-        Y: -4633269
+        Y: -4901269
       - X: 1791110
-        Y: -4633269
+        Y: -4901269
   - m_Collider: {fileID: 2307718955937048866}
     m_ColliderPaths:
     - - X: 897205
-        Y: -1555302
+        Y: -2158984
       - X: -438792
-        Y: -1555302
+        Y: -2158984
       - X: -438792
-        Y: -4037333
+        Y: -4641015
       - X: 897205
-        Y: -4037333
+        Y: -4641015
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.17908171, y: -0.4633269}
-      - {x: 0.17908171, y: -0.4030732}
-      - {x: 0.0897205, y: -0.4030438}
-      - {x: 0.0897499, y: -0.1607745}
-      - {x: 0.2547491, y: -0.1607452}
-      - {x: 0.2547198, y: 0.2730856}
-      - {x: 0.1882793, y: 0.273115}
-      - {x: 0.18825, y: 0.4174857}
-      - {x: -0.19057131, y: 0.41745642}
-      - {x: -0.19060071, y: 0.2730856}
-      - {x: -0.2547491, y: 0.2730563}
-      - {x: -0.2547198, y: -0.1607745}
-      - {x: -0.0438792, y: -0.1608039}
-      - {x: -0.0439086, y: -0.4030732}
-      - {x: -0.1928634, y: -0.40310252}
-      - {x: -0.19283411, y: -0.4633269}
+    - - {x: 0.17908171, y: -0.4901269}
+      - {x: 0.17908171, y: -0.4298731}
+      - {x: 0.0897205, y: -0.4298437}
+      - {x: 0.0897499, y: -0.21693}
+      - {x: 0.2547491, y: -0.2169007}
+      - {x: 0.2547198, y: 0.21693}
+      - {x: 0.1882793, y: 0.2169594}
+      - {x: 0.18825, y: 0.3248221}
+      - {x: -0.19057131, y: 0.3247928}
+      - {x: -0.19060071, y: 0.21693}
+      - {x: -0.2547491, y: 0.2169007}
+      - {x: -0.2547198, y: -0.21693}
+      - {x: -0.0438792, y: -0.2169594}
+      - {x: -0.0439086, y: -0.4298731}
+      - {x: -0.1928634, y: -0.4299024}
+      - {x: -0.19283411, y: -0.4901269}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
