@@ -120,14 +120,11 @@ MonoBehaviour:
   activeSkill: {fileID: 0}
   player: {fileID: 0}
   clearStage: 0
-  SystemPanel: {fileID: 0}
-  talkManager: {fileID: 0}
-  isSystem: 0
-  SettingPanel: {fileID: 0}
-  resolutionDropdown: {fileID: 0}
-  DataResetCheck: {fileID: 0}
-  CameraShakeTxt: {fileID: 0}
-  FullScreenTxt: {fileID: 0}
+  curStageName: 
+  bossStage:
+  - BossStage_WildCat
+  - BossStage_Goat
+  - BossStage_Bear
   Scene:
   - Stage1
   - Stage2
@@ -136,6 +133,14 @@ MonoBehaviour:
   - Stage5
   - Stage6
   - Stage7
+  SystemPanel: {fileID: 0}
+  talkManager: {fileID: 0}
+  isSystem: 0
+  SettingPanel: {fileID: 0}
+  resolutionDropdown: {fileID: 0}
+  DataResetCheck: {fileID: 0}
+  CameraShakeTxt: {fileID: 0}
+  FullScreenTxt: {fileID: 0}
   Chapter: 0
   talkBtn:
   - {fileID: 0}

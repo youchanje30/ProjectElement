@@ -51,13 +51,4 @@ public class StageManager : MonoBehaviour
         GameObject spawnPortal = Instantiate(Portal);
         spawnPortal.transform.position = PortalSpawnPos.position;
     }
-
-    // public void DeadMonster()
-    // {
-    //     remainMonster--;
-    //     if(remainMonster <= 0)
-    //     {
-    //         Clear();
-    //     }
-    // }
 }

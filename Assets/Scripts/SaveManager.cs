@@ -44,7 +44,6 @@ public class SaveManager : MonoBehaviour
     public void Save()
     {
         playerWeapon = player.PlayerWeaponType;
-        // playerElement = player.PlayerElementType;
 
         XmlDocument xmlDocument = new XmlDocument();
         xmlDocument.AppendChild(xmlDocument.CreateXmlDeclaration("1.0", "utf-8", "yes"));
@@ -76,6 +75,13 @@ public class SaveManager : MonoBehaviour
         }
 
         xmlDocument.AppendChild(root);
+
+        
+        // 플레이어 현재 무기
+        XmlElement curPlayerWeapon = xmlDocument.CreateElement("CurPlayerWeapon");
+        curPlayerWeapon.InnerText = ((int)(player.GetComponent<PlayerController>().PlayerWeaponType)).ToString();
+        root.AppendChild(curPlayerWeapon);
+        
 
         // 플레이어 스테이터스 저장
         XmlElement playerStrength = xmlDocument.CreateElement("PlayerStrength");
@@ -115,6 +121,13 @@ public class SaveManager : MonoBehaviour
         XmlElement clearStageNum = xmlDocument.CreateElement("ClearStageNum");
         clearStageNum.InnerText = manager.clearStage.ToString();
         root.AppendChild(clearStageNum);
+
+        // 현재 스테이지 저장
+        XmlElement curStageName = xmlDocument.CreateElement("CurStageName");
+        curStageName.InnerText = manager.curStageName;
+        root.AppendChild(curStageName);
+
+
 
         //스테이지 번호 저장
         XmlElement sceneNum = xmlDocument.CreateElement("SceneNum");
@@ -178,7 +191,6 @@ public class SaveManager : MonoBehaviour
 
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.LoadXml(DecryptGameData());
-            // xmlDocument.WriteTo(decryptData);
             // xmlDocument.Load(Application.dataPath + "/DataXML.xml");
 
             // 무기 타입
@@ -202,6 +214,16 @@ public class SaveManager : MonoBehaviour
             XmlNodeList sceneNum = xmlDocument.GetElementsByTagName("SceneNum");
             manager.SceneNum = int.Parse(sceneNum[0].InnerText);
 
+            // 현재 스테이지
+            XmlNodeList sceneName = xmlDocument.GetElementsByTagName("CurStageName");
+            manager.curStageName = sceneName[0].InnerText;
+
+            // 플레이어 현재 무기
+            XmlNodeList curPlayerWeapon = xmlDocument.GetElementsByTagName("CurPlayerWeapon");
+            int playerWeapon = int.Parse(curPlayerWeapon[0].InnerText);
+            player.PlayerWeaponType = (WeaponTypes)playerWeapon;
+
+
             //시간
             XmlNodeList timer = xmlDocument.GetElementsByTagName("Timer");
             manager.TimerVal = float.Parse(timer[0].InnerText);
@@ -217,6 +239,7 @@ public class SaveManager : MonoBehaviour
             // 정령
             // XmlNodeList spiritSoul = xmlDocument.GetElementsByTagName("PlayerSpiritSoul");
             // player.GetComponent<Inventory>().SpiritSoul = int.Parse(spiritSoul[0].InnerText);
+            
 
             // 플레이어 스테이터스
             XmlNodeList playerStrength = xmlDocument.GetElementsByTagName("PlayerStrength");
@@ -334,8 +357,20 @@ public class SaveManager : MonoBehaviour
         root.AppendChild(clearStageNum);
 
         XmlElement sceneNum = xmlDocument.CreateElement("SceneNum");
-        sceneNum.InnerText =0.ToString();
+        sceneNum.InnerText = 0.ToString();
         root.AppendChild(sceneNum);
+
+        
+        // 플레이어 현재 무기
+        XmlElement curPlayerWeapon = xmlDocument.CreateElement("CurPlayerWeapon");
+        curPlayerWeapon.InnerText = 0.ToString();
+        root.AppendChild(curPlayerWeapon);
+
+        // 현재 스테이지
+        XmlElement curStageName = xmlDocument.CreateElement("CurStageName");
+        curStageName.InnerText = "Main Scene";
+        root.AppendChild(curStageName);
+
 
         // 아이템 데이터 저장
         XmlElement playerItemData, Datas;

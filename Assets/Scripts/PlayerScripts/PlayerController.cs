@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
     {
         
         SaveManager.instance.Load(); // 로드 시점에 따라 적용되는 지점이 달라서 여기서 일단 실행했어요
-        PlayerWeaponType = inventory.HavingElement[0].WeaponTypes;
+        // PlayerWeaponType = inventory.HavingElement[0].WeaponTypes;
         SetEquipment();
         //playerHpBar.maxValue = status.maxHp;
     }

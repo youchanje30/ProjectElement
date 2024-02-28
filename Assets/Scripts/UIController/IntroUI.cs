@@ -43,7 +43,7 @@ public class IntroUI : MonoBehaviour
                 break;
 
             case 1:
-                SceneManager.LoadScene(GameManager.instance.SceneNum);
+                SceneManager.LoadScene(GameManager.instance.curStageName);
                 break;
 
             case 2:

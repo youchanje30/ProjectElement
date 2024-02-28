@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using Unity.VisualScripting;
 using static ObjectController;
 using System.IO;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Info")]
     public int clearStage;
+    public String curStageName;
+    public string[] bossStage;
+    public string[] Scene;
 
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;
@@ -41,7 +45,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text FullScreenTxt;
 
 
-    public string[] Scene;
+
 
     //private bool timeStop;
 
@@ -384,15 +388,26 @@ public class GameManager : MonoBehaviour
 
     public void RandomStageRoad()
     {
-        SaveManager.instance.Save();
         if(clearStage > 0 && clearStage % 5 == 0)
-            SceneManager.LoadScene("BossStage");
+        {
+            curStageName = bossStage[clearStage / 5];
+            SaveManager.instance.Save();
+            SceneManager.LoadScene(curStageName);
+            return;
+        }
+
+        curStageName = Scene[UnityEngine.Random.Range(0, Scene.Length)];
+        SaveManager.instance.Save();
+
+        if(clearStage > 0 && clearStage % 5 == 3)
+            SceneManager.LoadScene("ShopStage");
         else
-            SceneManager.LoadScene(Scene[Random.Range(0, Scene.Length)]);
+            SceneManager.LoadScene(curStageName);
     }
 
     public void MainstageRoad()
-    {
+    {   
+        curStageName = "Main Scene";
         SaveManager.instance.Save();
         SceneManager.LoadScene("Main Scene");
     }
