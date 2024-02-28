@@ -1160,6 +1160,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7464646255189480712, guid: 5250fd4212b063048ad0bbc34e1c67f2, type: 3}
+      propertyPath: weaponSoundDatas.Array.data[0].soundDatas.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464646255189480712, guid: 5250fd4212b063048ad0bbc34e1c67f2, type: 3}
+      propertyPath: weaponSoundDatas.Array.data[0].soundDatas.Array.data[2].soundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a984028bbd7a6fc41af8e7a2a4aa175f, type: 3}
+    - target: {fileID: 7464646255189480712, guid: 5250fd4212b063048ad0bbc34e1c67f2, type: 3}
+      propertyPath: weaponSoundDatas.Array.data[1].soundDatas.Array.data[0].soundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8509bdc8ae68ace4d9c1e7fe6b502dea, type: 3}
+    - target: {fileID: 7464646255189480712, guid: 5250fd4212b063048ad0bbc34e1c67f2, type: 3}
+      propertyPath: weaponSoundDatas.Array.data[2].soundDatas.Array.data[1].soundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4889c017b49ec9f47b6651b4a3a7c174, type: 3}
+    - target: {fileID: 7464646255189480712, guid: 5250fd4212b063048ad0bbc34e1c67f2, type: 3}
+      propertyPath: weaponSoundDatas.Array.data[2].soundDatas.Array.data[2].soundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d13a6bc5ebad485428d3b76389a15f9e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
