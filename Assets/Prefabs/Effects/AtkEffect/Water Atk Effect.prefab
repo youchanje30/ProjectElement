@@ -125,5 +125,5 @@ MonoBehaviour:
   isGroundFix: 0
   isSizeFix: 0
   isPositionErrorFix: 1
-  fixForce: 1
+  fixForce: 1.2
   size: {x: 0, y: 0}

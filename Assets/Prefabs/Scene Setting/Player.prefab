@@ -136,7 +136,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3196168, g: 0, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.0056221485, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -778,7 +778,7 @@ Transform:
   - {fileID: 5325110475537225770}
   - {fileID: 8841014980749475784}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4316813253061002341
 SpriteRenderer:
@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  WeaponType: 1
+  WeaponType: 0
   atking: 0
   isGuard: 0
   arrow: {fileID: 6992588384899424794, guid: f68fd6e4170291545ab3293c453a365d, type: 3}
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   DamagedDuration: 0.1
   DamagedForce: 2
   damagedColor: {r: 1, g: 0, b: 0, a: 1}
-  damagedTime: 1.5
+  damagedTime: 0.2
 --- !u!114 &8509772043893616530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,7 +1241,7 @@ MonoBehaviour:
   FireFloor: {fileID: 3096906974402678174, guid: db7de1076855ad84ba51dd45a7123812, type: 3}
   RangeCount: 10
   DiffusionDamageIncreaseRate: 250
-  detectlength: 15
+  detectlength: 8
   layer:
     serializedVersion: 2
     m_Bits: 64
