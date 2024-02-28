@@ -60,7 +60,7 @@ MonoBehaviour:
   - soundName: "\uD53C\uACA9"
     soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
   - soundName: "\uACF5\uACA9 \uC131\uACF5"
-    soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    soundClip: {fileID: 8300000, guid: b881c1899669378428f9368474c539b9, type: 3}
   weaponSoundDatas:
   - infoName: "\uAC80 \uC18C\uB9AC \uC815\uB9AC"
     soundDatas:
@@ -131,11 +131,11 @@ MonoBehaviour:
     - soundName: "\uC55E\uBC1C \uC624\uBE0C\uC81D\uD2B8"
       soundClip: {fileID: 8300000, guid: d9f89e23e2ffd5e488778c9d8ccfe877, type: 3}
     - soundName: "\uC55E\uBC1C \uCC0D\uAE30"
-      soundClip: {fileID: 8300000, guid: 51981339a6720464b80eda4b7d44078d, type: 3}
+      soundClip: {fileID: 8300000, guid: b95dcfcd5d00a6c43b97bef314951287, type: 3}
     - soundName: "\uB3CC\uC9C4 \uC2DC\uC791"
       soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
     - soundName: "\uB3CC\uC9C4 \uC774\uB3D9"
-      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+      soundClip: {fileID: 8300000, guid: 23da5e4ac9c708a4086ddeff7983f4a1, type: 3}
     - soundName: "\uC810\uD504 \uCC0D\uAE30"
       soundClip: {fileID: 8300000, guid: 46d5963a202d21c469317662bdfbc386, type: 3}
     - soundName: "\uB4F1\uC7A5"
