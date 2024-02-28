@@ -47,27 +47,94 @@ MonoBehaviour:
   uiCon: {fileID: 0}
   bgmClip: {fileID: 0}
   BGMVolumeSlider: {fileID: 0}
-  sfxClips:
-  - {fileID: 8300000, guid: a4a6b70a37a034043911f0bb4174d975, type: 3}
-  - {fileID: 8300000, guid: 618c02ef0fe10ff46a126c53967eb79c, type: 3}
-  - {fileID: 8300000, guid: 6f393359f63fae84fb5a10cd458ead80, type: 3}
-  - {fileID: 8300000, guid: 4e5c970fee603e2418b392e5e1a18d1c, type: 3}
-  - {fileID: 8300000, guid: 0bc966937048c2c4b99dc479846c180b, type: 3}
-  - {fileID: 8300000, guid: 9adacc072b833b14ba546a2cea87ad35, type: 3}
-  - {fileID: 8300000, guid: 3309ff6b09ce3aa45869512ca4196cc1, type: 3}
-  - {fileID: 8300000, guid: 51981339a6720464b80eda4b7d44078d, type: 3}
-  - {fileID: 8300000, guid: 2523ebedd5f004842ab61d2cdfcc7e05, type: 3}
-  - {fileID: 8300000, guid: 4889c017b49ec9f47b6651b4a3a7c174, type: 3}
-  - {fileID: 8300000, guid: 6fa23e4f11cc9a142aaee749bf28809a, type: 3}
-  - {fileID: 8300000, guid: e386410120d2df949bd9f4fdb6264340, type: 3}
-  - {fileID: 8300000, guid: e7b8a4f48c9bfe040b4d497cda94b5d7, type: 3}
-  - {fileID: 8300000, guid: 65c265d25a9123040a0505b68d0208e2, type: 3}
-  - {fileID: 8300000, guid: 23da5e4ac9c708a4086ddeff7983f4a1, type: 3}
-  - {fileID: 8300000, guid: e5a2776d2ec19de459cbffaecb3bed1e, type: 3}
-  - {fileID: 8300000, guid: b2d41258318d08e4e992636317a53e19, type: 3}
-  - {fileID: 8300000, guid: b95dcfcd5d00a6c43b97bef314951287, type: 3}
-  - {fileID: 8300000, guid: d9f89e23e2ffd5e488778c9d8ccfe877, type: 3}
-  - {fileID: 8300000, guid: 3f505923a5dcdbf4eab0f3c280a33389, type: 3}
-  - {fileID: 8300000, guid: 83594e565340d364cb8269f2960c0871, type: 3}
+  sfxClips: []
   channels: 16
   SFXVolumeSlider: {fileID: 0}
+  normalSoundDatas:
+  - soundName: "\uAC77\uAE30"
+    soundClip: {fileID: 8300000, guid: 65c265d25a9123040a0505b68d0208e2, type: 3}
+  - soundName: "\uC810\uD504"
+    soundClip: {fileID: 8300000, guid: 618c02ef0fe10ff46a126c53967eb79c, type: 3}
+  - soundName: "\uB300\uC26C"
+    soundClip: {fileID: 0}
+  - soundName: "\uD53C\uACA9"
+    soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+  weaponSoundDatas:
+  - infoName: "\uAC80 \uC18C\uB9AC \uC815\uB9AC"
+    soundDatas:
+    - soundName: "\uC544\uB798 \uBCA0\uAE30"
+      soundClip: {fileID: 8300000, guid: 8509bdc8ae68ace4d9c1e7fe6b502dea, type: 3}
+    - soundName: "\uC0C1\uB2E8 \uBCA0\uAE30"
+      soundClip: {fileID: 8300000, guid: 2523ebedd5f004842ab61d2cdfcc7e05, type: 3}
+    - soundName: "\uC810\uD504 \uACF5\uACA9"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    - soundName: "\uC2A4\uD0AC \uC2DC\uC804\uC2DC"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    - soundName: "\uC2A4\uD0AC"
+      soundClip: {fileID: 8300000, guid: 9adacc072b833b14ba546a2cea87ad35, type: 3}
+  - infoName: "\uC644\uB4DC \uC18C\uB9AC \uC815\uB9AC"
+    soundDatas:
+    - soundName: "\uACF5\uACA9"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    - soundName: "\uC2A4\uD0AC"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    - soundName: "\uBB3C \uC2A4\uD0AC \uD130\uC9C8 \uB54C"
+      soundClip: {fileID: 8300000, guid: e5a2776d2ec19de459cbffaecb3bed1e, type: 3}
+  - infoName: "\uBC29\uD328 \uC18C\uB9AC \uC815\uB9AC"
+    soundDatas:
+    - soundName: "\uCC28\uC9D5"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    - soundName: "\uACF5\uACA9"
+      soundClip: {fileID: 8300000, guid: 3309ff6b09ce3aa45869512ca4196cc1, type: 3}
+    - soundName: "\uC810\uD504 \uACF5\uACA9"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    - soundName: "\uC2A4\uD0AC"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+  - infoName: "\uD65C \uC18C\uB9AC \uC815\uB9AC"
+    soundDatas:
+    - soundName: "\uCC28\uC9D5"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    - soundName: "\uBC1C\uC0AC"
+      soundClip: {fileID: 8300000, guid: e386410120d2df949bd9f4fdb6264340, type: 3}
+    - soundName: "\uC2A4\uD0AC \uCC28\uC9D5"
+      soundClip: {fileID: 8300000, guid: e7b8a4f48c9bfe040b4d497cda94b5d7, type: 3}
+    - soundName: "\uC2A4\uD0AC \uBC1C\uC0AC"
+      soundClip: {fileID: 8300000, guid: 91a4f39ee560dfe4bb59b31fbbf6f3fe, type: 3}
+  uiSoundDatas:
+  - soundName: "\uC778\uBCA4\uD1A0\uB9AC"
+    soundClip: {fileID: 8300000, guid: b2d41258318d08e4e992636317a53e19, type: 3}
+  - soundName: "\uC0C1\uC810"
+    soundClip: {fileID: 8300000, guid: b2d41258318d08e4e992636317a53e19, type: 3}
+  - soundName: "\uC120\uD0DD"
+    soundClip: {fileID: 8300000, guid: 0bc966937048c2c4b99dc479846c180b, type: 3}
+  - soundName: "\uC544\uC774\uD15C \uAD6C\uC785"
+    soundClip: {fileID: 8300000, guid: 6f393359f63fae84fb5a10cd458ead80, type: 3}
+  - soundName: "\uC544\uC774\uD15C \uD310\uB9E4"
+    soundClip: {fileID: 8300000, guid: 6f393359f63fae84fb5a10cd458ead80, type: 3}
+  - soundName: "\uC544\uC774\uD15C \uC815\uBCF4"
+    soundClip: {fileID: 8300000, guid: 0bc966937048c2c4b99dc479846c180b, type: 3}
+  - soundName: "\uD3EC\uD0C8"
+    soundClip: {fileID: 8300000, guid: 4e5c970fee603e2418b392e5e1a18d1c, type: 3}
+  monsterSoundDatas:
+  - infoName: "\uB291\uB300"
+    soundDatas:
+    - soundName: "\uB300\uC26C"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    - soundName: "\uBB3C\uAE30"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    - soundName: "\uCC0D\uAE30"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+  - infoName: "\uACF0"
+    soundDatas:
+    - soundName: "\uC55E\uBC1C \uC624\uBE0C\uC81D\uD2B8"
+      soundClip: {fileID: 8300000, guid: d9f89e23e2ffd5e488778c9d8ccfe877, type: 3}
+    - soundName: "\uC55E\uBC1C \uCC0D\uAE30"
+      soundClip: {fileID: 8300000, guid: 51981339a6720464b80eda4b7d44078d, type: 3}
+    - soundName: "\uB3CC\uC9C4 \uC2DC\uC791"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    - soundName: "\uB3CC\uC9C4 \uC774\uB3D9"
+      soundClip: {fileID: 8300000, guid: d8c1c511a5b9b364996dc2e9f0f194a8, type: 3}
+    - soundName: "\uC810\uD504 \uCC0D\uAE30"
+      soundClip: {fileID: 8300000, guid: 83594e565340d364cb8269f2960c0871, type: 3}
+    - soundName: "\uB4F1\uC7A5"
+      soundClip: {fileID: 8300000, guid: a4a6b70a37a034043911f0bb4174d975, type: 3}

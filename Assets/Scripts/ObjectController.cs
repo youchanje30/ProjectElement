@@ -189,6 +189,7 @@ public class ObjectController : MonoBehaviour
                 break;
 
             case InteractObjects.Portal:
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
                 Portal(objectID);
                 break;
 
@@ -237,7 +238,7 @@ public class ObjectController : MonoBehaviour
 
         GameManager.instance.buyPanel.SetActive(GameManager.instance.viewBuy);
         GameManager.instance.sellPanel.SetActive(!GameManager.instance.viewBuy);
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.Inventory);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Shop_Open);
         Debug.Log("OpenShop");
     }
 
@@ -261,8 +262,6 @@ public class ObjectController : MonoBehaviour
     public void InteractView(bool isOn)
     {
         interactView.SetActive(isOn);
-        if(ObjType == InteractObjects.Portal)
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.Portal);
     }
     
     public void ActiveSpirit()

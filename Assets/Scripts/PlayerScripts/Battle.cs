@@ -150,7 +150,11 @@ public class Battle : MonoBehaviour
                         ParticleManager.instance.SpawnParticle(collider.gameObject.transform.position, transform.position.x - collider.gameObject.transform.position.x);
                     }
                 }
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.fallDownAtk);
+                
+                if(WeaponType == WeaponTypes.Sword)
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Sword_JumpAtk);
+                else
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Shield_JumpAtk);
             }
             
             if(curFallDownAtkTime <= fallDownAtkTime)
@@ -202,6 +206,7 @@ public class Battle : MonoBehaviour
 
         if(isMiss) return;
         
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
         float getDmg = Damage * (100 - status.defPer) * 0.01f;
         // CameraController.instance.StartCoroutine(CameraController.instance.Shake(DamagedDuration, DamagedForce));
         // DOTween.Kill(transform);
@@ -309,7 +314,10 @@ public class Battle : MonoBehaviour
         }
 
         if(WeaponType == WeaponTypes.Bow)
-            AudioManager.instance.StopSfx(AudioManager.Sfx.BowCharging);
+            AudioManager.instance.StopSfx(AudioManager.Sfx.Bow_Charging);
+        if(WeaponType == WeaponTypes.Shield)
+            AudioManager.instance.StopSfx(AudioManager.Sfx.Shield_Charging);
+        
         if(!weaponData[(int)WeaponType].isAtkReady) return;
 
         if(WeaponType == WeaponTypes.Bow)
@@ -340,14 +348,21 @@ public class Battle : MonoBehaviour
         if(WeaponType == WeaponTypes.Wand) 
         {
             animator.SetTrigger("Atk");
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Wand_Atk);
         }
         else if(WeaponType == WeaponTypes.Sword)
         {
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.SwordAtk);
+            // AudioManager.instance.PlaySfx(AudioManager.Sfx.SwordAtk);
             if(canComboAtk)
+            {
                 animator.SetTrigger("ComboAtk");
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Sword_WidthAtk);
+            }
             else
+            {
                 animator.SetTrigger("Atk");
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Sword_UpperAtk);
+            }
             canComboAtk = !canComboAtk;
         }
         else
@@ -506,7 +521,7 @@ public class Battle : MonoBehaviour
 
         //화살 소환
         GameObject shootArrow = Instantiate(arrow);
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.BowAtk);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Bow_Shoot);
         // AudioManager.instance.StopSfx(AudioManager.Sfx.BowCharging);
 
         if(isCharged)
@@ -529,7 +544,7 @@ public class Battle : MonoBehaviour
 
     public IEnumerator DashGuard()
     {
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.ShieldAtk);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Shield_Atk);
         atking = true;
         float originalGravity = rigid2D.gravityScale;
         rigid2D.gravityScale = 0f;
@@ -551,7 +566,7 @@ public class Battle : MonoBehaviour
 
     public IEnumerator ShieldGuard()
     {
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.ShieldAtk);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Shield_Atk);
         atking = true;
         isGuard = true;
         movement2D.isDashing = true;

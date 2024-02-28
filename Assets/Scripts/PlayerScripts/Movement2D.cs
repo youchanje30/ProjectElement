@@ -172,7 +172,7 @@ public class Movement2D : MonoBehaviour
         rigid2D.gravityScale = 0f;
         rigid2D.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         battle.isGuard = true;
-    
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Dash);
         yield return new WaitForSeconds(dashingTime);
     
         animator.SetTrigger("DashEnd");

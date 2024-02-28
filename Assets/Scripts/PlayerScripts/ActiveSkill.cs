@@ -199,7 +199,7 @@ public class ActiveSkill : MonoBehaviour
             case WeaponTypes.Bow:
                 // animator.SetBool("isCharge", true);
                 // animator.SetTrigger("Charging");
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.BowCharging);
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Bow_SkillCharging);
                 animator.SetTrigger("Skill");
                 StartCoroutine(WindSkill());
                 break;
@@ -214,7 +214,7 @@ public class ActiveSkill : MonoBehaviour
         skillData[(int)battle.WeaponType].isSkillReady = false;
         
         EffectManager.instance.SpawnEffect(FirePos.position, (int)SkillEffect.Fire, FireRange);
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.Punch1);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Sword_Skill);
 
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(FirePos.position, FireRange, 0);
         foreach (Collider2D collider in collider2Ds)
@@ -261,7 +261,8 @@ public class ActiveSkill : MonoBehaviour
     {
         float gravity;
         skillData[(int)battle.WeaponType].isSkillReady = false;
-    
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Wand_Skill);
+
         // SkillReady[(int)battle.WeaponType] = false;
         isWater = true;
         battle.isSwap = false;
@@ -340,7 +341,7 @@ public class ActiveSkill : MonoBehaviour
                 isSouth = false;
                 battle.isGuard = false;
                 EffectManager.instance.SpawnEffect(transform.position, (int)SkillEffect.South, LandingRange[0]);
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.SouthSkill);
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Shield_Skill);
                 StartCoroutine(movement2D.DashCoolDown(0.01f));
                 StartCoroutine(ReturnSkill(3));
         }
@@ -378,7 +379,7 @@ public class ActiveSkill : MonoBehaviour
         skillData[(int)battle.WeaponType].isSkillReady = false;
 
         yield return new WaitForSeconds(ChargeTime);
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.BowAtk);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Bow_SkillShoot);
         animator.SetBool("isCharge", false);
         battle.isGuard = true;
         GameObject MagicArrow = Instantiate(Arrow);

@@ -119,7 +119,12 @@ public class Wolf : MonsterBase
         switch (index)
         {
             case 1:
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Wolf_Hand);
                 EffectManager.instance.SpawnEffect(biteTrans.position, (int)MonsterEffect.Bite, Vector2.zero, transform.localScale.x < 0);
+                break;
+
+            case 2:
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Wolf_Bite);
                 break;
 
             default:
@@ -191,6 +196,7 @@ public class Wolf : MonsterBase
 
         telePos = new Vector3(spawnX, spawnY + 1.5f, transform.position.z);
         animator.SetTrigger("Teleport");
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Wolf_Dash);
     }
 
     protected void Teleport()

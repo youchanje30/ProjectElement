@@ -305,7 +305,11 @@ public class PlayerController : MonoBehaviour
                     animator.SetTrigger("Charging");
                     if(battle.WeaponType == WeaponTypes.Bow)
                     {
-                        AudioManager.instance.PlaySfx(AudioManager.Sfx.BowCharging);
+                        AudioManager.instance.PlaySfx(AudioManager.Sfx.Bow_Charging);
+                    }
+                    if(battle.WeaponType == WeaponTypes.Shield)
+                    {
+                        AudioManager.instance.PlaySfx(AudioManager.Sfx.Shield_Charging);
                     }
                 }
             }

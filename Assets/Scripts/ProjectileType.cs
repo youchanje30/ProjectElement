@@ -164,7 +164,7 @@ public class ProjectileType : MonoBehaviour
         GetComponent<Animator>().SetTrigger("Bomb");
         transform.localScale = new Vector3(skill.BombRange.x-1, skill.BombRange.y-1);
         yield return new WaitForSeconds(0.5f);
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.WaterBomb);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Wand_Bomb);
         CameraController.instance.ShakeCamera(skill.BombShakeTime,skill.BombShakeMagnitude);
         
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(transform.position, skill.BombRange, 0);

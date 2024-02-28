@@ -44,11 +44,15 @@ public class Bear : MonsterBase
     Vector3[] spawnHandAtkPos = new Vector3[4];
 
 
+    void MoveSound()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_RushMove);
+    }
 
     protected void Shake()
     {
         CameraController.instance.ShakeCamera(0.4f, 20);
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.Appear);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_Appear);
     }
 
     protected void Spawn()
@@ -100,9 +104,15 @@ public class Bear : MonsterBase
         {
             case 0:
                 StartCoroutine(HandAtkObj());
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_HandDown);
                 break;
 
             case 1:
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_JumpDown);
+                break;
+
+            case 2:
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_RushStart);
                 break;
 
             default:

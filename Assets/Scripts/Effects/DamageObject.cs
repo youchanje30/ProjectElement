@@ -14,6 +14,11 @@ public class DamageObject : MonoBehaviour
         canHit = true;
     }
 
+    void OnEnable()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_HandOb);
+    }
+
     void OnDisable()
     {
         canHit = false;
