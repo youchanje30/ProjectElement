@@ -347,6 +347,7 @@ public class PlayerController : MonoBehaviour
                 battle.isSwap = false;
                 battle.atking = true;
                 rigid2D.velocity = Vector3.zero;
+                skill.TriggerSkill(battle.WeaponType);
             }
             else
             {

@@ -80,6 +80,10 @@ public class UIController : MonoBehaviour
     public GameObject bossHpUI;
     public Slider bossHpSlider;
 
+    [Header("결과 UI")]
+    public GameObject resultUI;
+    public Image resultImage;
+
 
     void Awake()
     {
@@ -372,5 +376,12 @@ public class UIController : MonoBehaviour
     public void SetBossUI()
     {
         bossHpUI.GetComponent<RectTransform>().DOAnchorPosY(0, 0.5f).SetEase(Ease.OutBack);
+    }
+
+    public void SetOverView(Texture2D texture)
+    {
+        resultUI.SetActive(true);
+        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+        resultImage.sprite = sprite;
     }
 }

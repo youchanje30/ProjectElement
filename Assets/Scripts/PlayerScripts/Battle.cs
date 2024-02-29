@@ -242,10 +242,23 @@ public class Battle : MonoBehaviour
         {
             
             SaveManager.instance.ResetData();
-            SceneManager.LoadScene("Main Scene");
+            animator.SetTrigger("Dead");
+            rigid2D.bodyType = RigidbodyType2D.Static;
+            GetComponent<CapsuleCollider2D>().enabled = false;
+            Invoke("Dead", 1f);
+            // SceneManager.LoadScene("Main Scene");
             
         }    
         // StopCoroutine(ShieldGuard());
+    }
+
+    void Dead()
+    {
+        if(gameObject.activeSelf)
+        {
+            GameManager.instance.GameOver();
+            gameObject.SetActive(false);
+        }
     }
 
    public void HealHp(float increaseHp)

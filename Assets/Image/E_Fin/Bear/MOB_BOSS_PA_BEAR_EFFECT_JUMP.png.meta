@@ -1,0 +1,1024 @@
+fileFormatVersion: 2
+guid: 7269e1ddfbdaa87409d6c9b45b98ef09
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36347b389d200204ebd3abe46a5fd88b
+      internalID: -1393807938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87b855c9bb67a7d4b96c9da3eb5471cf
+      internalID: -1980488174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_2
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9276a4182798ffb429201b8b69e30437
+      internalID: 718342019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_3
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e32cbe0e63546e43adbcb3e550f7fb3
+      internalID: -1133110283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_4
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9a68ae8574690441be446e17872eaa1
+      internalID: -2091628688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_5
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba2bc0f227f5ae14a8e9bccd97e09288
+      internalID: -820555282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_6
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7431be9370607c742986dd4cfb41d72a
+      internalID: -1104539815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_7
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d97b35bdc4dccb4980d7d4dd40f7d86
+      internalID: 146107325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_8
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83995a012a4898949928fab7b00197c9
+      internalID: 376251172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_9
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e653469ec56f43b4e8ea02e87798e80c
+      internalID: 1848013099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_10
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0173c491c94dc8e4f945df35e97dad41
+      internalID: 1050524793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_11
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4db545a6357cba745907faa9a2c4568a
+      internalID: -1176628084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_12
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5d78de8f8a4bf24490a92ace161d8cb
+      internalID: -913558970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_13
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1318d2a3c863d1439f4835dbb3a0ff8
+      internalID: -1493277999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_14
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8510495c9532fde4a8887512189a63e5
+      internalID: -255259014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_15
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5065d5bf6894a247a7a3f02d0f43625
+      internalID: -405092442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_16
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1a22f096ba92a649814c2abd7ae075e
+      internalID: 1661335172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_17
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e10ca01f456174585f61b80f3f414d
+      internalID: 924551791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_18
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1567af42038d5be45a80db2d14a8e5a5
+      internalID: 243762877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_19
+      rect:
+        serializedVersion: 2
+        x: 2299
+        y: 132
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b946bb40339f2ae44b4b8c1c1c090382
+      internalID: 1681312489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094e852a478e9bd4bb78998fb519c6fc
+      internalID: -1235380104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_21
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77193b3a8ab62aa41a3a765d4fa43dae
+      internalID: 1606147418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_22
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c28c5d6f32cad784483cef6b2b705a3b
+      internalID: 118752921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_23
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c875106044d8f545b41687db930f923
+      internalID: 917101807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_24
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c0a1cd3d32658740ab10ac1c30f3e27
+      internalID: -1791131392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_25
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1066383ee5feea1488afc6c650e60df9
+      internalID: -1655181514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_26
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 778de7a5c8051524a80d39a3f53db556
+      internalID: 137837762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_27
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a2d16b6bc728694495f9ab1d777df63
+      internalID: 414134314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_28
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b1cf6a1f85497647bcbb781b95b38b5
+      internalID: -1420792374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_29
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15f62481373f8db46b8a6822beae8894
+      internalID: -701132085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_30
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdcf01b2ee8c176439b23185ccc7d647
+      internalID: -93753351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_31
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe69d8e585c245743883fd2245515508
+      internalID: 2074095064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_32
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da91a9c6402979d46bec93c7974af901
+      internalID: 719588778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_33
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58d1e66c41e250844a614d16c447491d
+      internalID: 1855151933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_34
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4369df2419227964c84578f15c300ce1
+      internalID: -281160484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_35
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ff8bcfd7461d394ea114c8e0ad0c1b8
+      internalID: -1520868538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_36
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dffa1000cbce625428cae4e615d3a47a
+      internalID: -2052170858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_37
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fdbc7fffac59484b97456e4b66d8cf6
+      internalID: -1648788178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOB_BOSS_PA_BEAR_EFFECT_JUMP_38
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 11
+        width: 121
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d128fd7d5223d95418a7f01e74d9323c
+      internalID: -987107826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_0: -1393807938
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_1: -1980488174
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_10: 1050524793
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_11: -1176628084
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_12: -913558970
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_13: -1493277999
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_14: -255259014
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_15: -405092442
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_16: 1661335172
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_17: 924551791
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_18: 243762877
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_19: 1681312489
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_2: 718342019
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_20: -1235380104
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_21: 1606147418
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_22: 118752921
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_23: 917101807
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_24: -1791131392
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_25: -1655181514
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_26: 137837762
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_27: 414134314
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_28: -1420792374
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_29: -701132085
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_3: -1133110283
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_30: -93753351
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_31: 2074095064
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_32: 719588778
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_33: 1855151933
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_34: -281160484
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_35: -1520868538
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_36: -2052170858
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_37: -1648788178
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_38: -987107826
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_4: -2091628688
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_5: -820555282
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_6: -1104539815
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_7: 146107325
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_8: 376251172
+      MOB_BOSS_PA_BEAR_EFFECT_JUMP_9: 1848013099
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

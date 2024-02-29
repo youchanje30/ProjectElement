@@ -7,7 +7,8 @@ public enum SkillEffect { Fire, South }
 public enum AtkEffect { Fire = 2, Water, South, Wind , Crt, Dash }
 public enum BossEffect { charge = 8, handDown, fallDownFront, fallDownBack }
 public enum HandAtk { one = 12, two, three, four }
-public enum MonsterEffect { poison = 16, Bite }
+public enum MonsterEffect { poison = 16, Wolf_Hand, Wolf_Bite, Wolf_Teleport, 
+                            Wildcat_Hand, Wildcat_Bite, Wildcat_Teleport, Goat_Jump };
 
 public class EffectManager : MonoBehaviour
 {

@@ -1,3 +1,4 @@
+using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.Serialization;
@@ -22,8 +23,11 @@ public class Wolf : MonsterBase
     [SerializeField] Vector3 telePos;
     //int dir { get { return (target.localScale.x > 0) ? -1 : 1; } }
     [SerializeField] int dir;
-    
-    [SerializeField] Transform biteTrans;
+
+    [Header("이펙트 위치 관련")]
+    [SerializeField] Transform handEffectTrans;
+    [SerializeField] Transform biteEffectTrans;
+    [SerializeField] Transform teleportEffectTrans;
 
 
 
@@ -112,18 +116,39 @@ public class Wolf : MonsterBase
     }
 
 
+    void EffectOn(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                EffectManager.instance.SpawnEffect(handEffectTrans.position, (int)MonsterEffect.Wolf_Hand, Vector2.zero, transform.localScale.x < 0);
+                break;
+
+            case 1:
+                EffectManager.instance.SpawnEffect(biteEffectTrans.position, (int)MonsterEffect.Wolf_Bite, Vector2.zero, transform.localScale.x < 0);
+                break;
+            
+            case 2:
+                EffectManager.instance.SpawnEffect(teleportEffectTrans.position, (int)MonsterEffect.Wolf_Teleport, Vector2.zero, transform.localScale.x < 0);
+                break;
+            
+
+            default:
+                break;
+        }
+    }
+
     protected override void AtkDetect(int index = 0)
     {
         base.AtkDetect(index);
         
         switch (index)
         {
-            case 1:
+            case 0:
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Wolf_Hand);
-                EffectManager.instance.SpawnEffect(biteTrans.position, (int)MonsterEffect.Bite, Vector2.zero, transform.localScale.x < 0);
                 break;
 
-            case 2:
+            case 1:
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Wolf_Bite);
                 break;
 

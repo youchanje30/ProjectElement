@@ -11,7 +11,7 @@ using UnityEditor;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager instance;
-    
+    public bool isFirstTime;
 
     [Header("Get Data Objs")]
     [SerializeField] private PlayerController player;
@@ -265,7 +265,8 @@ public class SaveManager : MonoBehaviour
         else
         {
             player.GetComponent<PlayerStatus>().curHp = player.GetComponent<PlayerStatus>().basicMaxHp;
-
+            isFirstTime = true;
+            
         }
 
 

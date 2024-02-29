@@ -37,6 +37,7 @@ public class Goat : MonsterBase
     [SerializeField] float hpDecreaTime;
 
 
+    [SerializeField] Transform jumpEffectPos;
     [SerializeField] GameObject redeyeEffect;
     [Header("유예 시간")] [SerializeField] float redeyeWaitTime;
     bool isRedeye;
@@ -181,6 +182,7 @@ public class Goat : MonsterBase
     void JumpAtk()
     {
         
+        EffectManager.instance.SpawnEffect(jumpEffectPos.position, (int)MonsterEffect.Goat_Jump, Vector2.zero, transform.localScale.x < 0);
         int targetDir = target.position.x > transform.position.x ? 1 : -1;
         ChangeLocalScale(targetDir);
 
@@ -209,6 +211,7 @@ public class Goat : MonsterBase
     {
         base.AtkEnd();
         isJump = false;
+        isRedeye = false;
         isRush = false;
         canHit = false;
         isRedeye = false;

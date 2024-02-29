@@ -38,6 +38,10 @@ public class Bear : MonsterBase
     [Header("유예 시간")] [SerializeField] float redeyeWaitTime;
     bool isRedeye;
 
+    [SerializeField] GameObject rushChargeEffect;
+    [SerializeField] GameObject rushRunEffect;
+
+
     [Header("각 공격 관련 설정")]
     [SerializeField] float[] waitTime;
     [SerializeField] Vector3 startHandAtkObjPos;
@@ -45,9 +49,9 @@ public class Bear : MonsterBase
     Vector3[] spawnHandAtkPos = new Vector3[4];
 
 
-    [Header("착지 이후 진동 관련 설정")]
-    [SerializeField] float shakeDuration;
-    [SerializeField] float shakeForce;
+    [Header("진동 관련 설정")]
+    [SerializeField] float[] shakeDuration;
+    [SerializeField] float[] shakeForce;
 
     
 
@@ -107,6 +111,7 @@ public class Bear : MonsterBase
     protected override void AtkDetect(int index = 0)
     {
         base.AtkDetect(index);
+        CameraController.instance.ShakeCamera(shakeDuration[index], shakeForce[index]);
         switch (index)
         {
             case 0:
@@ -116,7 +121,6 @@ public class Bear : MonsterBase
 
             case 1:
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_JumpDown);
-                CameraController.instance.ShakeCamera(shakeDuration, shakeForce);
                 break;
 
             case 2:
@@ -207,10 +211,10 @@ public class Bear : MonsterBase
         else
         {
             animator.SetTrigger("RushAtk");
+            rushChargeEffect.SetActive(true);
             rushCol.enabled = true;
             normalCol.enabled = false;
         }
-            
     }
 
     protected override void AtkEnd()
@@ -269,6 +273,11 @@ public class Bear : MonsterBase
         }
     }
 
+    void RushRun()
+    {
+        rushRunEffect.SetActive(true);
+    }
+
     protected void FallDown()
     {
         rigid.velocity = Vector2.down * downForce;
@@ -296,7 +305,7 @@ public class Bear : MonsterBase
         for (int i = 0; i < waitTime.Length; i++)
         {
             yield return new WaitForSeconds(waitTime[i]);
-            EffectManager.instance.SpawnEffect(spawnHandAtkPos[i], 11 + i, Vector2.zero);
+            EffectManager.instance.SpawnEffect(spawnHandAtkPos[i], (int)HandAtk.one + i, Vector2.zero);
         }
     }
 

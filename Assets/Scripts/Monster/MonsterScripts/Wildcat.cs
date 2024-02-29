@@ -27,6 +27,17 @@ public class Wildcat : MonsterBase
     [SerializeField] Slider hpBar;
     [SerializeField] float hpDecreaTime;
 
+    [Header("이펙트 관련")]
+    [SerializeField] GameObject redeyeEffect;
+
+    [Header("이펙트 위치 관련")]
+    [SerializeField] Transform handEffectTrans;
+    [SerializeField] Transform biteEffectTrans;
+    [SerializeField] Transform teleportEffectTrans;
+
+
+    [Header("유예 시간")] [SerializeField] float redeyeWaitTime;
+    bool isRedeye;
 
     protected override void Start()
     {
@@ -35,6 +46,18 @@ public class Wildcat : MonsterBase
         hpBar = UIController.instance.bossHpSlider;
         hpBar.maxValue = monsterData.maxHp;
         hpBar.value = curHp;
+    }
+
+
+
+     protected override void TimeProcess()
+    {
+        base.TimeProcess();
+        if(!isRedeye && curAtkCoolTime <= redeyeWaitTime)
+        {
+            isRedeye = true;
+            redeyeEffect.SetActive(true);
+        }
     }
 
     protected override void Init()
@@ -118,6 +141,27 @@ public class Wildcat : MonsterBase
         }
     }
 
+    void EffectOn(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                EffectManager.instance.SpawnEffect(handEffectTrans.position, (int)MonsterEffect.Wildcat_Hand, Vector2.zero, transform.localScale.x < 0);
+                break;
+
+            case 1:
+                EffectManager.instance.SpawnEffect(biteEffectTrans.position, (int)MonsterEffect.Wildcat_Bite, Vector2.zero, transform.localScale.x < 0);
+                break;
+            
+            case 2:
+                EffectManager.instance.SpawnEffect(teleportEffectTrans.position, (int)MonsterEffect.Wildcat_Teleport, Vector2.zero, transform.localScale.x < 0);
+                break;
+            
+
+            default:
+                break;
+        }
+    }
 
     void TeleportEnter()
     {
@@ -172,6 +216,7 @@ public class Wildcat : MonsterBase
     {
         base.AtkEnd();
         SetAtkType();
+        isRedeye = false;
     }
 
     public override void GetDamaged(float getDamage, bool canKncokBack = true)

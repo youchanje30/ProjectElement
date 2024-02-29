@@ -18,7 +18,7 @@ public class ActiveSkill : MonoBehaviour
     public PassiveSystem passive;
     public PlayerStatus status;
 
-
+    [SerializeField] GameObject[] patternObjs;
     
     // 스킬 관련 설정
     [TitleGroup("스킬 관련 기본 정보")]
@@ -206,7 +206,8 @@ public class ActiveSkill : MonoBehaviour
                 StartCoroutine(WindSkill());
                 break;
         }
- 
+        
+        patternObjs[(int)weapontype - 1].SetActive(true);
     }
 
     #region 불 정령
