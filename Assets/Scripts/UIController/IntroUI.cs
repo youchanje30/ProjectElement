@@ -31,7 +31,7 @@ public class IntroUI : MonoBehaviour
         // {
         //     LoadBtn.SetActive(false);
         // }
-        SetStartFade(0.4f);
+        SetStartFade(0.3f);
     }
 
     public void IntroBtn(int num)
@@ -79,6 +79,6 @@ public class IntroUI : MonoBehaviour
 
     void SetStartFade(float value)
     {
-        title.DOFade(value, 0.7f).OnComplete(()=> SetStartFade(1 - value));
+        title.DOFade(value, 1f).OnComplete(()=> SetStartFade(1 - value));
     }
 }
