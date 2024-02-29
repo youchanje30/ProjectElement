@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using System;
+using UnityEngine.SceneManagement;
 
 
 public class AudioManager : MonoBehaviour
@@ -13,8 +14,17 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private UIController uiCon;
    
     
+    [ListDrawerSettings(ShowIndexLabels = true)]
+    [System.Serializable] public class BgmData
+    {
+        [LabelText("BGM")] public AudioClip soundClip;
+        [LabelText("등장하는 씬")] public String[] sceneName;
+    }
+
     [Header("BGM 설정")]
-    public AudioClip bgmClip;
+    [SerializeField] BgmData[] bgmDatas;
+    
+    
     AudioSource bgmPlayer;
     public Slider BGMVolumeSlider;
     [Space(20f)]
@@ -127,8 +137,8 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         SetAudioClips();
-        Set();
         Init();
+        Set();
     }
 
     public void Set()
@@ -142,10 +152,73 @@ public class AudioManager : MonoBehaviour
             SFXVolumeSlider = uiCon.sfxSlider;
 
         Invoke("SoundLoad", 0.1f);
+
+        if(bgmPlayer.clip == null)
+        {
+            bgmPlayer.clip = FoundBgmClip();
+            return;
+        }
+
+        float curTime = bgmPlayer.time;
+        bgmPlayer.Stop();
+
+        String curScene = SceneManager.GetActiveScene().name;
+        for (int i = 0; i < bgmDatas.Length; i++)
+        {
+            bool isCheck = false;
+
+            for (int j = 0; j < bgmDatas[i].sceneName.Length; j++)
+            {
+                if(curScene == bgmDatas[i].sceneName[j])
+                {
+                    isCheck = true;
+                    if(bgmPlayer.clip == bgmDatas[i].soundClip)
+                        bgmPlayer.time = curTime;
+                    else
+                        bgmPlayer.clip = bgmDatas[i].soundClip;
+                    break;
+                }
+            }
+
+            if(isCheck)
+                break;
+        }
+        bgmPlayer.Play();
+    }
+
+    AudioClip FoundBgmClip()
+    {
+        String curScene = SceneManager.GetActiveScene().name;
+        AudioClip clip = null;
+        for (int i = 0; i < bgmDatas.Length; i++)
+        {
+            for (int j = 0; j < bgmDatas[i].sceneName.Length; j++)
+            {
+                if(curScene == bgmDatas[i].sceneName[j])
+                {
+                    clip = bgmDatas[i].soundClip;
+                    break;
+                }
+            }
+
+            if(clip != null)
+                break;
+        }
+
+        return clip;
     }
 
     void Init()
     {
+        uiCon = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
+        
+        if(!BGMVolumeSlider)
+            BGMVolumeSlider = uiCon.bgmSlider;
+
+        if(!SFXVolumeSlider)
+            SFXVolumeSlider = uiCon.sfxSlider;
+
+
         //BGM Player 초기화
         GameObject bgmObject = new GameObject("BGMPlayer");
         bgmObject.transform.parent = transform;
@@ -153,7 +226,7 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.playOnAwake = false;
         bgmPlayer.loop = true;
         bgmPlayer.volume = BGMVolumeSlider.value;
-        bgmPlayer.clip = bgmClip;
+        bgmPlayer.clip = FoundBgmClip();
 
         //SFX Player 초기화
         GameObject sfxObject = new GameObject("SFXPlayer");

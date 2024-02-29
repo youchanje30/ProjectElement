@@ -45,7 +45,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCon: {fileID: 0}
-  bgmClip: {fileID: 0}
+  bgmDatas:
+  - soundClip: {fileID: 8300000, guid: badc38db8d1c4a7499621c686a9ea629, type: 3}
+    sceneName:
+    - Intro
+    - Ending
+  - soundClip: {fileID: 8300000, guid: 4a82bdbbbd117384bbeefb7c679585c1, type: 3}
+    sceneName:
+    - BossStage_Bear
+    - BossStage_Goat
+    - BossStage_WildCat
+  - soundClip: {fileID: 8300000, guid: 1c2754ea5bd90024ca3a0f46da806bc7, type: 3}
+    sceneName:
+    - Stage1
+    - Stage2
+    - Stage3
+    - Stage4
+    - Stage5
+    - Stage6
+    - Stage7
+  - soundClip: {fileID: 8300000, guid: 5fb6de3a33e33bc4da23cf9d654641fe, type: 3}
+    sceneName:
+    - Tutorial
+    - Main Scene
+    - ShopStage
   BGMVolumeSlider: {fileID: 0}
   sfxClips: []
   channels: 16

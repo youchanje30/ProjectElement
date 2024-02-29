@@ -457,22 +457,19 @@ public class GameManager : MonoBehaviour
         camPos.z -= 10;
         captureCam.transform.position = camPos;
 
-        int width = 200;
-        int height = 200;
+        int width = 400;
+        int height = 400;
 
         RenderTexture rt = new RenderTexture(width, height, 24);
         captureCam.targetTexture = rt;
 
-        // 카메라에 렌더링 요청
         captureCam.Render();
 
-        // 현재 활성화된 RenderTexture을 읽어 Texture2D로 저장
         Texture2D screenshot = new Texture2D(width, height, TextureFormat.RGB24, false);
         RenderTexture.active = rt;
         screenshot.ReadPixels(new Rect(0, 0, width, height), 0, 0);
         screenshot.Apply();
 
-        // RenderTexture 해제
         captureCam.targetTexture = null;
         RenderTexture.active = null;
         Destroy(rt);
