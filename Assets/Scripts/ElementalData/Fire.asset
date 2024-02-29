@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ed507526e45404c8fb7d932cea6718, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  elementalName: "\uC0D0\uB7EC\uB9E8\uB354"
+  elementalName: "\uC774\uD504\uB9AC\uD2B8"
   weaponType: 1
   elementalID: 1000
-  elementalInfo: "\uBD88\uB2ED"
+  elementalInfo: "\uAEBC\uC9C0\uC9C0 \uC54A\uB294 \uBD88 \uC7A5\uD310\uC744 \uC0DD\uC131\uD55C\uB2E4."
   elementalImg: {fileID: -1819619837, guid: 4851e88b4e52ee34592a44839986378c, type: 3}
   elementalIcon: {fileID: 21300000, guid: beb1bd1f5be579240bb4d5aa54debb99, type: 3}
   UnSelcIcon: {fileID: 21300000, guid: 410c67c9f760c4b4497d2dd86c89f725, type: 3}
