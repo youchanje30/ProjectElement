@@ -259,6 +259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goat
       objectReference: {fileID: 0}
+    - target: {fileID: 5362310459208682260, guid: bcab59f8b8043a540ad625334218e733, type: 3}
+      propertyPath: m_GravityScale
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8195864001011028703, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Controller
       value: 
@@ -337,7 +341,7 @@ MonoBehaviour:
   isRush: 0
   canHit: 0
   atkBox: {fileID: 234248481880647087}
-  rushSpeed: 20
+  rushSpeed: 50
   groundSize: {x: 4.6, y: 0.2}
   groundOffset: {x: -0.4, y: -2.55}
   maxAbsJumpX: 15
