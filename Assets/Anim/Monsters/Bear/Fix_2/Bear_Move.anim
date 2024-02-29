@@ -51,8 +51,27 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    pptrCurveMapping:
+    - {fileID: 1099345707, guid: 53d542e2a1c266646ae259c9e542e137, type: 3}
+    - {fileID: -77642477, guid: 53d542e2a1c266646ae259c9e542e137, type: 3}
+    - {fileID: -1756050482, guid: 53d542e2a1c266646ae259c9e542e137, type: 3}
+    - {fileID: 1059027393, guid: 53d542e2a1c266646ae259c9e542e137, type: 3}
+    - {fileID: 101452023, guid: 53d542e2a1c266646ae259c9e542e137, type: 3}
+    - {fileID: 1521753678, guid: 53d542e2a1c266646ae259c9e542e137, type: 3}
+    - {fileID: -498727073, guid: 53d542e2a1c266646ae259c9e542e137, type: 3}
+    - {fileID: -340211796, guid: 53d542e2a1c266646ae259c9e542e137, type: 3}
+    - {fileID: 868346187, guid: 53d542e2a1c266646ae259c9e542e137, type: 3}
+    - {fileID: -2129096060, guid: 53d542e2a1c266646ae259c9e542e137, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -77,32 +96,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.083333336
-    functionName: MoveSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.25
-    functionName: MoveSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.41666666
-    functionName: MoveSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.5833333
-    functionName: MoveSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []
