@@ -123,10 +123,6 @@ public class Bear : MonsterBase
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_JumpDown);
                 break;
 
-            case 2:
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_RushStart);
-                break;
-
             default:
                 break;
         }
@@ -275,6 +271,8 @@ public class Bear : MonsterBase
 
     void RushRun()
     {
+        CameraController.instance.ShakeCamera(shakeDuration[2], shakeForce[2]);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Bear_RushStart);
         rushRunEffect.SetActive(true);
     }
 
