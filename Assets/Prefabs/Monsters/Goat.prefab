@@ -440,7 +440,7 @@ MonoBehaviour:
   - atkName: "\uB7EC\uC26C"
     atkPos: {x: 0, y: 0, z: 0}
     atkSize: {x: 0, y: 0}
-    damageRate: 100
+    damageRate: 130
   curAtkType: 0
   atkTypeRate: 3200000032000000
   jumpY: 4.5
