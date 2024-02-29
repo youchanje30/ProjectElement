@@ -131,4 +131,4 @@ MonoBehaviour:
   nearDistance: 3
   lineNum: 10
   maxSpeed: 3
-  emotionTime: 5
+  emotionTime: 10

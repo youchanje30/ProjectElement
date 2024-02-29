@@ -315,6 +315,8 @@ public class MonsterBase : MonoBehaviour
 
         curHp -= getDamage;
         if(isAtking) AtkEnd();
+        
+        DamageManager.instance.SpawnDamage(transform.position, getDamage);
 
         // 체력바 추가 해야 함
 
@@ -372,6 +374,7 @@ public class MonsterBase : MonoBehaviour
         rigid.velocity = Vector2.zero;
         animator.SetBool("Hurt", false);
     }
+
     #endregion
 
 

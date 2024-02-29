@@ -248,6 +248,7 @@ public class Goat : MonsterBase
 
         curHp -= getDamage;
         SetUI();
+        DamageManager.instance.SpawnDamage(transform.position, getDamage);
 
         if(curHp <= 0)
         {

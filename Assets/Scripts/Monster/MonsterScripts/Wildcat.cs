@@ -224,6 +224,7 @@ public class Wildcat : MonsterBase
         if(isDead) return;
 
         curHp -= getDamage;
+        DamageManager.instance.SpawnDamage(transform.position, getDamage);
         SetUI();
 
         if(curHp <= 0)

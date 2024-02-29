@@ -3,31 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using TMPro;
 
 public class IntroUI : MonoBehaviour
 {
     public GameObject introUI;
     public GameObject LoadBtn;
     public GameObject OptionUI;
+    [SerializeField] TMP_Text title;
 
     void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-        {
-            introUI.SetActive(false);
-        }
-        else
-        {
-            introUI.SetActive(true);
-        }
-        if (File.Exists(Application.dataPath + "/DataXML.xml"))
-        {
-            LoadBtn.SetActive(true);
-        }
-        else
-        {
-            LoadBtn.SetActive(false);
-        }
+        // if (SceneManager.GetActiveScene().buildIndex != 0)
+        // {
+        //     introUI.SetActive(false);
+        // }
+        // else
+        // {
+        //     introUI.SetActive(true);
+        // }
+        // if (File.Exists(Application.dataPath + "/DataXML.xml"))
+        // {
+        //     LoadBtn.SetActive(true);
+        // }
+        // else
+        // {
+        //     LoadBtn.SetActive(false);
+        // }
+        SetStartFade(0.3f);
     }
 
     public void IntroBtn(int num)
@@ -56,5 +60,21 @@ public class IntroUI : MonoBehaviour
                 Application.Quit();
                 break;
         }
+    }
+
+    void Update()
+    {
+        if(Input.anyKeyDown)
+        {
+            if(SaveManager.instance.isFirstTime)
+                SceneManager.LoadScene("Tutorial");
+            else
+                SceneManager.LoadScene(GameManager.instance.curStageName);
+        }
+    }
+
+    void SetStartFade(float value)
+    {
+        title.DOFade(value, 0.4f).OnComplete(()=> SetStartFade(1 - value));
     }
 }

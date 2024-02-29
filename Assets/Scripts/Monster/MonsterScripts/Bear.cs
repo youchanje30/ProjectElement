@@ -166,6 +166,7 @@ public class Bear : MonsterBase
         if(isKnockback || isDead || !isSpawn) return;
 
         curHp -= getDamage;
+        DamageManager.instance.SpawnDamage(transform.position, getDamage);
         SetUI();
 
         if(curHp <= 0)
