@@ -23,22 +23,17 @@ public class TalkManager : MonoBehaviour
         talkData.Add(4000, new string[] {"바람의 정령", "바람의 원소를 사용하는 정령이다"});       
         talkData.Add(5000, new string[] {"지팡이 테스트", "지팡이 테스트"});
 
-        ActionTalkData.Add(1000, new string[] {"나는 불의 정령 이프립트라고 해", "너 혹시 불 좋아하니?"
-        , "불은 정말 최고야!", "불의 정령의 모습에 불만이라도 있어?"});
+        ActionTalkData.Add(1000, new string[] {"불의 정령 이프리트", "타격 시 낮은 확률로 대상에게 화상 효과를 부여한다."});
 
-        ActionTalkData.Add(2000, new string[] {"나는 물의 정령 운디네라고 해", "너 혹시 물 좋아하니?"
-        , "물은 정말 최고야!", "물의 정령의 모습에 불만이라도 있어?"});
+        ActionTalkData.Add(2000, new string[] {"물의 정령 운디네", "타격 시 행동을 느리게 한다."});
 
 
-        ActionTalkData.Add(3000, new string[] {"나는 땅의 정령 노움라고 해", "너 혹시 땅 좋아하니?"
-        , "땅은 정말 최고야!", "땅의 정령의 모습에 불만이라도 있어?"});
+        ActionTalkData.Add(3000, new string[] {"땅의 정령 노움", "일정 시간 동안 피해를 받지 않으면 보호막을 생성한다."});
 
-        ActionTalkData.Add(4000, new string[] {"나는 바람의 정령 실프라고 해", "너 혹시 바람 좋아하니?"
-        , "바람은 정말 최고야!", "바람의 정령의 모습에 불만이라도 있어?"});
+        ActionTalkData.Add(4000, new string[] {"바람의 정령 실프", "쿨타임 감소량에 따른 치명타 피해량이 증가한다."});
 
 
-        ActionTalkData.Add(5000, new string[] {"지팡이 테스트", "지팡이 테스트"
-        , "지팡이 테스트", "지팡이 테스트"});
+        ActionTalkData.Add(5000, new string[] {"지팡이 테스트", "지팡이 테스트"});
     }
     
 

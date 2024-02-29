@@ -15,7 +15,8 @@ MonoBehaviour:
   elementalName: "\uB178\uC6C0"
   weaponType: 3
   elementalID: 3000
-  elementalInfo: "\uD638\uB791\uC774"
+  elementalInfo: "\uC55E\uC73C\uB85C \uB6F0\uC5B4 \uBC29\uD328\uB85C \uB0B4\uB824\uCCD0
+    \uAE30\uC808\uC0C1\uD0DC\uB97C \uBD80\uC5EC\uD55C\uB2E4."
   elementalImg: {fileID: -1149790158, guid: b2f4c95d4d29a5244b7b2dc9a63fe6ca, type: 3}
   elementalIcon: {fileID: 21300000, guid: 022c86bf75148cd4ea677f662e3ebfdd, type: 3}
   UnSelcIcon: {fileID: 21300000, guid: bb30ce9dbf3879e40b244c363013c06d, type: 3}
