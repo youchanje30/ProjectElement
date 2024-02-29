@@ -562,8 +562,8 @@ MonoBehaviour:
   - 0.3
   - 0.3
   - 0.3
-  startHandAtkObjPos: {x: -3, y: -2, z: 0}
-  distanceObjs: -3.5
+  startHandAtkObjPos: {x: -5, y: -2, z: 0}
+  distanceObjs: -4
   shakeDuration: 0.1
   shakeForce: 10
 --- !u!114 &5373036055377236901 stripped
