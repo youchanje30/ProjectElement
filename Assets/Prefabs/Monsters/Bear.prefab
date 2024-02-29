@@ -642,7 +642,7 @@ MonoBehaviour:
   hpDecreaTime: 1.5
   chargeEffect: {fileID: 1978805656148478593}
   redeyeEffect: {fileID: 5021590147904345035}
-  redeyeWaitTime: 1.5
+  redeyeWaitTime: 1.2
   rushChargeEffect: {fileID: 2648338759665224468}
   rushRunEffect: {fileID: 4605115129484155806}
   waitTime:
@@ -654,12 +654,12 @@ MonoBehaviour:
   distanceObjs: -4
   shakeDuration:
   - 0.2
-  - 0.2
+  - 0.3
   - 0.2
   shakeForce:
-  - 10
-  - 10
-  - 10
+  - 30
+  - 30
+  - 30
 --- !u!114 &5373036055377236901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2610654531360661370, guid: bcab59f8b8043a540ad625334218e733, type: 3}
@@ -727,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9025737441897270199, guid: 61d360ce8636606498374b5573cd6894, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 9025737441897270199, guid: 61d360ce8636606498374b5573cd6894, type: 3}
       propertyPath: m_LocalPosition.y
