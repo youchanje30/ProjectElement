@@ -433,11 +433,11 @@ MonoBehaviour:
   isStun: 0
   isHit: 0
   atkInfo:
-  - atkName: "\uB7EC\uC26C"
+  - atkName: "\uC810\uD504"
     atkPos: {x: 0, y: 0, z: 0}
     atkSize: {x: 0, y: 0}
     damageRate: 100
-  - atkName: "\uC810\uD504"
+  - atkName: "\uB7EC\uC26C"
     atkPos: {x: 0, y: 0, z: 0}
     atkSize: {x: 0, y: 0}
     damageRate: 100

@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
     public Transform StartPoint;
     public Transform EndPoint;
     public Transform EndYPoint;
+    public Transform StartYPoint;
     public Transform cameraPoint;
 
     public int SceneNum;
@@ -748,9 +749,13 @@ public class GameManager : MonoBehaviour
 
         if(EndYPoint && Target.position.y >= EndYPoint.position.y)
         {
-            // controller.cinemachineCam.Follow = EndYPoint;
             posFix = true;
             endPos.y = EndYPoint.position.y;
+        }
+        else if(StartYPoint && Target.position.y <= StartYPoint.position.y)
+        {
+            posFix = true;
+            endPos.y = StartYPoint.position.y;
         }
         else
         {

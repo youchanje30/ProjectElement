@@ -181,7 +181,6 @@ public class Goat : MonsterBase
 
     void JumpAtk()
     {
-        
         EffectManager.instance.SpawnEffect(jumpEffectPos.position, (int)MonsterEffect.Goat_Jump, Vector2.zero, transform.localScale.x < 0);
         int targetDir = target.position.x > transform.position.x ? 1 : -1;
         ChangeLocalScale(targetDir);
@@ -203,7 +202,11 @@ public class Goat : MonsterBase
         if(canHit && other.CompareTag("Player") && atkBox.isEnter)
         {
             canHit = false;
-            other.GetComponent<Battle>().GetDamaged(damage);
+            if(isRush)
+                other.GetComponent<Battle>().GetDamaged(damage * 0.01f * atkInfo[0].damageRate);
+                
+            if(isJump)
+                other.GetComponent<Battle>().GetDamaged(damage * 0.01f * atkInfo[1].damageRate);
         }
     }
 
