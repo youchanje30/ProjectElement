@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponType: 1
   elementalID: 1000
   elementalInfo: "\uBD88\uB2ED"
-  elementalImg: {fileID: 21300000, guid: 23444319dfa72ee4ea79290f9c044b10, type: 3}
+  elementalImg: {fileID: 2134832066, guid: 357e473eca8287b499e3b7f28fa4ee6a, type: 3}
   elementalIcon: {fileID: 21300000, guid: beb1bd1f5be579240bb4d5aa54debb99, type: 3}
   UnSelcIcon: {fileID: 21300000, guid: 410c67c9f760c4b4497d2dd86c89f725, type: 3}
   elementalCard: {fileID: 21300000, guid: 0c1a332033d243a419f4542ca2827da8, type: 3}

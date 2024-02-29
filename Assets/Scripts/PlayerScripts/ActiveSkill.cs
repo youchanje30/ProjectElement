@@ -145,6 +145,8 @@ public class ActiveSkill : MonoBehaviour
             Debug.Log("isSouth Atk");
             movement2D.curDashCnt = -1;
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[1].position, LandingRange[1], 0);
+            
+
             foreach (Collider2D collider in collider2Ds)
             {
                 if (collider.CompareTag("Monster") && collider.GetComponentInParent<MonsterBase>().isHit == false)
@@ -238,8 +240,14 @@ public class ActiveSkill : MonoBehaviour
                 SkillAtk(collider.gameObject, DefaultDamage * (1 + (JumpDamageIncreaseRate / 100)));
             }
         }
-        if(collider2Ds.Length > 0)
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.AtkSuccess);
+        foreach (Collider2D collider in collider2Ds)
+        {
+            if(collider.CompareTag("Monster"))
+            {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.AtkSuccess);
+                break;
+            }
+        }
         for (int i = 0; i < RangeCount; i++)
         {
             hit = Physics2D.Raycast(new Vector2(transform.position.x + i, transform.position.y), transform.up * -20, detectlength, layer);
@@ -316,44 +324,40 @@ public class ActiveSkill : MonoBehaviour
     }
     public void RandingSet()
     {
-        Debug.Log("RandingSet() called");
         if (Physics2D.Raycast(transform.position,Vector2.down,2,layer) && CanLanding)
-            {
-                
-            Debug.Log("Checked");
-            // CameraController.instance.StartCoroutine(CameraController.instance.Shake(LandingShakeTime, LandingShakeMagnitude));
+        {
             rigid2D.velocity = new Vector2(0, -10);
-                CameraController.instance.ShakeCamera(LandingShakeTime, LandingShakeMagnitude);
+            CameraController.instance.ShakeCamera(LandingShakeTime, LandingShakeMagnitude);
 
-                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
+            Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(LandingPos[0].position, LandingRange[0], 0);
 
-                foreach (Collider2D collider in collider2Ds)
+            foreach (Collider2D collider in collider2Ds)
+            {
+                if (collider.CompareTag("Monster") && collider.GetComponentInParent<MonsterBase>().isHit == false)
                 {
-                    if (collider.CompareTag("Monster") && collider.GetComponentInParent<MonsterBase>().isHit == false)
-                    {
-                        //StartCoroutine(Hit(collider.gameObject, 0.5f));
-                        collider.GetComponentInParent<MonsterBase>().isHit = true;
-                        StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
-                        SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
-                        StartCoroutine(Stun(collider.gameObject, StunTime));
-                        battle.PlayerSynergy(3000, collider.gameObject);
-                    }
-                    if (collider.CompareTag("Destruct"))
-                    {
-                        SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
-                    }
+                    //StartCoroutine(Hit(collider.gameObject, 0.5f));
+                    collider.GetComponentInParent<MonsterBase>().isHit = true;
+                    StartCoroutine(collider.GetComponentInParent<MonsterSynergy>().HitFalse());
+                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
+                    StartCoroutine(Stun(collider.gameObject, StunTime));
+                    battle.PlayerSynergy(3000, collider.gameObject);
                 }
-                
-                if(collider2Ds.Length > 0)
-                    AudioManager.instance.PlaySfx(AudioManager.Sfx.AtkSuccess);
-                CanLanding = false;
-                battle.isSwap = true;
-                isSouth = false;
-                battle.isGuard = false;
-                EffectManager.instance.SpawnEffect(transform.position, (int)SkillEffect.South, LandingRange[0]);
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.Shield_Skill);
-                StartCoroutine(movement2D.DashCoolDown(0.01f));
-                StartCoroutine(ReturnSkill(3));
+                if (collider.CompareTag("Destruct"))
+                {
+                    SkillAtk(collider.gameObject, DefaultDamage * (1 + (LandDamageIncreaseRate / 100)));
+                }
+            }
+            
+            if(collider2Ds.Length > 0)
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.AtkSuccess);
+            CanLanding = false;
+            battle.isSwap = true;
+            isSouth = false;
+            battle.isGuard = false;
+            EffectManager.instance.SpawnEffect(transform.position, (int)SkillEffect.South, LandingRange[0]);
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Shield_Skill);
+            StartCoroutine(movement2D.DashCoolDown(0.01f));
+            StartCoroutine(ReturnSkill(3));
         }
         
     }

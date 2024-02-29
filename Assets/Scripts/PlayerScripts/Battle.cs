@@ -381,6 +381,14 @@ public class Battle : MonoBehaviour
     public void AtkDetection()
     {
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(weaponData[(int)WeaponType].atkPos.position, weaponData[(int)WeaponType].atkSize, 0);
+        foreach (Collider2D collider in collider2Ds)
+        {
+            if(collider.CompareTag("Monster"))
+            {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.AtkSuccess);
+                break;
+            }
+        }
         foreach(Collider2D collider in collider2Ds)
         {
             if(collider.tag == "Monster" || collider.tag == "Destruct")
@@ -388,8 +396,6 @@ public class Battle : MonoBehaviour
                 Atk(collider.gameObject);
             }
         }
-        if(collider2Ds.Length > 0)
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.AtkSuccess);
     }
 
     public IEnumerator ReturnSwap()

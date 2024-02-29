@@ -177,7 +177,7 @@ public class ProjectileType : MonoBehaviour
                 
                 skill.passive.ActivePassive(WeaponTypes.Wand, collider.GetComponentInParent<MonsterDebuffBase>());
                 skill.SkillAtk(collider.gameObject, skill.DefaultDamage * (1 + (skill.BombDamageIncreaseRate / 100)));
-                battle.PlayerSynergy(1000, collider.gameObject);
+                battle.PlayerSynergy(2000, collider.gameObject);
             }
             if (collider.CompareTag("Destruct"))
             {

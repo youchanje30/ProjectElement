@@ -16,6 +16,7 @@ public class ShieldAtkCol : MonoBehaviour
     {
         if(other.CompareTag("Monster") || other.CompareTag("Destruct"))
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.AtkSuccess);
             battle.Atk(other.gameObject);
         }
     }
