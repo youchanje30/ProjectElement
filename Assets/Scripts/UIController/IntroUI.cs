@@ -31,7 +31,7 @@ public class IntroUI : MonoBehaviour
         // {
         //     LoadBtn.SetActive(false);
         // }
-        SetStartFade(0.3f);
+        SetStartFade(0.4f);
     }
 
     public void IntroBtn(int num)
@@ -68,13 +68,17 @@ public class IntroUI : MonoBehaviour
         {
             if(SaveManager.instance.isFirstTime)
                 SceneManager.LoadScene("Tutorial");
-            else
+            else if(GameManager.instance.CheckSceneName(GameManager.instance.curStageName))
+            {
                 SceneManager.LoadScene(GameManager.instance.curStageName);
+            }
+            else
+                SceneManager.LoadScene("Main Scene");
         }
     }
 
     void SetStartFade(float value)
     {
-        title.DOFade(value, 0.4f).OnComplete(()=> SetStartFade(1 - value));
+        title.DOFade(value, 0.7f).OnComplete(()=> SetStartFade(1 - value));
     }
 }

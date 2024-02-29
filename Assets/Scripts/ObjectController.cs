@@ -257,6 +257,9 @@ public class ObjectController : MonoBehaviour
                 GameManager.instance.MainstageRoad();
                 break;
 
+            case 30:
+                GameManager.instance.EndStageRoad();
+                break;
         }
     }
 

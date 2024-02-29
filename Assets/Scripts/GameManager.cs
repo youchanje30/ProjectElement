@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public String curStageName;
     public string[] bossStage;
     public string[] Scene;
+    public String[] allSceneName;
 
     [Header("System Panel")]
     [SerializeField] private GameObject SystemPanel;
@@ -392,9 +393,10 @@ public class GameManager : MonoBehaviour
 
     public void RandomStageRoad()
     {
+
         if(clearStage > 0 && clearStage % 5 == 0)
         {
-            curStageName = bossStage[clearStage / 5];
+            curStageName = bossStage[clearStage / 5 - 1];
             SaveManager.instance.Save();
             SceneManager.LoadScene(curStageName);
             return;
@@ -409,8 +411,19 @@ public class GameManager : MonoBehaviour
             SaveManager.instance.Save();
             SceneManager.LoadScene("ShopStage");
         }
+        else if(GameManager.instance.CheckSceneName(GameManager.instance.curStageName))
+        {
+            SceneManager.LoadScene(GameManager.instance.curStageName);
+        }
         else
-            SceneManager.LoadScene(curStageName);
+            SceneManager.LoadScene("Main Scene");
+    }
+
+    public void EndStageRoad()
+    {
+        curStageName = "Main Scene";
+        SaveManager.instance.ResetData();
+        SceneManager.LoadScene("Ending");
     }
 
     public void MainstageRoad()
@@ -418,6 +431,22 @@ public class GameManager : MonoBehaviour
         curStageName = "Main Scene";
         SaveManager.instance.Save();
         SceneManager.LoadScene("Main Scene");
+    }
+
+    public bool CheckSceneName(String sceneName)
+    {
+        bool isExist = false;
+
+        foreach (String name in allSceneName)
+        {
+            if(name == sceneName)
+            {
+                isExist = true;
+                break;
+            }
+        }
+
+        return isExist;
     }
 
     public void GameOver()

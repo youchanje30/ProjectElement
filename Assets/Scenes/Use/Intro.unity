@@ -7360,6 +7360,14 @@ PrefabInstance:
       propertyPath: EndYPoint
       value: 
       objectReference: {fileID: 1636305314}
+    - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
+      propertyPath: bossStage.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372167775835602029, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
+      propertyPath: allSceneName.Array.data[13]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7145054607126248307, guid: 79b667428eda42741b7b5a2d794e1284, type: 3}
       propertyPath: m_RootOrder
       value: -1

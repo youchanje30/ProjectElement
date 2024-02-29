@@ -135,6 +135,20 @@ MonoBehaviour:
   - Stage5
   - Stage6
   - Stage7
+  allSceneName:
+  - BossStage_WildCat
+  - BossStage_Goat
+  - BossStage_Bear
+  - Stage1
+  - Stage2
+  - Stage3
+  - Stage4
+  - Stage5
+  - Stage6
+  - Stage7
+  - Tutorial
+  - ShopStage
+  - Main Scene
   SystemPanel: {fileID: 0}
   talkManager: {fileID: 0}
   isSystem: 0
@@ -178,6 +192,7 @@ MonoBehaviour:
   StartPoint: {fileID: 3083002206320670089}
   EndPoint: {fileID: 891055357591295839}
   EndYPoint: {fileID: 0}
+  StartYPoint: {fileID: 0}
   cameraPoint: {fileID: 8067841858992247226}
   SceneNum: 0
   fullScreen: 0
