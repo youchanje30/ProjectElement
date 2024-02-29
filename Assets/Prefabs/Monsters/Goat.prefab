@@ -112,7 +112,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.051310718, y: -0.0030884147}
+  m_Offset: {x: -0.078685105, y: -0.09068623}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -123,7 +123,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4678291, y: 1.4060036}
+  m_Size: {x: 0.94224226, y: 0.95706433}
   m_EdgeRadius: 0
 --- !u!114 &4456885656190377747
 MonoBehaviour:
@@ -165,11 +165,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.03
+      value: 40.9
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.85
+      value: -10.3
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.z
@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Size.x
-      value: 7.357054
+      value: 23.237408
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Size.y
@@ -237,11 +237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Offset.x
-      value: -0.2714727
+      value: 0.103933334
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Offset.y
-      value: 0.09233841
+      value: 0.09233844
       objectReference: {fileID: 0}
     - target: {fileID: 4847805349945535956, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Sprite
@@ -335,13 +335,13 @@ MonoBehaviour:
     damageRate: 100
   curAtkType: 0
   atkTypeRate: 3200000032000000
-  jumpY: 3.5
+  jumpY: 4.5
   jumpForce: 10
   isJump: 0
   isRush: 0
   canHit: 0
   atkBox: {fileID: 234248481880647087}
-  rushSpeed: 50
+  rushSpeed: 25
   groundSize: {x: 4.6, y: 0.2}
   groundOffset: {x: -0.4, y: -2.55}
   maxAbsJumpX: 15

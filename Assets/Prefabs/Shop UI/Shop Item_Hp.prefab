@@ -463,7 +463,7 @@ MonoBehaviour:
   itemImage: {fileID: 3022875925857066110}
   itemName: {fileID: 5710261948318079049}
   itemInfo: {fileID: 507600985044915227}
-  consumeBuyCost: 10
+  consumeBuyCost: 300
   itemCostTxt: {fileID: 8755628579541332798}
   isChanging: 0
   reverseTime: 0.3
