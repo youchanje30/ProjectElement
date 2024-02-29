@@ -335,6 +335,7 @@ GameObject:
   - component: {fileID: 8622492067769325853}
   - component: {fileID: 2103521287152027813}
   - component: {fileID: 3192289032289349095}
+  - component: {fileID: 5376876485781817601}
   m_Layer: 0
   m_Name: Fire_Sword Spirit
   m_TagString: NPC
@@ -399,8 +400,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 23444319dfa72ee4ea79290f9c044b10, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 2134832066, guid: 357e473eca8287b499e3b7f28fa4ee6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -499,6 +500,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &5376876485781817601
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6880224518496478786}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e4f4599ad70f2e84e91e83c672c81e60, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7419534267299685427
 GameObject:
   m_ObjectHideFlags: 0

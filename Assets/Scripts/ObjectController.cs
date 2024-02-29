@@ -63,6 +63,7 @@ public class ObjectController : MonoBehaviour
                 break;
 
             case InteractObjects.Shop:
+                Snap();
                 if(!buyScrollRect)
                     buyScrollRect = UIController.instance.buyScrollRect;
                 if(!sellScrollRect)
