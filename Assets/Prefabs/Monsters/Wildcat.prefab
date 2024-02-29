@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: b235746a09020c74380977fcd21e3e8f, type: 2}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalScale.x
@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.7
+      value: 38.42
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.2
+      value: -10.07
       objectReference: {fileID: 0}
     - target: {fileID: 2515080624820775928, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_LocalPosition.z
@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Size.x
-      value: 7.357054
+      value: 20.848608
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Size.y
@@ -106,11 +106,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Offset.x
-      value: -0.2714727
+      value: 0.05516529
       objectReference: {fileID: 0}
     - target: {fileID: 4794866318360355377, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Offset.y
-      value: -0.0060718954
+      value: -0.006071925
       objectReference: {fileID: 0}
     - target: {fileID: 4847805349945535956, guid: bcab59f8b8043a540ad625334218e733, type: 3}
       propertyPath: m_Sprite
@@ -192,9 +192,9 @@ MonoBehaviour:
     atkSize: {x: 6, y: 4}
     damageRate: 100
   - atkName: "\uBB3C\uAE30 \uACF5\uACA9"
-    atkPos: {x: -3, y: 0, z: 0}
-    atkSize: {x: 4, y: 4}
-    damageRate: 100
+    atkPos: {x: -3, y: -0.5, z: 0}
+    atkSize: {x: 4, y: 5}
+    damageRate: 200
   curAtkType: 0
   groundLayer:
     serializedVersion: 2
