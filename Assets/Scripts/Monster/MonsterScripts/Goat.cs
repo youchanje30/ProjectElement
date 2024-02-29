@@ -36,6 +36,21 @@ public class Goat : MonsterBase
     [SerializeField] Slider hpBar;
     [SerializeField] float hpDecreaTime;
 
+
+    [SerializeField] GameObject redeyeEffect;
+    [Header("유예 시간")] [SerializeField] float redeyeWaitTime;
+    bool isRedeye;
+
+
+     protected override void TimeProcess()
+    {
+        base.TimeProcess();
+        if(!isRedeye && curAtkCoolTime <= redeyeWaitTime)
+        {
+            isRedeye = true;
+            redeyeEffect.SetActive(true);
+        }
+    }
     protected override void Start()
     {
         base.Start();
@@ -196,6 +211,7 @@ public class Goat : MonsterBase
         isJump = false;
         isRush = false;
         canHit = false;
+        isRedeye = false;
         SetAtkType();
         rigid.velocity = Vector2.zero;
     }

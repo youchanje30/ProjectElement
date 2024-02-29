@@ -35,6 +35,7 @@ public class Bear : MonsterBase
     [Header("이펙트 관련 설정")]
     [SerializeField] Transform chargeEffect;
     [SerializeField] GameObject redeyeEffect;
+    [Header("유예 시간")] [SerializeField] float redeyeWaitTime;
     bool isRedeye;
 
     [Header("각 공격 관련 설정")]
@@ -153,7 +154,7 @@ public class Bear : MonsterBase
     protected override void TimeProcess()
     {
         base.TimeProcess();
-        if(!isRedeye && curAtkCoolTime <= 0.5f)
+        if(!isRedeye && curAtkCoolTime <= redeyeWaitTime)
         {
             isRedeye = true;
             redeyeEffect.SetActive(true);
