@@ -482,6 +482,8 @@ public class Battle : MonoBehaviour
                     target = collider.transform;
             }
             magicInfo.target = target;
+            if(target)
+                magicInfo.targetPos = ((Vector2)target.position - (Vector2)Magic.transform.position).normalized;
         }
 
     }

@@ -19,7 +19,7 @@ public class ProjectileType : MonoBehaviour
     public float Damage;
     public float moveSpeed;
     public Transform target;
-    public Vector3 targetPos;
+    public Vector2 targetPos;
 
     public float duration;
     public float tick;
@@ -49,8 +49,6 @@ public class ProjectileType : MonoBehaviour
             Invoke("Remove", skill.activeTime);
         }
 
-        if(target)
-            targetPos = (target.position - transform.position).normalized;
     }
 
     void Update()
@@ -67,7 +65,7 @@ public class ProjectileType : MonoBehaviour
                 break;
 
             case Type.Magic:
-                if (target != null && target.parent.gameObject.activeSelf)
+                if (target && target.parent.gameObject.activeSelf)
                     rigid.velocity = targetPos * moveSpeed;
                 else
                     rigid.velocity = new Vector2(transform.localScale.x, 0).normalized * moveSpeed;
