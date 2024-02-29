@@ -135,7 +135,6 @@ public class Goat : MonsterBase
     {
         isAtking = true;
         canAtk = false;
-        canHit = true;
 
         int randomSum = 0;
         for (int i = 0; i < atkTypeRate.Length; i++)
@@ -146,24 +145,30 @@ public class Goat : MonsterBase
         if(randomAct <= atkTypeRate[0])
         {
             isJump = true;
+            canHit = true;
             animator.SetTrigger("JumpAtk");
             JumpAtk();
         }
         else
         {
             animator.SetTrigger("RushAtk");
-            isRush = true;
         }
 
     }
 
     void RushAtk()
     {
+        isRush = true;
+        canHit = true;
         rigid.velocity = new Vector2(-transform.localScale.x, 0).normalized * rushSpeed;
     }
 
     void JumpAtk()
     {
+        
+        int targetDir = target.position.x > transform.position.x ? 1 : -1;
+        ChangeLocalScale(targetDir);
+
         float jumpTargetX = (target.transform.position.x - transform.position.x) / 2f;
         float fixedDistanceX = Mathf.Clamp(jumpTargetX, -maxAbsJumpX , maxAbsJumpX);
 

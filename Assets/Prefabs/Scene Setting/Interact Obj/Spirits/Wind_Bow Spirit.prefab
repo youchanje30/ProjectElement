@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 639391901307033896}
   - component: {fileID: 6514177221411089305}
   - component: {fileID: 1303715106891098812}
+  - component: {fileID: 6869352521831640196}
   m_Layer: 0
   m_Name: Wind_Bow Spirit
   m_TagString: NPC
@@ -296,8 +297,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 15207f4a72706ff4bae0b0abb6830dcd, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: -836476417, guid: c75373930b1d83442a11ca9960492453, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -396,6 +397,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &6869352521831640196
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945274884259904211}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cde6e04583231d646a82dea88b098465, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5092800958588077739
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,7 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private TMP_Text itemName;
     [SerializeField] private TMP_Text itemInfo;
     private int buyCost;
+    [Header("물약 같은거 구입 가격")] [SerializeField] private int consumeBuyCost;
     private int sellCost;
     [SerializeField] private TMP_Text itemCostTxt;
 
@@ -50,15 +51,12 @@ public class ShopItem : MonoBehaviour
         if(Type == ShopType.Consumable)
         {
             player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            buyCost = consumeBuyCost;
+            itemCostTxt.text = buyCost.ToString();
+
         }
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         
-    }
-
-    
-    void Update()
-    {
-
     }
 
     public void Btn()
