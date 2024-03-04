@@ -5277,7 +5277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 500
   scroll: {fileID: 832592042}
-  endY: 15000
+  endY: 16500
   isEnd: 0
 --- !u!114 &1978445097
 MonoBehaviour:
