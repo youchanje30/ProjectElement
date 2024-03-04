@@ -124,6 +124,13 @@ public class UIController : MonoBehaviour
 
     public void GameSettingBtn(int btn)
     {
+        if(btn == 5)
+        {
+            GameManager.instance.DataReset(0);
+            return;
+        }
+            
+
         GameManager.instance.GameSettingBtn(btn);
     }
 
@@ -304,7 +311,9 @@ public class UIController : MonoBehaviour
                     GameManager.instance.GameSettingBtn(3);
                     break;
                 case 6:
-                    GameManager.instance.GameSettingBtn(5);
+                    // GameManager.instance.GameSettingBtn(5);
+                    GameManager.instance.DataReset(0);
+                    // AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
                     break;
                 case 7:
                 case 8:
