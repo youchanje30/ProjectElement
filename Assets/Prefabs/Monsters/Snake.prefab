@@ -202,9 +202,9 @@ MonoBehaviour:
     atkPos: {x: -1, y: 0, z: 0}
     atkSize: {x: 4, y: 2}
     damageRate: 100
-  poisonDuration: 3.1
+  poisonDuration: 2.1
   poisonTick: 1
-  poisonDamage: 3
+  poisonDamage: 2
   poisonPos: {fileID: 521965092243593306}
 --- !u!114 &5373036055377236901 stripped
 MonoBehaviour:
