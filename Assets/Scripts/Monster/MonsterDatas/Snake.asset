@@ -15,7 +15,7 @@ MonoBehaviour:
   detectType: 1
   atkType: 1
   maxMoveSpeed: 5
-  maxHp: 20
+  maxHp: 25
   maxDamage: 6
   maxAtkCoolTime: 3
   maxKnockbackTime: 0.4
