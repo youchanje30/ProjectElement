@@ -24,7 +24,7 @@ public class ObjectController : MonoBehaviour
     public GameObject interactView;
 
     [SerializeField] private GameObject ShopItem;
-    [SerializeField] private GameObject HpHealItem;
+    [SerializeField] private GameObject[] HpHealItem;
     [SerializeField] private GameObject SpiritSoulItem;
     [SerializeField] private ScrollRect buyScrollRect;
     [SerializeField] private ScrollRect sellScrollRect;
@@ -69,10 +69,11 @@ public class ObjectController : MonoBehaviour
                 if(!sellScrollRect)
                     sellScrollRect = UIController.instance.sellScrollRect;
                 
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < HpHealItem.Length; i++)
                 {
-                    SpawnConsumableItem(HpHealItem);
+                    SpawnConsumableItem(HpHealItem[i]);
                 }
+                
                 for (int i = 0; i < 5; i++)
                 {
                     SpawnShopItem();

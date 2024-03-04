@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: NOLWG
-  productName: ELEMENTAL
+  productName: ELE
   defaultCursor: {fileID: 2800000, guid: d9772bf6cac82704eb3ff6b990931529, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.764151, g: 0.32079923, b: 0.43163738, a: 1}

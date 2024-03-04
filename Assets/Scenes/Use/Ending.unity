@@ -5240,6 +5240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1978445095}
   - component: {fileID: 1978445096}
+  - component: {fileID: 1978445097}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -5278,6 +5279,18 @@ MonoBehaviour:
   scroll: {fileID: 832592042}
   endY: 15000
   isEnd: 0
+--- !u!114 &1978445097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978445094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03feb0d14f616314b86105b0ccc6db91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2047745700
 GameObject:
   m_ObjectHideFlags: 0

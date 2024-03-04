@@ -1317,7 +1317,7 @@ MonoBehaviour:
   LandDamageIncreaseRate: 300
   JumpForce: 15
   FallForce: 40
-  StunTime: 4
+  StunTime: 2.5
   RisingTime: 0.5
   LandingPos:
   - {fileID: 2987700167441146525}

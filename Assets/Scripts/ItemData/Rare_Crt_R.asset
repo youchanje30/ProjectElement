@@ -16,8 +16,8 @@ MonoBehaviour:
   itemInfo: "\uC655\uC2E4 \uAE30\uC0AC\uC758 \uC7A5\uC2E0\uAD6C. \uCE58\uBA85\uD0C0
     \uACF5\uACA9\uC744 \uB354 \uC798\uD560 \uC218 \uC788\uC744 \uAC83 \uAC19\uB2E4."
   itemRare: 1
-  itemRareBeforeImg: {fileID: 21300000, guid: af2a3fdbd7b768249a1ca4fc692bbeee, type: 3}
-  itemRareAfterImg: {fileID: 21300000, guid: 3b179bab06e4cc64b945cd6c64870ba1, type: 3}
+  itemRareBeforeImg: {fileID: 21300000, guid: c3276aebaf85dae49b23e8a973c1e860, type: 3}
+  itemRareAfterImg: {fileID: 21300000, guid: adfded46a6c3ee24fab9f33844bc33e2, type: 3}
   itemCost: 1200
   sellCost: 0
   itemID: 2004

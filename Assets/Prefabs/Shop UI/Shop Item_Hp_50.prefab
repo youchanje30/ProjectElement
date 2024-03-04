@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 6422674992890568640}
   - component: {fileID: 1251624005504049136}
   m_Layer: 5
-  m_Name: Shop Item_Hp
+  m_Name: Shop Item_Hp_50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,7 +463,8 @@ MonoBehaviour:
   itemImage: {fileID: 3022875925857066110}
   itemName: {fileID: 5710261948318079049}
   itemInfo: {fileID: 507600985044915227}
-  consumeBuyCost: 300
+  consumeBuyCost: 900
+  generalHp: 50
   itemCostTxt: {fileID: 8755628579541332798}
   isChanging: 0
   reverseTime: 0.3
@@ -786,7 +787,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCCB4\uB825\uC744 10 \uD68C\uBCF5\uD569\uB2C8\uB2E4"
+  m_text: "\uCCB4\uB825\uC744 50 \uD68C\uBCF5\uD569\uB2C8\uB2E4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f504e0a6b4f164143a34bfa60b45b857, type: 2}
   m_sharedMaterial: {fileID: -8534061657180306502, guid: f504e0a6b4f164143a34bfa60b45b857, type: 2}

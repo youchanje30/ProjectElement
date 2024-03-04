@@ -28,6 +28,7 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private TMP_Text itemInfo;
     private int buyCost;
     [Header("물약 같은거 구입 가격")] [SerializeField] private int consumeBuyCost;
+    [Header("물약 회복량")] [SerializeField] private int generalHp;
     private int sellCost;
     [SerializeField] private TMP_Text itemCostTxt;
 
@@ -113,7 +114,7 @@ public class ShopItem : MonoBehaviour
         {
             // 체력 회복
             case 10:
-                player.GetComponent<Battle>().HealHp(10);
+                player.GetComponent<Battle>().HealHp(generalHp);
                 break;
             // 정령 영혼
             case 20:
