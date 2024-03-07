@@ -314,7 +314,7 @@ public class MonsterBase : MonoBehaviour
         if(isDead) return;
 
         curHp -= getDamage;
-        if(isAtking) AtkEnd();
+        if(isAtking && canKncokBack) AtkEnd();
         
         DamageManager.instance.SpawnDamage(transform.position, getDamage);
 

@@ -193,7 +193,7 @@ public class SaveManager : MonoBehaviour
         // xmlDocument.Save(Application.dataPath + "/DataXML.xml");
             xmlDocument.LoadXml(DecryptGameData());
             
-            xmlDocument.Save(Application.dataPath + "/TESTDataXML.xml");
+            // xmlDocument.Save(Application.dataPath + "/TESTDataXML.xml");
             // xmlDocument.Load(Application.dataPath + "/DataXML.xml");
 
             // 무기 타입
