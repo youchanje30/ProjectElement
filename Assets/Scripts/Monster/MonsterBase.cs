@@ -332,6 +332,8 @@ public class MonsterBase : MonoBehaviour
         }
 
         animator.SetBool("Hurt", true);
+        if(canKncokBack)
+            animator.SetTrigger("Hurt_");
 
         if(!canKncokBack)
         {
