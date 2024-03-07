@@ -26,8 +26,8 @@ MonoBehaviour:
   hpPer: 0
   damage: 0
   damagePer: 0
-  atkSpeed: 30
-  crtRate: 0
+  atkSpeed: 0
+  crtRate: 30
   crtDamage: 0
   missRate: 0
   defPer: 0
