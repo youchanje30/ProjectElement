@@ -19,7 +19,7 @@ MonoBehaviour:
   itemRare: 2
   itemRareBeforeImg: {fileID: 21300000, guid: 9813588dae35262449fd77b519601081, type: 3}
   itemRareAfterImg: {fileID: 21300000, guid: da1b5be072389a246a47c4a6358bb6fe, type: 3}
-  itemCost: 2000
+  itemCost: 2400
   sellCost: 0
   itemID: 3004
   itemImg: {fileID: 21300000, guid: b9a789f96780a90419b7e0e3daa0f316, type: 3}
